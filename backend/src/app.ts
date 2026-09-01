@@ -37,6 +37,12 @@ import monitoringRoutes from './routes/monitoring.routes.js';
 export const createApp = (): Express => {
   const app = express();
 
+  // Trust the first hop proxy (nginx) so req.ip / X-Forwarded-For are read
+  // correctly. Without this, express-rate-limit and other IP-based checks
+  // misbehave (and log ERR_ERL_UNEXPECTED_X_FORWARDED_FOR) whenever nginx
+  // forwards that header, which happens on every production request here.
+  app.set('trust proxy', 1);
+
   // ============================================================================
   // CORS MIDDLEWARE - MUST BE FIRST (BEFORE HELMET & RATE LIMIT)
   // ============================================================================
