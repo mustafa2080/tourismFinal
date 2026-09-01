@@ -20,13 +20,15 @@ export default defineConfig({
     // Code splitting for better caching
     rollupOptions: {
       output: {
-        manualChunks: {
-          'vendor-react': ['react', 'react-dom'],
-          'vendor-routing': ['react-router-dom'],
-          'vendor-ui': ['lucide-react', 'react-icons'],
-          'vendor-form': ['react-hook-form', '@hookform/resolvers'],
-          'vendor-query': ['@tanstack/react-query'],
-          'vendor-other': ['axios', 'socket.io-client', 'date-fns'],
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            if (id.includes('react-router-dom')) return 'vendor-routing'
+            if (id.includes('react') || id.includes('react-dom')) return 'vendor-react'
+            if (id.includes('lucide-react') || id.includes('react-icons')) return 'vendor-ui'
+            if (id.includes('react-hook-form') || id.includes('@hookform/resolvers')) return 'vendor-form'
+            if (id.includes('@tanstack/react-query')) return 'vendor-query'
+            if (id.includes('axios') || id.includes('socket.io-client') || id.includes('date-fns')) return 'vendor-other'
+          }
         },
       },
     },
