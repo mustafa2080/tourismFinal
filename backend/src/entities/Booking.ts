@@ -8,8 +8,8 @@ import {
   OneToMany,
   JoinColumn,
 } from 'typeorm';
-import { User } from './User.js';
-import { Package } from './Package.js';
+import type { User } from './User.js';
+import type { Package } from './Package.js';
 import { BookingExtra } from './BookingExtra.js';
 
 @Entity('bookings')
@@ -86,11 +86,11 @@ export class Booking {
   updated_at!: Date;
 
   // Relations
-  @ManyToOne(() => User, user => user.bookings, { onDelete: 'CASCADE' })
+  @ManyToOne('User', (user: User) => user.bookings, { onDelete: 'CASCADE' })
   @JoinColumn({ name: 'user_id' })
   user!: User;
 
-  @ManyToOne(() => Package, pkg => pkg.bookings, { onDelete: 'CASCADE' })
+  @ManyToOne('Package', (pkg: Package) => pkg.bookings, { onDelete: 'CASCADE' })
   @JoinColumn({ name: 'package_id' })
   package!: Package;
 

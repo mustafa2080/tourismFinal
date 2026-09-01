@@ -8,7 +8,7 @@ import {
   OneToMany,
   JoinColumn,
 } from 'typeorm';
-import { Package } from './Package.js';
+import type { Package } from './Package.js';
 import { PackageAddonTranslation } from './PackageAddonTranslation.js';
 
 @Entity('package_addons')
@@ -50,7 +50,7 @@ export class PackageAddon {
   updated_at!: Date;
 
   // Relations
-  @ManyToOne(() => Package, pkg => pkg.addons, { onDelete: 'CASCADE' })
+  @ManyToOne('Package', (pkg: Package) => pkg.addons, { onDelete: 'CASCADE' })
   @JoinColumn({ name: 'package_id' })
   package!: Package;
 

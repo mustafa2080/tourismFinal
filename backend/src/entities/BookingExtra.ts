@@ -6,7 +6,7 @@ import {
   ManyToOne,
   JoinColumn,
 } from 'typeorm';
-import { Booking } from './Booking.js';
+import type { Booking } from './Booking.js';
 
 @Entity('booking_extras')
 export class BookingExtra {
@@ -32,7 +32,7 @@ export class BookingExtra {
   created_at!: Date;
 
   // Relations
-  @ManyToOne(() => Booking, booking => booking.extras, { onDelete: 'CASCADE' })
+  @ManyToOne('Booking', (booking: Booking) => booking.extras, { onDelete: 'CASCADE' })
   @JoinColumn({ name: 'booking_id' })
   booking!: Booking;
 }

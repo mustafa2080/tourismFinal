@@ -7,7 +7,7 @@ import {
   ManyToOne,
   JoinColumn,
 } from 'typeorm';
-import { User } from './User.js';
+import type { User } from './User.js';
 
 @Entity('blog_posts')
 export class BlogPost {
@@ -42,7 +42,7 @@ export class BlogPost {
   updated_at!: Date;
 
   // Relations
-  @ManyToOne(() => User, { onDelete: 'SET NULL' })
+  @ManyToOne('User', { onDelete: 'SET NULL' })
   @JoinColumn({ name: 'author_id' })
   author!: User;
 }

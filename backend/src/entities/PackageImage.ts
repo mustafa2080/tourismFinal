@@ -6,7 +6,7 @@ import {
   ManyToOne,
   JoinColumn,
 } from 'typeorm';
-import { Package } from './Package.js';
+import type { Package } from './Package.js';
 
 @Entity('package_images')
 export class PackageImage {
@@ -32,7 +32,7 @@ export class PackageImage {
   created_at!: Date;
 
   // Relations
-  @ManyToOne(() => Package, pkg => pkg.images, { onDelete: 'CASCADE' })
+  @ManyToOne('Package', (pkg: Package) => pkg.images, { onDelete: 'CASCADE' })
   @JoinColumn({ name: 'package_id' })
   package!: Package;
 

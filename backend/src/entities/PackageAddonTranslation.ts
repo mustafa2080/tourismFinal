@@ -8,7 +8,7 @@ import {
   JoinColumn,
   Index,
 } from 'typeorm';
-import { PackageAddon } from './PackageAddon.js';
+import type { PackageAddon } from './PackageAddon.js';
 
 @Entity('package_addon_translations')
 @Index(['addon_id', 'language'], { unique: true })
@@ -48,7 +48,7 @@ export class PackageAddonTranslation {
   @UpdateDateColumn()
   updated_at!: Date;
 
-  @ManyToOne(() => PackageAddon, addon => addon.translations, {
+  @ManyToOne('PackageAddon', (addon: PackageAddon) => addon.translations, {
     onDelete: 'CASCADE',
   })
   @JoinColumn({ name: 'addon_id' })

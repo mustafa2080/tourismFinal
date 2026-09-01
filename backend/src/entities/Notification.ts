@@ -6,7 +6,7 @@ import {
   ManyToOne,
   JoinColumn,
 } from 'typeorm';
-import { User } from './User.js';
+import type { User } from './User.js';
 
 @Entity('notifications')
 export class Notification {
@@ -35,7 +35,7 @@ export class Notification {
   created_at!: Date;
 
   // Relations
-  @ManyToOne(() => User, user => user.notifications, { onDelete: 'CASCADE' })
+  @ManyToOne('User', (user: User) => user.notifications, { onDelete: 'CASCADE' })
   @JoinColumn({ name: 'user_id' })
   user!: User;
 }

@@ -6,7 +6,7 @@ import {
   ManyToMany,
   OneToMany,
 } from 'typeorm';
-import { Package } from './Package.js';
+import type { Package } from './Package.js';
 
 @Entity('categories')
 export class Category {
@@ -30,10 +30,10 @@ export class Category {
 
   // Relations
   // ManyToMany: Category can have multiple packages through package_categories table
-  @ManyToMany(() => Package, pkg => pkg.categories)
+  @ManyToMany('Package', (pkg: Package) => pkg.categories)
   packages_many!: Package[];
 
   // OneToMany: Category can have multiple packages as primary category
-  @OneToMany(() => Package, pkg => pkg.category)
+  @OneToMany('Package', (pkg: Package) => pkg.category)
   packages!: Package[];
 }

@@ -6,8 +6,8 @@ import {
   ManyToOne,
   JoinColumn,
 } from 'typeorm';
-import { User } from './User.js';
-import { Package } from './Package.js';
+import type { User } from './User.js';
+import type { Package } from './Package.js';
 
 @Entity('wishlist')
 export class Wishlist {
@@ -23,11 +23,11 @@ export class Wishlist {
   @CreateDateColumn({ type: 'timestamp' })
   created_at!: Date;
 
-  @ManyToOne(() => User, (user) => user.id, { onDelete: 'CASCADE' })
+  @ManyToOne('User', (user: User) => user.id, { onDelete: 'CASCADE' })
   @JoinColumn({ name: 'user_id' })
   user?: User;
 
-  @ManyToOne(() => Package, (pkg) => pkg.id, { onDelete: 'CASCADE', eager: true })
+  @ManyToOne('Package', (pkg: Package) => pkg.id, { onDelete: 'CASCADE', eager: true })
   @JoinColumn({ name: 'package_id' })
   package?: Package;
 }

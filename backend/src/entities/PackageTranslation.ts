@@ -8,7 +8,7 @@ import {
   JoinColumn,
   Index,
 } from 'typeorm';
-import { Package } from './Package.js';
+import type { Package } from './Package.js';
 
 @Entity('package_translations')
 @Index(['package_id', 'language'], { unique: true })
@@ -66,7 +66,7 @@ export class PackageTranslation {
   @UpdateDateColumn()
   updated_at!: Date;
 
-  @ManyToOne(() => Package, pkg => pkg.translations, {
+  @ManyToOne('Package', (pkg: Package) => pkg.translations, {
     onDelete: 'CASCADE',
   })
   @JoinColumn({ name: 'package_id' })

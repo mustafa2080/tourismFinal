@@ -6,7 +6,7 @@ import {
   ManyToOne,
   JoinColumn,
 } from 'typeorm';
-import { Package } from './Package.js';
+import type { Package } from './Package.js';
 
 @Entity('itineraries')
 export class Itinerary {
@@ -103,7 +103,7 @@ export class Itinerary {
   created_at!: Date;
 
   // Relations
-  @ManyToOne(() => Package, pkg => pkg.itineraries, { onDelete: 'CASCADE' })
+  @ManyToOne('Package', (pkg: Package) => pkg.itineraries, { onDelete: 'CASCADE' })
   @JoinColumn({ name: 'package_id' })
   package!: Package;
 

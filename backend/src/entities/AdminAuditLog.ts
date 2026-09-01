@@ -6,7 +6,7 @@ import {
   ManyToOne,
   JoinColumn,
 } from 'typeorm';
-import { User } from './User.js';
+import type { User } from './User.js';
 
 @Entity('admin_audit_logs')
 export class AdminAuditLog {
@@ -29,7 +29,7 @@ export class AdminAuditLog {
   created_at!: Date;
 
   // Relations
-  @ManyToOne(() => User, { onDelete: 'SET NULL' })
+  @ManyToOne('User', { onDelete: 'SET NULL' })
   @JoinColumn({ name: 'actor_id' })
   actor?: User;
 }
