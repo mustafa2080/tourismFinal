@@ -51,6 +51,7 @@
     "jsdom": "^24.1.0",
     "postcss": "^8.4.38",
     "tailwindcss": "^3.4.10",
+    "terser": "^5.51.2",
     "vite": "npm:rolldown-vite@7.1.14",
     "vitest": "^1.6.0"
   },
