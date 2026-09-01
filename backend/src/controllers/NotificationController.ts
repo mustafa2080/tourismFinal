@@ -1,7 +1,7 @@
 /// <reference types="express" />
 import { Request, Response, NextFunction } from 'express';
-import { NotificationService } from '../services/NotificationService';
-import { AppError } from '../utils/errors';
+import { NotificationService } from '../services/NotificationService.js';
+import { AppError } from '../utils/errors.js';
 
 export class NotificationController {
   private notificationService: NotificationService;

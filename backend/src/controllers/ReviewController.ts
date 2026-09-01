@@ -1,8 +1,8 @@
 /// <reference types="express" />
 import { Request, Response, NextFunction } from 'express';
-import { ReviewService } from '../services/ReviewService';
-import { AppError, ValidationError } from '../utils/errors';
-import { WebSocketService } from '../websocket/socket';
+import { ReviewService } from '../services/ReviewService.js';
+import { AppError, ValidationError } from '../utils/errors.js';
+import { WebSocketService } from '../websocket/socket.js';
 
 export class ReviewController {
   private reviewService: ReviewService;

@@ -1,6 +1,6 @@
 import { Repository } from 'typeorm';
-import { SystemSettings } from '../entities/SystemSettings';
-import { AppDataSource } from '../config/connection';
+import { SystemSettings } from '../entities/SystemSettings.js';
+import { AppDataSource } from '../config/connection.js';
 
 export class SystemSettingsRepository {
   private repository: Repository<SystemSettings>;

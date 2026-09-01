@@ -1,7 +1,7 @@
 /// <reference types="express" />
 import { Request, Response, NextFunction } from 'express';
-import { BlogService } from '../services/BlogService';
-import { AppError } from '../utils/errors';
+import { BlogService } from '../services/BlogService.js';
+import { AppError } from '../utils/errors.js';
 
 export class BlogController {
   private blogService: BlogService;

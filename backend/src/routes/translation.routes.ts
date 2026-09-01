@@ -6,7 +6,7 @@ import {
   getCacheStats,
   clearCache,
   getSupportedLanguages
-} from '../services/TranslationService';
+} from '../services/TranslationService.js';
 
 const router = Router();
 

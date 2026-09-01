@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
-import { SettingsService } from '../services/SettingsService';
-import { AppError } from '../utils/errors';
+import { SettingsService } from '../services/SettingsService.js';
+import { AppError } from '../utils/errors.js';
 
 export class SettingsController {
   private settingsService: SettingsService;

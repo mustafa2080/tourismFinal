@@ -1,5 +1,5 @@
 import { Router, Request, Response } from 'express';
-import * as libreTranslateService from '../services/libreTranslateService';
+import * as libreTranslateService from '../services/libreTranslateService.js';
 
 const router = Router();
 

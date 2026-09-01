@@ -1,7 +1,7 @@
 import { Router } from 'express';
-import SettingsController from '../controllers/SettingsController';
-import { adminMiddleware } from '../middleware/adminMiddleware';
-import { authMiddleware } from '../middleware/authMiddleware';
+import SettingsController from '../controllers/SettingsController.js';
+import { adminMiddleware } from '../middleware/adminMiddleware.js';
+import { authMiddleware } from '../middleware/authMiddleware.js';
 
 const router = Router();
 const controller = new SettingsController();

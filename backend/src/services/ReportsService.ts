@@ -1,6 +1,6 @@
-import { AppDataSource } from '../config/connection';
-import { Booking } from '../entities/Booking';
-import { User } from '../entities/User';
+import { AppDataSource } from '../config/connection.js';
+import { Booking } from '../entities/Booking.js';
+import { User } from '../entities/User.js';
 
 export class ReportsService {
   private bookingRepository = AppDataSource.getRepository(Booking);

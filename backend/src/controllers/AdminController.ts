@@ -1,24 +1,24 @@
 /// <reference types="express" />
 import { Request, Response, NextFunction } from 'express';
-import { AppDataSource } from '../config/connection';
-import { User } from '../entities/User';
-import { Booking } from '../entities/Booking';
-import { Review } from '../entities/Review';
-import { AdminAuditLog } from '../entities/AdminAuditLog';
-import { SystemSettings } from '../entities/SystemSettings';
-import { Package } from '../entities/Package';
-import { PackageImage } from '../entities/PackageImage';
-import { Itinerary } from '../entities/Itinerary';
+import { AppDataSource } from '../config/connection.js';
+import { User } from '../entities/User.js';
+import { Booking } from '../entities/Booking.js';
+import { Review } from '../entities/Review.js';
+import { AdminAuditLog } from '../entities/AdminAuditLog.js';
+import { SystemSettings } from '../entities/SystemSettings.js';
+import { Package } from '../entities/Package.js';
+import { PackageImage } from '../entities/PackageImage.js';
+import { Itinerary } from '../entities/Itinerary.js';
 import { PackageTranslation } from '../entities/PackageTranslation.js';
 
 import { PackageAddon } from '../entities/PackageAddon.js';
 import { Category } from '../entities/Category.js';
-import { UserRepository } from '../repositories/UserRepository';
-import { BookingRepository } from '../repositories/BookingRepository';
-import { ReviewRepository } from '../repositories/ReviewRepository';
-import { SystemSettingsRepository } from '../repositories/SystemSettingsRepository';
-import { AppError, ValidationError } from '../utils/errors';
-import { ReportsService } from '../services/ReportsService';
+import { UserRepository } from '../repositories/UserRepository.js';
+import { BookingRepository } from '../repositories/BookingRepository.js';
+import { ReviewRepository } from '../repositories/ReviewRepository.js';
+import { SystemSettingsRepository } from '../repositories/SystemSettingsRepository.js';
+import { AppError, ValidationError } from '../utils/errors.js';
+import { ReportsService } from '../services/ReportsService.js';
 
 export class AdminController {
   private userRepository: UserRepository;
