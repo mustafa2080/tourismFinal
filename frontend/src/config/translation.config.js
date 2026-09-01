@@ -5,6 +5,8 @@
  * - LibreTranslate: https://docs.libretranslate.com
  */
 
+import { getApiUrl } from './env.js';
+
 export const TRANSLATION_CONFIG = {
   // Supported languages (must match frontend and backend)
   supportedLanguages: ['en', 'ar', 'es', 'de', 'ru'],
@@ -40,7 +42,7 @@ export const TRANSLATION_CONFIG = {
 
   // Backend API configuration
   backendApi: {
-    baseUrl: import.meta.env.VITE_API_URL || 'http://localhost:3000/api',
+    baseUrl: getApiUrl(),
     translationEndpoint: '/translations',
     timeout: 15000
   },

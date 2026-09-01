@@ -7,6 +7,7 @@ import { LanguageProvider } from './context/LanguageContext.jsx';
 import GlobalTranslationSync from './components/GlobalTranslationSync.jsx';
 import TranslationSyncWrapper from './components/TranslationSyncWrapper.jsx';
 import { socketService } from './services/socketService';
+import { getSocketUrl } from './config/env.js';
 import { patchSocketIO } from './utils/socketErrorFix.js';
 import { seoService } from './services/seoService.js';
 import { initializeCSRFToken } from './services/apiClient.js';
@@ -44,7 +45,7 @@ const initializeSocket = () => {
     return;
   }
 
-  const socketUrl = import.meta.env.VITE_SOCKET_URL || 'http://localhost:5000';
+  const socketUrl = getSocketUrl();
   try {
     const socket = socketService.init(socketUrl, {
       reconnection: true,

@@ -1,5 +1,6 @@
 import axios from 'axios';
 import Cookies from 'js-cookie';
+import { getApiUrl } from '../config/env.js';
 
 /**
  * API Client Setup
@@ -11,7 +12,7 @@ import Cookies from 'js-cookie';
  * - Request deduplication to prevent rate limiting
  */
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+const API_URL = getApiUrl();
 
 // Request deduplication cache
 const pendingRequests = new Map();
