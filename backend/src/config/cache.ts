@@ -1,4 +1,4 @@
-import { createClient, RedisClient } from 'redis';
+import { createClient } from 'redis';
 import { logger } from '../middleware/logger.js';
 
 /**

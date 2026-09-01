@@ -44,7 +44,6 @@ export class OptimizedWebSocketService {
       maxHttpBufferSize: 1e6, // 1MB max payload
       pingInterval: 25000, // Ping every 25 seconds
       pingTimeout: 5000, // Timeout if no pong in 5 seconds
-      serveClientVersion: false, // Disable client version
       allowUpgrades: true,
       path: '/socket.io/',
     });

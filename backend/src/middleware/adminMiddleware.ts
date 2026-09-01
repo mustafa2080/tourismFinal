@@ -1,15 +1,12 @@
 /// <reference types="express" />
 import { Request, Response, NextFunction } from 'express';
 import { ForbiddenError } from '../utils/errors';
+import { TokenPayload } from '../utils/tokenUtils';
 
 declare global {
   namespace Express {
     interface Request {
-      user?: {
-        userId: string;
-        email: string;
-        role: string;
-      };
+      user?: TokenPayload;
     }
   }
 }

@@ -1,6 +1,7 @@
 /// <reference types="express" />
 import { Request, Response, NextFunction } from 'express';
 import { AppError } from '../utils/errors.js';
+import { TokenPayload } from '../utils/tokenUtils.js';
 
 /**
  * 🔐 Privilege Escalation Prevention Middleware
@@ -11,11 +12,7 @@ import { AppError } from '../utils/errors.js';
 declare global {
   namespace Express {
     interface Request {
-      user?: {
-        userId: string;
-        email: string;
-        role: string;
-      };
+      user?: TokenPayload;
     }
   }
 }

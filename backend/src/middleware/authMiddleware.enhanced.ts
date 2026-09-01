@@ -3,6 +3,7 @@ import { Request, Response, NextFunction } from 'express';
 import { AppDataSource } from '../config/connection.js';
 import { User } from '../entities/User.js';
 import { AppError } from '../utils/errors.js';
+import { TokenPayload } from '../utils/tokenUtils.js';
 
 /**
  * 🔐 Enhanced Authentication Middleware - Prevents Broken Authentication
@@ -12,13 +13,7 @@ import { AppError } from '../utils/errors.js';
 declare global {
   namespace Express {
     interface Request {
-      user?: {
-        userId: string;
-        email: string;
-        role: string;
-        iat?: number;
-        exp?: number;
-      };
+      user?: TokenPayload;
     }
   }
 }
