@@ -1,7 +1,7 @@
 /// <reference types="express" />
 import { Request, Response, NextFunction } from 'express';
-import { tokenUtils, TokenPayload } from '../utils/tokenUtils';
-import { UnauthorizedError } from '../utils/errors';
+import { tokenUtils, TokenPayload } from '../utils/tokenUtils.js';
+import { UnauthorizedError } from '../utils/errors.js';
 
 declare global {
   namespace Express {
