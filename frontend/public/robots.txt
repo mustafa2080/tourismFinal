@@ -1,0 +1,31 @@
+User-agent: *
+Allow: /
+
+# Disallow admin and private areas
+Disallow: /admin
+Disallow: /dashboard
+Disallow: /private
+
+# Allow crawling of important pages
+Allow: /packages
+Allow: /tours
+Allow: /booking
+Allow: /reviews
+Allow: /about
+Allow: /contact
+
+# Prevent crawling of static assets with query parameters
+Disallow: /*?*sort=
+Disallow: /*?*filter=
+Disallow: /*?*page=
+
+# Sitemap location
+Sitemap: https://yourdomain.com/sitemap.xml
+Sitemap: https://yourdomain.com/sitemap-packages.xml
+Sitemap: https://yourdomain.com/sitemap-tours.xml
+
+# Crawl delay (optional, adjust based on server capacity)
+Crawl-delay: 1
+
+# Request rate
+Request-rate: 30/1m

@@ -1,0 +1,403 @@
+/* Modern Auth Pages CSS - Login & Signup */
+
+/* Animations */
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+/* Form Container */
+.auth-container {
+  animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Form Card */
+.auth-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.auth-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.5), transparent);
+  animation: shimmer 2s infinite;
+}
+
+/* Input Fields */
+.auth-input {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.auth-input:focus {
+  transform: scale(1.01);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.auth-input-error {
+  border-color: rgb(220, 38, 38) !important;
+  background-color: rgba(254, 242, 242, 0.5) !important;
+  animation: shake 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.auth-input-error:focus {
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+/* Password Strength Indicator */
+.password-strength-bar {
+  height: 4px;
+  border-radius: 2px;
+  background: #e2e8f0;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.password-strength-fill {
+  height: 100%;
+  border-radius: 2px;
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s ease;
+}
+
+.password-weak { background-color: #ef4444; }
+.password-fair { background-color: #f97316; }
+.password-good { background-color: #eab308; }
+.password-strong { background-color: #22c55e; }
+.password-very-strong { background-color: #3b82f6; }
+
+/* Feature Cards */
+.feature-card {
+  animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) backwards;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.feature-card:nth-child(1) { animation-delay: 0s; }
+.feature-card:nth-child(2) { animation-delay: 0.1s; }
+.feature-card:nth-child(3) { animation-delay: 0.2s; }
+.feature-card:nth-child(4) { animation-delay: 0.3s; }
+
+.feature-card:hover {
+  transform: translateY(-4px);
+  border-color: rgb(59, 130, 246);
+}
+
+.feature-card:hover .feature-icon {
+  transform: scale(1.2) rotate(12deg);
+}
+
+/* Icon Animations */
+.icon-rotate {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.icon-rotate:hover {
+  transform: rotate(12deg) scale(1.1);
+}
+
+/* Button States */
+.auth-button {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.auth-button:hover {
+  transform: translateY(-2px);
+}
+
+.auth-button:active {
+  transform: translateY(0);
+}
+
+.auth-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.auth-button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.auth-button:active::before {
+  width: 300px;
+  height: 300px;
+}
+
+/* Checkbox Custom Styling */
+input[type="checkbox"]:checked {
+  background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");
+}
+
+/* Error Message Animation */
+.error-message {
+  animation: fadeInUp 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Loading Spinner */
+.spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Gradient Background Animation */
+.gradient-bg {
+  background-size: 300% 300%;
+  animation: gradientShift 15s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Glass Morphism Effect */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+html.dark .glass-effect {
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(203, 213, 225, 0.1);
+}
+
+/* Form Group Stagger Animation */
+.form-group {
+  animation: fadeInUp 0.5s cubic-bezier(0.4, 0, 0.2, 1) backwards;
+}
+
+.form-group:nth-child(1) { animation-delay: 0s; }
+.form-group:nth-child(2) { animation-delay: 0.1s; }
+.form-group:nth-child(3) { animation-delay: 0.2s; }
+.form-group:nth-child(4) { animation-delay: 0.3s; }
+.form-group:nth-child(5) { animation-delay: 0.4s; }
+
+/* Label Animation */
+.form-label {
+  transition: color 0.3s ease;
+}
+
+.form-input:focus ~ .form-label {
+  color: rgb(59, 130, 246);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .auth-container {
+    animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1), slideInFromRight 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .feature-card {
+    margin-bottom: 1rem;
+  }
+
+  .auth-button {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .auth-card {
+    border-radius: 1.25rem;
+    padding: 1.5rem;
+  }
+
+  .auth-input {
+    font-size: 16px; /* Prevents iOS zoom */
+  }
+
+  .password-strength-bar {
+    height: 3px;
+  }
+}
+
+/* Dark Mode Support */
+html.dark {
+  --input-border-color: #475569;
+  --input-bg-color: #1e293b;
+  --input-text-color: #f1f5f9;
+}
+
+html {
+  --input-border-color: #cbd5e1;
+  --input-bg-color: #ffffff;
+  --input-text-color: #0f172a;
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Focus Visible States */
+button:focus-visible,
+input:focus-visible,
+a:focus-visible {
+  outline: 2px solid rgb(59, 130, 246);
+  outline-offset: 2px;
+}
+
+/* Smooth Scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Success Animation */
+.success-icon {
+  animation: scaleIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Error Animation */
+.error-icon {
+  animation: shake 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Divider Line Animation */
+.form-divider::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, currentColor, transparent);
+  opacity: 0.2;
+  animation: slideIn 0.6s ease forwards;
+}
+
+@keyframes slideIn {
+  from {
+    width: 0;
+    opacity: 0;
+  }
+  to {
+    width: 100%;
+    opacity: 0.2;
+  }
+}
+
+/* Info Box Animation */
+.info-box {
+  animation: slideInFromTop 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes slideInFromTop {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Stat Counter Animation */
+.stat-number {
+  animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) backwards;
+}
+
+.stat-number:nth-child(1) { animation-delay: 0s; }
+.stat-number:nth-child(2) { animation-delay: 0.1s; }
+.stat-number:nth-child(3) { animation-delay: 0.2s; }
+
+/* Print Styles */
+@media print {
+  .auth-container {
+    background: white;
+  }
+
+  .auth-button {
+    background: #2563eb;
+  }
+}

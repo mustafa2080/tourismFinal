@@ -1,0 +1,172 @@
+/* Sidebar Responsive Styles */
+
+/* Desktop - Sidebar is part of layout */
+@media (min-width: 1024px) {
+  aside {
+    position: relative !important;
+    transform: none !important;
+    width: 16rem !important;
+    height: auto;
+    border-right: 1px solid rgba(71, 85, 105, 0.3);
+  }
+
+  main {
+    flex: 1;
+    overflow-y: auto;
+  }
+}
+
+/* Tablet and Mobile - Sidebar is overlay */
+@media (max-width: 1023px) {
+  aside {
+    position: fixed !important;
+    left: 0;
+    top: 0;
+    width: 16rem !important;
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    z-index: 40;
+  }
+
+  /* Sidebar backdrop overlay */
+  .sidebar-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 30;
+    display: block;
+  }
+
+  .sidebar-overlay.hidden {
+    display: none;
+  }
+}
+
+/* Mobile only - Optimize for small screens */
+@media (max-width: 640px) {
+  aside {
+    width: 14rem !important;
+  }
+
+  /* Reduce padding on mobile */
+  .sidebar-content {
+    padding: 1rem 0.5rem;
+  }
+
+  /* Hide labels on very small screens if needed */
+  .sidebar-label {
+    font-size: 0.75rem;
+  }
+}
+
+/* Sidebar animation */
+aside {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+
+/* Scrollbar for sidebar */
+aside::-webkit-scrollbar {
+  width: 6px;
+}
+
+aside::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+aside::-webkit-scrollbar-thumb {
+  background: rgba(226, 232, 240, 0.2);
+  border-radius: 3px;
+}
+
+aside::-webkit-scrollbar-thumb:hover {
+  background: rgba(226, 232, 240, 0.4);
+}
+
+/* Dark mode scrollbar */
+.dark aside::-webkit-scrollbar-thumb {
+  background: rgba(71, 85, 105, 0.2);
+}
+
+.dark aside::-webkit-scrollbar-thumb:hover {
+  background: rgba(71, 85, 105, 0.4);
+}
+
+/* Menu items responsive */
+nav a {
+  transition: all 0.2s ease;
+}
+
+nav a:active {
+  scale: 0.98;
+}
+
+/* User info section at bottom */
+.sidebar-user-section {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem;
+  border-top: 1px solid rgba(71, 85, 105, 0.3);
+  background: linear-gradient(to top, rgba(15, 23, 42, 0.8), transparent);
+}
+
+@media (max-width: 1023px) {
+  .sidebar-user-section {
+    position: static;
+    margin-top: auto;
+  }
+}
+
+/* Prevent body scroll when sidebar is open on mobile */
+body.sidebar-open {
+  overflow: hidden;
+}
+
+/* Mobile toggle button styling */
+@media (max-width: 1023px) {
+  button[aria-label="Toggle sidebar"] {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    z-index: 50;
+    transition: all 0.3s ease;
+  }
+
+  button[aria-label="Toggle sidebar"]:hover {
+    transform: scale(1.1);
+  }
+
+  button[aria-label="Toggle sidebar"]:active {
+    scale: 0.95;
+  }
+}
+
+@media (min-width: 1024px) {
+  button[aria-label="Toggle sidebar"] {
+    display: none !important;
+  }
+}
+
+/* Improve sidebar performance */
+aside {
+  contain: layout style paint;
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Fix sidebar overflow on mobile */
+aside nav {
+  padding-bottom: 6rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: calc(100vh - 8rem);
+}
+
+/* Smooth transitions for dark mode */
+aside,
+.sidebar-overlay {
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}

@@ -1,0 +1,44 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "ES2020",
+    "lib": ["ES2020"],
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "strict": false,
+    "noImplicitAny": false,
+    "noEmitOnError": false,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "baseUrl": "./src",
+    "paths": {
+      "@/*": ["./*"],
+      "@config/*": ["./config/*"],
+      "@entities/*": ["./entities/*"],
+      "@repositories/*": ["./repositories/*"],
+      "@services/*": ["./services/*"],
+      "@controllers/*": ["./controllers/*"],
+      "@middleware/*": ["./middleware/*"],
+      "@utils/*": ["./utils/*"],
+      "@routes/*": ["./routes/*"]
+    }
+  },
+  "ts-node": {
+    "esm": true,
+    "experimentalSpecifierResolution": "node",
+    "compilerOptions": {
+      "module": "ESNext"
+    }
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
+}

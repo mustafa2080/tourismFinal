@@ -1,0 +1,651 @@
+/* ============================================
+   MODERN & PREMIUM HERO SECTION STYLES
+   ============================================ */
+
+/* Root CSS Variables */
+:root {
+  --hero-gradient-1: linear-gradient(135deg, rgba(59, 130, 246, 0.4), rgba(168, 85, 247, 0.4));
+  --hero-gradient-2: linear-gradient(to right, rgba(59, 130, 246, 0.2), rgba(168, 85, 247, 0.2));
+  --hero-blur-strong: blur(12px);
+  --hero-transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================
+   KEYFRAME ANIMATIONS
+   ============================================ */
+
+/* Blob Animation - Floating Background Orbs */
+@keyframes blob {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+}
+
+@keyframes blobAlt {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(-30px, 50px) scale(0.95);
+  }
+  66% {
+    transform: translate(20px, -20px) scale(1.05);
+  }
+}
+
+/* Fade In Up Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Spin Slow Animation */
+@keyframes spinSlow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Shimmer Animation */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+/* Glow Pulse */
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.3), 
+                0 0 40px rgba(168, 85, 247, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(168, 85, 247, 0.6),
+                0 0 80px rgba(168, 85, 247, 0.3);
+  }
+}
+
+/* Scale Bounce */
+@keyframes scaleBounce {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+/* Slide In From Left */
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Slide In From Right */
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Float Up Down */
+@keyframes floatUpDown {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+/* ============================================
+   UTILITY ANIMATIONS
+   ============================================ */
+
+.animate-blob {
+  animation: blob 7s infinite;
+}
+
+.animate-blob.animation-delay-2000 {
+  animation: blobAlt 7s infinite 2s;
+}
+
+.animate-blob.animation-delay-4000 {
+  animation: blob 7s infinite 4s;
+}
+
+.animate-spin-slow {
+  animation: spinSlow 3s linear infinite;
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.animate-float {
+  animation: floatUpDown 3s ease-in-out infinite;
+}
+
+/* ============================================
+   HERO SECTION ELEMENTS
+   ============================================ */
+
+/* Image Container */
+.hero-image-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.5rem;
+  background: var(--hero-gradient-1);
+}
+
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 1.5rem;
+  transition: all 1s var(--hero-transition-smooth);
+  filter: brightness(1.1) contrast(1.05);
+}
+
+.hero-image:hover {
+  transform: scale(1.02);
+  filter: brightness(1.2) contrast(1.1);
+}
+
+/* Overlay Effects */
+.hero-image-overlay {
+  position: absolute;
+  inset: 0;
+  border-radius: 1.5rem;
+  mix-blend-mode: overlay;
+  opacity: 0.2;
+  transition: opacity 0.6s ease;
+}
+
+/* Enhanced Badge */
+.hero-floating-badge {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: var(--hero-blur-strong);
+  -webkit-backdrop-filter: var(--hero-blur-strong);
+  padding: 1.5rem 1.5rem;
+  border-radius: 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  animation: floatUpDown 3s ease-in-out infinite;
+  transition: all 0.3s ease;
+}
+
+.hero-floating-badge:hover {
+  box-shadow: 0 30px 60px rgba(168, 85, 247, 0.3);
+  transform: scale(1.08) translateY(-8px);
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.hero-floating-badge-emoji {
+  font-size: 2.5rem;
+  margin-bottom: 0.75rem;
+  transition: all 0.4s ease;
+  display: inline-block;
+}
+
+.hero-floating-badge:hover .hero-floating-badge-emoji {
+  animation: scaleBounce 0.6s ease-in-out;
+  font-size: 3rem;
+}
+
+/* ============================================
+   SLIDE INDICATORS
+   ============================================ */
+
+.hero-slide-indicator {
+  transition: all 0.4s var(--hero-transition-smooth);
+  border-radius: 9999px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-slide-indicator.active {
+  box-shadow: 0 0 30px rgba(168, 85, 247, 0.6);
+  animation: glowPulse 2s ease infinite;
+}
+
+.hero-slide-indicator.active::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.8),
+    transparent
+  );
+  animation: shimmer 2s infinite;
+}
+
+/* ============================================
+   TYPOGRAPHY EFFECTS
+   ============================================ */
+
+.hero-title-gradient {
+  background: linear-gradient(135deg, #60a5fa, #a78bfa, #f472b6);
+  background-size: 300% 300%;
+  animation: gradientFlow 8s ease infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@keyframes gradientFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* ============================================
+   CARD EFFECTS (Floating Cards)
+   ============================================ */
+
+.hero-card {
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 1.75rem;
+  overflow: hidden;
+}
+
+.hero-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(59, 130, 246, 0.2) 0%,
+    rgba(168, 85, 247, 0.1) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.hero-card:hover::before {
+  opacity: 1;
+}
+
+.hero-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 30px 60px rgba(168, 85, 247, 0.3);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Shimmer Loading Effect */
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 1024px) {
+  .hero-floating-badge {
+    padding: 1.25rem 1.25rem;
+    top: 1.5rem;
+    right: 1.5rem;
+  }
+
+  .hero-floating-badge-emoji {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-slide-indicator {
+    height: 0.375rem;
+  }
+
+  .hero-slide-indicator.active {
+    width: 2rem;
+  }
+
+  .hero-slide-indicator:not(.active) {
+    width: 0.75rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-floating-badge {
+    padding: 1rem 1rem;
+    top: 1rem;
+    right: 1rem;
+  }
+
+  .hero-floating-badge-emoji {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-image,
+  .hero-floating-badge,
+  .hero-slide-indicator,
+  .hero-title-gradient,
+  .animate-blob,
+  .animate-spin-slow,
+  .animate-fadeInUp,
+  .animate-float {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* ============================================
+   DARK MODE SUPPORT
+   ============================================ */
+
+@media (prefers-color-scheme: dark) {
+  .hero-floating-badge {
+    background: rgba(15, 23, 42, 0.8);
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .hero-card {
+    background: rgba(15, 23, 42, 0.6);
+  }
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+
+@media print {
+  .animate-blob,
+  .hero-floating-badge,
+  .hero-slide-indicator,
+  .animate-spin-slow,
+  .animate-float {
+    display: none;
+  }
+}
+
+/* ============================================
+   ENHANCED SEARCH FORM STYLES
+   ============================================ */
+
+/* Search Form Container - Reduced Transparency */
+form.bg-white\/90 {
+  background-color: rgba(255, 255, 255, 0.92) !important;
+  border: 2px solid rgba(255, 255, 255, 0.6) !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+form.dark\:bg-slate-900\/90 {
+  background-color: rgba(15, 23, 42, 0.92) !important;
+  border: 2px solid rgba(30, 41, 59, 0.8) !important;
+}
+
+/* Input Fields Enhancement */
+input.bg-white\/95,
+select.bg-white\/95 {
+  background-color: rgba(255, 255, 255, 0.98) !important;
+  border-width: 2px;
+  border-color: rgba(226, 232, 240, 1) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08), inset 0 1px 2px rgba(0, 0, 0, 0.05);
+  font-weight: 500;
+}
+
+input.dark\:bg-slate-800\/95,
+select.dark\:bg-slate-800\/95 {
+  background-color: rgba(30, 41, 59, 0.98) !important;
+  border-color: rgba(71, 85, 105, 1) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3), inset 0 1px 2px rgba(255, 255, 255, 0.05);
+}
+
+/* Input Focus States */
+input.focus\:ring-blue-500:focus,
+select.focus\:ring-blue-500:focus {
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1), inset 0 0 0 2px rgba(59, 130, 246, 0.5);
+  border-color: rgba(59, 130, 246, 1);
+}
+
+/* Search Button Enhancement */
+button[type="submit"] {
+  box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3), 0 4px 12px rgba(168, 85, 247, 0.2);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+button[type="submit"]:hover {
+  box-shadow: 0 20px 40px rgba(59, 130, 246, 0.4), 0 8px 20px rgba(168, 85, 247, 0.3);
+  transform: translateY(-2px) scale(1.05);
+}
+
+button[type="submit"]:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: 0 5px 15px rgba(59, 130, 246, 0.2);
+}
+
+/* Quick Select Buttons */
+.bg-white\/60,
+.dark\:bg-slate-700\/60 {
+  background-color: rgba(255, 255, 255, 0.65) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.7) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dark\:bg-slate-700\/60 {
+  background-color: rgba(51, 65, 85, 0.65) !important;
+  border: 1px solid rgba(100, 116, 139, 0.6) !important;
+}
+
+/* Quick Select Buttons Hover */
+.hover\:bg-white\/80:hover,
+.dark\:hover\:bg-slate-700\/80:hover {
+  background-color: rgba(255, 255, 255, 0.85) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.dark\:hover\:bg-slate-700\/80:hover {
+  background-color: rgba(51, 65, 85, 0.85) !important;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* Active Quick Select Button */
+.bg-blue-600 {
+  box-shadow: 0 12px 24px rgba(37, 99, 235, 0.4);
+  animation: pulse-button 0.3s ease-out;
+}
+
+@keyframes pulse-button {
+  0% {
+    box-shadow: 0 8px 16px rgba(37, 99, 235, 0.2);
+    transform: scale(0.95);
+  }
+  100% {
+    box-shadow: 0 12px 24px rgba(37, 99, 235, 0.4);
+    transform: scale(1.05);
+  }
+}
+
+/* Label Enhancement */
+label {
+  letter-spacing: 0.05em;
+  font-weight: 700;
+}
+
+.text-slate-700 {
+  color: rgba(51, 65, 85, 1) !important;
+}
+
+.dark\:text-slate-300 {
+  color: rgba(203, 213, 225, 1) !important;
+}
+
+/* Border Enhancement */
+.border-t-2 {
+  border-top-color: rgba(226, 232, 240, 1);
+}
+
+.dark\:border-slate-700\/50 {
+  border-top-color: rgba(51, 65, 85, 0.5);
+}
+
+/* Responsive Adjustments for Search Form */
+@media (max-width: 768px) {
+  form.bg-white\/90 {
+    padding: 1.5rem;
+  }
+
+  input.px-4,
+  select.px-4 {
+    padding: 0.875rem 1rem;
+  }
+
+  button[type="submit"] {
+    padding: 0.875rem 1.5rem;
+  }
+}
+
+/* ============================================
+   ENHANCED NAVIGATION CONTROLS
+   ============================================ */
+
+/* Navigation Buttons - Previous/Next */
+.pointer-events-auto button[aria-label="Previous slide"],
+.pointer-events-auto button[aria-label="Next slide"] {
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  background-color: rgba(255, 255, 255, 0.28) !important;
+  border-color: rgba(255, 255, 255, 0.55) !important;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.pointer-events-auto button[aria-label="Previous slide"]:hover,
+.pointer-events-auto button[aria-label="Next slide"]:hover {
+  background-color: rgba(255, 255, 255, 0.45) !important;
+  border-color: rgba(255, 255, 255, 0.75) !important;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  transform: scale(1.08);
+}
+
+/* Navigation Dots */
+.bottom-20.flex.gap-2\.5 button {
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.bottom-20.flex.gap-2\.5 button.bg-white {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 1);
+}
+
+.bottom-20.flex.gap-2\.5 button.bg-white\/60 {
+  background-color: rgba(255, 255, 255, 0.65) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+.bottom-20.flex.gap-2\.5 button.bg-white\/60:hover {
+  background-color: rgba(255, 255, 255, 0.85) !important;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+/* Slide Counter */
+.top-6 .bg-white\/30 {
+  backdrop-filter: blur(18px) !important;
+  -webkit-backdrop-filter: blur(18px) !important;
+  background-color: rgba(255, 255, 255, 0.32) !important;
+  border-color: rgba(255, 255, 255, 0.6) !important;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  transition: all 0.3s ease;
+}
+
+/* ============================================
+   OVERALL HERO SECTION POLISH
+   ============================================ */
+
+/* Hero section smooth transitions */
+section[style*="minHeight: 600px"] {
+  background-color: rgb(15, 23, 42) !important;
+  position: relative;
+}
+
+section[style*="minHeight: 600px"]::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at bottom right, rgba(59, 130, 246, 0.1), transparent);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Ensure proper stacking of content */
+section[style*="minHeight: 600px"] > .relative {
+  z-index: 10;
+}
+
+/* Improved gradient overlay consistency */
+.absolute.inset-0.bg-gradient-to-r {
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.1)) !important;
+}

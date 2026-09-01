@@ -1,0 +1,561 @@
+/* Import Admin Dashboard Styles */
+@import './pages/AdminDashboard/styles/admin-dashboard.css';
+
+/* Import Slider Styles */
+@import './styles/slider.css';
+
+/* Import ChatBot Styles */
+@import './styles/chatbot.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================
+   HTML & BODY BASE STYLES
+   ============================================ */
+
+html {
+  scroll-behavior: smooth;
+  width: 100%;
+}
+
+body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: white;
+}
+
+#root {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow: visible;
+}
+
+/* Custom Base Styles */
+@layer base {
+  :root {
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+    color-scheme: light;
+  }
+
+  /* Dark Mode CSS Variables */
+  .dark {
+    color-scheme: dark;
+    --bg-gradient-light: linear-gradient(to bottom, rgb(248, 250, 252), rgb(241, 245, 249));
+    --bg-gradient-dark: linear-gradient(to bottom, rgb(15, 23, 42), rgb(30, 41, 59));
+  }
+
+  html.dark {
+    color-scheme: dark;
+  }
+
+  * {
+    @apply border-neutral-200;
+  }
+
+  .dark * {
+    @apply border-neutral-700;
+  }
+
+  body {
+    @apply bg-neutral-50 text-neutral-900 m-0 overflow-y-auto;
+  }
+
+  .dark body {
+    @apply bg-neutral-900 text-neutral-50 overflow-y-auto;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold text-neutral-900;
+  }
+
+  .dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
+    @apply text-neutral-50;
+  }
+
+  h1 {
+    @apply text-4xl md:text-5xl;
+  }
+
+  h2 {
+    @apply text-3xl md:text-4xl;
+  }
+
+  h3 {
+    @apply text-2xl md:text-3xl;
+  }
+
+  h4 {
+    @apply text-xl md:text-2xl;
+  }
+
+  h5 {
+    @apply text-lg md:text-xl;
+  }
+
+  h6 {
+    @apply text-base md:text-lg;
+  }
+
+  a {
+    @apply text-primary-600 hover:text-primary-700 transition-colors duration-200;
+  }
+
+  button {
+    @apply transition-all duration-200;
+  }
+
+  input, textarea, select {
+    @apply w-full;
+  }
+}
+
+/* Custom Component Styles */
+@layer components {
+  .btn {
+    @apply px-4 py-2 rounded-lg font-medium transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-primary {
+    @apply bg-primary-600 hover:bg-primary-700 text-white;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary-600 hover:bg-secondary-700 text-white;
+  }
+
+  .btn-outline {
+    @apply border-2 border-primary-600 text-primary-600 hover:bg-primary-50;
+  }
+
+  .btn-success {
+    @apply bg-success-500 hover:bg-success-700 text-white;
+  }
+
+  .btn-danger {
+    @apply bg-danger-500 hover:bg-danger-700 text-white;
+  }
+
+  .card {
+    @apply bg-white rounded-xl shadow-md overflow-hidden;
+  }
+
+  .dark .card {
+    @apply bg-neutral-800 shadow-neutral-900;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-2 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent;
+  }
+
+  .dark .input-field {
+    @apply bg-neutral-800 border-neutral-600 text-neutral-50 focus:ring-primary-600;
+  }
+
+  .input-error {
+    @apply border-danger-500 focus:ring-danger-500;
+  }
+
+  .dark .input-error {
+    @apply border-danger-500 focus:ring-danger-500;
+  }
+
+  .badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium;
+  }
+
+  .badge-primary {
+    @apply bg-primary-100 text-primary-800;
+  }
+
+  .badge-success {
+    @apply bg-success-100 text-success-800;
+  }
+
+  .badge-warning {
+    @apply bg-warning-100 text-warning-800;
+  }
+
+  .badge-danger {
+    @apply bg-danger-100 text-danger-800;
+  }
+
+  .badge-neutral {
+    @apply bg-neutral-100 text-neutral-800;
+  }
+}
+
+/* Custom Utility Styles */
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent;
+  }
+
+  .glass {
+    @apply bg-white/80 backdrop-blur-lg;
+  }
+
+  .shadow-glow {
+    box-shadow: 0 0 15px rgba(14, 165, 233, 0.3);
+  }
+
+  .transition-base {
+    @apply transition-all duration-200 ease-in-out;
+  }
+
+  .hover-lift {
+    @apply transition-transform duration-200 hover:-translate-y-1;
+  }
+}
+
+/* Animation Classes */
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-in forwards;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.3s ease-out forwards;
+}
+
+.animate-slide-down {
+  animation: slideDown 0.3s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* ============================================
+   SCROLLBAR AND SCROLL BEHAVIOR
+   ============================================ */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-neutral-100;
+}
+
+.dark ::-webkit-scrollbar-track {
+  @apply bg-neutral-800;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-neutral-400 rounded-full hover:bg-neutral-500;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  @apply bg-neutral-600 rounded-full hover:bg-neutral-500;
+}
+
+/* Loading Spinner */
+.spinner {
+  border: 3px solid rgba(14, 165, 233, 0.1);
+  border-top-color: #0ea5e9;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ============================================
+   ADVANCED ANIMATIONS FOR HERO SECTION
+   ============================================ */
+
+/* Blob Animation */
+@keyframes blob {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+}
+
+/* Spin Slow */
+@keyframes spinSlow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Fade In Up */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Float Up Down */
+@keyframes floatUpDown {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+/* Glow Pulse */
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.3), 
+                0 0 40px rgba(168, 85, 247, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(168, 85, 247, 0.6),
+                0 0 80px rgba(168, 85, 247, 0.3);
+  }
+}
+
+/* Scale Bounce */
+@keyframes scaleBounce {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+/* Slide In From Left */
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Slide In From Right */
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Shimmer */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+/* Modal Animations */
+@keyframes modalIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInFromBottom {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-modal-in {
+  animation: modalIn 0.3s ease-out;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.animate-slide-in-from-bottom {
+  animation: slideInFromBottom 0.5s ease-out;
+}
+
+/* Star glow effect */
+@keyframes starGlow {
+  0%, 100% {
+    filter: drop-shadow(0 0 4px rgba(250, 204, 21, 0.5));
+  }
+  50% {
+    filter: drop-shadow(0 0 12px rgba(250, 204, 21, 0.8));
+  }
+}
+
+.animate-star-glow {
+  animation: starGlow 1.5s ease-in-out infinite;
+}
+
+/* ============================================
+   RTL/LTR SUPPORT
+   ============================================ */
+
+/* RTL Global Styles */
+html.rtl {
+  direction: rtl;
+  text-align: right;
+}
+
+html.rtl body {
+  direction: rtl;
+  text-align: right;
+}
+
+html.rtl * {
+  direction: rtl;
+}
+
+/* LTR Global Styles */
+html.ltr {
+  direction: ltr;
+  text-align: left;
+}
+
+html.ltr body {
+  direction: ltr;
+  text-align: left;
+}
+
+html.ltr * {
+  direction: ltr;
+}
+
+/* Flexbox alignment fixes for RTL */
+html.rtl .flex-between {
+  @apply flex justify-between;
+}
+
+html.rtl .ml-auto {
+  margin-right: auto;
+  margin-left: 0;
+}
+
+html.rtl .mr-auto {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+/* Margin fixes for RTL */
+html.rtl .ml {
+  margin-right: var(--margin);
+  margin-left: 0;
+}
+
+html.rtl .mr {
+  margin-left: var(--margin);
+  margin-right: 0;
+}
+
+/* Padding fixes for RTL */
+html.rtl .pl {
+  padding-right: var(--padding);
+  padding-left: 0;
+}
+
+html.rtl .pr {
+  padding-left: var(--padding);
+  padding-right: 0;
+}
+
+/* Language Switcher RTL Support */
+html.rtl .language-switcher-container {
+  margin-right: auto;
+  margin-left: 0;
+}
+
+html.ltr .language-switcher-container {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+/* Header Navigation RTL */
+html.rtl nav {
+  direction: rtl;
+}
+
+/* Smooth transition between languages */
+@supports (transition: opacity 0.15s ease) {
+  html {
+    transition: opacity 0.15s ease;
+  }
+}

@@ -1,0 +1,41 @@
+/* Translation Transition Animation */
+
+html.language-transitioning {
+  opacity: 0.7 !important;
+  pointer-events: none;
+  transition: opacity 0.2s ease-in-out;
+}
+
+/* Fade transition effect */
+html {
+  transition: opacity 0.15s ease-out, dir 0.15s ease-out;
+}
+
+body {
+  transition: direction 0.15s ease-out;
+}
+
+/* RTL/LTR specific transitions */
+html.rtl {
+  direction: rtl;
+}
+
+html.ltr {
+  direction: ltr;
+}
+
+/* Smooth language change effect */
+[data-i18n-item] {
+  transition: opacity 0.2s ease-out;
+}
+
+/* Loading state during translation */
+.language-switching {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* Ensure all text elements update smoothly */
+*[data-translate] {
+  transition: color 0.2s ease-out;
+}

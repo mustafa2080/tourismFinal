@@ -1,0 +1,128 @@
+/* Admin Header - Modern Responsive Design */
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  flex-shrink: 0;
+}
+
+/* Base header height */
+header {
+  background: white;
+}
+
+@media (max-width: 640px) {
+  header {
+    padding: 0 1rem;
+  }
+}
+
+/* Responsive padding */
+@media (min-width: 1024px) {
+  header {
+    padding: 0 2rem;
+  }
+}
+
+/* Dark mode */
+header {
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Content alignment */
+header > div > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+/* Button hover effects */
+header button {
+  transition: all 0.2s ease;
+}
+
+header button:hover {
+  transform: none;
+}
+
+header button:active {
+  opacity: 0.8;
+}
+
+/* Dropdown positioning */
+.profile-dropdown,
+.notifications-dropdown {
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+/* Ensure icons stay consistent */
+header svg {
+  flex-shrink: 0;
+}
+
+/* Mobile menu responsive */
+@media (max-width: 768px) {
+  header button {
+    padding: 0.5rem;
+  }
+
+  header button svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* Prevent text truncation issues */
+header p {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Smooth animations */
+* {
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Divider styling */
+.header-divider {
+  background-color: rgba(226, 232, 240, 0.5);
+}
+
+/* Mobile menu animation */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+header + div {
+  animation: slideDown 0.2s ease-out;
+}
+
+/* Notification badge */
+.notification-badge {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Prevent layout shift on scroll */
+body {
+  scrollbar-gutter: stable;
+}

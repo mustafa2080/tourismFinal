@@ -1,0 +1,424 @@
+/* Modern Header & Dark Mode CSS Variables */
+
+/* CSS Variables for Dark Mode */
+:root {
+  --color-bg-primary: #ffffff;
+  --color-bg-secondary: #f8fafc;
+  --color-bg-tertiary: #f1f5f9;
+  --color-text-primary: #0f172a;
+  --color-text-secondary: #475569;
+  --color-text-tertiary: #64748b;
+  --color-border: #e2e8f0;
+  --color-border-hover: #cbd5e1;
+  --color-blue-50: #eff6ff;
+  --color-blue-600: #2563eb;
+  --color-purple-600: #9333ea;
+  --color-shadow: rgba(0, 0, 0, 0.1);
+}
+
+html.dark {
+  --color-bg-primary: #0f172a;
+  --color-bg-secondary: #1e293b;
+  --color-bg-tertiary: #334155;
+  --color-text-primary: #f1f5f9;
+  --color-text-secondary: #cbd5e1;
+  --color-text-tertiary: #94a3b8;
+  --color-border: #475569;
+  --color-border-hover: #64748b;
+  --color-blue-50: #082f49;
+  --color-blue-600: #3b82f6;
+  --color-purple-600: #a855f7;
+  --color-shadow: rgba(0, 0, 0, 0.3);
+}
+
+/* Smooth Dark Mode Transition */
+/* ❌ REMOVED: Applying transitions to ALL elements causes performance issues */
+/* Only apply transitions to specific elements that need them */
+
+html.dark-mode-transitioning,
+html.dark-mode-transitioning * {
+  transition: none !important;
+}
+
+/* Header Animations */
+@keyframes slideDownMenu {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+    filter: blur(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes slideUpMenu {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-20px);
+    filter: blur(10px);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes sunRise {
+  0% {
+    transform: rotate(0deg) scale(0.8) translateY(10px);
+    opacity: 0;
+  }
+  100% {
+    transform: rotate(0deg) scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes moonRise {
+  0% {
+    transform: rotate(180deg) scale(0.8) translateY(-10px);
+    opacity: 0;
+  }
+  100% {
+    transform: rotate(0deg) scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Mobile Menu Smooth Animation */
+.mobile-menu-enter {
+  animation: slideDownMenu 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.mobile-menu-exit {
+  animation: slideUpMenu 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Login Button Styling */
+.login-button {
+  background: transparent;
+  border: 1px solid transparent;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.login-button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(168, 85, 247, 0.1));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.login-button:hover::before {
+  opacity: 1;
+}
+
+.login-button:hover {
+  border-color: rgba(59, 130, 246, 0.2);
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), rgba(168, 85, 247, 0.05));
+}
+
+/* Sign Up Button Gradient Animation */
+.signup-button {
+  background: linear-gradient(135deg, #2563eb, #9333ea);
+  background-size: 200% 200%;
+  position: relative;
+  overflow: hidden;
+}
+
+.signup-button:hover {
+  animation: gradientShift 3s ease infinite;
+}
+
+.signup-button::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+  opacity: 0;
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+.signup-button:hover::after {
+  animation: shimmer 1.5s infinite;
+}
+
+/* Theme Toggle Advanced */
+.theme-toggle {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+.theme-toggle::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(251, 191, 36, 0.1), rgba(244, 63, 94, 0.1));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+html.dark .theme-toggle::before {
+  background: linear-gradient(135deg, rgba(96, 165, 250, 0.1), rgba(139, 92, 246, 0.1));
+}
+
+.theme-toggle:hover::before {
+  opacity: 1;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 16px var(--color-shadow);
+}
+
+/* Sun/Moon Icon Animation */
+.sun-icon,
+.moon-icon {
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  position: absolute;
+}
+
+html.dark .sun-icon {
+  animation: sunRise 0.4s ease-out forwards;
+}
+
+html:not(.dark) .moon-icon {
+  animation: moonRise 0.4s ease-out forwards;
+}
+
+/* Dropdown Menu Smooth Animation */
+.header-dropdown {
+  animation: slideDownMenu 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.header-dropdown.exit {
+  animation: slideUpMenu 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Mobile Menu Links Stagger Animation */
+.mobile-menu-link {
+  animation: slideDownMenu 0.3s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+}
+
+.mobile-menu-link:nth-child(1) { animation-delay: 0s; }
+.mobile-menu-link:nth-child(2) { animation-delay: 0.05s; }
+.mobile-menu-link:nth-child(3) { animation-delay: 0.1s; }
+
+/* Mobile Menu Buttons Stagger */
+.mobile-menu-button {
+  animation: slideDownMenu 0.3s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+}
+
+.mobile-menu-button:nth-of-type(1) { animation-delay: 0.15s; }
+.mobile-menu-button:nth-of-type(2) { animation-delay: 0.2s; }
+
+/* Notification Badge Pulse */
+.notification-badge {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Header Sticky Smooth Transition */
+header {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Avatar Gradient Animation */
+.avatar-gradient {
+  background: linear-gradient(135deg, #3b82f6, #a855f7, #ec4899);
+  background-size: 200% 200%;
+  animation: gradientShift 6s ease infinite;
+}
+
+/* Divider Animation */
+.auth-divider {
+  background: linear-gradient(90deg, transparent, var(--color-border), transparent);
+  transition: background 0.3s ease;
+}
+
+html.dark .auth-divider {
+  background: linear-gradient(90deg, transparent, var(--color-border), transparent);
+}
+
+/* Mobile Menu Container */
+.mobile-menu-container {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  animation: slideDownMenu 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .theme-toggle {
+    width: 36px;
+    height: 36px;
+  }
+
+  .mobile-menu-link {
+    padding: 0.875rem 1rem;
+  }
+
+  .mobile-menu-button {
+    padding: 0.75rem 1rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .theme-toggle {
+    width: 32px;
+    height: 32px;
+  }
+
+  .login-button,
+  .signup-button {
+    font-size: 0.875rem;
+  }
+
+  .mobile-menu-container {
+    max-height: 600px;
+  }
+}
+
+/* Dark Mode Transition Optimization */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Focus Visible States */
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--color-blue-600);
+  outline-offset: 2px;
+}
+
+/* Hover States with Smooth Transitions */
+.header-nav-link {
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.header-nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-blue-600), var(--color-purple-600));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.header-nav-link:hover::after {
+  transform: scaleX(1);
+}
+
+/* Loading Spinner */
+.spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Glass Morphism Effect */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+html.dark .glass-effect {
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(203, 213, 225, 0.1);
+}
+
+/* Print Styles */
+@media print {
+  .header-nav-link::after {
+    display: none;
+  }
+
+  .theme-toggle {
+    display: none;
+  }
+}

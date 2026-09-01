@@ -1,0 +1,197 @@
+/* Admin Layout Responsive Styles */
+
+/* Main layout container */
+.admin-layout {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  overflow: visible;
+  background-color: rgb(248, 250, 252);
+}
+
+.admin-layout.dark {
+  background-color: rgb(15, 23, 42);
+}
+
+/* Sidebar positioning */
+@media (min-width: 1024px) {
+  .admin-layout {
+    flex-direction: row;
+  }
+
+  .admin-layout aside {
+    flex: 0 0 16rem;
+    width: 16rem;
+  }
+}
+
+@media (max-width: 1023px) {
+  .admin-layout {
+    flex-direction: column;
+  }
+}
+
+/* Main content area */
+.admin-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  overflow: visible;
+}
+
+/* Header wrapper */
+.admin-header-wrapper {
+  flex-shrink: 0;
+  width: 100%;
+}
+
+/* Content wrapper */
+.admin-content-wrapper {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* Content inner */
+.admin-content-inner {
+  width: 100%;
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
+@media (min-width: 641px) {
+  .admin-content-inner {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    padding-top: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .admin-content-inner {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 2rem;
+  }
+}
+
+/* Max content width */
+.admin-content-max {
+  max-width: 80rem;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+/* Scrollbar styling */
+.admin-content-wrapper::-webkit-scrollbar {
+  width: 8px;
+}
+
+.admin-content-wrapper::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.admin-content-wrapper::-webkit-scrollbar-thumb {
+  background: rgba(226, 232, 240, 0.2);
+  border-radius: 4px;
+}
+
+.admin-content-wrapper::-webkit-scrollbar-thumb:hover {
+  background: rgba(226, 232, 240, 0.4);
+}
+
+.dark .admin-content-wrapper::-webkit-scrollbar-thumb {
+  background: rgba(71, 85, 105, 0.2);
+}
+
+.dark .admin-content-wrapper::-webkit-scrollbar-thumb:hover {
+  background: rgba(71, 85, 105, 0.4);
+}
+
+/* Prevent body scroll */
+body.admin-sidebar-open {
+  overflow: hidden;
+}
+
+/* Mobile overlay backdrop */
+.sidebar-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 30;
+  display: none;
+}
+
+.sidebar-backdrop.visible {
+  display: block;
+}
+
+@media (min-width: 1024px) {
+  .sidebar-backdrop {
+    display: none !important;
+  }
+}
+
+/* Responsive spacing */
+@media (max-width: 640px) {
+  .admin-content-inner {
+    padding-top: 0.75rem;
+    padding-bottom: 1.5rem;
+  }
+}
+
+/* Prevent content shift on scrollbar */
+.admin-layout {
+  scrollbar-gutter: stable;
+}
+
+/* Content containment for performance */
+.admin-content-wrapper {
+  contain: layout style paint;
+}
+
+/* Smooth animations */
+* {
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+button,
+a {
+  transition: all 0.2s ease;
+}
+
+/* Mobile safe area support */
+@supports (padding: max(0px)) {
+  .admin-content-inner {
+    padding-left: max(0.75rem, env(safe-area-inset-left));
+    padding-right: max(0.75rem, env(safe-area-inset-right));
+    padding-bottom: max(2rem, env(safe-area-inset-bottom));
+  }
+}
+
+/* Print styles */
+@media print {
+  .admin-layout {
+    height: auto;
+    overflow: visible;
+  }
+
+  .admin-header-wrapper,
+  aside,
+  .sidebar-backdrop {
+    display: none;
+  }
+
+  .admin-main {
+    width: 100%;
+  }
+
+  .admin-content-wrapper {
+    overflow: visible;
+  }
+}
