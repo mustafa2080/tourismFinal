@@ -2,13 +2,21 @@ import { Resend } from 'resend';
 import { AppError } from '../utils/errors.js';
 
 export class ResendService {
-  private resend: Resend;
+  private resend: Resend | null;
+  private enabled: boolean;
 
   constructor() {
     const apiKey = process.env.RESEND_API_KEY;
     if (!apiKey) {
-      throw new AppError(500, 'RESEND_API_KEY is not configured');
+      // Don't crash the app (and everything that depends on AuthController)
+      // just because email sending isn't configured. Log once and disable
+      // email features instead.
+      console.warn('⚠️ RESEND_API_KEY is not configured - email sending is disabled.');
+      this.enabled = false;
+      this.resend = null;
+      return;
     }
+    this.enabled = true;
     this.resend = new Resend(apiKey);
   }
 
@@ -16,6 +24,10 @@ export class ResendService {
    * Send password reset email
    */
   async sendPasswordResetEmail(email: string, resetLink: string, userName: string): Promise<void> {
+    if (!this.enabled || !this.resend) {
+      console.warn('⚠️ Skipped sendPasswordResetEmail: Resend is not configured.');
+      return;
+    }
     try {
       // احصل على from email من .env أو استخدم default
       const fromEmail = process.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev';
@@ -43,6 +55,10 @@ export class ResendService {
    * Send welcome email
    */
   async sendWelcomeEmail(email: string, userName: string): Promise<void> {
+    if (!this.enabled || !this.resend) {
+      console.warn('⚠️ Skipped sendWelcomeEmail: Resend is not configured.');
+      return;
+    }
     try {
       const fromEmail = process.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev';
 
@@ -74,6 +90,10 @@ export class ResendService {
     packageTitle: string,
     totalPrice: number
   ): Promise<void> {
+    if (!this.enabled || !this.resend) {
+      console.warn('⚠️ Skipped sendBookingConfirmation: Resend is not configured.');
+      return;
+    }
     try {
       const fromEmail = process.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev';
 
@@ -105,6 +125,10 @@ export class ResendService {
     status: string,
     packageTitle: string
   ): Promise<void> {
+    if (!this.enabled || !this.resend) {
+      console.warn('⚠️ Skipped sendStatusChangeEmail: Resend is not configured.');
+      return;
+    }
     try {
       const fromEmail = process.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev';
 
@@ -131,6 +155,10 @@ export class ResendService {
    * Send contact form confirmation email
    */
   async sendContactConfirmation(name: string, email: string): Promise<void> {
+    if (!this.enabled || !this.resend) {
+      console.warn('⚠️ Skipped sendContactConfirmation: Resend is not configured.');
+      return;
+    }
     try {
       const fromEmail = process.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev';
 
@@ -163,6 +191,10 @@ export class ResendService {
     message: string,
     phone?: string
   ): Promise<void> {
+    if (!this.enabled || !this.resend) {
+      console.warn('⚠️ Skipped sendAdminContactNotification: Resend is not configured.');
+      return;
+    }
     try {
       const adminEmail = process.env.ADMIN_EMAIL || 'admin@resend.dev';
       const fromEmail = process.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev';
