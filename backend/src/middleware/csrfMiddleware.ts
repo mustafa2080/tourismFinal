@@ -66,7 +66,10 @@ export const csrfTokenGeneratorMiddleware = (req: Request, res: Response, next: 
     return next();
   }
 
-  const sessionId = req.cookies?.sessionId || crypto.randomBytes(16).toString('hex');
+  const sessionId =
+    req.cookies?.sessionId ||
+    (req.headers['x-session-id'] as string) ||
+    crypto.randomBytes(16).toString('hex');
   const token = generateCSRFToken();
 
   // Store token with 24-hour expiration
