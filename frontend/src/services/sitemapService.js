@@ -4,7 +4,7 @@
  */
 
 class SitemapService {
-  constructor(domain = 'yourdomain.com', baseUrl = `https://${domain}`) {
+  constructor(domain = 'travluyo.com', baseUrl = `https://${domain}`) {
     this.domain = domain;
     this.baseUrl = baseUrl;
   }

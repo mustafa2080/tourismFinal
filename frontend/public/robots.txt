@@ -20,9 +20,7 @@ Disallow: /*?*filter=
 Disallow: /*?*page=
 
 # Sitemap location
-Sitemap: https://yourdomain.com/sitemap.xml
-Sitemap: https://yourdomain.com/sitemap-packages.xml
-Sitemap: https://yourdomain.com/sitemap-tours.xml
+Sitemap: https://travluyo.com/sitemap.xml
 
 # Crawl delay (optional, adjust based on server capacity)
 Crawl-delay: 1
