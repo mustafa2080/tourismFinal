@@ -12,10 +12,16 @@ export const databaseConfig = {
   username: process.env.DB_USERNAME || 'postgres',
   password: process.env.DB_PASSWORD || '123456',
   database: process.env.DB_NAME || 'tour',
-  synchronize: true,
+  // 🔐 SECURITY: synchronize auto-alters the live schema to match the
+  // entities on every boot - including on production. That risks silent
+  // data loss if an entity and the real table ever drift apart. Schema
+  // changes now go through migrations (see src/database/migrations) and
+  // are applied explicitly via `npm run migrate`, never automatically.
+  synchronize: false,
+  migrationsRun: false,
   logging: false,
   entities: [path.join(__dirname, '../entities/**/*.{ts,js}')],
-  migrations: [],
+  migrations: [path.join(__dirname, '../database/migrations/*.{ts,js}')],
   subscribers: [],
 };
 
