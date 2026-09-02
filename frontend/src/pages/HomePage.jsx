@@ -453,9 +453,9 @@ const HomePage = () => {
         <div className="relative z-10 w-full px-3 sm:px-4 md:px-6 lg:px-8 h-full flex flex-col justify-between py-6 sm:py-8 md:py-12 lg:py-16" style={{ gap: 'clamp(1rem, 5vw, 3rem)' }}>
           {/* Top Content */}
           <div className="max-w-7xl mx-auto w-full flex-shrink-0">
-            <div className="max-w-2xl">
+            <div className="max-w-2xl pr-24 sm:pr-28 md:pr-0">
               {/* Title */}
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white mb-4 md:mb-6 leading-tight">
+              <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white mb-4 md:mb-6 leading-tight">
                 {currentSlide.title}
               </h1>
 
@@ -465,13 +465,13 @@ const HomePage = () => {
               </p>
 
               {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 flex-wrap">
+              <div className="flex flex-row flex-wrap gap-3 sm:gap-4">
                 <Button
                   size="lg"
                   onClick={() => navigate('/search')}
-                  className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold px-6 sm:px-8 py-3.5 rounded-lg flex items-center justify-center gap-2 group transition-all hover:shadow-2xl shadow-lg hover:scale-105"
+                  className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold px-4 xs:px-6 sm:px-8 py-3 sm:py-3.5 rounded-lg flex items-center justify-center gap-2 group transition-all hover:shadow-2xl shadow-lg hover:scale-105 text-sm xs:text-base flex-1 xs:flex-initial"
                 >
-                  <FiSearch size={20} />
+                  <FiSearch size={18} className="xs:w-5 xs:h-5 flex-shrink-0" />
                   <span>Explore Now</span>
                 </Button>
 
@@ -480,9 +480,9 @@ const HomePage = () => {
                   onClick={() => {
                     document.querySelector('.featured-section')?.scrollIntoView({ behavior: 'smooth' });
                   }}
-                  className="bg-white/30 hover:bg-white/50 backdrop-blur-lg border-2 border-white/60 text-white font-bold px-6 sm:px-8 py-3.5 rounded-lg flex items-center justify-center gap-2 group transition-all shadow-lg hover:shadow-2xl hover:scale-105"
+                  className="bg-white/30 hover:bg-white/50 backdrop-blur-lg border-2 border-white/60 text-white font-bold px-4 xs:px-6 sm:px-8 py-3 sm:py-3.5 rounded-lg flex items-center justify-center gap-2 group transition-all shadow-lg hover:shadow-2xl hover:scale-105 text-sm xs:text-base flex-1 xs:flex-initial"
                 >
-                  <FiArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                  <FiArrowRight size={18} className="xs:w-5 xs:h-5 group-hover:translate-x-1 transition-transform flex-shrink-0" />
                   <span>Discover</span>
                 </Button>
               </div>
