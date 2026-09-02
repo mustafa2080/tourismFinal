@@ -185,10 +185,10 @@ const Header = () => {
 
   return (
     <header
-      className={`sticky top-0 z-40 w-full transition-all duration-300 pointer-events-auto ${
+      className={`sticky top-0 z-40 w-full transition-all duration-500 ease-out pointer-events-auto ${
         scrolled
-          ? 'bg-white/95 backdrop-blur-md shadow-md dark:bg-slate-900/95 border-b border-slate-200/50 dark:border-slate-700/50'
-          : 'bg-white/50 backdrop-blur-sm dark:bg-slate-900/50 border-b border-slate-100/50 dark:border-slate-800/50'
+          ? 'bg-white/90 backdrop-blur-lg shadow-[0_4px_24px_-8px_rgba(15,23,42,0.12)] dark:bg-slate-900/90 dark:shadow-[0_4px_24px_-8px_rgba(0,0,0,0.4)] border-b border-slate-200/60 dark:border-slate-700/60'
+          : 'bg-white/40 backdrop-blur-sm dark:bg-slate-900/40 border-b border-transparent'
       }`}
     >
       <div className="w-full px-4 sm:px-6 lg:px-8">
@@ -196,9 +196,9 @@ const Header = () => {
           {/* Logo */}
           <button
             onClick={() => navigate('/')}
-            className="flex items-center gap-2.5 flex-shrink-0 group cursor-pointer hover:opacity-80 transition-opacity"
+            className="flex items-center gap-2.5 flex-shrink-0 group cursor-pointer transition-transform duration-300 hover:scale-[1.02] active:scale-95"
           >
-            <div className="w-10 h-10 lg:w-12 lg:h-12 bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 rounded-lg flex items-center justify-center group-hover:shadow-lg transition-all duration-300">
+            <div className="w-10 h-10 lg:w-12 lg:h-12 bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 rounded-xl flex items-center justify-center shadow-sm group-hover:shadow-lg group-hover:shadow-purple-500/25 transition-all duration-300">
               <BiWorld className="text-white text-lg lg:text-xl font-bold" />
             </div>
             <div className="hidden sm:flex flex-col leading-tight">
@@ -218,24 +218,26 @@ const Header = () => {
                 <button
                   key={link.path}
                   onClick={() => navigate(link.path)}
-                  className={`flex items-center gap-2 px-4 py-2 rounded-lg font-semibold text-sm transition-all duration-300 group relative ${
+                  className={`flex items-center gap-2 px-4 py-2 rounded-lg font-semibold text-sm transition-all duration-300 ease-out group relative ${
                     isActive(link.path)
-                      ? 'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20'
+                      ? 'text-blue-600 dark:text-blue-400 bg-blue-50/80 dark:bg-blue-900/20'
                       : link.highlight
-                      ? 'text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 shadow-md hover:shadow-lg'
-                      : 'text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-slate-100 dark:hover:bg-slate-800/50'
+                      ? 'text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 shadow-md hover:shadow-lg hover:shadow-purple-500/20 hover:-translate-y-0.5'
+                      : 'text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-slate-100/80 dark:hover:bg-slate-800/50'
                   }`}
                 >
-                  <Icon size={18} className="transition-transform group-hover:scale-110" />
+                  <Icon size={18} className="transition-transform duration-300 group-hover:scale-110" />
                   <span>{link.label}</span>
                   {link.label === 'Saved Trips' && wishlistCount > 0 && (
                     <span className="ml-auto px-2 py-0.5 text-xs font-bold text-white bg-red-500 rounded-full">
                       {wishlistCount}
                     </span>
                   )}
-                  {isActive(link.path) && (
-                    <div className="absolute bottom-0 left-4 right-4 h-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full" />
-                  )}
+                  <div
+                    className={`absolute bottom-0.5 left-4 right-4 h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full transition-all duration-300 ease-out origin-center ${
+                      isActive(link.path) ? 'scale-x-100 opacity-100' : 'scale-x-0 opacity-0 group-hover:scale-x-75 group-hover:opacity-40'
+                    }`}
+                  />
                 </button>
               );
             })}
@@ -249,13 +251,13 @@ const Header = () => {
             {/* Theme Toggle */}
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-all duration-300"
+              className="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-all duration-300 hover:scale-110 active:scale-95"
               aria-label="Toggle theme"
             >
               {theme === 'dark' ? (
-                <FiSun size={20} className="text-yellow-500" />
+                <FiSun size={20} className="text-yellow-500 transition-transform duration-500" />
               ) : (
-                <FiMoon size={20} className="text-slate-600" />
+                <FiMoon size={20} className="text-slate-600 transition-transform duration-500" />
               )}
             </button>
 
@@ -264,10 +266,10 @@ const Header = () => {
               <div className="relative hidden sm:block">
                 <button
                   onClick={() => setNotificationsOpen(!notificationsOpen)}
-                  className="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors relative group"
+                  className="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-all duration-300 relative group hover:scale-110 active:scale-95"
                   title="Notifications"
                 >
-                  <FiBell size={20} className="text-slate-600 dark:text-slate-300 group-hover:scale-110 transition-transform" />
+                  <FiBell size={20} className="text-slate-600 dark:text-slate-300 group-hover:scale-110 transition-transform duration-300" />
                   {unreadCount > 0 && (
                     <span className="absolute top-0 right-0 flex items-center justify-center w-5 h-5 text-xs font-bold text-white bg-red-500 rounded-full animate-pulse ring-2 ring-white dark:ring-slate-800">
                       {unreadCount > 9 ? '9+' : unreadCount}
@@ -276,7 +278,7 @@ const Header = () => {
                 </button>
 
                 {notificationsOpen && (
-                  <div className="absolute right-0 mt-2 w-80 bg-white dark:bg-slate-800 rounded-xl shadow-2xl border border-slate-200 dark:border-slate-700 overflow-hidden z-50">
+                  <div className="absolute right-0 mt-2 w-80 bg-white dark:bg-slate-800 rounded-xl shadow-2xl shadow-slate-900/10 dark:shadow-black/40 border border-slate-200/80 dark:border-slate-700/80 overflow-hidden z-50 animate-in fade-in slide-in-from-top-2 duration-200">
                     <div className="px-4 py-3 border-b border-slate-200 dark:border-slate-700 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-slate-900 dark:to-slate-800">
                       <div className="flex items-center justify-between">
                         <h3 className="font-semibold text-slate-900 dark:text-white text-sm">Notifications</h3>
@@ -326,7 +328,7 @@ const Header = () => {
                                 console.warn('⚠️ Could not determine navigation path for notification:', notif);
                               }
                             }}
-                            className={`px-4 py-3 border-b border-slate-100 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-all cursor-pointer group ${
+                            className={`px-4 py-3 border-b border-slate-100 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors duration-200 cursor-pointer group ${
                               !notif.is_read ? 'bg-blue-50 dark:bg-blue-900/10' : 'bg-slate-50/50 dark:bg-slate-700/20'
                             }`}
                           >
@@ -371,7 +373,7 @@ const Header = () => {
                     <img 
                       src={profileImageUrl}
                       alt={user.name}
-                      className="w-8 lg:w-9 h-8 lg:h-9 rounded-full object-cover group-hover:shadow-lg transition-all duration-300 border border-slate-200 dark:border-slate-700"
+                      className="w-8 lg:w-9 h-8 lg:h-9 rounded-full object-cover group-hover:shadow-md group-hover:shadow-blue-500/20 group-hover:scale-105 transition-all duration-300 border border-slate-200 dark:border-slate-700"
                       onError={() => setProfileImageUrl(null)}
                     />
                   ) : user.avatar ? (
@@ -395,7 +397,7 @@ const Header = () => {
                 </button>
 
                 {userDropdownOpen && (
-                  <div className="absolute right-0 mt-2 w-64 bg-white dark:bg-slate-800 rounded-xl shadow-xl border border-slate-200 dark:border-slate-700 overflow-hidden z-50">
+                  <div className="absolute right-0 mt-2 w-64 bg-white dark:bg-slate-800 rounded-xl shadow-2xl shadow-slate-900/10 dark:shadow-black/40 border border-slate-200/80 dark:border-slate-700/80 overflow-hidden z-50 animate-in fade-in slide-in-from-top-2 duration-200">
                     <div className="px-4 py-3 border-b border-slate-200 dark:border-slate-700 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-slate-900 dark:to-slate-800">
                       <div className="flex items-center gap-3">
                         {profileImageUrl ? (
@@ -428,9 +430,9 @@ const Header = () => {
                           navigate('/dashboard/profile');
                           setUserDropdownOpen(false);
                         }}
-                        className="w-full px-4 py-2 text-left text-xs sm:text-sm hover:bg-slate-100 dark:hover:bg-slate-700 flex items-center gap-3 text-slate-700 dark:text-slate-200 transition-colors group"
+                        className="w-full px-4 py-2 text-left text-xs sm:text-sm hover:bg-slate-100 dark:hover:bg-slate-700 flex items-center gap-3 text-slate-700 dark:text-slate-200 transition-colors duration-200 group"
                       >
-                        <FiUser size={14} className="group-hover:scale-110 transition-transform flex-shrink-0" />
+                        <FiUser size={14} className="group-hover:scale-110 transition-transform duration-200 flex-shrink-0" />
                         <span>Profile</span>
                       </button>
 
@@ -439,9 +441,9 @@ const Header = () => {
                           navigate('/dashboard');
                           setUserDropdownOpen(false);
                         }}
-                        className="w-full px-4 py-2 text-left text-xs sm:text-sm hover:bg-slate-100 dark:hover:bg-slate-700 flex items-center gap-3 text-slate-700 dark:text-slate-200 transition-colors group"
+                        className="w-full px-4 py-2 text-left text-xs sm:text-sm hover:bg-slate-100 dark:hover:bg-slate-700 flex items-center gap-3 text-slate-700 dark:text-slate-200 transition-colors duration-200 group"
                       >
-                        <FiSettings size={14} className="group-hover:scale-110 transition-transform flex-shrink-0" />
+                        <FiSettings size={14} className="group-hover:scale-110 transition-transform duration-200 flex-shrink-0" />
                         <span>Dashboard</span>
                       </button>
                       
@@ -463,9 +465,9 @@ const Header = () => {
                       
                       <button
                         onClick={handleLogout}
-                        className="w-full px-4 py-2 text-left text-xs sm:text-sm hover:bg-red-50 dark:hover:bg-red-900/20 flex items-center gap-3 text-red-600 dark:text-red-400 transition-colors group"
+                        className="w-full px-4 py-2 text-left text-xs sm:text-sm hover:bg-red-50 dark:hover:bg-red-900/20 flex items-center gap-3 text-red-600 dark:text-red-400 transition-colors duration-200 group"
                       >
-                        <MdLogout size={14} className="group-hover:scale-110 transition-transform flex-shrink-0" />
+                        <MdLogout size={14} className="group-hover:scale-110 transition-transform duration-200 flex-shrink-0" />
                         <span>Logout</span>
                       </button>
                     </div>
@@ -474,7 +476,7 @@ const Header = () => {
 
                 <button
                   onClick={() => setUserDropdownOpen(!userDropdownOpen)}
-                  className="sm:hidden p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800"
+                  className="sm:hidden p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-all duration-300 hover:scale-105 active:scale-95"
                 >
                   {profileImageUrl ? (
                     <img 
@@ -502,7 +504,7 @@ const Header = () => {
                   variant="ghost"
                   size="sm"
                   onClick={() => navigate('/login')}
-                  className="flex items-center gap-1.5 text-xs lg:text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50/50 dark:hover:bg-blue-900/20 transition-all px-2.5 lg:px-3 py-2 rounded-lg"
+                  className="flex items-center gap-1.5 text-xs lg:text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50/50 dark:hover:bg-blue-900/20 transition-all duration-300 px-2.5 lg:px-3 py-2 rounded-lg"
                 >
                   <MdOutlineLogin size={16} className="flex-shrink-0" />
                   <span className="hidden lg:inline">Login</span>
@@ -514,7 +516,7 @@ const Header = () => {
                   variant="primary"
                   size="sm"
                   onClick={() => navigate('/signup')}
-                  className="flex items-center gap-1.5 text-xs lg:text-sm font-bold bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-md hover:shadow-lg transition-all px-3 lg:px-4 py-2 rounded-lg"
+                  className="flex items-center gap-1.5 text-xs lg:text-sm font-bold bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-md hover:shadow-lg hover:shadow-purple-500/25 hover:-translate-y-0.5 transition-all duration-300 px-3 lg:px-4 py-2 rounded-lg"
                 >
                   <MdOutlinePersonAdd size={16} className="flex-shrink-0" />
                   <span>Sign Up</span>
@@ -525,7 +527,7 @@ const Header = () => {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+              className="lg:hidden p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-all duration-300 active:scale-90"
               aria-label="Toggle menu"
             >
               {mobileMenuOpen ? <FiX size={20} /> : <FiMenu size={20} />}
@@ -535,7 +537,7 @@ const Header = () => {
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <div className="lg:hidden pb-3 border-t border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 animate-in fade-in relative z-50">
+          <div className="lg:hidden pb-3 border-t border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 animate-in fade-in slide-in-from-top-2 duration-300 relative z-50">
             <nav className="flex flex-col gap-0.5 mt-3">
               {navLinks.map((link) => {
                 const Icon = link.icon;
@@ -547,7 +549,7 @@ const Header = () => {
                       navigate(link.path);
                       setMobileMenuOpen(false);
                     }}
-                    className={`flex items-center gap-3 px-4 py-2.5 rounded-lg font-semibold text-sm transition-all duration-200 ${
+                    className={`flex items-center gap-3 px-4 py-2.5 rounded-lg font-semibold text-sm transition-all duration-200 active:scale-[0.98] ${
                       isActive(link.path)
                         ? 'bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 text-blue-600 dark:text-blue-400'
                         : link.highlight
