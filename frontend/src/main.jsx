@@ -82,6 +82,24 @@ const initializeTheme = () => {
 // Initialize theme immediately
 initializeTheme();
 
+// Remove the initial static loader once React has painted the first frame
+const hideInitialLoader = () => {
+  const loader = document.getElementById('initial-loader');
+  if (!loader) return;
+
+  loader.classList.add('loader-hidden');
+  // Remove from DOM after the fade-out transition finishes
+  setTimeout(() => {
+    loader.remove();
+  }, 450);
+};
+
 createRoot(document.getElementById('root')).render(
   <App />
 )
+
+// Wait for two animation frames so the browser has actually painted
+// the mounted app before we fade the loader out (avoids a blank flash).
+requestAnimationFrame(() => {
+  requestAnimationFrame(hideInitialLoader);
+});
