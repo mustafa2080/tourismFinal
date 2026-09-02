@@ -85,6 +85,8 @@ export class AuthController {
     try {
       const { email, password } = req.body;
 
+      console.log('🔍 [DEBUG login] email:', JSON.stringify(email), '| passwordLength:', password?.length, '| passwordFirstLast:', password ? `${password[0]}...${password[password.length-1]}` : 'N/A');
+
       const { user, token, refreshToken } = await this.authService.login(
         email,
         password
