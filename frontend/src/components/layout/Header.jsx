@@ -202,8 +202,8 @@ const Header = () => {
               <BiWorld className="text-white text-lg lg:text-xl font-bold" />
             </div>
             <div className="hidden sm:flex flex-col leading-tight">
-              <span className="font-bold text-sm lg:text-lg bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent dark:from-blue-400 dark:to-purple-400">
-                Voyager
+              <span className="font-bold text-sm lg:text-lg bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent dark:from-blue-400 dark:to-purple-400" style={{ fontFamily: "'Outfit', 'Inter', sans-serif" }}>
+                Travluyo
               </span>
               <span className="text-xs text-slate-500 dark:text-slate-400 font-medium">Tours</span>
             </div>

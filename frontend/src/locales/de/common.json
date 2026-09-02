@@ -1,6 +1,6 @@
 {
   "common": {
-    "appName": "Voyager Tours",
+    "appName": "Travluyo",
     "home": "Startseite",
     "explore": "Erkunden",
     "about": "Über uns",
@@ -354,7 +354,7 @@
     "refundPolicy": "Rückerstattungsrichtlinie",
     "cookieSettings": "Cookie-Einstellungen",
     "phone": "+20 1000 000 000",
-    "email": "support@voyagertours.com",
+    "email": "support@travluyo.com",
     "cairo": "Kairo, Ägypten",
     "support24": "24/7 Support",
     "yourGateway": "Ihr Tor zu unvergesslichen Reisen rund um die Welt. Entdecken, erleben und Erinnerungen schaffen.",
@@ -368,7 +368,7 @@
     "mastercard": "Mastercard",
     "paypal": "PayPal",
     "backToTop": "Nach oben",
-    "copyright": "© 2025 Voyager Tours. Alle Rechte vorbehalten.",
+    "copyright": "© 2025 Travluyo. Alle Rechte vorbehalten.",
     "designedWith": "Gestaltet mit ❤️ für Reisende",
     "follow": "Folgen Sie uns",
     "allRightsReserved": "Alle Rechte vorbehalten",
@@ -383,7 +383,7 @@
     "getInTouch": "Kontakt aufnehmen",
     "subscribeNewsletter": "Newsletter abonnieren",
     "followUsOn": "Folgen Sie uns auf",
-    "poweredBy": "Betrieben von Voyager"
+    "poweredBy": "Betrieben von Travluyo"
   },
   "search": {
     "pageTitle": "Finde Deine Perfekte Reise",
@@ -498,15 +498,15 @@
     "descending": "Absteigend"
   },
   "aboutPage": {
-    "title": "Über Voyager Tours",
-    "heroTitle": "Über Voyager Tours",
+    "title": "Über Travluyo",
+    "heroTitle": "Über Travluyo",
     "heroDescription": "Wir glauben, dass Reisen mehr ist als nur von einem Ort zu einem anderen zu gehen. Es geht darum, neue Kulturen zu entdecken, unvergessliche Erinnerungen zu schaffen und die Welt auf Weise zu erleben, die du dir nie vorgestellt hast.",
     "happyTravelers": "Glückliche Reisende",
     "destinations": "Ziele",
     "toursCompleted": "Abgeschlossene Touren",
     "partners": "Partner",
     "ourStory": "Unsere Geschichte",
-    "storyDescription": "Voyager Tours wurde 2020 mit einer einfachen Mission gegründet: Reisen für alle zugänglich und unvergesslich zu machen. Was als kleines Team von Reisebegeisterten begann, hat sich zu einer vertrauenswürdigen Plattform entwickelt, die Tausende von Reisenden weltweit bedient.",
+    "storyDescription": "Travluyo wurde 2020 mit einer einfachen Mission gegründet: Reisen für alle zugänglich und unvergesslich zu machen. Was als kleines Team von Reisebegeisterten begann, hat sich zu einer vertrauenswürdigen Plattform entwickelt, die Tausende von Reisenden weltweit bedient.",
     "storyDescription2": "Wir arbeiten mit lokalen Führern, Luxushotels und authentischen Reiseanbietern zusammen, um Erlebnisse zu schaffen, die über typischen Tourismus hinausgehen. Jede Tour ist so gestaltet, dass sie dich in die lokale Kultur eintaucht und dabei die höchsten Komfort- und Sicherheitsstandards beibehält.",
     "getInTouch": "Nehmen Sie Kontakt auf",
     "travelTheWorld": "Reisen Sie um die Welt",
@@ -540,15 +540,15 @@
     "contactUs": "Kontaktieren Sie uns"
   },
   "contactPage": {
-    "title": "Kontaktieren Sie Voyager Tours",
-    "heroTitle": "Kontaktieren Sie Voyager Tours",
+    "title": "Kontaktieren Sie Travluyo",
+    "heroTitle": "Kontaktieren Sie Travluyo",
     "heroDescription": "Haben Sie Fragen? Wir würden gerne von Ihnen hören. Senden Sie uns eine Nachricht und wir antworten so schnell wie möglich.",
     "phone": "Telefon",
     "email": "E-Mail",
     "location": "Standort",
     "available": "Verfügbar",
     "phoneNumber": "+20 1000 000 000",
-    "supportEmail": "support@voyagertours.com",
+    "supportEmail": "support@travluyo.com",
     "cairo": "Kairo, Ägypten",
     "24Hours": "24/7",
     "sendMessage": "Senden Sie uns eine Nachricht",

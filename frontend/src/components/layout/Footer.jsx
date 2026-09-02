@@ -197,8 +197,8 @@ const Footer = () => {
                 <BiWorld className="text-white text-xl font-bold" />
               </div>
               <div className="flex flex-col leading-tight">
-                <span className="font-bold text-xl bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                  Voyager
+                <span className="font-bold text-xl bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent" style={{ fontFamily: "'Outfit', 'Inter', sans-serif" }}>
+                  Travluyo
                 </span>
                 <span className="text-xs text-slate-400 font-medium">Tours</span>
               </div>
@@ -221,13 +221,13 @@ const Footer = () => {
               </a>
 
               <a
-                href="mailto:support@voyagertours.com"
+                href="mailto:support@travluyo.com"
                 className="flex items-center gap-3 text-slate-400 hover:text-blue-400 transition-all duration-200 text-sm group"
               >
                 <div className="w-9 h-9 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-lg flex items-center justify-center group-hover:shadow-md transition-all group-hover:scale-110 border border-blue-500/20">
                   <FiMail size={16} />
                 </div>
-                <span className="group-hover:translate-x-1 transition-transform">support@voyagertours.com</span>
+                <span className="group-hover:translate-x-1 transition-transform">support@travluyo.com</span>
               </a>
 
               <div className="flex items-start gap-3 text-slate-400 text-sm group">
@@ -274,7 +274,7 @@ const Footer = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* Copyright */}
             <div className="text-slate-400 text-sm">
-              <p>© 2025 Voyager Tours.</p>
+              <p>© {currentYear} Travluyo.</p>
               <p>All rights reserved.</p>
             </div>
 

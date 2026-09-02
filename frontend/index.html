@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Discover Amazing Travel Packages & Tours | Book Your Dream Vacation Today" />
     <meta name="keywords" content="tours, travel packages, vacation booking, travel deals, adventure tours, travel agency" />
-    <meta name="author" content="Tour Booking Platform" />
+    <meta name="author" content="Travluyo" />
     
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
@@ -18,15 +18,15 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://yourdomain.com/" />
-    <meta property="og:title" content="Travel Packages & Tours Booking Platform" />
+    <meta property="og:title" content="Travluyo | Book Your Next Adventure" />
     <meta property="og:description" content="Discover Amazing Travel Packages & Tours | Book Your Dream Vacation Today" />
     <meta property="og:image" content="https://yourdomain.com/og-image.jpg" />
-    <meta property="og:site_name" content="Tour Booking Platform" />
+    <meta property="og:site_name" content="Travluyo" />
     
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content="https://yourdomain.com/" />
-    <meta name="twitter:title" content="Travel Packages & Tours Booking Platform" />
+    <meta name="twitter:title" content="Travluyo | Book Your Next Adventure" />
     <meta name="twitter:description" content="Discover Amazing Travel Packages & Tours | Book Your Dream Vacation Today" />
     <meta name="twitter:image" content="https://yourdomain.com/og-image.jpg" />
     
@@ -41,16 +41,22 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="dns-prefetch" href="//cdn.jsdelivr.net" />
+
+    <!-- Brand Font: Outfit (headings/logo) + Inter (body) -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     
     <!-- Title -->
-    <title>Travel Packages & Tours Booking Platform | Book Your Next Adventure</title>
+    <title>Travluyo | Book Your Next Adventure</title>
     
     <!-- Structured Data Schema (JSON-LD) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Organization",
-      "name": "Tour Booking Platform",
+      "name": "Travluyo",
       "url": "https://yourdomain.com",
       "logo": "https://yourdomain.com/logo.png",
       "sameAs": [
@@ -62,7 +68,7 @@
         "@type": "ContactPoint",
         "contactType": "Customer Service",
         "telephone": "+1-XXXXXXXXXX",
-        "email": "support@yourdomain.com"
+        "email": "support@travluyo.com"
       }
     }
     </script>
@@ -72,7 +78,7 @@
     {
       "@context": "https://schema.org/",
       "@type": "TravelAgency",
-      "name": "Tour Booking Platform",
+      "name": "Travluyo",
       "url": "https://yourdomain.com",
       "telephone": "+1-XXXXXXXXXX",
       "address": {
@@ -93,7 +99,7 @@
     <!-- Initial Loader Styles (inline so it paints before any CSS/JS bundle loads) -->
     <style>
       html.light #initial-loader { background: #ffffff; }
-      html.dark #initial-loader { background: #0f172a; }
+      html.dark #initial-loader { background: #0a0f1e; }
 
       #initial-loader {
         position: fixed;
@@ -102,7 +108,8 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        transition: opacity 0.4s ease, visibility 0.4s ease;
+        overflow: hidden;
+        transition: opacity 0.45s ease, visibility 0.45s ease;
       }
 
       #initial-loader.loader-hidden {
@@ -111,67 +118,139 @@
         pointer-events: none;
       }
 
+      /* Soft ambient glow behind the mark, matching brand gradient */
+      #initial-loader::before {
+        content: '';
+        position: absolute;
+        width: 480px;
+        height: 480px;
+        border-radius: 9999px;
+        background: radial-gradient(circle, rgba(139, 92, 246, 0.16), rgba(59, 130, 246, 0.06) 55%, transparent 75%);
+        filter: blur(10px);
+        animation: loader-glow 3.2s ease-in-out infinite;
+      }
+
       .loader-inner {
+        position: relative;
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 20px;
+        gap: 22px;
       }
 
-      .loader-logo {
-        width: 64px;
-        height: 64px;
-        border-radius: 16px;
+      .loader-mark {
+        position: relative;
+        width: 72px;
+        height: 72px;
         display: flex;
         align-items: center;
         justify-content: center;
-        background: linear-gradient(135deg, #3b82f6 0%, #a855f7 50%, #ec4899 100%);
-        box-shadow: 0 8px 24px rgba(139, 92, 246, 0.35);
-        animation: loader-pulse 1.8s ease-in-out infinite;
       }
 
-      .loader-logo svg {
-        width: 32px;
-        height: 32px;
+      .loader-mark-bg {
+        position: absolute;
+        inset: 0;
+        border-radius: 20px;
+        background: linear-gradient(135deg, #3b82f6 0%, #a855f7 55%, #ec4899 100%);
+        box-shadow: 0 10px 30px rgba(139, 92, 246, 0.4);
+        animation: loader-mark-pulse 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+      }
+
+      .loader-mark svg {
+        position: relative;
+        width: 34px;
+        height: 34px;
         stroke: #fff;
+        animation: loader-spin-slow 6s linear infinite;
       }
 
-      .loader-ring {
-        width: 40px;
-        height: 40px;
+      .loader-orbit {
+        position: absolute;
+        inset: -10px;
         border-radius: 50%;
-        border: 3px solid rgba(148, 163, 184, 0.25);
-        border-top-color: #8b5cf6;
-        animation: loader-spin 0.8s linear infinite;
+        border: 2.5px solid transparent;
+        border-top-color: #60a5fa;
+        border-right-color: rgba(168, 85, 247, 0.6);
+        animation: loader-spin 1s cubic-bezier(0.5, 0, 0.5, 1) infinite;
       }
 
-      html.dark .loader-ring {
-        border-color: rgba(148, 163, 184, 0.15);
-        border-top-color: #a855f7;
+      html.dark .loader-orbit {
+        border-top-color: #a78bfa;
+        border-right-color: rgba(236, 72, 153, 0.6);
       }
 
-      .loader-text {
-        font-family: 'Inter', system-ui, sans-serif;
-        font-size: 14px;
-        font-weight: 600;
-        letter-spacing: 0.02em;
-        background: linear-gradient(135deg, #3b82f6, #a855f7, #ec4899);
+      .loader-brand {
+        display: flex;
+        font-family: 'Outfit', 'Inter', system-ui, sans-serif;
+        font-size: 26px;
+        font-weight: 700;
+        letter-spacing: 0.01em;
+      }
+
+      .loader-brand span {
+        display: inline-block;
+        background: linear-gradient(135deg, #3b82f6, #a855f7 55%, #ec4899);
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
+        opacity: 0;
+        transform: translateY(8px);
+        animation: loader-letter-in 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
       }
 
-      @keyframes loader-pulse {
-        0%, 100% { transform: scale(1); }
-        50% { transform: scale(1.08); }
+      .loader-tagline {
+        font-family: 'Inter', system-ui, sans-serif;
+        font-size: 12.5px;
+        font-weight: 500;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: #94a3b8;
+        opacity: 0;
+        animation: loader-fade-in 0.6s ease forwards 0.9s;
+      }
+
+      html.dark .loader-tagline { color: #64748b; }
+
+      @keyframes loader-mark-pulse {
+        0%, 100% { transform: scale(1); box-shadow: 0 10px 30px rgba(139, 92, 246, 0.4); }
+        50% { transform: scale(1.06); box-shadow: 0 14px 36px rgba(139, 92, 246, 0.55); }
       }
 
       @keyframes loader-spin {
         to { transform: rotate(360deg); }
       }
 
+      @keyframes loader-spin-slow {
+        to { transform: rotate(360deg); }
+      }
+
+      @keyframes loader-glow {
+        0%, 100% { opacity: 0.6; transform: scale(1); }
+        50% { opacity: 1; transform: scale(1.08); }
+      }
+
+      @keyframes loader-letter-in {
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      @keyframes loader-fade-in {
+        to { opacity: 1; }
+      }
+
       @media (prefers-reduced-motion: reduce) {
-        .loader-logo, .loader-ring {
+        #initial-loader::before,
+        .loader-mark-bg,
+        .loader-mark svg,
+        .loader-orbit {
+          animation: none;
+        }
+        .loader-brand span {
+          opacity: 1;
+          transform: none;
+          animation: none;
+        }
+        .loader-tagline {
+          opacity: 1;
           animation: none;
         }
       }
@@ -181,15 +260,19 @@
     <!-- Initial Loader: shown instantly, removed once React has mounted -->
     <div id="initial-loader">
       <div class="loader-inner">
-        <div class="loader-logo">
+        <div class="loader-mark">
+          <div class="loader-mark-bg"></div>
+          <div class="loader-orbit"></div>
           <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="10"></circle>
             <line x1="2" y1="12" x2="22" y2="12"></line>
             <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
           </svg>
         </div>
-        <div class="loader-ring"></div>
-        <span class="loader-text">Voyager Tours</span>
+        <div class="loader-brand" aria-label="Travluyo">
+          <span style="animation-delay:0.05s">T</span><span style="animation-delay:0.1s">r</span><span style="animation-delay:0.15s">a</span><span style="animation-delay:0.2s">v</span><span style="animation-delay:0.25s">l</span><span style="animation-delay:0.3s">u</span><span style="animation-delay:0.35s">y</span><span style="animation-delay:0.4s">o</span>
+        </div>
+        <span class="loader-tagline">Book Your Next Adventure</span>
       </div>
     </div>
 
