@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { GlobalTranslationSync } from './components/GlobalTranslationSync';
 
@@ -12,43 +12,66 @@ const ScrollToTop = () => {
 
   return null;
 };
-import {
-  HomePage,
-  SearchPage,
-  PackageDetailPage,
-  BookingPage,
-  DashboardPage,
-  LoginPage,
-  SignupPage,
-  ForgotPasswordPage,
-  ResetPasswordPage,
-  AboutPage,
-  ContactPage,
-  AdminSetupPage,
-  PrivacyPolicyPage,
-  TermsOfServicePage,
-  RefundPolicyPage,
-  CookieSettingsPage,
-  FAQPage,
-  CareersPage,
-  PressPage,
-} from './pages';
+
+// Lightweight fallback shown while a lazy page chunk is loading
+const PageLoadingFallback = () => (
+  <div style={{
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    minHeight: '40vh',
+  }}>
+    <div style={{
+      width: 36,
+      height: 36,
+      borderRadius: '50%',
+      border: '3px solid rgba(139, 92, 246, 0.2)',
+      borderTopColor: '#8b5cf6',
+      animation: 'spin 0.8s linear infinite',
+    }} />
+    <style>{'@keyframes spin { to { transform: rotate(360deg); } }'}</style>
+  </div>
+);
+// HomePage stays static (first paint) — everything else is lazy-loaded per route
+import HomePage from './pages/HomePage';
 import { ErrorBoundary, ProtectedRoute } from './components/common';
 import { ProtectedRoute as AdminProtectedRoute } from './pages/AdminDashboard/components/ProtectedRoute';
-import { AdminDashboard } from './pages/AdminDashboard/AdminDashboard';
-import OverviewPage from './pages/AdminDashboard/pages/OverviewPage';
-import UsersPage from './pages/AdminDashboard/pages/UsersPage';
-import BookingsPage from './pages/AdminDashboard/pages/BookingsPage';
-import ReportsPage from './pages/AdminDashboard/pages/ReportsPage';
-import ReviewsPage from './pages/AdminDashboard/pages/ReviewsPage';
-import RefundsPage from './pages/AdminDashboard/pages/RefundsPage';
-import AuditLogsPage from './pages/AdminDashboard/pages/AuditLogsPage';
-import PackagesPage from './pages/AdminDashboard/pages/PackagesPage';
-import AddonsPage from './pages/AdminDashboard/pages/AddonsPage';
-import CategoriesPage from './pages/AdminDashboard/pages/CategoriesPage';
-import SettingsPage from './pages/AdminDashboard/pages/SettingsPage';
-import MyProfilePage from './pages/AdminDashboard/pages/MyProfilePage';
-import ContactMessagesPage from './pages/AdminDashboard/pages/ContactMessagesPage';
+
+const SearchPage = lazy(() => import('./pages/SearchPage'));
+const PackageDetailPage = lazy(() => import('./pages/PackageDetailPage'));
+const BookingPage = lazy(() => import('./pages/BookingPage'));
+const DashboardPage = lazy(() => import('./pages/DashboardPage'));
+const LoginPage = lazy(() => import('./pages/LoginPage'));
+const SignupPage = lazy(() => import('./pages/SignupPage'));
+const ForgotPasswordPage = lazy(() => import('./pages/ForgotPasswordPage'));
+const ResetPasswordPage = lazy(() => import('./pages/ResetPasswordPage'));
+const AboutPage = lazy(() => import('./pages/AboutPage'));
+const ContactPage = lazy(() => import('./pages/ContactPage'));
+const AdminSetupPage = lazy(() => import('./pages/AdminSetupPage'));
+const PrivacyPolicyPage = lazy(() => import('./pages/PrivacyPolicyPage'));
+const TermsOfServicePage = lazy(() => import('./pages/TermsOfServicePage'));
+const RefundPolicyPage = lazy(() => import('./pages/RefundPolicyPage'));
+const CookieSettingsPage = lazy(() => import('./pages/CookieSettingsPage'));
+const FAQPage = lazy(() => import('./pages/FAQPage'));
+const CareersPage = lazy(() => import('./pages/CareersPage'));
+const PressPage = lazy(() => import('./pages/PressPage'));
+
+const AdminDashboard = lazy(() =>
+  import('./pages/AdminDashboard/AdminDashboard').then(m => ({ default: m.AdminDashboard }))
+);
+const OverviewPage = lazy(() => import('./pages/AdminDashboard/pages/OverviewPage'));
+const UsersPage = lazy(() => import('./pages/AdminDashboard/pages/UsersPage'));
+const BookingsPage = lazy(() => import('./pages/AdminDashboard/pages/BookingsPage'));
+const ReportsPage = lazy(() => import('./pages/AdminDashboard/pages/ReportsPage'));
+const ReviewsPage = lazy(() => import('./pages/AdminDashboard/pages/ReviewsPage'));
+const RefundsPage = lazy(() => import('./pages/AdminDashboard/pages/RefundsPage'));
+const AuditLogsPage = lazy(() => import('./pages/AdminDashboard/pages/AuditLogsPage'));
+const PackagesPage = lazy(() => import('./pages/AdminDashboard/pages/PackagesPage'));
+const AddonsPage = lazy(() => import('./pages/AdminDashboard/pages/AddonsPage'));
+const CategoriesPage = lazy(() => import('./pages/AdminDashboard/pages/CategoriesPage'));
+const SettingsPage = lazy(() => import('./pages/AdminDashboard/pages/SettingsPage'));
+const MyProfilePage = lazy(() => import('./pages/AdminDashboard/pages/MyProfilePage'));
+const ContactMessagesPage = lazy(() => import('./pages/AdminDashboard/pages/ContactMessagesPage'));
 
 /**
  * App Routes Configuration
@@ -60,6 +83,7 @@ const AppRoutes = () => {
       <GlobalTranslationSync>
         <Router>
           <ScrollToTop />
+          <Suspense fallback={<PageLoadingFallback />}>
           <Routes>
           {/* ============ PUBLIC ROUTES ============ */}
 
@@ -221,6 +245,7 @@ const AppRoutes = () => {
           {/* ============ 404 - CATCH ALL ============ */}
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
+        </Suspense>
       </Router>
     </GlobalTranslationSync>
     </ErrorBoundary>
