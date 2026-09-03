@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../hooks';
 import { packagesService, bookingsService } from '../services';
-import { formatCurrency } from '../utils/formatters';
+import { formatCurrency, formatPrice } from '../utils/formatters';
 import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
 import AddonsSelector from '../components/AddonsSelector';
@@ -35,6 +35,17 @@ const BookingPage = () => {
   const [packageData, setPackageData] = useState(null);
   const [packageLoading, setPackageLoading] = useState(true);
   const [currentStep, setCurrentStep] = useState(1);
+
+  // Currency display toggle (USD is the real stored currency; EGP is a display-only conversion)
+  const USD_TO_EGP_RATE = 50;
+  const [displayCurrencyCode, setDisplayCurrencyCode] = useState('USD');
+  const displayCurrency = (amountInUsd) => {
+    const num = parseFloat(amountInUsd) || 0;
+    if (displayCurrencyCode === 'EGP') {
+      return formatPrice(num * USD_TO_EGP_RATE, 'EGP');
+    }
+    return formatPrice(num, 'USD');
+  };
 
   // Form data
   const [formData, setFormData] = useState({
@@ -730,14 +741,60 @@ const BookingPage = () => {
           {/* Right Side - Price Summary */}
           <div className="booking-summary">
             <div className="summary-card">
-              <h3>Booking Summary</h3>
-              
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.75rem' }}>
+                <h3 style={{ margin: 0 }}>Booking Summary</h3>
+                <div
+                  style={{
+                    display: 'inline-flex',
+                    border: '1px solid #cbd5e1',
+                    borderRadius: '9999px',
+                    padding: '2px',
+                    background: '#f1f5f9',
+                  }}
+                >
+                  <button
+                    type="button"
+                    onClick={() => setDisplayCurrencyCode('USD')}
+                    style={{
+                      padding: '4px 12px',
+                      borderRadius: '9999px',
+                      border: 'none',
+                      cursor: 'pointer',
+                      fontSize: '0.75rem',
+                      fontWeight: 700,
+                      background: displayCurrencyCode === 'USD' ? '#2563eb' : 'transparent',
+                      color: displayCurrencyCode === 'USD' ? '#fff' : '#475569',
+                      transition: 'all 0.2s',
+                    }}
+                  >
+                    USD
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setDisplayCurrencyCode('EGP')}
+                    style={{
+                      padding: '4px 12px',
+                      borderRadius: '9999px',
+                      border: 'none',
+                      cursor: 'pointer',
+                      fontSize: '0.75rem',
+                      fontWeight: 700,
+                      background: displayCurrencyCode === 'EGP' ? '#2563eb' : 'transparent',
+                      color: displayCurrencyCode === 'EGP' ? '#fff' : '#475569',
+                      transition: 'all 0.2s',
+                    }}
+                  >
+                    EGP
+                  </button>
+                </div>
+              </div>
+
               {/* Package Info */}
               <div className="package-info">
                 <h4>{packageData ? (packageData.title || packageData.name) : 'Loading...'}</h4>
                 <div className="summary-row">
                   <span>Base Price × {getTotalPersons()} {getTotalPersons() === 1 ? 'Person' : 'Persons'}</span>
-                  <span>{formatCurrency(priceCalculation.baseSubtotal)}</span>
+                  <span>{displayCurrency(priceCalculation.baseSubtotal)}</span>
                 </div>
               </div>
 
@@ -748,7 +805,7 @@ const BookingPage = () => {
                   {selectedAddons.map(extra => (
                     <div key={extra.id} className="summary-row">
                       <span>{extra.name}</span>
-                      <span>{formatCurrency(extra.price)}</span>
+                      <span>{displayCurrency(extra.price)}</span>
                     </div>
                   ))}
                 </div>
@@ -758,15 +815,15 @@ const BookingPage = () => {
               <div className="price-breakdown">
                 <div className="summary-row subtotal">
                   <span>Subtotal</span>
-                  <span>{formatCurrency(priceCalculation.subtotal)}</span>
+                  <span>{displayCurrency(priceCalculation.subtotal)}</span>
                 </div>
                 <div className="summary-row tax">
                   <span>Tax (5%)</span>
-                  <span>{formatCurrency(priceCalculation.tax)}</span>
+                  <span>{displayCurrency(priceCalculation.tax)}</span>
                 </div>
                 <div className="summary-row total">
                   <span>Total</span>
-                  <span>{formatCurrency(priceCalculation.total)}</span>
+                  <span>{displayCurrency(priceCalculation.total)}</span>
                 </div>
               </div>
 
