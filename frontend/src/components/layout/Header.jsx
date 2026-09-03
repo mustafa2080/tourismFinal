@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, useCallback, useMemo } from 'react';
+import { createPortal } from 'react-dom';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAuth, useTheme } from '../../hooks';
@@ -540,17 +541,18 @@ const Header = () => {
         </div>
       </div>
 
-      {/* Mobile Side Drawer */}
-      {mobileMenuOpen && (
+      {/* Mobile Side Drawer - rendered via portal so it always covers the full viewport,
+          regardless of any backdrop-blur/transform on ancestor elements like <header> */}
+      {mobileMenuOpen && createPortal(
         <>
           {/* Overlay */}
           <div
-            className="lg:hidden fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-[60] animate-in fade-in duration-300"
+            className="lg:hidden fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-[9998] animate-in fade-in duration-300"
             onClick={() => setMobileMenuOpen(false)}
           />
 
           {/* Drawer panel */}
-          <div className="lg:hidden fixed top-0 right-0 h-full w-[82%] max-w-[340px] bg-white dark:bg-slate-900 z-[70] shadow-2xl flex flex-col animate-in slide-in-from-right duration-300">
+          <div className="lg:hidden fixed top-0 right-0 h-screen w-[82%] max-w-[340px] bg-white dark:bg-slate-900 z-[9999] shadow-2xl flex flex-col animate-in slide-in-from-right duration-300">
             {/* Drawer header */}
             <div className="flex items-center justify-between px-5 py-4 bg-gradient-to-r from-blue-600 to-purple-600 flex-shrink-0">
               <div className="flex items-center gap-2.5">
@@ -660,7 +662,8 @@ const Header = () => {
               </div>
             )}
           </div>
-        </>
+        </>,
+        document.body
       )}
     </header>
   );
