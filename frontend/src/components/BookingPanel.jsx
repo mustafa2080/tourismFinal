@@ -84,15 +84,20 @@ const BookingPanel = ({
       {/* Price Card */}
       <div className="bg-gradient-to-br from-cyan-50 to-blue-50 dark:from-cyan-900/30 dark:to-blue-900/30 rounded-xl p-6 border-2 border-cyan-300 dark:border-cyan-600 shadow-lg">
         <div className="space-y-6">
-          {/* Price Display - FIXED: السعر بالدولار مباشرة */}
+          {/* Price Display - Total price, scales with number of persons */}
           <div className="text-center pb-4 border-b-2 border-cyan-200 dark:border-cyan-700">
-            <p className="text-sm text-slate-600 dark:text-slate-400 mb-1">Price Per Person</p>
+            <p className="text-sm text-slate-600 dark:text-slate-400 mb-1">
+              Price ({persons} {persons === 1 ? 'Person' : 'Persons'})
+            </p>
             <p className="text-4xl font-bold text-cyan-600 dark:text-cyan-400">
               {isConverting ? (
                 <span className="animate-pulse">...</span>
               ) : (
-                displayPrice(basePrice)
+                displayPrice(basePrice * persons)
               )}
+            </p>
+            <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+              {displayPrice(basePrice)} per person
             </p>
           </div>
 
