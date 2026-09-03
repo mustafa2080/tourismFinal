@@ -11,8 +11,8 @@ import {
   FiMenu, FiX, FiChevronDown, FiHome, FiSearch, FiBookmark, FiUser, 
   FiMoon, FiSun, FiBell, FiInfo, FiMail, FiSettings
 } from 'react-icons/fi';
-import { BiWorld } from 'react-icons/bi';
 import { MdOutlineLogin, MdOutlinePersonAdd, MdLogout } from 'react-icons/md';
+import logoImg from '../../assets/logo.webp';
 import { notificationsService } from '../../services';
 import { socketService } from '../../services/socketService';
 import { showSuccessToast, showErrorToast } from '../../utils/notifications';
@@ -198,8 +198,16 @@ const Header = () => {
             onClick={() => navigate('/')}
             className="flex items-center gap-2.5 flex-shrink-0 group cursor-pointer transition-transform duration-300 hover:scale-[1.02] active:scale-95"
           >
-            <div className="w-10 h-10 lg:w-12 lg:h-12 bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 rounded-xl flex items-center justify-center shadow-sm group-hover:shadow-lg group-hover:shadow-purple-500/25 transition-all duration-300">
-              <BiWorld className="text-white text-lg lg:text-xl font-bold" />
+            <div className="w-10 h-10 lg:w-12 lg:h-12 rounded-xl overflow-hidden shadow-sm group-hover:shadow-lg group-hover:shadow-purple-500/25 transition-all duration-300 bg-white dark:bg-slate-800">
+              <img
+                src={logoImg}
+                alt="Travluyo Logo"
+                width={48}
+                height={48}
+                className="w-full h-full object-contain"
+                loading="eager"
+                decoding="async"
+              />
             </div>
             <div className="hidden sm:flex flex-col leading-tight">
               <span className="font-bold text-sm lg:text-lg bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent dark:from-blue-400 dark:to-purple-400" style={{ fontFamily: "'Outfit', 'Inter', sans-serif" }}>

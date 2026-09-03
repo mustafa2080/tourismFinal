@@ -7,8 +7,8 @@ import {
   FiFacebook, FiInstagram, FiTwitter, FiLinkedin, FiMail, FiPhone, 
   FiMapPin, FiArrowRight, FiSend, FiCheck, FiAlertCircle
 } from 'react-icons/fi';
-import { BiWorld } from 'react-icons/bi';
 import { notificationsService } from '../../services';
+import logoImg from '../../assets/logo.webp';
 
 /**
  * Modern Footer Component
@@ -193,8 +193,16 @@ const Footer = () => {
           {/* Brand Section */}
           <div className="sm:col-span-2 lg:col-span-1">
             <div className="flex items-center gap-2.5 mb-6 group cursor-pointer">
-              <div className="w-12 h-12 bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 rounded-xl flex items-center justify-center group-hover:shadow-lg group-hover:shadow-blue-500/30 transition-all duration-300 group-hover:scale-110">
-                <BiWorld className="text-white text-xl font-bold" />
+              <div className="w-12 h-12 rounded-xl overflow-hidden group-hover:shadow-lg group-hover:shadow-blue-500/30 transition-all duration-300 group-hover:scale-110 bg-white">
+                <img
+                  src={logoImg}
+                  alt="Travluyo Logo"
+                  width={48}
+                  height={48}
+                  className="w-full h-full object-contain"
+                  loading="lazy"
+                  decoding="async"
+                />
               </div>
               <div className="flex flex-col leading-tight">
                 <span className="font-bold text-xl bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent" style={{ fontFamily: "'Outfit', 'Inter', sans-serif" }}>

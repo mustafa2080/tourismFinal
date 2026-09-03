@@ -9,8 +9,11 @@
     <meta name="author" content="Travluyo" />
     
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <link rel="apple-touch-icon" href="/vite.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png" />
     
     <!-- Canonical URL (will be updated dynamically by React) -->
     <link rel="canonical" href="https://travluyo.com/" id="canonical-link" />
@@ -21,6 +24,8 @@
     <meta property="og:title" content="Travluyo | Book Your Next Adventure" />
     <meta property="og:description" content="Discover Amazing Travel Packages & Tours | Book Your Dream Vacation Today" />
     <meta property="og:image" content="https://travluyo.com/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:site_name" content="Travluyo" />
     
     <!-- Twitter -->
@@ -58,7 +63,7 @@
       "@type": "Organization",
       "name": "Travluyo",
       "url": "https://travluyo.com",
-      "logo": "https://travluyo.com/logo.png",
+      "logo": "https://travluyo.com/logo-512.webp",
       "sameAs": [
         "https://www.facebook.com/yourpage",
         "https://www.twitter.com/yourprofile",
@@ -143,17 +148,17 @@
         position: absolute;
         inset: 0;
         border-radius: 20px;
-        background: linear-gradient(135deg, #3b82f6 0%, #a855f7 55%, #ec4899 100%);
+        background: #ffffff;
         box-shadow: 0 10px 30px rgba(139, 92, 246, 0.4);
         animation: loader-mark-pulse 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+        overflow: hidden;
       }
 
-      .loader-mark svg {
+      .loader-mark img {
         position: relative;
-        width: 34px;
-        height: 34px;
-        stroke: #fff;
-        animation: loader-spin-slow 6s linear infinite;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
       }
 
       .loader-orbit {
@@ -253,13 +258,10 @@
     <div id="initial-loader">
       <div class="loader-inner">
         <div class="loader-mark">
-          <div class="loader-mark-bg"></div>
+          <div class="loader-mark-bg">
+            <img src="/logo-512.webp" alt="Travluyo" />
+          </div>
           <div class="loader-orbit"></div>
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"></circle>
-            <line x1="2" y1="12" x2="22" y2="12"></line>
-            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-          </svg>
         </div>
         <div class="loader-brand" aria-label="Travluyo">
           <span style="animation-delay:0.05s">T</span><span style="animation-delay:0.1s">r</span><span style="animation-delay:0.15s">a</span><span style="animation-delay:0.2s">v</span><span style="animation-delay:0.25s">l</span><span style="animation-delay:0.3s">u</span><span style="animation-delay:0.35s">y</span><span style="animation-delay:0.4s">o</span>
