@@ -42,6 +42,14 @@ export class Booking {
   @Column({ type: 'decimal', precision: 12, scale: 2 })
   total_price!: number;
 
+  // Currency the customer viewed/chose at checkout (display only, always USD is the source of truth)
+  @Column({ type: 'varchar', length: 3, default: 'USD' })
+  display_currency!: 'USD' | 'EGP';
+
+  // total_price converted to display_currency at the exchange rate used at booking time
+  @Column({ type: 'decimal', precision: 12, scale: 2, nullable: true })
+  display_total?: number;
+
   @Column({
     type: 'varchar',
     length: 20,

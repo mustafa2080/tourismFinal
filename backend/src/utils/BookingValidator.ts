@@ -30,6 +30,7 @@ export interface CreateBookingRequest {
   totalPrice?: number;
   paymentType?: string;
   notes?: string;
+  displayCurrency?: 'USD' | 'EGP';
   // User info (for guest checkout)
   guestName?: string;
   guestEmail?: string;

@@ -361,6 +361,7 @@ const BookingPage = () => {
         totalPrice: priceCalculation.total,
         paymentType: formData.paymentType,
         notes: formData.notes || null,
+        displayCurrency: displayCurrencyCode,
       };
 
       const response = await bookingsService.createBooking(bookingPayload);
@@ -369,6 +370,8 @@ const BookingPage = () => {
         bookingNumber: response.data?.booking_number || response.data?.id,
         packageName: packageData.title || packageData.name,
         totalPrice: priceCalculation.total,
+        displayCurrency: response.data?.display_currency || displayCurrencyCode,
+        displayTotal: response.data?.display_total,
       });
 
       setCurrentStep(4);
@@ -438,7 +441,11 @@ const BookingPage = () => {
               </div>
               <div className="detail-row">
                 <span className="label">Total Price:</span>
-                <span className="value price">{formatCurrency(bookingSuccess.totalPrice)}</span>
+                <span className="value price">
+                  {bookingSuccess.displayCurrency === 'EGP' && bookingSuccess.displayTotal
+                    ? formatPrice(bookingSuccess.displayTotal, 'EGP')
+                    : formatCurrency(bookingSuccess.totalPrice)}
+                </span>
               </div>
             </div>
 

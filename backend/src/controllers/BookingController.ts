@@ -84,7 +84,8 @@ export class BookingController {
         validatedData.extras,
         validatedData.totalPrice,
         validatedData.paymentType,
-        validatedData.notes
+        validatedData.notes,
+        requestData.displayCurrency === 'EGP' ? 'EGP' : 'USD'
       );
 
       console.log('✅ Booking created successfully:', booking.booking_number);

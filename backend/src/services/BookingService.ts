@@ -70,7 +70,8 @@ export class BookingService {
     extras: { key: string; name: string; price: number; quantity?: number }[],
     submittedTotalPrice: number,
     paymentType: string = 'on_arrival',
-    notes?: string
+    notes?: string,
+    displayCurrency: 'USD' | 'EGP' = 'USD'
   ): Promise<Booking> {
     console.log('🟢 [BookingService.createBooking] Starting booking creation...');
     
@@ -137,6 +138,12 @@ export class BookingService {
 
     // Step 7: Create booking record
     console.log('   Step 7: Creating booking record...');
+    const USD_TO_EGP_RATE = 50;
+    const safeCurrency: 'USD' | 'EGP' = displayCurrency === 'EGP' ? 'EGP' : 'USD';
+    const displayTotal = safeCurrency === 'EGP'
+      ? Math.round(priceBreakdown.total * USD_TO_EGP_RATE * 100) / 100
+      : priceBreakdown.total;
+
     const booking = await this.bookingRepository.create({
       user_id: userId,
       package_id: packageId,
@@ -145,6 +152,8 @@ export class BookingService {
       persons: totalPersons,
       date_start: tripStartDate,
       total_price: priceBreakdown.total,
+      display_currency: safeCurrency,
+      display_total: displayTotal,
       payment_type: paymentType as 'on_arrival' | 'deposit' | 'full_payment',
       notes: notes || null,
     });

@@ -35,6 +35,8 @@ export class BookingResponseDTO {
   date_start: string; // ISO date format
   date_end: string; // ISO date format
   total_price: string;
+  display_currency: 'USD' | 'EGP';
+  display_total: string | null;
   payment_type: 'on_arrival' | 'deposit' | 'full_payment';
   notes: string | null;
   invoice_url: string | null;
@@ -71,6 +73,10 @@ export class BookingResponseDTO {
     }
 
     this.total_price = String(data.total_price);
+    this.display_currency = data.display_currency || 'USD';
+    this.display_total = data.display_total !== undefined && data.display_total !== null
+      ? String(data.display_total)
+      : null;
     this.payment_type = data.payment_type;
     this.notes = data.notes || null;
     this.invoice_url = data.invoice_url || null;
