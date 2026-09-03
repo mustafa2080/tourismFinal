@@ -15,6 +15,9 @@ const DEFAULT_RATES = {
   'USD': 0.032, // Approximate rate: 1 EGP = 0.032 USD
 };
 
+// Fixed display rate used to convert the USD prices stored in the database to EGP
+export const USD_TO_EGP_RATE = 50;
+
 /**
  * Get current exchange rates
  * @returns {Promise<Object>} - Exchange rates object
@@ -99,15 +102,25 @@ export const convertMultipleEGPtoUSD = async (amounts) => {
  */
 export const formatPrice = (amount, currency = 'EGP') => {
   if (!amount && amount !== 0) return `${currency === 'USD' ? '$' : ''}0.00`;
-  
+
   const num = parseFloat(amount);
   if (isNaN(num)) return `${currency === 'USD' ? '$' : ''}0.00`;
-  
+
   if (currency === 'USD') {
     return `$${num.toFixed(2)}`;
   } else {
-    return `${num.toFixed(2)} ${currency}`;
+    return `£${num.toFixed(2)} EGP`;
   }
+};
+
+/**
+ * Convert a USD amount (as stored in the database) to EGP for display
+ * @param {number} amountUSD - Amount in USD
+ * @returns {number} - Amount in EGP
+ */
+export const convertUSDtoEGP = (amountUSD) => {
+  const num = parseFloat(amountUSD) || 0;
+  return num * USD_TO_EGP_RATE;
 };
 
 /**
@@ -118,10 +131,9 @@ export const formatPrice = (amount, currency = 'EGP') => {
  */
 export const formatConvertedPrice = async (amountUSD, targetCurrency = 'USD') => {
   if (targetCurrency === 'EGP') {
-    // TODO: إذا أردت تحويل من USD إلى EGP، أضف الحسبة هنا
-    return formatPrice(amountUSD, 'USD');
+    return formatPrice(convertUSDtoEGP(amountUSD), 'EGP');
   }
-  
+
   // السعر موجود بالدولار بالفعل
   return formatPrice(amountUSD, 'USD');
 };
@@ -132,11 +144,10 @@ export const formatConvertedPrice = async (amountUSD, targetCurrency = 'USD') =>
  * @returns {Promise<Object>} - Object with both prices
  */
 export const getPriceInBothCurrencies = async (amountUSD) => {
-  // السعر موجود بالدولار بالفعل
   return {
     egp: {
-      raw: amountUSD,
-      formatted: formatPrice(amountUSD, 'USD')
+      raw: convertUSDtoEGP(amountUSD),
+      formatted: formatPrice(convertUSDtoEGP(amountUSD), 'EGP')
     },
     usd: {
       raw: amountUSD,
@@ -157,6 +168,7 @@ export default {
   getExchangeRates,
   convertEGPtoUSD,
   convertMultipleEGPtoUSD,
+  convertUSDtoEGP,
   formatPrice,
   formatConvertedPrice,
   getPriceInBothCurrencies,

@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
 import { useCurrencyConversion } from '../hooks/useCurrencyConversion';
-import { convertEGPtoUSD, formatPrice } from '../services/currencyService';
+import { convertUSDtoEGP, formatPrice } from '../services/currencyService';
 import { Button } from '../components/common';
 import toast from 'react-hot-toast';
 
 /**
- * Booking Panel with Currency Conversion - FIXED
+ * Booking Panel with Currency Conversion
  * السعر المحفوظ في الـ Database هو بالدولار بالفعل
- * لا نحتاج لأي حسبة معقدة
+ * عند اختيار EGP، بنحول العرض فقط بسعر ثابت (1 USD = 50 EGP)
  */
 
 // Helper function to safely convert price to number
@@ -38,6 +38,15 @@ const BookingPanel = ({
     setIsConverting(false);
   }, [priceBreakdown, currency]);
 
+  // Display a USD amount (as stored in DB) in whichever currency is selected
+  const displayPrice = (amountUSD) => {
+    const usd = safeParsePrice(amountUSD);
+    if (currency === 'EGP') {
+      return formatPrice(convertUSDtoEGP(usd), 'EGP');
+    }
+    return formatPrice(usd, 'USD');
+  };
+
   // Safe price parsing
   const basePrice = safeParsePrice(pkg?.base_price);
   const breakdownBase = safeParsePrice(priceBreakdown?.base);
@@ -67,7 +76,7 @@ const BookingPanel = ({
         <p className="text-xs text-slate-500 dark:text-slate-400 mt-2">
           {currency === 'USD' 
             ? 'Prices displayed in US Dollars'
-            : 'Prices displayed in US Dollars (from database)'
+            : 'Prices converted to Egyptian Pounds (1 USD = 50 EGP)'
           }
         </p>
       </div>
@@ -82,10 +91,7 @@ const BookingPanel = ({
               {isConverting ? (
                 <span className="animate-pulse">...</span>
               ) : (
-                <>
-                  ${basePrice.toFixed(2)}
-                  <span className="text-lg"> USD</span>
-                </>
+                displayPrice(basePrice)
               )}
             </p>
           </div>
@@ -138,7 +144,7 @@ const BookingPanel = ({
                     <div className="flex justify-between items-center">
                       <span className="font-semibold text-slate-900 dark:text-white">{room.name}</span>
                       <span className="text-cyan-600 dark:text-cyan-400 font-bold">
-                        +${safeParsePrice(room.price).toFixed(2)} USD
+                        +{displayPrice(room.price)}
                       </span>
                     </div>
                   </button>
@@ -174,7 +180,7 @@ const BookingPanel = ({
                     <div className="flex-1">
                       <p className="font-semibold text-slate-900 dark:text-white text-sm">{extra.name}</p>
                       <p className="text-xs text-slate-500">
-                        +${safeParsePrice(extra.price).toFixed(2)} USD per person
+                        +{displayPrice(extra.price)} per person
                       </p>
                     </div>
                   </label>
@@ -188,14 +194,14 @@ const BookingPanel = ({
             <div className="flex justify-between text-sm text-slate-600 dark:text-slate-400">
               <span>Base Price ({persons}x)</span>
               <span>
-                ${breakdownBase.toFixed(2)} USD
+                {displayPrice(breakdownBase)}
               </span>
             </div>
             {selectedRoomType && (
               <div className="flex justify-between text-sm text-slate-600 dark:text-slate-400">
                 <span>Hotel ({persons}x)</span>
                 <span>
-                  ${breakdownRoom.toFixed(2)} USD
+                  {displayPrice(breakdownRoom)}
                 </span>
               </div>
             )}
@@ -203,7 +209,7 @@ const BookingPanel = ({
               <div className="flex justify-between text-sm text-slate-600 dark:text-slate-400">
                 <span>Extras ({selectedExtras.length})</span>
                 <span>
-                  ${breakdownExtras.toFixed(2)} USD
+                  {displayPrice(breakdownExtras)}
                 </span>
               </div>
             )}
@@ -214,7 +220,7 @@ const BookingPanel = ({
                   {isConverting ? (
                     <span className="animate-pulse">...</span>
                   ) : (
-                    `$${breakdownTotal.toFixed(2)} USD`
+                    displayPrice(breakdownTotal)
                   )}
                 </span>
               </div>
