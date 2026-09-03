@@ -132,67 +132,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 22px;
-      }
-
-      .loader-mark {
-        position: relative;
-        width: 72px;
-        height: 72px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .loader-mark-bg {
-        position: absolute;
-        inset: 0;
-        border-radius: 20px;
-        background: #ffffff;
-        box-shadow: 0 10px 30px rgba(139, 92, 246, 0.4);
-        animation: loader-mark-pulse 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-        overflow: hidden;
-      }
-
-      .loader-mark img {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-      }
-
-      .loader-orbit {
-        position: absolute;
-        inset: -10px;
-        border-radius: 50%;
-        border: 2.5px solid transparent;
-        border-top-color: #60a5fa;
-        border-right-color: rgba(168, 85, 247, 0.6);
-        animation: loader-spin 1s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-      }
-
-      html.dark .loader-orbit {
-        border-top-color: #a78bfa;
-        border-right-color: rgba(236, 72, 153, 0.6);
-      }
-
-      .loader-brand {
-        display: flex;
-        font-family: 'Outfit', 'Inter', system-ui, sans-serif;
-        font-size: 26px;
-        font-weight: 700;
-        letter-spacing: 0.01em;
-      }
-
-      .loader-brand span {
-        display: inline-block;
-        background: linear-gradient(135deg, #3b82f6, #a855f7 55%, #ec4899);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-        opacity: 0;
-        transform: translateY(8px);
-        animation: loader-letter-in 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        gap: 12px;
       }
 
       .loader-tagline {
@@ -208,26 +148,9 @@
 
       html.dark .loader-tagline { color: #64748b; }
 
-      @keyframes loader-mark-pulse {
-        0%, 100% { transform: scale(1); box-shadow: 0 10px 30px rgba(139, 92, 246, 0.4); }
-        50% { transform: scale(1.06); box-shadow: 0 14px 36px rgba(139, 92, 246, 0.55); }
-      }
-
-      @keyframes loader-spin {
-        to { transform: rotate(360deg); }
-      }
-
-      @keyframes loader-spin-slow {
-        to { transform: rotate(360deg); }
-      }
-
       @keyframes loader-glow {
         0%, 100% { opacity: 0.6; transform: scale(1); }
         50% { opacity: 1; transform: scale(1.08); }
-      }
-
-      @keyframes loader-letter-in {
-        to { opacity: 1; transform: translateY(0); }
       }
 
       @keyframes loader-fade-in {
@@ -235,16 +158,11 @@
       }
 
       @media (prefers-reduced-motion: reduce) {
-        #initial-loader::before,
-        .loader-mark-bg,
-        .loader-mark svg,
-        .loader-orbit {
+        #initial-loader::before {
           animation: none;
         }
-        .loader-brand span {
-          opacity: 1;
-          transform: none;
-          animation: none;
+        dotlottie-player {
+          display: none;
         }
         .loader-tagline {
           opacity: 1;
@@ -257,19 +175,17 @@
     <!-- Initial Loader: shown instantly, removed once React has mounted -->
     <div id="initial-loader">
       <div class="loader-inner">
-        <div class="loader-mark">
-          <div class="loader-mark-bg">
-            <img src="/logo-512.webp" alt="Travluyo" />
-          </div>
-          <div class="loader-orbit"></div>
-        </div>
-        <div class="loader-brand" aria-label="Travluyo">
-          <span style="animation-delay:0.05s">T</span><span style="animation-delay:0.1s">r</span><span style="animation-delay:0.15s">a</span><span style="animation-delay:0.2s">v</span><span style="animation-delay:0.25s">l</span><span style="animation-delay:0.3s">u</span><span style="animation-delay:0.35s">y</span><span style="animation-delay:0.4s">o</span>
-        </div>
+        <dotlottie-player
+          src="/loading.lottie"
+          autoplay
+          loop
+          style="width: 220px; height: 165px;"
+        ></dotlottie-player>
         <span class="loader-tagline">Book Your Next Adventure</span>
       </div>
     </div>
 
+    <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
     
