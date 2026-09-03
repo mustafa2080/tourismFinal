@@ -1,15 +1,17 @@
-import React, { createContext, useState, useCallback, useEffect } from 'react';
+import React, { createContext, useState, useCallback, useEffect, useRef } from 'react';
 import { wishlistService } from '../services';
 import { useAuth } from '../hooks/useAuth';
+import { socketService } from '../services/socketService';
 
 export const WishlistContext = createContext();
 
 export const WishlistProvider = ({ children }) => {
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated, user } = useAuth();
   const [wishlist, setWishlist] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [synced, setSynced] = useState(false);
+  const syncWishlistDataRef = useRef(null);
 
   /**
    * Sync wishlist with full data
@@ -44,6 +46,47 @@ export const WishlistProvider = ({ children }) => {
       setError(err.message || 'Failed to sync wishlist');
     }
   }, [isAuthenticated]);
+
+  // Keep a stable ref to the latest syncWishlistData so the socket listener
+  // (set up once per connection) always calls the current version.
+  useEffect(() => {
+    syncWishlistDataRef.current = syncWishlistData;
+  }, [syncWishlistData]);
+
+  // 🔔 Realtime sync: listen for wishlist:updated events from the server so
+  // that other open tabs/devices for the same user stay in sync (e.g. an
+  // item removed on the phone disappears from the desktop tab too).
+  useEffect(() => {
+    if (!isAuthenticated || !user?.id) return undefined;
+
+    const socket = socketService?.getSocket?.();
+    if (!socket) return undefined;
+
+    let mounted = true;
+
+    const subscribe = () => {
+      socket.emit('subscribe:user', user.id);
+    };
+
+    const handleWishlistUpdate = (payload) => {
+      if (!mounted) return;
+      console.log('🔄 [WishlistContext] Realtime wishlist:updated received:', payload);
+      syncWishlistDataRef.current?.();
+    };
+
+    // Subscribe immediately if already connected, and re-subscribe on every
+    // (re)connect since the server-side room membership doesn't survive a
+    // reconnect.
+    if (socket.connected) subscribe();
+    socket.on('connect', subscribe);
+    socket.on('wishlist:updated', handleWishlistUpdate);
+
+    return () => {
+      mounted = false;
+      socket.off('connect', subscribe);
+      socket.off('wishlist:updated', handleWishlistUpdate);
+    };
+  }, [isAuthenticated, user?.id]);
 
   // Auto-fetch wishlist when auth status changes
   useEffect(() => {
@@ -86,25 +129,31 @@ export const WishlistProvider = ({ children }) => {
    * Remove package from wishlist
    */
   const removeFromWishlist = useCallback(async (packageId) => {
+    // Keep a snapshot so we can roll back if the server delete actually fails
+    let previousWishlist = [];
+
     try {
       console.log('🗑️ [WishlistContext] Removing package from wishlist:', packageId);
-      
+
       // Optimistic update - remove immediately for better UX
       setWishlist(prev => {
+        previousWishlist = prev;
         const filtered = prev.filter(item => item.id !== packageId && item.package_id !== packageId);
         console.log('✅ [WishlistContext] Local state updated, remaining items:', filtered.length);
         return filtered;
       });
-      
-      // Call service with verification
+
+      // Call service - this now correctly throws on 404/failure instead of
+      // silently resolving, so the catch block below can roll back the UI.
       await wishlistService.removeFromWishlist(packageId);
-      
+
       console.log('✅ [WishlistContext] Successfully removed from database');
       return true;
     } catch (err) {
       console.error('❌ [WishlistContext] Error removing from wishlist:', err);
       setError(err.message || 'Failed to remove from wishlist');
-      // Refetch to ensure consistency
+      // Roll back optimistic update, then re-sync with the server to be sure
+      setWishlist(previousWishlist);
       await syncWishlistData();
       return false;
     }

@@ -4,6 +4,7 @@ import { AppDataSource } from '../config/connection.js';
 import { Wishlist } from '../entities/Wishlist.js';
 import { WishlistService } from '../services/WishlistService.js';
 import { AppError } from '../utils/errors.js';
+import { getWebSocketService } from '../websocket/index.js';
 
 export class WishlistController {
   private wishlistService: WishlistService;
@@ -127,6 +128,13 @@ export class WishlistController {
 
       console.log(`✅ [WishlistController] Responding with full wishlist data`);
 
+      // 🔔 Realtime: let any other open tab/device for this user know the
+      // wishlist changed, so they can re-sync instead of showing stale data.
+      getWebSocketService()?.emitToUser(userId, 'wishlist:updated', {
+        action: 'added',
+        packageId,
+      });
+
       res.status(201).json({
         success: true,
         message: 'Added to wishlist',
@@ -155,6 +163,12 @@ export class WishlistController {
       await this.wishlistService.removeFromWishlist(userId, packageId);
 
       console.log(`✅ [WishlistController] Successfully deleted from wishlist`);
+
+      // 🔔 Realtime: notify other open tabs/devices for this user
+      getWebSocketService()?.emitToUser(userId, 'wishlist:updated', {
+        action: 'removed',
+        packageId,
+      });
 
       res.status(200).json({
         success: true,

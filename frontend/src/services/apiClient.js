@@ -259,11 +259,16 @@ apiClient.interceptors.response.use(
       return Promise.reject(new Error('Access denied'));
     }
 
-    // Handle 404 - Not found (return response object instead of throwing for graceful handling)
+    // Handle 404 - Not found
+    // For GET requests, resolve gracefully so read flows can render "no data" states.
+    // For state-changing requests (POST/PUT/DELETE/PATCH), reject so the caller's
+    // catch block runs and the UI doesn't assume an action succeeded when it didn't.
     if (error.response?.status === 404) {
       console.warn('⚠️ [apiClient.response] Resource not found (404):', errorMessage);
-      // Return the 404 response so services can handle it gracefully
-      return error.response?.data || { success: false, message: 'Not found', status: 404 };
+      if (originalRequest?.method?.toUpperCase() === 'GET') {
+        return error.response?.data || { success: false, message: 'Not found', status: 404 };
+      }
+      return Promise.reject(error.response?.data || new Error(errorMessage));
     }
 
     // Handle 500 - Server error

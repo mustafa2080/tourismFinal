@@ -32,6 +32,13 @@ export const wishlistService = {
       const response = await apiClient.delete(`/users/wishlist/${packageId}`);
       
       console.log('✅ [wishlistService] Remove response:', response);
+
+      // apiClient may resolve with an error-shaped payload in edge cases -
+      // guard against treating that as a success.
+      if (response && response.success === false) {
+        throw new Error(response.message || 'Failed to remove from wishlist');
+      }
+
       return { success: true, packageId };
     } catch (error) {
       console.error('❌ [wishlistService] Error removing:', error);
