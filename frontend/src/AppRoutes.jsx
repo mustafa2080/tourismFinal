@@ -21,15 +21,18 @@ const PageLoadingFallback = () => (
     justifyContent: 'center',
     minHeight: '40vh',
   }}>
-    <div style={{
-      width: 36,
-      height: 36,
-      borderRadius: '50%',
-      border: '3px solid rgba(139, 92, 246, 0.2)',
-      borderTopColor: '#8b5cf6',
-      animation: 'spin 0.8s linear infinite',
-    }} />
-    <style>{'@keyframes spin { to { transform: rotate(360deg); } }'}</style>
+    <div
+      style={{
+        width: 40,
+        height: 40,
+        borderRadius: '50%',
+        border: '3px solid rgba(139, 92, 246, 0.15)',
+        borderTopColor: '#8b5cf6',
+        borderRightColor: '#3b82f6',
+        animation: 'page-loader-spin 0.7s cubic-bezier(0.5, 0, 0.5, 1) infinite',
+      }}
+    />
+    <style>{'@keyframes page-loader-spin { to { transform: rotate(360deg); } }'}</style>
   </div>
 );
 // HomePage stays static (first paint) — everything else is lazy-loaded per route

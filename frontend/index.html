@@ -52,6 +52,9 @@
       href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Lottie player: loaded early (in head) so the custom element is ready before body paints -->
+    <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
     
     <!-- Title -->
     <title>Travluyo | Book Your Next Adventure</title>
@@ -132,7 +135,22 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 12px;
+        gap: 14px;
+      }
+
+      .loader-mark {
+        position: relative;
+        width: 200px;
+        height: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      dotlottie-player {
+        display: block;
+        width: 100%;
+        height: 100%;
       }
 
       .loader-tagline {
@@ -175,17 +193,18 @@
     <!-- Initial Loader: shown instantly, removed once React has mounted -->
     <div id="initial-loader">
       <div class="loader-inner">
-        <dotlottie-player
-          src="/loading.lottie"
-          autoplay
-          loop
-          style="width: 220px; height: 165px;"
-        ></dotlottie-player>
+        <div class="loader-mark">
+          <dotlottie-player
+            src="/loading.lottie"
+            autoplay
+            loop
+            style="width: 100%; height: 100%;"
+          ></dotlottie-player>
+        </div>
         <span class="loader-tagline">Book Your Next Adventure</span>
       </div>
     </div>
 
-    <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
     
