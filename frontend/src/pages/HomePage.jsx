@@ -748,11 +748,11 @@ const HomePage = () => {
                   return (
                     <Card
                       key={`${pkg.id}-${i18n.language}`}
-                      className="overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 cursor-pointer group"
+                      className="overflow-hidden rounded-2xl border border-slate-200/70 dark:border-slate-700/60 hover:shadow-xl hover:shadow-slate-900/10 dark:hover:shadow-black/30 transition-all duration-300 hover:-translate-y-1.5 cursor-pointer group flex flex-col h-full"
                       onClick={() => navigate(`/package/${pkg.id}`)}
                     >
                       {/* Image */}
-                      <div className="relative h-32 xs:h-40 sm:h-48 md:h-56 bg-gradient-to-br from-blue-400 to-purple-500 overflow-hidden group">
+                      <div className="relative h-36 xs:h-44 sm:h-52 md:h-56 bg-gradient-to-br from-blue-400 to-purple-500 overflow-hidden group">
                         {pkg.images && pkg.images.length > 0 && (pkg.images[0]?.image_data || pkg.images[0]?.url) ? (
                           <>
                             {pkg.images[0]?.image_data && (
@@ -797,8 +797,13 @@ const HomePage = () => {
                           />
                         )}
                         
+                        {/* Bottom gradient for legibility */}
+                        <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/40 to-transparent pointer-events-none" />
+                        {/* Top gradient so badges stay legible on light images */}
+                        <div className="absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-black/25 to-transparent pointer-events-none" />
+
                         {/* Badges */}
-                        <div className="absolute top-3 right-3 px-3 py-1 bg-white/95 rounded-full text-xs font-bold line-clamp-1">
+                        <div className="absolute top-3 right-3 px-3 py-1 bg-white/95 dark:bg-slate-900/90 rounded-full text-xs font-bold text-slate-800 dark:text-white shadow-sm line-clamp-1">
                           {pkg.destination}
                         </div>
                         {pkg.average_rating !== undefined && pkg.average_rating !== null && pkg.average_rating > 0 && (
@@ -810,26 +815,30 @@ const HomePage = () => {
                       </div>
 
                       {/* Content */}
-                      <div className="p-3 xs:p-3.5 sm:p-4 md:p-5 space-y-3 xs:space-y-3 sm:space-y-4">
-                        <h3 className="font-bold text-xs xs:text-sm sm:text-base md:text-lg text-slate-900 dark:text-white line-clamp-2 group-hover:text-blue-600" title={translatedPkg.display_title}>
+                      <div className="p-3 xs:p-3.5 sm:p-4 md:p-5 flex flex-col flex-1 gap-3">
+                        <h3 className="font-bold text-xs xs:text-sm sm:text-base md:text-lg text-slate-900 dark:text-white line-clamp-2 min-h-[2.5em] group-hover:text-blue-600 transition-colors" title={translatedPkg.display_title}>
                           {translatedPkg.display_title}
                         </h3>
 
                         {/* Meta Info */}
-                        <div className="space-y-2 text-sm text-slate-600 dark:text-slate-400">
-                          <div className="flex items-center gap-2">
-                            <FiCalendar size={16} className="text-blue-500 flex-shrink-0" />
+                        <div className="flex items-center gap-3 text-xs xs:text-sm text-slate-600 dark:text-slate-400">
+                          <div className="flex items-center gap-1.5">
+                            <FiCalendar size={15} className="text-blue-500 flex-shrink-0" />
                             <span>{pkg.duration_days} {t('common.days') || 'Days'}</span>
                           </div>
-                          <div className="flex items-center gap-2">
-                            <FiMapPin size={16} className="text-blue-500 flex-shrink-0" />
+                          <span className="w-1 h-1 rounded-full bg-slate-300 dark:bg-slate-600 flex-shrink-0" />
+                          <div className="flex items-center gap-1.5 min-w-0">
+                            <FiMapPin size={15} className="text-blue-500 flex-shrink-0" />
                             <span className="truncate">{pkg.destination}</span>
                           </div>
                         </div>
 
+                        {/* Spacer pushes rating + price + CTA to the bottom, keeping cards aligned */}
+                        <div className="flex-1" />
+
                         {/* Rating - Gold Stars Display */}
                         {pkg.average_rating !== undefined && pkg.average_rating !== null && parseFloat(pkg.average_rating) > 0 ? (
-                          <div className="flex gap-1 py-3 border-t border-b border-slate-200 dark:border-slate-700 items-center justify-start">
+                          <div className="flex gap-1 items-center justify-start">
                             <div className="flex gap-0.5">
                               {[...Array(5)].map((_, i) => {
                                 const rating = parseFloat(pkg.average_rating) || 0;
@@ -837,45 +846,46 @@ const HomePage = () => {
                                 return (
                                   <FiStar
                                     key={i}
-                                    size={20}
+                                    size={16}
                                     className={
                                       i < ratingFloor
-                                        ? 'fill-amber-400 text-amber-400 drop-shadow-lg'
+                                        ? 'fill-amber-400 text-amber-400'
                                         : i === ratingFloor && rating % 1 >= 0.5
-                                        ? 'fill-amber-300 text-amber-300 drop-shadow-md opacity-75'
+                                        ? 'fill-amber-300 text-amber-300 opacity-75'
                                         : 'text-slate-300 dark:text-slate-600'
                                     }
                                   />
                                 );
                               })}
                             </div>
-                            <span className="text-xs font-bold text-amber-600 dark:text-amber-400 ml-2 bg-amber-50/50 dark:bg-amber-900/20 px-2.5 py-0.5 rounded-full">
+                            <span className="text-xs font-bold text-amber-600 dark:text-amber-400 ml-1.5">
                               {parseFloat(pkg.average_rating).toFixed(1)}
                             </span>
                           </div>
                         ) : (
-                          <div className="py-3 border-t border-b border-slate-200 dark:border-slate-700 text-xs text-slate-500 dark:text-slate-400 italic">
-                            {t('common.noRatings') || 'No ratings yet'}
+                          <div className="flex items-center gap-1.5 text-xs text-slate-400 dark:text-slate-500">
+                            <FiStar size={14} className="text-slate-300 dark:text-slate-600" />
+                            <span>{t('common.noRatings') || 'No ratings yet'}</span>
                           </div>
                         )}
 
-                        {/* Price */}
-                        <div className="flex justify-between items-end gap-2">
-                          <div>
-                            <p className="text-xs text-slate-600 dark:text-slate-400">{t('common.from') || 'From'}</p>
-                            <p className="text-lg xs:text-xl sm:text-xl md:text-2xl font-bold text-blue-600">
-                              {pkg.base_price && pkg.base_price > 0 
-                                ? `$${(parseFloat(pkg.base_price) || 0).toFixed(2)} USD`
-                                : <span className="text-orange-500">Price Not Set</span>
+                        {/* Price + CTA */}
+                        <div className="flex justify-between items-center gap-3 pt-3 border-t border-slate-100 dark:border-slate-800">
+                          <div className="min-w-0">
+                            <p className="text-[11px] uppercase tracking-wide text-slate-500 dark:text-slate-400">{t('common.from') || 'From'}</p>
+                            <p className="text-lg xs:text-xl md:text-2xl font-bold text-blue-600 dark:text-blue-400 truncate">
+                              {pkg.base_price && pkg.base_price > 0
+                                ? `$${(parseFloat(pkg.base_price) || 0).toFixed(2)}`
+                                : <span className="text-orange-500 text-sm">Price Not Set</span>
                               }
                             </p>
                           </div>
                           <Button
                             variant="primary"
                             size="sm"
-                            className="bg-blue-600 hover:bg-blue-700 p-1.5 xs:p-2"
+                            className="bg-blue-600 hover:bg-blue-700 rounded-full w-9 h-9 xs:w-10 xs:h-10 flex items-center justify-center flex-shrink-0 shadow-sm shadow-blue-600/30 group-hover:shadow-md group-hover:shadow-blue-600/40 transition-shadow"
                           >
-                            <FiArrowRight size={14} className="xs:w-4 xs:h-4 sm:w-5 sm:h-5" />
+                            <FiArrowRight size={16} className="group-hover:translate-x-0.5 transition-transform" />
                           </Button>
                         </div>
                       </div>
