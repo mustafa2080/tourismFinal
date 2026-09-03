@@ -160,24 +160,6 @@ export const WishlistProvider = ({ children }) => {
   }, [syncWishlistData]);
 
   /**
-   * Toggle package in wishlist
-   */
-  const toggleWishlist = useCallback(async (packageId) => {
-    try {
-      const result = await wishlistService.toggleWishlist(packageId);
-      
-      // Fetch full wishlist to get complete data
-      await syncWishlistData();
-      
-      return result.action;
-    } catch (err) {
-      console.error('❌ [WishlistContext] Error toggling wishlist:', err);
-      setError(err.message || 'Failed to toggle wishlist');
-      return null;
-    }
-  }, [syncWishlistData]);
-
-  /**
    * Check if package is in wishlist
    */
   const isWishlisted = useCallback((packageId) => {
@@ -186,6 +168,40 @@ export const WishlistProvider = ({ children }) => {
       return String(item.id) === String(packageId) || String(item.package_id) === String(packageId);
     });
   }, [wishlist]);
+
+  /**
+   * Toggle package in wishlist
+   *
+   * IMPORTANT: This uses the locally-synced `wishlist` state (not an extra
+   * API round-trip) to decide whether the package is currently saved. The
+   * previous implementation called a separate isWishlisted() check that
+   * silently fell back to `false` on any transient error - if the package
+   * was already saved and that check failed, this would try to ADD it
+   * again, the server would reject with "already in wishlist", and the
+   * heart icon would never update. Reusing the same state the heart icon
+   * renders from keeps both in sync and avoids that failure mode.
+   */
+  const toggleWishlist = useCallback(async (packageId) => {
+    try {
+      const alreadyWishlisted = isWishlisted(packageId);
+
+      const success = alreadyWishlisted
+        ? await removeFromWishlist(packageId)
+        : await addToWishlist(packageId);
+
+      if (!success) {
+        // addToWishlist/removeFromWishlist already set `error` and rolled
+        // back optimistic state - nothing else to do here.
+        return null;
+      }
+
+      return alreadyWishlisted ? 'removed' : 'added';
+    } catch (err) {
+      console.error('❌ [WishlistContext] Error toggling wishlist:', err);
+      setError(err.message || 'Failed to toggle wishlist');
+      return null;
+    }
+  }, [isWishlisted, addToWishlist, removeFromWishlist]);
 
   /**
    * Clear entire wishlist
