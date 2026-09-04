@@ -8,16 +8,38 @@ import { useLanguage } from '../../context/LanguageContext';
 import { useInstantTranslation } from '../../hooks/useInstantTranslation';
 import { LanguageSwitcher } from '../common/LanguageSwitcher';
 import Button from '../common/Button';
-import { 
-  FiMenu, FiX, FiChevronDown, FiHome, FiSearch, FiBookmark, FiUser, 
-  FiMoon, FiSun, FiBell, FiInfo, FiMail, FiSettings, FiCompass
-} from 'react-icons/fi';
-import { MdOutlineLogin, MdOutlinePersonAdd, MdLogout } from 'react-icons/md';
+import {
+  HiOutlineBars3, HiOutlineXMark, HiOutlineChevronDown, HiOutlineHome,
+  HiOutlineMagnifyingGlass, HiOutlineBookmark, HiOutlineUser,
+  HiOutlineMoon, HiOutlineSun, HiOutlineBell, HiOutlineInformationCircle,
+  HiOutlineEnvelope, HiOutlineCog6Tooth, HiOutlineSparkles,
+  HiOutlineArrowRightOnRectangle, HiOutlineUserPlus, HiOutlineArrowLeftOnRectangle,
+} from 'react-icons/hi2';
 import logoImg from '../../assets/logo.webp';
 import { notificationsService } from '../../services';
 import { socketService } from '../../services/socketService';
 import { showSuccessToast, showErrorToast } from '../../utils/notifications';
 import { getNavigationPathFromNotification } from '../../utils/notificationNavigation';
+
+// Aliases so the rest of the component's JSX (which already references
+// these names) doesn't need to change everywhere.
+const FiMenu = HiOutlineBars3;
+const FiX = HiOutlineXMark;
+const FiChevronDown = HiOutlineChevronDown;
+const FiHome = HiOutlineHome;
+const FiSearch = HiOutlineMagnifyingGlass;
+const FiBookmark = HiOutlineBookmark;
+const FiUser = HiOutlineUser;
+const FiMoon = HiOutlineMoon;
+const FiSun = HiOutlineSun;
+const FiBell = HiOutlineBell;
+const FiInfo = HiOutlineInformationCircle;
+const FiMail = HiOutlineEnvelope;
+const FiSettings = HiOutlineCog6Tooth;
+const FiCompass = HiOutlineSparkles;
+const MdOutlineLogin = HiOutlineArrowLeftOnRectangle;
+const MdOutlinePersonAdd = HiOutlineUserPlus;
+const MdLogout = HiOutlineArrowRightOnRectangle;
 
 const Header = () => {
   const navigate = useNavigate();
@@ -193,17 +215,17 @@ const Header = () => {
           : 'bg-white/40 backdrop-blur-sm dark:bg-slate-900/40 border-b border-transparent'
       }`}
     >
-      <div className="w-full px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16 lg:h-20 gap-4">
+      <div className="w-full max-w-[1600px] mx-auto px-3 xs:px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-16 lg:h-20 gap-2 lg:gap-4">
           {/* Logo */}
           <button
             onClick={() => navigate('/')}
-            className="flex items-center gap-2.5 flex-shrink-0 group cursor-pointer transition-transform duration-300 hover:scale-[1.02] active:scale-95"
+            className="flex items-center gap-2 sm:gap-2.5 flex-shrink-0 group cursor-pointer transition-transform duration-300 hover:scale-[1.02] active:scale-95"
           >
             <img
               src={logoImg}
               alt="Travluyo Logo"
-              className="h-11 lg:h-14 w-auto object-contain flex-shrink-0 drop-shadow-sm group-hover:drop-shadow-md transition-all duration-300"
+              className="h-9 sm:h-11 lg:h-14 w-auto object-contain flex-shrink-0 drop-shadow-sm group-hover:drop-shadow-md transition-all duration-300"
               loading="eager"
               decoding="async"
             />
@@ -216,7 +238,7 @@ const Header = () => {
           </button>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-1">
+          <nav className="hidden lg:flex items-center gap-0.5 xl:gap-1 flex-shrink min-w-0 overflow-x-auto no-scrollbar">
             {navLinks.map((link) => {
               const Icon = link.icon;
               if (link.requiresAuth && !isAuthenticated) return null;
@@ -224,7 +246,7 @@ const Header = () => {
                 <button
                   key={link.path}
                   onClick={() => navigate(link.path)}
-                  className={`flex items-center gap-2 px-4 py-2 rounded-lg font-semibold text-sm transition-all duration-300 ease-out group relative ${
+                  className={`flex items-center gap-1.5 xl:gap-2 px-2.5 xl:px-4 py-2 rounded-lg font-semibold text-[13px] xl:text-sm whitespace-nowrap transition-all duration-300 ease-out group relative ${
                     isActive(link.path)
                       ? 'text-teal-600 dark:text-teal-400 bg-teal-50/80 dark:bg-teal-900/20'
                       : link.highlight
@@ -232,10 +254,10 @@ const Header = () => {
                       : 'text-slate-700 dark:text-slate-200 hover:text-teal-600 dark:hover:text-teal-400 hover:bg-slate-100/80 dark:hover:bg-slate-800/50'
                   }`}
                 >
-                  <Icon size={18} className="transition-transform duration-300 group-hover:scale-110" />
+                  <Icon size={17} className="transition-transform duration-300 group-hover:scale-110 flex-shrink-0" />
                   <span>{link.label}</span>
                   {link.label === 'Saved Trips' && wishlistCount > 0 && (
-                    <span className="ml-auto px-2 py-0.5 text-xs font-bold text-white bg-red-500 rounded-full">
+                    <span className="ml-auto px-1.5 py-0.5 text-[10px] font-bold text-white bg-red-500 rounded-full">
                       {wishlistCount}
                     </span>
                   )}
@@ -250,7 +272,7 @@ const Header = () => {
           </nav>
 
           {/* Right Section */}
-          <div className="flex items-center gap-2 lg:gap-3 ml-auto">
+          <div className="flex items-center gap-1 sm:gap-2 lg:gap-3 ml-auto flex-shrink-0">
             {/* Language Switcher */}
             <LanguageSwitcher />
 
@@ -533,10 +555,15 @@ const Header = () => {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-all duration-300 active:scale-90"
+              className={`lg:hidden p-2 rounded-lg transition-all duration-300 active:scale-90 ${
+                mobileMenuOpen
+                  ? 'bg-teal-50 dark:bg-teal-900/30 text-teal-600 dark:text-teal-400'
+                  : 'hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200'
+              }`}
               aria-label="Toggle menu"
+              aria-expanded={mobileMenuOpen}
             >
-              {mobileMenuOpen ? <FiX size={20} /> : <FiMenu size={20} />}
+              {mobileMenuOpen ? <FiX size={22} /> : <FiMenu size={22} />}
             </button>
           </div>
         </div>
@@ -553,7 +580,7 @@ const Header = () => {
           />
 
           {/* Drawer panel */}
-          <div className="lg:hidden fixed top-0 right-0 h-screen w-[82%] max-w-[340px] bg-white dark:bg-slate-900 z-[9999] shadow-2xl flex flex-col animate-in slide-in-from-right duration-300">
+          <div className="lg:hidden fixed top-0 right-0 h-screen w-[86%] xs:w-[82%] max-w-[340px] bg-white dark:bg-slate-900 z-[9999] shadow-2xl flex flex-col animate-in slide-in-from-right duration-300">
             {/* Drawer header */}
             <div className="flex items-center justify-between px-5 py-4 bg-gradient-to-r from-teal-600 to-orange-600 flex-shrink-0">
               <div className="flex items-center gap-2.5">
