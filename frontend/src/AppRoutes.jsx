@@ -41,6 +41,7 @@ import { ErrorBoundary, ProtectedRoute } from './components/common';
 import { ProtectedRoute as AdminProtectedRoute } from './pages/AdminDashboard/components/ProtectedRoute';
 
 const SearchPage = lazy(() => import('./pages/SearchPage'));
+const CustomTripPage = lazy(() => import('./pages/CustomTripPage'));
 const PackageDetailPage = lazy(() => import('./pages/PackageDetailPage'));
 const BookingPage = lazy(() => import('./pages/BookingPage'));
 const DashboardPage = lazy(() => import('./pages/DashboardPage'));
@@ -95,6 +96,7 @@ const AppRoutes = () => {
 
           {/* Search & Packages */}
           <Route path="/search" element={<SearchPage />} />
+          <Route path="/custom-trip" element={<CustomTripPage />} />
           <Route path="/package/:id" element={<PackageDetailPage />} />
           <Route path="/packages/:id" element={<PackageDetailPage />} />
 

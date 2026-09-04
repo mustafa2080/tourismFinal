@@ -10,7 +10,7 @@ import { LanguageSwitcher } from '../common/LanguageSwitcher';
 import Button from '../common/Button';
 import { 
   FiMenu, FiX, FiChevronDown, FiHome, FiSearch, FiBookmark, FiUser, 
-  FiMoon, FiSun, FiBell, FiInfo, FiMail, FiSettings
+  FiMoon, FiSun, FiBell, FiInfo, FiMail, FiSettings, FiCompass
 } from 'react-icons/fi';
 import { MdOutlineLogin, MdOutlinePersonAdd, MdLogout } from 'react-icons/md';
 import logoImg from '../../assets/logo.webp';
@@ -166,6 +166,7 @@ const Header = () => {
   const navLinks = useMemo(() => [
     { label: t('common.home') || 'Home', path: '/', icon: FiHome },
     { label: t('common.explore') || 'Explore', path: '/search', icon: FiSearch},
+    { label: t('common.customTrip') || 'Custom Trip', path: '/custom-trip', icon: FiCompass, highlight: true },
     { label: t('common.about') || 'About', path: '/about', icon: FiInfo },
     { label: t('common.contact') || 'Contact', path: '/contact', icon: FiMail },
     { label: t('common.savedTrips') || 'Saved Trips', path: '/dashboard/wishlist', icon: FiBookmark, requiresAuth: true },
