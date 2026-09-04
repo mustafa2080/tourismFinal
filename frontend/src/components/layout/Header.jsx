@@ -216,7 +216,7 @@ const Header = () => {
       }`}
     >
       <div className="w-full max-w-[1600px] mx-auto px-3 xs:px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16 lg:h-20 gap-2 lg:gap-4">
+        <div className="flex justify-between items-center h-20 lg:h-24 gap-2 lg:gap-4">
           {/* Logo */}
           <button
             onClick={() => navigate('/')}
@@ -225,7 +225,7 @@ const Header = () => {
             <img
               src={logoImg}
               alt="Travluyo Logo"
-              className="h-9 sm:h-11 lg:h-14 w-auto object-contain flex-shrink-0 drop-shadow-[0_2px_6px_rgba(180,140,50,0.35)] group-hover:drop-shadow-[0_4px_10px_rgba(180,140,50,0.5)] transition-all duration-300"
+              className="h-10 sm:h-12 lg:h-16 w-auto object-contain flex-shrink-0 drop-shadow-[0_2px_6px_rgba(180,140,50,0.35)] group-hover:drop-shadow-[0_4px_10px_rgba(180,140,50,0.5)] transition-all duration-300"
               loading="eager"
               decoding="async"
             />
