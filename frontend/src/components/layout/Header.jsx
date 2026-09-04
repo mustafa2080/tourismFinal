@@ -225,7 +225,7 @@ const Header = () => {
             <img
               src={logoImg}
               alt="Travluyo Logo"
-              className="h-10 sm:h-12 lg:h-16 w-auto object-contain flex-shrink-0 drop-shadow-[0_2px_6px_rgba(180,140,50,0.35)] group-hover:drop-shadow-[0_4px_10px_rgba(180,140,50,0.5)] transition-all duration-300"
+              className="h-9 sm:h-10 lg:h-12 w-auto object-contain flex-shrink-0 drop-shadow-[0_2px_6px_rgba(180,140,50,0.35)] group-hover:drop-shadow-[0_4px_10px_rgba(180,140,50,0.5)] transition-all duration-300"
               loading="eager"
               decoding="async"
             />
