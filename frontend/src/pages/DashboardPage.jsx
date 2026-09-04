@@ -1285,7 +1285,7 @@ const DashboardPage = () => {
                         className="hidden sm:flex items-center gap-2 px-4 md:px-6 py-2 md:py-3 bg-gradient-to-r from-teal-600 to-teal-700 hover:from-teal-700 hover:to-teal-800 text-white font-bold rounded-lg transition-all hover:shadow-lg hover:scale-105 text-sm md:text-base flex-shrink-0"
                       >
                         <FiEdit2 size={16} className="md:w-4.5 md:h-4.5" />
-                        <span>{t('myProfilePage.edit')}</span>
+                        <span>{t('myProfilePage.editProfile')}</span>
                       </button>
                     )}
                   </div>
