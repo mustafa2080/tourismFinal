@@ -36,7 +36,7 @@ const Slider = React.forwardRef(({
       <div className="relative h-2 bg-slate-200 dark:bg-slate-700 rounded-full">
         {/* Range Fill */}
         <div
-          className="absolute h-2 bg-blue-500 rounded-full"
+          className="absolute h-2 bg-teal-500 rounded-full"
           style={{
             left: `${minPercent}%`,
             right: `${100 - maxPercent}%`,
@@ -53,7 +53,7 @@ const Slider = React.forwardRef(({
         onChange={handleMinChange}
         step={step}
         disabled={disabled}
-        className="absolute w-full h-2 top-0 appearance-none bg-transparent rounded-full pointer-events-none accent-blue-500 z-5"
+        className="absolute w-full h-2 top-0 appearance-none bg-transparent rounded-full pointer-events-none accent-teal-500 z-5"
         style={{
           zIndex: value[0] > max - (max - min) / 2 ? 5 : 3,
         }}
@@ -68,7 +68,7 @@ const Slider = React.forwardRef(({
         onChange={handleMaxChange}
         step={step}
         disabled={disabled}
-        className="absolute w-full h-2 top-0 appearance-none bg-transparent rounded-full pointer-events-none accent-blue-500 z-4"
+        className="absolute w-full h-2 top-0 appearance-none bg-transparent rounded-full pointer-events-none accent-teal-500 z-4"
       />
 
       <style>{`

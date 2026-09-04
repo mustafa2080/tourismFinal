@@ -119,7 +119,7 @@ export function TranslationFields({ formData, setFormData, disabled = false }) {
   return (
     <div className="space-y-4">
       <div className="flex items-center gap-2 mb-6">
-        <FiGlobe size={24} className="text-blue-600" />
+        <FiGlobe size={24} className="text-teal-600" />
         <h3 className="text-lg font-bold text-slate-900 dark:text-white">Translations & Multi-Language Content</h3>
       </div>
 
@@ -160,7 +160,7 @@ export function TranslationFields({ formData, setFormData, disabled = false }) {
                       {field.type === 'list' && !disabled && (
                         <button
                           onClick={() => handleAddTranslationItem(lang.code, field.key)}
-                          className="flex items-center gap-1 px-2 py-1 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all text-xs font-semibold"
+                          className="flex items-center gap-1 px-2 py-1 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-all text-xs font-semibold"
                         >
                           <FiPlus size={14} />
                           Add
@@ -179,7 +179,7 @@ export function TranslationFields({ formData, setFormData, disabled = false }) {
                                 onChange={(e) => handleUpdateTranslationItem(lang.code, field.key, itemIdx, e.target.value)}
                                 disabled={disabled}
                                 placeholder={`${field.label} ${itemIdx + 1}...`}
-                                className="flex-1 px-3 py-2 border-2 border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder-slate-400 disabled:opacity-50 focus:outline-none focus:border-blue-500 transition-all text-sm"
+                                className="flex-1 px-3 py-2 border-2 border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder-slate-400 disabled:opacity-50 focus:outline-none focus:border-teal-500 transition-all text-sm"
                               />
                               {!disabled && (
                                 <button
@@ -206,7 +206,7 @@ export function TranslationFields({ formData, setFormData, disabled = false }) {
                           placeholder={field.placeholder}
                           rows={field.rows || 3}
                           maxLength={field.maxLength}
-                          className="w-full px-4 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder-slate-400 disabled:opacity-50 disabled:bg-slate-100 dark:disabled:bg-slate-900 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all resize-none"
+                          className="w-full px-4 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder-slate-400 disabled:opacity-50 disabled:bg-slate-100 dark:disabled:bg-slate-900 focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 transition-all resize-none"
                         />
                         {field.maxLength && (
                           <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
@@ -221,7 +221,7 @@ export function TranslationFields({ formData, setFormData, disabled = false }) {
                         onChange={(e) => handleTranslationChange(lang.code, field.key, e.target.value)}
                         disabled={disabled}
                         placeholder={field.placeholder}
-                        className="w-full px-4 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder-slate-400 disabled:opacity-50 disabled:bg-slate-100 dark:disabled:bg-slate-900 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all"
+                        className="w-full px-4 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder-slate-400 disabled:opacity-50 disabled:bg-slate-100 dark:disabled:bg-slate-900 focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 transition-all"
                       />
                     )}
                   </div>
@@ -334,7 +334,7 @@ export function TranslationFields({ formData, setFormData, disabled = false }) {
         ))}
       </div>
 
-      <div className="bg-blue-50 dark:bg-blue-900/20 border-2 border-blue-200 dark:border-blue-800 rounded-lg p-4 text-sm text-blue-800 dark:text-blue-300">
+      <div className="bg-teal-50 dark:bg-teal-900/20 border-2 border-teal-200 dark:border-teal-800 rounded-lg p-4 text-sm text-teal-800 dark:text-teal-300">
         <p className="font-semibold mb-1">💡 Translation Tip:</p>
         <p>Expand each language tab and fill in the translation fields. All translations are automatically saved to the database and will be displayed based on the user's language preference.</p>
       </div>

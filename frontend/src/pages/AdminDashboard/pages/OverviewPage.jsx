@@ -86,8 +86,8 @@ export default function OverviewPage() {
         <div
           className={`p-4 rounded-xl bg-gradient-to-br ${
             title.includes('Revenue') ? 'from-green-500 to-green-600' :
-            title.includes('Bookings') ? 'from-blue-500 to-blue-600' :
-            title.includes('Users') ? 'from-purple-500 to-purple-600' :
+            title.includes('Bookings') ? 'from-teal-500 to-teal-600' :
+            title.includes('Users') ? 'from-orange-500 to-orange-600' :
             'from-orange-500 to-orange-600'
           } text-white group-hover:scale-110 transition-transform`}
         >
@@ -101,7 +101,7 @@ export default function OverviewPage() {
     return (
       <div className="flex items-center justify-center h-96">
         <div className="text-center">
-          <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
+          <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-teal-500"></div>
           <p className="mt-4 text-slate-600 dark:text-slate-400">Loading dashboard data...</p>
         </div>
       </div>
@@ -127,8 +127,8 @@ export default function OverviewPage() {
               onClick={() => setTimeRange(range)}
               className={`px-4 py-2 rounded-lg font-medium transition-all ${
                 timeRange === range
-                  ? 'bg-blue-600 text-white shadow-lg'
-                  : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:border-blue-400'
+                  ? 'bg-teal-600 text-white shadow-lg'
+                  : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:border-teal-400'
               }`}
             >
               {range === '7days' ? '7 Days' : range === '30days' ? '30 Days' : '90 Days'}
@@ -270,7 +270,7 @@ export default function OverviewPage() {
           <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-lg border border-slate-200 dark:border-slate-700">
             <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-4">Key Metrics</h2>
             <div className="space-y-3">
-              <div className="p-3 bg-gradient-to-r from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 rounded-lg border border-blue-200 dark:border-blue-700">
+              <div className="p-3 bg-gradient-to-r from-teal-50 to-teal-100 dark:from-teal-900/20 dark:to-teal-800/20 rounded-lg border border-teal-200 dark:border-teal-700">
                 <div className="flex items-center justify-between">
                   <span className="text-sm text-slate-700 dark:text-slate-300">Avg Order Value</span>
                   <span className="font-bold text-slate-900 dark:text-white">${statsData.avgOrderValue?.toFixed(2)}</span>
@@ -282,7 +282,7 @@ export default function OverviewPage() {
                   <span className="font-bold text-slate-900 dark:text-white">{statsData.conversionRate?.toFixed(2)}%</span>
                 </div>
               </div>
-              <div className="p-3 bg-gradient-to-r from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-800/20 rounded-lg border border-purple-200 dark:border-purple-700">
+              <div className="p-3 bg-gradient-to-r from-orange-50 to-orange-100 dark:from-orange-900/20 dark:to-orange-800/20 rounded-lg border border-orange-200 dark:border-orange-700">
                 <div className="flex items-center justify-between">
                   <span className="text-sm text-slate-700 dark:text-slate-300">Revenue Growth</span>
                   <span className={`font-bold ${statsData.revenueGrowth >= 0 ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>
@@ -314,19 +314,19 @@ export default function OverviewPage() {
             </div>
             <p className="text-sm text-green-700 dark:text-green-300">All systems operational</p>
           </div>
-          <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-700">
+          <div className="p-4 bg-teal-50 dark:bg-teal-900/20 rounded-lg border border-teal-200 dark:border-teal-700">
             <div className="flex items-center gap-2 mb-2">
-              <FiClock className="text-blue-600 dark:text-blue-400" size={20} />
-              <span className="font-semibold text-blue-900 dark:text-blue-200">Response Time</span>
+              <FiClock className="text-teal-600 dark:text-teal-400" size={20} />
+              <span className="font-semibold text-teal-900 dark:text-teal-200">Response Time</span>
             </div>
-            <p className="text-sm text-blue-700 dark:text-blue-300">~142ms average</p>
+            <p className="text-sm text-teal-700 dark:text-teal-300">~142ms average</p>
           </div>
-          <div className="p-4 bg-purple-50 dark:bg-purple-900/20 rounded-lg border border-purple-200 dark:border-purple-700">
+          <div className="p-4 bg-orange-50 dark:bg-orange-900/20 rounded-lg border border-orange-200 dark:border-orange-700">
             <div className="flex items-center gap-2 mb-2">
-              <FiTrendingUp className="text-purple-600 dark:text-purple-400" size={20} />
-              <span className="font-semibold text-purple-900 dark:text-purple-200">Uptime</span>
+              <FiTrendingUp className="text-orange-600 dark:text-orange-400" size={20} />
+              <span className="font-semibold text-orange-900 dark:text-orange-200">Uptime</span>
             </div>
-            <p className="text-sm text-purple-700 dark:text-purple-300">99.98% this month</p>
+            <p className="text-sm text-orange-700 dark:text-orange-300">99.98% this month</p>
           </div>
         </div>
       </div>

@@ -137,7 +137,7 @@ export const checkPasswordStrength = (password) => {
           ? { label: 'Good', color: 'bg-yellow-500' }
           : score <= 5
             ? { label: 'Strong', color: 'bg-green-500' }
-            : { label: 'Very Strong', color: 'bg-blue-500' };
+            : { label: 'Very Strong', color: 'bg-teal-500' };
 
   return {
     score: Math.min(score, 6),

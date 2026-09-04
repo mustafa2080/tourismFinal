@@ -88,7 +88,7 @@ export function RefundsPage() {
       'pending': 'bg-orange-100 dark:bg-orange-900/30 text-orange-800 dark:text-orange-400 border-orange-300 dark:border-orange-700',
       'approved': 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-400 border-green-300 dark:border-green-700',
       'rejected': 'bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-400 border-red-300 dark:border-red-700',
-      'processed': 'bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-400 border-blue-300 dark:border-blue-700',
+      'processed': 'bg-teal-100 dark:bg-teal-900/30 text-teal-800 dark:text-teal-400 border-teal-300 dark:border-teal-700',
     };
     return colors[status] || colors.pending;
   };
@@ -151,7 +151,7 @@ export function RefundsPage() {
             icon={MdOutlineAssignmentReturn}
             label="Total Requests"
             value={stats.totalRefunds || 0}
-            color="from-blue-500 to-blue-600"
+            color="from-teal-500 to-teal-600"
           />
           <StatCard
             icon={FiClock}
@@ -169,7 +169,7 @@ export function RefundsPage() {
             icon={FiTrendingUp}
             label="Approval Rate"
             value={`${stats.approvalRate ? stats.approvalRate : 0}%`}
-            color="from-purple-500 to-pink-600"
+            color="from-orange-500 to-pink-600"
           />
         </div>
       )}
@@ -185,7 +185,7 @@ export function RefundsPage() {
               placeholder="Search by booking #, name, or email..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-12 pr-4 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-500 dark:placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all"
+              className="w-full pl-12 pr-4 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-500 dark:placeholder-slate-400 focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 transition-all"
             />
           </div>
 
@@ -198,7 +198,7 @@ export function RefundsPage() {
                 setFilterStatus(e.target.value);
                 setPagination(p => ({ ...p, offset: 0 }));
               }}
-              className="w-full pl-12 pr-4 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all appearance-none"
+              className="w-full pl-12 pr-4 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 transition-all appearance-none"
             >
               <option value="all">All Requests</option>
               <option value="pending">⏳ Pending</option>
@@ -215,7 +215,7 @@ export function RefundsPage() {
         {loading ? (
           <div className="flex items-center justify-center h-96 bg-white dark:bg-slate-800 rounded-xl shadow-lg border border-slate-200 dark:border-slate-700">
             <div className="text-center">
-              <div className="inline-block animate-spin rounded-full h-16 w-16 border-4 border-slate-300 dark:border-slate-600 border-t-blue-600 dark:border-t-blue-400"></div>
+              <div className="inline-block animate-spin rounded-full h-16 w-16 border-4 border-slate-300 dark:border-slate-600 border-t-teal-600 dark:border-t-teal-400"></div>
               <p className="mt-6 text-lg text-slate-600 dark:text-slate-400 font-medium">Loading refunds...</p>
             </div>
           </div>
@@ -240,7 +240,7 @@ export function RefundsPage() {
                     className="bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors group"
                   >
                     <td className="px-6 py-4 text-sm font-bold text-slate-900 dark:text-white">
-                      <span className="inline-flex items-center px-3 py-1 rounded-lg bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 font-semibold">
+                      <span className="inline-flex items-center px-3 py-1 rounded-lg bg-teal-100 dark:bg-teal-900/30 text-teal-700 dark:text-teal-400 font-semibold">
                         #{refund.booking?.booking_number || `BK-${refund.booking_id?.slice(0, 8)}`}
                       </span>
                     </td>
@@ -279,7 +279,7 @@ export function RefundsPage() {
                     <td className="px-6 py-4 text-center">
                       <button
                         onClick={() => handleViewRefund(refund)}
-                        className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-blue-600 hover:bg-blue-700 text-white transition-all shadow-lg hover:shadow-xl transform hover:scale-110"
+                        className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-teal-600 hover:bg-teal-700 text-white transition-all shadow-lg hover:shadow-xl transform hover:scale-110"
                         title="View Details"
                       >
                         <FiEye size={18} />
@@ -292,8 +292,8 @@ export function RefundsPage() {
           </div>
         ) : (
           <div className="bg-white dark:bg-slate-800 rounded-xl shadow-lg border border-slate-200 dark:border-slate-700 p-16 text-center">
-            <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-blue-100 dark:bg-blue-900/30 mb-4">
-              <MdOutlineSettingsBackupRestore className="text-blue-600 dark:text-blue-400" size={40} />
+            <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-teal-100 dark:bg-teal-900/30 mb-4">
+              <MdOutlineSettingsBackupRestore className="text-teal-600 dark:text-teal-400" size={40} />
             </div>
             <p className="text-lg text-slate-600 dark:text-slate-400 font-medium">No refund requests found</p>
             <p className="text-sm text-slate-500 dark:text-slate-500 mt-2">Try adjusting your search or filters</p>
@@ -329,9 +329,9 @@ export function RefundsPage() {
             <div className="p-8 space-y-6 max-h-96 overflow-y-auto">
               {/* Refund ID & Status */}
               <div className="grid grid-cols-2 gap-4">
-                <div className="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-6 border border-blue-200 dark:border-blue-800">
-                  <p className="text-xs font-bold text-blue-600 dark:text-blue-400 uppercase tracking-wide mb-2">Booking #</p>
-                  <p className="text-2xl font-bold text-blue-700 dark:text-blue-300">
+                <div className="bg-teal-50 dark:bg-teal-900/20 rounded-xl p-6 border border-teal-200 dark:border-teal-800">
+                  <p className="text-xs font-bold text-teal-600 dark:text-teal-400 uppercase tracking-wide mb-2">Booking #</p>
+                  <p className="text-2xl font-bold text-teal-700 dark:text-teal-300">
                     #{selectedRefund.booking?.booking_number}
                   </p>
                 </div>
@@ -379,15 +379,15 @@ export function RefundsPage() {
                       </div>
                     )}
                     {selectedRefund.booking?.payment_type === 'deposit' && (
-                      <div className="mt-3 p-3 bg-blue-100 dark:bg-blue-900/30 rounded border border-blue-300 dark:border-blue-700">
-                        <p className="text-blue-800 dark:text-blue-300 text-sm">
+                      <div className="mt-3 p-3 bg-teal-100 dark:bg-teal-900/30 rounded border border-teal-300 dark:border-teal-700">
+                        <p className="text-teal-800 dark:text-teal-300 text-sm">
                           ℹ️ Deposit payment (30%). Refund will return the deposit amount only after fees.
                         </p>
                       </div>
                     )}
                     {selectedRefund.booking?.payment_type === 'full_payment' && (
-                      <div className="mt-3 p-3 bg-purple-100 dark:bg-purple-900/30 rounded border border-purple-300 dark:border-purple-700">
-                        <p className="text-purple-800 dark:text-purple-300 text-sm">
+                      <div className="mt-3 p-3 bg-orange-100 dark:bg-orange-900/30 rounded border border-orange-300 dark:border-orange-700">
+                        <p className="text-orange-800 dark:text-orange-300 text-sm">
                           ℹ️ Full payment received. Refund will be processed to original payment method after fees.
                         </p>
                       </div>
@@ -420,7 +420,7 @@ export function RefundsPage() {
                       value={approvalNotes}
                       onChange={(e) => setApprovalNotes(e.target.value)}
                       placeholder="Add any notes about this refund..."
-                      className="w-full px-4 py-2 border-2 border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-500 dark:placeholder-slate-400 focus:outline-none focus:border-blue-500"
+                      className="w-full px-4 py-2 border-2 border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-500 dark:placeholder-slate-400 focus:outline-none focus:border-teal-500"
                       rows="3"
                     />
                   </div>

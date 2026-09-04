@@ -55,7 +55,7 @@ const InlineReviewSection = ({
     <div className="space-y-6">
       {/* Review Form - Only show if user hasn't reviewed yet */}
       {isAuthenticated && !userReview && (
-        <Card className="p-6 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 shadow-sm hover:shadow-md transition-shadow border border-blue-200 dark:border-blue-800">
+        <Card className="p-6 bg-gradient-to-br from-teal-50 to-orange-50 dark:from-teal-900/20 dark:to-orange-900/20 shadow-sm hover:shadow-md transition-shadow border border-teal-200 dark:border-teal-800">
           <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Share Your Review</h3>
           
           {/* Rating */}
@@ -94,7 +94,7 @@ const InlineReviewSection = ({
               value={comment}
               onChange={(e) => setComment(e.target.value)}
               placeholder={`Share your experience with ${packageTitle}...`}
-              className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-slate-800 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
+              className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-slate-800 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent resize-none"
               rows="4"
               disabled={isSubmitting}
             />
@@ -107,7 +107,7 @@ const InlineReviewSection = ({
           <Button
             onClick={handleSubmit}
             disabled={isSubmitting || !rating || comment.trim().length < 10}
-            className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold"
+            className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-teal-600 to-orange-600 hover:from-teal-700 hover:to-orange-700 text-white font-semibold"
           >
             <FiSend size={18} />
             {isSubmitting ? 'Submitting...' : 'Submit Review'}

@@ -188,7 +188,7 @@ export function ReportsPage() {
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <div>
           <h1 className="text-5xl font-bold text-slate-900 dark:text-white flex items-center gap-3">
-            <div className="p-3 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl shadow-lg">
+            <div className="p-3 bg-gradient-to-br from-teal-500 to-teal-600 rounded-xl shadow-lg">
               <MdOutlineAssessment className="text-white" size={32} />
             </div>
             Reports & Analytics
@@ -201,7 +201,7 @@ export function ReportsPage() {
           <button
             onClick={handleRefresh}
             disabled={refreshing}
-            className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white rounded-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed font-medium shadow-lg hover:shadow-xl"
+            className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-teal-600 to-teal-700 hover:from-teal-700 hover:to-teal-800 text-white rounded-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed font-medium shadow-lg hover:shadow-xl"
           >
             <FiRefreshCw className={`${refreshing ? 'animate-spin' : ''}`} size={18} />
             {refreshing ? 'Refreshing' : 'Refresh'}
@@ -217,30 +217,30 @@ export function ReportsPage() {
       </div>
 
       {/* Date Range Filter */}
-      <div className="bg-gradient-to-r from-blue-50 via-indigo-50 to-blue-50 dark:from-slate-800 dark:via-slate-800 dark:to-slate-800 rounded-xl shadow-lg p-6 border border-blue-200 dark:border-slate-700">
+      <div className="bg-gradient-to-r from-teal-50 via-orange-50 to-teal-50 dark:from-slate-800 dark:via-slate-800 dark:to-slate-800 rounded-xl shadow-lg p-6 border border-teal-200 dark:border-slate-700">
         <div className="flex flex-col sm:flex-row gap-6 items-end">
           <div className="flex-1">
             <label className="block text-sm font-bold text-slate-900 dark:text-white mb-3 flex items-center gap-2">
-              <FiCalendar className="text-blue-600 dark:text-blue-400" size={18} />
+              <FiCalendar className="text-teal-600 dark:text-teal-400" size={18} />
               Start Date
             </label>
             <input
               type="date"
               value={startDate}
               onChange={(e) => setStartDate(e.target.value)}
-              className="w-full px-4 py-3 border-2 border-blue-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all font-medium"
+              className="w-full px-4 py-3 border-2 border-teal-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 transition-all font-medium"
             />
           </div>
           <div className="flex-1">
             <label className="block text-sm font-bold text-slate-900 dark:text-white mb-3 flex items-center gap-2">
-              <FiCalendar className="text-blue-600 dark:text-blue-400" size={18} />
+              <FiCalendar className="text-teal-600 dark:text-teal-400" size={18} />
               End Date
             </label>
             <input
               type="date"
               value={endDate}
               onChange={(e) => setEndDate(e.target.value)}
-              className="w-full px-4 py-3 border-2 border-blue-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all font-medium"
+              className="w-full px-4 py-3 border-2 border-teal-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 transition-all font-medium"
             />
           </div>
         </div>
@@ -256,7 +256,7 @@ export function ReportsPage() {
                 label="Total Revenue"
                 value={`$${(revenueData.totalRevenue / 1000).toFixed(1)}K`}
                 change={revenueData.growthRate}
-                bgGradient="bg-gradient-to-br from-blue-500 via-blue-600 to-cyan-600"
+                bgGradient="bg-gradient-to-br from-teal-500 via-teal-600 to-teal-600"
               />
               <MetricCard
                 icon={FiShoppingCart}
@@ -268,7 +268,7 @@ export function ReportsPage() {
                 icon={FiTrendingUp}
                 label="Avg Booking Value"
                 value={`$${revenueData.averageBookingValue?.toFixed(0) || 0}`}
-                bgGradient="bg-gradient-to-br from-purple-500 via-purple-600 to-pink-600"
+                bgGradient="bg-gradient-to-br from-orange-500 via-orange-600 to-pink-600"
               />
             </>
           ) : (
@@ -307,8 +307,8 @@ export function ReportsPage() {
               <div className="lg:col-span-2 bg-white dark:bg-slate-800 rounded-xl shadow-lg p-8 border border-slate-200 dark:border-slate-700 hover:shadow-xl transition-shadow">
                 <div className="flex items-center justify-between mb-6">
                   <h2 className="text-2xl font-bold text-slate-900 dark:text-white flex items-center gap-3">
-                    <div className="p-2 bg-blue-100 dark:bg-blue-900/30 rounded-lg">
-                      <MdOutlineShowChart className="text-blue-600 dark:text-blue-400" size={24} />
+                    <div className="p-2 bg-teal-100 dark:bg-teal-900/30 rounded-lg">
+                      <MdOutlineShowChart className="text-teal-600 dark:text-teal-400" size={24} />
                     </div>
                     Revenue Trend
                   </h2>
@@ -438,8 +438,8 @@ export function ReportsPage() {
                     <p className="text-slate-600 dark:text-slate-400 text-sm font-medium mb-2">Total Customers</p>
                     <p className="text-4xl font-bold text-slate-900 dark:text-white">{customerStats.totalCustomers || 0}</p>
                   </div>
-                  <div className="p-4 bg-blue-100 dark:bg-blue-900/30 rounded-xl">
-                    <FiUsers className="text-blue-600 dark:text-blue-400" size={32} />
+                  <div className="p-4 bg-teal-100 dark:bg-teal-900/30 rounded-xl">
+                    <FiUsers className="text-teal-600 dark:text-teal-400" size={32} />
                   </div>
                 </div>
               </div>
@@ -462,8 +462,8 @@ export function ReportsPage() {
                     <p className="text-slate-600 dark:text-slate-400 text-sm font-medium mb-2">New This Month</p>
                     <p className="text-4xl font-bold text-slate-900 dark:text-white">{customerStats.newCustomersThisMonth || 0}</p>
                   </div>
-                  <div className="p-4 bg-purple-100 dark:bg-purple-900/30 rounded-xl">
-                    <FiUsers className="text-purple-600 dark:text-purple-400" size={32} />
+                  <div className="p-4 bg-orange-100 dark:bg-orange-900/30 rounded-xl">
+                    <FiUsers className="text-orange-600 dark:text-orange-400" size={32} />
                   </div>
                 </div>
               </div>
@@ -474,8 +474,8 @@ export function ReportsPage() {
                     <p className="text-slate-600 dark:text-slate-400 text-sm font-medium mb-2">Return Rate</p>
                     <p className="text-4xl font-bold text-slate-900 dark:text-white">{customerStats.returnRate || 0}%</p>
                   </div>
-                  <div className="p-4 bg-cyan-100 dark:bg-cyan-900/30 rounded-xl">
-                    <FiTrendingUp className="text-cyan-600 dark:text-cyan-400" size={32} />
+                  <div className="p-4 bg-teal-100 dark:bg-teal-900/30 rounded-xl">
+                    <FiTrendingUp className="text-teal-600 dark:text-teal-400" size={32} />
                   </div>
                 </div>
               </div>
@@ -515,8 +515,8 @@ export function ReportsPage() {
                     <p className="text-slate-600 dark:text-slate-400 text-sm font-medium mb-2">Total Bookings</p>
                     <p className="text-4xl font-bold text-slate-900 dark:text-white">{bookingStats.total || 0}</p>
                   </div>
-                  <div className="p-4 bg-indigo-100 dark:bg-indigo-900/30 rounded-xl">
-                    <FiShoppingCart className="text-indigo-600 dark:text-indigo-400" size={32} />
+                  <div className="p-4 bg-orange-100 dark:bg-orange-900/30 rounded-xl">
+                    <FiShoppingCart className="text-orange-600 dark:text-orange-400" size={32} />
                   </div>
                 </div>
               </div>
@@ -526,7 +526,7 @@ export function ReportsPage() {
       ) : (
         <div className="flex items-center justify-center h-96">
           <div className="text-center">
-            <div className="inline-block animate-spin rounded-full h-16 w-16 border-4 border-slate-300 dark:border-slate-600 border-t-blue-600 dark:border-t-blue-400"></div>
+            <div className="inline-block animate-spin rounded-full h-16 w-16 border-4 border-slate-300 dark:border-slate-600 border-t-teal-600 dark:border-t-teal-400"></div>
             <p className="mt-6 text-lg text-slate-600 dark:text-slate-400 font-medium">Loading reports...</p>
           </div>
         </div>

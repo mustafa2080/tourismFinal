@@ -30,23 +30,23 @@ const PrivacyPolicyPage = () => {
 
   return (
     <MainLayout>
-      <div className="min-h-screen bg-gradient-to-b from-slate-50 via-purple-50 to-white dark:bg-gradient-to-br dark:from-slate-900 dark:via-purple-900 dark:to-slate-900">
+      <div className="min-h-screen bg-gradient-to-b from-slate-50 via-orange-50 to-white dark:bg-gradient-to-br dark:from-slate-900 dark:via-orange-900 dark:to-slate-900">
         {/* Progress Bar */}
       <div 
-        className="fixed top-0 left-0 h-1 bg-gradient-to-r from-blue-500 via-purple-600 to-pink-600 z-50 transition-all duration-300 shadow-lg shadow-purple-500/50" 
+        className="fixed top-0 left-0 h-1 bg-gradient-to-r from-teal-500 via-orange-600 to-pink-600 z-50 transition-all duration-300 shadow-lg shadow-orange-500/50" 
         style={{ width: `${scrollProgress * 100}%` }}
       ></div>
 
       {/* Animated Background */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 right-0 -translate-y-1/2 translate-x-1/4 w-80 h-80 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full mix-blend-screen filter blur-3xl opacity-20 animate-pulse"></div>
-        <div className="absolute bottom-0 -left-40 w-80 h-80 bg-gradient-to-tr from-pink-400 to-purple-500 rounded-full mix-blend-screen filter blur-3xl opacity-20 animate-pulse" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-20 right-0 -translate-y-1/2 translate-x-1/4 w-80 h-80 bg-gradient-to-br from-teal-400 to-orange-500 rounded-full mix-blend-screen filter blur-3xl opacity-20 animate-pulse"></div>
+        <div className="absolute bottom-0 -left-40 w-80 h-80 bg-gradient-to-tr from-pink-400 to-orange-500 rounded-full mix-blend-screen filter blur-3xl opacity-20 animate-pulse" style={{ animationDelay: '2s' }}></div>
       </div>
 
       {/* Header */}
-      <div className="relative pt-20 pb-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-blue-500 via-purple-400 to-transparent dark:from-slate-800 dark:via-purple-800 dark:to-transparent">
+      <div className="relative pt-20 pb-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-teal-500 via-orange-400 to-transparent dark:from-slate-800 dark:via-orange-800 dark:to-transparent">
         <div className="relative max-w-4xl mx-auto text-center">
-          <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl mb-8 mx-auto shadow-2xl shadow-purple-500/40 ring-4 ring-purple-300/30 dark:ring-purple-400/30">
+          <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-teal-500 to-orange-600 rounded-2xl mb-8 mx-auto shadow-2xl shadow-orange-500/40 ring-4 ring-orange-300/30 dark:ring-orange-400/30">
             <Lock size={40} className="text-white" />
           </div>
 
@@ -54,11 +54,11 @@ const PrivacyPolicyPage = () => {
             Privacy Policy
           </h1>
 
-          <p className="text-lg sm:text-xl text-slate-700 dark:text-purple-100 mb-8 max-w-2xl mx-auto leading-relaxed font-medium">
+          <p className="text-lg sm:text-xl text-slate-700 dark:text-orange-100 mb-8 max-w-2xl mx-auto leading-relaxed font-medium">
             Your privacy is our priority. We're transparent about how we collect, use, and protect your data.
           </p>
 
-          <div className="flex items-center justify-center gap-2 text-slate-600 dark:text-purple-200 text-sm font-semibold">
+          <div className="flex items-center justify-center gap-2 text-slate-600 dark:text-orange-200 text-sm font-semibold">
             <Clock size={16} />
             <span>Last updated: November 2024</span>
           </div>
@@ -71,8 +71,8 @@ const PrivacyPolicyPage = () => {
           {/* Sidebar Navigation */}
           <div className="lg:col-span-1">
             <div className="sticky top-24">
-              <div className="bg-white dark:bg-slate-800/50 backdrop-blur-xl rounded-2xl p-5 border-2 border-purple-200 dark:border-purple-500/30 shadow-xl dark:shadow-purple-900/30">
-                <p className="text-xs uppercase tracking-widest text-purple-700 dark:text-purple-300 font-bold mb-4">
+              <div className="bg-white dark:bg-slate-800/50 backdrop-blur-xl rounded-2xl p-5 border-2 border-orange-200 dark:border-orange-500/30 shadow-xl dark:shadow-orange-900/30">
+                <p className="text-xs uppercase tracking-widest text-orange-700 dark:text-orange-300 font-bold mb-4">
                   Quick Links
                 </p>
                 <div className="space-y-2">
@@ -86,8 +86,8 @@ const PrivacyPolicyPage = () => {
                         onClick={() => setActiveSection(section.id)}
                         className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-300 text-sm font-semibold group ${
                           isActive
-                            ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg shadow-purple-500/30'
-                            : 'text-slate-700 dark:text-purple-200 hover:bg-purple-100 dark:hover:bg-purple-900/40 hover:text-purple-800 dark:hover:text-white'
+                            ? 'bg-gradient-to-r from-teal-500 to-orange-600 text-white shadow-lg shadow-orange-500/30'
+                            : 'text-slate-700 dark:text-orange-200 hover:bg-orange-100 dark:hover:bg-orange-900/40 hover:text-orange-800 dark:hover:text-white'
                         }`}
                       >
                         <Icon size={18} className="flex-shrink-0" />
@@ -104,15 +104,15 @@ const PrivacyPolicyPage = () => {
           <div className="lg:col-span-4 space-y-8">
             {/* Introduction */}
             <section id="intro" className="scroll-mt-20">
-              <div className="bg-white dark:bg-slate-800/50 backdrop-blur-xl rounded-2xl p-8 border-2 border-blue-200 dark:border-blue-500/30 hover:border-blue-400 dark:hover:border-blue-400/50 transition-all duration-300 shadow-xl dark:shadow-blue-900/30">
+              <div className="bg-white dark:bg-slate-800/50 backdrop-blur-xl rounded-2xl p-8 border-2 border-teal-200 dark:border-teal-500/30 hover:border-teal-400 dark:hover:border-teal-400/50 transition-all duration-300 shadow-xl dark:shadow-teal-900/30">
                 <h2 className="text-4xl font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-3">
-                  <FileText size={32} className="text-blue-600" />
+                  <FileText size={32} className="text-teal-600" />
                   Introduction
                 </h2>
-                <p className="text-slate-700 dark:text-purple-100 leading-relaxed mb-4 text-lg font-medium">
+                <p className="text-slate-700 dark:text-orange-100 leading-relaxed mb-4 text-lg font-medium">
                   At TourHub, we are committed to protecting your privacy and ensuring you have a positive experience on our platform. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website and use our services.
                 </p>
-                <p className="text-slate-600 dark:text-purple-200 leading-relaxed text-lg">
+                <p className="text-slate-600 dark:text-orange-200 leading-relaxed text-lg">
                   Please read this privacy policy carefully. If you do not agree with our policies and practices, please do not use our services.
                 </p>
               </div>
@@ -120,47 +120,47 @@ const PrivacyPolicyPage = () => {
 
             {/* Data Collection */}
             <section id="collection" className="scroll-mt-20">
-              <div className="bg-white dark:bg-slate-800/50 backdrop-blur-xl rounded-2xl p-8 border-2 border-cyan-200 dark:border-cyan-500/30 hover:border-cyan-400 dark:hover:border-cyan-400/50 transition-all duration-300 shadow-xl dark:shadow-cyan-900/30">
+              <div className="bg-white dark:bg-slate-800/50 backdrop-blur-xl rounded-2xl p-8 border-2 border-teal-200 dark:border-teal-500/30 hover:border-teal-400 dark:hover:border-teal-400/50 transition-all duration-300 shadow-xl dark:shadow-teal-900/30">
                 <h2 className="text-4xl font-bold text-slate-900 dark:text-white mb-8 flex items-center gap-3">
-                  <Eye size={32} className="text-cyan-600" />
+                  <Eye size={32} className="text-teal-600" />
                   Information We Collect
                 </h2>
                 
                 <div className="space-y-6">
-                  <div className="bg-cyan-50 dark:bg-cyan-900/20 rounded-xl p-6 border-2 border-cyan-300 dark:border-cyan-600/50">
-                    <h3 className="text-xl font-bold text-cyan-900 dark:text-cyan-100 mb-4">📝 Information You Provide</h3>
+                  <div className="bg-teal-50 dark:bg-teal-900/20 rounded-xl p-6 border-2 border-teal-300 dark:border-teal-600/50">
+                    <h3 className="text-xl font-bold text-teal-900 dark:text-teal-100 mb-4">📝 Information You Provide</h3>
                     <ul className="space-y-3">
-                      <li className="flex gap-3 text-cyan-800 dark:text-cyan-100 font-medium">
+                      <li className="flex gap-3 text-teal-800 dark:text-teal-100 font-medium">
                         <CheckCircle2 size={20} className="text-green-600 dark:text-green-400 flex-shrink-0 mt-1" />
                         <span><strong>Account Information:</strong> Name, email, phone number, password</span>
                       </li>
-                      <li className="flex gap-3 text-cyan-800 dark:text-cyan-100 font-medium">
+                      <li className="flex gap-3 text-teal-800 dark:text-teal-100 font-medium">
                         <CheckCircle2 size={20} className="text-green-600 dark:text-green-400 flex-shrink-0 mt-1" />
                         <span><strong>Profile Information:</strong> Photo, bio, preferences, travel history</span>
                       </li>
-                      <li className="flex gap-3 text-cyan-800 dark:text-cyan-100 font-medium">
+                      <li className="flex gap-3 text-teal-800 dark:text-teal-100 font-medium">
                         <CheckCircle2 size={20} className="text-green-600 dark:text-green-400 flex-shrink-0 mt-1" />
                         <span><strong>Payment Information:</strong> Credit/debit card details (processed by secure providers)</span>
                       </li>
-                      <li className="flex gap-3 text-cyan-800 dark:text-cyan-100 font-medium">
+                      <li className="flex gap-3 text-teal-800 dark:text-teal-100 font-medium">
                         <CheckCircle2 size={20} className="text-green-600 dark:text-green-400 flex-shrink-0 mt-1" />
                         <span><strong>Booking Details:</strong> Travel dates, destinations, number of travelers</span>
                       </li>
                     </ul>
                   </div>
 
-                  <div className="bg-indigo-50 dark:bg-indigo-900/20 rounded-xl p-6 border-2 border-indigo-300 dark:border-indigo-600/50">
-                    <h3 className="text-xl font-bold text-indigo-900 dark:text-indigo-100 mb-4">⚙️ Information Collected Automatically</h3>
+                  <div className="bg-orange-50 dark:bg-orange-900/20 rounded-xl p-6 border-2 border-orange-300 dark:border-orange-600/50">
+                    <h3 className="text-xl font-bold text-orange-900 dark:text-orange-100 mb-4">⚙️ Information Collected Automatically</h3>
                     <ul className="space-y-3">
-                      <li className="flex gap-3 text-indigo-800 dark:text-indigo-100 font-medium">
+                      <li className="flex gap-3 text-orange-800 dark:text-orange-100 font-medium">
                         <CheckCircle2 size={20} className="text-green-600 dark:text-green-400 flex-shrink-0 mt-1" />
                         <span><strong>Device Information:</strong> Browser type, IP address, device type</span>
                       </li>
-                      <li className="flex gap-3 text-indigo-800 dark:text-indigo-100 font-medium">
+                      <li className="flex gap-3 text-orange-800 dark:text-orange-100 font-medium">
                         <CheckCircle2 size={20} className="text-green-600 dark:text-green-400 flex-shrink-0 mt-1" />
                         <span><strong>Usage Data:</strong> Pages visited, time spent, clicks, scrolling behavior</span>
                       </li>
-                      <li className="flex gap-3 text-indigo-800 dark:text-indigo-100 font-medium">
+                      <li className="flex gap-3 text-orange-800 dark:text-orange-100 font-medium">
                         <CheckCircle2 size={20} className="text-green-600 dark:text-green-400 flex-shrink-0 mt-1" />
                         <span><strong>Location Data:</strong> Approximate location based on IP address (with consent)</span>
                       </li>
@@ -267,7 +267,7 @@ const PrivacyPolicyPage = () => {
 
             {/* Contact Section */}
             <section className="scroll-mt-20">
-              <div className="bg-gradient-to-r from-blue-400 to-purple-500 dark:from-blue-900/40 dark:to-purple-900/40 backdrop-blur-xl rounded-2xl p-8 border-2 border-blue-300 dark:border-blue-600/50 shadow-2xl dark:shadow-blue-900/30">
+              <div className="bg-gradient-to-r from-teal-400 to-orange-500 dark:from-teal-900/40 dark:to-orange-900/40 backdrop-blur-xl rounded-2xl p-8 border-2 border-teal-300 dark:border-teal-600/50 shadow-2xl dark:shadow-teal-900/30">
                 <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-6">📧 Contact Us</h2>
                 <div className="grid sm:grid-cols-2 gap-4">
                   {[
@@ -276,8 +276,8 @@ const PrivacyPolicyPage = () => {
                     { label: 'DPO', value: 'dpo@tourhub.com' },
                     { label: 'Address', value: '123 Tourism Street, Travel City' },
                   ].map((contact, idx) => (
-                    <div key={idx} className="bg-white dark:bg-slate-800/70 rounded-lg p-4 border border-blue-200 dark:border-blue-600/30">
-                      <p className="text-blue-700 dark:text-blue-300 text-sm font-bold mb-1">{contact.label}</p>
+                    <div key={idx} className="bg-white dark:bg-slate-800/70 rounded-lg p-4 border border-teal-200 dark:border-teal-600/30">
+                      <p className="text-teal-700 dark:text-teal-300 text-sm font-bold mb-1">{contact.label}</p>
                       <p className="text-slate-900 dark:text-white font-semibold">{contact.value}</p>
                     </div>
                   ))}

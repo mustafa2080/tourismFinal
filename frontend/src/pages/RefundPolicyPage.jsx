@@ -125,7 +125,7 @@ const RefundPolicyPage = () => {
                     At TourHub, we want you to have complete peace of mind when booking. This policy outlines our refund guidelines and your rights as a customer.
                   </p>
                   
-                  <div className="bg-blue-50 dark:bg-blue-950/30 border-2 border-blue-200 dark:border-blue-800 rounded-xl p-6">
+                  <div className="bg-teal-50 dark:bg-teal-950/30 border-2 border-teal-200 dark:border-teal-800 rounded-xl p-6">
                     <p className="text-gray-800 dark:text-gray-200 font-medium">
                       <span className="text-2xl mr-2">ℹ️</span>
                       <strong>Important:</strong> Different tours have different policies. Review the specific policy before booking.
@@ -312,7 +312,7 @@ const RefundPolicyPage = () => {
                           />
                         </button>
                         {expandedFaq === idx && (
-                          <div className="px-6 py-4 bg-blue-50 dark:bg-blue-950/20 border-t-2 border-gray-200 dark:border-slate-600">
+                          <div className="px-6 py-4 bg-teal-50 dark:bg-teal-950/20 border-t-2 border-gray-200 dark:border-slate-600">
                             <p className="text-gray-700 dark:text-gray-300">{item.a}</p>
                           </div>
                         )}

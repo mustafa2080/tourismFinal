@@ -74,7 +74,7 @@ export function AuditLogsPage() {
     } else if (action?.includes('APPROVE')) {
       return 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-400 border-green-300 dark:border-green-700';
     } else if (action?.includes('PROCESS') || action?.includes('UPDATE')) {
-      return 'bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-400 border-blue-300 dark:border-blue-700';
+      return 'bg-teal-100 dark:bg-teal-900/30 text-teal-800 dark:text-teal-400 border-teal-300 dark:border-teal-700';
     } else if (action?.includes('CANCEL')) {
       return 'bg-orange-100 dark:bg-orange-900/30 text-orange-800 dark:text-orange-400 border-orange-300 dark:border-orange-700';
     }
@@ -122,7 +122,7 @@ export function AuditLogsPage() {
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <div>
           <h1 className="text-5xl font-bold text-slate-900 dark:text-white flex items-center gap-3">
-            <div className="p-3 bg-gradient-to-br from-indigo-500 to-blue-600 rounded-xl shadow-lg">
+            <div className="p-3 bg-gradient-to-br from-orange-500 to-teal-600 rounded-xl shadow-lg">
               <MdOutlineHistory className="text-white" size={32} />
             </div>
             Audit Logs
@@ -139,7 +139,7 @@ export function AuditLogsPage() {
           icon={FiActivity}
           label="Total Actions"
           value={totalActions}
-          color="from-blue-500 to-blue-600"
+          color="from-teal-500 to-teal-600"
         />
         <StatCard
           icon={FiTrendingUp}
@@ -157,7 +157,7 @@ export function AuditLogsPage() {
           icon={FiCalendar}
           label="Updates"
           value={updateActions}
-          color="from-purple-500 to-pink-600"
+          color="from-orange-500 to-pink-600"
         />
       </div>
 
@@ -172,7 +172,7 @@ export function AuditLogsPage() {
               placeholder="Search action, target, or admin ID..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-12 pr-4 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-500 dark:placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all"
+              className="w-full pl-12 pr-4 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-500 dark:placeholder-slate-400 focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 transition-all"
             />
           </div>
 
@@ -185,7 +185,7 @@ export function AuditLogsPage() {
                 setFilterAction(e.target.value);
                 setPagination(p => ({ ...p, offset: 0 }));
               }}
-              className="w-full pl-12 pr-4 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all appearance-none"
+              className="w-full pl-12 pr-4 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 transition-all appearance-none"
             >
               <option value="all">All Actions</option>
               {actionTypes.map(action => (
@@ -203,7 +203,7 @@ export function AuditLogsPage() {
         {loading ? (
           <div className="flex items-center justify-center h-96">
             <div className="text-center">
-              <div className="inline-block animate-spin rounded-full h-16 w-16 border-4 border-slate-300 dark:border-slate-600 border-t-blue-600 dark:border-t-blue-400"></div>
+              <div className="inline-block animate-spin rounded-full h-16 w-16 border-4 border-slate-300 dark:border-slate-600 border-t-teal-600 dark:border-t-teal-400"></div>
               <p className="mt-6 text-lg text-slate-600 dark:text-slate-400 font-medium">Loading audit logs...</p>
             </div>
           </div>
@@ -251,7 +251,7 @@ export function AuditLogsPage() {
                     <td className="px-6 py-4 text-center">
                       <button
                         onClick={() => handleViewLog(log)}
-                        className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-blue-600 hover:bg-blue-700 text-white transition-all shadow-lg hover:shadow-xl transform hover:scale-110"
+                        className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-teal-600 hover:bg-teal-700 text-white transition-all shadow-lg hover:shadow-xl transform hover:scale-110"
                         title="View Details"
                       >
                         <FiEye size={18} />
@@ -264,8 +264,8 @@ export function AuditLogsPage() {
           </div>
         ) : (
           <div className="bg-white dark:bg-slate-800 rounded-xl p-16 text-center">
-            <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-blue-100 dark:bg-blue-900/30 mb-4">
-              <MdOutlineHistory className="text-blue-600 dark:text-blue-400" size={40} />
+            <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-teal-100 dark:bg-teal-900/30 mb-4">
+              <MdOutlineHistory className="text-teal-600 dark:text-teal-400" size={40} />
             </div>
             <p className="text-lg text-slate-600 dark:text-slate-400 font-medium">No audit logs found</p>
             <p className="text-sm text-slate-500 dark:text-slate-500 mt-2">Try adjusting your search or filters</p>
@@ -303,7 +303,7 @@ export function AuditLogsPage() {
         <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
           <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl max-w-3xl w-full border border-slate-200 dark:border-slate-700 overflow-hidden animate-in fade-in scale-95 duration-200">
             {/* Modal Header */}
-            <div className="flex items-center justify-between p-8 bg-gradient-to-r from-indigo-600 to-blue-600 text-white">
+            <div className="flex items-center justify-between p-8 bg-gradient-to-r from-orange-600 to-teal-600 text-white">
               <div className="flex items-center gap-3">
                 <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center">
                   <MdOutlineHistory size={24} />
@@ -322,8 +322,8 @@ export function AuditLogsPage() {
             <div className="p-8 space-y-6 max-h-96 overflow-y-auto">
               {/* Action & Status */}
               <div className="grid grid-cols-2 gap-4">
-                <div className="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-6 border border-blue-200 dark:border-blue-800">
-                  <p className="text-xs font-bold text-blue-600 dark:text-blue-400 uppercase tracking-wide mb-2">Action Type</p>
+                <div className="bg-teal-50 dark:bg-teal-900/20 rounded-xl p-6 border border-teal-200 dark:border-teal-800">
+                  <p className="text-xs font-bold text-teal-600 dark:text-teal-400 uppercase tracking-wide mb-2">Action Type</p>
                   <span className={`inline-block px-3 py-2 rounded-lg text-sm font-bold border-2 ${getActionColor(selectedLog.action)}`}>
                     {getActionDisplayName(selectedLog.action)}
                   </span>
@@ -335,8 +335,8 @@ export function AuditLogsPage() {
               </div>
 
               {/* Admin Information */}
-              <div className="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-xl p-6 border border-purple-200 dark:border-purple-800">
-                <p className="text-xs font-bold text-purple-600 dark:text-purple-400 uppercase tracking-wide mb-3">Admin Information</p>
+              <div className="bg-gradient-to-br from-orange-50 to-pink-50 dark:from-orange-900/20 dark:to-pink-900/20 rounded-xl p-6 border border-orange-200 dark:border-orange-800">
+                <p className="text-xs font-bold text-orange-600 dark:text-orange-400 uppercase tracking-wide mb-3">Admin Information</p>
                 <div className="space-y-2">
                   <p className="text-slate-600 dark:text-slate-400 text-sm">
                     <span className="font-semibold text-slate-900 dark:text-white">Admin ID:</span>
@@ -386,7 +386,7 @@ export function AuditLogsPage() {
             <div className="p-8 bg-slate-50 dark:bg-slate-700/50 border-t border-slate-200 dark:border-slate-700">
               <button
                 onClick={() => setShowModal(false)}
-                className="w-full px-6 py-3 rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:from-blue-700 hover:to-indigo-700 transition-all font-bold shadow-lg hover:shadow-xl"
+                className="w-full px-6 py-3 rounded-lg bg-gradient-to-r from-teal-600 to-orange-600 text-white hover:from-teal-700 hover:to-orange-700 transition-all font-bold shadow-lg hover:shadow-xl"
               >
                 Close
               </button>

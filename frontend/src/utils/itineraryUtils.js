@@ -58,8 +58,8 @@ export const getMealType = (mealName) => {
 export const getMealColor = (mealType) => {
   const typeMap = {
     breakfast: { bg: 'bg-yellow-100', text: 'text-yellow-800', dark: 'dark:bg-yellow-900/30 dark:text-yellow-200' },
-    lunch: { bg: 'bg-blue-100', text: 'text-blue-800', dark: 'dark:bg-blue-900/30 dark:text-blue-200' },
-    dinner: { bg: 'bg-purple-100', text: 'text-purple-800', dark: 'dark:bg-purple-900/30 dark:text-purple-200' },
+    lunch: { bg: 'bg-teal-100', text: 'text-teal-800', dark: 'dark:bg-teal-900/30 dark:text-teal-200' },
+    dinner: { bg: 'bg-orange-100', text: 'text-orange-800', dark: 'dark:bg-orange-900/30 dark:text-orange-200' },
     brunch: { bg: 'bg-orange-100', text: 'text-orange-800', dark: 'dark:bg-orange-900/30 dark:text-orange-200' },
     snack: { bg: 'bg-green-100', text: 'text-green-800', dark: 'dark:bg-green-900/30 dark:text-green-200' },
   };

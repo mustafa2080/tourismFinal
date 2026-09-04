@@ -106,9 +106,9 @@ export function BookingsPage() {
         badge: 'Cancelled'
       },
       'completed': {
-        color: 'from-blue-500 to-indigo-500',
-        bgColor: 'bg-blue-100 dark:bg-blue-900/30',
-        textColor: 'text-blue-700 dark:text-blue-400',
+        color: 'from-teal-500 to-orange-500',
+        bgColor: 'bg-teal-100 dark:bg-teal-900/30',
+        textColor: 'text-teal-700 dark:text-teal-400',
         icon: FiCheck,
         badge: 'Completed'
       }
@@ -126,7 +126,7 @@ export function BookingsPage() {
     return (
       <div className="flex items-center justify-center min-h-screen">
         <div className="text-center">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 mb-4">
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-teal-500 to-orange-600 mb-4">
             <FiLoader className="text-3xl text-white animate-spin" />
           </div>
           <p className="text-lg font-semibold text-slate-900 dark:text-white">Loading bookings...</p>
@@ -142,11 +142,11 @@ export function BookingsPage() {
       <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
         <div>
           <div className="flex items-center gap-3 mb-2">
-            <div className="p-3 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl shadow-lg">
+            <div className="p-3 bg-gradient-to-br from-teal-500 to-orange-600 rounded-xl shadow-lg">
               <FiTrendingUp className="text-white" size={28} />
             </div>
             <div>
-              <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              <h1 className="text-4xl font-bold bg-gradient-to-r from-teal-600 to-orange-600 bg-clip-text text-transparent">
                 Bookings Management
               </h1>
               <p className="text-slate-600 dark:text-slate-400 text-sm mt-1">
@@ -172,9 +172,9 @@ export function BookingsPage() {
       {/* Stats Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {[
-          { label: 'Total Bookings', value: stats.total || bookings.length, icon: FiCalendar, color: 'from-blue-500 to-blue-600' },
+          { label: 'Total Bookings', value: stats.total || bookings.length, icon: FiCalendar, color: 'from-teal-500 to-teal-600' },
           { label: 'Confirmed', value: stats.confirmed || 0, icon: FiCheckCircle, color: 'from-green-500 to-emerald-500' },
-          { label: 'Completed', value: stats.completed || 0, icon: FiCheck, color: 'from-indigo-500 to-purple-600' },
+          { label: 'Completed', value: stats.completed || 0, icon: FiCheck, color: 'from-orange-500 to-orange-600' },
           { label: 'Cancelled', value: stats.cancelled || 0, icon: FiXCircle, color: 'from-red-500 to-rose-500' },
         ].map((stat, idx) => {
           const Icon = stat.icon;
@@ -208,13 +208,13 @@ export function BookingsPage() {
               Search Bookings
             </label>
             <div className="relative group">
-              <FiSearch className="absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400 group-focus-within:text-blue-500 transition-colors" size={20} />
+              <FiSearch className="absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400 group-focus-within:text-teal-500 transition-colors" size={20} />
               <input
                 type="text"
                 placeholder="Search by ID, customer name, email, or package..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-12 pr-4 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-xl bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all"
+                className="w-full pl-12 pr-4 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-xl bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 transition-all"
               />
             </div>
           </div>
@@ -231,7 +231,7 @@ export function BookingsPage() {
                 setFilterStatus(e.target.value);
                 setPagination(prev => ({ ...prev, offset: 0 }));
               }}
-              className="w-full px-4 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-xl bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all appearance-none cursor-pointer"
+              className="w-full px-4 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-xl bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 transition-all appearance-none cursor-pointer"
             >
               <option value="all">All Bookings</option>
               <option value="confirmed">Confirmed</option>
@@ -272,7 +272,7 @@ export function BookingsPage() {
                       <div>
                         <p className="text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400 font-semibold mb-1">Customer</p>
                         <p className="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
-                          <FiUser size={18} className="text-blue-500" />
+                          <FiUser size={18} className="text-teal-500" />
                           {booking.customerName || 'Unknown'}
                         </p>
                         {booking.customerEmail && (
@@ -293,7 +293,7 @@ export function BookingsPage() {
                       <div>
                         <p className="text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400 font-semibold mb-1">Trip Date</p>
                         <p className="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
-                          <FiCalendar size={18} className="text-purple-500" />
+                          <FiCalendar size={18} className="text-orange-500" />
                           {booking.date_start 
                             ? new Date(booking.date_start).toLocaleDateString('en-US', { 
                                 year: 'numeric', 
@@ -322,7 +322,7 @@ export function BookingsPage() {
                         setSelectedBooking(booking);
                         setShowModal(true);
                       }}
-                      className="flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-500 to-indigo-500 text-white rounded-xl hover:from-blue-600 hover:to-indigo-600 transition-all font-semibold shadow-md hover:shadow-lg transform hover:scale-105"
+                      className="flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-teal-500 to-orange-500 text-white rounded-xl hover:from-teal-600 hover:to-orange-600 transition-all font-semibold shadow-md hover:shadow-lg transform hover:scale-105"
                     >
                       <FiEye size={18} />
                       View Details
@@ -373,7 +373,7 @@ export function BookingsPage() {
           </button>
           <div className="text-center">
             <p className="text-sm font-semibold text-slate-600 dark:text-slate-400">
-              Page <span className="text-blue-600 dark:text-blue-400 font-bold">{Math.floor(pagination.offset / pagination.limit) + 1}</span> of <span className="text-blue-600 dark:text-blue-400 font-bold">{Math.ceil(pagination.total / pagination.limit)}</span>
+              Page <span className="text-teal-600 dark:text-teal-400 font-bold">{Math.floor(pagination.offset / pagination.limit) + 1}</span> of <span className="text-teal-600 dark:text-teal-400 font-bold">{Math.ceil(pagination.total / pagination.limit)}</span>
             </p>
             <p className="text-xs text-slate-500 dark:text-slate-500 mt-1">
               Showing {pagination.offset + 1} to {Math.min(pagination.offset + pagination.limit, pagination.total)} of {pagination.total} bookings
@@ -382,7 +382,7 @@ export function BookingsPage() {
           <button
             onClick={() => setPagination(prev => ({ ...prev, offset: prev.offset + prev.limit }))}
             disabled={pagination.offset + pagination.limit >= pagination.total}
-            className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-500 to-indigo-500 text-white rounded-xl hover:from-blue-600 hover:to-indigo-600 disabled:opacity-50 disabled:cursor-not-allowed transition-all font-semibold"
+            className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-teal-500 to-orange-500 text-white rounded-xl hover:from-teal-600 hover:to-orange-600 disabled:opacity-50 disabled:cursor-not-allowed transition-all font-semibold"
           >
             Next →
           </button>
@@ -394,10 +394,10 @@ export function BookingsPage() {
         <div className="modal-overlay fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4 backdrop-blur-sm">
           <div className="modal-content bg-white dark:bg-slate-800 rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl custom-scrollbar">
             {/* Modal Header */}
-            <div className="sticky top-0 bg-gradient-to-r from-blue-500 to-purple-600 px-8 py-6 flex items-center justify-between">
+            <div className="sticky top-0 bg-gradient-to-r from-teal-500 to-orange-600 px-8 py-6 flex items-center justify-between">
               <div>
                 <h2 className="text-3xl font-bold text-white">Booking Details</h2>
-                <p className="text-blue-100 text-sm mt-1">Booking ID: {selectedBooking.id}</p>
+                <p className="text-teal-100 text-sm mt-1">Booking ID: {selectedBooking.id}</p>
               </div>
               <button
                 onClick={() => setShowModal(false)}
@@ -426,7 +426,7 @@ export function BookingsPage() {
               {/* Customer Information */}
               <div className="space-y-4">
                 <h3 className="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
-                  <FiUser className="text-blue-500" size={24} />
+                  <FiUser className="text-teal-500" size={24} />
                   Customer Information
                 </h3>
                 <div className="grid grid-cols-2 gap-4">
@@ -436,7 +436,7 @@ export function BookingsPage() {
                   </div>
                   <div className="p-4 bg-slate-50 dark:bg-slate-700 rounded-xl">
                     <p className="text-xs uppercase tracking-wide text-slate-600 dark:text-slate-400 font-semibold mb-2">Email</p>
-                    <p className="text-sm font-mono text-blue-600 dark:text-blue-400 break-all">{selectedBooking.customerEmail || 'N/A'}</p>
+                    <p className="text-sm font-mono text-teal-600 dark:text-teal-400 break-all">{selectedBooking.customerEmail || 'N/A'}</p>
                   </div>
                 </div>
               </div>
@@ -444,7 +444,7 @@ export function BookingsPage() {
               {/* Booking Information */}
               <div className="space-y-4">
                 <h3 className="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
-                  <FiCalendar className="text-purple-500" size={24} />
+                  <FiCalendar className="text-orange-500" size={24} />
                   Booking Information
                 </h3>
                 <div className="grid grid-cols-1 gap-4">
@@ -488,7 +488,7 @@ export function BookingsPage() {
 
               {/* Action Buttons */}
               <div className="flex gap-3 pt-6 border-t border-slate-200 dark:border-slate-700">
-                <button className="flex-1 px-6 py-3 bg-gradient-to-r from-blue-500 to-indigo-500 text-white rounded-xl hover:from-blue-600 hover:to-indigo-600 transition-all font-semibold shadow-lg hover:shadow-xl">
+                <button className="flex-1 px-6 py-3 bg-gradient-to-r from-teal-500 to-orange-500 text-white rounded-xl hover:from-teal-600 hover:to-orange-600 transition-all font-semibold shadow-lg hover:shadow-xl">
                   Edit Booking
                 </button>
                 <button

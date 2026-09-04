@@ -135,7 +135,7 @@ const DashboardPage = () => {
   const getStatusColor = (status) => {
     const colors = {
       confirmed: 'bg-green-100 text-green-800 border-green-300',
-      completed: 'bg-blue-100 text-blue-800 border-blue-300',
+      completed: 'bg-teal-100 text-teal-800 border-teal-300',
       cancelled: 'bg-red-100 text-red-800 border-red-300'
     };
     return colors[status] || 'bg-gray-100 text-gray-800';
@@ -153,7 +153,7 @@ const DashboardPage = () => {
   const getStatusIcon = (status) => {
     switch(status) {
       case 'confirmed': return <FiCheck className="text-green-600" size={18} />;
-      case 'completed': return <FiCheck className="text-blue-600" size={18} />;
+      case 'completed': return <FiCheck className="text-teal-600" size={18} />;
       case 'cancelled': return <FiX className="text-red-600" size={18} />;
       default: return null;
     }
@@ -393,7 +393,7 @@ const DashboardPage = () => {
         {bookingsLoading ? (
           <div className="flex justify-center items-center h-96">
             <div className="animate-spin">
-              <div className="h-12 w-12 border-4 border-blue-500 border-t-transparent rounded-full"></div>
+              <div className="h-12 w-12 border-4 border-teal-500 border-t-transparent rounded-full"></div>
             </div>
           </div>
         ) : (
@@ -406,7 +406,7 @@ const DashboardPage = () => {
                   onClick={() => setActiveTab(tab)}
                   className={`px-2 md:px-6 py-3 font-semibold transition-colors border-b-2 text-xs md:text-base whitespace-nowrap flex-shrink-0 ${
                     activeTab === tab
-                      ? 'text-blue-600 border-blue-600 dark:text-blue-400 dark:border-blue-400'
+                      ? 'text-teal-600 border-teal-600 dark:text-teal-400 dark:border-teal-400'
                       : 'text-slate-600 dark:text-slate-400 border-transparent hover:text-slate-900 dark:hover:text-white'
                   }`}
                 >
@@ -425,7 +425,7 @@ const DashboardPage = () => {
             {activeTab === 'overview' && (
               <div className="space-y-8">
                 {/* Welcome Header */}
-                <div className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-500 rounded-2xl p-6 md:p-8 text-white shadow-lg overflow-hidden relative group">
+                <div className="bg-gradient-to-r from-teal-600 via-orange-600 to-pink-500 rounded-2xl p-6 md:p-8 text-white shadow-lg overflow-hidden relative group">
                   <div className="absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity duration-500">
                     <div className="absolute top-0 right-0 w-96 h-96 bg-white rounded-full mix-blend-multiply filter blur-3xl animate-pulse"></div>
                     <div className="absolute bottom-0 left-0 w-96 h-96 bg-white rounded-full mix-blend-multiply filter blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
@@ -438,7 +438,7 @@ const DashboardPage = () => {
 
                 {/* Stats Cards */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                  <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-sm border border-slate-200 dark:border-slate-700 hover:shadow-xl hover:border-blue-300 dark:hover:border-blue-600 transition-all duration-300 group">
+                  <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-sm border border-slate-200 dark:border-slate-700 hover:shadow-xl hover:border-teal-300 dark:hover:border-teal-600 transition-all duration-300 group">
                     <div className="flex items-start justify-between">
                       <div className="flex-1">
                         <p className="text-slate-600 dark:text-slate-400 text-xs md:text-sm font-medium">{t('dashboardPage.totalBookings')}</p>
@@ -447,7 +447,7 @@ const DashboardPage = () => {
                           <p className="text-xs text-slate-500 dark:text-slate-500 mt-2">{t('dashboardPage.allTimeBookings')}</p>
                         </div>
                       </div>
-                      <div className="p-2 md:p-4 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl shadow-lg group-hover:shadow-xl transition-all duration-300 transform group-hover:scale-110 flex-shrink-0">
+                      <div className="p-2 md:p-4 bg-gradient-to-br from-teal-500 to-teal-600 rounded-xl shadow-lg group-hover:shadow-xl transition-all duration-300 transform group-hover:scale-110 flex-shrink-0">
                         <FiUsers size={20} className="md:w-7 md:h-7 text-white" />
                       </div>
                     </div>
@@ -483,7 +483,7 @@ const DashboardPage = () => {
                     </div>
                   </div>
 
-                  <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-sm border border-slate-200 dark:border-slate-700 hover:shadow-xl hover:border-purple-300 dark:hover:border-purple-600 transition-all duration-300 group">
+                  <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-sm border border-slate-200 dark:border-slate-700 hover:shadow-xl hover:border-orange-300 dark:hover:border-orange-600 transition-all duration-300 group">
                     <div className="flex items-start justify-between">
                       <div className="flex-1">
                         <p className="text-slate-600 dark:text-slate-400 text-xs md:text-sm font-medium">{t('dashboardPage.completedTrips')}</p>
@@ -492,7 +492,7 @@ const DashboardPage = () => {
                           <p className="text-xs text-slate-500 dark:text-slate-500 mt-2">{t('dashboardPage.wonderfulMemories')}</p>
                         </div>
                       </div>
-                      <div className="p-2 md:p-4 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl shadow-lg group-hover:shadow-xl transition-all duration-300 transform group-hover:scale-110 flex-shrink-0">
+                      <div className="p-2 md:p-4 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl shadow-lg group-hover:shadow-xl transition-all duration-300 transform group-hover:scale-110 flex-shrink-0">
                         <FiCheck size={20} className="md:w-7 md:h-7 text-white" />
                       </div>
                     </div>
@@ -508,7 +508,7 @@ const DashboardPage = () => {
                     </div>
                     <button
                       onClick={() => setActiveTab('bookings')}
-                      className="flex items-center gap-2 px-3 md:px-4 py-2 text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-lg font-semibold transition-colors text-sm md:text-base"
+                      className="flex items-center gap-2 px-3 md:px-4 py-2 text-teal-600 dark:text-teal-400 hover:bg-teal-50 dark:hover:bg-teal-900/20 rounded-lg font-semibold transition-colors text-sm md:text-base"
                     >
                       {t('dashboardPage.viewAll')}
                       <FiExternalLink size={14} className="md:w-4 md:h-4" />
@@ -520,7 +520,7 @@ const DashboardPage = () => {
                       <div key={booking.id} className="flex items-center justify-between p-3 md:p-4 hover:bg-gradient-to-r hover:from-slate-50 hover:to-transparent dark:hover:from-slate-700/50 dark:hover:to-transparent rounded-xl transition-all border border-slate-200 dark:border-slate-700/50 group cursor-pointer flex-col md:flex-row gap-3 md:gap-4">
                         <div className="flex items-center gap-3 md:gap-4 flex-1 min-w-0">
                           <div className={`p-2 md:p-3 rounded-xl transition-all group-hover:scale-110 flex-shrink-0 ${
-                            booking.status === 'completed' ? 'bg-blue-100 dark:bg-blue-900/30' :
+                            booking.status === 'completed' ? 'bg-teal-100 dark:bg-teal-900/30' :
                             booking.status === 'confirmed' ? 'bg-green-100 dark:bg-green-900/30' :
                             'bg-orange-100 dark:bg-orange-900/30'
                           }`}>
@@ -564,36 +564,36 @@ const DashboardPage = () => {
                 {/* Quick Actions */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                   {/* Saved Trips */}
-                  <div className="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-2xl p-6 md:p-8 border border-purple-200 dark:border-purple-700/50 hover:shadow-lg hover:border-purple-300 dark:hover:border-purple-600 transition-all duration-300 group">
+                  <div className="bg-gradient-to-br from-orange-50 to-pink-50 dark:from-orange-900/20 dark:to-pink-900/20 rounded-2xl p-6 md:p-8 border border-orange-200 dark:border-orange-700/50 hover:shadow-lg hover:border-orange-300 dark:hover:border-orange-600 transition-all duration-300 group">
                     <div className="flex items-start justify-between mb-6">
                       <div>
                         <h3 className="text-lg md:text-xl font-bold text-slate-900 dark:text-white">{t('dashboardPage.savedTripsTitle')}</h3>
                         <p className="text-xs md:text-sm text-slate-600 dark:text-slate-400 mt-1">{t('dashboardPage.viewYourWishlist')}</p>
                       </div>
-                      <FiBookmark size={24} className="md:w-7 md:h-7 text-purple-600 dark:text-purple-400 group-hover:scale-110 transition-transform duration-300 flex-shrink-0" />
+                      <FiBookmark size={24} className="md:w-7 md:h-7 text-orange-600 dark:text-orange-400 group-hover:scale-110 transition-transform duration-300 flex-shrink-0" />
                     </div>
                     <p className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">{(Array.isArray(wishlist) ? wishlist : []).length}</p>
                     <button
                       onClick={() => setActiveTab('wishlist')}
-                      className="w-full px-3 md:px-4 py-2 md:py-2.5 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 active:scale-95 text-sm md:text-base"
+                      className="w-full px-3 md:px-4 py-2 md:py-2.5 bg-orange-600 hover:bg-orange-700 text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 active:scale-95 text-sm md:text-base"
                     >
                       {t('dashboardPage.browseSavedTrips')}
                     </button>
                   </div>
 
                   {/* Explore More */}
-                  <div className="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 rounded-2xl p-6 md:p-8 border border-blue-200 dark:border-blue-700/50 hover:shadow-lg hover:border-blue-300 dark:hover:border-blue-600 transition-all duration-300 group">
+                  <div className="bg-gradient-to-br from-teal-50 to-teal-50 dark:from-teal-900/20 dark:to-teal-900/20 rounded-2xl p-6 md:p-8 border border-teal-200 dark:border-teal-700/50 hover:shadow-lg hover:border-teal-300 dark:hover:border-teal-600 transition-all duration-300 group">
                     <div className="flex items-start justify-between mb-6">
                       <div>
                         <h3 className="text-lg md:text-xl font-bold text-slate-900 dark:text-white">{t('dashboardPage.exploreMore')}</h3>
                         <p className="text-xs md:text-sm text-slate-600 dark:text-slate-400 mt-1">{t('dashboardPage.discoverNewAdventures')}</p>
                       </div>
-                      <FiMapPin size={24} className="md:w-7 md:h-7 text-blue-600 dark:text-blue-400 group-hover:scale-110 transition-transform duration-300 flex-shrink-0" />
+                      <FiMapPin size={24} className="md:w-7 md:h-7 text-teal-600 dark:text-teal-400 group-hover:scale-110 transition-transform duration-300 flex-shrink-0" />
                     </div>
                     <p className="text-xs md:text-sm text-slate-600 dark:text-slate-400 mb-4">{t('dashboardPage.findAmazingPackages')}</p>
                     <button
                       onClick={() => navigate('/search')}
-                      className="w-full px-3 md:px-4 py-2 md:py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 active:scale-95 text-sm md:text-base"
+                      className="w-full px-3 md:px-4 py-2 md:py-2.5 bg-teal-600 hover:bg-teal-700 text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 active:scale-95 text-sm md:text-base"
                     >
                       {t('dashboardPage.explorePackages')}
                     </button>
@@ -606,7 +606,7 @@ const DashboardPage = () => {
             {activeTab === 'bookings' && (
               <div className="space-y-6">
                 {/* Header with summary */}
-                <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl p-4 md:p-6 mb-6">
+                <div className="bg-gradient-to-r from-teal-600 to-orange-600 text-white rounded-xl p-4 md:p-6 mb-6">
                   <div className="flex flex-col gap-4">
                     <div>
                       <h2 className="text-xl md:text-2xl font-bold mb-1 md:mb-2">{t('dashboardPage.myBookings')}</h2>
@@ -634,13 +634,13 @@ const DashboardPage = () => {
                       placeholder="Search by package name or booking number..."
                       value={searchTerm}
                       onChange={(e) => setSearchTerm(e.target.value)}
-                      className="w-full pl-9 md:pl-10 pr-4 py-2.5 md:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition text-sm md:text-base"
+                      className="w-full pl-9 md:pl-10 pr-4 py-2.5 md:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:ring-2 focus:ring-teal-500 focus:border-transparent outline-none transition text-sm md:text-base"
                     />
                   </div>
                   <select
                     value={filterStatus}
                     onChange={(e) => setFilterStatus(e.target.value)}
-                    className="px-3 md:px-4 py-2.5 md:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-medium focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition text-sm md:text-base"
+                    className="px-3 md:px-4 py-2.5 md:py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-medium focus:ring-2 focus:ring-teal-500 focus:border-transparent outline-none transition text-sm md:text-base"
                   >
                     <option value="all">All Statuses</option>
                     <option value="confirmed">Confirmed</option>
@@ -662,7 +662,7 @@ const DashboardPage = () => {
                     {(Array.isArray(bookings) ? bookings : []).length === 0 && (
                       <button
                         onClick={() => navigate('/search')}
-                        className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-lg hover:shadow-lg transition-all"
+                        className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-teal-600 to-orange-600 text-white font-bold rounded-lg hover:shadow-lg transition-all"
                       >
                         <FiSearch size={18} />
                         Explore Packages
@@ -676,12 +676,12 @@ const DashboardPage = () => {
                       return (
                       <div 
                         key={booking.id} 
-                        className="bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm border border-slate-200 dark:border-slate-700 hover:shadow-xl hover:border-blue-300 dark:hover:border-blue-600 transition-all duration-300 group"
+                        className="bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm border border-slate-200 dark:border-slate-700 hover:shadow-xl hover:border-teal-300 dark:hover:border-teal-600 transition-all duration-300 group"
                       >
                         {/* Header with status */}
                         <div className={`px-4 md:px-6 py-3 md:py-4 border-b-2 ${
                           booking.status === 'confirmed' ? 'bg-green-50 dark:bg-green-900/10 border-green-200 dark:border-green-800' :
-                          booking.status === 'completed' ? 'bg-blue-50 dark:bg-blue-900/10 border-blue-200 dark:border-blue-800' :
+                          booking.status === 'completed' ? 'bg-teal-50 dark:bg-teal-900/10 border-teal-200 dark:border-teal-800' :
                           'bg-red-50 dark:bg-red-900/10 border-red-200 dark:border-red-800'
                         }`}>
                           <div className="flex justify-between items-start gap-3 md:gap-4 flex-col md:flex-row">
@@ -703,8 +703,8 @@ const DashboardPage = () => {
                         <div className="p-4 md:p-6 space-y-3 md:space-y-4">
                           {/* Destination */}
                           <div className="flex items-start gap-2 md:gap-3">
-                            <div className="p-1.5 md:p-2 bg-blue-100 dark:bg-blue-900/30 rounded-lg mt-0.5 flex-shrink-0">
-                              <FiMapPin size={16} className="md:w-4.5 md:h-4.5 text-blue-600 dark:text-blue-400" />
+                            <div className="p-1.5 md:p-2 bg-teal-100 dark:bg-teal-900/30 rounded-lg mt-0.5 flex-shrink-0">
+                              <FiMapPin size={16} className="md:w-4.5 md:h-4.5 text-teal-600 dark:text-teal-400" />
                             </div>
                             <div className="min-w-0 flex-1">
                               <p className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase">Destination</p>
@@ -716,8 +716,8 @@ const DashboardPage = () => {
 
                           {/* Dates */}
                           <div className="flex items-start gap-2 md:gap-3">
-                            <div className="p-1.5 md:p-2 bg-purple-100 dark:bg-purple-900/30 rounded-lg mt-0.5 flex-shrink-0">
-                              <FiCalendar size={16} className="md:w-4.5 md:h-4.5 text-purple-600 dark:text-purple-400" />
+                            <div className="p-1.5 md:p-2 bg-orange-100 dark:bg-orange-900/30 rounded-lg mt-0.5 flex-shrink-0">
+                              <FiCalendar size={16} className="md:w-4.5 md:h-4.5 text-orange-600 dark:text-orange-400" />
                             </div>
                             <div className="min-w-0 flex-1">
                               <p className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase">Travel Dates</p>
@@ -758,7 +758,7 @@ const DashboardPage = () => {
                         <div className="px-4 md:px-6 py-3 md:py-4 border-t border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-700/30 flex gap-2 flex-col md:flex-row">
                           <button 
                             onClick={() => navigate(`/package/${booking.package?.id}`)}
-                            className="flex-1 min-w-[100px] px-3 md:px-4 py-2 text-xs md:text-sm font-semibold text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-lg transition-colors flex items-center justify-center gap-1.5 md:gap-2 group/btn"
+                            className="flex-1 min-w-[100px] px-3 md:px-4 py-2 text-xs md:text-sm font-semibold text-teal-600 dark:text-teal-400 hover:bg-teal-50 dark:hover:bg-teal-900/20 rounded-lg transition-colors flex items-center justify-center gap-1.5 md:gap-2 group/btn"
                           >
                             <FiExternalLink size={14} className="md:w-4 md:h-4 group-hover/btn:translate-x-0.5 transition-transform" />
                             <span>Details</span>
@@ -812,13 +812,13 @@ const DashboardPage = () => {
                 {statsLoading ? (
                   <div className="flex justify-center items-center h-80 md:h-96">
                     <div className="animate-spin">
-                      <div className="h-10 md:h-12 w-10 md:w-12 border-4 border-blue-500 border-t-transparent rounded-full"></div>
+                      <div className="h-10 md:h-12 w-10 md:w-12 border-4 border-teal-500 border-t-transparent rounded-full"></div>
                     </div>
                   </div>
                 ) : (
                   <>
                     {/* Stats Header */}
-                    <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl p-4 md:p-6 text-white">
+                    <div className="bg-gradient-to-r from-teal-600 to-orange-600 rounded-xl p-4 md:p-6 text-white">
                       <div className="flex justify-between items-start flex-col md:flex-row gap-4">
                         <div>
                           <h2 className="text-xl md:text-2xl font-bold mb-1 md:mb-2">Your Statistics</h2>
@@ -844,7 +844,7 @@ const DashboardPage = () => {
                               {advancedStats?.stats?.totalBookings || 0}
                             </p>
                           </div>
-                          <div className="p-2 md:p-4 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl group-hover:scale-110 transition-transform flex-shrink-0 ml-2">
+                          <div className="p-2 md:p-4 bg-gradient-to-br from-teal-500 to-teal-600 rounded-xl group-hover:scale-110 transition-transform flex-shrink-0 ml-2">
                             <FiUsers size={18} className="md:w-7 md:h-7 text-white" />
                           </div>
                         </div>
@@ -885,11 +885,11 @@ const DashboardPage = () => {
                         <div className="flex items-center justify-between">
                           <div className="min-w-0 flex-1">
                             <p className="text-slate-600 dark:text-slate-400 text-xs md:text-sm font-medium">Completed Trips</p>
-                            <p className="text-2xl md:text-4xl font-bold text-purple-600 dark:text-purple-400 mt-2 md:mt-3">
+                            <p className="text-2xl md:text-4xl font-bold text-orange-600 dark:text-orange-400 mt-2 md:mt-3">
                               {advancedStats?.stats?.completedTrips || 0}
                             </p>
                           </div>
-                          <div className="p-2 md:p-4 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl group-hover:scale-110 transition-transform flex-shrink-0 ml-2">
+                          <div className="p-2 md:p-4 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl group-hover:scale-110 transition-transform flex-shrink-0 ml-2">
                             <FiCheck size={18} className="md:w-7 md:h-7 text-white" />
                           </div>
                         </div>
@@ -974,7 +974,7 @@ const DashboardPage = () => {
                                 item.status === 'confirmed'
                                   ? 'bg-green-50 dark:bg-green-900/20 border-green-500'
                                   : item.status === 'completed'
-                                  ? 'bg-blue-50 dark:bg-blue-900/20 border-blue-500'
+                                  ? 'bg-teal-50 dark:bg-teal-900/20 border-teal-500'
                                   : 'bg-red-50 dark:bg-red-900/20 border-red-500'
                               }`}
                             >
@@ -1013,7 +1013,7 @@ const DashboardPage = () => {
                 {wishlistLoading ? (
                   <div className="flex justify-center items-center h-96">
                     <div className="animate-spin">
-                      <div className="h-12 w-12 border-4 border-blue-500 border-t-transparent rounded-full"></div>
+                      <div className="h-12 w-12 border-4 border-teal-500 border-t-transparent rounded-full"></div>
                     </div>
                   </div>
                 ) : !Array.isArray(wishlist) || wishlist.length === 0 ? (
@@ -1025,7 +1025,7 @@ const DashboardPage = () => {
                     </p>
                     <button
                       onClick={() => navigate('/search')}
-                      className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-lg hover:shadow-lg transition-all"
+                      className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-teal-600 to-orange-600 text-white font-bold rounded-lg hover:shadow-lg transition-all"
                     >
                       <FiSearch size={18} />
                       Explore Packages
@@ -1147,7 +1147,7 @@ const DashboardPage = () => {
                             </div>
                             <div>
                               <p className="text-xs text-slate-600 dark:text-slate-400">Price</p>
-                              <p className="text-sm md:text-base font-semibold text-blue-600 dark:text-blue-400 truncate">
+                              <p className="text-sm md:text-base font-semibold text-teal-600 dark:text-teal-400 truncate">
                                 {price?.toLocaleString()} EGP
                               </p>
                             </div>
@@ -1156,7 +1156,7 @@ const DashboardPage = () => {
                           {/* Action Button */}
                           <button
                             onClick={() => navigate(`/package/${item.id}`)}
-                            className="w-full flex items-center justify-center gap-1.5 md:gap-2 px-3 md:px-4 py-2 md:py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold rounded-lg transition-all hover:shadow-lg text-sm md:text-base"
+                            className="w-full flex items-center justify-center gap-1.5 md:gap-2 px-3 md:px-4 py-2 md:py-3 bg-gradient-to-r from-teal-600 to-orange-600 hover:from-teal-700 hover:to-orange-700 text-white font-bold rounded-lg transition-all hover:shadow-lg text-sm md:text-base"
                           >
                             <span>View Details</span>
                             <FiExternalLink size={14} className="md:w-4 md:h-4" />
@@ -1174,7 +1174,7 @@ const DashboardPage = () => {
             {activeTab === 'profile' && (
               <div className="max-w-5xl space-y-4 md:space-y-6">
                 {/* Premium Profile Header */}
-                <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 dark:from-blue-700 dark:via-purple-700 dark:to-pink-700 shadow-xl">
+                <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-teal-600 via-orange-600 to-pink-600 dark:from-teal-700 dark:via-orange-700 dark:to-pink-700 shadow-xl">
                   {/* Decorative background elements */}
                   <div className="absolute inset-0 opacity-10">
                     <div className="absolute top-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl transform translate-x-1/3 -translate-y-1/3"></div>
@@ -1192,7 +1192,7 @@ const DashboardPage = () => {
                           ) : user?.avatar ? (
                             <img src={user.avatar} alt="Avatar" className="w-full h-full object-cover" />
                           ) : (
-                            <div className="w-full h-full bg-gradient-to-br from-blue-400 to-purple-400 flex items-center justify-center">
+                            <div className="w-full h-full bg-gradient-to-br from-teal-400 to-orange-400 flex items-center justify-center">
                               <FiUser size={56} className="md:w-16 md:h-16 lg:w-20 lg:h-20 text-white/80" />
                             </div>
                           )}
@@ -1282,7 +1282,7 @@ const DashboardPage = () => {
                     {!isEditingProfile && (
                       <button
                         onClick={() => setIsEditingProfile(true)}
-                        className="hidden sm:flex items-center gap-2 px-4 md:px-6 py-2 md:py-3 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold rounded-lg transition-all hover:shadow-lg hover:scale-105 text-sm md:text-base flex-shrink-0"
+                        className="hidden sm:flex items-center gap-2 px-4 md:px-6 py-2 md:py-3 bg-gradient-to-r from-teal-600 to-teal-700 hover:from-teal-700 hover:to-teal-800 text-white font-bold rounded-lg transition-all hover:shadow-lg hover:scale-105 text-sm md:text-base flex-shrink-0"
                       >
                         <FiEdit2 size={16} className="md:w-4.5 md:h-4.5" />
                         <span>{t('myProfilePage.edit')}</span>
@@ -1297,7 +1297,7 @@ const DashboardPage = () => {
                         {t('myProfilePage.fullName')}
                       </label>
                       <div className="relative">
-                        <FiUser className="absolute left-3 md:left-4 top-2.5 md:top-4 text-slate-400 dark:text-slate-500 group-focus-within:text-blue-500 transition-colors" size={18} />
+                        <FiUser className="absolute left-3 md:left-4 top-2.5 md:top-4 text-slate-400 dark:text-slate-500 group-focus-within:text-teal-500 transition-colors" size={18} />
                         <input
                           type="text"
                           value={profileData.name}
@@ -1305,7 +1305,7 @@ const DashboardPage = () => {
                           readOnly={!isEditingProfile}
                           className={`w-full pl-9 md:pl-12 pr-3 md:pr-4 py-2.5 md:py-3 rounded-xl border-2 font-medium text-slate-900 dark:text-white transition-all text-sm md:text-base ${
                             isEditingProfile
-                              ? 'border-blue-500 bg-white dark:bg-slate-700 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none shadow-sm'
+                              ? 'border-teal-500 bg-white dark:bg-slate-700 focus:ring-2 focus:ring-teal-500 focus:border-transparent outline-none shadow-sm'
                               : 'border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-700/50 cursor-default'
                           }`}
                         />
@@ -1346,7 +1346,7 @@ const DashboardPage = () => {
                           placeholder="Your phone number"
                           className={`w-full pl-9 md:pl-12 pr-3 md:pr-4 py-2.5 md:py-3 rounded-xl border-2 font-medium text-slate-900 dark:text-white transition-all text-sm md:text-base ${
                             isEditingProfile
-                              ? 'border-blue-500 bg-white dark:bg-slate-700 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none shadow-sm'
+                              ? 'border-teal-500 bg-white dark:bg-slate-700 focus:ring-2 focus:ring-teal-500 focus:border-transparent outline-none shadow-sm'
                               : 'border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-700/50 cursor-default'
                           }`}
                         />
@@ -1367,14 +1367,14 @@ const DashboardPage = () => {
                         </p>
                       </div>
 
-                      <div className="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 rounded-xl p-4 md:p-5 border border-blue-200 dark:border-blue-800/50">
+                      <div className="bg-gradient-to-br from-teal-50 to-teal-50 dark:from-teal-900/20 dark:to-teal-900/20 rounded-xl p-4 md:p-5 border border-teal-200 dark:border-teal-800/50">
                         <div className="flex items-center gap-2 md:gap-3 mb-1.5 md:mb-2">
-                          <div className="w-8 md:w-10 h-8 md:h-10 rounded-full bg-blue-500/20 flex items-center justify-center flex-shrink-0">
+                          <div className="w-8 md:w-10 h-8 md:h-10 rounded-full bg-teal-500/20 flex items-center justify-center flex-shrink-0">
                             <span className="text-lg">📅</span>
                           </div>
-                          <span className="text-xs font-bold text-blue-700 dark:text-blue-400 uppercase tracking-wide">Account Created</span>
+                          <span className="text-xs font-bold text-teal-700 dark:text-teal-400 uppercase tracking-wide">Account Created</span>
                         </div>
-                        <p className="text-sm md:text-base font-semibold text-blue-700 dark:text-blue-300">
+                        <p className="text-sm md:text-base font-semibold text-teal-700 dark:text-teal-300">
                           {profileData.createdAt
                             ? new Date(profileData.createdAt).toLocaleDateString('en-US', {
                                 year: 'numeric',
@@ -1426,7 +1426,7 @@ const DashboardPage = () => {
                         <>
                           <button
                             onClick={() => setIsEditingProfile(true)}
-                            className="sm:hidden flex-1 flex items-center justify-center gap-2 px-4 py-2.5 md:py-3 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold rounded-xl transition-all hover:shadow-lg active:scale-95 group text-sm md:text-base"
+                            className="sm:hidden flex-1 flex items-center justify-center gap-2 px-4 py-2.5 md:py-3 bg-gradient-to-r from-teal-600 to-teal-700 hover:from-teal-700 hover:to-teal-800 text-white font-bold rounded-xl transition-all hover:shadow-lg active:scale-95 group text-sm md:text-base"
                           >
                             <FiEdit2 size={16} className="md:w-4.5 md:h-4.5 group-hover:scale-110 transition-transform" />
                             <span>Edit Profile</span>
@@ -1451,26 +1451,26 @@ const DashboardPage = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                   <div className="bg-white dark:bg-slate-800 rounded-2xl p-4 md:p-6 shadow-lg border border-slate-200 dark:border-slate-700">
                     <div className="flex items-center gap-2 md:gap-3 mb-3 md:mb-4">
-                      <div className="w-10 md:w-12 h-10 md:h-12 rounded-lg bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center flex-shrink-0">
+                      <div className="w-10 md:w-12 h-10 md:h-12 rounded-lg bg-teal-100 dark:bg-teal-900/30 flex items-center justify-center flex-shrink-0">
                         <span className="text-lg md:text-2xl">🔐</span>
                       </div>
                       <h3 className="text-base md:text-lg font-bold text-slate-900 dark:text-white">Password</h3>
                     </div>
                     <p className="text-xs md:text-sm text-slate-600 dark:text-slate-400 mb-3 md:mb-4">Change your account password regularly</p>
-                    <button className="w-full px-4 py-2 md:py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-all hover:shadow-lg text-sm md:text-base">
+                    <button className="w-full px-4 py-2 md:py-2.5 bg-teal-600 hover:bg-teal-700 text-white font-semibold rounded-lg transition-all hover:shadow-lg text-sm md:text-base">
                       Change Password
                     </button>
                   </div>
 
                   <div className="bg-white dark:bg-slate-800 rounded-2xl p-4 md:p-6 shadow-lg border border-slate-200 dark:border-slate-700">
                     <div className="flex items-center gap-2 md:gap-3 mb-3 md:mb-4">
-                      <div className="w-10 md:w-12 h-10 md:h-12 rounded-lg bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center flex-shrink-0">
+                      <div className="w-10 md:w-12 h-10 md:h-12 rounded-lg bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center flex-shrink-0">
                         <span className="text-lg md:text-2xl">🔔</span>
                       </div>
                       <h3 className="text-base md:text-lg font-bold text-slate-900 dark:text-white">Notifications</h3>
                     </div>
                     <p className="text-xs md:text-sm text-slate-600 dark:text-slate-400 mb-3 md:mb-4">Manage your notification preferences</p>
-                    <button className="w-full px-4 py-2 md:py-2.5 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-lg transition-all hover:shadow-lg text-sm md:text-base">
+                    <button className="w-full px-4 py-2 md:py-2.5 bg-orange-600 hover:bg-orange-700 text-white font-semibold rounded-lg transition-all hover:shadow-lg text-sm md:text-base">
                       Settings
                     </button>
                   </div>

@@ -158,8 +158,8 @@ export function Sidebar() {
       >
         {/* Logo Section */}
         <div className="sticky top-0 p-6 border-b border-slate-700 bg-slate-900/80 backdrop-blur-md">
-          <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-400 via-blue-500 to-purple-500 bg-clip-text text-transparent flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
+          <h1 className="text-2xl font-bold bg-gradient-to-r from-teal-400 via-teal-500 to-orange-500 bg-clip-text text-transparent flex items-center gap-2">
+            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-teal-500 to-orange-600 flex items-center justify-center">
               <span className="text-white font-bold">A</span>
             </div>
             Admin
@@ -183,7 +183,7 @@ export function Sidebar() {
                     onClick={() => setActiveSubmenu(submenuOpen ? null : item.id)}
                     className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 group ${
                       submenuActive
-                        ? 'bg-gradient-to-r from-blue-600 to-purple-600 shadow-lg shadow-blue-600/20'
+                        ? 'bg-gradient-to-r from-teal-600 to-orange-600 shadow-lg shadow-teal-600/20'
                         : 'hover:bg-slate-700/50 text-slate-300 hover:text-white'
                     }`}
                   >
@@ -214,7 +214,7 @@ export function Sidebar() {
                             }}
                             className={`flex items-center gap-3 px-4 py-2 rounded-lg transition-all duration-200 group ${
                               subActive
-                                ? 'bg-blue-600/30 text-white'
+                                ? 'bg-teal-600/30 text-white'
                                 : 'hover:bg-slate-700/50 text-slate-400 hover:text-white'
                             }`}
                           >
@@ -247,7 +247,7 @@ export function Sidebar() {
                   item.id === 'home'
                     ? 'bg-gradient-to-r from-green-600 to-emerald-600 shadow-lg shadow-green-600/20 hover:from-green-700 hover:to-emerald-700 text-white font-semibold'
                     : active
-                    ? 'bg-gradient-to-r from-blue-600 to-purple-600 shadow-lg shadow-blue-600/20'
+                    ? 'bg-gradient-to-r from-teal-600 to-orange-600 shadow-lg shadow-teal-600/20'
                     : 'hover:bg-slate-700/50 text-slate-300 hover:text-white'
                 }`}
               >
@@ -270,7 +270,7 @@ export function Sidebar() {
           <div className="p-3 bg-slate-700/50 rounded-lg border border-slate-600">
             <p className="text-xs text-slate-400">Logged in as</p>
             <p className="text-sm font-bold text-white truncate">{user?.name || 'Admin'}</p>
-            <p className="text-xs text-blue-400">{user?.email || 'admin@example.com'}</p>
+            <p className="text-xs text-teal-400">{user?.email || 'admin@example.com'}</p>
           </div>
 
           {/* Logout Button */}

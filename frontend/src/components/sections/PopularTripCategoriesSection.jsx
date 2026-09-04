@@ -234,13 +234,13 @@ const PopularTripCategoriesSection = () => {
 
   return (
     <section
-      className="w-full py-12 md:py-20 bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100 dark:from-slate-900 dark:via-blue-900/30 dark:to-slate-800"
+      className="w-full py-12 md:py-20 bg-gradient-to-br from-slate-50 via-teal-50 to-slate-100 dark:from-slate-900 dark:via-teal-900/30 dark:to-slate-800"
       style={{ display: 'block', visibility: 'visible', minHeight: '200px' }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-12 space-y-4">
-          <div className="inline-block px-4 py-2 bg-blue-100 dark:bg-blue-900/30 rounded-full text-blue-600 dark:text-blue-400 text-xs md:text-sm font-bold flex items-center gap-2 justify-center">
+          <div className="inline-block px-4 py-2 bg-teal-100 dark:bg-teal-900/30 rounded-full text-teal-600 dark:text-teal-400 text-xs md:text-sm font-bold flex items-center gap-2 justify-center">
             <BiTrendingUp size={16} />
             <span>{t('home.exploreCategories') || 'EXPLORE CATEGORIES'}</span>
           </div>
@@ -280,8 +280,8 @@ const PopularTripCategoriesSection = () => {
                   onMouseLeave={() => setHoveredCategoryId(null)}
                   className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 flex items-center gap-2 group ${
                     selectedCategory?.id === category.id
-                      ? 'bg-blue-600 text-white shadow-lg scale-105'
-                      : 'bg-white dark:bg-slate-800 text-slate-900 dark:text-white border-2 border-slate-300 dark:border-slate-600 hover:border-blue-500 dark:hover:border-blue-400'
+                      ? 'bg-teal-600 text-white shadow-lg scale-105'
+                      : 'bg-white dark:bg-slate-800 text-slate-900 dark:text-white border-2 border-slate-300 dark:border-slate-600 hover:border-teal-500 dark:hover:border-teal-400'
                   }`}
                 >
                   <span>{category.name}</span>
@@ -306,7 +306,7 @@ const PopularTripCategoriesSection = () => {
                           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                         />
                       ) : (
-                        <div className="w-full h-full bg-gradient-to-br from-blue-400 to-purple-500 group-hover:from-blue-500 group-hover:to-purple-600 transition-all flex items-center justify-center">
+                        <div className="w-full h-full bg-gradient-to-br from-teal-400 to-orange-500 group-hover:from-teal-500 group-hover:to-orange-600 transition-all flex items-center justify-center">
                           <BiWorld size={80} className="text-white/50" />
                         </div>
                       )}
@@ -329,7 +329,7 @@ const PopularTripCategoriesSection = () => {
                           console.log(`📂 [PopularCategories] Navigating to category search: ${selectedCategory.id} - ${selectedCategory.name}`);
                           navigate(`/search?category=${selectedCategory.id}&categoryName=${encodeURIComponent(selectedCategory.name)}`);
                         }}
-                        className="bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-3 rounded-lg flex items-center gap-2 group transition-all w-full justify-center md:w-auto"
+                        className="bg-teal-600 hover:bg-teal-700 text-white font-bold px-6 py-3 rounded-lg flex items-center gap-2 group transition-all w-full justify-center md:w-auto"
                       >
                         <span>View All {selectedCategory.name}</span>
                         <FiArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
@@ -339,9 +339,9 @@ const PopularTripCategoriesSection = () => {
 
                   {/* Right: Trips Count Info */}
                   <div className="flex flex-col justify-center">
-                    <div className="bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-xl p-6 md:p-8 border border-blue-200 dark:border-blue-800">
+                    <div className="bg-gradient-to-br from-teal-50 to-orange-50 dark:from-teal-900/20 dark:to-orange-900/20 rounded-xl p-6 md:p-8 border border-teal-200 dark:border-teal-800">
                       <div className="text-center mb-6">
-                        <div className="text-4xl md:text-5xl font-bold text-blue-600 dark:text-blue-400 mb-2">
+                        <div className="text-4xl md:text-5xl font-bold text-teal-600 dark:text-teal-400 mb-2">
                           {categoriesWithCounts[selectedCategory?.id] ?? 0}
                         </div>
                         <p className="text-slate-600 dark:text-slate-400 font-semibold">
@@ -351,7 +351,7 @@ const PopularTripCategoriesSection = () => {
 
                       <div className="space-y-4 mb-6">
                         <div className="flex items-start gap-3 pb-4 border-b border-slate-300 dark:border-slate-600">
-                          <BiTrendingUp size={20} className="text-blue-500 flex-shrink-0 mt-1" />
+                          <BiTrendingUp size={20} className="text-teal-500 flex-shrink-0 mt-1" />
                           <div>
                             <p className="font-semibold text-slate-900 dark:text-white">{t('home.trendingDestination') || 'Trending Destination'}</p>
                             <p className="text-sm text-slate-600 dark:text-slate-400">
@@ -360,7 +360,7 @@ const PopularTripCategoriesSection = () => {
                           </div>
                         </div>
                         <div className="flex items-start gap-3">
-                          <BiWorld size={20} className="text-purple-500 flex-shrink-0 mt-1" />
+                          <BiWorld size={20} className="text-orange-500 flex-shrink-0 mt-1" />
                           <div>
                             <p className="font-semibold text-slate-900 dark:text-white">{t('home.diverseExperiences') || 'Diverse Experiences'}</p>
                             <p className="text-sm text-slate-600 dark:text-slate-400">
@@ -375,7 +375,7 @@ const PopularTripCategoriesSection = () => {
                           console.log(`📂 [PopularCategories] Browse button clicked: ${selectedCategory.id} - ${selectedCategory.name}`);
                           navigate(`/search?category=${selectedCategory.id}&categoryName=${encodeURIComponent(selectedCategory.name)}`);
                         }}
-                        className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold py-3 rounded-lg transition-all group"
+                        className="w-full bg-gradient-to-r from-teal-600 to-orange-600 hover:from-teal-700 hover:to-orange-700 text-white font-bold py-3 rounded-lg transition-all group"
                       >
                         <span>{t('home.browseCategory') || 'Browse'} {selectedCategory.name}</span>
                       </Button>
@@ -392,7 +392,7 @@ const PopularTripCategoriesSection = () => {
                   {t('home.tripsIn') || 'Trips in'} {selectedCategory?.name || 'Selected Category'}
                 </h3>
                 {packagesLoading && (
-                  <div className="flex items-center gap-2 text-blue-600 dark:text-blue-400">
+                  <div className="flex items-center gap-2 text-teal-600 dark:text-teal-400">
                     <FiLoader size={18} className="animate-spin" />
                     <span className="text-sm font-medium">Loading...</span>
                   </div>
@@ -426,15 +426,15 @@ const PopularTripCategoriesSection = () => {
                     <div className="text-xs text-slate-600 dark:text-slate-400 space-y-2 font-mono bg-white dark:bg-slate-900/50 rounded p-4">
                       <div className="flex justify-between">
                         <span>Category ID:</span>
-                        <span className="font-bold text-blue-600 dark:text-blue-400">{selectedCategory?.id}</span>
+                        <span className="font-bold text-teal-600 dark:text-teal-400">{selectedCategory?.id}</span>
                       </div>
                       <div className="flex justify-between">
                         <span>Category Name:</span>
-                        <span className="font-bold text-blue-600 dark:text-blue-400">{selectedCategory?.name}</span>
+                        <span className="font-bold text-teal-600 dark:text-teal-400">{selectedCategory?.name}</span>
                       </div>
                       <div className="flex justify-between">
                         <span>Reported Total:</span>
-                        <span className="font-bold text-blue-600 dark:text-blue-400">{categoriesWithCounts[selectedCategory?.id] ?? 0}</span>
+                        <span className="font-bold text-teal-600 dark:text-teal-400">{categoriesWithCounts[selectedCategory?.id] ?? 0}</span>
                       </div>
                       <div className="flex justify-between">
                         <span>API Response:</span>
@@ -452,7 +452,7 @@ const PopularTripCategoriesSection = () => {
                   <div className="mt-8 flex flex-wrap gap-3 justify-center">
                     <Button
                       onClick={() => window.location.reload()}
-                      className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg transition-all"
+                      className="bg-teal-600 hover:bg-teal-700 text-white px-6 py-2 rounded-lg transition-all"
                     >
                       Refresh Page
                     </Button>
@@ -473,7 +473,7 @@ const PopularTripCategoriesSection = () => {
                       onClick={() => navigate(`/package/${pkg.id}`)}
                     >
                       {/* Image */}
-                      <div className="relative h-48 bg-gradient-to-br from-blue-400 to-purple-500 overflow-hidden">
+                      <div className="relative h-48 bg-gradient-to-br from-teal-400 to-orange-500 overflow-hidden">
                         {pkg.images && pkg.images.length > 0 && (pkg.images[0]?.image_data || pkg.images[0]?.url) ? (
                           <>
                             {pkg.images[0]?.image_data && (
@@ -532,18 +532,18 @@ const PopularTripCategoriesSection = () => {
 
                       {/* Content */}
                       <div className="p-4 md:p-5 space-y-4">
-                        <h3 className="font-bold text-base md:text-lg text-slate-900 dark:text-white line-clamp-2 group-hover:text-blue-600">
+                        <h3 className="font-bold text-base md:text-lg text-slate-900 dark:text-white line-clamp-2 group-hover:text-teal-600">
                           {pkg.display_title}
                         </h3>
 
                         {/* Meta Info */}
                         <div className="space-y-2 text-sm text-slate-600 dark:text-slate-400">
                           <div className="flex items-center gap-2">
-                            <FiCalendar size={16} className="text-blue-500 flex-shrink-0" />
+                            <FiCalendar size={16} className="text-teal-500 flex-shrink-0" />
                             <span>{pkg.duration_days} Days</span>
                           </div>
                           <div className="flex items-center gap-2">
-                            <FiMapPin size={16} className="text-blue-500 flex-shrink-0" />
+                            <FiMapPin size={16} className="text-teal-500 flex-shrink-0" />
                             <span className="truncate">{pkg.destination}</span>
                           </div>
                         </div>
@@ -578,7 +578,7 @@ const PopularTripCategoriesSection = () => {
                         <div className="flex justify-between items-end">
                           <div>
                             <p className="text-xs text-slate-600 dark:text-slate-400">From</p>
-                            <p className="text-xl md:text-2xl font-bold text-blue-600">
+                            <p className="text-xl md:text-2xl font-bold text-teal-600">
                               {pkg.base_price && pkg.base_price > 0 
                                 ? `$${pkg.base_price?.toLocaleString()}`
                                 : <span className="text-orange-500">Price Not Set</span>
@@ -588,7 +588,7 @@ const PopularTripCategoriesSection = () => {
                           <Button
                             variant="primary"
                             size="sm"
-                            className="bg-blue-600 hover:bg-blue-700 p-2"
+                            className="bg-teal-600 hover:bg-teal-700 p-2"
                           >
                             <FiArrowRight size={16} />
                           </Button>
@@ -607,7 +607,7 @@ const PopularTripCategoriesSection = () => {
                       console.log(`📂 [PopularCategories] View All button clicked: ${selectedCategory?.id} - ${selectedCategory?.name}`);
                       navigate(`/search?category=${selectedCategory?.id}&categoryName=${encodeURIComponent(selectedCategory?.name)}`);
                     }}
-                    className="border-2 border-blue-600 text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20 px-8 md:px-10 py-3 rounded-lg group transition-all inline-flex items-center gap-2 font-bold"
+                    className="border-2 border-teal-600 text-teal-600 hover:bg-teal-50 dark:hover:bg-teal-900/20 px-8 md:px-10 py-3 rounded-lg group transition-all inline-flex items-center gap-2 font-bold"
                   >
                     <span>View All {selectedCategory?.name} Trips</span>
                     <FiArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />

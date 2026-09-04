@@ -90,7 +90,7 @@ export function Header() {
           <div className="flex items-center gap-3 flex-1 min-w-0">
             {/* Logo */}
             <div className="flex-shrink-0">
-              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-teal-500 to-teal-600 flex items-center justify-center">
                 <span className="text-white font-bold text-lg">A</span>
               </div>
             </div>
@@ -175,7 +175,7 @@ export function Header() {
               {/* Notifications Dropdown */}
               {notificationsOpen && (
                 <div className="absolute top-full right-0 mt-2 w-96 bg-white dark:bg-slate-800 rounded-xl shadow-2xl border border-slate-200 dark:border-slate-700 overflow-hidden z-50">
-                  <div className="p-4 bg-gradient-to-r from-blue-50 to-blue-100 dark:from-slate-700 dark:to-slate-600 border-b border-slate-200 dark:border-slate-700">
+                  <div className="p-4 bg-gradient-to-r from-teal-50 to-teal-100 dark:from-slate-700 dark:to-slate-600 border-b border-slate-200 dark:border-slate-700">
                     <h3 className="font-bold text-slate-900 dark:text-white">
                       Notifications
                     </h3>
@@ -186,7 +186,7 @@ export function Header() {
                   <div className="divide-y divide-slate-200 dark:divide-slate-700 max-h-80 overflow-y-auto">
                     <div className="p-4 hover:bg-slate-50 dark:hover:bg-slate-700/50 cursor-pointer transition-colors">
                       <div className="flex items-start gap-3">
-                        <div className="w-2.5 h-2.5 mt-1.5 bg-blue-500 rounded-full flex-shrink-0"></div>
+                        <div className="w-2.5 h-2.5 mt-1.5 bg-teal-500 rounded-full flex-shrink-0"></div>
                         <div className="flex-1 min-w-0">
                           <p className="text-sm font-medium text-slate-900 dark:text-white">
                             New booking received
@@ -212,7 +212,7 @@ export function Header() {
                     </div>
                   </div>
                   <div className="p-3 border-t border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-700/30">
-                    <button className="w-full text-sm text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 font-medium py-2 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors">
+                    <button className="w-full text-sm text-teal-600 hover:text-teal-700 dark:text-teal-400 dark:hover:text-teal-300 font-medium py-2 rounded-lg hover:bg-teal-50 dark:hover:bg-teal-900/20 transition-colors">
                       View all notifications
                     </button>
                   </div>
@@ -242,7 +242,7 @@ export function Header() {
                 }}
                 className="flex items-center gap-2 px-3 py-2 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg transition-colors duration-200 group"
               >
-                <div className="w-9 h-9 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white text-sm font-bold shadow-md flex-shrink-0 overflow-hidden">
+                <div className="w-9 h-9 rounded-full bg-gradient-to-br from-teal-500 to-orange-600 flex items-center justify-center text-white text-sm font-bold shadow-md flex-shrink-0 overflow-hidden">
                   {profileImageUrl ? (
                     <img 
                       src={profileImageUrl}
@@ -273,7 +273,7 @@ export function Header() {
               {profileOpen && (
                 <div className="absolute top-full right-0 mt-2 w-56 bg-white dark:bg-slate-800 rounded-xl shadow-2xl border border-slate-200 dark:border-slate-700 overflow-hidden z-50">
                   {/* Profile Header */}
-                  <div className="p-4 bg-gradient-to-r from-blue-50 to-blue-100 dark:from-slate-700 dark:to-slate-600 border-b border-slate-200 dark:border-slate-700">
+                  <div className="p-4 bg-gradient-to-r from-teal-50 to-teal-100 dark:from-slate-700 dark:to-slate-600 border-b border-slate-200 dark:border-slate-700">
                     <p className="text-sm font-semibold text-slate-900 dark:text-white truncate">
                       {user?.name || 'Administrator'}
                     </p>
@@ -287,14 +287,14 @@ export function Header() {
                     <button 
                       onClick={handleNavigateToProfile}
                       className="w-full flex items-center gap-3 px-4 py-3 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg transition-colors text-sm font-medium group">
-                      <FiUser size={18} className="text-slate-500 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors" />
+                      <FiUser size={18} className="text-slate-500 group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors" />
                       <span>My Profile</span>
                     </button>
 
                     <button 
                       onClick={handleNavigateToSettings}
                       className="w-full flex items-center gap-3 px-4 py-3 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg transition-colors text-sm font-medium group">
-                      <FiSettings size={18} className="text-slate-500 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors" />
+                      <FiSettings size={18} className="text-slate-500 group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors" />
                       <span>Settings</span>
                     </button>
                   </div>

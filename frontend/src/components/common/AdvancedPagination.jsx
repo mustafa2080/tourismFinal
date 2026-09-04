@@ -97,7 +97,7 @@ const AdvancedPagination = ({
               disabled={page === '...' || disabled}
               className={`w-10 h-10 rounded-lg font-semibold transition ${
                 page === currentPage
-                  ? 'bg-blue-600 text-white shadow-lg'
+                  ? 'bg-teal-600 text-white shadow-lg'
                   : page === '...'
                   ? 'cursor-default text-gray-500'
                   : 'hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-900 dark:text-white'
@@ -175,11 +175,11 @@ const AdvancedPagination = ({
     <div className={`space-y-6 ${className}`}>
       {/* Info Row */}
       {showItemsInfo && totalItems > 0 && (
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 px-4 py-3 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-slate-800 dark:to-slate-700/50 rounded-lg border border-blue-200 dark:border-slate-600">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 px-4 py-3 bg-gradient-to-r from-teal-50 to-orange-50 dark:from-slate-800 dark:to-slate-700/50 rounded-lg border border-teal-200 dark:border-slate-600">
           <div className="text-sm text-gray-700 dark:text-slate-300">
-            Showing <span className="font-bold text-blue-600 dark:text-blue-400">{startItem}</span> to{' '}
-            <span className="font-bold text-blue-600 dark:text-blue-400">{endItem}</span> of{' '}
-            <span className="font-bold text-blue-600 dark:text-blue-400">{totalItems}</span> results
+            Showing <span className="font-bold text-teal-600 dark:text-teal-400">{startItem}</span> to{' '}
+            <span className="font-bold text-teal-600 dark:text-teal-400">{endItem}</span> of{' '}
+            <span className="font-bold text-teal-600 dark:text-teal-400">{totalItems}</span> results
           </div>
 
           <div className="text-xs font-semibold text-gray-600 dark:text-slate-400 bg-white/50 dark:bg-slate-800/50 px-3 py-1 rounded-full">
@@ -222,10 +222,10 @@ const AdvancedPagination = ({
               disabled={page === '...' || disabled}
               className={`w-10 h-10 rounded-lg font-semibold transition-all transform ${
                 page === currentPage
-                  ? 'bg-gradient-to-br from-blue-600 to-purple-600 text-white shadow-lg shadow-blue-400/50 scale-110'
+                  ? 'bg-gradient-to-br from-teal-600 to-orange-600 text-white shadow-lg shadow-teal-400/50 scale-110'
                   : page === '...'
                   ? 'cursor-default text-gray-400 dark:text-slate-500'
-                  : 'bg-white dark:bg-slate-800 border border-gray-300 dark:border-slate-600 text-gray-900 dark:text-white hover:border-blue-500 dark:hover:border-blue-400 hover:text-blue-600 dark:hover:text-blue-400 hover:shadow-md'
+                  : 'bg-white dark:bg-slate-800 border border-gray-300 dark:border-slate-600 text-gray-900 dark:text-white hover:border-teal-500 dark:hover:border-teal-400 hover:text-teal-600 dark:hover:text-teal-400 hover:shadow-md'
               }`}
               aria-current={page === currentPage ? 'page' : undefined}
             >
@@ -274,12 +274,12 @@ const AdvancedPagination = ({
                 value={jumpValue}
                 onChange={(e) => setJumpValue(e.target.value)}
                 placeholder="Page"
-                className="w-16 px-3 py-2 rounded-lg border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-gray-900 dark:text-white text-sm focus:outline-none focus:border-blue-500 dark:focus:border-blue-400 focus:ring-1 focus:ring-blue-500"
+                className="w-16 px-3 py-2 rounded-lg border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-gray-900 dark:text-white text-sm focus:outline-none focus:border-teal-500 dark:focus:border-teal-400 focus:ring-1 focus:ring-teal-500"
               />
               <button
                 type="submit"
                 disabled={!jumpValue || disabled}
-                className="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-medium text-sm disabled:opacity-50 disabled:cursor-not-allowed transition"
+                className="px-4 py-2 rounded-lg bg-teal-600 hover:bg-teal-700 text-white font-medium text-sm disabled:opacity-50 disabled:cursor-not-allowed transition"
               >
                 Go
               </button>

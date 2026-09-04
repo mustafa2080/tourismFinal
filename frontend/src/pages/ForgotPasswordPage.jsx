@@ -75,14 +75,14 @@ const ForgotPasswordPage = () => {
         <div className="relative min-h-screen w-full overflow-hidden pt-20 pb-12">
           {/* Animated Background */}
           <div className="absolute inset-0 -z-10">
-            <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-blue-500/20 via-purple-500/20 to-pink-500/20 rounded-full blur-3xl animate-pulse" />
-            <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-br from-purple-500/20 via-pink-500/20 to-red-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+            <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-teal-500/20 via-orange-500/20 to-pink-500/20 rounded-full blur-3xl animate-pulse" />
+            <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-br from-orange-500/20 via-pink-500/20 to-red-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
           </div>
 
           <div className="max-w-md mx-auto px-4">
             <div className="bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-2xl text-center animate-in fade-in slide-in-from-bottom-4">
               <div className="flex justify-center mb-6">
-                <div className="relative w-20 h-20 bg-gradient-to-br from-green-400 to-blue-500 rounded-full flex items-center justify-center shadow-lg">
+                <div className="relative w-20 h-20 bg-gradient-to-br from-green-400 to-teal-500 rounded-full flex items-center justify-center shadow-lg">
                   <FiCheckCircle className="text-4xl text-white" />
                 </div>
               </div>
@@ -98,7 +98,7 @@ const ForgotPasswordPage = () => {
                 {email}
               </p>
 
-              <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-xl p-4 mb-6">
+              <div className="bg-teal-50 dark:bg-teal-900/20 border border-teal-200 dark:border-teal-800 rounded-xl p-4 mb-6">
                 <p className="text-sm text-slate-600 dark:text-slate-400">
                   Click the link in your email to reset your password. The link expires in 1 hour.
                 </p>
@@ -110,7 +110,7 @@ const ForgotPasswordPage = () => {
 
               <button
                 onClick={() => navigate('/login')}
-                className="w-full py-3 px-4 rounded-xl font-bold text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl"
+                className="w-full py-3 px-4 rounded-xl font-bold text-white bg-gradient-to-r from-teal-600 to-orange-600 hover:from-teal-700 hover:to-orange-700 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl"
               >
                 Back to Login
               </button>
@@ -126,8 +126,8 @@ const ForgotPasswordPage = () => {
       <div className="relative min-h-screen w-full overflow-hidden pt-20 pb-12">
         {/* Animated Background */}
         <div className="absolute inset-0 -z-10">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-blue-500/20 via-purple-500/20 to-pink-500/20 rounded-full blur-3xl animate-pulse" />
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-br from-purple-500/20 via-pink-500/20 to-red-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+          <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-teal-500/20 via-orange-500/20 to-pink-500/20 rounded-full blur-3xl animate-pulse" />
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-br from-orange-500/20 via-pink-500/20 to-red-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
         </div>
 
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -135,12 +135,12 @@ const ForgotPasswordPage = () => {
             {/* Left Side - Info Section (Desktop Only) */}
             <div className="hidden lg:flex flex-col justify-center space-y-8 animate-in fade-in slide-in-from-left-8 duration-700">
               <div className="space-y-4">
-                <div className="inline-flex items-center gap-3 px-4 py-2 bg-blue-100 dark:bg-blue-900/30 rounded-full">
-                  <BiWorld className="text-2xl text-blue-600 dark:text-blue-400" />
-                  <span className="text-sm font-bold text-blue-600 dark:text-blue-400">Reset Password</span>
+                <div className="inline-flex items-center gap-3 px-4 py-2 bg-teal-100 dark:bg-teal-900/30 rounded-full">
+                  <BiWorld className="text-2xl text-teal-600 dark:text-teal-400" />
+                  <span className="text-sm font-bold text-teal-600 dark:text-teal-400">Reset Password</span>
                 </div>
 
-                <h1 className="text-5xl lg:text-6xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+                <h1 className="text-5xl lg:text-6xl font-bold bg-gradient-to-r from-teal-600 via-orange-600 to-pink-600 bg-clip-text text-transparent">
                   Regain Access to Your Account
                 </h1>
 
@@ -158,7 +158,7 @@ const ForgotPasswordPage = () => {
                 ].map((feature, idx) => (
                   <div
                     key={idx}
-                    className="flex gap-4 p-4 rounded-xl bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm border border-slate-200 dark:border-slate-700 hover:border-blue-400 dark:hover:border-blue-400 transition-all duration-300 group"
+                    className="flex gap-4 p-4 rounded-xl bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm border border-slate-200 dark:border-slate-700 hover:border-teal-400 dark:hover:border-teal-400 transition-all duration-300 group"
                   >
                     <span className="text-3xl group-hover:scale-110 transition-transform duration-300">{feature.icon}</span>
                     <div>
@@ -178,7 +178,7 @@ const ForgotPasswordPage = () => {
                   {/* Header */}
                   <div className="text-center mb-8 space-y-3">
                     <div className="flex justify-center">
-                      <div className="relative w-16 h-16 bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 rounded-xl flex items-center justify-center shadow-lg shadow-blue-500/30">
+                      <div className="relative w-16 h-16 bg-gradient-to-br from-teal-500 via-orange-500 to-pink-500 rounded-xl flex items-center justify-center shadow-lg shadow-teal-500/30">
                         <BiWorld className="text-3xl text-white" />
                       </div>
                     </div>
@@ -206,7 +206,7 @@ const ForgotPasswordPage = () => {
                         Email Address
                       </label>
                       <div className="relative">
-                        <FiMail className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-500 group-focus-within:text-blue-600 dark:group-focus-within:text-blue-400 transition-colors" size={20} />
+                        <FiMail className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-500 group-focus-within:text-teal-600 dark:group-focus-within:text-teal-400 transition-colors" size={20} />
                         <input
                           type="email"
                           value={email}
@@ -216,7 +216,7 @@ const ForgotPasswordPage = () => {
                           className={`w-full px-4 py-3.5 pl-12 rounded-xl border-2 transition-all duration-300 placeholder-slate-500 dark:placeholder-slate-400 outline-none ${
                             error && touched
                               ? 'border-red-500 dark:border-red-500 bg-red-50/50 dark:bg-red-900/10'
-                              : 'border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 focus:border-blue-500 dark:focus:border-blue-400'
+                              : 'border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 focus:border-teal-500 dark:focus:border-teal-400'
                           } text-slate-900 dark:text-white`}
                         />
                         {!error && touched && email && validateEmail(email) && (
@@ -235,7 +235,7 @@ const ForgotPasswordPage = () => {
                     <button
                       type="submit"
                       disabled={loading}
-                      className="w-full py-3.5 md:py-4 px-4 rounded-xl font-bold text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl hover:shadow-blue-500/40 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none disabled:shadow-none flex items-center justify-center gap-2"
+                      className="w-full py-3.5 md:py-4 px-4 rounded-xl font-bold text-white bg-gradient-to-r from-teal-600 to-orange-600 hover:from-teal-700 hover:to-orange-700 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl hover:shadow-teal-500/40 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none disabled:shadow-none flex items-center justify-center gap-2"
                     >
                       {loading ? (
                         <>

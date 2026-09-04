@@ -220,7 +220,7 @@ export function SettingsPage() {
     return (
       <div className="flex items-center justify-center min-h-screen">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-16 w-16 border-4 border-blue-600 border-t-transparent mx-auto mb-4"></div>
+          <div className="animate-spin rounded-full h-16 w-16 border-4 border-teal-600 border-t-transparent mx-auto mb-4"></div>
           <p className="text-lg font-medium text-slate-600 dark:text-slate-400">Loading settings...</p>
         </div>
       </div>
@@ -232,7 +232,7 @@ export function SettingsPage() {
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <div className="flex items-center gap-4">
-          <div className="p-3 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl shadow-lg">
+          <div className="p-3 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl shadow-lg">
             <FiSettings className="text-white" size={32} />
           </div>
           <div>
@@ -261,15 +261,15 @@ export function SettingsPage() {
 
       {/* General Settings */}
       <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
-        <div className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-slate-700 dark:to-slate-600 px-6 py-5 border-b border-slate-200 dark:border-slate-700 flex items-center gap-3">
-          <FiGlobe className="text-blue-600 dark:text-blue-400" size={24} />
+        <div className="bg-gradient-to-r from-teal-50 to-orange-50 dark:from-slate-700 dark:to-slate-600 px-6 py-5 border-b border-slate-200 dark:border-slate-700 flex items-center gap-3">
+          <FiGlobe className="text-teal-600 dark:text-teal-400" size={24} />
           <h2 className="text-xl font-bold text-slate-900 dark:text-white">General Settings</h2>
         </div>
         <div className="p-6 space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <label className="flex items-center gap-2 text-sm font-bold text-slate-900 dark:text-white mb-2">
-                <FiInfo className="text-blue-600" size={16} />
+                <FiInfo className="text-teal-600" size={16} />
                 Site Name
               </label>
               <input
@@ -277,7 +277,7 @@ export function SettingsPage() {
                 value={settings.siteName}
                 onChange={(e) => handleSettingChange('siteName', e.target.value)}
                 placeholder="e.g. Luxor Tours"
-                className="w-full px-4 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-xl bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all"
+                className="w-full px-4 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-xl bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 transition-all"
               />
             </div>
 
@@ -291,13 +291,13 @@ export function SettingsPage() {
                 value={settings.siteEmail}
                 onChange={(e) => handleSettingChange('siteEmail', e.target.value)}
                 placeholder="admin@luxortours.com"
-                className="w-full px-4 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-xl bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all"
+                className="w-full px-4 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-xl bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 transition-all"
               />
             </div>
 
             <div>
               <label className="flex items-center gap-2 text-sm font-bold text-slate-900 dark:text-white mb-2">
-                <FiPhone className="text-purple-600" size={16} />
+                <FiPhone className="text-orange-600" size={16} />
                 Phone Number
               </label>
               <input
@@ -305,7 +305,7 @@ export function SettingsPage() {
                 value={settings.sitPhone}
                 onChange={(e) => handleSettingChange('sitPhone', e.target.value)}
                 placeholder="+20 100 123 4567"
-                className="w-full px-4 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-xl bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all"
+                className="w-full px-4 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-xl bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 transition-all"
               />
             </div>
 
@@ -319,7 +319,7 @@ export function SettingsPage() {
                 value={settings.siteDescription}
                 onChange={(e) => handleSettingChange('siteDescription', e.target.value)}
                 placeholder="Best tours in Luxor and Egypt"
-                className="w-full px-4 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-xl bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all"
+                className="w-full px-4 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-xl bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 transition-all"
               />
             </div>
           </div>
@@ -328,15 +328,15 @@ export function SettingsPage() {
 
       {/* Email Configuration */}
       <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
-        <div className="bg-gradient-to-r from-purple-50 to-pink-50 dark:from-slate-700 dark:to-slate-600 px-6 py-5 border-b border-slate-200 dark:border-slate-700 flex items-center justify-between">
+        <div className="bg-gradient-to-r from-orange-50 to-pink-50 dark:from-slate-700 dark:to-slate-600 px-6 py-5 border-b border-slate-200 dark:border-slate-700 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <FiMail className="text-purple-600 dark:text-purple-400" size={24} />
+            <FiMail className="text-orange-600 dark:text-orange-400" size={24} />
             <h2 className="text-xl font-bold text-slate-900 dark:text-white">Email Configuration</h2>
           </div>
           <button
             onClick={handleTestEmail}
             disabled={testingEmail}
-            className="flex items-center gap-2 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 disabled:opacity-50 transition-all text-sm font-semibold shadow-md"
+            className="flex items-center gap-2 px-4 py-2 bg-orange-600 text-white rounded-lg hover:bg-orange-700 disabled:opacity-50 transition-all text-sm font-semibold shadow-md"
           >
             <FiSend size={16} />
             {testingEmail ? 'Testing...' : 'Test Email'}
@@ -346,7 +346,7 @@ export function SettingsPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <label className="flex items-center gap-2 text-sm font-bold text-slate-900 dark:text-white mb-2">
-                <FiServer className="text-indigo-600" size={16} />
+                <FiServer className="text-orange-600" size={16} />
                 SMTP Host
               </label>
               <input
@@ -354,7 +354,7 @@ export function SettingsPage() {
                 value={settings.smtpHost}
                 onChange={(e) => handleSettingChange('smtpHost', e.target.value)}
                 placeholder="smtp.gmail.com"
-                className="w-full px-4 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-xl bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all"
+                className="w-full px-4 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-xl bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 transition-all"
               />
             </div>
 
@@ -368,7 +368,7 @@ export function SettingsPage() {
                 value={settings.smtpPort}
                 onChange={(e) => handleSettingChange('smtpPort', parseInt(e.target.value) || 587)}
                 placeholder="587"
-                className="w-full px-4 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-xl bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all"
+                className="w-full px-4 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-xl bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 transition-all"
               />
             </div>
 
@@ -382,7 +382,7 @@ export function SettingsPage() {
                 value={settings.smtpUser}
                 onChange={(e) => handleSettingChange('smtpUser', e.target.value)}
                 placeholder="your-email@gmail.com"
-                className="w-full px-4 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-xl bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all"
+                className="w-full px-4 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-xl bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 transition-all"
               />
             </div>
 
@@ -396,13 +396,13 @@ export function SettingsPage() {
                 value={settings.smtpPassword}
                 onChange={(e) => handleSettingChange('smtpPassword', e.target.value)}
                 placeholder="••••••••"
-                className="w-full px-4 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-xl bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all"
+                className="w-full px-4 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-xl bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 transition-all"
               />
             </div>
 
             <div>
               <label className="flex items-center gap-2 text-sm font-bold text-slate-900 dark:text-white mb-2">
-                <FiInfo className="text-blue-600" size={16} />
+                <FiInfo className="text-teal-600" size={16} />
                 From Name
               </label>
               <input
@@ -410,7 +410,7 @@ export function SettingsPage() {
                 value={settings.emailFromName}
                 onChange={(e) => handleSettingChange('emailFromName', e.target.value)}
                 placeholder="Luxor Tours"
-                className="w-full px-4 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-xl bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all"
+                className="w-full px-4 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-xl bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 transition-all"
               />
             </div>
 
@@ -424,7 +424,7 @@ export function SettingsPage() {
                 value={settings.emailFromAddress}
                 onChange={(e) => handleSettingChange('emailFromAddress', e.target.value)}
                 placeholder="no-reply@luxortours.com"
-                className="w-full px-4 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-xl bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all"
+                className="w-full px-4 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-xl bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 transition-all"
               />
             </div>
           </div>
@@ -439,12 +439,12 @@ export function SettingsPage() {
         </div>
         <div className="p-6 space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="flex items-center gap-3 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-xl border border-blue-200 dark:border-blue-800">
+            <div className="flex items-center gap-3 p-4 bg-teal-50 dark:bg-teal-900/20 rounded-xl border border-teal-200 dark:border-teal-800">
               <input
                 type="checkbox"
                 checked={settings.bookingConfirmationEmail}
                 onChange={(e) => handleSettingChange('bookingConfirmationEmail', e.target.checked)}
-                className="w-5 h-5 rounded border-blue-400 text-blue-600 focus:ring-blue-500"
+                className="w-5 h-5 rounded border-teal-400 text-teal-600 focus:ring-teal-500"
               />
               <div>
                 <p className="font-semibold text-slate-900 dark:text-white">Send Confirmation Email</p>
@@ -462,7 +462,7 @@ export function SettingsPage() {
                 value={settings.bookingReminderDays}
                 onChange={(e) => handleSettingChange('bookingReminderDays', parseInt(e.target.value) || 1)}
                 min="1"
-                className="w-full px-4 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-xl bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all"
+                className="w-full px-4 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-xl bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 transition-all"
               />
             </div>
 
@@ -476,13 +476,13 @@ export function SettingsPage() {
                 value={settings.maxRefundDays}
                 onChange={(e) => handleSettingChange('maxRefundDays', parseInt(e.target.value) || 1)}
                 min="1"
-                className="w-full px-4 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-xl bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all"
+                className="w-full px-4 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-xl bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 transition-all"
               />
             </div>
 
             <div>
               <label className="flex items-center gap-2 text-sm font-bold text-slate-900 dark:text-white mb-2">
-                <FiClock className="text-purple-600" size={16} />
+                <FiClock className="text-orange-600" size={16} />
                 Min Booking Notice (Hours)
               </label>
               <input
@@ -490,7 +490,7 @@ export function SettingsPage() {
                 value={settings.minBookingNotice}
                 onChange={(e) => handleSettingChange('minBookingNotice', parseInt(e.target.value) || 1)}
                 min="1"
-                className="w-full px-4 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-xl bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all"
+                className="w-full px-4 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-xl bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 transition-all"
               />
             </div>
           </div>
@@ -536,7 +536,7 @@ export function SettingsPage() {
                 type="checkbox"
                 checked={settings.loggingEnabled}
                 onChange={(e) => handleSettingChange('loggingEnabled', e.target.checked)}
-                className="w-5 h-5 rounded border-slate-400 text-blue-600 focus:ring-blue-500"
+                className="w-5 h-5 rounded border-slate-400 text-teal-600 focus:ring-teal-500"
               />
               <div>
                 <span className="font-bold text-slate-900 dark:text-white">Enable Logging</span>
@@ -567,7 +567,7 @@ export function SettingsPage() {
               <select
                 value={settings.backupFrequency}
                 onChange={(e) => handleSettingChange('backupFrequency', e.target.value)}
-                className="w-full px-4 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-xl bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all"
+                className="w-full px-4 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-xl bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 transition-all"
               >
                 <option value="hourly">Every Hour</option>
                 <option value="daily">Daily</option>
@@ -581,8 +581,8 @@ export function SettingsPage() {
 
       {/* Languages Settings */}
       <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
-        <div className="bg-gradient-to-r from-purple-50 to-pink-50 dark:from-slate-700 dark:to-slate-600 px-6 py-5 border-b border-slate-200 dark:border-slate-700 flex items-center gap-3">
-          <FiGlobe className="text-purple-600 dark:text-purple-400" size={24} />
+        <div className="bg-gradient-to-r from-orange-50 to-pink-50 dark:from-slate-700 dark:to-slate-600 px-6 py-5 border-b border-slate-200 dark:border-slate-700 flex items-center gap-3">
+          <FiGlobe className="text-orange-600 dark:text-orange-400" size={24} />
           <h2 className="text-xl font-bold text-slate-900 dark:text-white">Supported Languages</h2>
         </div>
         <div className="p-6">
@@ -591,15 +591,15 @@ export function SettingsPage() {
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
             {getAvailableLanguages().map((lang) => (
-              <div key={lang.code} className="p-4 rounded-xl bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 border-2 border-blue-200 dark:border-blue-700 text-center hover:shadow-lg transition-all">
+              <div key={lang.code} className="p-4 rounded-xl bg-gradient-to-br from-teal-50 to-teal-100 dark:from-teal-900/20 dark:to-teal-800/20 border-2 border-teal-200 dark:border-teal-700 text-center hover:shadow-lg transition-all">
                 <div className="text-3xl mb-2">{lang.flag}</div>
                 <h3 className="font-bold text-slate-900 dark:text-white text-lg">{lang.name}</h3>
                 <p className="text-xs text-slate-600 dark:text-slate-400 mt-1">{lang.nativeName}</p>
-                <span className="inline-block mt-2 px-2 py-1 bg-blue-200 dark:bg-blue-800 text-blue-800 dark:text-blue-200 text-xs font-bold rounded">{lang.code}</span>
+                <span className="inline-block mt-2 px-2 py-1 bg-teal-200 dark:bg-teal-800 text-teal-800 dark:text-teal-200 text-xs font-bold rounded">{lang.code}</span>
               </div>
             ))}
           </div>
-          <div className="mt-6 p-4 bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 rounded">
+          <div className="mt-6 p-4 bg-teal-50 dark:bg-teal-900/20 border-l-4 border-teal-500 rounded">
             <p className="text-sm text-slate-700 dark:text-slate-300">
               <span className="font-bold">💡 Tip:</span> All content including package titles, descriptions, and add-ons are automatically translated based on the user's selected language. Translations are managed through the language system.
             </p>
@@ -609,8 +609,8 @@ export function SettingsPage() {
 
       {/* Translation Data Management */}
       <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
-        <div className="bg-gradient-to-r from-indigo-50 to-cyan-50 dark:from-slate-700 dark:to-slate-600 px-6 py-5 border-b border-slate-200 dark:border-slate-700 flex items-center gap-3">
-          <FiDatabase className="text-indigo-600 dark:text-indigo-400" size={24} />
+        <div className="bg-gradient-to-r from-orange-50 to-teal-50 dark:from-slate-700 dark:to-slate-600 px-6 py-5 border-b border-slate-200 dark:border-slate-700 flex items-center gap-3">
+          <FiDatabase className="text-orange-600 dark:text-orange-400" size={24} />
           <h2 className="text-xl font-bold text-slate-900 dark:text-white">Translation Data Management</h2>
         </div>
         <div className="p-6">
@@ -620,7 +620,7 @@ export function SettingsPage() {
           <button
             onClick={handleFillItineraryTranslations}
             disabled={fillingTranslations}
-            className="flex items-center justify-center gap-3 px-6 py-3 bg-gradient-to-r from-indigo-600 to-cyan-600 text-white rounded-xl hover:from-indigo-700 hover:to-cyan-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all font-semibold shadow-md hover:shadow-lg"
+            className="flex items-center justify-center gap-3 px-6 py-3 bg-gradient-to-r from-orange-600 to-teal-600 text-white rounded-xl hover:from-orange-700 hover:to-teal-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all font-semibold shadow-md hover:shadow-lg"
           >
             <FiRefreshCw size={18} className={fillingTranslations ? 'animate-spin' : ''} />
             {fillingTranslations ? 'Filling Translations...' : 'Fill Missing Itinerary Translations'}
@@ -636,7 +636,7 @@ export function SettingsPage() {
         <button
           onClick={handleSaveSettings}
           disabled={!hasChanges || loading}
-          className="flex-1 flex items-center justify-center gap-3 px-6 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl hover:from-blue-700 hover:to-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all font-bold shadow-lg hover:shadow-xl transform hover:scale-105"
+          className="flex-1 flex items-center justify-center gap-3 px-6 py-4 bg-gradient-to-r from-teal-600 to-orange-600 text-white rounded-xl hover:from-teal-700 hover:to-orange-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all font-bold shadow-lg hover:shadow-xl transform hover:scale-105"
         >
           <FiSave size={22} />
           {loading ? 'Saving Changes...' : 'Save All Settings'}

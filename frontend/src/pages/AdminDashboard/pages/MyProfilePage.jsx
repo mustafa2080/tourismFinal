@@ -159,7 +159,7 @@ export function MyProfilePage() {
           className={`flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all shadow-md ${
             editing
               ? 'bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600'
-              : 'bg-blue-600 text-white hover:bg-blue-700'
+              : 'bg-teal-600 text-white hover:bg-teal-700'
           }`}
         >
           {editing ? (
@@ -178,11 +178,11 @@ export function MyProfilePage() {
 
       {/* Main Profile Card */}
       <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
-        <div className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-slate-700 dark:to-slate-600 px-6 md:px-8 py-8">
+        <div className="bg-gradient-to-r from-teal-50 to-orange-50 dark:from-slate-700 dark:to-slate-600 px-6 md:px-8 py-8">
           <div className="flex flex-col md:flex-row items-center gap-6">
             {/* Avatar */}
             <div className="relative group">
-              <div className="w-24 h-24 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white text-4xl font-bold shadow-lg flex-shrink-0 overflow-hidden">
+              <div className="w-24 h-24 rounded-full bg-gradient-to-br from-teal-500 to-orange-600 flex items-center justify-center text-white text-4xl font-bold shadow-lg flex-shrink-0 overflow-hidden">
                 {avatarPreview ? (
                   <img 
                     src={avatarPreview} 
@@ -200,7 +200,7 @@ export function MyProfilePage() {
               <button
                 onClick={() => document.getElementById('avatar-input')?.click()}
                 disabled={isUploadingAvatar}
-                className="absolute -bottom-2 -right-2 p-2 bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-lg transition-all opacity-0 group-hover:opacity-100"
+                className="absolute -bottom-2 -right-2 p-2 bg-teal-600 hover:bg-teal-700 text-white rounded-full shadow-lg transition-all opacity-0 group-hover:opacity-100"
               >
                 {isUploadingAvatar ? (
                   <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
@@ -246,7 +246,7 @@ export function MyProfilePage() {
                   type="text"
                   value={profileData.name}
                   onChange={(e) => handleInputChange('name', e.target.value)}
-                  className="w-full px-4 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-xl bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"
+                  className="w-full px-4 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-xl bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20"
                 />
               ) : (
                 <div className="px-4 py-3 bg-slate-100 dark:bg-slate-700 rounded-xl text-slate-900 dark:text-white">
@@ -258,7 +258,7 @@ export function MyProfilePage() {
             {/* Email */}
             <div>
               <label className="flex items-center gap-2 text-sm font-bold text-slate-900 dark:text-white mb-3">
-                <FiMail className="text-blue-600" size={16} />
+                <FiMail className="text-teal-600" size={16} />
                 {t('dashboard.profile.emailAddress')}
               </label>
               <div className="px-4 py-3 bg-slate-100 dark:bg-slate-700 rounded-xl text-slate-900 dark:text-white">
@@ -282,7 +282,7 @@ export function MyProfilePage() {
                   value={profileData.phone}
                   onChange={(e) => handleInputChange('phone', e.target.value)}
                   placeholder={t('dashboard.profile.phonePlaceholder')}
-                  className="w-full px-4 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-xl bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"
+                  className="w-full px-4 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-xl bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20"
                 />
               ) : (
                 <div className="px-4 py-3 bg-slate-100 dark:bg-slate-700 rounded-xl text-slate-900 dark:text-white">
@@ -294,7 +294,7 @@ export function MyProfilePage() {
             {/* Role */}
             <div>
               <label className="flex items-center gap-2 text-sm font-bold text-slate-900 dark:text-white mb-3">
-                <FiShield className="text-purple-600" size={16} />
+                <FiShield className="text-orange-600" size={16} />
                 {t('dashboard.profile.role')}
               </label>
               <div className="px-4 py-3 bg-slate-100 dark:bg-slate-700 rounded-xl text-slate-900 dark:text-white capitalize">
@@ -314,7 +314,7 @@ export function MyProfilePage() {
                   value={profileData.address}
                   onChange={(e) => handleInputChange('address', e.target.value)}
                   placeholder={t('myProfilePage.enterYourAddress')}
-                  className="w-full px-4 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-xl bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"
+                  className="w-full px-4 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-xl bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20"
                 />
               ) : (
                 <div className="px-4 py-3 bg-slate-100 dark:bg-slate-700 rounded-xl text-slate-900 dark:text-white">
@@ -330,7 +330,7 @@ export function MyProfilePage() {
               <button
                 onClick={handleSaveProfile}
                 disabled={loading}
-                className="flex-1 flex items-center justify-center gap-3 px-6 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl hover:from-blue-700 hover:to-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all font-bold shadow-lg"
+                className="flex-1 flex items-center justify-center gap-3 px-6 py-4 bg-gradient-to-r from-teal-600 to-orange-600 text-white rounded-xl hover:from-teal-700 hover:to-orange-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all font-bold shadow-lg"
               >
                 <FiSave size={22} />
                 {loading ? t('dashboard.profile.saving') : t('dashboard.profile.saveChanges')}
@@ -349,7 +349,7 @@ export function MyProfilePage() {
 
       {/* Additional Info Card */}
       <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
-        <div className="bg-gradient-to-r from-purple-50 to-pink-50 dark:from-slate-700 dark:to-slate-600 px-6 md:px-8 py-5 border-b border-slate-200 dark:border-slate-700">
+        <div className="bg-gradient-to-r from-orange-50 to-pink-50 dark:from-slate-700 dark:to-slate-600 px-6 md:px-8 py-5 border-b border-slate-200 dark:border-slate-700">
           <h3 className="text-xl font-bold text-slate-900 dark:text-white">{t('dashboard.profile.accountStatus')}</h3>
         </div>
         <div className="p-6 md:p-8 space-y-4">

@@ -197,7 +197,7 @@ export function ReviewsPage() {
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <div>
           <h1 className="text-5xl font-bold text-slate-900 dark:text-white flex items-center gap-3">
-            <div className="p-3 bg-gradient-to-br from-purple-500 to-pink-600 rounded-xl shadow-lg">
+            <div className="p-3 bg-gradient-to-br from-orange-500 to-pink-600 rounded-xl shadow-lg">
               <MdOutlineReviews className="text-white" size={32} />
             </div>
             Reviews Management
@@ -214,7 +214,7 @@ export function ReviewsPage() {
           icon={MdOutlineReviews}
           label="Total Reviews"
           value={stats.totalReviews}
-          color="from-blue-500 to-blue-600"
+          color="from-teal-500 to-teal-600"
         />
         <StatCard
           icon={FiTrendingUp}
@@ -232,7 +232,7 @@ export function ReviewsPage() {
           icon={MdOutlineRateReview}
           label="Pending"
           value={stats.pendingReviews}
-          color="from-purple-500 to-pink-600"
+          color="from-orange-500 to-pink-600"
         />
       </div>
 
@@ -247,7 +247,7 @@ export function ReviewsPage() {
               placeholder="Search by name, comment, or tour..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-12 pr-4 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-500 dark:placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all"
+              className="w-full pl-12 pr-4 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-500 dark:placeholder-slate-400 focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 transition-all"
             />
           </div>
 
@@ -257,7 +257,7 @@ export function ReviewsPage() {
             <select
               value={filterRating}
               onChange={(e) => setFilterRating(e.target.value)}
-              className="w-full pl-12 pr-4 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all appearance-none"
+              className="w-full pl-12 pr-4 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 transition-all appearance-none"
             >
               <option value="all">All Ratings</option>
               <option value="5">5 Stars</option>
@@ -275,7 +275,7 @@ export function ReviewsPage() {
         {loading ? (
           <div className="flex items-center justify-center h-96 bg-white dark:bg-slate-800 rounded-xl shadow-lg border border-slate-200 dark:border-slate-700">
             <div className="text-center">
-              <div className="inline-block animate-spin rounded-full h-16 w-16 border-4 border-slate-300 dark:border-slate-600 border-t-blue-600 dark:border-t-blue-400"></div>
+              <div className="inline-block animate-spin rounded-full h-16 w-16 border-4 border-slate-300 dark:border-slate-600 border-t-teal-600 dark:border-t-teal-400"></div>
               <p className="mt-6 text-lg text-slate-600 dark:text-slate-400 font-medium">Loading reviews...</p>
             </div>
           </div>
@@ -293,7 +293,7 @@ export function ReviewsPage() {
                 <div className="flex-1">
                   {/* User Info & Rating */}
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-bold shadow-lg">
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-teal-500 to-orange-600 flex items-center justify-center text-white font-bold shadow-lg">
                       {(review.user?.name || review.user?.fullName || 'U')?.charAt(0).toUpperCase()}
                     </div>
                     <div className="flex-1">
@@ -320,7 +320,7 @@ export function ReviewsPage() {
 
                   {/* Tour Title */}
                   <div className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400 mb-3">
-                    <FiMessageCircle size={16} className="text-blue-600 dark:text-blue-400" />
+                    <FiMessageCircle size={16} className="text-teal-600 dark:text-teal-400" />
                     <span className="font-medium">{review.package?.title || 'Tour'}</span>
                   </div>
 
@@ -346,7 +346,7 @@ export function ReviewsPage() {
               <div className="flex justify-end pt-4 border-t border-slate-200 dark:border-slate-700">
                 <button
                   onClick={() => handleViewReview(review)}
-                  className="px-6 py-2.5 rounded-lg bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+                  className="px-6 py-2.5 rounded-lg bg-gradient-to-r from-teal-600 to-teal-700 hover:from-teal-700 hover:to-teal-800 text-white font-semibold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
                 >
                   Review Details
                 </button>
@@ -355,8 +355,8 @@ export function ReviewsPage() {
           ))
         ) : (
           <div className="bg-white dark:bg-slate-800 rounded-xl shadow-lg border border-slate-200 dark:border-slate-700 p-16 text-center">
-            <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-blue-100 dark:bg-blue-900/30 mb-4">
-              <MdOutlineReviews className="text-blue-600 dark:text-blue-400" size={40} />
+            <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-teal-100 dark:bg-teal-900/30 mb-4">
+              <MdOutlineReviews className="text-teal-600 dark:text-teal-400" size={40} />
             </div>
             <p className="text-lg text-slate-600 dark:text-slate-400 font-medium">No pending reviews</p>
             <p className="text-sm text-slate-500 dark:text-slate-500 mt-2">All reviews have been moderated</p>
@@ -394,7 +394,7 @@ export function ReviewsPage() {
         <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
           <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl max-w-3xl w-full border border-slate-200 dark:border-slate-700 overflow-hidden animate-in fade-in scale-95 duration-200">
             {/* Modal Header */}
-            <div className="flex items-center justify-between p-8 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+            <div className="flex items-center justify-between p-8 bg-gradient-to-r from-teal-600 to-orange-600 text-white">
               <div className="flex items-center gap-3">
                 <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center">
                   <MdOutlineReviews size={24} />
@@ -412,9 +412,9 @@ export function ReviewsPage() {
             {/* Modal Content */}
             <div className="p-8 space-y-8 max-h-96 overflow-y-auto">
               {/* User Information */}
-              <div className="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-6 border border-blue-200 dark:border-blue-800">
+              <div className="bg-teal-50 dark:bg-teal-900/20 rounded-xl p-6 border border-teal-200 dark:border-teal-800">
                 <h3 className="font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
-                  <FiUser className="text-blue-600 dark:text-blue-400" size={20} />
+                  <FiUser className="text-teal-600 dark:text-teal-400" size={20} />
                   User Information
                 </h3>
                 <div className="grid grid-cols-2 gap-4">
@@ -430,7 +430,7 @@ export function ReviewsPage() {
               </div>
 
               {/* Tour Information */}
-              <div className="bg-purple-50 dark:bg-purple-900/20 rounded-xl p-6 border border-purple-200 dark:border-purple-800">
+              <div className="bg-orange-50 dark:bg-orange-900/20 rounded-xl p-6 border border-orange-200 dark:border-orange-800">
                 <h3 className="font-bold text-slate-900 dark:text-white mb-4">Tour Information</h3>
                 <p className="text-lg font-semibold text-slate-900 dark:text-white">{selectedReview.package?.title || '-'}</p>
               </div>
@@ -449,10 +449,10 @@ export function ReviewsPage() {
               {/* Comment */}
               <div>
                 <h3 className="font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
-                  <FiMessageCircle size={20} className="text-blue-600 dark:text-blue-400" />
+                  <FiMessageCircle size={20} className="text-teal-600 dark:text-teal-400" />
                   Review Comment
                 </h3>
-                <div className="bg-slate-100 dark:bg-slate-700 rounded-lg p-6 border-l-4 border-blue-600">
+                <div className="bg-slate-100 dark:bg-slate-700 rounded-lg p-6 border-l-4 border-teal-600">
                   <p className="text-slate-700 dark:text-slate-300 leading-relaxed text-base">
                     "{selectedReview.comment}"
                   </p>

@@ -31,9 +31,9 @@ const PressPage = () => {
 
   return (
     <MainLayout>
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-teal-50">
         {/* Progress Bar */}
-      <div className="fixed top-0 left-0 h-1 bg-gradient-to-r from-blue-600 via-blue-500 to-blue-400 z-50 transition-all duration-300" style={{ width: `${scrollProgress * 100}%` }}></div>
+      <div className="fixed top-0 left-0 h-1 bg-gradient-to-r from-teal-600 via-teal-500 to-teal-400 z-50 transition-all duration-300" style={{ width: `${scrollProgress * 100}%` }}></div>
 
       {/* Animated Background */}
       <div className="hidden">
@@ -42,9 +42,9 @@ const PressPage = () => {
       </div>
 
       {/* Header */}
-      <div className="relative pt-20 pb-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-600 to-blue-700">
+      <div className="relative pt-20 pb-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-teal-600 to-teal-700">
         <div className="relative max-w-4xl mx-auto text-center">
-          <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl mb-8 mx-auto shadow-2xl">
+          <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-teal-600 to-teal-700 rounded-2xl mb-8 mx-auto shadow-2xl">
             <TrendingUp size={40} className="text-white" />
           </div>
 
@@ -52,7 +52,7 @@ const PressPage = () => {
             Press & Media
           </h1>
 
-          <p className="text-lg sm:text-xl text-blue-700 mb-8 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg sm:text-xl text-teal-700 mb-8 max-w-2xl mx-auto leading-relaxed">
             News, press releases, and media resources from TourHub.
           </p>
         </div>
@@ -68,7 +68,7 @@ const PressPage = () => {
             { num: '4', label: 'Media Kits' },
           ].map((s, i) => (
             <div key={i} className="bg-white rounded-xl p-6 border border-gray-200 text-center shadow-md hover:shadow-lg transition-shadow">
-              <div className="text-4xl font-bold text-blue-600 mb-2">{s.num}</div>
+              <div className="text-4xl font-bold text-teal-600 mb-2">{s.num}</div>
               <p className="text-gray-700 font-medium">{s.label}</p>
             </div>
           ))}
@@ -85,7 +85,7 @@ const PressPage = () => {
                 onClick={() => setSelectedCategory(cat)}
                 className={`px-4 py-2 rounded-lg font-medium transition-all ${
                   selectedCategory === cat
-                    ? 'bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-lg'
+                    ? 'bg-gradient-to-r from-teal-600 to-teal-700 text-white shadow-lg'
                     : 'bg-gray-100 text-gray-700 hover:bg-gray-200 border border-gray-300'
                 }`}
               >
@@ -96,20 +96,20 @@ const PressPage = () => {
 
           <div className="space-y-4">
             {filtered.map((release) => (
-              <div key={release.id} className="bg-gray-50 rounded-lg p-6 border border-gray-300 hover:border-blue-400 transition-all cursor-pointer hover:shadow-md">
+              <div key={release.id} className="bg-gray-50 rounded-lg p-6 border border-gray-300 hover:border-teal-400 transition-all cursor-pointer hover:shadow-md">
                 <div className="flex items-start justify-between gap-4 mb-3">
                   <div>
-                    <span className="inline-block bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-bold mr-2 mb-2">{release.cat}</span>
+                    <span className="inline-block bg-teal-100 text-teal-700 px-3 py-1 rounded-full text-xs font-bold mr-2 mb-2">{release.cat}</span>
                     <span className="text-sm text-gray-600">{release.date}</span>
                   </div>
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-2">{release.title}</h3>
                 <p className="text-gray-700 mb-4">{release.excerpt}</p>
                 <div className="flex gap-3">
-                  <button className="flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium">
+                  <button className="flex items-center gap-2 text-teal-600 hover:text-teal-700 font-medium">
                     Read More <ArrowRight size={16} />
                   </button>
-                  <button className="flex items-center gap-2 text-blue-600 hover:text-blue-700">
+                  <button className="flex items-center gap-2 text-teal-600 hover:text-teal-700">
                     <Share2 size={16} />
                   </button>
                 </div>
@@ -129,17 +129,17 @@ const PressPage = () => {
               { title: 'Product Screenshots', desc: 'High-res platform images', size: '120 MB' },
               { title: 'Founder Bios', desc: 'Leadership team info', size: '45 MB' },
             ].map((kit, i) => (
-              <div key={i} className="bg-gray-50 rounded-lg p-6 border border-gray-300 hover:border-blue-400 transition-all">
+              <div key={i} className="bg-gray-50 rounded-lg p-6 border border-gray-300 hover:border-teal-400 transition-all">
                 <div className="flex items-start justify-between mb-4">
                   <div>
                     <h3 className="font-bold text-gray-900 mb-1">{kit.title}</h3>
                     <p className="text-sm text-gray-600">{kit.desc}</p>
                   </div>
-                  <Download className="text-blue-600" size={24} />
+                  <Download className="text-teal-600" size={24} />
                 </div>
                 <div className="flex justify-between items-center pt-4 border-t border-gray-300">
                   <span className="text-xs text-gray-600">{kit.size}</span>
-                  <button className="px-3 py-1 bg-blue-600 text-white rounded text-xs font-bold hover:bg-blue-700 transition-all">
+                  <button className="px-3 py-1 bg-teal-600 text-white rounded text-xs font-bold hover:bg-teal-700 transition-all">
                     Download
                   </button>
                 </div>
@@ -160,7 +160,7 @@ const PressPage = () => {
               { num: '$50M+', label: 'Booking Volume' },
             ].map((stat, i) => (
               <div key={i} className="bg-gray-50 rounded-lg p-6 border border-gray-300 text-center">
-                <div className="text-3xl font-bold text-blue-600 mb-2">{stat.num}</div>
+                <div className="text-3xl font-bold text-teal-600 mb-2">{stat.num}</div>
                 <p className="text-gray-700 text-sm">{stat.label}</p>
               </div>
             ))}
@@ -173,7 +173,7 @@ const PressPage = () => {
 
           <div className="flex flex-wrap gap-3">
             {['TechCrunch', 'Forbes', 'Wired', 'The Verge', 'Fast Company', 'Travel Weekly', 'Entrepreneur', 'NYT'].map((outlet, i) => (
-              <div key={i} className="bg-blue-50 border border-blue-300 rounded-lg px-4 py-3 text-blue-700 font-medium text-sm">
+              <div key={i} className="bg-teal-50 border border-teal-300 rounded-lg px-4 py-3 text-teal-700 font-medium text-sm">
                 {outlet}
               </div>
             ))}
@@ -193,7 +193,7 @@ const PressPage = () => {
               <div key={i} className="bg-gray-50 rounded-lg p-6 border border-gray-300 text-center">
                 <div className="text-4xl mb-3">👤</div>
                 <h3 className="font-bold text-gray-900 mb-1">{founder.name}</h3>
-                <p className="text-sm text-blue-600 font-medium mb-2">{founder.title}</p>
+                <p className="text-sm text-teal-600 font-medium mb-2">{founder.title}</p>
                 <p className="text-xs text-gray-700">{founder.bio}</p>
               </div>
             ))}
@@ -201,7 +201,7 @@ const PressPage = () => {
         </div>
 
         {/* Press Inquiries */}
-        <div className="bg-blue-50 rounded-2xl p-8 border border-blue-300 shadow-md mb-8">
+        <div className="bg-teal-50 rounded-2xl p-8 border border-teal-300 shadow-md mb-8">
           <h2 className="text-4xl font-bold text-gray-900 mb-6">Press Inquiries</h2>
 
           <div className="grid md:grid-cols-2 gap-4">
@@ -211,12 +211,12 @@ const PressPage = () => {
             ].map((contact, i) => (
               <div key={i} className="bg-white rounded-lg p-4 border border-gray-300">
                 <h3 className="font-bold text-gray-900 mb-1">{contact.name}</h3>
-                <p className="text-sm text-blue-600 font-medium mb-3">{contact.title}</p>
+                <p className="text-sm text-teal-600 font-medium mb-3">{contact.title}</p>
                 <div className="space-y-2">
-                  <a href={`mailto:${contact.email}`} className="flex items-center gap-2 text-gray-700 text-sm hover:text-blue-600">
+                  <a href={`mailto:${contact.email}`} className="flex items-center gap-2 text-gray-700 text-sm hover:text-teal-600">
                     <Mail size={16} /> {contact.email}
                   </a>
-                  <a href={`tel:${contact.phone}`} className="flex items-center gap-2 text-gray-700 text-sm hover:text-blue-600">
+                  <a href={`tel:${contact.phone}`} className="flex items-center gap-2 text-gray-700 text-sm hover:text-teal-600">
                     <Phone size={16} /> {contact.phone}
                   </a>
                 </div>
@@ -226,12 +226,12 @@ const PressPage = () => {
         </div>
 
         {/* Newsletter */}
-        <div className="bg-blue-50 rounded-2xl p-8 border border-blue-300 shadow-md mb-8">
+        <div className="bg-teal-50 rounded-2xl p-8 border border-teal-300 shadow-md mb-8">
           <h2 className="text-3xl font-bold text-gray-900 mb-4">📧 Stay Updated</h2>
           <p className="text-gray-700 mb-6">Subscribe to our press releases and company updates.</p>
           <form onSubmit={(e) => { e.preventDefault(); alert('Subscribed!'); }} className="flex gap-2">
-            <input type="email" placeholder="your.email@example.com" required className="flex-1 bg-white border border-gray-300 rounded-lg px-4 py-3 text-gray-900 placeholder-gray-500 focus:border-blue-600 focus:outline-none" />
-            <button type="submit" className="bg-blue-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-700 transition-all">
+            <input type="email" placeholder="your.email@example.com" required className="flex-1 bg-white border border-gray-300 rounded-lg px-4 py-3 text-gray-900 placeholder-gray-500 focus:border-teal-600 focus:outline-none" />
+            <button type="submit" className="bg-teal-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-teal-700 transition-all">
               Subscribe
             </button>
           </form>

@@ -51,24 +51,24 @@ const CareersPage = () => {
     <MainLayout>
       <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
         {/* Progress Bar */}
-        <div className="fixed top-0 left-0 h-1.5 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 z-50 transition-all duration-300" style={{ width: `${scrollProgress * 100}%` }}></div>
+        <div className="fixed top-0 left-0 h-1.5 bg-gradient-to-r from-teal-600 via-orange-600 to-pink-600 z-50 transition-all duration-300" style={{ width: `${scrollProgress * 100}%` }}></div>
 
         {/* Animated Background - Light Mode */}
         <div className="fixed inset-0 overflow-hidden pointer-events-none dark:hidden">
-          <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-96 h-96 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
-          <div className="absolute -bottom-40 left-0 w-96 h-96 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse" style={{ animationDelay: '2s' }}></div>
+          <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-96 h-96 bg-teal-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
+          <div className="absolute -bottom-40 left-0 w-96 h-96 bg-orange-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse" style={{ animationDelay: '2s' }}></div>
         </div>
 
         {/* Animated Background - Dark Mode */}
         <div className="fixed inset-0 overflow-hidden pointer-events-none hidden dark:block">
-          <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-96 h-96 bg-blue-600 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
-          <div className="absolute -bottom-40 left-0 w-96 h-96 bg-purple-600 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse" style={{ animationDelay: '2s' }}></div>
+          <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-96 h-96 bg-teal-600 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
+          <div className="absolute -bottom-40 left-0 w-96 h-96 bg-orange-600 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse" style={{ animationDelay: '2s' }}></div>
         </div>
 
         {/* Header */}
         <div className="relative pt-20 pb-32 px-4 sm:px-6 lg:px-8">
           <div className="relative max-w-4xl mx-auto text-center">
-            <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl mb-8 mx-auto shadow-lg">
+            <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-teal-600 to-orange-600 rounded-2xl mb-8 mx-auto shadow-lg">
               <Briefcase size={40} className="text-white" />
             </div>
 
@@ -105,7 +105,7 @@ const CareersPage = () => {
             <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-8">Our Values</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {values.map((v, i) => (
-                <div key={i} className="bg-white dark:bg-slate-800/50 rounded-xl p-6 border border-gray-200 dark:border-slate-700 hover:border-blue-400 dark:hover:border-blue-500 transition-all hover:shadow-md group">
+                <div key={i} className="bg-white dark:bg-slate-800/50 rounded-xl p-6 border border-gray-200 dark:border-slate-700 hover:border-teal-400 dark:hover:border-teal-500 transition-all hover:shadow-md group">
                   <div className="text-5xl mb-4 group-hover:scale-110 transition-transform">{v.icon}</div>
                   <h3 className="font-bold text-gray-900 dark:text-white mb-2 text-lg">{v.title}</h3>
                   <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">{v.desc}</p>
@@ -121,7 +121,7 @@ const CareersPage = () => {
               {benefits.map((b, i) => (
                 <div 
                   key={i} 
-                  className="bg-white dark:bg-slate-800/50 rounded-lg p-6 border-2 border-gray-200 dark:border-slate-700 hover:border-blue-400 dark:hover:border-blue-500 transition-all hover:shadow-md text-center cursor-pointer group"
+                  className="bg-white dark:bg-slate-800/50 rounded-lg p-6 border-2 border-gray-200 dark:border-slate-700 hover:border-teal-400 dark:hover:border-teal-500 transition-all hover:shadow-md text-center cursor-pointer group"
                   onMouseEnter={() => setHoveredBenefit(i)}
                   onMouseLeave={() => setHoveredBenefit(null)}
                 >
@@ -139,7 +139,7 @@ const CareersPage = () => {
               {jobOpenings.map((job) => (
                 <div
                   key={job.id}
-                  className="bg-white dark:bg-slate-800/50 rounded-xl p-6 border-2 border-gray-200 dark:border-slate-700 hover:border-blue-400 dark:hover:border-blue-500 transition-all cursor-pointer hover:shadow-md"
+                  className="bg-white dark:bg-slate-800/50 rounded-xl p-6 border-2 border-gray-200 dark:border-slate-700 hover:border-teal-400 dark:hover:border-teal-500 transition-all cursor-pointer hover:shadow-md"
                   onClick={() => setSelectedJob(selectedJob?.id === job.id ? null : job)}
                 >
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
@@ -152,7 +152,7 @@ const CareersPage = () => {
                       </div>
                     </div>
                     <div className="text-right">
-                      <p className="text-xl font-bold text-blue-600 dark:text-blue-400 mb-2">{job.salary}</p>
+                      <p className="text-xl font-bold text-teal-600 dark:text-teal-400 mb-2">{job.salary}</p>
                       <span className={`inline-block text-gray-600 dark:text-gray-400 transition-transform ${selectedJob?.id === job.id ? 'rotate-180' : ''}`}>
                         <ArrowRight size={20} className="rotate-90" />
                       </span>
@@ -165,7 +165,7 @@ const CareersPage = () => {
                         Click "Apply Now" below to submit your application for this position. We review applications within 5-7 business days.
                       </p>
                       <button
-                        className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:shadow-lg hover:shadow-blue-500/30 transition-all flex items-center gap-2"
+                        className="bg-gradient-to-r from-teal-600 to-orange-600 text-white px-6 py-3 rounded-lg font-semibold hover:shadow-lg hover:shadow-teal-500/30 transition-all flex items-center gap-2"
                         onClick={() => document.querySelector('.application-form')?.scrollIntoView({ behavior: 'smooth' })}
                       >
                         <Send size={18} />
@@ -180,9 +180,9 @@ const CareersPage = () => {
 
           {/* Application Form */}
           {selectedJob && (
-            <div className="application-form bg-white dark:bg-slate-800/50 rounded-2xl p-8 border-2 border-blue-200 dark:border-blue-800 shadow-md mb-12">
+            <div className="application-form bg-white dark:bg-slate-800/50 rounded-2xl p-8 border-2 border-teal-200 dark:border-teal-800 shadow-md mb-12">
               <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">Apply for</h2>
-              <p className="text-2xl font-semibold text-blue-600 dark:text-blue-400 mb-8">{selectedJob.title}</p>
+              <p className="text-2xl font-semibold text-teal-600 dark:text-teal-400 mb-8">{selectedJob.title}</p>
               <form onSubmit={(e) => {
                 e.preventDefault();
                 alert('Application submitted! We\'ll review and get back to you within 5 business days.');
@@ -196,7 +196,7 @@ const CareersPage = () => {
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     required
-                    className="w-full bg-gray-50 dark:bg-slate-700 border-2 border-gray-300 dark:border-slate-600 rounded-lg px-4 py-3 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:border-blue-500 dark:focus:border-blue-400 focus:outline-none transition-all"
+                    className="w-full bg-gray-50 dark:bg-slate-700 border-2 border-gray-300 dark:border-slate-600 rounded-lg px-4 py-3 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:border-teal-500 dark:focus:border-teal-400 focus:outline-none transition-all"
                   />
                 </div>
                 <div>
@@ -207,7 +207,7 @@ const CareersPage = () => {
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     required
-                    className="w-full bg-gray-50 dark:bg-slate-700 border-2 border-gray-300 dark:border-slate-600 rounded-lg px-4 py-3 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:border-blue-500 dark:focus:border-blue-400 focus:outline-none transition-all"
+                    className="w-full bg-gray-50 dark:bg-slate-700 border-2 border-gray-300 dark:border-slate-600 rounded-lg px-4 py-3 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:border-teal-500 dark:focus:border-teal-400 focus:outline-none transition-all"
                   />
                 </div>
                 <div>
@@ -215,7 +215,7 @@ const CareersPage = () => {
                   <input
                     type="url"
                     placeholder="https://..."
-                    className="w-full bg-gray-50 dark:bg-slate-700 border-2 border-gray-300 dark:border-slate-600 rounded-lg px-4 py-3 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:border-blue-500 dark:focus:border-blue-400 focus:outline-none transition-all"
+                    className="w-full bg-gray-50 dark:bg-slate-700 border-2 border-gray-300 dark:border-slate-600 rounded-lg px-4 py-3 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:border-teal-500 dark:focus:border-teal-400 focus:outline-none transition-all"
                   />
                 </div>
                 <div>
@@ -226,10 +226,10 @@ const CareersPage = () => {
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     required
-                    className="w-full bg-gray-50 dark:bg-slate-700 border-2 border-gray-300 dark:border-slate-600 rounded-lg px-4 py-3 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:border-blue-500 dark:focus:border-blue-400 focus:outline-none transition-all"
+                    className="w-full bg-gray-50 dark:bg-slate-700 border-2 border-gray-300 dark:border-slate-600 rounded-lg px-4 py-3 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:border-teal-500 dark:focus:border-teal-400 focus:outline-none transition-all"
                   />
                 </div>
-                <button type="submit" className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 rounded-lg font-bold hover:shadow-lg hover:shadow-blue-500/30 transition-all">
+                <button type="submit" className="w-full bg-gradient-to-r from-teal-600 to-orange-600 text-white py-3 rounded-lg font-bold hover:shadow-lg hover:shadow-teal-500/30 transition-all">
                   <Send size={18} className="inline mr-2" />
                   Submit Application
                 </button>
@@ -249,8 +249,8 @@ const CareersPage = () => {
                 { num: 5, title: 'Offer', desc: 'Welcome aboard!' },
               ].map((step, i) => (
                 <div key={i} className="text-center">
-                  <div className="inline-flex items-center justify-center w-12 h-12 bg-blue-100 dark:bg-blue-900/30 border-2 border-blue-500 rounded-full mb-3">
-                    <span className="text-blue-600 dark:text-blue-400 font-bold">{step.num}</span>
+                  <div className="inline-flex items-center justify-center w-12 h-12 bg-teal-100 dark:bg-teal-900/30 border-2 border-teal-500 rounded-full mb-3">
+                    <span className="text-teal-600 dark:text-teal-400 font-bold">{step.num}</span>
                   </div>
                   <h3 className="font-bold text-gray-900 dark:text-white mb-1">{step.title}</h3>
                   <p className="text-sm text-gray-600 dark:text-gray-400">{step.desc}</p>
@@ -260,7 +260,7 @@ const CareersPage = () => {
           </div>
 
           {/* Internships */}
-          <div className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-950/30 dark:to-purple-950/30 rounded-2xl p-8 border-2 border-blue-200 dark:border-blue-800 shadow-sm hover:shadow-md transition-all mb-12">
+          <div className="bg-gradient-to-r from-teal-50 to-orange-50 dark:from-teal-950/30 dark:to-orange-950/30 rounded-2xl p-8 border-2 border-teal-200 dark:border-teal-800 shadow-sm hover:shadow-md transition-all mb-12">
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">🎓 Internships & University Programs</h2>
             <p className="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
               We offer paid internships for students interested in tech, design, or business. Real-world experience, mentorship, and potential full-time opportunities.
@@ -271,7 +271,7 @@ const CareersPage = () => {
           </div>
 
           {/* Contact */}
-          <div className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-950/30 dark:to-purple-950/30 rounded-2xl p-8 border-2 border-blue-200 dark:border-blue-800 shadow-sm hover:shadow-md transition-all">
+          <div className="bg-gradient-to-r from-teal-50 to-orange-50 dark:from-teal-950/30 dark:to-orange-950/30 rounded-2xl p-8 border-2 border-teal-200 dark:border-teal-800 shadow-sm hover:shadow-md transition-all">
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">📧 Questions?</h2>
             <div className="space-y-3">
               <p className="text-gray-700 dark:text-gray-300"><strong className="text-gray-900 dark:text-white">Email:</strong> careers@tourhub.com</p>

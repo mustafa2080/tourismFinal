@@ -69,19 +69,19 @@ const HomePage = () => {
         title: t('home.title'),
         subtitle: t('home.subtitle'),
         image: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=1200&h=700&fit=crop',
-        color: 'from-blue-600 to-purple-600',
+        color: 'from-teal-600 to-orange-600',
       },
       {
         title: t('home.title'),
         subtitle: t('home.subtitle'),
         image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&h=700&fit=crop',
-        color: 'from-cyan-500 to-blue-600',
+        color: 'from-teal-500 to-teal-600',
       },
       {
         title: t('home.becomeGuide'),
         subtitle: t('home.becomeGuideDesc'),
         image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&h=700&fit=crop',
-        color: 'from-green-500 to-blue-600',
+        color: 'from-green-500 to-teal-600',
       },
     ]);
     setHeroSlide(0); // Reset to first slide
@@ -422,7 +422,7 @@ const HomePage = () => {
     title: t('home.title') || 'Explore the World',
     subtitle: t('home.subtitle') || 'Discover amazing destinations and create unforgettable memories',
     image: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=1200&h=700&fit=crop',
-    color: 'from-blue-600 to-purple-600',
+    color: 'from-teal-600 to-orange-600',
   };
 
   return (
@@ -469,7 +469,7 @@ const HomePage = () => {
                 <Button
                   size="lg"
                   onClick={() => navigate('/search')}
-                  className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold px-4 xs:px-6 sm:px-8 py-3 sm:py-3.5 rounded-lg flex items-center justify-center gap-2 group transition-all hover:shadow-2xl shadow-lg hover:scale-105 text-sm xs:text-base flex-1 xs:flex-initial"
+                  className="bg-gradient-to-r from-teal-600 to-orange-600 hover:from-teal-700 hover:to-orange-700 text-white font-bold px-4 xs:px-6 sm:px-8 py-3 sm:py-3.5 rounded-lg flex items-center justify-center gap-2 group transition-all hover:shadow-2xl shadow-lg hover:scale-105 text-sm xs:text-base flex-1 xs:flex-initial"
                 >
                   <FiSearch size={18} className="xs:w-5 xs:h-5 flex-shrink-0" />
                   <span>Explore Now</span>
@@ -509,7 +509,7 @@ const HomePage = () => {
                       onFocus={() => setShowSuggestions(true)}
                       onBlur={() => setTimeout(() => setShowSuggestions(false), 150)}
                       placeholder={t('navbar.searchPlaceholder')}
-                      className="w-full px-3 xs:px-4 py-2.5 xs:py-3 rounded-lg border-2 border-slate-300 dark:border-slate-600 bg-white/95 dark:bg-slate-800/95 text-slate-900 dark:text-white placeholder-slate-500 dark:placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all font-medium text-sm xs:text-base"
+                      className="w-full px-3 xs:px-4 py-2.5 xs:py-3 rounded-lg border-2 border-slate-300 dark:border-slate-600 bg-white/95 dark:bg-slate-800/95 text-slate-900 dark:text-white placeholder-slate-500 dark:placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all font-medium text-sm xs:text-base"
                     />
                     
                     {/* Autocomplete Suggestions Dropdown */}
@@ -546,10 +546,10 @@ const HomePage = () => {
                                     navigate(`/search?${params.toString()}`);
                                   }
                                 }}
-                                className="w-full text-left px-4 py-3 hover:bg-blue-50 dark:hover:bg-slate-700 transition-colors border-b border-slate-200 dark:border-slate-700 last:border-b-0 text-slate-900 dark:text-white cursor-pointer"
+                                className="w-full text-left px-4 py-3 hover:bg-teal-50 dark:hover:bg-slate-700 transition-colors border-b border-slate-200 dark:border-slate-700 last:border-b-0 text-slate-900 dark:text-white cursor-pointer"
                               >
                                 <div className="flex items-center gap-2">
-                                  <FiMapPin size={16} className="text-blue-500 flex-shrink-0" />
+                                  <FiMapPin size={16} className="text-teal-500 flex-shrink-0" />
                                   <div className="flex-1">
                                     <span className="font-medium block">
                                       {suggestion?.destination || suggestion?.title || suggestion}
@@ -561,7 +561,7 @@ const HomePage = () => {
                                     )}
                                   </div>
                                   {suggestion?.packageId && (
-                                    <span className="text-xs bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 px-2 py-1 rounded flex-shrink-0">
+                                    <span className="text-xs bg-teal-100 dark:bg-teal-900/30 text-teal-600 dark:text-teal-400 px-2 py-1 rounded flex-shrink-0">
                                       Direct Link
                                     </span>
                                   )}
@@ -587,7 +587,7 @@ const HomePage = () => {
                   <select
                     value={selectedType}
                     onChange={(e) => setSelectedType(e.target.value)}
-                    className="w-full px-3 xs:px-4 py-2.5 xs:py-3 rounded-lg border-2 border-slate-300 dark:border-slate-600 bg-white/95 dark:bg-slate-800/95 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 appearance-none cursor-pointer transition-all font-medium text-sm xs:text-base"
+                    className="w-full px-3 xs:px-4 py-2.5 xs:py-3 rounded-lg border-2 border-slate-300 dark:border-slate-600 bg-white/95 dark:bg-slate-800/95 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500 appearance-none cursor-pointer transition-all font-medium text-sm xs:text-base"
                   >
                     {tourTypes.map((type) => (
                       <option key={type.id} value={type.id}>
@@ -601,7 +601,7 @@ const HomePage = () => {
                 <div className="md:col-span-3 flex items-end">
                   <button
                     type="submit"
-                    className="w-full px-4 xs:px-6 py-2.5 xs:py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold rounded-lg flex items-center justify-center gap-2 transition-all hover:shadow-xl hover:scale-105 group shadow-lg text-sm xs:text-base"
+                    className="w-full px-4 xs:px-6 py-2.5 xs:py-3 bg-gradient-to-r from-teal-600 to-orange-600 hover:from-teal-700 hover:to-orange-700 text-white font-bold rounded-lg flex items-center justify-center gap-2 transition-all hover:shadow-xl hover:scale-105 group shadow-lg text-sm xs:text-base"
                   >
                     <FiSearch size={16} className="group-hover:scale-110 transition-transform" />
                     <span className="hidden sm:inline">{t('navbar.search')}</span>
@@ -620,7 +620,7 @@ const HomePage = () => {
                       onClick={() => setSelectedType(type.id)}
                       className={`px-3 xs:px-4 py-2 xs:py-2.5 rounded-full text-xs xs:text-sm font-semibold transition-all backdrop-blur-lg whitespace-nowrap ${
                         selectedType === type.id
-                          ? 'bg-blue-600 text-white shadow-lg scale-105'
+                          ? 'bg-teal-600 text-white shadow-lg scale-105'
                           : 'bg-white/60 dark:bg-slate-700/60 text-slate-900 dark:text-white hover:bg-white/80 dark:hover:bg-slate-700/80 border border-white/50 dark:border-slate-600/50'
                       }`}
                     >
@@ -717,7 +717,7 @@ const HomePage = () => {
         <div className="w-full max-w-7xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8">
           {/* Section Header */}
           <div className="text-center mb-10 md:mb-12 space-y-3 md:space-y-4">
-            <div className="inline-block px-4 py-2 bg-blue-100 dark:bg-blue-900/30 rounded-full text-blue-600 dark:text-blue-400 text-xs md:text-sm font-bold flex items-center gap-2 justify-center">
+            <div className="inline-block px-4 py-2 bg-teal-100 dark:bg-teal-900/30 rounded-full text-teal-600 dark:text-teal-400 text-xs md:text-sm font-bold flex items-center gap-2 justify-center">
               <BiTrendingUp size={16} />
               <span>{t('home.trendingTrips') || 'TRENDING TRIPS'}</span>
             </div>
@@ -752,7 +752,7 @@ const HomePage = () => {
                       onClick={() => navigate(`/package/${pkg.id}`)}
                     >
                       {/* Image */}
-                      <div className="relative h-36 xs:h-44 sm:h-52 md:h-56 bg-gradient-to-br from-blue-400 to-purple-500 overflow-hidden group">
+                      <div className="relative h-36 xs:h-44 sm:h-52 md:h-56 bg-gradient-to-br from-teal-400 to-orange-500 overflow-hidden group">
                         {pkg.images && pkg.images.length > 0 && (pkg.images[0]?.image_data || pkg.images[0]?.url) ? (
                           <>
                             {pkg.images[0]?.image_data && (
@@ -816,19 +816,19 @@ const HomePage = () => {
 
                       {/* Content */}
                       <div className="p-3 xs:p-3.5 sm:p-4 md:p-5 flex flex-col flex-1 gap-3">
-                        <h3 className="font-bold text-xs xs:text-sm sm:text-base md:text-lg text-slate-900 dark:text-white line-clamp-2 min-h-[2.5em] group-hover:text-blue-600 transition-colors" title={translatedPkg.display_title}>
+                        <h3 className="font-bold text-xs xs:text-sm sm:text-base md:text-lg text-slate-900 dark:text-white line-clamp-2 min-h-[2.5em] group-hover:text-teal-600 transition-colors" title={translatedPkg.display_title}>
                           {translatedPkg.display_title}
                         </h3>
 
                         {/* Meta Info */}
                         <div className="flex items-center gap-3 text-xs xs:text-sm text-slate-600 dark:text-slate-400">
                           <div className="flex items-center gap-1.5">
-                            <FiCalendar size={15} className="text-blue-500 flex-shrink-0" />
+                            <FiCalendar size={15} className="text-teal-500 flex-shrink-0" />
                             <span>{pkg.duration_days} {t('common.days') || 'Days'}</span>
                           </div>
                           <span className="w-1 h-1 rounded-full bg-slate-300 dark:bg-slate-600 flex-shrink-0" />
                           <div className="flex items-center gap-1.5 min-w-0">
-                            <FiMapPin size={15} className="text-blue-500 flex-shrink-0" />
+                            <FiMapPin size={15} className="text-teal-500 flex-shrink-0" />
                             <span className="truncate">{pkg.destination}</span>
                           </div>
                         </div>
@@ -873,7 +873,7 @@ const HomePage = () => {
                         <div className="flex justify-between items-center gap-3 pt-3 border-t border-slate-100 dark:border-slate-800">
                           <div className="min-w-0">
                             <p className="text-[11px] uppercase tracking-wide text-slate-500 dark:text-slate-400">{t('common.from') || 'From'}</p>
-                            <p className="text-lg xs:text-xl md:text-2xl font-bold text-blue-600 dark:text-blue-400 truncate">
+                            <p className="text-lg xs:text-xl md:text-2xl font-bold text-teal-600 dark:text-teal-400 truncate">
                               {pkg.base_price && pkg.base_price > 0
                                 ? `$${(parseFloat(pkg.base_price) || 0).toFixed(2)}`
                                 : <span className="text-orange-500 text-sm">Price Not Set</span>
@@ -883,7 +883,7 @@ const HomePage = () => {
                           <Button
                             variant="primary"
                             size="sm"
-                            className="bg-blue-600 hover:bg-blue-700 rounded-full w-9 h-9 xs:w-10 xs:h-10 flex items-center justify-center flex-shrink-0 shadow-sm shadow-blue-600/30 group-hover:shadow-md group-hover:shadow-blue-600/40 transition-shadow"
+                            className="bg-teal-600 hover:bg-teal-700 rounded-full w-9 h-9 xs:w-10 xs:h-10 flex items-center justify-center flex-shrink-0 shadow-sm shadow-teal-600/30 group-hover:shadow-md group-hover:shadow-teal-600/40 transition-shadow"
                           >
                             <FiArrowRight size={16} className="group-hover:translate-x-0.5 transition-transform" />
                           </Button>
@@ -899,7 +899,7 @@ const HomePage = () => {
                 <Button
                   size="lg"
                   onClick={() => navigate('/search')}
-                  className="border-2 border-blue-600 text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20 px-8 md:px-10 py-3 rounded-lg group transition-all inline-flex items-center gap-2 font-bold"
+                  className="border-2 border-teal-600 text-teal-600 hover:bg-teal-50 dark:hover:bg-teal-900/20 px-8 md:px-10 py-3 rounded-lg group transition-all inline-flex items-center gap-2 font-bold"
                 >
                   <span>View All Trips</span>
                   <FiArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
@@ -914,7 +914,7 @@ const HomePage = () => {
       <PopularTripCategoriesSection />
 
       {/* ==================== STATISTICS ==================== */}
-      <section className="py-6 sm:py-8 md:py-12 lg:py-20 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 dark:from-blue-900 dark:via-purple-900 dark:to-pink-900" style={{ display: 'block', visibility: 'visible', minHeight: '150px' }}>
+      <section className="py-6 sm:py-8 md:py-12 lg:py-20 bg-gradient-to-r from-teal-600 via-orange-600 to-pink-600 dark:from-teal-900 dark:via-orange-900 dark:to-pink-900" style={{ display: 'block', visibility: 'visible', minHeight: '150px' }}>
         <div className="w-full max-w-7xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 md:gap-6 lg:gap-8">
             {stats.map((stat, idx) => {
@@ -941,7 +941,7 @@ const HomePage = () => {
         <div className="w-full max-w-7xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8">
           {/* Section Header */}
           <div className="text-center mb-12 md:mb-16 space-y-3 md:space-y-4">
-            <div className="inline-block px-4 py-2 bg-blue-100 dark:bg-blue-900/30 rounded-full text-blue-600 dark:text-blue-400 text-xs md:text-sm font-bold flex items-center gap-2 justify-center">
+            <div className="inline-block px-4 py-2 bg-teal-100 dark:bg-teal-900/30 rounded-full text-teal-600 dark:text-teal-400 text-xs md:text-sm font-bold flex items-center gap-2 justify-center">
               <FiThumbsUp size={16} />
               <span>{t('home.trendingTrips') || 'TRAVELER REVIEWS'}</span>
             </div>
@@ -969,7 +969,7 @@ const HomePage = () => {
                   return (
                     <Card
                       key={review.id || idx}
-                      className="group relative overflow-hidden bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-800 dark:to-slate-700 border border-slate-200 dark:border-slate-700 hover:border-blue-300 dark:hover:border-blue-500 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
+                      className="group relative overflow-hidden bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-800 dark:to-slate-700 border border-slate-200 dark:border-slate-700 hover:border-teal-300 dark:hover:border-teal-500 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
                     >
                       <div className="p-5 md:p-6 space-y-4 h-full flex flex-col">
                         {/* Rating Stars */}
@@ -997,7 +997,7 @@ const HomePage = () => {
 
                         {/* Author */}
                         <div className="flex items-center gap-3 pt-2">
-                          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center text-white text-xs font-bold flex-shrink-0">
+                          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-500 to-orange-500 flex items-center justify-center text-white text-xs font-bold flex-shrink-0">
                             {initials}
                           </div>
                           <div className="flex-1 min-w-0">
@@ -1024,7 +1024,7 @@ const HomePage = () => {
                 <Button
                   size="lg"
                   onClick={() => navigate('/search')}
-                  className="border-2 border-blue-600 text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20 px-8 md:px-10 py-3 rounded-lg group transition-all inline-flex items-center gap-2 font-bold"
+                  className="border-2 border-teal-600 text-teal-600 hover:bg-teal-50 dark:hover:bg-teal-900/20 px-8 md:px-10 py-3 rounded-lg group transition-all inline-flex items-center gap-2 font-bold"
                 >
                   <span>View All Reviews</span>
                   <FiArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
@@ -1041,19 +1041,19 @@ const HomePage = () => {
       </section>
 
       {/* ==================== TESTIMONIALS - MODERN DESIGN ==================== */}
-      <section className="py-6 sm:py-8 md:py-16 lg:py-32 bg-gradient-to-br from-slate-50 via-white to-blue-50 dark:from-slate-950 dark:via-slate-900 dark:to-blue-950 relative" style={{ display: 'block', visibility: 'visible', minHeight: '200px' }}>
-        <div className="absolute top-0 right-0 w-48 sm:w-96 h-48 sm:h-96 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 -z-10 dark:opacity-10"></div>
-        <div className="absolute bottom-0 left-0 w-48 sm:w-96 h-48 sm:h-96 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 -z-10 dark:opacity-10"></div>
+      <section className="py-6 sm:py-8 md:py-16 lg:py-32 bg-gradient-to-br from-slate-50 via-white to-teal-50 dark:from-slate-950 dark:via-slate-900 dark:to-teal-950 relative" style={{ display: 'block', visibility: 'visible', minHeight: '200px' }}>
+        <div className="absolute top-0 right-0 w-48 sm:w-96 h-48 sm:h-96 bg-teal-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 -z-10 dark:opacity-10"></div>
+        <div className="absolute bottom-0 left-0 w-48 sm:w-96 h-48 sm:h-96 bg-orange-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 -z-10 dark:opacity-10"></div>
 
         <div className="w-full max-w-7xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8 relative">
           {/* Header */}
           <div className="text-center mb-12 md:mb-20 space-y-3 md:space-y-4">
             <div className="inline-block">
-              <Badge className="bg-gradient-to-r from-purple-200 to-blue-200 dark:from-purple-900/30 dark:to-blue-900/30 text-purple-700 dark:text-purple-300 mb-4 px-4 py-2 rounded-full text-xs md:text-sm font-bold border border-purple-300/30 dark:border-purple-700/30">
+              <Badge className="bg-gradient-to-r from-orange-200 to-teal-200 dark:from-orange-900/30 dark:to-teal-900/30 text-orange-700 dark:text-orange-300 mb-4 px-4 py-2 rounded-full text-xs md:text-sm font-bold border border-orange-300/30 dark:border-orange-700/30">
                 ⭐ CLIENT TESTIMONIALS
               </Badge>
             </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-purple-600 dark:from-white dark:to-purple-300 leading-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-orange-600 dark:from-white dark:to-orange-300 leading-tight">
               {t('home.whatOurTravelersDay') || 'What Our Travelers Say'}
             </h2>
             <p className="text-base sm:text-lg md:text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto font-medium">
@@ -1076,10 +1076,10 @@ const HomePage = () => {
                 return (
                   <Card
                     key={review.id || idx}
-                    className="group relative overflow-hidden bg-white dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 hover:border-purple-300 dark:hover:border-purple-500 shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-4 backdrop-blur-sm"
+                    className="group relative overflow-hidden bg-white dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 hover:border-orange-300 dark:hover:border-orange-500 shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-4 backdrop-blur-sm"
                   >
                     {/* Gradient overlay on hover */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-purple-50/0 to-blue-50/0 dark:from-purple-900/0 dark:to-blue-900/0 group-hover:from-purple-50 group-hover:to-blue-50 dark:group-hover:from-purple-900/10 dark:group-hover:to-blue-900/10 transition-all duration-500 -z-0"></div>
+                    <div className="absolute inset-0 bg-gradient-to-br from-orange-50/0 to-teal-50/0 dark:from-orange-900/0 dark:to-teal-900/0 group-hover:from-orange-50 group-hover:to-teal-50 dark:group-hover:from-orange-900/10 dark:group-hover:to-teal-900/10 transition-all duration-500 -z-0"></div>
 
                     <div className="relative z-10 p-4 md:p-6 lg:p-8 h-full flex flex-col">
                       {/* Top Section - Rating */}
@@ -1097,13 +1097,13 @@ const HomePage = () => {
                             />
                           ))}
                         </div>
-                        <div className="w-8 h-8 rounded-full bg-gradient-to-br from-purple-400 to-blue-400 flex items-center justify-center text-white text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div className="w-8 h-8 rounded-full bg-gradient-to-br from-orange-400 to-teal-400 flex items-center justify-center text-white text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                           ✓
                         </div>
                       </div>
 
                       {/* Quote Icon */}
-                      <div className="inline-flex w-8 md:w-10 h-8 md:h-10 rounded-lg bg-gradient-to-br from-purple-100 to-blue-100 dark:from-purple-900/30 dark:to-blue-900/30 items-center justify-center mb-3 md:mb-4 text-purple-600 dark:text-purple-300 text-lg md:text-xl group-hover:scale-110 transition-transform duration-300">
+                      <div className="inline-flex w-8 md:w-10 h-8 md:h-10 rounded-lg bg-gradient-to-br from-orange-100 to-teal-100 dark:from-orange-900/30 dark:to-teal-900/30 items-center justify-center mb-3 md:mb-4 text-orange-600 dark:text-orange-300 text-lg md:text-xl group-hover:scale-110 transition-transform duration-300">
                         "
                       </div>
 
@@ -1113,15 +1113,15 @@ const HomePage = () => {
                       </p>
 
                       {/* Divider */}
-                      <div className="my-4 md:my-6 h-1 bg-gradient-to-r from-purple-200 via-blue-200 to-transparent dark:from-purple-700/50 dark:via-blue-700/50 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      <div className="my-4 md:my-6 h-1 bg-gradient-to-r from-orange-200 via-teal-200 to-transparent dark:from-orange-700/50 dark:via-teal-700/50 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
                       {/* Author Info */}
                       <div className="flex items-center gap-3 md:gap-4 pt-2">
-                        <div className="w-10 md:w-12 h-10 md:h-12 rounded-full bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 flex items-center justify-center text-white text-xs md:text-sm font-bold shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110 flex-shrink-0">
+                        <div className="w-10 md:w-12 h-10 md:h-12 rounded-full bg-gradient-to-br from-teal-500 via-orange-500 to-pink-500 flex items-center justify-center text-white text-xs md:text-sm font-bold shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110 flex-shrink-0">
                           {initials}
                         </div>
                         <div className="flex-1 min-w-0">
-                          <p className="font-bold text-slate-900 dark:text-white text-sm md:text-base group-hover:text-purple-600 dark:group-hover:text-purple-300 transition-colors duration-300 truncate">
+                          <p className="font-bold text-slate-900 dark:text-white text-sm md:text-base group-hover:text-orange-600 dark:group-hover:text-orange-300 transition-colors duration-300 truncate">
                             {review.user?.full_name || review.user?.username || 'Traveler'}
                           </p>
                           <p className="text-xs md:text-sm text-slate-500 dark:text-slate-400 font-medium truncate">
@@ -1138,10 +1138,10 @@ const HomePage = () => {
               testimonials.map((testimonial, idx) => (
                 <Card
                   key={idx}
-                  className="group relative overflow-hidden bg-white dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 hover:border-purple-300 dark:hover:border-purple-500 shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-4 backdrop-blur-sm"
+                  className="group relative overflow-hidden bg-white dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 hover:border-orange-300 dark:hover:border-orange-500 shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-4 backdrop-blur-sm"
                 >
                   {/* Gradient overlay on hover */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-purple-50/0 to-blue-50/0 dark:from-purple-900/0 dark:to-blue-900/0 group-hover:from-purple-50 group-hover:to-blue-50 dark:group-hover:from-purple-900/10 dark:group-hover:to-blue-900/10 transition-all duration-500 -z-0"></div>
+                  <div className="absolute inset-0 bg-gradient-to-br from-orange-50/0 to-teal-50/0 dark:from-orange-900/0 dark:to-teal-900/0 group-hover:from-orange-50 group-hover:to-teal-50 dark:group-hover:from-orange-900/10 dark:group-hover:to-teal-900/10 transition-all duration-500 -z-0"></div>
 
                   <div className="relative z-10 p-4 md:p-6 lg:p-8 h-full flex flex-col">
                     {/* Top Section - Rating */}
@@ -1159,13 +1159,13 @@ const HomePage = () => {
                           />
                         ))}
                       </div>
-                      <div className="w-8 h-8 rounded-full bg-gradient-to-br from-purple-400 to-blue-400 flex items-center justify-center text-white text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="w-8 h-8 rounded-full bg-gradient-to-br from-orange-400 to-teal-400 flex items-center justify-center text-white text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         ✓
                       </div>
                     </div>
 
                     {/* Quote Icon */}
-                    <div className="inline-flex w-8 md:w-10 h-8 md:h-10 rounded-lg bg-gradient-to-br from-purple-100 to-blue-100 dark:from-purple-900/30 dark:to-blue-900/30 items-center justify-center mb-3 md:mb-4 text-purple-600 dark:text-purple-300 text-lg md:text-xl group-hover:scale-110 transition-transform duration-300">
+                    <div className="inline-flex w-8 md:w-10 h-8 md:h-10 rounded-lg bg-gradient-to-br from-orange-100 to-teal-100 dark:from-orange-900/30 dark:to-teal-900/30 items-center justify-center mb-3 md:mb-4 text-orange-600 dark:text-orange-300 text-lg md:text-xl group-hover:scale-110 transition-transform duration-300">
                       "
                     </div>
 
@@ -1175,15 +1175,15 @@ const HomePage = () => {
                     </p>
 
                     {/* Divider */}
-                    <div className="my-4 md:my-6 h-1 bg-gradient-to-r from-purple-200 via-blue-200 to-transparent dark:from-purple-700/50 dark:via-blue-700/50 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="my-4 md:my-6 h-1 bg-gradient-to-r from-orange-200 via-teal-200 to-transparent dark:from-orange-700/50 dark:via-teal-700/50 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
                     {/* Author Info */}
                     <div className="flex items-center gap-3 md:gap-4 pt-2">
-                      <div className="w-10 md:w-12 h-10 md:h-12 rounded-full bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 flex items-center justify-center text-white text-xs md:text-sm font-bold shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110 flex-shrink-0">
+                      <div className="w-10 md:w-12 h-10 md:h-12 rounded-full bg-gradient-to-br from-teal-500 via-orange-500 to-pink-500 flex items-center justify-center text-white text-xs md:text-sm font-bold shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110 flex-shrink-0">
                         {testimonial.avatar}
                       </div>
                       <div className="flex-1 min-w-0">
-                        <p className="font-bold text-slate-900 dark:text-white text-sm md:text-base group-hover:text-purple-600 dark:group-hover:text-purple-300 transition-colors duration-300 truncate">
+                        <p className="font-bold text-slate-900 dark:text-white text-sm md:text-base group-hover:text-orange-600 dark:group-hover:text-orange-300 transition-colors duration-300 truncate">
                           {testimonial.name}
                         </p>
                         <p className="text-xs md:text-sm text-slate-500 dark:text-slate-400 font-medium truncate">
@@ -1199,19 +1199,19 @@ const HomePage = () => {
 
           {/* Stats Row */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 md:gap-5 lg:gap-6 mt-8 md:mt-12 lg:mt-16">
-            <div className="text-center p-3 xs:p-4 sm:p-6 md:p-8 bg-white dark:bg-slate-800/50 rounded-xl sm:rounded-2xl border border-slate-200 dark:border-slate-700 hover:border-purple-300 dark:hover:border-purple-500 transition-all hover:shadow-lg group">
-              <div className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-black bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 mb-1 md:mb-2 group-hover:scale-110 transition-transform duration-300">
+            <div className="text-center p-3 xs:p-4 sm:p-6 md:p-8 bg-white dark:bg-slate-800/50 rounded-xl sm:rounded-2xl border border-slate-200 dark:border-slate-700 hover:border-orange-300 dark:hover:border-orange-500 transition-all hover:shadow-lg group">
+              <div className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-black bg-clip-text text-transparent bg-gradient-to-r from-teal-600 to-orange-600 mb-1 md:mb-2 group-hover:scale-110 transition-transform duration-300">
                 4.9
               </div>
               <p className="text-xs xs:text-sm md:text-base text-slate-600 dark:text-slate-300 font-semibold">Average Rating</p>
             </div>
-            <div className="text-center p-3 xs:p-4 sm:p-6 md:p-8 bg-white dark:bg-slate-800/50 rounded-xl sm:rounded-2xl border border-slate-200 dark:border-slate-700 hover:border-purple-300 dark:hover:border-purple-500 transition-all hover:shadow-lg group">
-              <div className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-black bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-pink-600 mb-1 md:mb-2 group-hover:scale-110 transition-transform duration-300">
+            <div className="text-center p-3 xs:p-4 sm:p-6 md:p-8 bg-white dark:bg-slate-800/50 rounded-xl sm:rounded-2xl border border-slate-200 dark:border-slate-700 hover:border-orange-300 dark:hover:border-orange-500 transition-all hover:shadow-lg group">
+              <div className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-black bg-clip-text text-transparent bg-gradient-to-r from-orange-600 to-pink-600 mb-1 md:mb-2 group-hover:scale-110 transition-transform duration-300">
                 5K+
               </div>
               <p className="text-xs xs:text-sm md:text-base text-slate-600 dark:text-slate-300 font-semibold">Reviews</p>
             </div>
-            <div className="text-center p-3 xs:p-4 sm:p-6 md:p-8 bg-white dark:bg-slate-800/50 rounded-xl sm:rounded-2xl border border-slate-200 dark:border-slate-700 hover:border-purple-300 dark:hover:border-purple-500 transition-all hover:shadow-lg group">
+            <div className="text-center p-3 xs:p-4 sm:p-6 md:p-8 bg-white dark:bg-slate-800/50 rounded-xl sm:rounded-2xl border border-slate-200 dark:border-slate-700 hover:border-orange-300 dark:hover:border-orange-500 transition-all hover:shadow-lg group">
               <div className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-black bg-clip-text text-transparent bg-gradient-to-r from-pink-600 to-orange-600 mb-1 md:mb-2 group-hover:scale-110 transition-transform duration-300">
                 98%
               </div>
@@ -1234,7 +1234,7 @@ const HomePage = () => {
           <div className="flex flex-col xs:flex-row gap-3 xs:gap-4 justify-center">
             <Button
               onClick={() => navigate('/search')}
-              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold px-6 xs:px-8 md:px-10 py-2.5 xs:py-3 rounded-lg flex items-center justify-center gap-2 group transition-all hover:shadow-lg text-sm xs:text-base"
+              className="bg-gradient-to-r from-teal-600 to-orange-600 hover:from-teal-700 hover:to-orange-700 text-white font-bold px-6 xs:px-8 md:px-10 py-2.5 xs:py-3 rounded-lg flex items-center justify-center gap-2 group transition-all hover:shadow-lg text-sm xs:text-base"
             >
               <FiSearch size={16} />
               <span>Explore Now</span>

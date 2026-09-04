@@ -848,7 +848,7 @@ function PackagesPage() {
         </div>
         <button
           onClick={handleCreatePackage}
-          className="flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl hover:shadow-lg transition-all font-semibold shadow-lg transform hover:scale-105 hover:from-blue-700 hover:to-blue-800"
+          className="flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-teal-600 to-teal-700 text-white rounded-xl hover:shadow-lg transition-all font-semibold shadow-lg transform hover:scale-105 hover:from-teal-700 hover:to-teal-800"
         >
           <FiPlus size={22} />
           <span>Add New Package</span>
@@ -857,13 +857,13 @@ function PackagesPage() {
 
       {/* Statistics Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div className="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 rounded-2xl p-6 border border-blue-200 dark:border-blue-700/50 shadow-lg hover:shadow-xl transition-all">
+        <div className="bg-gradient-to-br from-teal-50 to-teal-100 dark:from-teal-900/20 dark:to-teal-800/20 rounded-2xl p-6 border border-teal-200 dark:border-teal-700/50 shadow-lg hover:shadow-xl transition-all">
           <div className="flex items-center justify-between mb-2">
-            <p className="text-blue-600 dark:text-blue-400 text-sm font-bold uppercase tracking-wide">Total Packages</p>
-            <MdTour className="text-blue-600 dark:text-blue-400" size={24} />
+            <p className="text-teal-600 dark:text-teal-400 text-sm font-bold uppercase tracking-wide">Total Packages</p>
+            <MdTour className="text-teal-600 dark:text-teal-400" size={24} />
           </div>
-          <p className="text-3xl font-bold text-blue-900 dark:text-blue-100">{stats.total}</p>
-          <p className="text-xs text-blue-600 dark:text-blue-400 mt-2">All available packages</p>
+          <p className="text-3xl font-bold text-teal-900 dark:text-teal-100">{stats.total}</p>
+          <p className="text-xs text-teal-600 dark:text-teal-400 mt-2">All available packages</p>
         </div>
 
         <div className="bg-gradient-to-br from-yellow-50 to-yellow-100 dark:from-yellow-900/20 dark:to-yellow-800/20 rounded-2xl p-6 border border-yellow-200 dark:border-yellow-700/50 shadow-lg hover:shadow-xl transition-all">
@@ -884,13 +884,13 @@ function PackagesPage() {
           <p className="text-xs text-green-600 dark:text-green-400 mt-2">Average price</p>
         </div>
 
-        <div className="bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-800/20 rounded-2xl p-6 border border-purple-200 dark:border-purple-700/50 shadow-lg hover:shadow-xl transition-all">
+        <div className="bg-gradient-to-br from-orange-50 to-orange-100 dark:from-orange-900/20 dark:to-orange-800/20 rounded-2xl p-6 border border-orange-200 dark:border-orange-700/50 shadow-lg hover:shadow-xl transition-all">
           <div className="flex items-center justify-between mb-2">
-            <p className="text-purple-600 dark:text-purple-400 text-sm font-bold uppercase tracking-wide">Average Rating</p>
-            <FiStar className="text-purple-600 dark:text-purple-400" size={24} />
+            <p className="text-orange-600 dark:text-orange-400 text-sm font-bold uppercase tracking-wide">Average Rating</p>
+            <FiStar className="text-orange-600 dark:text-orange-400" size={24} />
           </div>
-          <p className="text-3xl font-bold text-purple-900 dark:text-purple-100">{stats.avgRating} stars</p>
-          <p className="text-xs text-purple-600 dark:text-purple-400 mt-2">Overall rating</p>
+          <p className="text-3xl font-bold text-orange-900 dark:text-orange-100">{stats.avgRating} stars</p>
+          <p className="text-xs text-orange-600 dark:text-orange-400 mt-2">Overall rating</p>
         </div>
       </div>
 
@@ -904,7 +904,7 @@ function PackagesPage() {
               placeholder="Search by package or destination..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-12 pr-4 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-xl bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-500 dark:placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all"
+              className="w-full pl-12 pr-4 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-xl bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-500 dark:placeholder-slate-400 focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 transition-all"
             />
           </div>
 
@@ -913,7 +913,7 @@ function PackagesPage() {
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value)}
-              className="w-full pl-12 pr-4 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-xl bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all appearance-none font-medium"
+              className="w-full pl-12 pr-4 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-xl bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 transition-all appearance-none font-medium"
             >
               <option value="recent">Most Recent</option>
               <option value="price_low">Price: Low to High</option>
@@ -929,7 +929,7 @@ function PackagesPage() {
             onClick={() => setFilterFeatured('all')}
             className={`px-4 py-2 rounded-lg font-semibold transition-all text-sm ${
               filterFeatured === 'all'
-                ? 'bg-blue-600 text-white shadow-lg'
+                ? 'bg-teal-600 text-white shadow-lg'
                 : 'bg-slate-200 dark:bg-slate-600 text-slate-900 dark:text-white hover:bg-slate-300 dark:hover:bg-slate-500'
             }`}
           >
@@ -971,7 +971,7 @@ function PackagesPage() {
         {loading ? (
           <div className="col-span-full flex items-center justify-center h-96">
             <div className="text-center">
-              <div className="inline-block animate-spin rounded-full h-16 w-16 border-4 border-slate-300 dark:border-slate-600 border-t-blue-600 dark:border-t-blue-400 mb-4"></div>
+              <div className="inline-block animate-spin rounded-full h-16 w-16 border-4 border-slate-300 dark:border-slate-600 border-t-teal-600 dark:border-t-teal-400 mb-4"></div>
               <p className="text-lg text-slate-600 dark:text-slate-400 font-medium">Loading packages...</p>
             </div>
           </div>
@@ -981,7 +981,7 @@ function PackagesPage() {
               key={pkg.id}
               className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-700 overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 group"
             >
-              <div className="relative h-48 bg-gradient-to-br from-blue-400 to-blue-600 overflow-hidden">
+              <div className="relative h-48 bg-gradient-to-br from-teal-400 to-teal-600 overflow-hidden">
                 {pkg.images && pkg.images.length > 0 ? (
                   <img 
                     src={(() => {
@@ -1026,7 +1026,7 @@ function PackagesPage() {
 
               <div className="p-6 space-y-4">
                 <div>
-                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2 line-clamp-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2 line-clamp-2 group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors">
                     {pkg.title}
                   </h3>
                   <div className="flex items-center gap-2 text-slate-600 dark:text-slate-400">
@@ -1037,7 +1037,7 @@ function PackagesPage() {
 
                 <div className="grid grid-cols-3 gap-3 py-4 border-y border-slate-200 dark:border-slate-700">
                   <div className="text-center">
-                    <FiClock className="text-blue-600 mx-auto mb-1" size={16} />
+                    <FiClock className="text-teal-600 mx-auto mb-1" size={16} />
                     <p className="text-sm font-bold text-slate-900 dark:text-white">{pkg.duration_days}</p>
                     <p className="text-xs text-slate-500 dark:text-slate-400">Days</p>
                   </div>
@@ -1060,14 +1060,14 @@ function PackagesPage() {
                 <div className="flex gap-2 pt-2">
                   <button
                     onClick={() => handleViewPackage(pkg)}
-                    className="flex-1 flex items-center justify-center gap-2 px-3 py-2.5 rounded-xl bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 hover:bg-blue-200 dark:hover:bg-blue-900/50 transition-all text-sm font-semibold hover:shadow-lg"
+                    className="flex-1 flex items-center justify-center gap-2 px-3 py-2.5 rounded-xl bg-teal-100 dark:bg-teal-900/30 text-teal-700 dark:text-teal-400 hover:bg-teal-200 dark:hover:bg-teal-900/50 transition-all text-sm font-semibold hover:shadow-lg"
                   >
                     <FiEye size={16} />
                     View
                   </button>
                   <button
                     onClick={() => handleEditPackage(pkg)}
-                    className="flex-1 flex items-center justify-center gap-2 px-3 py-2.5 rounded-xl bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400 hover:bg-purple-200 dark:hover:bg-purple-900/50 transition-all text-sm font-semibold hover:shadow-lg"
+                    className="flex-1 flex items-center justify-center gap-2 px-3 py-2.5 rounded-xl bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400 hover:bg-orange-200 dark:hover:bg-orange-900/50 transition-all text-sm font-semibold hover:shadow-lg"
                   >
                     <FiEdit2 size={16} />
                     Edit
@@ -1102,7 +1102,7 @@ function PackagesPage() {
           <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl max-w-2xl w-full border border-slate-200 dark:border-slate-700 overflow-hidden max-h-[90vh] overflow-y-auto">
             
             {/* Modal Header */}
-            <div className="flex items-center justify-between p-8 bg-gradient-to-r from-blue-600 to-indigo-600 text-white sticky top-0 z-10">
+            <div className="flex items-center justify-between p-8 bg-gradient-to-r from-teal-600 to-orange-600 text-white sticky top-0 z-10">
               <div className="flex items-center gap-3">
                 <div className="w-12 h-12 rounded-lg bg-white/20 flex items-center justify-center backdrop-blur-sm">
                   <MdTour size={24} />
@@ -1129,7 +1129,7 @@ function PackagesPage() {
               {/* Images Section */}
               <div>
                 <label className="block text-sm font-bold text-slate-900 dark:text-white mb-3 flex items-center gap-2">
-                  <FiImage size={18} className="text-blue-600" />
+                  <FiImage size={18} className="text-teal-600" />
                   Package Images
                 </label>
 
@@ -1217,7 +1217,7 @@ function PackagesPage() {
                       disabled={uploadingImages}
                       className="hidden"
                     />
-                    <div className="border-2 border-dashed border-slate-300 dark:border-slate-600 rounded-xl p-6 text-center cursor-pointer hover:border-blue-500 hover:bg-blue-50/30 dark:hover:bg-blue-900/10 transition-all">
+                    <div className="border-2 border-dashed border-slate-300 dark:border-slate-600 rounded-xl p-6 text-center cursor-pointer hover:border-teal-500 hover:bg-teal-50/30 dark:hover:bg-teal-900/10 transition-all">
                       <FiUpload className="mx-auto mb-2 text-slate-400" size={24} />
                       <p className="text-sm font-semibold text-slate-900 dark:text-white">
                         {uploadingImages ? 'Uploading...' : 'Click to upload images'}
@@ -1233,7 +1233,7 @@ function PackagesPage() {
               {/* Title */}
               <div>
                 <label className="block text-sm font-bold text-slate-900 dark:text-white mb-3 flex items-center gap-2">
-                  <FiTag size={18} className="text-blue-600" />
+                  <FiTag size={18} className="text-teal-600" />
                   Package Name *
                 </label>
                 <input
@@ -1242,21 +1242,21 @@ function PackagesPage() {
                   onChange={(e) => setFormData({ ...formData, title: e.target.value })}
                   disabled={modalMode === 'view'}
                   placeholder="e.g. Amazing Pyramids Tour"
-                  className="w-full px-4 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-xl bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-400 disabled:opacity-50 disabled:bg-slate-100 dark:disabled:bg-slate-900 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all"
+                  className="w-full px-4 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-xl bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-400 disabled:opacity-50 disabled:bg-slate-100 dark:disabled:bg-slate-900 focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 transition-all"
                 />
               </div>
 
               {/* Category */}
               <div>
                 <label className="block text-sm font-bold text-slate-900 dark:text-white mb-3 flex items-center gap-2">
-                  <FiTag size={18} className="text-purple-600" />
+                  <FiTag size={18} className="text-orange-600" />
                   Category *
                 </label>
                 <select
                   value={formData.category_id}
                   onChange={(e) => setFormData({ ...formData, category_id: e.target.value })}
                   disabled={modalMode === 'view'}
-                  className="w-full px-4 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-xl bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-400 disabled:opacity-50 disabled:bg-slate-100 dark:disabled:bg-slate-900 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all appearance-none font-medium"
+                  className="w-full px-4 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-xl bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-400 disabled:opacity-50 disabled:bg-slate-100 dark:disabled:bg-slate-900 focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 transition-all appearance-none font-medium"
                 >
                   <option value="">-- Select Category --</option>
                   {categories.map((cat) => (
@@ -1280,13 +1280,13 @@ function PackagesPage() {
                     onChange={(e) => setFormData({ ...formData, destination: e.target.value })}
                     disabled={modalMode === 'view'}
                     placeholder="e.g. Cairo, Giza"
-                    className="w-full px-4 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-xl bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-400 disabled:opacity-50 disabled:bg-slate-100 dark:disabled:bg-slate-900 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all"
+                    className="w-full px-4 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-xl bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-400 disabled:opacity-50 disabled:bg-slate-100 dark:disabled:bg-slate-900 focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 transition-all"
                   />
                 </div>
 
                 <div>
                   <label className="block text-sm font-bold text-slate-900 dark:text-white mb-3 flex items-center gap-2">
-                    <FiClock size={18} className="text-blue-600" />
+                    <FiClock size={18} className="text-teal-600" />
                     Duration (Days) *
                   </label>
                   <input
@@ -1296,7 +1296,7 @@ function PackagesPage() {
                     disabled={modalMode === 'view'}
                     placeholder="Number of days"
                     min="1"
-                    className="w-full px-4 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-xl bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-400 disabled:opacity-50 disabled:bg-slate-100 dark:disabled:bg-slate-900 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all"
+                    className="w-full px-4 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-xl bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-400 disabled:opacity-50 disabled:bg-slate-100 dark:disabled:bg-slate-900 focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 transition-all"
                   />
                 </div>
               </div>
@@ -1316,7 +1316,7 @@ function PackagesPage() {
                     placeholder="Price in USD"
                     min="0"
                     step="0.01"
-                    className="w-full px-4 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-xl bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-400 disabled:opacity-50 disabled:bg-slate-100 dark:disabled:bg-slate-900 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all"
+                    className="w-full px-4 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-xl bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-400 disabled:opacity-50 disabled:bg-slate-100 dark:disabled:bg-slate-900 focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 transition-all"
                   />
                 </div>
 
@@ -1350,7 +1350,7 @@ function PackagesPage() {
                   placeholder="Brief description of the package..."
                   rows="2"
                   maxLength="200"
-                  className="w-full px-4 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-xl bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-400 disabled:opacity-50 disabled:bg-slate-100 dark:disabled:bg-slate-900 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all resize-none"
+                  className="w-full px-4 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-xl bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-400 disabled:opacity-50 disabled:bg-slate-100 dark:disabled:bg-slate-900 focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 transition-all resize-none"
                 />
                 <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">{formData.short_desc.length}/200</p>
               </div>
@@ -1358,7 +1358,7 @@ function PackagesPage() {
               {/* Long Description */}
               <div>
                 <label className="block text-sm font-bold text-slate-900 dark:text-white mb-3 flex items-center gap-2">
-                  <FiAlertCircle size={18} className="text-purple-600" />
+                  <FiAlertCircle size={18} className="text-orange-600" />
                   Detailed Description
                 </label>
                 <textarea
@@ -1367,7 +1367,7 @@ function PackagesPage() {
                   disabled={modalMode === 'view'}
                   placeholder="Detailed description including itinerary, inclusions..."
                   rows="4"
-                  className="w-full px-4 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-xl bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-400 disabled:opacity-50 disabled:bg-slate-100 dark:disabled:bg-slate-900 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all resize-none"
+                  className="w-full px-4 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-xl bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-400 disabled:opacity-50 disabled:bg-slate-100 dark:disabled:bg-slate-900 focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 transition-all resize-none"
                 />
               </div>
 
@@ -1478,7 +1478,7 @@ function PackagesPage() {
                 <div className="flex items-center justify-between mb-4">
                   <div>
                     <label className="block text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
-                      <FiCalendar size={18} className="text-blue-600" />
+                      <FiCalendar size={18} className="text-teal-600" />
                       Daily Itinerary
                     </label>
                     <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">Add days and translate them in the Translations section below</p>
@@ -1486,7 +1486,7 @@ function PackagesPage() {
                   {modalMode !== 'view' && (
                     <button
                       onClick={handleAddItinerary}
-                      className="flex items-center gap-2 px-3 py-1.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all text-sm font-semibold whitespace-nowrap ml-4"
+                      className="flex items-center gap-2 px-3 py-1.5 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-all text-sm font-semibold whitespace-nowrap ml-4"
                     >
                       <FiPlus size={16} />
                       Add Day
@@ -1516,7 +1516,7 @@ function PackagesPage() {
                           onChange={(e) => handleUpdateItinerary(idx, 'title', e.target.value)}
                           disabled={modalMode === 'view'}
                           placeholder="Day title..."
-                          className="w-full px-3 py-2 border-2 border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-400 disabled:opacity-50 focus:outline-none focus:border-blue-500 transition-all"
+                          className="w-full px-3 py-2 border-2 border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-400 disabled:opacity-50 focus:outline-none focus:border-teal-500 transition-all"
                         />
 
                         <textarea
@@ -1525,7 +1525,7 @@ function PackagesPage() {
                           disabled={modalMode === 'view'}
                           placeholder="Description..."
                           rows="2"
-                          className="w-full px-3 py-2 border-2 border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-400 disabled:opacity-50 focus:outline-none focus:border-blue-500 transition-all resize-none"
+                          className="w-full px-3 py-2 border-2 border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-400 disabled:opacity-50 focus:outline-none focus:border-teal-500 transition-all resize-none"
                         />
 
                         <input
@@ -1534,7 +1534,7 @@ function PackagesPage() {
                           onChange={(e) => handleUpdateItinerary(idx, 'activities', e.target.value)}
                           disabled={modalMode === 'view'}
                           placeholder="Activities (comma separated)..."
-                          className="w-full px-3 py-2 border-2 border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-400 disabled:opacity-50 focus:outline-none focus:border-blue-500 transition-all"
+                          className="w-full px-3 py-2 border-2 border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-400 disabled:opacity-50 focus:outline-none focus:border-teal-500 transition-all"
                         />
 
                         <input
@@ -1543,7 +1543,7 @@ function PackagesPage() {
                           onChange={(e) => handleUpdateItinerary(idx, 'meals', e.target.value)}
                           disabled={modalMode === 'view'}
                           placeholder="Meals (B, L, D)..."
-                          className="w-full px-3 py-2 border-2 border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-400 disabled:opacity-50 focus:outline-none focus:border-blue-500 transition-all"
+                          className="w-full px-3 py-2 border-2 border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-400 disabled:opacity-50 focus:outline-none focus:border-teal-500 transition-all"
                         />
                       </div>
                     ))}

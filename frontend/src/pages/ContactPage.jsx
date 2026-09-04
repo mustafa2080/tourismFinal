@@ -41,14 +41,14 @@ const ContactPage = () => {
       title: t('contactPage.phone'),
       value: t('contactPage.phoneNumber'),
       link: 'tel:+201000000000',
-      color: 'from-blue-500 to-blue-600',
+      color: 'from-teal-500 to-teal-600',
     },
     {
       icon: FiMail,
       title: t('contactPage.email'),
       value: t('contactPage.supportEmail'),
       link: 'mailto:support@voyagertours.com',
-      color: 'from-purple-500 to-purple-600',
+      color: 'from-orange-500 to-orange-600',
     },
     {
       icon: FiMapPin,
@@ -147,7 +147,7 @@ const ContactPage = () => {
       <section className="relative pt-12 md:pt-20 pb-16 md:pb-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center">
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 dark:text-white mb-6">
-            {t('contactPage.heroTitle')} <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Voyager Tours</span>
+            {t('contactPage.heroTitle')} <span className="bg-gradient-to-r from-teal-600 to-orange-600 bg-clip-text text-transparent">Voyager Tours</span>
           </h1>
           <p className="text-lg sm:text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
             {t('contactPage.heroDescription')}
@@ -175,7 +175,7 @@ const ContactPage = () => {
                   {info.link ? (
                     <a
                       href={info.link}
-                      className="text-blue-600 dark:text-blue-400 hover:underline font-medium"
+                      className="text-teal-600 dark:text-teal-400 hover:underline font-medium"
                     >
                       {info.value}
                     </a>
@@ -210,7 +210,7 @@ const ContactPage = () => {
                       onChange={handleChange}
                       required
                       placeholder={t('contactPage.nameField')}
-                      className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                      className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition"
                     />
                   </div>
 
@@ -225,7 +225,7 @@ const ContactPage = () => {
                       onChange={handleChange}
                       required
                       placeholder={t('contactPage.emailField')}
-                      className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                      className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition"
                     />
                   </div>
                 </div>
@@ -240,7 +240,7 @@ const ContactPage = () => {
                     value={formData.phone}
                     onChange={handleChange}
                     placeholder={t('contactPage.phoneField')}
-                    className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                    className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition"
                   />
                 </div>
 
@@ -253,7 +253,7 @@ const ContactPage = () => {
                     value={formData.subject}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                    className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition"
                   >
                     <option value="">{t('contactPage.selectSubject')}</option>
                     <option value="booking">{t('contactPage.bookingInquiry')}</option>
@@ -275,7 +275,7 @@ const ContactPage = () => {
                     required
                     placeholder={t('contactPage.messageField')}
                     rows={6}
-                    className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition resize-none"
+                    className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition resize-none"
                   />
                 </div>
 
@@ -296,7 +296,7 @@ const ContactPage = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold rounded-lg transition-all hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 group"
+                  className="w-full px-6 py-3 bg-gradient-to-r from-teal-600 to-orange-600 hover:from-teal-700 hover:to-orange-700 text-white font-semibold rounded-lg transition-all hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 group"
                 >
                   {isSubmitting ? (
                     <>
@@ -316,7 +316,7 @@ const ContactPage = () => {
             {/* Side Info */}
             <div className="space-y-4 sm:space-y-6">
               {/* Business Hours */}
-              <div className="bg-gradient-to-br from-blue-50 to-purple-50 dark:from-slate-800 dark:to-slate-700 rounded-xl p-6 border border-blue-200 dark:border-slate-700">
+              <div className="bg-gradient-to-br from-teal-50 to-orange-50 dark:from-slate-800 dark:to-slate-700 rounded-xl p-6 border border-teal-200 dark:border-slate-700">
                 <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-4">{t('contactPage.businessHours')}</h3>
                 <div className="space-y-3 text-slate-700 dark:text-slate-300">
                   <div className="flex justify-between">
@@ -353,12 +353,12 @@ const ContactPage = () => {
               </div>
 
               {/* Newsletter */}
-              <div className="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-slate-800 dark:to-slate-700 rounded-xl p-6 border border-purple-200 dark:border-slate-700">
+              <div className="bg-gradient-to-br from-orange-50 to-pink-50 dark:from-slate-800 dark:to-slate-700 rounded-xl p-6 border border-orange-200 dark:border-slate-700">
                 <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-4">{t('contactPage.newsletter')}</h3>
                 <p className="text-slate-700 dark:text-slate-300 mb-4 text-sm">
                   {t('contactPage.newsletterDesc')}
                 </p>
-                <button className="w-full px-4 py-2 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold rounded-lg transition-all">
+                <button className="w-full px-4 py-2 bg-gradient-to-r from-orange-600 to-pink-600 hover:from-orange-700 hover:to-pink-700 text-white font-semibold rounded-lg transition-all">
                   {t('contactPage.subscribeNow')}
                 </button>
               </div>
@@ -382,7 +382,7 @@ const ContactPage = () => {
               >
                 <summary className="px-6 py-4 cursor-pointer font-semibold text-slate-900 dark:text-white flex items-center justify-between hover:bg-slate-50 dark:hover:bg-slate-700/50 transition">
                   <span>{item.question}</span>
-                  <span className="text-blue-600 dark:text-blue-400">+</span>
+                  <span className="text-teal-600 dark:text-teal-400">+</span>
                 </summary>
                 <div className="px-6 py-4 border-t border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 leading-relaxed">
                   {item.answer}
@@ -394,15 +394,15 @@ const ContactPage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-800 dark:to-purple-800">
+      <section className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-teal-600 to-orange-600 dark:from-teal-800 dark:to-orange-800">
         <div className="max-w-4xl mx-auto text-center text-white">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">{t('contactPage.stillHaveQuestions')}</h2>
-          <p className="text-lg text-blue-100 mb-8">
+          <p className="text-lg text-teal-100 mb-8">
             {t('contactPage.stillHaveQuestionsDesc')}
           </p>
           <a
             href="mailto:support@voyagertours.com"
-            className="inline-flex items-center gap-2 px-8 py-3 bg-white text-blue-600 font-semibold rounded-lg hover:bg-blue-50 transition-all"
+            className="inline-flex items-center gap-2 px-8 py-3 bg-white text-teal-600 font-semibold rounded-lg hover:bg-teal-50 transition-all"
           >
             <FiMail size={20} />
             {t('contactPage.emailSupport')}

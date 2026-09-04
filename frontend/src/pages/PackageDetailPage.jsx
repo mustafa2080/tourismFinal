@@ -563,7 +563,7 @@ const PackageDetailPage = () => {
                   onClick={() => setSelectedImage(idx)}
                   className={`flex-shrink-0 h-16 w-24 rounded-lg overflow-hidden border-2 transition-all ${
                     selectedImage === idx
-                      ? 'border-cyan-400 shadow-lg scale-105'
+                      ? 'border-teal-400 shadow-lg scale-105'
                       : 'border-white/30 hover:border-white/60 opacity-70 hover:opacity-100'
                   }`}
                 >
@@ -605,7 +605,7 @@ const PackageDetailPage = () => {
                       <FiMapPin size={20} />
                       {displayPkg.destination}
                     </div>
-                    <div className="flex items-center gap-2 text-blue-600 dark:text-blue-400 font-semibold">
+                    <div className="flex items-center gap-2 text-teal-600 dark:text-teal-400 font-semibold">
                       <FiCalendar size={20} />
                       {displayPkg.duration_days} {t('packageDetail.header.days')}
                     </div>
@@ -619,12 +619,12 @@ const PackageDetailPage = () => {
 
               {/* Highlights Card */}
               {displayPkg.highlights && displayPkg.highlights.length > 0 && (
-                <div className="bg-gradient-to-r from-cyan-50 to-blue-50 dark:from-cyan-900/20 dark:to-blue-900/20 rounded-xl p-6 border border-cyan-200 dark:border-cyan-700">
+                <div className="bg-gradient-to-r from-teal-50 to-teal-50 dark:from-teal-900/20 dark:to-teal-900/20 rounded-xl p-6 border border-teal-200 dark:border-teal-700">
                   <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-4">{t('packageDetail.highlights')}</h3>
                   <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                     {displayPkg.highlights.map((highlight, idx) => (
                       <div key={idx} className="flex items-center gap-2">
-                        <FiChevronRight size={18} className="text-cyan-600 dark:text-cyan-400 flex-shrink-0" />
+                        <FiChevronRight size={18} className="text-teal-600 dark:text-teal-400 flex-shrink-0" />
                         <span className="text-slate-700 dark:text-slate-300">{highlight}</span>
                       </div>
                     ))}
@@ -641,7 +641,7 @@ const PackageDetailPage = () => {
                       onClick={() => setActiveTab(tab)}
                       className={`px-6 py-3 font-semibold transition-all border-b-2 ${
                         activeTab === tab
-                          ? 'text-cyan-600 dark:text-cyan-400 border-cyan-600 dark:border-cyan-400'
+                          ? 'text-teal-600 dark:text-teal-400 border-teal-600 dark:border-teal-400'
                           : 'text-slate-600 dark:text-slate-400 border-transparent hover:text-slate-900 dark:hover:text-slate-200'
                       }`}
                     >
@@ -700,7 +700,7 @@ const PackageDetailPage = () => {
                     <div className="space-y-6">
                       {/* Add Review Section */}
                       {isAuthenticated && (
-                        <div className="bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 rounded-xl p-6 border border-blue-200 dark:border-blue-700">
+                        <div className="bg-gradient-to-r from-teal-50 to-teal-50 dark:from-teal-900/20 dark:to-teal-900/20 rounded-xl p-6 border border-teal-200 dark:border-teal-700">
                           <div className="flex justify-between items-center mb-4">
                             <h4 className="text-lg font-bold text-slate-900 dark:text-white">Share Your Experience</h4>
                             <button
@@ -709,7 +709,7 @@ const PackageDetailPage = () => {
                               className={`px-4 py-2 text-white rounded-lg transition text-sm font-semibold ${
                                 !userBooking
                                   ? 'bg-slate-400 cursor-not-allowed opacity-50'
-                                  : 'bg-blue-600 hover:bg-blue-700'
+                                  : 'bg-teal-600 hover:bg-teal-700'
                               }`}
                             >
                               {showReviewForm ? '✕ Cancel' : '+ Add Review'}
@@ -764,7 +764,7 @@ const PackageDetailPage = () => {
                           )}
 
                           {showReviewForm && userBooking && (
-                            <div className="space-y-4 mt-4 pt-4 border-t border-blue-200 dark:border-blue-700">
+                            <div className="space-y-4 mt-4 pt-4 border-t border-teal-200 dark:border-teal-700">
                               {/* Rating Selection */}
                               <div>
                                 <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-3">Rating * {hoverRating > 0 && <span className="text-yellow-500">({['', 'Poor', 'Fair', 'Good', 'Very Good', 'Excellent'][hoverRating]})</span>}</label>
@@ -789,8 +789,8 @@ const PackageDetailPage = () => {
                                   ))}
                                 </div>
                                 {reviewRating > 0 && (
-                                  <div className="mt-3 p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-700">
-                                    <p className="text-sm font-semibold text-blue-900 dark:text-blue-200">
+                                  <div className="mt-3 p-3 bg-teal-50 dark:bg-teal-900/20 rounded-lg border border-teal-200 dark:border-teal-700">
+                                    <p className="text-sm font-semibold text-teal-900 dark:text-teal-200">
                                       Your rating: <span className="text-lg text-yellow-500">{reviewRating}/5 - {['', 'Poor', 'Fair', 'Good', 'Very Good', 'Excellent'][reviewRating]}</span>
                                     </p>
                                   </div>
@@ -809,7 +809,7 @@ const PackageDetailPage = () => {
                                   className={`w-full px-4 py-3 rounded-lg border-2 transition-all bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-500 dark:placeholder-slate-400 focus:outline-none ${
                                     reviewComment.trim().length >= 10
                                       ? 'border-green-500 focus:ring-2 focus:ring-green-400'
-                                      : 'border-slate-300 dark:border-slate-600 focus:border-blue-500 focus:ring-2 focus:ring-blue-400'
+                                      : 'border-slate-300 dark:border-slate-600 focus:border-teal-500 focus:ring-2 focus:ring-teal-400'
                                   }`}
                                   rows="4"
                                 />
@@ -883,7 +883,7 @@ const PackageDetailPage = () => {
                                 <div className="flex items-start justify-between mb-3">
                                   <div className="flex-1">
                                     <div className="flex items-center gap-3 mb-2">
-                                      <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center text-white font-bold">
+                                      <div className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-400 to-orange-500 flex items-center justify-center text-white font-bold">
                                         {(review.user?.name || 'A')[0]}
                                       </div>
                                       <div className="flex-1">

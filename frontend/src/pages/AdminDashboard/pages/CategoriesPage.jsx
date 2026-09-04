@@ -170,7 +170,7 @@ export function CategoriesPage() {
             resetForm();
             setShowModal(true);
           }}
-          className="flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-all shadow-md font-semibold"
+          className="flex items-center gap-2 px-6 py-3 bg-teal-600 text-white rounded-xl hover:bg-teal-700 transition-all shadow-md font-semibold"
         >
           <FiPlus size={20} />
           Add Category
@@ -186,7 +186,7 @@ export function CategoriesPage() {
             placeholder="Search categories..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full pl-12 pr-4 py-3 border-2 border-slate-200 dark:border-slate-700 rounded-xl bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none focus:border-blue-500"
+            className="w-full pl-12 pr-4 py-3 border-2 border-slate-200 dark:border-slate-700 rounded-xl bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none focus:border-teal-500"
           />
         </div>
       </div>
@@ -195,7 +195,7 @@ export function CategoriesPage() {
       {loading ? (
         <div className="flex justify-center items-center h-96">
           <div className="animate-spin">
-            <div className="h-12 w-12 border-4 border-blue-500 border-t-transparent rounded-full"></div>
+            <div className="h-12 w-12 border-4 border-teal-500 border-t-transparent rounded-full"></div>
           </div>
         </div>
       ) : filteredCategories.length === 0 ? (
@@ -238,7 +238,7 @@ export function CategoriesPage() {
                 <div className="flex gap-2 pt-4 border-t border-slate-200 dark:border-slate-700">
                   <button
                     onClick={() => handleEdit(category)}
-                    className="flex-1 flex items-center justify-center gap-2 px-3 py-2 bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-900/40 transition-all"
+                    className="flex-1 flex items-center justify-center gap-2 px-3 py-2 bg-teal-50 dark:bg-teal-900/20 text-teal-600 dark:text-teal-400 rounded-lg hover:bg-teal-100 dark:hover:bg-teal-900/40 transition-all"
                   >
                     <FiEdit size={16} />
                     <span className="text-sm font-medium">Edit</span>
@@ -288,7 +288,7 @@ export function CategoriesPage() {
                   value={formData.name}
                   onChange={(e) => handleInputChange('name', e.target.value)}
                   placeholder="e.g., Adventure Tours"
-                  className="w-full px-4 py-2 border-2 border-slate-200 dark:border-slate-700 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:outline-none focus:border-blue-500"
+                  className="w-full px-4 py-2 border-2 border-slate-200 dark:border-slate-700 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:outline-none focus:border-teal-500"
                 />
               </div>
 
@@ -302,7 +302,7 @@ export function CategoriesPage() {
                   value={formData.slug}
                   onChange={(e) => handleInputChange('slug', e.target.value)}
                   placeholder="e.g., adventure-tours"
-                  className="w-full px-4 py-2 border-2 border-slate-200 dark:border-slate-700 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:outline-none focus:border-blue-500"
+                  className="w-full px-4 py-2 border-2 border-slate-200 dark:border-slate-700 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:outline-none focus:border-teal-500"
                 />
               </div>
 
@@ -316,7 +316,7 @@ export function CategoriesPage() {
                   onChange={(e) => handleInputChange('description', e.target.value)}
                   placeholder="Optional description"
                   rows="3"
-                  className="w-full px-4 py-2 border-2 border-slate-200 dark:border-slate-700 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:outline-none focus:border-blue-500 resize-none"
+                  className="w-full px-4 py-2 border-2 border-slate-200 dark:border-slate-700 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:outline-none focus:border-teal-500 resize-none"
                 />
               </div>
             </div>
@@ -335,7 +335,7 @@ export function CategoriesPage() {
               <button
                 onClick={handleSave}
                 disabled={isSubmitting}
-                className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all font-semibold"
+                className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all font-semibold"
               >
                 {isSubmitting ? (
                   <>

@@ -553,12 +553,12 @@ function AddonsPage() {
         </div>
         
         {/* Database Stats */}
-        <div className="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 rounded-lg p-4 border border-blue-200 dark:border-blue-700">
+        <div className="bg-gradient-to-br from-teal-50 to-teal-100 dark:from-teal-900/20 dark:to-teal-800/20 rounded-lg p-4 border border-teal-200 dark:border-teal-700">
           <div className="flex items-center gap-2 mb-2">
-            <FiDatabase className="text-blue-600" size={18} />
+            <FiDatabase className="text-teal-600" size={18} />
             <span className="text-sm font-semibold text-slate-700 dark:text-slate-300">{t('addons.totalAddons')}</span>
           </div>
-          <p className="text-2xl font-bold text-blue-600 dark:text-blue-400">{dbStats.totalAddons}</p>
+          <p className="text-2xl font-bold text-teal-600 dark:text-teal-400">{dbStats.totalAddons}</p>
         </div>
         
         <div className="bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20 rounded-lg p-4 border border-green-200 dark:border-green-700">
@@ -591,7 +591,7 @@ function AddonsPage() {
         
         <button
           onClick={() => handleOpenModal('create')}
-          className="flex items-center gap-2 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-6 py-3 rounded-xl font-semibold shadow-lg transition-all"
+          className="flex items-center gap-2 bg-gradient-to-r from-teal-600 to-teal-700 hover:from-teal-700 hover:to-teal-800 text-white px-6 py-3 rounded-xl font-semibold shadow-lg transition-all"
         >
           <FiPlus size={20} />
           {t('addons.addNew')}
@@ -716,7 +716,7 @@ function AddonsPage() {
                         <div className="flex gap-2">
                           <button
                             onClick={() => handleOpenModal('edit', addon)}
-                            className="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 p-2 hover:bg-blue-50 dark:hover:bg-slate-700 rounded-lg transition-colors"
+                            className="text-teal-600 hover:text-teal-700 dark:text-teal-400 dark:hover:text-teal-300 p-2 hover:bg-teal-50 dark:hover:bg-slate-700 rounded-lg transition-colors"
                             title="Edit"
                           >
                             <FiEdit2 size={18} />
@@ -1017,7 +1017,7 @@ function AddonsPage() {
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="flex-1 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:bg-slate-400 transition-colors font-medium"
+                  className="flex-1 px-4 py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700 disabled:bg-slate-400 transition-colors font-medium"
                 >
                   {submitting ? t('addons.saving') : (modalMode === 'create' ? `➕ ${t('addons.create')}` : `💾 ${t('addons.update')}`)}
                 </button>

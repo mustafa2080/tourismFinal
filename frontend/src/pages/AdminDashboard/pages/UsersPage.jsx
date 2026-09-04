@@ -162,11 +162,11 @@ export function UsersPage() {
   const getRoleBadgeClass = (role) => {
     switch(role) {
       case 'admin':
-        return 'bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-400';
+        return 'bg-orange-100 dark:bg-orange-900/30 text-orange-800 dark:text-orange-400';
       case 'banned':
         return 'bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-400';
       default:
-        return 'bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-400';
+        return 'bg-teal-100 dark:bg-teal-900/30 text-teal-800 dark:text-teal-400';
     }
   };
 
@@ -200,14 +200,14 @@ export function UsersPage() {
         {!loading && (
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
             {/* Total Users */}
-            <div className="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-900/30 rounded-lg p-4 border border-blue-200 dark:border-blue-800">
+            <div className="bg-gradient-to-br from-teal-50 to-teal-100 dark:from-teal-900/20 dark:to-teal-900/30 rounded-lg p-4 border border-teal-200 dark:border-teal-800">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-blue-600 dark:text-blue-400 mb-1">Total Users</p>
-                  <p className="text-2xl font-bold text-blue-900 dark:text-blue-100">{pagination.total}</p>
+                  <p className="text-sm font-medium text-teal-600 dark:text-teal-400 mb-1">Total Users</p>
+                  <p className="text-2xl font-bold text-teal-900 dark:text-teal-100">{pagination.total}</p>
                 </div>
-                <div className="w-12 h-12 bg-blue-200 dark:bg-blue-800 rounded-lg flex items-center justify-center">
-                  <FiUser size={24} className="text-blue-600 dark:text-blue-400" />
+                <div className="w-12 h-12 bg-teal-200 dark:bg-teal-800 rounded-lg flex items-center justify-center">
+                  <FiUser size={24} className="text-teal-600 dark:text-teal-400" />
                 </div>
               </div>
             </div>
@@ -228,15 +228,15 @@ export function UsersPage() {
             </div>
 
             {/* Admins */}
-            <div className="bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-900/30 rounded-lg p-4 border border-purple-200 dark:border-purple-800">
+            <div className="bg-gradient-to-br from-orange-50 to-orange-100 dark:from-orange-900/20 dark:to-orange-900/30 rounded-lg p-4 border border-orange-200 dark:border-orange-800">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-purple-600 dark:text-purple-400 mb-1">Administrators</p>
-                  <p className="text-2xl font-bold text-purple-900 dark:text-purple-100">
+                  <p className="text-sm font-medium text-orange-600 dark:text-orange-400 mb-1">Administrators</p>
+                  <p className="text-2xl font-bold text-orange-900 dark:text-orange-100">
                     {users.filter(u => u.role === 'admin').length}
                   </p>
                 </div>
-                <div className="w-12 h-12 bg-purple-200 dark:bg-purple-800 rounded-lg flex items-center justify-center">
+                <div className="w-12 h-12 bg-orange-200 dark:bg-orange-800 rounded-lg flex items-center justify-center">
                   <span className="text-xl">👑</span>
                 </div>
               </div>
@@ -270,7 +270,7 @@ export function UsersPage() {
             placeholder="Search by name or email..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full pl-10 pr-4 py-2.5 border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+            className="w-full pl-10 pr-4 py-2.5 border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all"
           />
           {searchTerm && (
             <button
@@ -288,7 +288,7 @@ export function UsersPage() {
           <select
             value={filterRole}
             onChange={(e) => setFilterRole(e.target.value)}
-            className="px-4 py-2.5 border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all font-medium"
+            className="px-4 py-2.5 border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all font-medium"
           >
             <option value="all">All Roles</option>
             <option value="customer">Customer</option>
@@ -306,7 +306,7 @@ export function UsersPage() {
         {loading ? (
           <div className="flex items-center justify-center h-96">
             <div className="text-center">
-              <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500 mb-4"></div>
+              <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-teal-500 mb-4"></div>
               <p className="text-slate-600 dark:text-slate-400 font-medium">Loading users...</p>
             </div>
           </div>
@@ -335,7 +335,7 @@ export function UsersPage() {
                       {/* Name */}
                       <td className="px-6 py-4">
                         <div className="flex items-center gap-3">
-                          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center text-white text-sm font-bold flex-shrink-0">
+                          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-500 to-orange-500 flex items-center justify-center text-white text-sm font-bold flex-shrink-0">
                             {user.name?.[0]?.toUpperCase() || 'U'}
                           </div>
                           <div className="min-w-0">
@@ -381,7 +381,7 @@ export function UsersPage() {
                           <button
                             onClick={() => handleViewUser(user.id)}
                             disabled={loadingAction}
-                            className="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 hover:bg-blue-200 dark:hover:bg-blue-900/50 transition-all disabled:opacity-50 disabled:cursor-not-allowed group"
+                            className="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-teal-100 dark:bg-teal-900/30 text-teal-700 dark:text-teal-400 hover:bg-teal-200 dark:hover:bg-teal-900/50 transition-all disabled:opacity-50 disabled:cursor-not-allowed group"
                             title="View Details"
                           >
                             {loadingAction ? <FiLoader size={16} className="animate-spin" /> : <FiEye size={16} />}
@@ -453,9 +453,9 @@ export function UsersPage() {
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
           <div className="bg-white dark:bg-slate-800 rounded-xl shadow-2xl max-w-md w-full border border-slate-200 dark:border-slate-700 overflow-hidden animate-in fade-in">
             {/* Modal Header */}
-            <div className="flex items-center justify-between p-6 border-b border-slate-200 dark:border-slate-700 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-slate-700/50 dark:to-slate-800/50">
+            <div className="flex items-center justify-between p-6 border-b border-slate-200 dark:border-slate-700 bg-gradient-to-r from-teal-50 to-orange-50 dark:from-slate-700/50 dark:to-slate-800/50">
               <h2 className="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
-                <FiUser size={24} className="text-blue-600 dark:text-blue-400" />
+                <FiUser size={24} className="text-teal-600 dark:text-teal-400" />
                 User Details
               </h2>
               <button
@@ -473,7 +473,7 @@ export function UsersPage() {
             <div className="p-6 space-y-4">
               {/* User Avatar */}
               <div className="flex justify-center mb-2">
-                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 flex items-center justify-center text-white text-2xl font-bold shadow-lg">
+                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-teal-500 via-orange-500 to-pink-500 flex items-center justify-center text-white text-2xl font-bold shadow-lg">
                   {selectedUser.name?.[0]?.toUpperCase() || 'U'}
                 </div>
               </div>

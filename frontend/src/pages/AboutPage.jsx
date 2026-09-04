@@ -36,13 +36,13 @@ const AboutPage = () => {
       icon: FiGlobe,
       title: t('aboutPage.globalReach'),
       description: t('aboutPage.globalReachDesc'),
-      color: 'from-blue-500 to-blue-600',
+      color: 'from-teal-500 to-teal-600',
     },
     {
       icon: FiUsers,
       title: t('aboutPage.customerFirst'),
       description: t('aboutPage.customerFirstDesc'),
-      color: 'from-purple-500 to-purple-600',
+      color: 'from-orange-500 to-orange-600',
     },
     {
       icon: FiTarget,
@@ -74,7 +74,7 @@ const AboutPage = () => {
         <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 dark:text-white mb-6 leading-tight">
-              {t('aboutPage.heroTitle')} <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Voyager Tours</span>
+              {t('aboutPage.heroTitle')} <span className="bg-gradient-to-r from-teal-600 to-orange-600 bg-clip-text text-transparent">Voyager Tours</span>
             </h1>
             <p className="text-lg sm:text-xl text-slate-600 dark:text-slate-300 leading-relaxed">
               {t('aboutPage.heroDescription')}
@@ -88,7 +88,7 @@ const AboutPage = () => {
                 key={index}
                 className="bg-white dark:bg-slate-800 rounded-xl p-6 text-center shadow-sm border border-slate-200 dark:border-slate-700 hover:shadow-lg transition-all hover:scale-105"
               >
-                <p className="text-3xl md:text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2">
+                <p className="text-3xl md:text-4xl font-bold text-teal-600 dark:text-teal-400 mb-2">
                   {stat.value}
                 </p>
                 <p className="text-sm md:text-base text-slate-600 dark:text-slate-400 font-medium">
@@ -116,7 +116,7 @@ const AboutPage = () => {
               </p>
               <button
                 onClick={() => navigate('/contact')}
-                className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold rounded-lg transition-all hover:shadow-lg group"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-teal-600 to-orange-600 hover:from-teal-700 hover:to-orange-700 text-white font-semibold rounded-lg transition-all hover:shadow-lg group"
               >
                 {t('aboutPage.getInTouch')}
                 <FiArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
@@ -124,10 +124,10 @@ const AboutPage = () => {
             </div>
 
             <div className="relative">
-              <div className="w-full bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 dark:from-blue-700 dark:via-purple-700 dark:to-pink-700 rounded-2xl p-8 text-center text-white">
+              <div className="w-full bg-gradient-to-br from-teal-500 via-orange-500 to-pink-500 dark:from-teal-700 dark:via-orange-700 dark:to-pink-700 rounded-2xl p-8 text-center text-white">
                 <BiWorld size={100} className="mx-auto mb-4 opacity-80" />
                 <h3 className="text-3xl font-bold mb-2">Travel the World</h3>
-                <p className="text-blue-100">With Confidence & Comfort</p>
+                <p className="text-teal-100">With Confidence & Comfort</p>
               </div>
             </div>
           </div>
@@ -176,7 +176,7 @@ const AboutPage = () => {
             {team.map((member, index) => (
               <div
                 key={index}
-                className="bg-gradient-to-br from-blue-50 to-purple-50 dark:from-slate-800 dark:to-slate-700 rounded-xl p-6 text-center hover:shadow-lg transition-all"
+                className="bg-gradient-to-br from-teal-50 to-orange-50 dark:from-slate-800 dark:to-slate-700 rounded-xl p-6 text-center hover:shadow-lg transition-all"
               >
                 <div className="text-6xl mb-4 flex justify-center">{member.image}</div>
                 <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2">
@@ -212,7 +212,7 @@ const AboutPage = () => {
                   t('aboutPage.moneyBackGuarantee'),
                 ].map((reason, index) => (
                   <li key={index} className="flex items-start gap-3">
-                    <div className="w-6 h-6 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <div className="w-6 h-6 rounded-full bg-gradient-to-r from-teal-600 to-orange-600 flex items-center justify-center flex-shrink-0 mt-0.5">
                       <FiCheck size={16} className="text-white" />
                     </div>
                     <span className="text-slate-700 dark:text-slate-300 leading-relaxed">
@@ -223,7 +223,7 @@ const AboutPage = () => {
               </ul>
             </div>
 
-            <div className="bg-gradient-to-br from-green-500 to-blue-500 dark:from-green-700 dark:to-blue-700 rounded-2xl p-8 text-white">
+            <div className="bg-gradient-to-br from-green-500 to-teal-500 dark:from-green-700 dark:to-teal-700 rounded-2xl p-8 text-white">
               <div className="space-y-6">
                 <div>
                   <p className="text-5xl font-bold mb-2">98%</p>
@@ -244,24 +244,24 @@ const AboutPage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-800 dark:to-purple-800">
+      <section className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-teal-600 to-orange-600 dark:from-teal-800 dark:to-orange-800">
         <div className="max-w-4xl mx-auto text-center text-white">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             {t('aboutPage.readyToStart')}
           </h2>
-          <p className="text-lg text-blue-100 mb-8 leading-relaxed">
+          <p className="text-lg text-teal-100 mb-8 leading-relaxed">
             {t('aboutPage.readyToStartDesc')}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button
               onClick={() => navigate('/search')}
-              className="px-8 py-3 bg-white text-blue-600 font-semibold rounded-lg hover:bg-blue-50 transition-all"
+              className="px-8 py-3 bg-white text-teal-600 font-semibold rounded-lg hover:bg-teal-50 transition-all"
             >
               {t('aboutPage.exploreTours')}
             </button>
             <button
               onClick={() => navigate('/contact')}
-              className="px-8 py-3 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-blue-600 transition-all"
+              className="px-8 py-3 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-teal-600 transition-all"
             >
               {t('aboutPage.contactUs')}
             </button>

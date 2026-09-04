@@ -226,10 +226,10 @@ const Header = () => {
                   onClick={() => navigate(link.path)}
                   className={`flex items-center gap-2 px-4 py-2 rounded-lg font-semibold text-sm transition-all duration-300 ease-out group relative ${
                     isActive(link.path)
-                      ? 'text-blue-600 dark:text-blue-400 bg-blue-50/80 dark:bg-blue-900/20'
+                      ? 'text-teal-600 dark:text-teal-400 bg-teal-50/80 dark:bg-teal-900/20'
                       : link.highlight
-                      ? 'text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 shadow-md hover:shadow-lg hover:shadow-purple-500/20 hover:-translate-y-0.5'
-                      : 'text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-slate-100/80 dark:hover:bg-slate-800/50'
+                      ? 'text-white bg-gradient-to-r from-teal-600 to-orange-600 hover:from-teal-700 hover:to-orange-700 shadow-md hover:shadow-lg hover:shadow-orange-500/20 hover:-translate-y-0.5'
+                      : 'text-slate-700 dark:text-slate-200 hover:text-teal-600 dark:hover:text-teal-400 hover:bg-slate-100/80 dark:hover:bg-slate-800/50'
                   }`}
                 >
                   <Icon size={18} className="transition-transform duration-300 group-hover:scale-110" />
@@ -240,7 +240,7 @@ const Header = () => {
                     </span>
                   )}
                   <div
-                    className={`absolute bottom-0.5 left-4 right-4 h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full transition-all duration-300 ease-out origin-center ${
+                    className={`absolute bottom-0.5 left-4 right-4 h-0.5 bg-gradient-to-r from-teal-600 to-orange-600 rounded-full transition-all duration-300 ease-out origin-center ${
                       isActive(link.path) ? 'scale-x-100 opacity-100' : 'scale-x-0 opacity-0 group-hover:scale-x-75 group-hover:opacity-40'
                     }`}
                   />
@@ -285,7 +285,7 @@ const Header = () => {
 
                 {notificationsOpen && (
                   <div className="absolute right-0 mt-2 w-80 bg-white dark:bg-slate-800 rounded-xl shadow-2xl shadow-slate-900/10 dark:shadow-black/40 border border-slate-200/80 dark:border-slate-700/80 overflow-hidden z-50 animate-in fade-in slide-in-from-top-2 duration-200">
-                    <div className="px-4 py-3 border-b border-slate-200 dark:border-slate-700 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-slate-900 dark:to-slate-800">
+                    <div className="px-4 py-3 border-b border-slate-200 dark:border-slate-700 bg-gradient-to-r from-teal-50 to-orange-50 dark:from-slate-900 dark:to-slate-800">
                       <div className="flex items-center justify-between">
                         <h3 className="font-semibold text-slate-900 dark:text-white text-sm">Notifications</h3>
                         {unreadCount > 0 && (
@@ -298,7 +298,7 @@ const Header = () => {
                     <div className="max-h-72 overflow-y-auto">
                       {loadingNotifications ? (
                         <div className="px-4 py-8 text-center">
-                          <div className="inline-block w-6 h-6 border-2 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+                          <div className="inline-block w-6 h-6 border-2 border-teal-500 border-t-transparent rounded-full animate-spin"></div>
                         </div>
                       ) : notifications.length > 0 ? (
                         notifications.map((notif, idx) => (
@@ -335,12 +335,12 @@ const Header = () => {
                               }
                             }}
                             className={`px-4 py-3 border-b border-slate-100 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors duration-200 cursor-pointer group ${
-                              !notif.is_read ? 'bg-blue-50 dark:bg-blue-900/10' : 'bg-slate-50/50 dark:bg-slate-700/20'
+                              !notif.is_read ? 'bg-teal-50 dark:bg-teal-900/10' : 'bg-slate-50/50 dark:bg-slate-700/20'
                             }`}
                           >
                             <div className="flex items-start justify-between gap-2">
                               <div className="flex-1 min-w-0">
-                                <p className="text-sm text-slate-900 dark:text-white font-medium group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                                <p className="text-sm text-slate-900 dark:text-white font-medium group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors">
                                   {notif.title}
                                 </p>
                                 <p className="text-xs text-slate-600 dark:text-slate-400 mt-1 line-clamp-2">
@@ -351,7 +351,7 @@ const Header = () => {
                                 </p>
                               </div>
                               {!notif.is_read && (
-                                <div className="w-2 h-2 bg-blue-500 rounded-full flex-shrink-0 mt-1" />
+                                <div className="w-2 h-2 bg-teal-500 rounded-full flex-shrink-0 mt-1" />
                               )}
                             </div>
                           </div>
@@ -379,7 +379,7 @@ const Header = () => {
                     <img 
                       src={profileImageUrl}
                       alt={user.name}
-                      className="w-8 lg:w-9 h-8 lg:h-9 rounded-full object-cover group-hover:shadow-md group-hover:shadow-blue-500/20 group-hover:scale-105 transition-all duration-300 border border-slate-200 dark:border-slate-700"
+                      className="w-8 lg:w-9 h-8 lg:h-9 rounded-full object-cover group-hover:shadow-md group-hover:shadow-teal-500/20 group-hover:scale-105 transition-all duration-300 border border-slate-200 dark:border-slate-700"
                       onError={() => setProfileImageUrl(null)}
                     />
                   ) : user.avatar ? (
@@ -389,7 +389,7 @@ const Header = () => {
                       className="w-8 lg:w-9 h-8 lg:h-9 rounded-full object-cover group-hover:shadow-lg transition-all duration-300"
                     />
                   ) : (
-                    <div className="w-8 lg:w-9 h-8 lg:h-9 bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 rounded-full flex items-center justify-center text-white text-xs font-bold">
+                    <div className="w-8 lg:w-9 h-8 lg:h-9 bg-gradient-to-br from-teal-500 via-orange-500 to-pink-500 rounded-full flex items-center justify-center text-white text-xs font-bold">
                       {user.name?.[0]?.toUpperCase() || 'U'}
                     </div>
                   )}
@@ -404,7 +404,7 @@ const Header = () => {
 
                 {userDropdownOpen && (
                   <div className="absolute right-0 mt-2 w-64 bg-white dark:bg-slate-800 rounded-xl shadow-2xl shadow-slate-900/10 dark:shadow-black/40 border border-slate-200/80 dark:border-slate-700/80 overflow-hidden z-50 animate-in fade-in slide-in-from-top-2 duration-200">
-                    <div className="px-4 py-3 border-b border-slate-200 dark:border-slate-700 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-slate-900 dark:to-slate-800">
+                    <div className="px-4 py-3 border-b border-slate-200 dark:border-slate-700 bg-gradient-to-r from-teal-50 to-orange-50 dark:from-slate-900 dark:to-slate-800">
                       <div className="flex items-center gap-3">
                         {profileImageUrl ? (
                           <img 
@@ -420,7 +420,7 @@ const Header = () => {
                             className="w-10 h-10 rounded-full object-cover border-2 border-white dark:border-slate-700"
                           />
                         ) : (
-                          <div className="w-10 h-10 bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 rounded-full flex items-center justify-center text-white text-sm font-bold">
+                          <div className="w-10 h-10 bg-gradient-to-br from-teal-500 via-orange-500 to-pink-500 rounded-full flex items-center justify-center text-white text-sm font-bold">
                             {user.name?.[0]?.toUpperCase() || 'U'}
                           </div>
                         )}
@@ -461,7 +461,7 @@ const Header = () => {
                               navigate('/admin');
                               setUserDropdownOpen(false);
                             }}
-                            className="w-full px-4 py-2 text-left text-xs sm:text-sm hover:bg-blue-50 dark:hover:bg-blue-900/20 flex items-center gap-3 text-blue-600 dark:text-blue-400 transition-colors group font-semibold"
+                            className="w-full px-4 py-2 text-left text-xs sm:text-sm hover:bg-teal-50 dark:hover:bg-teal-900/20 flex items-center gap-3 text-teal-600 dark:text-teal-400 transition-colors group font-semibold"
                           >
                             <span className="text-sm">⚙️</span>
                             <span>Admin Panel</span>
@@ -498,7 +498,7 @@ const Header = () => {
                       className="w-7 h-7 rounded-full object-cover border-2 border-slate-300 dark:border-slate-600"
                     />
                   ) : (
-                    <div className="w-7 h-7 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white text-xs font-bold">
+                    <div className="w-7 h-7 bg-gradient-to-br from-teal-500 to-orange-600 rounded-full flex items-center justify-center text-white text-xs font-bold">
                       {user.name?.[0]?.toUpperCase() || 'U'}
                     </div>
                   )}
@@ -510,7 +510,7 @@ const Header = () => {
                   variant="ghost"
                   size="sm"
                   onClick={() => navigate('/login')}
-                  className="flex items-center gap-1.5 text-xs lg:text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50/50 dark:hover:bg-blue-900/20 transition-all duration-300 px-2.5 lg:px-3 py-2 rounded-lg"
+                  className="flex items-center gap-1.5 text-xs lg:text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-teal-600 dark:hover:text-teal-400 hover:bg-teal-50/50 dark:hover:bg-teal-900/20 transition-all duration-300 px-2.5 lg:px-3 py-2 rounded-lg"
                 >
                   <MdOutlineLogin size={16} className="flex-shrink-0" />
                   <span className="hidden lg:inline">Login</span>
@@ -522,7 +522,7 @@ const Header = () => {
                   variant="primary"
                   size="sm"
                   onClick={() => navigate('/signup')}
-                  className="flex items-center gap-1.5 text-xs lg:text-sm font-bold bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-md hover:shadow-lg hover:shadow-purple-500/25 hover:-translate-y-0.5 transition-all duration-300 px-3 lg:px-4 py-2 rounded-lg"
+                  className="flex items-center gap-1.5 text-xs lg:text-sm font-bold bg-gradient-to-r from-teal-600 to-orange-600 hover:from-teal-700 hover:to-orange-700 text-white shadow-md hover:shadow-lg hover:shadow-orange-500/25 hover:-translate-y-0.5 transition-all duration-300 px-3 lg:px-4 py-2 rounded-lg"
                 >
                   <MdOutlinePersonAdd size={16} className="flex-shrink-0" />
                   <span>Sign Up</span>
@@ -555,7 +555,7 @@ const Header = () => {
           {/* Drawer panel */}
           <div className="lg:hidden fixed top-0 right-0 h-screen w-[82%] max-w-[340px] bg-white dark:bg-slate-900 z-[9999] shadow-2xl flex flex-col animate-in slide-in-from-right duration-300">
             {/* Drawer header */}
-            <div className="flex items-center justify-between px-5 py-4 bg-gradient-to-r from-blue-600 to-purple-600 flex-shrink-0">
+            <div className="flex items-center justify-between px-5 py-4 bg-gradient-to-r from-teal-600 to-orange-600 flex-shrink-0">
               <div className="flex items-center gap-2.5">
                 <img src={logoImg} alt="Travluyo" className="h-9 w-auto object-contain drop-shadow-md" />
                 <span className="text-white font-extrabold text-lg tracking-tight">Travluyo</span>
@@ -584,13 +584,13 @@ const Header = () => {
                       }}
                       className={`flex items-center gap-3 px-4 py-3 rounded-xl font-semibold text-sm transition-all duration-200 active:scale-[0.98] ${
                         isActive(link.path)
-                          ? 'bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 text-blue-600 dark:text-blue-400 shadow-sm'
-                          : 'text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-blue-600'
+                          ? 'bg-gradient-to-r from-teal-50 to-orange-50 dark:from-teal-900/20 dark:to-orange-900/20 text-teal-600 dark:text-teal-400 shadow-sm'
+                          : 'text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-teal-600'
                       }`}
                     >
                       <span className={`flex items-center justify-center w-9 h-9 rounded-lg flex-shrink-0 ${
                         isActive(link.path)
-                          ? 'bg-blue-600 text-white'
+                          ? 'bg-teal-600 text-white'
                           : 'bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400'
                       }`}>
                         <Icon size={16} />
@@ -643,7 +643,7 @@ const Header = () => {
                     navigate('/login');
                     setMobileMenuOpen(false);
                   }}
-                  className="w-full justify-center text-slate-700 dark:text-slate-200 border-2 border-slate-200 dark:border-slate-700 hover:bg-blue-50 dark:hover:bg-blue-900/20 py-2.5 rounded-xl font-semibold text-sm"
+                  className="w-full justify-center text-slate-700 dark:text-slate-200 border-2 border-slate-200 dark:border-slate-700 hover:bg-teal-50 dark:hover:bg-teal-900/20 py-2.5 rounded-xl font-semibold text-sm"
                 >
                   <MdOutlineLogin size={18} className="mr-2" />
                   Login
@@ -655,7 +655,7 @@ const Header = () => {
                     navigate('/signup');
                     setMobileMenuOpen(false);
                   }}
-                  className="w-full justify-center bg-gradient-to-r from-blue-600 to-purple-600 text-white py-2.5 rounded-xl font-bold text-sm shadow-md shadow-blue-600/30"
+                  className="w-full justify-center bg-gradient-to-r from-teal-600 to-orange-600 text-white py-2.5 rounded-xl font-bold text-sm shadow-md shadow-teal-600/30"
                 >
                   <MdOutlinePersonAdd size={18} className="mr-2" />
                   Sign Up

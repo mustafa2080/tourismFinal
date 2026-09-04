@@ -90,8 +90,8 @@ const SignupPage = () => {
       <div className="relative min-h-screen w-full overflow-hidden pt-20 pb-12">
         {/* Animated Background */}
         <div className="absolute inset-0 -z-10">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-blue-500/20 via-purple-500/20 to-pink-500/20 rounded-full blur-3xl animate-pulse" />
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-br from-purple-500/20 via-pink-500/20 to-red-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+          <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-teal-500/20 via-orange-500/20 to-pink-500/20 rounded-full blur-3xl animate-pulse" />
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-br from-orange-500/20 via-pink-500/20 to-red-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
         </div>
 
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -104,7 +104,7 @@ const SignupPage = () => {
                   <span className="text-sm font-bold text-green-600 dark:text-green-400">Join Us Today</span>
                 </div>
 
-                <h1 className="text-5xl lg:text-6xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+                <h1 className="text-5xl lg:text-6xl font-bold bg-gradient-to-r from-teal-600 via-orange-600 to-pink-600 bg-clip-text text-transparent">
                   Start Your Adventure
                 </h1>
 
@@ -155,7 +155,7 @@ const SignupPage = () => {
                 {/* Header */}
                 <div className="text-center mb-8 space-y-3">
                   <div className="flex justify-center">
-                    <div className="relative w-16 h-16 bg-gradient-to-br from-green-500 via-blue-500 to-purple-500 rounded-xl flex items-center justify-center shadow-lg shadow-green-500/30 group">
+                    <div className="relative w-16 h-16 bg-gradient-to-br from-green-500 via-teal-500 to-orange-500 rounded-xl flex items-center justify-center shadow-lg shadow-green-500/30 group">
                       <FiUser className="text-3xl text-white group-hover:scale-110 group-hover:rotate-12 transition-all duration-300" />
                     </div>
                   </div>
@@ -271,7 +271,7 @@ const SignupPage = () => {
                   <button
                     type="submit"
                     disabled={loading || !isFormValid}
-                    className="w-full py-3.5 md:py-4 px-4 rounded-xl font-bold text-white bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl hover:shadow-green-500/40 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none disabled:shadow-none flex items-center justify-center gap-2 group"
+                    className="w-full py-3.5 md:py-4 px-4 rounded-xl font-bold text-white bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-700 hover:to-teal-700 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl hover:shadow-green-500/40 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none disabled:shadow-none flex items-center justify-center gap-2 group"
                   >
                     {loading ? (
                       <>
@@ -341,7 +341,7 @@ const FormField = ({
       {label}
     </label>
     <div className="relative">
-      <Icon className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-500 group-focus-within:text-blue-600 dark:group-focus-within:text-blue-400 transition-colors" size={20} />
+      <Icon className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-500 group-focus-within:text-teal-600 dark:group-focus-within:text-teal-400 transition-colors" size={20} />
       <input
         type={type}
         name={name}
@@ -355,7 +355,7 @@ const FormField = ({
             ? 'border-red-500 dark:border-red-500 bg-red-50/50 dark:bg-red-900/10'
             : isValid
               ? 'border-green-500 dark:border-green-500 bg-green-50/50 dark:bg-green-900/10'
-              : 'border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 focus:border-blue-500 dark:focus:border-blue-400'
+              : 'border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 focus:border-teal-500 dark:focus:border-teal-400'
         } text-slate-900 dark:text-white`}
       />
       {isValid && <FiCheck className="absolute right-4 top-1/2 -translate-y-1/2 text-green-500" size={20} />}
@@ -391,7 +391,7 @@ const PasswordField = ({
       {label}
     </label>
     <div className="relative">
-      <FiLock className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-500 group-focus-within:text-blue-600 dark:group-focus-within:text-blue-400 transition-colors" size={20} />
+      <FiLock className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-500 group-focus-within:text-teal-600 dark:group-focus-within:text-teal-400 transition-colors" size={20} />
       <input
         type={showPassword ? 'text' : 'password'}
         name={name}
@@ -405,7 +405,7 @@ const PasswordField = ({
             ? 'border-red-500 dark:border-red-500 bg-red-50/50 dark:bg-red-900/10'
             : isValid
               ? 'border-green-500 dark:border-green-500 bg-green-50/50 dark:bg-green-900/10'
-              : 'border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 focus:border-blue-500 dark:focus:border-blue-400'
+              : 'border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 focus:border-teal-500 dark:focus:border-teal-400'
         } text-slate-900 dark:text-white`}
       />
       <button
@@ -466,15 +466,15 @@ const TermsCheckbox = ({ checked, onChange, error, isTouched }) => (
         name="agreeToTerms"
         checked={checked}
         onChange={onChange}
-        className="w-5 h-5 rounded-lg border-2 border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 accent-blue-600 cursor-pointer transition-all hover:border-blue-400 mt-0.5 flex-shrink-0"
+        className="w-5 h-5 rounded-lg border-2 border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 accent-teal-600 cursor-pointer transition-all hover:border-teal-400 mt-0.5 flex-shrink-0"
       />
       <span className="text-sm text-slate-600 dark:text-slate-400">
         I agree to the{' '}
-        <button type="button" className="text-blue-600 dark:text-blue-400 hover:underline font-semibold">
+        <button type="button" className="text-teal-600 dark:text-teal-400 hover:underline font-semibold">
           Terms and Conditions
         </button>
         {' '}and{' '}
-        <button type="button" className="text-blue-600 dark:text-blue-400 hover:underline font-semibold">
+        <button type="button" className="text-teal-600 dark:text-teal-400 hover:underline font-semibold">
           Privacy Policy
         </button>
       </span>

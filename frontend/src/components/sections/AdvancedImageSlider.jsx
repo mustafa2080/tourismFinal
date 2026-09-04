@@ -118,7 +118,7 @@ const AdvancedImageSlider = () => {
         <div className="absolute inset-0 z-10 flex items-center p-6 sm:p-12">
           <div className="max-w-2xl">
             <div className="inline-flex items-center gap-2 mb-4 px-3 py-1.5 bg-white/20 backdrop-blur-sm border border-white/30 rounded-full">
-              <span className="w-2 h-2 rounded-full bg-blue-400"></span>
+              <span className="w-2 h-2 rounded-full bg-teal-400"></span>
               <span className="text-xs font-bold text-white uppercase tracking-widest">
                 {slide.category}
               </span>
@@ -130,7 +130,7 @@ const AdvancedImageSlider = () => {
               {slide.subtitle}
             </p>
             <div className="flex flex-col sm:flex-row gap-3">
-              <button className="px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-bold rounded-lg hover:shadow-lg transition-all hover:scale-105">
+              <button className="px-6 py-3 bg-gradient-to-r from-teal-600 to-teal-700 text-white font-bold rounded-lg hover:shadow-lg transition-all hover:scale-105">
                 Explore
               </button>
               <button className="px-6 py-3 bg-white/20 backdrop-blur-sm border border-white/40 text-white font-semibold rounded-lg hover:bg-white/30 transition-all">
@@ -179,7 +179,7 @@ const AdvancedImageSlider = () => {
         {/* Progress Bar */}
         <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-white/20">
           <div
-            className="h-full bg-gradient-to-r from-blue-500 to-purple-500 transition-all duration-500"
+            className="h-full bg-gradient-to-r from-teal-500 to-orange-500 transition-all duration-500"
             style={{ width: `${((currentSlide + 1) / slides.length) * 100}%` }}
           ></div>
         </div>
@@ -189,11 +189,11 @@ const AdvancedImageSlider = () => {
       {showStats && (
         <div className="grid grid-cols-3 gap-3 sm:gap-4">
           {/* Visitors */}
-          <div className="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/30 dark:to-blue-800/30 rounded-2xl p-4 border border-blue-200 dark:border-blue-700/50">
-            <div className="text-2xl sm:text-3xl font-black text-blue-600 dark:text-blue-400 mb-1">
+          <div className="bg-gradient-to-br from-teal-50 to-teal-100 dark:from-teal-900/30 dark:to-teal-800/30 rounded-2xl p-4 border border-teal-200 dark:border-teal-700/50">
+            <div className="text-2xl sm:text-3xl font-black text-teal-600 dark:text-teal-400 mb-1">
               {slide.stats.visitors}
             </div>
-            <div className="text-xs sm:text-sm text-blue-600/70 dark:text-blue-300/70 font-semibold uppercase tracking-wider">
+            <div className="text-xs sm:text-sm text-teal-600/70 dark:text-teal-300/70 font-semibold uppercase tracking-wider">
               Annual Visitors
             </div>
           </div>
@@ -228,7 +228,7 @@ const AdvancedImageSlider = () => {
             onClick={() => goToSlide(index)}
             className={`flex-shrink-0 relative overflow-hidden rounded-lg border-2 transition-all ${
               index === currentSlide
-                ? 'border-blue-500 ring-2 ring-blue-300 w-32 h-24'
+                ? 'border-teal-500 ring-2 ring-teal-300 w-32 h-24'
                 : 'border-slate-300 dark:border-slate-600 hover:border-slate-400 w-28 h-20'
             }`}
           >
@@ -238,7 +238,7 @@ const AdvancedImageSlider = () => {
               className="w-full h-full object-cover"
             />
             {index === currentSlide && (
-              <div className="absolute inset-0 bg-blue-600/20 backdrop-blur-sm"></div>
+              <div className="absolute inset-0 bg-teal-600/20 backdrop-blur-sm"></div>
             )}
           </button>
         ))}

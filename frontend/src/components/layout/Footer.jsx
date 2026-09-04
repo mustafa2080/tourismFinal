@@ -119,7 +119,7 @@ const Footer = () => {
       {/* Newsletter Section - Premium Gradient */}
       <div className="relative overflow-hidden">
         {/* Animated Background */}
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 opacity-90"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-teal-600 via-orange-600 to-pink-600 opacity-90"></div>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(59,130,246,0.3),transparent_40%),radial-gradient(circle_at_70%_50%,rgba(168,85,247,0.3),transparent_40%)]"></div>
         <div className="absolute inset-0 backdrop-blur-3xl opacity-40"></div>
         
@@ -133,7 +133,7 @@ const Footer = () => {
               <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white leading-tight">
                 Discover Your <br className="hidden sm:inline" /> Next Adventure
               </h2>
-              <p className="text-blue-100 text-lg max-w-lg leading-relaxed">
+              <p className="text-teal-100 text-lg max-w-lg leading-relaxed">
                 Get exclusive travel deals, insider tips, and early access to new destinations. Join thousands of travelers.
               </p>
             </div>
@@ -156,11 +156,11 @@ const Footer = () => {
                 <button
                   type="submit"
                   disabled={newsletterStatus === 'loading'}
-                  className="px-8 py-4 bg-white text-blue-600 font-bold rounded-xl hover:bg-blue-50 transition-all duration-200 flex items-center justify-center gap-2 whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-2xl hover:shadow-white/30 group transform hover:scale-105 sm:min-w-fit"
+                  className="px-8 py-4 bg-white text-teal-600 font-bold rounded-xl hover:bg-teal-50 transition-all duration-200 flex items-center justify-center gap-2 whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-2xl hover:shadow-white/30 group transform hover:scale-105 sm:min-w-fit"
                 >
                   {newsletterStatus === 'loading' ? (
                     <>
-                      <div className="w-5 h-5 border-2 border-blue-600 border-t-transparent rounded-full animate-spin" />
+                      <div className="w-5 h-5 border-2 border-teal-600 border-t-transparent rounded-full animate-spin" />
                       <span className="hidden sm:inline">Subscribing...</span>
                     </>
                   ) : newsletterStatus === 'success' ? (
@@ -216,9 +216,9 @@ const Footer = () => {
             <div className="space-y-3">
               <a
                 href="tel:+201000000000"
-                className="flex items-center gap-3 text-slate-400 hover:text-blue-400 transition-all duration-200 text-sm group"
+                className="flex items-center gap-3 text-slate-400 hover:text-teal-400 transition-all duration-200 text-sm group"
               >
-                <div className="w-9 h-9 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-lg flex items-center justify-center group-hover:shadow-md transition-all group-hover:scale-110 border border-blue-500/20">
+                <div className="w-9 h-9 bg-gradient-to-br from-teal-500/20 to-orange-500/20 rounded-lg flex items-center justify-center group-hover:shadow-md transition-all group-hover:scale-110 border border-teal-500/20">
                   <FiPhone size={16} />
                 </div>
                 <span className="group-hover:translate-x-1 transition-transform">+20 1000 000 000</span>
@@ -226,16 +226,16 @@ const Footer = () => {
 
               <a
                 href="mailto:support@travluyo.com"
-                className="flex items-center gap-3 text-slate-400 hover:text-blue-400 transition-all duration-200 text-sm group"
+                className="flex items-center gap-3 text-slate-400 hover:text-teal-400 transition-all duration-200 text-sm group"
               >
-                <div className="w-9 h-9 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-lg flex items-center justify-center group-hover:shadow-md transition-all group-hover:scale-110 border border-blue-500/20">
+                <div className="w-9 h-9 bg-gradient-to-br from-teal-500/20 to-orange-500/20 rounded-lg flex items-center justify-center group-hover:shadow-md transition-all group-hover:scale-110 border border-teal-500/20">
                   <FiMail size={16} />
                 </div>
                 <span className="group-hover:translate-x-1 transition-transform">support@travluyo.com</span>
               </a>
 
               <div className="flex items-start gap-3 text-slate-400 text-sm group">
-                <div className="w-9 h-9 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-0 group-hover:shadow-md transition-all group-hover:scale-110 border border-blue-500/20">
+                <div className="w-9 h-9 bg-gradient-to-br from-teal-500/20 to-orange-500/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-0 group-hover:shadow-md transition-all group-hover:scale-110 border border-teal-500/20">
                   <FiMapPin size={16} />
                 </div>
                 <div className="group-hover:translate-x-1 transition-transform">
@@ -257,7 +257,7 @@ const Footer = () => {
                   <li key={link.path}>
                     <button
                       onClick={() => navigate(link.path)}
-                      className="text-slate-400 hover:text-blue-400 transition-all duration-200 text-sm font-medium hover:translate-x-0.5 inline-flex items-center gap-1 group"
+                      className="text-slate-400 hover:text-teal-400 transition-all duration-200 text-sm font-medium hover:translate-x-0.5 inline-flex items-center gap-1 group"
                     >
                       {link.label}
                       <FiArrowRight size={14} className="opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -294,7 +294,7 @@ const Footer = () => {
                       href={social.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-11 h-11 rounded-xl bg-slate-800 hover:bg-gradient-to-br hover:from-blue-600 hover:to-purple-600 text-slate-400 hover:text-white flex items-center justify-center transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/30 group hover:scale-110 border border-slate-700 hover:border-transparent"
+                      className="w-11 h-11 rounded-xl bg-slate-800 hover:bg-gradient-to-br hover:from-teal-600 hover:to-orange-600 text-slate-400 hover:text-white flex items-center justify-center transition-all duration-300 hover:shadow-lg hover:shadow-teal-500/30 group hover:scale-110 border border-slate-700 hover:border-transparent"
                       aria-label={social.label}
                       title={social.label}
                     >
@@ -312,7 +312,7 @@ const Footer = () => {
                 {paymentMethods.map((method) => (
                   <div
                     key={method.name}
-                    className="px-3 py-2 bg-slate-800 hover:bg-gradient-to-br hover:from-blue-500/30 hover:to-purple-500/30 rounded-lg text-xs text-slate-300 font-semibold hover:text-white transition-all hover:scale-110 border border-slate-700 hover:border-blue-500/50 flex items-center gap-1.5 cursor-default"
+                    className="px-3 py-2 bg-slate-800 hover:bg-gradient-to-br hover:from-teal-500/30 hover:to-orange-500/30 rounded-lg text-xs text-slate-300 font-semibold hover:text-white transition-all hover:scale-110 border border-slate-700 hover:border-teal-500/50 flex items-center gap-1.5 cursor-default"
                     title={method.name}
                   >
                     <span>{method.icon}</span>
@@ -327,7 +327,7 @@ const Footer = () => {
           <div className="border-t border-slate-800 pt-6 flex justify-center">
             <button
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-              className="flex items-center gap-2 px-6 py-2 rounded-xl text-slate-400 hover:text-blue-400 hover:bg-slate-800 transition-all duration-200 text-sm font-medium group border border-slate-700 hover:border-blue-500/50"
+              className="flex items-center gap-2 px-6 py-2 rounded-xl text-slate-400 hover:text-teal-400 hover:bg-slate-800 transition-all duration-200 text-sm font-medium group border border-slate-700 hover:border-teal-500/50"
             >
               <span>Back to Top</span>
               <FiArrowRight size={16} className="transform rotate-90 group-hover:-translate-y-1 transition-transform" />

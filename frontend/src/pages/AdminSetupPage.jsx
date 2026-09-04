@@ -196,11 +196,11 @@ const AdminSetupPage = () => {
   const passwordCheck = validatePassword(adminData.password);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 dark:from-black dark:via-slate-900 dark:to-black flex items-center justify-center p-4 sm:p-6 lg:p-8">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-teal-900 to-slate-900 dark:from-black dark:via-slate-900 dark:to-black flex items-center justify-center p-4 sm:p-6 lg:p-8">
       {/* Animated Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500/20 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
-        <div className="absolute top-40 right-10 w-72 h-72 bg-purple-500/20 rounded-full mix-blend-multiply filter blur-3xl animate-blob" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-20 left-10 w-72 h-72 bg-teal-500/20 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
+        <div className="absolute top-40 right-10 w-72 h-72 bg-orange-500/20 rounded-full mix-blend-multiply filter blur-3xl animate-blob" style={{ animationDelay: '2s' }}></div>
         <div className="absolute -bottom-8 left-20 w-72 h-72 bg-pink-500/20 rounded-full mix-blend-multiply filter blur-3xl animate-blob" style={{ animationDelay: '4s' }}></div>
       </div>
 
@@ -213,8 +213,8 @@ const AdminSetupPage = () => {
             {/* Icon */}
             <div className="flex justify-center">
               <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full blur-lg opacity-75"></div>
-                <div className="relative w-16 h-16 bg-gradient-to-br from-blue-600 to-purple-600 rounded-full flex items-center justify-center">
+                <div className="absolute inset-0 bg-gradient-to-r from-teal-600 to-orange-600 rounded-full blur-lg opacity-75"></div>
+                <div className="relative w-16 h-16 bg-gradient-to-br from-teal-600 to-orange-600 rounded-full flex items-center justify-center">
                   <BiShieldAlt className="text-white text-2xl" />
                 </div>
               </div>
@@ -223,7 +223,7 @@ const AdminSetupPage = () => {
             {/* Title */}
             <div>
               <h1 className="text-3xl sm:text-4xl font-bold text-white mb-2">Admin Setup</h1>
-              <p className="text-blue-200 dark:text-slate-400 text-sm">
+              <p className="text-teal-200 dark:text-slate-400 text-sm">
                 {step === 1 && 'Enter your access code to continue'}
                 {step === 2 && 'Create your admin account'}
                 {step === 3 && 'Confirm and create account'}
@@ -236,7 +236,7 @@ const AdminSetupPage = () => {
                 <div
                   key={s}
                   className={`h-2 rounded-full transition-all duration-300 ${
-                    s <= step ? 'bg-gradient-to-r from-blue-500 to-purple-500 w-8' : 'bg-slate-600 w-2'
+                    s <= step ? 'bg-gradient-to-r from-teal-500 to-orange-500 w-8' : 'bg-slate-600 w-2'
                   }`}
                 ></div>
               ))}
@@ -249,7 +249,7 @@ const AdminSetupPage = () => {
               <div>
                 <label className="block text-sm font-semibold text-white mb-3">Access Code</label>
                 <div className="relative">
-                  <FiLock className="absolute left-4 top-4 text-blue-400 text-xl" />
+                  <FiLock className="absolute left-4 top-4 text-teal-400 text-xl" />
                   <input
                     type="password"
                     value={accessCode}
@@ -258,7 +258,7 @@ const AdminSetupPage = () => {
                       setAccessCodeError('');
                     }}
                     placeholder="Enter access code"
-                    className="w-full pl-12 pr-4 py-3 bg-white/10 dark:bg-slate-700/50 border border-white/20 dark:border-slate-600 text-white placeholder-slate-400 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+                    className="w-full pl-12 pr-4 py-3 bg-white/10 dark:bg-slate-700/50 border border-white/20 dark:border-slate-600 text-white placeholder-slate-400 rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-500 transition"
                   />
                 </div>
                 {accessCodeError && (
@@ -271,7 +271,7 @@ const AdminSetupPage = () => {
 
               <button
                 type="submit"
-                className="w-full py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold rounded-xl transition-all duration-300 flex items-center justify-center gap-2 group"
+                className="w-full py-3 bg-gradient-to-r from-teal-600 to-orange-600 hover:from-teal-700 hover:to-orange-700 text-white font-bold rounded-xl transition-all duration-300 flex items-center justify-center gap-2 group"
               >
                 Verify Code
                 <FiArrowRight className="group-hover:translate-x-1 transition-transform" />
@@ -286,7 +286,7 @@ const AdminSetupPage = () => {
               <div>
                 <label className="block text-sm font-semibold text-white mb-2">Full Name</label>
                 <div className="relative">
-                  <FiUser className="absolute left-4 top-4 text-blue-400 text-xl" />
+                  <FiUser className="absolute left-4 top-4 text-teal-400 text-xl" />
                   <input
                     type="text"
                     name="fullName"
@@ -295,7 +295,7 @@ const AdminSetupPage = () => {
                     placeholder="Your full name"
                     className={`w-full pl-12 pr-4 py-2.5 bg-white/10 dark:bg-slate-700/50 border ${
                       errors.fullName ? 'border-red-500' : 'border-white/20 dark:border-slate-600'
-                    } text-white placeholder-slate-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition`}
+                    } text-white placeholder-slate-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 transition`}
                   />
                 </div>
                 {errors.fullName && <p className="text-red-400 text-xs mt-1">{errors.fullName}</p>}
@@ -305,7 +305,7 @@ const AdminSetupPage = () => {
               <div>
                 <label className="block text-sm font-semibold text-white mb-2">Email Address</label>
                 <div className="relative">
-                  <FiMail className="absolute left-4 top-4 text-blue-400 text-xl" />
+                  <FiMail className="absolute left-4 top-4 text-teal-400 text-xl" />
                   <input
                     type="email"
                     name="email"
@@ -314,7 +314,7 @@ const AdminSetupPage = () => {
                     placeholder="admin@example.com"
                     className={`w-full pl-12 pr-4 py-2.5 bg-white/10 dark:bg-slate-700/50 border ${
                       errors.email ? 'border-red-500' : 'border-white/20 dark:border-slate-600'
-                    } text-white placeholder-slate-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition`}
+                    } text-white placeholder-slate-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 transition`}
                   />
                 </div>
                 {errors.email && <p className="text-red-400 text-xs mt-1">{errors.email}</p>}
@@ -324,7 +324,7 @@ const AdminSetupPage = () => {
               <div>
                 <label className="block text-sm font-semibold text-white mb-2">Phone Number</label>
                 <div className="relative">
-                  <FiPhone className="absolute left-4 top-4 text-blue-400 text-xl" />
+                  <FiPhone className="absolute left-4 top-4 text-teal-400 text-xl" />
                   <input
                     type="tel"
                     name="phone"
@@ -333,7 +333,7 @@ const AdminSetupPage = () => {
                     placeholder="+20 1234567890"
                     className={`w-full pl-12 pr-4 py-2.5 bg-white/10 dark:bg-slate-700/50 border ${
                       errors.phone ? 'border-red-500' : 'border-white/20 dark:border-slate-600'
-                    } text-white placeholder-slate-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition`}
+                    } text-white placeholder-slate-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 transition`}
                   />
                 </div>
                 {errors.phone && <p className="text-red-400 text-xs mt-1">{errors.phone}</p>}
@@ -343,7 +343,7 @@ const AdminSetupPage = () => {
               <div>
                 <label className="block text-sm font-semibold text-white mb-2">City</label>
                 <div className="relative">
-                  <FiMapPin className="absolute left-4 top-4 text-blue-400 text-xl" />
+                  <FiMapPin className="absolute left-4 top-4 text-teal-400 text-xl" />
                   <input
                     type="text"
                     name="city"
@@ -352,7 +352,7 @@ const AdminSetupPage = () => {
                     placeholder="Your city"
                     className={`w-full pl-12 pr-4 py-2.5 bg-white/10 dark:bg-slate-700/50 border ${
                       errors.city ? 'border-red-500' : 'border-white/20 dark:border-slate-600'
-                    } text-white placeholder-slate-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition`}
+                    } text-white placeholder-slate-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 transition`}
                   />
                 </div>
                 {errors.city && <p className="text-red-400 text-xs mt-1">{errors.city}</p>}
@@ -367,7 +367,7 @@ const AdminSetupPage = () => {
                   value={adminData.address}
                   onChange={handleFieldChange}
                   placeholder="Your address"
-                  className="w-full px-4 py-2.5 bg-white/10 dark:bg-slate-700/50 border border-white/20 dark:border-slate-600 text-white placeholder-slate-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+                  className="w-full px-4 py-2.5 bg-white/10 dark:bg-slate-700/50 border border-white/20 dark:border-slate-600 text-white placeholder-slate-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 transition"
                 />
               </div>
 
@@ -375,7 +375,7 @@ const AdminSetupPage = () => {
               <div>
                 <label className="block text-sm font-semibold text-white mb-2">Password</label>
                 <div className="relative">
-                  <FiLock className="absolute left-4 top-4 text-blue-400 text-xl" />
+                  <FiLock className="absolute left-4 top-4 text-teal-400 text-xl" />
                   <input
                     type={showPassword ? 'text' : 'password'}
                     name="password"
@@ -384,12 +384,12 @@ const AdminSetupPage = () => {
                     placeholder="Create strong password"
                     className={`w-full pl-12 pr-12 py-2.5 bg-white/10 dark:bg-slate-700/50 border ${
                       errors.password ? 'border-red-500' : 'border-white/20 dark:border-slate-600'
-                    } text-white placeholder-slate-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition`}
+                    } text-white placeholder-slate-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 transition`}
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-4 top-4 text-blue-400 hover:text-blue-300"
+                    className="absolute right-4 top-4 text-teal-400 hover:text-teal-300"
                   >
                     {showPassword ? <FiEyeOff size={20} /> : <FiEye size={20} />}
                   </button>
@@ -427,7 +427,7 @@ const AdminSetupPage = () => {
               <div>
                 <label className="block text-sm font-semibold text-white mb-2">Confirm Password</label>
                 <div className="relative">
-                  <FiLock className="absolute left-4 top-4 text-blue-400 text-xl" />
+                  <FiLock className="absolute left-4 top-4 text-teal-400 text-xl" />
                   <input
                     type={showConfirmPassword ? 'text' : 'password'}
                     name="confirmPassword"
@@ -436,12 +436,12 @@ const AdminSetupPage = () => {
                     placeholder="Confirm password"
                     className={`w-full pl-12 pr-12 py-2.5 bg-white/10 dark:bg-slate-700/50 border ${
                       errors.confirmPassword ? 'border-red-500' : 'border-white/20 dark:border-slate-600'
-                    } text-white placeholder-slate-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition`}
+                    } text-white placeholder-slate-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 transition`}
                   />
                   <button
                     type="button"
                     onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                    className="absolute right-4 top-4 text-blue-400 hover:text-blue-300"
+                    className="absolute right-4 top-4 text-teal-400 hover:text-teal-300"
                   >
                     {showConfirmPassword ? <FiEyeOff size={20} /> : <FiEye size={20} />}
                   </button>
@@ -460,7 +460,7 @@ const AdminSetupPage = () => {
                 </button>
                 <button
                   type="submit"
-                  className="flex-1 py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold rounded-xl transition-all duration-300 flex items-center justify-center gap-2 group"
+                  className="flex-1 py-3 bg-gradient-to-r from-teal-600 to-orange-600 hover:from-teal-700 hover:to-orange-700 text-white font-bold rounded-xl transition-all duration-300 flex items-center justify-center gap-2 group"
                 >
                   Continue
                   <FiArrowRight className="group-hover:translate-x-1 transition-transform" />
@@ -516,7 +516,7 @@ const AdminSetupPage = () => {
                 <button
                   onClick={handleConfirmCreateAdmin}
                   disabled={loading}
-                  className="flex-1 py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold rounded-xl transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 group"
+                  className="flex-1 py-3 bg-gradient-to-r from-teal-600 to-orange-600 hover:from-teal-700 hover:to-orange-700 text-white font-bold rounded-xl transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 group"
                 >
                   {loading ? (
                     <>

@@ -177,7 +177,7 @@ export const ItineraryDetails = ({ itineraries = [], loading = false }) => {
     return (
       <Card className="p-6">
         <div className="flex items-center justify-center py-8">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500"></div>
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-teal-500"></div>
           <span className="ml-3 text-slate-500">Loading itinerary...</span>
         </div>
       </Card>
@@ -247,14 +247,14 @@ const ItineraryDayItem = ({ day, isExpanded, onToggle }) => {
         <div
           className={`w-full p-4 rounded-lg border-2 transition-all ${
             isExpanded
-              ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/20'
-              : 'border-slate-200 dark:border-slate-700 hover:border-blue-300 bg-white dark:bg-slate-800'
+              ? 'border-teal-500 bg-teal-50 dark:bg-teal-900/20'
+              : 'border-slate-200 dark:border-slate-700 hover:border-teal-300 bg-white dark:bg-slate-800'
           }`}
         >
           <div className="flex items-center justify-between">
             <div className="text-left">
               <div className="flex items-center gap-3">
-                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-white font-bold text-sm">
+                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-br from-teal-400 to-teal-600 flex items-center justify-center text-white font-bold text-sm">
                   {day.day_number || day.day}
                 </div>
                 <div>
@@ -276,7 +276,7 @@ const ItineraryDayItem = ({ day, isExpanded, onToggle }) => {
                 size={20}
                 className={`${
                   isExpanded
-                    ? 'text-blue-600'
+                    ? 'text-teal-600'
                     : 'text-slate-400 group-hover:text-slate-600'
                 }`}
               />
@@ -295,12 +295,12 @@ const ItineraryDayItem = ({ day, isExpanded, onToggle }) => {
             transition={{ duration: 0.3 }}
             className="overflow-hidden"
           >
-            <div className="mt-3 p-4 bg-slate-50 dark:bg-slate-900/50 rounded-lg space-y-4 border-l-4 border-blue-500">
+            <div className="mt-3 p-4 bg-slate-50 dark:bg-slate-900/50 rounded-lg space-y-4 border-l-4 border-teal-500">
               {/* Full Description */}
               {(day.display_description || day.description) && (
                 <div>
                   <h4 className="font-semibold text-slate-900 dark:text-white mb-2 flex items-center gap-2">
-                    <FiMapPin size={16} className="text-blue-500" />
+                    <FiMapPin size={16} className="text-teal-500" />
                     {t('itinerary.description', 'Description')}
                   </h4>
                   <p className="text-slate-600 dark:text-slate-300 leading-relaxed text-sm">
@@ -355,7 +355,7 @@ const ItineraryDayItem = ({ day, isExpanded, onToggle }) => {
               {day.image_url && (
                 <div>
                   <h4 className="font-semibold text-slate-900 dark:text-white mb-2 flex items-center gap-2">
-                    <FiImage size={16} className="text-purple-500" />
+                    <FiImage size={16} className="text-orange-500" />
                     {t('itinerary.image', 'Image')}
                   </h4>
                   <div className="rounded-lg overflow-hidden bg-slate-200 dark:bg-slate-800">
@@ -403,8 +403,8 @@ const MealBadge = ({ meal }) => {
   const getMealColor = (mealType) => {
     const lower = mealType.toLowerCase();
     if (lower.includes('breakfast')) return 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-200';
-    if (lower.includes('lunch')) return 'bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200';
-    if (lower.includes('dinner')) return 'bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-200';
+    if (lower.includes('lunch')) return 'bg-teal-100 dark:bg-teal-900/30 text-teal-800 dark:text-teal-200';
+    if (lower.includes('dinner')) return 'bg-orange-100 dark:bg-orange-900/30 text-orange-800 dark:text-orange-200';
     return 'bg-slate-100 dark:bg-slate-700 text-slate-800 dark:text-slate-200';
   };
 
@@ -430,7 +430,7 @@ const ItineraryTimeline = ({ days }) => {
         {days.map((day, index) => (
           <div key={day.id || index} className="flex flex-col items-center">
             {/* Day Marker */}
-            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-white text-xs font-bold mb-2">
+            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-teal-400 to-teal-600 flex items-center justify-center text-white text-xs font-bold mb-2">
               {day.day_number || day.day}
             </div>
 

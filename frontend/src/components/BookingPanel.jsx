@@ -66,7 +66,7 @@ const BookingPanel = ({
             onClick={toggleCurrency}
             className={`px-4 py-2 rounded-lg font-bold transition-all ${
               currency === 'USD'
-                ? 'bg-blue-600 text-white'
+                ? 'bg-teal-600 text-white'
                 : 'bg-green-600 text-white'
             }`}
           >
@@ -82,14 +82,14 @@ const BookingPanel = ({
       </div>
 
       {/* Price Card */}
-      <div className="bg-gradient-to-br from-cyan-50 to-blue-50 dark:from-cyan-900/30 dark:to-blue-900/30 rounded-xl p-6 border-2 border-cyan-300 dark:border-cyan-600 shadow-lg">
+      <div className="bg-gradient-to-br from-teal-50 to-teal-50 dark:from-teal-900/30 dark:to-teal-900/30 rounded-xl p-6 border-2 border-teal-300 dark:border-teal-600 shadow-lg">
         <div className="space-y-6">
           {/* Price Display - Total price, scales with number of persons */}
-          <div className="text-center pb-4 border-b-2 border-cyan-200 dark:border-cyan-700">
+          <div className="text-center pb-4 border-b-2 border-teal-200 dark:border-teal-700">
             <p className="text-sm text-slate-600 dark:text-slate-400 mb-1">
               Price ({persons} {persons === 1 ? 'Person' : 'Persons'})
             </p>
-            <p className="text-4xl font-bold text-cyan-600 dark:text-cyan-400">
+            <p className="text-4xl font-bold text-teal-600 dark:text-teal-400">
               {isConverting ? (
                 <span className="animate-pulse">...</span>
               ) : (
@@ -142,13 +142,13 @@ const BookingPanel = ({
                     onClick={() => onSelectRoomType(room)}
                     className={`w-full p-3 rounded-lg text-left transition-all border-2 ${
                       selectedRoomType?.id === room.id
-                        ? 'bg-cyan-100 dark:bg-cyan-900 border-cyan-600 dark:border-cyan-400'
-                        : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 hover:border-cyan-400'
+                        ? 'bg-teal-100 dark:bg-teal-900 border-teal-600 dark:border-teal-400'
+                        : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 hover:border-teal-400'
                     }`}
                   >
                     <div className="flex justify-between items-center">
                       <span className="font-semibold text-slate-900 dark:text-white">{room.name}</span>
-                      <span className="text-cyan-600 dark:text-cyan-400 font-bold">
+                      <span className="text-teal-600 dark:text-teal-400 font-bold">
                         +{displayPrice(room.price)}
                       </span>
                     </div>
@@ -168,7 +168,7 @@ const BookingPanel = ({
                 {pkg.extras.map(extra => (
                   <label
                     key={extra.id}
-                    className="flex items-center gap-3 p-3 rounded-lg bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 hover:border-cyan-400 cursor-pointer transition-all"
+                    className="flex items-center gap-3 p-3 rounded-lg bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 hover:border-teal-400 cursor-pointer transition-all"
                   >
                     <input
                       type="checkbox"
@@ -221,7 +221,7 @@ const BookingPanel = ({
             <div className="border-t border-slate-300 dark:border-slate-600 pt-2 mt-2">
               <div className="flex justify-between font-bold text-slate-900 dark:text-white">
                 <span>Total</span>
-                <span className="text-lg text-cyan-600 dark:text-cyan-400">
+                <span className="text-lg text-teal-600 dark:text-teal-400">
                   {isConverting ? (
                     <span className="animate-pulse">...</span>
                   ) : (
@@ -236,7 +236,7 @@ const BookingPanel = ({
           <Button
             onClick={onBookNow}
             loading={isBookingLoading}
-            className="w-full bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white font-bold py-3 rounded-lg"
+            className="w-full bg-gradient-to-r from-teal-600 to-teal-600 hover:from-teal-700 hover:to-teal-700 text-white font-bold py-3 rounded-lg"
           >
             Book Now
           </Button>

@@ -115,24 +115,24 @@ const FAQPage = () => {
     <MainLayout>
       <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
         {/* Progress Bar */}
-        <div className="fixed top-0 left-0 h-1.5 bg-gradient-to-r from-blue-600 via-cyan-500 to-purple-600 z-50 transition-all duration-300" style={{ width: `${scrollProgress * 100}%` }}></div>
+        <div className="fixed top-0 left-0 h-1.5 bg-gradient-to-r from-teal-600 via-teal-500 to-orange-600 z-50 transition-all duration-300" style={{ width: `${scrollProgress * 100}%` }}></div>
 
         {/* Animated Background - Light Mode */}
         <div className="fixed inset-0 overflow-hidden pointer-events-none dark:hidden">
-          <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-96 h-96 bg-cyan-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
-          <div className="absolute -bottom-40 left-0 w-96 h-96 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse" style={{ animationDelay: '2s' }}></div>
+          <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-96 h-96 bg-teal-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
+          <div className="absolute -bottom-40 left-0 w-96 h-96 bg-teal-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse" style={{ animationDelay: '2s' }}></div>
         </div>
 
         {/* Animated Background - Dark Mode */}
         <div className="fixed inset-0 overflow-hidden pointer-events-none hidden dark:block">
-          <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-96 h-96 bg-cyan-600 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
-          <div className="absolute -bottom-40 left-0 w-96 h-96 bg-blue-600 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse" style={{ animationDelay: '2s' }}></div>
+          <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-96 h-96 bg-teal-600 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
+          <div className="absolute -bottom-40 left-0 w-96 h-96 bg-teal-600 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse" style={{ animationDelay: '2s' }}></div>
         </div>
 
         {/* Header */}
         <div className="relative pt-20 pb-32 px-4 sm:px-6 lg:px-8">
           <div className="relative max-w-4xl mx-auto text-center">
-            <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-blue-600 to-cyan-600 rounded-2xl mb-8 mx-auto shadow-lg">
+            <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-teal-600 to-teal-600 rounded-2xl mb-8 mx-auto shadow-lg">
               <HelpCircle size={40} className="text-white" />
             </div>
 
@@ -150,8 +150,8 @@ const FAQPage = () => {
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
           {/* Search */}
           <div className="mb-12">
-            <div className="bg-white dark:bg-slate-800/50 rounded-xl border-2 border-gray-300 dark:border-slate-700 p-4 flex items-center gap-3 hover:border-blue-400 dark:hover:border-blue-500 transition-all">
-              <Search className="text-blue-600 dark:text-blue-400" size={24} />
+            <div className="bg-white dark:bg-slate-800/50 rounded-xl border-2 border-gray-300 dark:border-slate-700 p-4 flex items-center gap-3 hover:border-teal-400 dark:hover:border-teal-500 transition-all">
+              <Search className="text-teal-600 dark:text-teal-400" size={24} />
               <input
                 type="text"
                 placeholder="Search questions..."
@@ -161,7 +161,7 @@ const FAQPage = () => {
               />
             </div>
             {search && (
-              <p className="text-blue-600 dark:text-blue-400 text-sm mt-3 font-medium">
+              <p className="text-teal-600 dark:text-teal-400 text-sm mt-3 font-medium">
                 ✓ Found {filtered.reduce((a, c) => a + c.items.length, 0)} questions matching your search
               </p>
             )}
@@ -183,20 +183,20 @@ const FAQPage = () => {
                       const isOpen = expanded[key];
 
                       return (
-                        <div key={key} className="bg-gray-50 dark:bg-slate-700/50 rounded-lg border-2 border-gray-200 dark:border-slate-600 hover:border-blue-400 dark:hover:border-blue-500 overflow-hidden transition-all">
+                        <div key={key} className="bg-gray-50 dark:bg-slate-700/50 rounded-lg border-2 border-gray-200 dark:border-slate-600 hover:border-teal-400 dark:hover:border-teal-500 overflow-hidden transition-all">
                           <button
                             onClick={() => setExpanded(p => ({ ...p, [key]: !p[key] }))}
                             className="w-full px-6 py-4 flex items-center justify-between hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors text-left group"
                           >
-                            <h3 className="font-semibold text-gray-900 dark:text-white pr-4 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors text-lg">{item.q}</h3>
+                            <h3 className="font-semibold text-gray-900 dark:text-white pr-4 group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors text-lg">{item.q}</h3>
                             <ChevronDown 
                               size={20} 
-                              className={`text-blue-600 dark:text-blue-400 flex-shrink-0 transition-transform font-bold ${isOpen ? 'rotate-180' : ''}`} 
+                              className={`text-teal-600 dark:text-teal-400 flex-shrink-0 transition-transform font-bold ${isOpen ? 'rotate-180' : ''}`} 
                             />
                           </button>
 
                           {isOpen && (
-                            <div className="px-6 py-4 bg-blue-50 dark:bg-blue-950/20 border-t-2 border-gray-200 dark:border-slate-600">
+                            <div className="px-6 py-4 bg-teal-50 dark:bg-teal-950/20 border-t-2 border-gray-200 dark:border-slate-600">
                               <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-base">{item.a}</p>
                             </div>
                           )}
@@ -216,21 +216,21 @@ const FAQPage = () => {
           )}
 
           {/* Still Have Questions */}
-          <div className="bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-blue-950/30 dark:to-cyan-950/30 rounded-2xl p-8 border-2 border-blue-200 dark:border-blue-800 shadow-sm hover:shadow-md transition-all mt-12 text-center">
+          <div className="bg-gradient-to-r from-teal-50 to-teal-50 dark:from-teal-950/30 dark:to-teal-950/30 rounded-2xl p-8 border-2 border-teal-200 dark:border-teal-800 shadow-sm hover:shadow-md transition-all mt-12 text-center">
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Still have questions?</h2>
             <p className="text-gray-700 dark:text-gray-300 mb-8 text-lg">Our support team is here to help 24/7!</p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a 
                 href="mailto:support@tourhub.com" 
-                className="flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-bold transition-all shadow-md hover:shadow-lg"
+                className="flex items-center justify-center gap-2 bg-teal-600 hover:bg-teal-700 text-white px-6 py-3 rounded-lg font-bold transition-all shadow-md hover:shadow-lg"
               >
                 <Mail size={20} />
                 Email Support
               </a>
               <a 
                 href="tel:+15551234567" 
-                className="flex items-center justify-center gap-2 bg-cyan-600 hover:bg-cyan-700 text-white px-6 py-3 rounded-lg font-bold transition-all shadow-md hover:shadow-lg"
+                className="flex items-center justify-center gap-2 bg-teal-600 hover:bg-teal-700 text-white px-6 py-3 rounded-lg font-bold transition-all shadow-md hover:shadow-lg"
               >
                 <Phone size={20} />
                 Call Us

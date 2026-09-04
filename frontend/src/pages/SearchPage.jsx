@@ -309,7 +309,7 @@ const SearchPage = () => {
   return (
     <MainLayout>
       {/* Hero Search */}
-      <div className="bg-gradient-to-br from-blue-600 to-purple-600 text-white py-8 md:py-12">
+      <div className="bg-gradient-to-br from-teal-600 to-orange-600 text-white py-8 md:py-12">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           <h1 className="text-3xl md:text-4xl font-bold mb-6 flex items-center gap-3">
             {categoryId && categoryName
@@ -327,7 +327,7 @@ const SearchPage = () => {
             }
           </h1>
           {categoryId && (
-            <p className="text-blue-100 mb-4 flex items-center gap-2">
+            <p className="text-teal-100 mb-4 flex items-center gap-2">
               Found <span className="font-bold text-white text-lg">{totalResults}</span> {totalResults === 1 ? 'trip' : 'trips'} in <span className="font-bold text-white">{categoryName}</span>
               {searchQuery && (
                 <span className="ml-2 px-3 py-1 bg-white/20 rounded-full text-sm">
@@ -388,7 +388,7 @@ const SearchPage = () => {
                       }}
                       className="px-4 py-3 hover:bg-gray-100 cursor-pointer border-b last:border-b-0 flex items-center gap-2 text-gray-700"
                     >
-                      <FiMapPin size={16} className="text-blue-500" />
+                      <FiMapPin size={16} className="text-teal-500" />
                       {suggestion}
                     </div>
                   ))
@@ -431,8 +431,8 @@ const SearchPage = () => {
           {/* Category Filter Badge with Clear Button */}
           {categoryId && (
             <div className="mb-6 flex items-center gap-3">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 dark:bg-blue-900/30 rounded-lg border border-blue-300 dark:border-blue-700">
-                <span className="text-sm font-semibold text-blue-900 dark:text-blue-200">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-teal-100 dark:bg-teal-900/30 rounded-lg border border-teal-300 dark:border-teal-700">
+                <span className="text-sm font-semibold text-teal-900 dark:text-teal-200">
                   📂 Viewing: {categoryName}
                 </span>
               </div>
@@ -497,7 +497,7 @@ const SearchPage = () => {
               <div className="bg-white rounded-lg shadow-sm p-6 space-y-8 sticky top-24">
                 <div>
                   <h3 className="font-bold text-lg text-gray-900 mb-2">{t('searchPageExact.filterTrips')}</h3>
-                  <div className="w-12 h-1 bg-blue-600 rounded"></div>
+                  <div className="w-12 h-1 bg-teal-600 rounded"></div>
                 </div>
 
                 {/* Price */}
@@ -507,14 +507,14 @@ const SearchPage = () => {
                     <div className="flex justify-between items-center">
                       <div>
                         <p className="text-xs text-gray-500 mb-1">{t('searchPageExact.minPrice')}</p>
-                        <p className="text-lg font-bold text-blue-600">${filters.minPrice}</p>
+                        <p className="text-lg font-bold text-teal-600">${filters.minPrice}</p>
                       </div>
                       <div className="text-center">
                         <p className="text-xs text-gray-500">{t('searchPageExact.toPrice')}</p>
                       </div>
                       <div>
                         <p className="text-xs text-gray-500 mb-1">{t('searchPageExact.maxPrice')}</p>
-                        <p className="text-lg font-bold text-blue-600">${filters.maxPrice}</p>
+                        <p className="text-lg font-bold text-teal-600">${filters.maxPrice}</p>
                       </div>
                     </div>
                     <input
@@ -523,7 +523,7 @@ const SearchPage = () => {
                       max="50000"
                       value={filters.maxPrice}
                       onChange={(e) => handleFilterChange('maxPrice', parseInt(e.target.value))}
-                      className="w-full h-2 bg-blue-200 rounded-lg appearance-none cursor-pointer accent-blue-600"
+                      className="w-full h-2 bg-teal-200 rounded-lg appearance-none cursor-pointer accent-teal-600"
                     />
                     <div className="text-xs text-gray-500 text-center">{t('searchPageExact.dragToAdjustMaxPrice')}</div>
                   </div>
@@ -536,14 +536,14 @@ const SearchPage = () => {
                     <div className="flex justify-between items-center">
                       <div>
                         <p className="text-xs text-gray-500 mb-1">{t('searchPageExact.minPrice')}</p>
-                        <p className="text-lg font-bold text-blue-600">{filters.minDuration}{t('searchPageExact.daysAbbr')}</p>
+                        <p className="text-lg font-bold text-teal-600">{filters.minDuration}{t('searchPageExact.daysAbbr')}</p>
                       </div>
                       <div className="text-center">
                         <p className="text-xs text-gray-500">{t('searchPageExact.toPrice')}</p>
                       </div>
                       <div>
                         <p className="text-xs text-gray-500 mb-1">{t('searchPageExact.maxPrice')}</p>
-                        <p className="text-lg font-bold text-blue-600">{filters.maxDuration}{t('searchPageExact.daysAbbr')}</p>
+                        <p className="text-lg font-bold text-teal-600">{filters.maxDuration}{t('searchPageExact.daysAbbr')}</p>
                       </div>
                     </div>
                     <input
@@ -552,7 +552,7 @@ const SearchPage = () => {
                       max="30"
                       value={filters.maxDuration}
                       onChange={(e) => handleFilterChange('maxDuration', parseInt(e.target.value))}
-                      className="w-full h-2 bg-blue-200 rounded-lg appearance-none cursor-pointer accent-blue-600"
+                      className="w-full h-2 bg-teal-200 rounded-lg appearance-none cursor-pointer accent-teal-600"
                     />
                     <div className="text-xs text-gray-500 text-center">{t('searchPageExact.dragToAdjustDuration')}</div>
                   </div>
@@ -573,8 +573,8 @@ const SearchPage = () => {
                         onClick={() => handleFilterChange('minRating', opt.value)}
                         className={`w-full text-left px-4 py-3 rounded-lg transition text-sm font-semibold ${
                           filters.minRating === opt.value
-                            ? 'bg-blue-600 text-white shadow-md transform scale-105'
-                            : 'hover:bg-gray-100 text-gray-700 border-2 border-transparent hover:border-blue-300'
+                            ? 'bg-teal-600 text-white shadow-md transform scale-105'
+                            : 'hover:bg-gray-100 text-gray-700 border-2 border-transparent hover:border-teal-300'
                         }`}
                       >
                         <div className="flex items-center justify-between">
@@ -601,8 +601,8 @@ const SearchPage = () => {
                         onClick={() => handleFilterChange('sortBy', opt.value)}
                         className={`w-full text-left px-4 py-3 rounded-lg transition text-sm font-semibold ${
                           filters.sortBy === opt.value
-                            ? 'bg-blue-600 text-white shadow-md transform scale-105'
-                            : 'hover:bg-gray-100 text-gray-700 border-2 border-transparent hover:border-blue-300'
+                            ? 'bg-teal-600 text-white shadow-md transform scale-105'
+                            : 'hover:bg-gray-100 text-gray-700 border-2 border-transparent hover:border-teal-300'
                         }`}
                       >
                         <div className="flex items-center justify-between">
@@ -624,7 +624,7 @@ const SearchPage = () => {
                   </button>
                   <button
                     onClick={() => setShowFilters(false)}
-                    className="w-full md:hidden px-4 py-3 text-sm font-bold bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition shadow-md"
+                    className="w-full md:hidden px-4 py-3 text-sm font-bold bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition shadow-md"
                   >
                     ✓ {t('searchPageExact.applyFilters')}
                   </button>
@@ -637,7 +637,7 @@ const SearchPage = () => {
               {loading && (
                 <div className="flex justify-center py-20">
                   <div className="animate-spin">
-                    <div className="w-12 h-12 border-4 border-blue-200 border-t-blue-600 rounded-full"></div>
+                    <div className="w-12 h-12 border-4 border-teal-200 border-t-teal-600 rounded-full"></div>
                   </div>
                 </div>
               )}
@@ -657,7 +657,7 @@ const SearchPage = () => {
                       : `Try adjusting your search or filters`
                     }
                   </p>
-                  <Button onClick={handleResetFilters} className="bg-blue-600 hover:bg-blue-700">{t('searchPageExact.resetFilters')}</Button>
+                  <Button onClick={handleResetFilters} className="bg-teal-600 hover:bg-teal-700">{t('searchPageExact.resetFilters')}</Button>
                 </div>
               )}
 
@@ -693,11 +693,11 @@ const SearchPage = () => {
                         
                         <div className="space-y-1.5 text-sm text-gray-600">
                           <div className="flex items-center gap-2">
-                            <FiMapPin size={14} className="text-blue-500" />
+                            <FiMapPin size={14} className="text-teal-500" />
                             {pkg.destination}
                           </div>
                           <div className="flex items-center gap-2">
-                            <FiCalendar size={14} className="text-blue-500" />
+                            <FiCalendar size={14} className="text-teal-500" />
                             {pkg.duration_days} {t('searchPageExact.daysDuration')}
                           </div>
                         </div>
@@ -735,7 +735,7 @@ const SearchPage = () => {
 
                         <div>
                           <p className="text-xs text-gray-600 mb-1">{t('searchPageExact.from')}</p>
-                          <div className="text-2xl font-bold text-blue-600">
+                          <div className="text-2xl font-bold text-teal-600">
                             {pkg.base_price && pkg.base_price > 0 
                               ? `$${pkg.base_price?.toLocaleString()}`
                               : <span className="text-orange-500">Price Not Set</span>
@@ -743,7 +743,7 @@ const SearchPage = () => {
                           </div>
                         </div>
 
-                        <Button onClick={(e) => { e.stopPropagation(); navigate(`/package/${pkg.id}`); }} className="w-full bg-blue-600 hover:bg-blue-700">{t('searchPageExact.viewDetails')}</Button>
+                        <Button onClick={(e) => { e.stopPropagation(); navigate(`/package/${pkg.id}`); }} className="w-full bg-teal-600 hover:bg-teal-700">{t('searchPageExact.viewDetails')}</Button>
                       </div>
                     </Card>
                   ))}
@@ -816,14 +816,14 @@ const SearchPage = () => {
                         <div className="text-right flex flex-col justify-between">
                           <div>
                             <p className="text-xs text-gray-600">{t('searchPageExact.from')}</p>
-                            <div className="text-lg font-bold text-blue-600">
+                            <div className="text-lg font-bold text-teal-600">
                               {pkg.base_price && pkg.base_price > 0 
                                 ? `$${pkg.base_price?.toLocaleString()}`
                                 : <span className="text-orange-500">Price Not Set</span>
                               }
                             </div>
                           </div>
-                          <Button onClick={(e) => { e.stopPropagation(); navigate(`/package/${pkg.id}`); }} className="bg-blue-600 hover:bg-blue-700 text-sm">{t('searchPageExact.viewDetails')}</Button>
+                          <Button onClick={(e) => { e.stopPropagation(); navigate(`/package/${pkg.id}`); }} className="bg-teal-600 hover:bg-teal-700 text-sm">{t('searchPageExact.viewDetails')}</Button>
                         </div>
                       </div>
                     </Card>
