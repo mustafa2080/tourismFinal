@@ -229,6 +229,9 @@ const Header = () => {
               loading="eager"
               decoding="async"
             />
+            <span className="hidden sm:inline text-xs lg:text-sm text-slate-500 dark:text-slate-400 font-medium self-end mb-1.5 lg:mb-2.5">
+              Tours
+            </span>
           </button>
 
           {/* Desktop Navigation */}
