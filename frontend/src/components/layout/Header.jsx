@@ -224,17 +224,11 @@ const Header = () => {
           >
             <img
               src={logoImg}
-              alt="Travluyo Logo"
-              className="h-10 sm:h-12 lg:h-16 w-auto object-contain flex-shrink-0 drop-shadow-[0_2px_6px_rgba(180,140,50,0.35)] group-hover:drop-shadow-[0_4px_10px_rgba(180,140,50,0.5)] transition-all duration-300"
+              alt="Travluyo"
+              className="h-14 sm:h-16 lg:h-20 w-auto object-contain flex-shrink-0 drop-shadow-[0_2px_6px_rgba(180,140,50,0.35)] group-hover:drop-shadow-[0_4px_10px_rgba(180,140,50,0.5)] transition-all duration-300"
               loading="eager"
               decoding="async"
             />
-            <div className="hidden sm:flex flex-col leading-tight">
-              <span className="font-bold text-sm lg:text-lg" style={{ fontFamily: "'Outfit', 'Inter', sans-serif" }}>
-                <span style={{ color: '#14b8a6' }}>Trav</span><span style={{ color: '#f97316' }}>luyo</span>
-              </span>
-              <span className="text-xs text-slate-500 dark:text-slate-400 font-medium">Tours</span>
-            </div>
           </button>
 
           {/* Desktop Navigation */}
@@ -584,7 +578,7 @@ const Header = () => {
             {/* Drawer header */}
             <div className="flex items-center justify-between px-5 py-4 bg-gradient-to-r from-teal-600 to-orange-600 flex-shrink-0">
               <div className="flex items-center gap-2.5">
-                <img src={logoImg} alt="Travluyo" className="h-10 w-auto object-contain drop-shadow-md" />
+                <img src={logoImg} alt="Travluyo" className="h-11 w-auto object-contain drop-shadow-md" />
                 <span className="text-white font-extrabold text-lg tracking-tight">Travluyo</span>
               </div>
               <button
