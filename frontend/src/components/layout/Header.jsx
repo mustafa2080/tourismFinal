@@ -225,7 +225,7 @@ const Header = () => {
             <img
               src={logoImg}
               alt="Travluyo Logo"
-              className="h-9 sm:h-11 lg:h-14 w-auto object-contain flex-shrink-0 drop-shadow-sm group-hover:drop-shadow-md transition-all duration-300"
+              className="h-10 sm:h-12 lg:h-16 w-auto object-contain flex-shrink-0 drop-shadow-[0_2px_6px_rgba(180,140,50,0.35)] group-hover:drop-shadow-[0_4px_10px_rgba(180,140,50,0.5)] transition-all duration-300"
               loading="eager"
               decoding="async"
             />
@@ -584,7 +584,7 @@ const Header = () => {
             {/* Drawer header */}
             <div className="flex items-center justify-between px-5 py-4 bg-gradient-to-r from-teal-600 to-orange-600 flex-shrink-0">
               <div className="flex items-center gap-2.5">
-                <img src={logoImg} alt="Travluyo" className="h-9 w-auto object-contain drop-shadow-md" />
+                <img src={logoImg} alt="Travluyo" className="h-10 w-auto object-contain drop-shadow-md" />
                 <span className="text-white font-extrabold text-lg tracking-tight">Travluyo</span>
               </div>
               <button
