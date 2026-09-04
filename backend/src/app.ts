@@ -31,6 +31,7 @@ import dashboardRoutes from './routes/dashboard.routes.js';
 import categoryRoutes from './routes/category.routes.js';
 import settingsRoutes from './routes/settings.routes.js';
 import itineraryRoutes from './routes/itinerary.routes.js';
+import customTripRoutes from './routes/customTrip.routes.js';
 import translationRoutes from './routes/translation.routes.js';
 import monitoringRoutes from './routes/monitoring.routes.js';
 
@@ -202,6 +203,7 @@ export const createApp = (): Express => {
   app.use('/api/categories', categoryRoutes);
   app.use('/api/settings', settingsRoutes);
   app.use('/api/itineraries', itineraryRoutes);
+  app.use('/api/custom-trips', customTripRoutes);
   app.use('/api/translate', translationRoutes);
   app.use('/api/monitoring', monitoringRoutes);
 

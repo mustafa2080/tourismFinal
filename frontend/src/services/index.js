@@ -15,6 +15,7 @@ export { socketService } from './socketService';
 export { reportService } from './reportService';
 export { default as categoryService } from './categoryService';
 export { default as itineraryService } from './itineraryService';
+export { default as customTripService } from './customTripService';
 export { default as addonsService } from './addonsService';
 export { default as apiClient } from './apiClient';
 export { translationManager } from './translationManager';

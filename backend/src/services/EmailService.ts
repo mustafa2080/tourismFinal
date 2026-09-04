@@ -421,6 +421,32 @@ export class EmailService {
   }
 
   /**
+   * إرسال بريد إشعار عام (نص بسيط) - يستخدم في التدفقات التي لا تحتاج قالب مخصص
+   */
+  async sendGenericNotification(email: string, subject: string, message: string): Promise<void> {
+    try {
+      await this.transporter.sendMail({
+        from: process.env.EMAIL_FROM || process.env.SMTP_USER || 'noreply@tourplatform.com',
+        to: email,
+        subject,
+        html: `
+          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+            <div style="background-color: #f8f9fa; padding: 24px; border-radius: 8px;">
+              <p style="color: #333; font-size: 16px; white-space: pre-wrap;">${message}</p>
+              <p style="color: #999; font-size: 12px; margin-top: 32px; border-top: 1px solid #ddd; padding-top: 16px;">
+                © ${new Date().getFullYear()} Travel Packages Platform. All rights reserved.
+              </p>
+            </div>
+          </div>
+        `,
+      });
+    } catch (error) {
+      console.error('Error sending generic notification email:', error);
+      throw error;
+    }
+  }
+
+  /**
    * إرسال إخطار للـ admin برسالة تواصل جديدة
    */
   async sendContactNotificationToAdmin(

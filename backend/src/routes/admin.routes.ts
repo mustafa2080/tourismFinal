@@ -4,6 +4,7 @@ import { RefundController } from '../controllers/RefundController.js';
 import { ItineraryAdminController } from '../controllers/ItineraryAdminController.js';
 import { StatsController } from '../controllers/StatsController.js';
 import { ContactController } from '../controllers/ContactController.js';
+import { CustomTripController } from '../controllers/CustomTripController.js';
 import { authMiddleware } from '../middleware/authMiddleware.js';
 import { adminMiddleware } from '../middleware/adminMiddleware.js';
 import { AppDataSource } from '../config/connection.js';
@@ -18,6 +19,7 @@ const getRefundController = () => new RefundController();
 const getItineraryAdminController = () => new ItineraryAdminController();
 const getStatsController = () => new StatsController();
 const getContactController = () => new ContactController();
+const getCustomTripController = () => new CustomTripController();
 
 // All admin routes require authentication and admin role
 router.use(authMiddleware, adminMiddleware);
@@ -339,6 +341,53 @@ router.get('/contact/:id', (req, res, next) =>
 
 router.delete('/contact/:id', (req, res, next) =>
   getContactController().deleteSubmission(req, res, next)
+);
+
+// ============================================================================
+// CUSTOM TRIPS MANAGEMENT - Admin Routes
+// ============================================================================
+
+// ⚠️ Stats/options routes MUST come before /:id route
+router.get('/custom-trips/stats', (req, res, next) =>
+  getCustomTripController().getStats(req, res, next)
+);
+
+// Trip Builder catalog (activities/hotels/transport/meals) CRUD
+router.get('/custom-trips/options', (req, res, next) =>
+  getCustomTripController().getOptionsAdmin(req, res, next)
+);
+
+router.post('/custom-trips/options', (req, res, next) =>
+  getCustomTripController().createOption(req, res, next)
+);
+
+router.put('/custom-trips/options/:id', (req, res, next) =>
+  getCustomTripController().updateOption(req, res, next)
+);
+
+router.delete('/custom-trips/options/:id', (req, res, next) =>
+  getCustomTripController().deleteOption(req, res, next)
+);
+
+// Custom trip requests
+router.get('/custom-trips', (req, res, next) =>
+  getCustomTripController().getAllAdmin(req, res, next)
+);
+
+router.get('/custom-trips/:id', (req, res, next) =>
+  getCustomTripController().getById(req, res, next)
+);
+
+router.put('/custom-trips/:id/status', (req, res, next) =>
+  getCustomTripController().updateStatus(req, res, next)
+);
+
+router.post('/custom-trips/:id/quote', (req, res, next) =>
+  getCustomTripController().sendQuote(req, res, next)
+);
+
+router.delete('/custom-trips/:id', (req, res, next) =>
+  getCustomTripController().deleteRequest(req, res, next)
 );
 
 export default router;
