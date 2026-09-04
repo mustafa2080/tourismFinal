@@ -208,8 +208,8 @@ const Header = () => {
               decoding="async"
             />
             <div className="hidden sm:flex flex-col leading-tight">
-              <span className="font-bold text-sm lg:text-lg bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent dark:from-blue-400 dark:to-purple-400" style={{ fontFamily: "'Outfit', 'Inter', sans-serif" }}>
-                Travluyo
+              <span className="font-bold text-sm lg:text-lg" style={{ fontFamily: "'Outfit', 'Inter', sans-serif" }}>
+                <span style={{ color: '#14b8a6' }}>Trav</span><span style={{ color: '#f97316' }}>luyo</span>
               </span>
               <span className="text-xs text-slate-500 dark:text-slate-400 font-medium">Tours</span>
             </div>
@@ -557,7 +557,7 @@ const Header = () => {
             {/* Drawer header */}
             <div className="flex items-center justify-between px-5 py-4 bg-gradient-to-r from-blue-600 to-purple-600 flex-shrink-0">
               <div className="flex items-center gap-2.5">
-                <img src={logoImg} alt="Travluyo" className="w-9 h-9 rounded-lg bg-white/90 p-1 object-contain" />
+                <img src={logoImg} alt="Travluyo" className="h-9 w-auto object-contain drop-shadow-md" />
                 <span className="text-white font-extrabold text-lg tracking-tight">Travluyo</span>
               </div>
               <button
