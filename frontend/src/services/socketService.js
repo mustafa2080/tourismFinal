@@ -105,11 +105,19 @@ export const socketService = {
 
   /**
    * Connect to default Socket.IO server
+   *
+   * IMPORTANT: The backend (backend/src/websocket/socket.ts) puts ALL
+   * realtime events (notification:new, booking:confirmed, wishlist:updated,
+   * etc.) on a dedicated Socket.IO namespace: `/notifications`. Connecting
+   * to the bare origin only joins the default `/` namespace, which the
+   * server never emits anything to - so every listener silently receives
+   * nothing. Appending the namespace path here is what actually wires the
+   * client up to where the events are sent.
    * @returns {Object} - Socket instance
    */
   connect() {
     const url = import.meta.env.VITE_SOCKET_URL || 'http://localhost:5000';
-    return this.init(url);
+    return this.init(`${url}/notifications`);
   },
 
   /**

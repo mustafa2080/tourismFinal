@@ -1,11 +1,13 @@
-import { createContext, useState, useCallback, useEffect, useMemo } from 'react';
+import { createContext, useState, useCallback, useEffect, useMemo, useRef } from 'react';
 import Cookies from 'js-cookie';
 import { socketService, notificationsService } from '../services';
 import { registerSafeListeners, removeSafeListeners } from '../utils/socketEventHandler.js';
+import { useAuth } from '../hooks/useAuth';
 
 export const NotificationContext = createContext();
 
 export function NotificationProvider({ children }) {
+  const { isAuthenticated, user } = useAuth();
   const [notifications, setNotifications] = useState([]);
   const [unreadCount, setUnreadCount] = useState(0);
   const [loading, setLoading] = useState(false);
@@ -45,6 +47,12 @@ export function NotificationProvider({ children }) {
     // Register all listeners safely (no async/promises)
     registerSafeListeners(socket, {
       'notification': (data) => {
+        if (data) addNotification(data);
+      },
+      // Main event the backend actually emits for real-time notifications
+      // (WebSocketService.emitToUser / emitToAdmins / notifyUserGeneral all
+      // send 'notification:new' - see backend/src/websocket/socket.ts).
+      'notification:new': (data) => {
         if (data) addNotification(data);
       },
       'booking:created': (data) => {
@@ -127,6 +135,32 @@ export function NotificationProvider({ children }) {
       }
     });
   }, [addNotification]);
+
+  /**
+   * 🔔 Join the server-side room for this user so emitToUser(...) calls
+   * (booking updates, admin messages, etc.) actually reach this socket.
+   * Without this, the backend has no room to target and every targeted
+   * notification is silently dropped - joining/listening alone is not
+   * enough. Room membership doesn't survive a reconnect, so we
+   * re-subscribe on every 'connect' event too.
+   */
+  useEffect(() => {
+    if (!isAuthenticated || !user?.id) return undefined;
+
+    const socket = socketService.getSocket();
+    if (!socket) return undefined;
+
+    const subscribe = () => {
+      socket.emit('subscribe:user', user.id);
+    };
+
+    if (socket.connected) subscribe();
+    socket.on('connect', subscribe);
+
+    return () => {
+      socket.off('connect', subscribe);
+    };
+  }, [isAuthenticated, user?.id]);
 
   /**
    * Initialize notifications and socket listeners
@@ -231,6 +265,7 @@ export function NotificationProvider({ children }) {
           // Remove all notification-related listeners
           const eventNames = [
             'notification',
+            'notification:new',
             'booking:created',
             'booking:confirmed',
             'booking:cancelled',

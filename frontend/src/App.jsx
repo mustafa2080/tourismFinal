@@ -45,7 +45,13 @@ const initializeSocket = () => {
     return;
   }
 
-  const socketUrl = getSocketUrl();
+  // The backend puts ALL realtime events (notifications, booking updates,
+  // wishlist sync) on the dedicated Socket.IO `/notifications` namespace
+  // (backend/src/websocket/socket.ts). Connecting to the bare origin only
+  // joins the default `/` namespace, which the server never emits to - so
+  // appending the namespace here is required for any realtime event to
+  // actually reach the client.
+  const socketUrl = `${getSocketUrl()}/notifications`;
   try {
     const socket = socketService.init(socketUrl, {
       reconnection: true,
