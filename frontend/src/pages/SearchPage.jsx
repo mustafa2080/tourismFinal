@@ -31,6 +31,12 @@ const SearchPage = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [categoryId, setCategoryId] = useState('');
   const [categoryName, setCategoryName] = useState('');
+  // Tracks packageIds with an in-flight wishlist add/remove request, so a
+  // fast double-click (or an accidental double-fire of the click handler)
+  // can't send the same add request twice - the second request would land
+  // while the item is already saved and the backend correctly rejects it
+  // with 400 "Package already in wishlist", which the user was seeing.
+  const [wishlistUpdating, setWishlistUpdating] = useState(() => new Set());
   const [destinationSuggestions, setDestinationSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [suggestionsLoading, setSuggestionsLoading] = useState(false);
@@ -252,12 +258,19 @@ const SearchPage = () => {
 
   const handleToggleWishlist = async (e, packageId) => {
     e.stopPropagation();
-    
+
     if (!isAuthenticated) {
       toast.error('Please log in');
       navigate('/login');
       return;
     }
+
+    // Guard against double-clicks / double-fired events sending the same
+    // add or remove request twice while the first one is still in flight.
+    if (wishlistUpdating.has(packageId)) {
+      return;
+    }
+    setWishlistUpdating(prev => new Set(prev).add(packageId));
 
     try {
       const wasWishlisted = isWishlisted(packageId);
@@ -289,6 +302,12 @@ const SearchPage = () => {
     } catch (err) {
       console.error('Wishlist error:', err);
       toast.error('Failed to update wishlist');
+    } finally {
+      setWishlistUpdating(prev => {
+        const next = new Set(prev);
+        next.delete(packageId);
+        return next;
+      });
     }
   };
 
@@ -679,9 +698,10 @@ const SearchPage = () => {
                         )}
                         <button
                           onClick={(e) => handleToggleWishlist(e, pkg.id)}
+                          disabled={wishlistUpdating.has(pkg.id)}
                           className={`absolute top-3 right-3 p-2 rounded-full transition ${
                             isWishlisted(pkg.id) ? 'bg-red-500 text-white' : 'bg-white text-gray-600 hover:bg-red-50'
-                          }`}
+                          } ${wishlistUpdating.has(pkg.id) ? 'opacity-50 cursor-not-allowed' : ''}`}
                         >
                           <FiHeart size={18} fill={isWishlisted(pkg.id) ? 'currentColor' : 'none'} />
                         </button>

@@ -544,11 +544,12 @@ const PackageDetailPage = () => {
             </span>
             <button
               onClick={handleWishlist}
+              disabled={wishlistLoading}
               className={`p-3 rounded-full backdrop-blur-md transition-all transform hover:scale-110 ${
                 isWishlisted
                   ? 'bg-red-500 text-white shadow-lg'
                   : 'bg-white/20 text-white hover:bg-white/40'
-              }`}
+              } ${wishlistLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
             >
               <FiHeart size={24} fill={isWishlisted ? 'currentColor' : 'none'} />
             </button>

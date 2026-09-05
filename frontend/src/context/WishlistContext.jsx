@@ -119,6 +119,32 @@ export const WishlistProvider = ({ children }) => {
       
       return true;
     } catch (err) {
+      // The backend correctly returns 400 "Package already in wishlist"
+      // when a duplicate add slips through (e.g. two requests racing from
+      // a fast double-click before the UI could disable the button). The
+      // package the user wanted saved IS saved, so treat this specific
+      // case as success instead of surfacing an error toast.
+      //
+      // NOTE on error shape: apiClient's response interceptor rejects with
+      // `error.response.data` directly (not the raw axios error) for most
+      // 4xx paths, so `err` here is usually the backend's JSON body itself
+      // ({ success, message, statusCode }), meaning `err.response` is
+      // undefined and `err.statusCode`/`err.message` carry the real info.
+      // We still check the axios-shaped fields too in case that ever
+      // changes upstream.
+      const status =
+        err?.response?.status ?? err?.response?.data?.statusCode ?? err?.statusCode;
+      const message =
+        err?.response?.data?.message ?? err?.message ?? '';
+      const alreadyInWishlist =
+        status === 400 && /already in wishlist/i.test(message);
+
+      if (alreadyInWishlist) {
+        console.log('ℹ️ [WishlistContext] Package already in wishlist - treating as success');
+        await syncWishlistData();
+        return true;
+      }
+
       console.error('❌ [WishlistContext] Error adding to wishlist:', err);
       setError(err.message || 'Failed to add to wishlist');
       return false;
