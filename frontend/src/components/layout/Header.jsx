@@ -188,7 +188,7 @@ const Header = () => {
   const navLinks = useMemo(() => [
     { label: t('common.home') || 'Home', path: '/', icon: FiHome },
     { label: t('common.explore') || 'Explore', path: '/search', icon: FiSearch},
-    { label: t('common.customTrip') || 'Custom Trip', path: '/custom-trip', icon: FiCompass, highlight: true },
+    { label: t('common.customTrip') || 'Custom Trip', path: '/custom-trip', icon: FiCompass },
     { label: t('common.about') || 'About', path: '/about', icon: FiInfo },
     { label: t('common.contact') || 'Contact', path: '/contact', icon: FiMail },
     { label: t('common.savedTrips') || 'Saved Trips', path: '/dashboard/wishlist', icon: FiBookmark, requiresAuth: true },
