@@ -551,6 +551,14 @@ const HomePage = () => {
                               <button
                                 key={idx}
                                 type="button"
+                                onMouseDown={(e) => {
+                                  // Prevent the input's onBlur from firing before this click
+                                  // registers - onBlur hides the dropdown after a 150ms delay,
+                                  // and on a real (slightly slower) click that timer can win the
+                                  // race, unmounting this button before onClick ever fires. This
+                                  // stops the input from blurring at all during the click.
+                                  e.preventDefault();
+                                }}
                                 onClick={() => {
                                   // Check if suggestion has packageId (new format) or is just a string (old format)
                                   if (suggestion?.packageId) {
