@@ -1,7 +1,10 @@
 import { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { useInstantTranslation } from '../hooks/useInstantTranslation';
 import { useLanguage } from '../context/LanguageContext';
+import { useInViewCounter } from '../hooks/useInViewCounter';
+import { Reveal, StaggerGroup, StaggerItem } from '../components/motion/Reveal';
 import { MainLayout } from '../components/layout';
 import { Card, Button, Badge, Spinner } from '../components/common';
 import AdvancedImageSlider from '../components/sections/AdvancedImageSlider';
@@ -46,12 +49,10 @@ const HomePage = () => {
   const [suggestionsLoading, setSuggestionsLoading] = useState(false);
   const [recentSearches, setRecentSearches] = useState([]);
   const suggestionsTimeoutRef = useRef(null);
-  const [counters, setCounters] = useState({ travelers: 0, destinations: 0, satisfaction: 0 });
 
   const [topReviews, setTopReviews] = useState([]);
   const [reviewsFetched, setReviewsFetched] = useState(false);
 
-  const counterIntervalRef = useRef(null);
   const autoSlideRef = useRef(null);
   const fetchedDataRef = useRef(false);
 
@@ -244,31 +245,10 @@ const HomePage = () => {
     };
   }, [searchQuery]);
 
-  // Counter animation
-  useEffect(() => {
-    const targets = { travelers: 25000, destinations: 850, satisfaction: 98 };
-    const duration = 2500;
-    const steps = 60;
-    let currentStep = 0;
-
-    const animate = () => {
-      currentStep++;
-      const progress = currentStep / steps;
-      setCounters({
-        travelers: Math.floor(targets.travelers * progress),
-        destinations: Math.floor(targets.destinations * progress),
-        satisfaction: Math.floor(targets.satisfaction * progress),
-      });
-      if (currentStep < steps) {
-        counterIntervalRef.current = setTimeout(animate, duration / steps);
-      }
-    };
-    animate();
-
-    return () => {
-      if (counterIntervalRef.current) clearTimeout(counterIntervalRef.current);
-    };
-  }, []);
+  // Statistics counters now animate on scroll-into-view (see statsRef below),
+  // not immediately on page load - this is handled by useInViewCounter.
+  const statsTargets = useMemo(() => ({ travelers: 25000, destinations: 850, satisfaction: 98 }), []);
+  const [statsRef, counters] = useInViewCounter(statsTargets);
 
   // Load recent searches
   useEffect(() => {
@@ -425,12 +405,29 @@ const HomePage = () => {
     color: 'from-teal-600 to-orange-600',
   };
 
+  // Hero parallax: background drifts slower than scroll, content fades out
+  // slightly faster - the classic layered-depth effect used on Airbnb-style
+  // hero sections.
+  const heroRef = useRef(null);
+  const { scrollYProgress: heroScrollProgress } = useScroll({
+    target: heroRef,
+    offset: ['start start', 'end start'],
+  });
+  const heroImageY = useTransform(heroScrollProgress, [0, 1], ['0%', '18%']);
+  const heroContentOpacity = useTransform(heroScrollProgress, [0, 0.7], [1, 0]);
+  const heroContentY = useTransform(heroScrollProgress, [0, 1], ['0%', '12%']);
+
   return (
     <MainLayout key={`home-${i18n.language}`}>
       {/* ==================== HERO SLIDER ==================== */}
-      <section key={`hero-${i18n.language}`} className="relative w-full bg-slate-900 dark:bg-slate-950" style={{ minHeight: 'clamp(400px, 60vh, 600px)' }}>
-        {/* Background Images Slider */}
-        <div className="absolute inset-0 w-full h-full">
+      <section
+        ref={heroRef}
+        key={`hero-${i18n.language}`}
+        className="relative w-full bg-slate-900 dark:bg-slate-950 overflow-hidden"
+        style={{ minHeight: 'clamp(400px, 60vh, 600px)' }}
+      >
+        {/* Background Images Slider - parallax layer */}
+        <motion.div className="absolute inset-0 w-full h-[120%]" style={{ y: heroImageY }}>
           {heroSlides.map((slide, idx) => (
             <div
               key={idx}
@@ -447,25 +444,41 @@ const HomePage = () => {
               <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-transparent"></div>
             </div>
           ))}
-        </div>
+        </motion.div>
 
         {/* Content */}
-        <div className="relative z-10 w-full px-3 sm:px-4 md:px-6 lg:px-8 h-full flex flex-col justify-between py-6 sm:py-8 md:py-12 lg:py-16" style={{ gap: 'clamp(1rem, 5vw, 3rem)' }}>
+        <motion.div
+          style={{ opacity: heroContentOpacity, y: heroContentY, gap: 'clamp(1rem, 5vw, 3rem)' }}
+          className="relative z-10 w-full px-3 sm:px-4 md:px-6 lg:px-8 h-full flex flex-col justify-between py-6 sm:py-8 md:py-12 lg:py-16"
+        >
           {/* Top Content */}
           <div className="max-w-7xl mx-auto w-full flex-shrink-0">
             <div className="max-w-2xl pr-24 sm:pr-28 md:pr-0">
-              {/* Title */}
-              <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white mb-4 md:mb-6 leading-tight">
-                {currentSlide.title}
-              </h1>
-
-              {/* Subtitle */}
-              <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/90 mb-8 max-w-lg leading-relaxed">
-                {currentSlide.subtitle}
-              </p>
+              {/* Title + Subtitle - cross-fade/slide between slides */}
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={`hero-copy-${heroSlide}-${i18n.language}`}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white mb-4 md:mb-6 leading-tight">
+                    {currentSlide.title}
+                  </h1>
+                  <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/90 mb-8 max-w-lg leading-relaxed">
+                    {currentSlide.subtitle}
+                  </p>
+                </motion.div>
+              </AnimatePresence>
 
               {/* CTA Buttons */}
-              <div className="flex flex-row flex-wrap gap-3 sm:gap-4">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
+                className="flex flex-row flex-wrap gap-3 sm:gap-4"
+              >
                 <Button
                   size="lg"
                   onClick={() => navigate('/search')}
@@ -485,12 +498,17 @@ const HomePage = () => {
                   <FiArrowRight size={16} className="group-hover:translate-x-1 transition-transform flex-shrink-0" />
                   <span>Discover</span>
                 </Button>
-              </div>
+              </motion.div>
             </div>
           </div>
 
           {/* Search Bar - Bottom */}
-          <div className="max-w-7xl mx-auto w-full flex-shrink-0">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+            className="max-w-7xl mx-auto w-full flex-shrink-0"
+          >
             <form onSubmit={handleSearch} className="bg-white/95 dark:bg-slate-900/95 rounded-2xl shadow-[0_20px_45px_-15px_rgba(0,0,0,0.35)] p-4 sm:p-5 md:p-6 lg:p-8 backdrop-blur-xl border border-white/50 dark:border-slate-700/40">
               <div className="space-y-2 xs:space-y-3 sm:space-y-4 md:space-y-0 md:grid md:grid-cols-12 md:gap-3 lg:gap-5">
                 {/* Destination Input with Autocomplete */}
@@ -658,8 +676,8 @@ const HomePage = () => {
                 </div>
               )}
             </form>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
         {/* Navigation Dots - Bottom Left */}
         <div className="absolute bottom-20 md:bottom-24 left-4 sm:left-6 md:left-8 z-20 flex gap-2.5 pointer-events-auto">
@@ -716,7 +734,7 @@ const HomePage = () => {
       <section key={`featured-${i18n.language}`} className="featured-section w-full py-6 sm:py-8 md:py-12 lg:py-24 bg-white dark:bg-slate-950" style={{ display: 'block', visibility: 'visible', minHeight: '200px' }}>
         <div className="w-full max-w-7xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8">
           {/* Section Header */}
-          <div className="text-center mb-10 md:mb-12 space-y-3 md:space-y-4">
+          <Reveal className="text-center mb-10 md:mb-12 space-y-3 md:space-y-4">
             <div className="inline-flex items-center gap-1.5 px-4 py-1.5 bg-teal-50 dark:bg-teal-900/30 border border-teal-200/60 dark:border-teal-800/60 rounded-full text-teal-700 dark:text-teal-400 text-xs md:text-sm font-semibold justify-center">
               <BiTrendingUp size={14} />
               <span>{t('home.trendingTrips') || 'Trending Trips'}</span>
@@ -727,7 +745,7 @@ const HomePage = () => {
             <p className="text-base md:text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
               {t('home.handpickedDescription') || 'Explore our curated collection of the best travel experiences'}
             </p>
-          </div>
+          </Reveal>
 
           {/* Loading / Packages */}
           {loading ? (
@@ -742,12 +760,12 @@ const HomePage = () => {
             </div>
           ) : (
             <>
-              <div key={`grid-${i18n.language}`} className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 xs:gap-3 sm:gap-4 md:gap-5 lg:gap-6">
+              <StaggerGroup key={`grid-${i18n.language}`} className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 xs:gap-3 sm:gap-4 md:gap-5 lg:gap-6">
                 {translatedFeaturedPackages.map((translatedPkg, idx) => {
                   const pkg = featuredPackages[idx];
                   return (
+                    <StaggerItem key={`${pkg.id}-${i18n.language}`}>
                     <Card
-                      key={`${pkg.id}-${i18n.language}`}
                       className="overflow-hidden rounded-2xl border border-slate-200/70 dark:border-slate-700/60 hover:shadow-xl hover:shadow-slate-900/10 dark:hover:shadow-black/30 transition-all duration-300 hover:-translate-y-1.5 cursor-pointer group flex flex-col h-full"
                       onClick={() => navigate(`/package/${pkg.id}`)}
                     >
@@ -890,12 +908,13 @@ const HomePage = () => {
                         </div>
                       </div>
                     </Card>
+                    </StaggerItem>
                   );
                 })}
-              </div>
+              </StaggerGroup>
 
               {/* View All */}
-              <div className="text-center mt-12">
+              <Reveal className="text-center mt-12">
                 <Button
                   size="lg"
                   onClick={() => navigate('/search')}
@@ -904,23 +923,25 @@ const HomePage = () => {
                   <span>Explore All Packages</span>
                   <FiArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                 </Button>
-              </div>
+              </Reveal>
             </>
           )}
         </div>
       </section>
 
       {/* ==================== CATEGORIES SECTION ==================== */}
-      <PopularTripCategoriesSection />
+      <Reveal y={32}>
+        <PopularTripCategoriesSection />
+      </Reveal>
 
       {/* ==================== STATISTICS ==================== */}
       <section className="py-6 sm:py-8 md:py-12 lg:py-20 bg-gradient-to-r from-emerald-600 via-amber-600 to-pink-600 dark:from-emerald-900 dark:via-amber-900 dark:to-pink-900" style={{ display: 'block', visibility: 'visible', minHeight: '150px' }}>
-        <div className="w-full max-w-7xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 md:gap-6 lg:gap-8">
+        <div ref={statsRef} className="w-full max-w-7xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8">
+          <StaggerGroup className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 md:gap-6 lg:gap-8" staggerDelay={0.15}>
             {stats.map((stat, idx) => {
               const Icon = stat.icon;
               return (
-                <div key={idx} className="text-center">
+                <StaggerItem key={idx} className="text-center">
                   <div className="mb-2 sm:mb-3 md:mb-4 flex justify-center">
                     <Icon size={24} className="xs:w-8 xs:h-8 sm:w-9 sm:h-9 text-white" />
                   </div>
@@ -929,10 +950,10 @@ const HomePage = () => {
                     {stat.suffix}
                   </p>
                   <p className="text-xs xs:text-sm md:text-base lg:text-lg text-white/90 font-semibold">{stat.label}</p>
-                </div>
+                </StaggerItem>
               );
             })}
-          </div>
+          </StaggerGroup>
         </div>
       </section>
 
@@ -940,7 +961,7 @@ const HomePage = () => {
       <section className="py-6 sm:py-8 md:py-12 lg:py-24 bg-white dark:bg-slate-950" style={{ display: 'block', visibility: 'visible', minHeight: '200px' }}>
         <div className="w-full max-w-7xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8">
           {/* Section Header */}
-          <div className="text-center mb-12 md:mb-16 space-y-3 md:space-y-4">
+          <Reveal className="text-center mb-12 md:mb-16 space-y-3 md:space-y-4">
             <div className="inline-flex items-center gap-1.5 px-4 py-1.5 bg-teal-50 dark:bg-teal-900/30 border border-teal-200/60 dark:border-teal-800/60 rounded-full text-teal-700 dark:text-teal-400 text-xs md:text-sm font-semibold justify-center">
               <FiThumbsUp size={14} />
               <span>{t('home.trendingTrips') || 'Traveler Reviews'}</span>
@@ -951,7 +972,7 @@ const HomePage = () => {
             <p className="text-base md:text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
               {t('home.reviewsDescription') || 'See what travelers from around the world think about our trips'}
             </p>
-          </div>
+          </Reveal>
 
           {/* Reviews Grid */}
           {reviewsLoading ? (
@@ -960,15 +981,15 @@ const HomePage = () => {
             </div>
           ) : topReviews && topReviews.length > 0 ? (
             <>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-5 lg:gap-6">
+              <StaggerGroup className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-5 lg:gap-6">
                 {topReviews.map((review, idx) => {
                   const initials = review.user?.full_name 
                     ? review.user.full_name.split(' ').map(n => n[0]).join('').toUpperCase()
                     : review.user?.username?.substring(0, 2).toUpperCase() || 'U';
                   
                   return (
+                    <StaggerItem key={review.id || idx}>
                     <Card
-                      key={review.id || idx}
                       className="group relative overflow-hidden bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-800 dark:to-slate-700 border border-slate-200 dark:border-slate-700 hover:border-teal-300 dark:hover:border-teal-500 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
                     >
                       <div className="p-5 md:p-6 space-y-4 h-full flex flex-col">
@@ -1015,9 +1036,10 @@ const HomePage = () => {
                         </div>
                       </div>
                     </Card>
+                    </StaggerItem>
                   );
                 })}
-              </div>
+              </StaggerGroup>
 
               {/* View All Reviews Button */}
               <div className="text-center mt-12">
@@ -1047,6 +1069,7 @@ const HomePage = () => {
 
         <div className="w-full max-w-7xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8 relative">
           {/* Header */}
+          <Reveal>
           <div className="text-center mb-12 md:mb-20 space-y-3 md:space-y-4">
             <div className="inline-block">
               <Badge className="bg-gradient-to-r from-orange-200 to-teal-200 dark:from-orange-900/30 dark:to-teal-900/30 text-orange-700 dark:text-orange-300 mb-4 px-4 py-2 rounded-full text-xs md:text-sm font-bold border border-orange-300/30 dark:border-orange-700/30">
@@ -1060,9 +1083,10 @@ const HomePage = () => {
               {t('home.joinThousands') || 'Join thousands of satisfied travelers who\'ve discovered their perfect journey with us'}
             </p>
           </div>
+          </Reveal>
 
           {/* Testimonials Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-5 lg:gap-6 lg:gap-8 mb-8 md:mb-12">
+          <StaggerGroup className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-5 lg:gap-6 lg:gap-8 mb-8 md:mb-12">
             {reviewsLoading ? (
               <div className="col-span-full flex justify-center py-12">
                 <Spinner size="lg" />
@@ -1074,8 +1098,8 @@ const HomePage = () => {
                   : review.user?.username?.substring(0, 2).toUpperCase() || 'U';
                 
                 return (
+                  <StaggerItem key={review.id || idx}>
                   <Card
-                    key={review.id || idx}
                     className="group relative overflow-hidden bg-white dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 hover:border-orange-300 dark:hover:border-orange-500 shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-4 backdrop-blur-sm"
                   >
                     {/* Gradient overlay on hover */}
@@ -1131,13 +1155,14 @@ const HomePage = () => {
                       </div>
                     </div>
                   </Card>
+                  </StaggerItem>
                 );
               })
             ) : (
               // Fallback to static testimonials if no reviews available
               testimonials.map((testimonial, idx) => (
+                <StaggerItem key={idx}>
                 <Card
-                  key={idx}
                   className="group relative overflow-hidden bg-white dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 hover:border-orange-300 dark:hover:border-orange-500 shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-4 backdrop-blur-sm"
                 >
                   {/* Gradient overlay on hover */}
@@ -1193,11 +1218,13 @@ const HomePage = () => {
                     </div>
                   </div>
                 </Card>
+                </StaggerItem>
               ))
             )}
-          </div>
+          </StaggerGroup>
 
           {/* Stats Row */}
+          <Reveal>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 md:gap-5 lg:gap-6 mt-8 md:mt-12 lg:mt-16">
             <div className="text-center p-3 xs:p-4 sm:p-6 md:p-8 bg-white dark:bg-slate-800/50 rounded-xl sm:rounded-2xl border border-slate-200 dark:border-slate-700 hover:border-orange-300 dark:hover:border-orange-500 transition-all hover:shadow-lg group">
               <div className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-black bg-clip-text text-transparent bg-gradient-to-r from-teal-600 to-orange-600 mb-1 md:mb-2 group-hover:scale-110 transition-transform duration-300">
@@ -1218,12 +1245,22 @@ const HomePage = () => {
               <p className="text-xs xs:text-sm md:text-base text-slate-600 dark:text-slate-300 font-semibold">Satisfaction</p>
             </div>
           </div>
+          </Reveal>
         </div>
       </section>
 
       {/* ==================== FINAL CTA ==================== */}
-      <section className="py-8 sm:py-12 md:py-16 lg:py-24 bg-gradient-to-br from-slate-900 to-slate-800 dark:from-slate-950 dark:to-slate-900" style={{ display: 'block', visibility: 'visible', minHeight: '150px' }}>
-        <div className="w-full max-w-7xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8 text-center">
+      <section className="py-8 sm:py-12 md:py-16 lg:py-24 bg-gradient-to-br from-slate-900 to-slate-800 dark:from-slate-950 dark:to-slate-900 relative overflow-hidden" style={{ display: 'block', visibility: 'visible', minHeight: '150px' }}>
+        <motion.div
+          className="absolute inset-0 -z-0 opacity-20"
+          style={{
+            backgroundImage: 'radial-gradient(circle at 30% 40%, rgba(20,184,166,0.5), transparent 50%), radial-gradient(circle at 70% 60%, rgba(249,115,22,0.4), transparent 50%)',
+          }}
+          animate={{ scale: [1, 1.15, 1] }}
+          transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
+        />
+        <Reveal>
+        <div className="w-full max-w-7xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-2 md:mb-4 lg:mb-6">
             Ready for Your Next Adventure?
           </h2>
@@ -1247,6 +1284,7 @@ const HomePage = () => {
             </Button>
           </div>
         </div>
+        </Reveal>
       </section>
     </MainLayout>
   );
