@@ -17,9 +17,28 @@ const CACHE_DURATIONS = {
   default: 600, // 10 minutes
 };
 
+// 🔐 SECURITY: These path prefixes serve per-user data (bookings, wishlist,
+// auth, notifications, admin panels). The cache key below is built from the
+// URL alone with no user identity in it, so caching these would let one
+// user's response be served to a different user hitting the same path
+// (e.g. GET /api/users/wishlist), and would also serve stale data after a
+// write (add/remove) until the TTL expires. Skip the cache entirely for
+// these - they're per-user reads that should always hit the database.
+const UNCACHEABLE_PREFIXES = [
+  '/api/users',
+  '/api/bookings',
+  '/api/auth',
+  '/api/notifications',
+  '/api/admin',
+];
+
 export const cacheMiddleware = async (req: Request, res: Response, next: NextFunction) => {
   // Only cache GET requests
   if (req.method !== 'GET') {
+    return next();
+  }
+
+  if (UNCACHEABLE_PREFIXES.some(prefix => req.path.startsWith(prefix))) {
     return next();
   }
 
