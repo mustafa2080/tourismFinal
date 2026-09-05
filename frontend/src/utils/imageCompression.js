@@ -113,6 +113,23 @@ export function formatFileSize(bytes) {
 }
 
 /**
+ * Convert a byte array to a base64 string without blowing the call stack.
+ * String.fromCharCode.apply(null, bigArray) throws "Maximum call stack size
+ * exceeded" once the array gets into the tens of thousands of bytes (a
+ * normal JPEG easily exceeds that) because every element becomes a
+ * function argument. Chunking keeps each apply() call small and safe.
+ */
+function bytesToBase64(bytes) {
+  const CHUNK_SIZE = 0x8000; // 32K chars per chunk - safely under stack limits
+  let binaryString = '';
+  for (let i = 0; i < bytes.length; i += CHUNK_SIZE) {
+    const chunk = bytes.subarray ? bytes.subarray(i, i + CHUNK_SIZE) : bytes.slice(i, i + CHUNK_SIZE);
+    binaryString += String.fromCharCode.apply(null, chunk);
+  }
+  return btoa(binaryString);
+}
+
+/**
  * Convert image data to proper data URL format
  * Handles multiple formats: string (base64), Buffer object, or raw bytes
  * @param {string|Object} imageData - Image data from backend
@@ -132,15 +149,13 @@ export function convertImageDataToUrl(imageData, mimeType = 'image/jpeg') {
 
     // Case 2: Buffer object with data array (from JSON serialization)
     if (imageData.data && Array.isArray(imageData.data)) {
-      const binaryString = String.fromCharCode.apply(null, imageData.data);
-      const base64 = btoa(binaryString);
+      const base64 = bytesToBase64(imageData.data);
       return `data:${mimeType};base64,${base64}`;
     }
 
     // Case 3: Direct Uint8Array or Buffer
     if (imageData instanceof Uint8Array || imageData instanceof Buffer) {
-      const binaryString = String.fromCharCode.apply(null, imageData);
-      const base64 = btoa(binaryString);
+      const base64 = bytesToBase64(imageData);
       return `data:${mimeType};base64,${base64}`;
     }
 

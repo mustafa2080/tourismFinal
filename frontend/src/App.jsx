@@ -14,7 +14,7 @@ import { initializeCSRFToken } from './services/apiClient.js';
 import AppRoutes from './AppRoutes';
 import ChatBot from './components/ChatBot';
 import { Toaster } from 'react-hot-toast';
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect } from 'react';
 
 // Suppress Chrome extension errors globally
 if (typeof window !== 'undefined' && typeof window.addEventListener === 'function') {
@@ -92,56 +92,12 @@ const initializeSEO = () => {
 };
 
 function App() {
-  const [appKey, setAppKey] = useState(0);
-  const [isRerendering, setIsRerendering] = useState(false);
-
   useEffect(() => {
     initializeSocket();
     initializeSEO();
     // 🔐 Initialize CSRF token on app load
     initializeCSRFToken();
   }, []);
-
-  /**
-   * إعادة تصيير فورية عند تغيير اللغة
-   */
-  const handleLanguageChange = useCallback(() => {
-    if (isRerendering) return;
-    
-    setIsRerendering(true);
-    console.log('🔄 [App] Triggering full re-render for language change');
-    
-    // Force immediate re-render
-    setAppKey(prev => prev + 1);
-    
-    setTimeout(() => setIsRerendering(false), 500);
-  }, [isRerendering]);
-
-  useEffect(() => {
-    // استمع لجميع أحداث تغيير اللغة
-    const handleLanguageChanged = () => handleLanguageChange();
-    const handleLanguageChangeComplete = () => handleLanguageChange();
-    const handleLanguageUpdate = () => handleLanguageChange();
-    const handleLanguageChangeStarted = () => {
-      console.log('🔄 [App] Language change started, preparing re-render');
-    };
-
-    window.addEventListener('language-changed', handleLanguageChanged);
-    window.addEventListener('language-changed-complete', handleLanguageChangeComplete);
-    window.addEventListener('language-update', handleLanguageUpdate);
-    window.addEventListener('languageUpdated', handleLanguageUpdate);
-    window.addEventListener('languageChangeStarted', handleLanguageChangeStarted);
-    window.addEventListener('languageChangeCompleted', handleLanguageChanged);
-
-    return () => {
-      window.removeEventListener('language-changed', handleLanguageChanged);
-      window.removeEventListener('language-changed-complete', handleLanguageChangeComplete);
-      window.removeEventListener('language-update', handleLanguageUpdate);
-      window.removeEventListener('languageUpdated', handleLanguageUpdate);
-      window.removeEventListener('languageChangeStarted', handleLanguageChangeStarted);
-      window.removeEventListener('languageChangeCompleted', handleLanguageChanged);
-    };
-  }, [handleLanguageChange]);
 
   return (
     <LanguageProvider>
@@ -152,7 +108,7 @@ function App() {
             <WishlistProvider>
               <CartProvider>
                 <TranslationSyncWrapper>
-                  <AppRoutes key={appKey} />
+                  <AppRoutes />
                   <ChatBot />
                   <Toaster 
                     position="top-right"

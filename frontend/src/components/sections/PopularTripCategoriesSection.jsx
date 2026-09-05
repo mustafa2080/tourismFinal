@@ -13,6 +13,7 @@ import { BiWorld, BiTrendingUp } from 'react-icons/bi';
 import { Card, Button, Spinner } from '../common';
 import { packagesService } from '../../services';
 import { placeholderService } from '../../services/placeholderService';
+import { convertImageDataToUrl } from '../../utils/imageCompression';
 
 const PopularTripCategoriesSection = () => {
   const navigate = useNavigate();
@@ -53,31 +54,23 @@ const PopularTripCategoriesSection = () => {
 
         setCategories(categoriesList);
 
-        // Fetch package counts for all categories with delay to prevent rate limiting
+        // Fetch package counts for all categories in parallel (was: sequential
+        // with an artificial 200ms delay between each - that alone added
+        // 200ms x N to the homepage load for no benefit).
         const counts = {};
-        for (let i = 0; i < categoriesList.length; i++) {
-          const cat = categoriesList[i];
-          try {
-            // Add 200ms delay between requests to avoid rate limiting
-            if (i > 0) {
-              await new Promise(resolve => setTimeout(resolve, 200));
+        await Promise.all(
+          categoriesList.map(async (cat) => {
+            try {
+              const pkgResponse = await packagesService.getPackagesByCategory(cat.id, {
+                limit: 1,
+                offset: 0,
+              });
+              counts[cat.id] = pkgResponse?.total || 0;
+            } catch (err) {
+              counts[cat.id] = 0;
             }
-            
-            const pkgResponse = await packagesService.getPackagesByCategory(cat.id, {
-              limit: 1,
-              offset: 0,
-            });
-            
-            // Handle both success and not-found responses
-            const count = pkgResponse?.total || 0;
-            counts[cat.id] = count;
-            
-            console.log(`📊 [PopularCategories] Category "${cat.name}" (ID: ${cat.id}) has ${count} packages`);
-          } catch (err) {
-            console.warn(`⚠️ [PopularCategories] Failed to count packages for category "${cat.name}":`, err.message);
-            counts[cat.id] = 0;
-          }
-        }
+          })
+        );
         setCategoriesWithCounts(counts);
 
         // Auto-select first category with packages
@@ -480,18 +473,10 @@ const PopularTripCategoriesSection = () => {
                           <>
                             {pkg.images[0]?.image_data && (
                               <img
-                                src={(() => {
-                                  const imageData = pkg.images[0].image_data;
-                                  if (typeof imageData === 'string' && imageData.length > 0) {
-                                    return `data:image/jpeg;base64,${imageData}`;
-                                  } else if (imageData && imageData.data && Array.isArray(imageData.data)) {
-                                    const binaryString = String.fromCharCode.apply(null, imageData.data);
-                                    const base64 = btoa(binaryString);
-                                    return `data:image/jpeg;base64,${base64}`;
-                                  }
-                                  return null;
-                                })()}
+                                src={convertImageDataToUrl(pkg.images[0].image_data)}
                                 alt={pkg.title}
+                                loading="lazy"
+                                decoding="async"
                                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                                 onError={(e) => {
                                   e.target.style.display = 'none';
@@ -502,6 +487,8 @@ const PopularTripCategoriesSection = () => {
                               <img
                                 src={pkg.images[0].url}
                                 alt={pkg.title}
+                                loading="lazy"
+                                decoding="async"
                                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                                 onError={(e) => {
                                   e.target.style.display = 'none';
@@ -513,6 +500,8 @@ const PopularTripCategoriesSection = () => {
                           <img
                             src={placeholderService.getDestinationPlaceholder(pkg.destination)}
                             alt={pkg.title}
+                            loading="lazy"
+                            decoding="async"
                             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                             onError={(e) => {
                               e.target.style.display = 'none';

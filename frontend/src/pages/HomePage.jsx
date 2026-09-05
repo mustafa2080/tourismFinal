@@ -12,6 +12,7 @@ import PopularTripCategoriesSection from '../components/sections/PopularTripCate
 import { useWishlistContext } from '../hooks/useWishlistContext';
 import { packagesService, reviewsService } from '../services';
 import { placeholderService } from '../services/placeholderService';
+import { convertImageDataToUrl } from '../utils/imageCompression';
 import searchHistoryManager from '../utils/searchHistory';
 import {
   FiSearch,
@@ -69,19 +70,19 @@ const HomePage = () => {
       {
         title: t('home.title'),
         subtitle: t('home.subtitle'),
-        image: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=1200&h=700&fit=crop',
+        image: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=1200&h=700&fit=crop&q=75&auto=format',
         color: 'from-teal-600 to-orange-600',
       },
       {
         title: t('home.title'),
         subtitle: t('home.subtitle'),
-        image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&h=700&fit=crop',
+        image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&h=700&fit=crop&q=75&auto=format',
         color: 'from-teal-500 to-teal-600',
       },
       {
         title: t('home.becomeGuide'),
         subtitle: t('home.becomeGuideDesc'),
-        image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&h=700&fit=crop',
+        image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&h=700&fit=crop&q=75&auto=format',
         color: 'from-green-500 to-teal-600',
       },
     ]);
@@ -160,27 +161,31 @@ const HomePage = () => {
         try {
           setReviewsLoading(true);
           
-          const allReviews = [];
-          
-          for (let i = 0; i < Math.min(featuredPackages.length, 3); i++) {
-            const pkg = featuredPackages[i];
-            try {
-              const pkgReviews = await reviewsService.getPackageReviews(pkg.id, { 
-                limit: 3, 
-                offset: 0 
-              });
-              
-              const reviewsList = pkgReviews?.data 
-                ? pkgReviews.data 
-                : (Array.isArray(pkgReviews) ? pkgReviews : []);
-              
-              if (Array.isArray(reviewsList)) {
-                allReviews.push(...reviewsList);
+          // Fetch reviews for the first few packages in parallel instead of
+          // one-request-at-a-time - each request is an independent round trip,
+          // so awaiting them sequentially only added latency for no reason.
+          const packagesToQuery = featuredPackages.slice(0, 3);
+          const reviewsByPackage = await Promise.all(
+            packagesToQuery.map(async (pkg) => {
+              try {
+                const pkgReviews = await reviewsService.getPackageReviews(pkg.id, {
+                  limit: 3,
+                  offset: 0
+                });
+
+                const reviewsList = pkgReviews?.data
+                  ? pkgReviews.data
+                  : (Array.isArray(pkgReviews) ? pkgReviews : []);
+
+                return Array.isArray(reviewsList) ? reviewsList : [];
+              } catch (err) {
+                console.log(`Could not fetch reviews for package ${pkg.id}:`, err.message);
+                return [];
               }
-            } catch (err) {
-              console.log(`Could not fetch reviews for package ${pkg.id}:`, err.message);
-            }
-          }
+            })
+          );
+
+          const allReviews = reviewsByPackage.flat();
           
           setTopReviews(allReviews.slice(0, 6));
           setReviewsFetched(true);
@@ -439,6 +444,9 @@ const HomePage = () => {
                 src={slide.image}
                 alt={slide.title}
                 className="w-full h-full object-cover"
+                loading={idx === 0 ? 'eager' : 'lazy'}
+                fetchPriority={idx === 0 ? 'high' : 'auto'}
+                decoding={idx === 0 ? 'sync' : 'async'}
               />
               {/* Gradient Overlay */}
               <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-transparent"></div>
@@ -775,18 +783,10 @@ const HomePage = () => {
                           <>
                             {pkg.images[0]?.image_data && (
                               <img
-                                src={(() => {
-                                  const imageData = pkg.images[0].image_data;
-                                  if (typeof imageData === 'string' && imageData.length > 0) {
-                                    return `data:image/jpeg;base64,${imageData}`;
-                                  } else if (imageData && imageData.data && Array.isArray(imageData.data)) {
-                                    const binaryString = String.fromCharCode.apply(null, imageData.data);
-                                    const base64 = btoa(binaryString);
-                                    return `data:image/jpeg;base64,${base64}`;
-                                  }
-                                  return null;
-                                })()}
+                                src={convertImageDataToUrl(pkg.images[0].image_data)}
                                 alt={translatedPkg.display_title}
+                                loading="lazy"
+                                decoding="async"
                                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                                 onError={(e) => {
                                   e.target.style.display = 'none';
@@ -797,6 +797,8 @@ const HomePage = () => {
                               <img
                                 src={pkg.images[0].url}
                                 alt={translatedPkg.display_title}
+                                loading="lazy"
+                                decoding="async"
                                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                                 onError={(e) => {
                                   e.target.style.display = 'none';
@@ -808,6 +810,8 @@ const HomePage = () => {
                           <img
                             src={placeholderService.getDestinationPlaceholder(pkg.destination)}
                             alt={translatedPkg.display_title}
+                            loading="lazy"
+                            decoding="async"
                             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                             onError={(e) => {
                               e.target.style.display = 'none';
