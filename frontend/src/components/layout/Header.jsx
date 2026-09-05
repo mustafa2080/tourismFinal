@@ -230,7 +230,7 @@ const Header = () => {
               decoding="async"
             />
             <span className="hidden sm:inline font-bold text-sm lg:text-lg" style={{ fontFamily: "'Outfit', 'Inter', sans-serif" }}>
-              <span style={{ color: '#14b8a6' }}>Trav</span><span style={{ color: '#f97316' }}>luyo</span>
+              <span style={{ color: '#2d7a7d' }}>Trav</span><span style={{ color: '#c16a36' }}>luyo</span>
             </span>
           </button>
 

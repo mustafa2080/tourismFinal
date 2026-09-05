@@ -201,7 +201,7 @@ const Footer = () => {
                 decoding="async"
               />
               <span className="font-bold text-xl" style={{ fontFamily: "'Outfit', 'Inter', sans-serif" }}>
-                <span style={{ color: '#2dd4bf' }}>Trav</span><span style={{ color: '#fb923c' }}>luyo</span>
+                <span style={{ color: '#2d7a7d' }}>Trav</span><span style={{ color: '#c16a36' }}>luyo</span>
               </span>
             </div>
 
