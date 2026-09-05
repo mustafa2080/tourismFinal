@@ -200,12 +200,9 @@ const Footer = () => {
                 loading="lazy"
                 decoding="async"
               />
-              <div className="flex flex-col leading-tight">
-                <span className="font-bold text-xl" style={{ fontFamily: "'Outfit', 'Inter', sans-serif" }}>
-                  <span style={{ color: '#2dd4bf' }}>Trav</span><span style={{ color: '#fb923c' }}>luyo</span>
-                </span>
-                <span className="text-xs text-slate-400 font-medium">Tours</span>
-              </div>
+              <span className="font-bold text-xl" style={{ fontFamily: "'Outfit', 'Inter', sans-serif" }}>
+                <span style={{ color: '#2dd4bf' }}>Trav</span><span style={{ color: '#fb923c' }}>luyo</span>
+              </span>
             </div>
 
             <p className="text-slate-400 text-sm mb-6 leading-relaxed">

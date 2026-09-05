@@ -229,12 +229,9 @@ const Header = () => {
               loading="eager"
               decoding="async"
             />
-            <div className="hidden sm:flex flex-col leading-tight">
-              <span className="font-bold text-sm lg:text-lg" style={{ fontFamily: "'Outfit', 'Inter', sans-serif" }}>
-                <span style={{ color: '#14b8a6' }}>Trav</span><span style={{ color: '#f97316' }}>luyo</span>
-              </span>
-              <span className="text-xs text-slate-500 dark:text-slate-400 font-medium">Tours</span>
-            </div>
+            <span className="hidden sm:inline font-bold text-sm lg:text-lg" style={{ fontFamily: "'Outfit', 'Inter', sans-serif" }}>
+              <span style={{ color: '#14b8a6' }}>Trav</span><span style={{ color: '#f97316' }}>luyo</span>
+            </span>
           </button>
 
           {/* Desktop Navigation */}
