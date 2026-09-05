@@ -240,9 +240,9 @@ const PopularTripCategoriesSection = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-12 space-y-4">
-          <div className="inline-block px-4 py-2 bg-teal-100 dark:bg-teal-900/30 rounded-full text-teal-600 dark:text-teal-400 text-xs md:text-sm font-bold flex items-center gap-2 justify-center">
-            <BiTrendingUp size={16} />
-            <span>{t('home.exploreCategories') || 'EXPLORE CATEGORIES'}</span>
+          <div className="inline-flex items-center gap-1.5 px-4 py-1.5 bg-teal-50 dark:bg-teal-900/30 border border-teal-200/60 dark:border-teal-800/60 rounded-full text-teal-700 dark:text-teal-400 text-xs md:text-sm font-semibold justify-center">
+            <BiTrendingUp size={14} />
+            <span>{t('home.exploreCategories') || 'Explore Categories'}</span>
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 dark:text-white">
             {t('home.popularCategories') || 'Popular Trip Categories'}
@@ -263,10 +263,12 @@ const PopularTripCategoriesSection = () => {
             <p className="text-sm text-slate-500 dark:text-slate-500">New categories coming soon!</p>
           </div>
         ) : categoriesWithPackages.length === 0 ? (
-          <div className="text-center py-12 bg-white dark:bg-slate-800/50 rounded-lg border border-slate-200 dark:border-slate-700">
-            <BiWorld size={48} className="mx-auto mb-4 text-slate-400" />
-            <p className="text-slate-600 dark:text-slate-400 mb-2">All categories have no available trips</p>
-            <p className="text-sm text-slate-500 dark:text-slate-500">Trips will be added soon!</p>
+          <div className="max-w-3xl mx-auto bg-white dark:bg-slate-800/50 rounded-2xl border border-slate-200/80 dark:border-slate-700/80 p-12 shadow-sm flex flex-col items-center justify-center text-center">
+            <div className="w-14 h-14 rounded-full bg-slate-100 dark:bg-slate-700 flex items-center justify-center text-slate-400 text-2xl mb-4">
+              <BiWorld size={28} />
+            </div>
+            <h4 className="font-bold text-slate-800 dark:text-white text-base mb-1">All categories have no available trips</h4>
+            <p className="text-slate-400 dark:text-slate-500 text-xs">Trips will be added soon!</p>
           </div>
         ) : (
           <div className="space-y-8">

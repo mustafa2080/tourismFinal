@@ -469,9 +469,9 @@ const HomePage = () => {
                 <Button
                   size="lg"
                   onClick={() => navigate('/search')}
-                  className="bg-gradient-to-r from-teal-600 to-orange-600 hover:from-teal-700 hover:to-orange-700 text-white font-bold px-4 xs:px-6 sm:px-8 py-3 sm:py-3.5 rounded-lg flex items-center justify-center gap-2 group transition-all hover:shadow-2xl shadow-lg hover:scale-105 text-sm xs:text-base flex-1 xs:flex-initial"
+                  className="bg-teal-600 hover:bg-teal-500 text-white font-semibold px-4 xs:px-6 sm:px-8 py-3 sm:py-3.5 rounded-xl flex items-center justify-center gap-2.5 group transition-all shadow-lg shadow-teal-600/30 hover:shadow-xl text-sm xs:text-base flex-1 xs:flex-initial"
                 >
-                  <FiSearch size={18} className="xs:w-5 xs:h-5 flex-shrink-0" />
+                  <FiSearch size={16} className="flex-shrink-0" />
                   <span>Explore Now</span>
                 </Button>
 
@@ -480,9 +480,9 @@ const HomePage = () => {
                   onClick={() => {
                     document.querySelector('.featured-section')?.scrollIntoView({ behavior: 'smooth' });
                   }}
-                  className="bg-white/30 hover:bg-white/50 backdrop-blur-lg border-2 border-white/60 text-white font-bold px-4 xs:px-6 sm:px-8 py-3 sm:py-3.5 rounded-lg flex items-center justify-center gap-2 group transition-all shadow-lg hover:shadow-2xl hover:scale-105 text-sm xs:text-base flex-1 xs:flex-initial"
+                  className="bg-white/20 hover:bg-white/30 backdrop-blur-md border border-white/25 text-white font-semibold px-4 xs:px-6 sm:px-8 py-3 sm:py-3.5 rounded-xl flex items-center justify-center gap-2.5 group transition-all text-sm xs:text-base flex-1 xs:flex-initial"
                 >
-                  <FiArrowRight size={18} className="xs:w-5 xs:h-5 group-hover:translate-x-1 transition-transform flex-shrink-0" />
+                  <FiArrowRight size={16} className="group-hover:translate-x-1 transition-transform flex-shrink-0" />
                   <span>Discover</span>
                 </Button>
               </div>
@@ -491,7 +491,7 @@ const HomePage = () => {
 
           {/* Search Bar - Bottom */}
           <div className="max-w-7xl mx-auto w-full flex-shrink-0">
-            <form onSubmit={handleSearch} className="bg-white/90 dark:bg-slate-900/90 rounded-xl sm:rounded-2xl shadow-xl md:shadow-2xl p-4 sm:p-5 md:p-6 lg:p-8 backdrop-blur-lg border border-white/40 dark:border-slate-700/40">
+            <form onSubmit={handleSearch} className="bg-white/95 dark:bg-slate-900/95 rounded-2xl shadow-[0_20px_45px_-15px_rgba(0,0,0,0.35)] p-4 sm:p-5 md:p-6 lg:p-8 backdrop-blur-xl border border-white/50 dark:border-slate-700/40">
               <div className="space-y-2 xs:space-y-3 sm:space-y-4 md:space-y-0 md:grid md:grid-cols-12 md:gap-3 lg:gap-5">
                 {/* Destination Input with Autocomplete */}
                 <div className="md:col-span-5 relative">
@@ -509,7 +509,7 @@ const HomePage = () => {
                       onFocus={() => setShowSuggestions(true)}
                       onBlur={() => setTimeout(() => setShowSuggestions(false), 150)}
                       placeholder={t('navbar.searchPlaceholder')}
-                      className="w-full px-3 xs:px-4 py-2.5 xs:py-3 rounded-lg border-2 border-slate-300 dark:border-slate-600 bg-white/95 dark:bg-slate-800/95 text-slate-900 dark:text-white placeholder-slate-500 dark:placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all font-medium text-sm xs:text-base"
+                      className="w-full px-3 xs:px-4 py-2.5 xs:py-3 rounded-xl border-2 border-slate-300 dark:border-slate-600 bg-white/95 dark:bg-slate-800/95 text-slate-900 dark:text-white placeholder-slate-500 dark:placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all font-medium text-sm xs:text-base"
                     />
                     
                     {/* Autocomplete Suggestions Dropdown */}
@@ -587,7 +587,7 @@ const HomePage = () => {
                   <select
                     value={selectedType}
                     onChange={(e) => setSelectedType(e.target.value)}
-                    className="w-full px-3 xs:px-4 py-2.5 xs:py-3 rounded-lg border-2 border-slate-300 dark:border-slate-600 bg-white/95 dark:bg-slate-800/95 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500 appearance-none cursor-pointer transition-all font-medium text-sm xs:text-base"
+                    className="w-full px-3 xs:px-4 py-2.5 xs:py-3 rounded-xl border-2 border-slate-300 dark:border-slate-600 bg-white/95 dark:bg-slate-800/95 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500 appearance-none cursor-pointer transition-all font-medium text-sm xs:text-base"
                   >
                     {tourTypes.map((type) => (
                       <option key={type.id} value={type.id}>
@@ -601,7 +601,7 @@ const HomePage = () => {
                 <div className="md:col-span-3 flex items-end">
                   <button
                     type="submit"
-                    className="w-full px-4 xs:px-6 py-2.5 xs:py-3 bg-gradient-to-r from-teal-600 to-orange-600 hover:from-teal-700 hover:to-orange-700 text-white font-bold rounded-lg flex items-center justify-center gap-2 transition-all hover:shadow-xl hover:scale-105 group shadow-lg text-sm xs:text-base"
+                    className="w-full px-4 xs:px-6 py-2.5 xs:py-3 bg-gradient-to-r from-teal-600 to-orange-600 hover:from-teal-700 hover:to-orange-700 text-white font-bold rounded-full flex items-center justify-center gap-2 transition-all hover:shadow-xl hover:scale-105 group shadow-lg text-sm xs:text-base"
                   >
                     <FiSearch size={16} className="group-hover:scale-110 transition-transform" />
                     <span className="hidden sm:inline">{t('navbar.search')}</span>
@@ -717,9 +717,9 @@ const HomePage = () => {
         <div className="w-full max-w-7xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8">
           {/* Section Header */}
           <div className="text-center mb-10 md:mb-12 space-y-3 md:space-y-4">
-            <div className="inline-block px-4 py-2 bg-teal-100 dark:bg-teal-900/30 rounded-full text-teal-600 dark:text-teal-400 text-xs md:text-sm font-bold flex items-center gap-2 justify-center">
-              <BiTrendingUp size={16} />
-              <span>{t('home.trendingTrips') || 'TRENDING TRIPS'}</span>
+            <div className="inline-flex items-center gap-1.5 px-4 py-1.5 bg-teal-50 dark:bg-teal-900/30 border border-teal-200/60 dark:border-teal-800/60 rounded-full text-teal-700 dark:text-teal-400 text-xs md:text-sm font-semibold justify-center">
+              <BiTrendingUp size={14} />
+              <span>{t('home.trendingTrips') || 'Trending Trips'}</span>
             </div>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 dark:text-white">
               {t('home.handpickedTrips') || 'Handpicked Premium Trips'}
@@ -899,9 +899,9 @@ const HomePage = () => {
                 <Button
                   size="lg"
                   onClick={() => navigate('/search')}
-                  className="border-2 border-teal-600 text-teal-600 hover:bg-teal-50 dark:hover:bg-teal-900/20 px-8 md:px-10 py-3 rounded-lg group transition-all inline-flex items-center gap-2 font-bold"
+                  className="bg-teal-600 hover:bg-teal-700 text-white px-8 md:px-10 py-3 rounded-full group transition-all inline-flex items-center gap-2 font-bold shadow-sm hover:shadow-md"
                 >
-                  <span>View All Trips</span>
+                  <span>Explore All Packages</span>
                   <FiArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                 </Button>
               </div>
@@ -914,7 +914,7 @@ const HomePage = () => {
       <PopularTripCategoriesSection />
 
       {/* ==================== STATISTICS ==================== */}
-      <section className="py-6 sm:py-8 md:py-12 lg:py-20 bg-gradient-to-r from-teal-600 via-orange-600 to-pink-600 dark:from-teal-900 dark:via-orange-900 dark:to-pink-900" style={{ display: 'block', visibility: 'visible', minHeight: '150px' }}>
+      <section className="py-6 sm:py-8 md:py-12 lg:py-20 bg-gradient-to-r from-emerald-600 via-amber-600 to-pink-600 dark:from-emerald-900 dark:via-amber-900 dark:to-pink-900" style={{ display: 'block', visibility: 'visible', minHeight: '150px' }}>
         <div className="w-full max-w-7xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 md:gap-6 lg:gap-8">
             {stats.map((stat, idx) => {
@@ -941,9 +941,9 @@ const HomePage = () => {
         <div className="w-full max-w-7xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8">
           {/* Section Header */}
           <div className="text-center mb-12 md:mb-16 space-y-3 md:space-y-4">
-            <div className="inline-block px-4 py-2 bg-teal-100 dark:bg-teal-900/30 rounded-full text-teal-600 dark:text-teal-400 text-xs md:text-sm font-bold flex items-center gap-2 justify-center">
-              <FiThumbsUp size={16} />
-              <span>{t('home.trendingTrips') || 'TRAVELER REVIEWS'}</span>
+            <div className="inline-flex items-center gap-1.5 px-4 py-1.5 bg-teal-50 dark:bg-teal-900/30 border border-teal-200/60 dark:border-teal-800/60 rounded-full text-teal-700 dark:text-teal-400 text-xs md:text-sm font-semibold justify-center">
+              <FiThumbsUp size={14} />
+              <span>{t('home.trendingTrips') || 'Traveler Reviews'}</span>
             </div>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 dark:text-white">
               {t('home.travelerReviews') || 'Real Feedback From Our Community'}
@@ -1024,7 +1024,7 @@ const HomePage = () => {
                 <Button
                   size="lg"
                   onClick={() => navigate('/search')}
-                  className="border-2 border-teal-600 text-teal-600 hover:bg-teal-50 dark:hover:bg-teal-900/20 px-8 md:px-10 py-3 rounded-lg group transition-all inline-flex items-center gap-2 font-bold"
+                  className="bg-teal-600 hover:bg-teal-700 text-white px-8 md:px-10 py-3 rounded-full group transition-all inline-flex items-center gap-2 font-bold shadow-sm hover:shadow-md"
                 >
                   <span>View All Reviews</span>
                   <FiArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
@@ -1234,14 +1234,14 @@ const HomePage = () => {
           <div className="flex flex-col xs:flex-row gap-3 xs:gap-4 justify-center">
             <Button
               onClick={() => navigate('/search')}
-              className="bg-gradient-to-r from-teal-600 to-orange-600 hover:from-teal-700 hover:to-orange-700 text-white font-bold px-6 xs:px-8 md:px-10 py-2.5 xs:py-3 rounded-lg flex items-center justify-center gap-2 group transition-all hover:shadow-lg text-sm xs:text-base"
+              className="bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-700 hover:to-emerald-700 text-white font-bold px-6 xs:px-8 md:px-10 py-2.5 xs:py-3 rounded-full flex items-center justify-center gap-2 group transition-all shadow-lg text-sm xs:text-base"
             >
               <FiSearch size={16} />
               <span>Explore Now</span>
             </Button>
             <Button
               onClick={() => navigate('/about')}
-              className="bg-white/10 hover:bg-white/20 border-2 border-white/40 text-white font-bold px-6 xs:px-8 md:px-10 py-2.5 xs:py-3 rounded-lg transition-all group hover:border-white/60 text-sm xs:text-base"
+              className="bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white font-semibold px-6 xs:px-8 md:px-10 py-2.5 xs:py-3 rounded-full transition-all group text-sm xs:text-base"
             >
               <span>Learn More</span>
             </Button>

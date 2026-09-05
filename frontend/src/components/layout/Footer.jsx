@@ -119,7 +119,7 @@ const Footer = () => {
       {/* Newsletter Section - Premium Gradient */}
       <div className="relative overflow-hidden">
         {/* Animated Background */}
-        <div className="absolute inset-0 bg-gradient-to-r from-teal-600 via-orange-600 to-pink-600 opacity-90"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-emerald-600 to-rose-600 opacity-90"></div>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(59,130,246,0.3),transparent_40%),radial-gradient(circle_at_70%_50%,rgba(168,85,247,0.3),transparent_40%)]"></div>
         <div className="absolute inset-0 backdrop-blur-3xl opacity-40"></div>
         
@@ -151,12 +151,12 @@ const Footer = () => {
                   placeholder="your@email.com"
                   required
                   disabled={newsletterStatus === 'loading'}
-                  className="flex-1 px-5 py-4 rounded-xl bg-white/10 text-white placeholder-white/50 border border-white/30 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent backdrop-blur-sm transition-all disabled:opacity-50 disabled:cursor-not-allowed font-medium"
+                  className="flex-1 px-5 py-4 rounded-full bg-white/10 text-white placeholder-white/50 border border-white/30 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent backdrop-blur-sm transition-all disabled:opacity-50 disabled:cursor-not-allowed font-medium"
                 />
                 <button
                   type="submit"
                   disabled={newsletterStatus === 'loading'}
-                  className="px-8 py-4 bg-white text-teal-600 font-bold rounded-xl hover:bg-teal-50 transition-all duration-200 flex items-center justify-center gap-2 whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-2xl hover:shadow-white/30 group transform hover:scale-105 sm:min-w-fit"
+                  className="px-8 py-4 bg-white text-teal-700 font-bold rounded-full hover:bg-slate-100 transition-all duration-200 flex items-center justify-center gap-2 whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed shadow-md hover:shadow-xl group sm:min-w-fit"
                 >
                   {newsletterStatus === 'loading' ? (
                     <>
@@ -291,7 +291,7 @@ const Footer = () => {
                       href={social.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-11 h-11 rounded-xl bg-slate-800 hover:bg-gradient-to-br hover:from-teal-600 hover:to-orange-600 text-slate-400 hover:text-white flex items-center justify-center transition-all duration-300 hover:shadow-lg hover:shadow-teal-500/30 group hover:scale-110 border border-slate-700 hover:border-transparent"
+                      className="w-9 h-9 rounded-full bg-slate-800 hover:bg-teal-600 text-slate-400 hover:text-white flex items-center justify-center transition-all duration-300 group"
                       aria-label={social.label}
                       title={social.label}
                     >
@@ -324,7 +324,7 @@ const Footer = () => {
           <div className="border-t border-slate-800 pt-6 flex justify-center">
             <button
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-              className="flex items-center gap-2 px-6 py-2 rounded-xl text-slate-400 hover:text-teal-400 hover:bg-slate-800 transition-all duration-200 text-sm font-medium group border border-slate-700 hover:border-teal-500/50"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 transition-colors text-sm font-medium"
             >
               <span>Back to Top</span>
               <FiArrowRight size={16} className="transform rotate-90 group-hover:-translate-y-1 transition-transform" />
