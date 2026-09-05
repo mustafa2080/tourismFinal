@@ -1,4 +1,5 @@
 import { io } from 'socket.io-client';
+import Cookies from 'js-cookie';
 
 let socket = null;
 
@@ -33,7 +34,16 @@ export const socketService = {
       reconnectionAttempts: 5,
       transports: ['websocket', 'polling'],
       autoConnect: true,
-      upgrade: false // Prevent WebSocket upgrade issues
+      upgrade: false, // Prevent WebSocket upgrade issues
+      // 🔐 SECURITY: Send the current auth token with every connect AND
+      // reconnect attempt. Using a function (not a plain object) here is
+      // what makes socket.io re-read it each time instead of freezing the
+      // value from whenever init() first ran - so logging in/out or a
+      // token refresh is picked up on the next reconnect without needing
+      // to manually recreate the socket. The backend (websocket/socket.ts)
+      // verifies this token before allowing subscribe:user/subscribe:admin
+      // to join any private room.
+      auth: (cb) => cb({ token: Cookies.get('authToken') || null }),
     };
 
     try {
@@ -410,6 +420,25 @@ export const socketService = {
       socket.connect();
       console.log('🔌 Socket.IO reconnecting...');
     }
+  },
+
+  /**
+   * 🔐 Force a fresh handshake so the server re-reads the current auth
+   * token immediately (via the `auth` function passed to io() in init()).
+   * Call this right after login/register/logout so the socket's room
+   * membership (see subscribe:user in backend/src/websocket/socket.ts)
+   * reflects the new identity right away, instead of waiting for the next
+   * time the connection happens to drop on its own.
+   *
+   * A plain socket.connect()/disconnect() alone would not do this: the
+   * `auth` option is only re-evaluated on an actual new handshake, so we
+   * disconnect first and then reconnect the same instance.
+   */
+  reauthenticate() {
+    if (!socket) return;
+    socket.disconnect();
+    socket.connect();
+    console.log('🔐 Socket.IO re-authenticating with current token...');
   },
 
   /**

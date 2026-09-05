@@ -1,6 +1,7 @@
 import { createContext, useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
 import authService from '../services/authService';
+import { socketService } from '../services/socketService';
 
 export const AuthContext = createContext();
 
@@ -128,6 +129,12 @@ export function AuthProvider({ children }) {
         };
         
         setUser(userData);
+
+        // 🔐 Re-handshake the socket now that we have a fresh auth token,
+        // so subscribe:user (see NotificationContext) is authenticated
+        // immediately instead of waiting for the next natural reconnect.
+        socketService.reauthenticate();
+
         return userData;
       } else {
         throw new Error('Invalid login response');
@@ -165,6 +172,10 @@ export function AuthProvider({ children }) {
         };
         
         setUser(userData);
+
+        // 🔐 Re-handshake the socket now that we have a fresh auth token.
+        socketService.reauthenticate();
+
         return userData;
       } else {
         throw new Error('Invalid register response');
@@ -182,6 +193,10 @@ export function AuthProvider({ children }) {
     setUser(null);
     setError(null);
     authService.logout();
+    // 🔐 Re-handshake with no token so the socket immediately loses its
+    // subscribed rooms instead of continuing to receive this user's
+    // notifications until it happens to disconnect/reconnect on its own.
+    socketService.reauthenticate();
   };
 
   const updateProfile = async (data) => {

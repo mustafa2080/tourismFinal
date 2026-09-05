@@ -1,5 +1,15 @@
 import { Server as HTTPServer } from 'http';
 import { Server, Socket } from 'socket.io';
+import { tokenUtils } from '../utils/tokenUtils.js';
+
+// Augment the socket.io Socket type with the authenticated user we attach
+// during the handshake middleware below.
+interface AuthenticatedSocket extends Socket {
+  data: {
+    userId?: string;
+    role?: string;
+  };
+}
 
 export class WebSocketService {
   private io: Server;
@@ -47,19 +57,70 @@ export class WebSocketService {
     // Notifications namespace للإشعارات
     const notificationsNamespace = this.io.of('/notifications');
 
+    // 🔐 SECURITY: Verify the JWT sent with the handshake BEFORE allowing
+    // the connection to authenticate. Previously any client could connect
+    // and then call subscribe:user('<any-id>') to join someone else's room
+    // and read their private notifications - the server trusted whatever
+    // id the client claimed. Now the userId/role used for room membership
+    // comes only from a verified token, exactly like authMiddleware does
+    // for the REST API.
+    notificationsNamespace.use((socket, next) => {
+      const token =
+        (socket.handshake.auth && (socket.handshake.auth as any).token) ||
+        (typeof socket.handshake.query?.token === 'string' ? socket.handshake.query.token : undefined);
+
+      if (!token) {
+        // Allow the connection through even with no token (e.g. logged-out
+        // visitors on public pages) - subscribe:user/subscribe:admin below
+        // re-check for a verified identity and reject the join if there
+        // isn't one, so an unauthenticated socket simply can't join any
+        // private room.
+        return next();
+      }
+
+      const decoded = tokenUtils.verifyToken(token);
+      if (decoded) {
+        (socket as AuthenticatedSocket).data.userId = decoded.userId;
+        (socket as AuthenticatedSocket).data.role = decoded.role;
+      } else {
+        console.warn(`⚠️ Socket.IO: rejected invalid token during handshake (${socket.id})`);
+      }
+
+      next();
+    });
+
     notificationsNamespace.on('connection', (socket: Socket) => {
+      const authedSocket = socket as AuthenticatedSocket;
       console.log(`✅ User connected to /notifications: ${socket.id}`);
 
-      // عندما يتصل المستخدم، يضيع نفسه لـ user room
-      socket.on('subscribe:user', (userId: string) => {
-        socket.join(`user:${userId}`);
-        console.log(`📍 User ${userId} subscribed to personal notifications`);
+      // 🔐 SECURITY: Ignore whatever userId the client passes - only join
+      // the room for the user identified by their own verified token. This
+      // prevents subscribing to (and reading) another user's notifications
+      // by simply passing their id.
+      socket.on('subscribe:user', (_claimedUserId: string) => {
+        const verifiedUserId = authedSocket.data.userId;
+        if (!verifiedUserId) {
+          console.warn(`⚠️ [subscribe:user] Rejected - no valid auth token on socket ${socket.id}`);
+          socket.emit('subscribe:error', { message: 'Authentication required' });
+          return;
+        }
+        socket.join(`user:${verifiedUserId}`);
+        console.log(`📍 User ${verifiedUserId} subscribed to personal notifications`);
       });
 
-      // عندما يتصل admin، يضيع نفسه لـ admin room
-      socket.on('subscribe:admin', (adminId: string) => {
+      // 🔐 SECURITY: Only join the admin room if the verified token's role
+      // is actually 'admin' - previously any client could claim to be an
+      // admin and receive admin-only alerts (new bookings, cancellations).
+      socket.on('subscribe:admin', (_claimedAdminId: string) => {
+        const verifiedUserId = authedSocket.data.userId;
+        const verifiedRole = authedSocket.data.role;
+        if (!verifiedUserId || verifiedRole !== 'admin') {
+          console.warn(`⚠️ [subscribe:admin] Rejected - socket ${socket.id} is not a verified admin`);
+          socket.emit('subscribe:error', { message: 'Admin authentication required' });
+          return;
+        }
         socket.join('admin');
-        console.log(`👤 Admin ${adminId} subscribed to admin notifications`);
+        console.log(`👤 Admin ${verifiedUserId} subscribed to admin notifications`);
       });
 
       socket.on('disconnect', () => {
