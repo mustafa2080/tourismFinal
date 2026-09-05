@@ -3,6 +3,19 @@ import Cookies from 'js-cookie';
 import toast from 'react-hot-toast';
 
 export const adminService = {
+  // ============ Admin Setup (First Admin Account) ============
+  setupAdmin: async (payload) => {
+    try {
+      console.log('🔐 [adminService.setupAdmin] Creating first admin account...');
+      const response = await apiClient.post('/auth/admin/setup', payload);
+      console.log('✅ [adminService.setupAdmin] Response:', response);
+      return response;
+    } catch (error) {
+      console.error('❌ [adminService.setupAdmin] Error:', error);
+      throw error;
+    }
+  },
+
   // ============ Dashboard Stats (StatsController) ============
   getDashboardStats: async (timeRange = '30days') => {
     try {
