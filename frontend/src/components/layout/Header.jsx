@@ -57,6 +57,11 @@ const Header = () => {
   const [loadingNotifications, setLoadingNotifications] = useState(false);
   const [profileImageUrl, setProfileImageUrl] = useState(null);
   const scrollTimeoutRef = useRef(null);
+  const userMenuButtonRef = useRef(null);
+  const userMenuButtonMobileRef = useRef(null);
+  const [userMenuPosition, setUserMenuPosition] = useState({ top: 0, right: 0 });
+  const notifButtonRef = useRef(null);
+  const [notifMenuPosition, setNotifMenuPosition] = useState({ top: 0, right: 0 });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -81,6 +86,58 @@ const Header = () => {
     setUserDropdownOpen(false);
     setNotificationsOpen(false);
   }, [location.pathname]);
+
+  // Keep the portal-rendered user dropdown anchored under its trigger button,
+  // recalculating on open, resize, and scroll so it never drifts off-screen
+  // or gets clipped by the header's backdrop-blur/transform stacking context.
+  useEffect(() => {
+    if (!userDropdownOpen) return;
+
+    const updatePosition = () => {
+      const desktopBtn = userMenuButtonRef.current;
+      const mobileBtn = userMenuButtonMobileRef.current;
+      const btn = desktopBtn && desktopBtn.offsetParent !== null
+        ? desktopBtn
+        : (mobileBtn && mobileBtn.offsetParent !== null ? mobileBtn : null);
+      if (!btn) return;
+      const rect = btn.getBoundingClientRect();
+      setUserMenuPosition({
+        top: rect.bottom + 8,
+        right: window.innerWidth - rect.right,
+      });
+    };
+
+    updatePosition();
+    window.addEventListener('resize', updatePosition);
+    window.addEventListener('scroll', updatePosition, true);
+    return () => {
+      window.removeEventListener('resize', updatePosition);
+      window.removeEventListener('scroll', updatePosition, true);
+    };
+  }, [userDropdownOpen]);
+
+  // Same anchoring fix for the notifications dropdown.
+  useEffect(() => {
+    if (!notificationsOpen) return;
+
+    const updatePosition = () => {
+      const btn = notifButtonRef.current;
+      if (!btn) return;
+      const rect = btn.getBoundingClientRect();
+      setNotifMenuPosition({
+        top: rect.bottom + 8,
+        right: window.innerWidth - rect.right,
+      });
+    };
+
+    updatePosition();
+    window.addEventListener('resize', updatePosition);
+    window.addEventListener('scroll', updatePosition, true);
+    return () => {
+      window.removeEventListener('resize', updatePosition);
+      window.removeEventListener('scroll', updatePosition, true);
+    };
+  }, [notificationsOpen]);
 
   // Debug wishlist count changes
   useEffect(() => {
@@ -285,6 +342,7 @@ const Header = () => {
             {isAuthenticated && (
               <div className="relative hidden sm:block">
                 <button
+                  ref={notifButtonRef}
                   onClick={() => setNotificationsOpen(!notificationsOpen)}
                   className="w-9 h-9 rounded-full flex items-center justify-center border border-slate-200/80 dark:border-slate-700/80 hover:bg-slate-100 dark:hover:bg-slate-800 hover:border-slate-300 dark:hover:border-slate-600 transition-all duration-300 relative group hover:scale-105 active:scale-95"
                   title="Notifications"
@@ -297,8 +355,16 @@ const Header = () => {
                   )}
                 </button>
 
-                {notificationsOpen && (
-                  <div className="absolute right-0 mt-2 w-80 bg-white dark:bg-slate-800 rounded-xl shadow-2xl shadow-slate-900/10 dark:shadow-black/40 border border-slate-200/80 dark:border-slate-700/80 overflow-hidden z-50 animate-in fade-in slide-in-from-top-2 duration-200">
+                {notificationsOpen && createPortal(
+                  <>
+                    <div
+                      className="fixed inset-0 z-[9998]"
+                      onClick={() => setNotificationsOpen(false)}
+                    />
+                    <div
+                      className="fixed w-80 bg-white dark:bg-slate-800 rounded-xl shadow-2xl shadow-slate-900/10 dark:shadow-black/40 border border-slate-200/80 dark:border-slate-700/80 overflow-hidden z-[9999] animate-in fade-in slide-in-from-top-2 duration-200"
+                      style={{ top: notifMenuPosition.top, right: notifMenuPosition.right }}
+                    >
                     <div className="px-4 py-3 border-b border-slate-200 dark:border-slate-700 bg-gradient-to-r from-teal-50 to-orange-50 dark:from-slate-900 dark:to-slate-800">
                       <div className="flex items-center justify-between">
                         <h3 className="font-semibold text-slate-900 dark:text-white text-sm">Notifications</h3>
@@ -377,7 +443,9 @@ const Header = () => {
                         </div>
                       )}
                     </div>
-                  </div>
+                    </div>
+                  </>,
+                  document.body
                 )}
               </div>
             )}
@@ -387,6 +455,7 @@ const Header = () => {
               <div className="relative flex items-center">
                 <div className="hidden sm:block h-6 w-px bg-slate-200 dark:bg-slate-700 mx-1" />
                 <button
+                  ref={userMenuButtonRef}
                   onClick={() => setUserDropdownOpen(!userDropdownOpen)}
                   className="hidden sm:flex items-center gap-2 p-1.5 pl-2.5 rounded-full border border-slate-200/70 dark:border-slate-700/70 hover:bg-slate-100 dark:hover:bg-slate-800 hover:border-slate-300 dark:hover:border-slate-600 transition-all duration-300 group"
                 >
@@ -417,8 +486,17 @@ const Header = () => {
                   />
                 </button>
 
-                {userDropdownOpen && (
-                  <div className="absolute right-0 mt-2 w-64 bg-white dark:bg-slate-800 rounded-xl shadow-2xl shadow-slate-900/10 dark:shadow-black/40 border border-slate-200/80 dark:border-slate-700/80 overflow-hidden z-50 animate-in fade-in slide-in-from-top-2 duration-200">
+                {userDropdownOpen && createPortal(
+                  <>
+                    {/* Transparent overlay to catch outside clicks and close the menu */}
+                    <div
+                      className="fixed inset-0 z-[9998]"
+                      onClick={() => setUserDropdownOpen(false)}
+                    />
+                    <div
+                      className="fixed w-64 bg-white dark:bg-slate-800 rounded-xl shadow-2xl shadow-slate-900/10 dark:shadow-black/40 border border-slate-200/80 dark:border-slate-700/80 overflow-hidden z-[9999] animate-in fade-in slide-in-from-top-2 duration-200"
+                      style={{ top: userMenuPosition.top, right: userMenuPosition.right }}
+                    >
                     <div className="px-4 py-3 border-b border-slate-200 dark:border-slate-700 bg-gradient-to-r from-teal-50 to-orange-50 dark:from-slate-900 dark:to-slate-800">
                       <div className="flex items-center gap-3">
                         {profileImageUrl ? (
@@ -492,10 +570,13 @@ const Header = () => {
                         <span>Logout</span>
                       </button>
                     </div>
-                  </div>
+                    </div>
+                  </>,
+                  document.body
                 )}
 
                 <button
+                  ref={userMenuButtonMobileRef}
                   onClick={() => setUserDropdownOpen(!userDropdownOpen)}
                   className="sm:hidden p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-all duration-300 hover:scale-105 active:scale-95"
                 >
