@@ -187,13 +187,13 @@ export function ReportsPage() {
       {/* Header Section */}
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <div>
-          <h1 className="text-5xl font-bold text-slate-900 dark:text-white flex items-center gap-3">
-            <div className="p-3 bg-gradient-to-br from-teal-500 to-teal-600 rounded-xl shadow-lg">
-              <MdOutlineAssessment className="text-white" size={32} />
+          <h1 className="text-2xl sm:text-3xl lg:text-5xl font-bold text-slate-900 dark:text-white flex items-center gap-3">
+            <div className="p-2 sm:p-3 bg-gradient-to-br from-teal-500 to-teal-600 rounded-xl shadow-lg flex-shrink-0">
+              <MdOutlineAssessment className="text-white" size={24} />
             </div>
             Reports & Analytics
           </h1>
-          <p className="text-slate-600 dark:text-slate-400 mt-3 text-lg">
+          <p className="text-slate-600 dark:text-slate-400 mt-3 text-sm sm:text-base lg:text-lg">
             Real-time insights into your tour business performance
           </p>
         </div>
@@ -201,14 +201,14 @@ export function ReportsPage() {
           <button
             onClick={handleRefresh}
             disabled={refreshing}
-            className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-teal-600 to-teal-700 hover:from-teal-700 hover:to-teal-800 text-white rounded-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed font-medium shadow-lg hover:shadow-xl"
+            className="flex-1 sm:flex-initial flex items-center justify-center gap-2 px-4 sm:px-6 py-3 bg-gradient-to-r from-teal-600 to-teal-700 hover:from-teal-700 hover:to-teal-800 text-white rounded-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed font-medium shadow-lg hover:shadow-xl"
           >
             <FiRefreshCw className={`${refreshing ? 'animate-spin' : ''}`} size={18} />
             {refreshing ? 'Refreshing' : 'Refresh'}
           </button>
           <button
             onClick={handleExport}
-            className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-slate-200 to-slate-300 dark:from-slate-700 dark:to-slate-600 text-slate-900 dark:text-white rounded-lg hover:shadow-lg transition-all font-medium"
+            className="flex-1 sm:flex-initial flex items-center justify-center gap-2 px-4 sm:px-6 py-3 bg-gradient-to-r from-slate-200 to-slate-300 dark:from-slate-700 dark:to-slate-600 text-slate-900 dark:text-white rounded-lg hover:shadow-lg transition-all font-medium"
           >
             <FiDownload size={18} />
             Export
@@ -304,7 +304,7 @@ export function ReportsPage() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {/* Revenue Trend - Larger */}
             {timeSeriesData.length > 0 && (
-              <div className="lg:col-span-2 bg-white dark:bg-slate-800 rounded-xl shadow-lg p-8 border border-slate-200 dark:border-slate-700 hover:shadow-xl transition-shadow">
+              <div className="lg:col-span-2 bg-white dark:bg-slate-800 rounded-xl shadow-lg p-4 sm:p-6 lg:p-8 border border-slate-200 dark:border-slate-700 hover:shadow-xl transition-shadow">
                 <div className="flex items-center justify-between mb-6">
                   <h2 className="text-2xl font-bold text-slate-900 dark:text-white flex items-center gap-3">
                     <div className="p-2 bg-teal-100 dark:bg-teal-900/30 rounded-lg">
@@ -347,7 +347,7 @@ export function ReportsPage() {
 
             {/* Booking Status Distribution */}
             {bookingDistribution.length > 0 && (
-              <div className="bg-white dark:bg-slate-800 rounded-xl shadow-lg p-8 border border-slate-200 dark:border-slate-700 hover:shadow-xl transition-shadow">
+              <div className="bg-white dark:bg-slate-800 rounded-xl shadow-lg p-4 sm:p-6 lg:p-8 border border-slate-200 dark:border-slate-700 hover:shadow-xl transition-shadow">
                 <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-3">
                   <div className="p-2 bg-orange-100 dark:bg-orange-900/30 rounded-lg">
                     <FiShoppingCart className="text-orange-600 dark:text-orange-400" size={24} />
@@ -388,7 +388,7 @@ export function ReportsPage() {
 
           {/* Top Packages Chart */}
           {topPackages.length > 0 && (
-            <div className="bg-white dark:bg-slate-800 rounded-xl shadow-lg p-8 border border-slate-200 dark:border-slate-700 hover:shadow-xl transition-shadow">
+            <div className="bg-white dark:bg-slate-800 rounded-xl shadow-lg p-4 sm:p-6 lg:p-8 border border-slate-200 dark:border-slate-700 hover:shadow-xl transition-shadow">
               <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-3">
                 <div className="p-2 bg-green-100 dark:bg-green-900/30 rounded-lg">
                   <FiTrendingUp className="text-green-600 dark:text-green-400" size={24} />

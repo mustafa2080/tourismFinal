@@ -836,13 +836,13 @@ function PackagesPage() {
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <div>
-          <h1 className="text-5xl font-bold text-slate-900 dark:text-white flex items-center gap-3">
-            <div className="p-3 bg-gradient-to-br from-orange-500 to-red-600 rounded-xl shadow-lg">
-              <MdTour className="text-white" size={32} />
+          <h1 className="text-2xl sm:text-3xl lg:text-5xl font-bold text-slate-900 dark:text-white flex items-center gap-3">
+            <div className="p-2 sm:p-3 bg-gradient-to-br from-orange-500 to-red-600 rounded-xl shadow-lg flex-shrink-0">
+              <MdTour className="text-white" size={24} />
             </div>
             Manage Packages
           </h1>
-          <p className="text-slate-600 dark:text-slate-400 mt-3 text-lg">
+          <p className="text-slate-600 dark:text-slate-400 mt-3 text-sm sm:text-base lg:text-lg">
             Manage all tour packages and their details
           </p>
         </div>
@@ -1102,30 +1102,30 @@ function PackagesPage() {
           <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl max-w-2xl w-full border border-slate-200 dark:border-slate-700 overflow-hidden max-h-[90vh] overflow-y-auto">
             
             {/* Modal Header */}
-            <div className="flex items-center justify-between p-8 bg-gradient-to-r from-teal-600 to-orange-600 text-white sticky top-0 z-10">
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-lg bg-white/20 flex items-center justify-center backdrop-blur-sm">
-                  <MdTour size={24} />
+            <div className="flex items-center justify-between p-4 sm:p-6 lg:p-8 bg-gradient-to-r from-teal-600 to-orange-600 text-white sticky top-0 z-10">
+              <div className="flex items-center gap-3 min-w-0">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-white/20 flex items-center justify-center backdrop-blur-sm flex-shrink-0">
+                  <MdTour size={22} />
                 </div>
-                <div>
-                  <h2 className="text-2xl font-bold">
+                <div className="min-w-0">
+                  <h2 className="text-lg sm:text-2xl font-bold truncate">
                     {modalMode === 'view' ? 'Package Details' : modalMode === 'edit' ? 'Edit Package' : 'Create New Package'}
                   </h2>
-                  <p className="text-white/80 text-sm mt-0.5">
+                  <p className="text-white/80 text-xs sm:text-sm mt-0.5 hidden sm:block">
                     {modalMode === 'view' ? 'View package information' : 'Update package details'}
                   </p>
                 </div>
               </div>
               <button
                 onClick={() => setShowModal(false)}
-                className="p-2 hover:bg-white/20 rounded-lg transition-all"
+                className="p-2 hover:bg-white/20 rounded-lg transition-all flex-shrink-0"
               >
                 <FiX size={24} />
               </button>
             </div>
 
             {/* Modal Content */}
-            <div className="p-8 space-y-6">
+            <div className="p-4 sm:p-6 lg:p-8 space-y-6">
               {/* Images Section */}
               <div>
                 <label className="block text-sm font-bold text-slate-900 dark:text-white mb-3 flex items-center gap-2">
@@ -1566,7 +1566,7 @@ function PackagesPage() {
             </div>
 
             {/* Modal Footer */}
-            <div className="p-8 border-t border-slate-200 dark:border-slate-700 flex gap-3 sticky bottom-0 bg-white dark:bg-slate-800">
+            <div className="p-4 sm:p-6 lg:p-8 border-t border-slate-200 dark:border-slate-700 flex flex-col sm:flex-row gap-3 sticky bottom-0 bg-white dark:bg-slate-800">
               {modalMode !== 'view' && (
                 <button
                   onClick={handleSavePackage}

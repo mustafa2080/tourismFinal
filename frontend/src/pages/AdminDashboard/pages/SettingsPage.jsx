@@ -231,12 +231,12 @@ export function SettingsPage() {
     <div className="space-y-8 pb-10">
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-        <div className="flex items-center gap-4">
-          <div className="p-3 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl shadow-lg">
-            <FiSettings className="text-white" size={32} />
+        <div className="flex items-center gap-3 sm:gap-4">
+          <div className="p-2 sm:p-3 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl shadow-lg flex-shrink-0">
+            <FiSettings className="text-white" size={24} />
           </div>
           <div>
-            <h1 className="text-4xl font-bold text-slate-900 dark:text-white flex items-center gap-3">
+            <h1 className="text-xl sm:text-2xl lg:text-4xl font-bold text-slate-900 dark:text-white flex flex-wrap items-center gap-2 sm:gap-3">
               System Settings
               {hasChanges && (
                 <span className="flex items-center gap-1 text-xs font-bold text-amber-600 dark:text-amber-400">
@@ -245,14 +245,14 @@ export function SettingsPage() {
                 </span>
               )}
             </h1>
-            <p className="text-slate-600 dark:text-slate-400 mt-1 text-lg">
+            <p className="text-slate-600 dark:text-slate-400 mt-1 text-sm sm:text-base lg:text-lg">
               Configure your platform behavior and preferences
             </p>
           </div>
         </div>
         <button
           onClick={handleRefresh}
-          className="flex items-center gap-2 px-5 py-3 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 rounded-xl hover:bg-slate-200 dark:hover:bg-slate-600 transition-all font-semibold shadow-md"
+          className="flex items-center justify-center gap-2 px-5 py-3 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 rounded-xl hover:bg-slate-200 dark:hover:bg-slate-600 transition-all font-semibold shadow-md"
         >
           <FiRefreshCw size={18} />
           Refresh
@@ -632,7 +632,7 @@ export function SettingsPage() {
       </div>
 
       {/* Action Buttons */}
-      <div className="flex gap-4">
+      <div className="flex flex-col sm:flex-row gap-4">
         <button
           onClick={handleSaveSettings}
           disabled={!hasChanges || loading}

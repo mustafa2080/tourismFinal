@@ -198,7 +198,7 @@ export function UsersPage() {
 
         {/* Stats Cards */}
         {!loading && (
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {/* Total Users */}
             <div className="bg-gradient-to-br from-teal-50 to-teal-100 dark:from-teal-900/20 dark:to-teal-900/30 rounded-lg p-4 border border-teal-200 dark:border-teal-800">
               <div className="flex items-center justify-between">
@@ -312,7 +312,63 @@ export function UsersPage() {
           </div>
         ) : filteredUsers.length > 0 ? (
           <>
-            <div className="overflow-x-auto">
+            {/* Mobile / Tablet Card View */}
+            <div className="lg:hidden divide-y divide-slate-200 dark:divide-slate-700">
+              {filteredUsers.map((user) => (
+                <div key={user.id} className="p-4 sm:p-5 space-y-3">
+                  <div className="flex items-center gap-3">
+                    <div className="w-11 h-11 rounded-full bg-gradient-to-br from-teal-500 to-orange-500 flex items-center justify-center text-white text-sm font-bold flex-shrink-0">
+                      {user.name?.[0]?.toUpperCase() || 'U'}
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm font-semibold text-slate-900 dark:text-white truncate">{user.name || '-'}</p>
+                      <span className={`inline-block mt-1 px-2.5 py-0.5 rounded-full text-xs font-bold ${getRoleBadgeClass(user.role)}`}>
+                        {getRoleLabel(user.role)}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm">
+                    <div className="flex items-center gap-2 text-slate-600 dark:text-slate-400 min-w-0">
+                      <FiMail size={14} className="flex-shrink-0 text-slate-400" />
+                      <span className="truncate">{user.email || '-'}</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-slate-600 dark:text-slate-400 min-w-0">
+                      <FiPhone size={14} className="flex-shrink-0 text-slate-400" />
+                      <span className="truncate">{user.phone || '-'}</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-slate-600 dark:text-slate-400 sm:col-span-2">
+                      <FiCalendar size={14} className="flex-shrink-0 text-slate-400" />
+                      <span>{user.created_at ? new Date(user.created_at).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) : '-'}</span>
+                    </div>
+                  </div>
+
+                  <div className="flex gap-2 pt-1">
+                    <button
+                      onClick={() => handleViewUser(user.id)}
+                      disabled={loadingAction}
+                      className="flex-1 inline-flex items-center justify-center gap-2 h-10 rounded-lg bg-teal-100 dark:bg-teal-900/30 text-teal-700 dark:text-teal-400 hover:bg-teal-200 dark:hover:bg-teal-900/50 transition-all disabled:opacity-50 disabled:cursor-not-allowed text-sm font-semibold"
+                    >
+                      {loadingAction ? <FiLoader size={16} className="animate-spin" /> : <FiEye size={16} />}
+                      View
+                    </button>
+                    {user.role !== 'banned' && (
+                      <button
+                        onClick={() => handleBanUser(user.id)}
+                        disabled={loadingAction}
+                        className="flex-1 inline-flex items-center justify-center gap-2 h-10 rounded-lg bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400 hover:bg-red-200 dark:hover:bg-red-900/50 transition-all disabled:opacity-50 disabled:cursor-not-allowed text-sm font-semibold"
+                      >
+                        {loadingAction ? <FiLoader size={16} className="animate-spin" /> : <FiTrash2 size={16} />}
+                        Ban
+                      </button>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Desktop Table View */}
+            <div className="hidden lg:block overflow-x-auto">
               <table className="w-full">
                 <thead className="bg-slate-50 dark:bg-slate-700/50 border-b-2 border-slate-200 dark:border-slate-600">
                   <tr>
@@ -425,11 +481,11 @@ export function UsersPage() {
 
       {/* Pagination */}
       {!loading && users.length > 0 && (
-        <div className="flex items-center justify-between bg-white dark:bg-slate-800 rounded-xl shadow-lg p-5 border border-slate-200 dark:border-slate-700">
-          <div className="text-sm font-medium text-slate-600 dark:text-slate-400">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-3 bg-white dark:bg-slate-800 rounded-xl shadow-lg p-5 border border-slate-200 dark:border-slate-700">
+          <div className="text-sm font-medium text-slate-600 dark:text-slate-400 text-center sm:text-left">
             Showing <span className="font-bold text-slate-900 dark:text-white">{pagination.offset + 1}</span> to <span className="font-bold text-slate-900 dark:text-white">{Math.min(pagination.offset + pagination.limit, pagination.total)}</span> of <span className="font-bold text-slate-900 dark:text-white">{pagination.total}</span> users
           </div>
-          <div className="flex gap-3">
+          <div className="flex gap-3 w-full sm:w-auto">
             <button
               onClick={handlePrevPage}
               disabled={pagination.offset === 0}

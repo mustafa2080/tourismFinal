@@ -544,10 +544,10 @@ function AddonsPage() {
   return (
     <div className="space-y-6">
       {/* Header with Statistics */}
-      <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
-        <div className="md:col-span-2">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+        <div className="sm:col-span-2 lg:col-span-2">
           <div>
-            <h1 className="text-3xl font-bold text-slate-900 dark:text-white">{t('addons.title')}</h1>
+            <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">{t('addons.title')}</h1>
             <p className="text-slate-600 dark:text-slate-400 mt-1">{t('addons.description')}</p>
           </div>
         </div>
@@ -579,10 +579,10 @@ function AddonsPage() {
       </div>
 
       {/* Action Bar */}
-      <div className="flex justify-between items-center">
+      <div className="flex flex-col sm:flex-row justify-between items-stretch sm:items-center gap-3">
         <button
           onClick={fetchData}
-          className="flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700 transition-all"
+          className="flex items-center justify-center gap-2 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700 transition-all"
           title="Refresh data"
         >
           <FiRefreshCw size={18} />
@@ -591,7 +591,7 @@ function AddonsPage() {
         
         <button
           onClick={() => handleOpenModal('create')}
-          className="flex items-center gap-2 bg-gradient-to-r from-teal-600 to-teal-700 hover:from-teal-700 hover:to-teal-800 text-white px-6 py-3 rounded-xl font-semibold shadow-lg transition-all"
+          className="flex items-center justify-center gap-2 bg-gradient-to-r from-teal-600 to-teal-700 hover:from-teal-700 hover:to-teal-800 text-white px-6 py-3 rounded-xl font-semibold shadow-lg transition-all"
         >
           <FiPlus size={20} />
           {t('addons.addNew')}
@@ -647,7 +647,63 @@ function AddonsPage() {
             <p className="text-slate-600 dark:text-slate-400">{t('addons.noAddons')}</p>
           </div>
         ) : (
-          <div className="overflow-x-auto">
+          <>
+          <div className="lg:hidden divide-y divide-slate-200 dark:divide-slate-700">
+            {filteredAddons.map((addon, index) => (
+              <div key={addon.id || `addon-m-${index}`} className="p-4 sm:p-5 space-y-3">
+                <div className="flex items-start justify-between gap-3">
+                  <div>
+                    <div className="font-medium text-slate-900 dark:text-white">{addon.name || 'Unnamed'}</div>
+                    {addon.description && <div className="text-sm text-slate-600 dark:text-slate-400 line-clamp-1">{addon.description}</div>}
+                  </div>
+                  <span className={`flex-shrink-0 px-2.5 py-1 rounded-full text-xs font-semibold ${
+                    addon.is_available
+                      ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'
+                      : 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200'
+                  }`}>
+                    {addon.is_available ? '✓' : '✗'}
+                  </span>
+                </div>
+                <div className="grid grid-cols-2 gap-2 text-sm">
+                  <div>
+                    <p className="text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400 font-semibold mb-1">Price</p>
+                    <p className="font-semibold text-slate-900 dark:text-white">${typeof addon.price === 'number' ? addon.price.toFixed(2) : '0.00'}</p>
+                  </div>
+                  <div>
+                    <p className="text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400 font-semibold mb-1">Category</p>
+                    <p className="text-slate-700 dark:text-slate-300">{categoryLabels[addon.category] || addon.category || 'addon'}</p>
+                  </div>
+                  <div>
+                    <p className="text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400 font-semibold mb-1">Quantity</p>
+                    <p className="text-slate-700 dark:text-slate-300">
+                      {addon.min_quantity === addon.max_quantity
+                        ? addon.min_quantity
+                        : `${addon.min_quantity} - ${addon.max_quantity === -1 ? '∞' : addon.max_quantity}`}
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400 font-semibold mb-1">Package</p>
+                    <p className="text-slate-700 dark:text-slate-300 truncate">{addon.packageName || 'N/A'}</p>
+                  </div>
+                </div>
+                <div className="flex gap-2 pt-1">
+                  <button
+                    onClick={() => handleOpenModal('edit', addon)}
+                    className="flex-1 inline-flex items-center justify-center gap-1.5 text-teal-700 bg-teal-50 dark:bg-teal-900/20 dark:text-teal-400 py-2 rounded-lg text-sm font-semibold"
+                  >
+                    <FiEdit2 size={16} /> Edit
+                  </button>
+                  <button
+                    onClick={() => handleDelete(addon)}
+                    className="flex-1 inline-flex items-center justify-center gap-1.5 text-red-700 bg-red-50 dark:bg-red-900/20 dark:text-red-400 py-2 rounded-lg text-sm font-semibold"
+                  >
+                    <FiTrash2 size={16} /> Delete
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="hidden lg:block overflow-x-auto">
             <table className="w-full">
               <thead className="bg-slate-100 dark:bg-slate-700 border-b border-slate-200 dark:border-slate-600">
                 <tr>
@@ -736,6 +792,7 @@ function AddonsPage() {
               </tbody>
             </table>
           </div>
+          </>
         )}
       </div>
 
@@ -803,7 +860,7 @@ function AddonsPage() {
                 />
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-semibold text-slate-900 dark:text-white mb-2">
                     {t('addons.price')} ($) *
@@ -843,7 +900,7 @@ function AddonsPage() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-semibold text-slate-900 dark:text-white mb-2">
                     {t('addons.minQuantity')}

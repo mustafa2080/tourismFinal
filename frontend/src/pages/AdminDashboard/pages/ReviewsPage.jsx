@@ -196,13 +196,13 @@ export function ReviewsPage() {
       {/* Header Section */}
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <div>
-          <h1 className="text-5xl font-bold text-slate-900 dark:text-white flex items-center gap-3">
-            <div className="p-3 bg-gradient-to-br from-orange-500 to-pink-600 rounded-xl shadow-lg">
-              <MdOutlineReviews className="text-white" size={32} />
+          <h1 className="text-2xl sm:text-3xl lg:text-5xl font-bold text-slate-900 dark:text-white flex items-center gap-3">
+            <div className="p-2 sm:p-3 bg-gradient-to-br from-orange-500 to-pink-600 rounded-xl shadow-lg flex-shrink-0">
+              <MdOutlineReviews className="text-white" size={24} />
             </div>
             Reviews Management
           </h1>
-          <p className="text-slate-600 dark:text-slate-400 mt-3 text-lg">
+          <p className="text-slate-600 dark:text-slate-400 mt-3 text-sm sm:text-base lg:text-lg">
             Review and manage customer feedback on tours
           </p>
         </div>
@@ -394,30 +394,30 @@ export function ReviewsPage() {
         <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
           <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl max-w-3xl w-full border border-slate-200 dark:border-slate-700 overflow-hidden animate-in fade-in scale-95 duration-200">
             {/* Modal Header */}
-            <div className="flex items-center justify-between p-8 bg-gradient-to-r from-teal-600 to-orange-600 text-white">
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center">
-                  <MdOutlineReviews size={24} />
+            <div className="flex items-center justify-between p-4 sm:p-6 lg:p-8 bg-gradient-to-r from-teal-600 to-orange-600 text-white">
+              <div className="flex items-center gap-3 min-w-0">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
+                  <MdOutlineReviews size={22} />
                 </div>
-                <h2 className="text-2xl font-bold">Review Details</h2>
+                <h2 className="text-lg sm:text-2xl font-bold truncate">Review Details</h2>
               </div>
               <button
                 onClick={() => setShowModal(false)}
-                className="p-2 hover:bg-white/20 rounded-lg transition-all"
+                className="p-2 hover:bg-white/20 rounded-lg transition-all flex-shrink-0"
               >
                 <FiX size={24} />
               </button>
             </div>
 
             {/* Modal Content */}
-            <div className="p-8 space-y-8 max-h-96 overflow-y-auto">
+            <div className="p-4 sm:p-6 lg:p-8 space-y-6 sm:space-y-8 max-h-96 overflow-y-auto">
               {/* User Information */}
-              <div className="bg-teal-50 dark:bg-teal-900/20 rounded-xl p-6 border border-teal-200 dark:border-teal-800">
+              <div className="bg-teal-50 dark:bg-teal-900/20 rounded-xl p-4 sm:p-6 border border-teal-200 dark:border-teal-800">
                 <h3 className="font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
                   <FiUser className="text-teal-600 dark:text-teal-400" size={20} />
                   User Information
                 </h3>
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <p className="text-xs font-semibold text-slate-600 dark:text-slate-400 uppercase tracking-wide mb-1">Name</p>
                     <p className="text-lg font-bold text-slate-900 dark:text-white">{selectedReview.user?.name || selectedReview.user?.fullName || 'User'}</p>
@@ -430,13 +430,13 @@ export function ReviewsPage() {
               </div>
 
               {/* Tour Information */}
-              <div className="bg-orange-50 dark:bg-orange-900/20 rounded-xl p-6 border border-orange-200 dark:border-orange-800">
+              <div className="bg-orange-50 dark:bg-orange-900/20 rounded-xl p-4 sm:p-6 border border-orange-200 dark:border-orange-800">
                 <h3 className="font-bold text-slate-900 dark:text-white mb-4">Tour Information</h3>
                 <p className="text-lg font-semibold text-slate-900 dark:text-white">{selectedReview.package?.title || '-'}</p>
               </div>
 
               {/* Rating */}
-              <div className="bg-yellow-50 dark:bg-yellow-900/20 rounded-xl p-6 border border-yellow-200 dark:border-yellow-800">
+              <div className="bg-yellow-50 dark:bg-yellow-900/20 rounded-xl p-4 sm:p-6 border border-yellow-200 dark:border-yellow-800">
                 <h3 className="font-bold text-slate-900 dark:text-white mb-4">Rating</h3>
                 <div className="flex items-center gap-3">
                   {renderStars(selectedReview.rating)}
@@ -466,7 +466,7 @@ export function ReviewsPage() {
             </div>
 
             {/* Modal Footer */}
-            <div className="flex gap-4 p-8 bg-slate-50 dark:bg-slate-700/50 border-t border-slate-200 dark:border-slate-700">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 p-4 sm:p-6 lg:p-8 bg-slate-50 dark:bg-slate-700/50 border-t border-slate-200 dark:border-slate-700">
               <button
                 onClick={() => handleApproveReview(selectedReview.id)}
                 className="flex-1 px-6 py-3 rounded-lg bg-gradient-to-r from-green-500 to-emerald-600 text-white hover:from-green-600 hover:to-emerald-700 transition-all font-bold flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform hover:scale-105"

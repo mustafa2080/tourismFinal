@@ -121,13 +121,13 @@ export function AuditLogsPage() {
       {/* Header Section */}
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <div>
-          <h1 className="text-5xl font-bold text-slate-900 dark:text-white flex items-center gap-3">
-            <div className="p-3 bg-gradient-to-br from-orange-500 to-teal-600 rounded-xl shadow-lg">
-              <MdOutlineHistory className="text-white" size={32} />
+          <h1 className="text-2xl sm:text-3xl lg:text-5xl font-bold text-slate-900 dark:text-white flex items-center gap-3">
+            <div className="p-2 sm:p-3 bg-gradient-to-br from-orange-500 to-teal-600 rounded-xl shadow-lg flex-shrink-0">
+              <MdOutlineHistory className="text-white" size={24} />
             </div>
             Audit Logs
           </h1>
-          <p className="text-slate-600 dark:text-slate-400 mt-3 text-lg">
+          <p className="text-slate-600 dark:text-slate-400 mt-3 text-sm sm:text-base lg:text-lg">
             Monitor all administrative actions and system changes
           </p>
         </div>
@@ -208,7 +208,43 @@ export function AuditLogsPage() {
             </div>
           </div>
         ) : logs.length > 0 ? (
-          <div className="overflow-x-auto">
+          <>
+          <div className="lg:hidden divide-y divide-slate-200 dark:divide-slate-700">
+            {logs.map((log) => (
+              <div key={log.id} className="p-4 sm:p-5 space-y-3">
+                <div className="flex items-start justify-between gap-3 flex-wrap">
+                  <span className={`inline-block px-3 py-1.5 rounded-lg text-xs font-bold border-2 ${getActionColor(log.action)}`}>
+                    {getActionDisplayName(log.action)}
+                  </span>
+                  <button
+                    onClick={() => handleViewLog(log)}
+                    className="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-teal-600 hover:bg-teal-700 text-white transition-all shadow-md flex-shrink-0"
+                    title="View Details"
+                  >
+                    <FiEye size={16} />
+                  </button>
+                </div>
+                <div>
+                  <p className="text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400 font-semibold mb-1">Target</p>
+                  <p className="text-sm font-semibold text-slate-900 dark:text-white">{log.target}</p>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm">
+                  <div>
+                    <p className="text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400 font-semibold mb-1">Admin</p>
+                    <span className="inline-flex items-center px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-mono font-semibold">
+                      {log.actor_id?.slice(0, 12)}...
+                    </span>
+                  </div>
+                  <div>
+                    <p className="text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400 font-semibold mb-1">Date & Time</p>
+                    <p className="text-sm font-medium text-slate-600 dark:text-slate-400">{new Date(log.created_at).toLocaleDateString('en-US')}</p>
+                    <p className="text-xs text-slate-500">{new Date(log.created_at).toLocaleTimeString('en-US')}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="hidden lg:block overflow-x-auto">
             <table className="w-full">
               <thead>
                 <tr className="bg-gradient-to-r from-slate-100 to-slate-50 dark:from-slate-800 dark:to-slate-700 border-b-2 border-slate-300 dark:border-slate-600">
@@ -262,6 +298,7 @@ export function AuditLogsPage() {
               </tbody>
             </table>
           </div>
+          </>
         ) : (
           <div className="bg-white dark:bg-slate-800 rounded-xl p-16 text-center">
             <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-teal-100 dark:bg-teal-900/30 mb-4">
@@ -301,27 +338,27 @@ export function AuditLogsPage() {
       {/* Log Details Modal */}
       {showModal && selectedLog && (
         <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-          <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl max-w-3xl w-full border border-slate-200 dark:border-slate-700 overflow-hidden animate-in fade-in scale-95 duration-200">
+          <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl max-w-3xl w-full flex flex-col max-h-[90vh] border border-slate-200 dark:border-slate-700 overflow-hidden animate-in fade-in scale-95 duration-200">
             {/* Modal Header */}
-            <div className="flex items-center justify-between p-8 bg-gradient-to-r from-orange-600 to-teal-600 text-white">
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center">
-                  <MdOutlineHistory size={24} />
+            <div className="flex items-center justify-between p-4 sm:p-6 lg:p-8 bg-gradient-to-r from-orange-600 to-teal-600 text-white flex-shrink-0">
+              <div className="flex items-center gap-3 min-w-0">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
+                  <MdOutlineHistory size={22} />
                 </div>
-                <h2 className="text-2xl font-bold">Action Log Details</h2>
+                <h2 className="text-lg sm:text-2xl font-bold truncate">Action Log Details</h2>
               </div>
               <button
                 onClick={() => setShowModal(false)}
-                className="p-2 hover:bg-white/20 rounded-lg transition-all"
+                className="p-2 hover:bg-white/20 rounded-lg transition-all flex-shrink-0"
               >
                 <FiX size={24} />
               </button>
             </div>
 
             {/* Modal Content */}
-            <div className="p-8 space-y-6 max-h-96 overflow-y-auto">
+            <div className="p-4 sm:p-6 lg:p-8 space-y-4 sm:space-y-6 overflow-y-auto">
               {/* Action & Status */}
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="bg-teal-50 dark:bg-teal-900/20 rounded-xl p-6 border border-teal-200 dark:border-teal-800">
                   <p className="text-xs font-bold text-teal-600 dark:text-teal-400 uppercase tracking-wide mb-2">Action Type</p>
                   <span className={`inline-block px-3 py-2 rounded-lg text-sm font-bold border-2 ${getActionColor(selectedLog.action)}`}>
@@ -383,7 +420,7 @@ export function AuditLogsPage() {
             </div>
 
             {/* Modal Footer */}
-            <div className="p-8 bg-slate-50 dark:bg-slate-700/50 border-t border-slate-200 dark:border-slate-700">
+            <div className="p-4 sm:p-6 lg:p-8 bg-slate-50 dark:bg-slate-700/50 border-t border-slate-200 dark:border-slate-700">
               <button
                 onClick={() => setShowModal(false)}
                 className="w-full px-6 py-3 rounded-lg bg-gradient-to-r from-teal-600 to-orange-600 text-white hover:from-teal-700 hover:to-orange-700 transition-all font-bold shadow-lg hover:shadow-xl"

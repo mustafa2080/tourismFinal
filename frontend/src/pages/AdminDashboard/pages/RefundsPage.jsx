@@ -132,13 +132,13 @@ export function RefundsPage() {
       {/* Header Section */}
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <div>
-          <h1 className="text-5xl font-bold text-slate-900 dark:text-white flex items-center gap-3">
-            <div className="p-3 bg-gradient-to-br from-red-500 to-orange-600 rounded-xl shadow-lg">
-              <MdOutlineSettingsBackupRestore className="text-white" size={32} />
+          <h1 className="text-2xl sm:text-3xl lg:text-5xl font-bold text-slate-900 dark:text-white flex items-center gap-3">
+            <div className="p-2 sm:p-3 bg-gradient-to-br from-red-500 to-orange-600 rounded-xl shadow-lg flex-shrink-0">
+              <MdOutlineSettingsBackupRestore className="text-white" size={24} />
             </div>
             Refunds Management
           </h1>
-          <p className="text-slate-600 dark:text-slate-400 mt-3 text-lg">
+          <p className="text-slate-600 dark:text-slate-400 mt-3 text-sm sm:text-base lg:text-lg">
             Process and manage refund requests with intelligent policy calculations
           </p>
         </div>
@@ -220,76 +220,138 @@ export function RefundsPage() {
             </div>
           </div>
         ) : filteredRefunds.length > 0 ? (
-          <div className="overflow-x-auto">
-            <table className="w-full">
-              <thead>
-                <tr className="bg-gradient-to-r from-slate-100 to-slate-50 dark:from-slate-800 dark:to-slate-700 border-b-2 border-slate-300 dark:border-slate-600">
-                  <th className="px-6 py-4 text-left text-sm font-bold text-slate-900 dark:text-white">Booking #</th>
-                  <th className="px-6 py-4 text-left text-sm font-bold text-slate-900 dark:text-white">User</th>
-                  <th className="px-6 py-4 text-left text-sm font-bold text-slate-900 dark:text-white">Amount</th>
-                  <th className="px-6 py-4 text-left text-sm font-bold text-slate-900 dark:text-white">Payment Type</th>
-                  <th className="px-6 py-4 text-left text-sm font-bold text-slate-900 dark:text-white">Status</th>
-                  <th className="px-6 py-4 text-left text-sm font-bold text-slate-900 dark:text-white">Request Date</th>
-                  <th className="px-6 py-4 text-center text-sm font-bold text-slate-900 dark:text-white">Action</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-slate-200 dark:divide-slate-700">
-                {filteredRefunds.map((refund) => (
-                  <tr
-                    key={refund.id}
-                    className="bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors group"
-                  >
-                    <td className="px-6 py-4 text-sm font-bold text-slate-900 dark:text-white">
-                      <span className="inline-flex items-center px-3 py-1 rounded-lg bg-teal-100 dark:bg-teal-900/30 text-teal-700 dark:text-teal-400 font-semibold">
-                        #{refund.booking?.booking_number || `BK-${refund.booking_id?.slice(0, 8)}`}
-                      </span>
-                    </td>
-                    <td className="px-6 py-4">
-                      <div>
-                        <p className="text-sm font-semibold text-slate-900 dark:text-white">
-                          {refund.booking?.user?.name || '-'}
-                        </p>
-                        <p className="text-xs text-slate-500 dark:text-slate-400">
-                          {refund.booking?.user?.email || '-'}
-                        </p>
-                      </div>
-                    </td>
-                    <td className="px-6 py-4">
+          <>
+            <div className="lg:hidden space-y-4">
+              {filteredRefunds.map((refund) => (
+                <div
+                  key={refund.id}
+                  className="bg-white dark:bg-slate-800 rounded-xl shadow-lg border border-slate-200 dark:border-slate-700 p-4 sm:p-5 space-y-3"
+                >
+                  <div className="flex items-start justify-between gap-3 flex-wrap">
+                    <span className="inline-flex items-center px-3 py-1 rounded-lg bg-teal-100 dark:bg-teal-900/30 text-teal-700 dark:text-teal-400 font-semibold text-sm">
+                      #{refund.booking?.booking_number || `BK-${refund.booking_id?.slice(0, 8)}`}
+                    </span>
+                    <span className={`inline-block px-3 py-1 rounded-lg text-xs font-bold border-2 ${getStatusColor(refund.status)}`}>
+                      {getStatusText(refund.status)}
+                    </span>
+                  </div>
+
+                  <div>
+                    <p className="text-sm font-semibold text-slate-900 dark:text-white">
+                      {refund.booking?.user?.name || '-'}
+                    </p>
+                    <p className="text-xs text-slate-500 dark:text-slate-400 truncate">
+                      {refund.booking?.user?.email || '-'}
+                    </p>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm">
+                    <div>
+                      <p className="text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400 font-semibold">Amount</p>
                       <span className="text-lg font-bold text-green-600 dark:text-green-400">
                         ${parseFloat(refund.amount).toLocaleString()}
                       </span>
-                    </td>
-                    <td className="px-6 py-4">
-                      <span className="text-xs font-medium text-slate-700 dark:text-slate-300">
+                    </div>
+                    <div>
+                      <p className="text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400 font-semibold">Payment Type</p>
+                      <span className="text-sm font-medium text-slate-700 dark:text-slate-300">
                         {getPaymentTypeIcon(refund.booking?.payment_type)}
                       </span>
-                    </td>
-                    <td className="px-6 py-4">
-                      <span className={`inline-block px-4 py-2 rounded-lg text-xs font-bold border-2 ${getStatusColor(refund.status)}`}>
-                        {getStatusText(refund.status)}
+                    </div>
+                    <div className="sm:col-span-2">
+                      <p className="text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400 font-semibold">Request Date</p>
+                      <span className="text-sm text-slate-600 dark:text-slate-400">
+                        {new Date(refund.created_at).toLocaleDateString('en-US', {
+                          year: 'numeric',
+                          month: 'short',
+                          day: 'numeric'
+                        })}
                       </span>
-                    </td>
-                    <td className="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">
-                      {new Date(refund.created_at).toLocaleDateString('en-US', {
-                        year: 'numeric',
-                        month: 'short',
-                        day: 'numeric'
-                      })}
-                    </td>
-                    <td className="px-6 py-4 text-center">
-                      <button
-                        onClick={() => handleViewRefund(refund)}
-                        className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-teal-600 hover:bg-teal-700 text-white transition-all shadow-lg hover:shadow-xl transform hover:scale-110"
-                        title="View Details"
-                      >
-                        <FiEye size={18} />
-                      </button>
-                    </td>
+                    </div>
+                  </div>
+
+                  <button
+                    onClick={() => handleViewRefund(refund)}
+                    className="w-full inline-flex items-center justify-center gap-2 h-10 rounded-lg bg-teal-600 hover:bg-teal-700 text-white transition-all font-semibold text-sm shadow-md"
+                  >
+                    <FiEye size={16} />
+                    View Details
+                  </button>
+                </div>
+              ))}
+            </div>
+
+            <div className="hidden lg:block overflow-x-auto">
+              <table className="w-full">
+                <thead>
+                  <tr className="bg-gradient-to-r from-slate-100 to-slate-50 dark:from-slate-800 dark:to-slate-700 border-b-2 border-slate-300 dark:border-slate-600">
+                    <th className="px-6 py-4 text-left text-sm font-bold text-slate-900 dark:text-white">Booking #</th>
+                    <th className="px-6 py-4 text-left text-sm font-bold text-slate-900 dark:text-white">User</th>
+                    <th className="px-6 py-4 text-left text-sm font-bold text-slate-900 dark:text-white">Amount</th>
+                    <th className="px-6 py-4 text-left text-sm font-bold text-slate-900 dark:text-white">Payment Type</th>
+                    <th className="px-6 py-4 text-left text-sm font-bold text-slate-900 dark:text-white">Status</th>
+                    <th className="px-6 py-4 text-left text-sm font-bold text-slate-900 dark:text-white">Request Date</th>
+                    <th className="px-6 py-4 text-center text-sm font-bold text-slate-900 dark:text-white">Action</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+                </thead>
+                <tbody className="divide-y divide-slate-200 dark:divide-slate-700">
+                  {filteredRefunds.map((refund) => (
+                    <tr
+                      key={refund.id}
+                      className="bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors group"
+                    >
+                      <td className="px-6 py-4 text-sm font-bold text-slate-900 dark:text-white">
+                        <span className="inline-flex items-center px-3 py-1 rounded-lg bg-teal-100 dark:bg-teal-900/30 text-teal-700 dark:text-teal-400 font-semibold">
+                          #{refund.booking?.booking_number || `BK-${refund.booking_id?.slice(0, 8)}`}
+                        </span>
+                      </td>
+                      <td className="px-6 py-4">
+                        <div>
+                          <p className="text-sm font-semibold text-slate-900 dark:text-white">
+                            {refund.booking?.user?.name || '-'}
+                          </p>
+                          <p className="text-xs text-slate-500 dark:text-slate-400">
+                            {refund.booking?.user?.email || '-'}
+                          </p>
+                        </div>
+                      </td>
+                      <td className="px-6 py-4">
+                        <span className="text-lg font-bold text-green-600 dark:text-green-400">
+                          ${parseFloat(refund.amount).toLocaleString()}
+                        </span>
+                      </td>
+                      <td className="px-6 py-4">
+                        <span className="text-xs font-medium text-slate-700 dark:text-slate-300">
+                          {getPaymentTypeIcon(refund.booking?.payment_type)}
+                        </span>
+                      </td>
+                      <td className="px-6 py-4">
+                        <span className={`inline-block px-4 py-2 rounded-lg text-xs font-bold border-2 ${getStatusColor(refund.status)}`}>
+                          {getStatusText(refund.status)}
+                        </span>
+                      </td>
+                      <td className="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">
+                        {new Date(refund.created_at).toLocaleDateString('en-US', {
+                          year: 'numeric',
+                          month: 'short',
+                          day: 'numeric'
+                        })}
+                      </td>
+                      <td className="px-6 py-4 text-center">
+                        <button
+                          onClick={() => handleViewRefund(refund)}
+                          className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-teal-600 hover:bg-teal-700 text-white transition-all shadow-lg hover:shadow-xl transform hover:scale-110"
+                          title="View Details"
+                        >
+                          <FiEye size={18} />
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </>
         ) : (
           <div className="bg-white dark:bg-slate-800 rounded-xl shadow-lg border border-slate-200 dark:border-slate-700 p-16 text-center">
             <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-teal-100 dark:bg-teal-900/30 mb-4">
@@ -304,14 +366,14 @@ export function RefundsPage() {
       {/* Refund Details Modal */}
       {showModal && selectedRefund && (
         <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-          <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl max-w-3xl w-full border border-slate-200 dark:border-slate-700 overflow-hidden animate-in fade-in scale-95 duration-200">
+          <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl max-w-3xl w-full max-h-[90vh] flex flex-col border border-slate-200 dark:border-slate-700 overflow-hidden animate-in fade-in scale-95 duration-200">
             {/* Modal Header */}
-            <div className="flex items-center justify-between p-8 bg-gradient-to-r from-red-600 to-orange-600 text-white">
+            <div className="flex items-center justify-between p-4 sm:p-6 lg:p-8 bg-gradient-to-r from-red-600 to-orange-600 text-white flex-shrink-0">
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center">
-                  <MdOutlineSettingsBackupRestore size={24} />
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
+                  <MdOutlineSettingsBackupRestore size={22} />
                 </div>
-                <h2 className="text-2xl font-bold">Refund Details</h2>
+                <h2 className="text-lg sm:text-2xl font-bold truncate">Refund Details</h2>
               </div>
               <button
                 onClick={() => {
@@ -319,16 +381,16 @@ export function RefundsPage() {
                   setRejectReason('');
                   setApprovalNotes('');
                 }}
-                className="p-2 hover:bg-white/20 rounded-lg transition-all"
+                className="p-2 hover:bg-white/20 rounded-lg transition-all flex-shrink-0"
               >
                 <FiX size={24} />
               </button>
             </div>
 
             {/* Modal Content */}
-            <div className="p-8 space-y-6 max-h-96 overflow-y-auto">
+            <div className="p-4 sm:p-6 lg:p-8 space-y-6 overflow-y-auto">
               {/* Refund ID & Status */}
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="bg-teal-50 dark:bg-teal-900/20 rounded-xl p-6 border border-teal-200 dark:border-teal-800">
                   <p className="text-xs font-bold text-teal-600 dark:text-teal-400 uppercase tracking-wide mb-2">Booking #</p>
                   <p className="text-2xl font-bold text-teal-700 dark:text-teal-300">
@@ -448,7 +510,7 @@ export function RefundsPage() {
             </div>
 
             {/* Modal Footer */}
-            <div className="flex gap-4 p-8 bg-slate-50 dark:bg-slate-700/50 border-t border-slate-200 dark:border-slate-700">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 p-4 sm:p-6 lg:p-8 bg-slate-50 dark:bg-slate-700/50 border-t border-slate-200 dark:border-slate-700 flex-shrink-0">
               {selectedRefund.status === 'pending' ? (
                 <>
                   <button

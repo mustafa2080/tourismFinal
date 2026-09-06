@@ -147,10 +147,10 @@ export function ContactMessagesPage() {
         {/* Header Section */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div className="space-y-1">
-            <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-teal-600 to-teal-600 dark:from-teal-400 dark:to-teal-400 bg-clip-text text-transparent">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-teal-600 to-teal-600 dark:from-teal-400 dark:to-teal-400 bg-clip-text text-transparent">
               Contact Messages
             </h1>
-            <p className="text-gray-600 dark:text-gray-400 text-lg">Manage and respond to customer inquiries</p>
+            <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base lg:text-lg">Manage and respond to customer inquiries</p>
           </div>
           <button
             onClick={() => fetchMessages(filterStatus)}

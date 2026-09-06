@@ -158,10 +158,10 @@ export function CategoriesPage() {
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <div>
-          <h1 className="text-4xl font-bold text-slate-900 dark:text-white flex items-center gap-3">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 dark:text-white flex items-center gap-3">
             Tour Categories
           </h1>
-          <p className="text-slate-600 dark:text-slate-400 mt-2 text-lg">
+          <p className="text-slate-600 dark:text-slate-400 mt-2 text-sm sm:text-base lg:text-lg">
             Manage tour package categories
           </p>
         </div>
