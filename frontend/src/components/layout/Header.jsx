@@ -15,7 +15,7 @@ import {
   HiOutlineEnvelope, HiOutlineCog6Tooth, HiOutlineSparkles,
   HiOutlineArrowRightOnRectangle, HiOutlineUserPlus, HiOutlineArrowLeftOnRectangle,
 } from 'react-icons/hi2';
-import logoImg from '../../assets/logo4.jpg';
+import logoImg from '../../assets/logo4.webp';
 import { notificationsService } from '../../services';
 import { socketService } from '../../services/socketService';
 import { showSuccessToast, showErrorToast } from '../../utils/notifications';
