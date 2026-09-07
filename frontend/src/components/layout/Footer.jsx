@@ -8,7 +8,7 @@ import {
   FiMapPin, FiArrowRight, FiSend, FiCheck, FiAlertCircle
 } from 'react-icons/fi';
 import { notificationsService } from '../../services';
-import logoImg from '../../assets/logo.webp';
+import logoImg from '../../assets/logo4.webp';
 
 /**
  * Modern Footer Component
@@ -196,13 +196,10 @@ const Footer = () => {
               <img
                 src={logoImg}
                 alt="Travluyo Logo"
-                className="h-11 w-auto object-contain drop-shadow-sm transition-all duration-300 group-hover:scale-110"
+                className="h-10 w-auto object-contain drop-shadow-sm transition-all duration-300 group-hover:scale-110"
                 loading="lazy"
                 decoding="async"
               />
-              <span className="font-bold text-xl" style={{ fontFamily: "'Outfit', 'Inter', sans-serif" }}>
-                <span style={{ color: '#2d7a7d' }}>Trav</span><span style={{ color: '#c16a36' }}>luyo</span>
-              </span>
             </div>
 
             <p className="text-slate-400 text-sm mb-6 leading-relaxed">
