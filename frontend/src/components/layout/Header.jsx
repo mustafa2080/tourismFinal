@@ -15,7 +15,7 @@ import {
   HiOutlineEnvelope, HiOutlineCog6Tooth, HiOutlineSparkles,
   HiOutlineArrowRightOnRectangle, HiOutlineUserPlus, HiOutlineArrowLeftOnRectangle,
 } from 'react-icons/hi2';
-import logoImg from '../../assets/logo.webp';
+import logoImg from '../../assets/logo4.jpg';
 import { notificationsService } from '../../services';
 import { socketService } from '../../services/socketService';
 import { showSuccessToast, showErrorToast } from '../../utils/notifications';
@@ -282,13 +282,10 @@ const Header = () => {
             <img
               src={logoImg}
               alt="Travluyo Logo"
-              className="h-9 sm:h-10 lg:h-12 w-auto object-contain flex-shrink-0 drop-shadow-[0_2px_6px_rgba(180,140,50,0.35)] group-hover:drop-shadow-[0_4px_10px_rgba(180,140,50,0.5)] transition-all duration-300"
+              className="h-11 sm:h-12 lg:h-14 w-auto object-contain flex-shrink-0 drop-shadow-[0_2px_6px_rgba(180,140,50,0.35)] group-hover:drop-shadow-[0_4px_10px_rgba(180,140,50,0.5)] transition-all duration-300"
               loading="eager"
               decoding="async"
             />
-            <span className="hidden sm:inline font-bold text-sm lg:text-lg" style={{ fontFamily: "'Outfit', 'Inter', sans-serif" }}>
-              <span style={{ color: '#2d7a7d' }}>Trav</span><span style={{ color: '#c16a36' }}>luyo</span>
-            </span>
           </button>
 
           {/* Desktop Navigation */}
