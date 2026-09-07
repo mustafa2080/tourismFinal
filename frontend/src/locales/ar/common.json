@@ -262,7 +262,8 @@
     "noNotifications": "لا توجد إشعارات",
     "profile": "الملف الشخصي",
     "dashboard": "لوحة التحكم",
-    "logout": "تسجيل الخروج"
+    "logout": "تسجيل الخروج",
+    "blog": "المدونة"
   },
   "footer": {
     "readyForNextAdventure": "مستعد لمغامرتك القادمة؟",

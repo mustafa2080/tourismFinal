@@ -282,5 +282,8 @@
       "dangerZoneSubtitle": "Una vez que elimines tu cuenta, no hay vuelta atrás. Todos tus viajes, lista de deseos y datos se eliminarán permanentemente.",
       "deleteAccount": "Eliminar Cuenta Permanentemente"
     }
+  },
+  "header": {
+    "blog": "Blog"
   }
 }

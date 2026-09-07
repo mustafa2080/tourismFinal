@@ -145,7 +145,8 @@
   "header": {
     "rating": "Рейтинг",
     "destination": "Направление",
-    "days": "Дни"
+    "days": "Дни",
+    "blog": "Блог"
   },
   "itinerary": {
     "dailyItinerary": "Ежедневный маршрут",

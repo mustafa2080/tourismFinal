@@ -133,7 +133,8 @@
   "header": {
     "rating": "Bewertung",
     "destination": "Reiseziel",
-    "days": "Tage"
+    "days": "Tage",
+    "blog": "Blog"
   },
   "itinerary": {
     "dailyItinerary": "Tagesprogramm",
