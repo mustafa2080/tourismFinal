@@ -2,6 +2,7 @@
 import { Request, Response, NextFunction } from 'express';
 import { BlogService } from '../services/BlogService.js';
 import { AppError } from '../utils/errors.js';
+import { invalidateCache } from '../middleware/cachingMiddleware.js';
 
 export class BlogController {
   private blogService: BlogService;
@@ -91,6 +92,7 @@ export class BlogController {
     try {
       const { name, description } = req.body;
       const category = await this.blogService.createCategory(name, description);
+      await invalidateCache('/api/blog');
       res.status(201).json({ success: true, message: 'Category created', data: category });
     } catch (error) {
       next(error);
@@ -101,6 +103,7 @@ export class BlogController {
     try {
       const { id } = req.params;
       const category = await this.blogService.updateCategory(id, req.body);
+      await invalidateCache('/api/blog');
       res.status(200).json({ success: true, message: 'Category updated', data: category });
     } catch (error) {
       next(error);
@@ -111,6 +114,7 @@ export class BlogController {
     try {
       const { id } = req.params;
       await this.blogService.deleteCategory(id);
+      await invalidateCache('/api/blog');
       res.status(200).json({ success: true, message: 'Category deleted' });
     } catch (error) {
       next(error);
@@ -125,6 +129,7 @@ export class BlogController {
       if (!authorId) throw new AppError(401, 'Authentication required');
 
       const post = await this.blogService.createPost(req.body, authorId);
+      await invalidateCache('/api/blog');
       res.status(201).json({ success: true, message: 'Post created successfully', data: post });
     } catch (error) {
       next(error);
@@ -135,6 +140,7 @@ export class BlogController {
     try {
       const { id } = req.params;
       const post = await this.blogService.updatePost(id, req.body);
+      await invalidateCache('/api/blog');
       res.status(200).json({ success: true, message: 'Post updated successfully', data: post });
     } catch (error) {
       next(error);
@@ -145,6 +151,7 @@ export class BlogController {
     try {
       const { id } = req.params;
       await this.blogService.deletePost(id);
+      await invalidateCache('/api/blog');
       res.status(200).json({ success: true, message: 'Post deleted successfully' });
     } catch (error) {
       next(error);
@@ -155,6 +162,7 @@ export class BlogController {
     try {
       const { id } = req.params;
       const post = await this.blogService.setPublished(id, true);
+      await invalidateCache('/api/blog');
       res.status(200).json({ success: true, message: 'Post published successfully', data: post });
     } catch (error) {
       next(error);
@@ -165,6 +173,7 @@ export class BlogController {
     try {
       const { id } = req.params;
       const post = await this.blogService.setPublished(id, false);
+      await invalidateCache('/api/blog');
       res.status(200).json({ success: true, message: 'Post unpublished successfully', data: post });
     } catch (error) {
       next(error);
