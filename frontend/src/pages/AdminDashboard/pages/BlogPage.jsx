@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import {
   FiPlus, FiEdit, FiTrash2, FiSearch, FiX, FiSave, FiEye, FiEyeOff,
-  FiImage,
+  FiImage, FiFolder,
 } from 'react-icons/fi';
 import toast from 'react-hot-toast';
 import { blogService } from '../../../services/blogService';
@@ -33,6 +33,12 @@ export function BlogPage() {
   const [uploadingImage, setUploadingImage] = useState(false);
   const [previewMode, setPreviewMode] = useState(false);
   const [formData, setFormData] = useState(emptyForm);
+
+  // Categories management
+  const [showCategoriesModal, setShowCategoriesModal] = useState(false);
+  const [categoryForm, setCategoryForm] = useState({ name: '', description: '' });
+  const [editingCategoryId, setEditingCategoryId] = useState(null);
+  const [savingCategory, setSavingCategory] = useState(false);
 
   const fetchCategories = useCallback(async () => {
     try {
@@ -233,6 +239,56 @@ export function BlogPage() {
     }
   };
 
+  const resetCategoryForm = () => {
+    setCategoryForm({ name: '', description: '' });
+    setEditingCategoryId(null);
+  };
+
+  const handleEditCategory = (cat) => {
+    setCategoryForm({ name: cat.name || '', description: cat.description || '' });
+    setEditingCategoryId(cat.id);
+  };
+
+  const handleSaveCategory = async () => {
+    if (!categoryForm.name.trim()) {
+      toast.error('Category name is required');
+      return;
+    }
+    try {
+      setSavingCategory(true);
+      if (editingCategoryId) {
+        await blogService.updateCategory(editingCategoryId, {
+          name: categoryForm.name.trim(),
+          description: categoryForm.description.trim(),
+        });
+        toast.success('Category updated');
+      } else {
+        await blogService.createCategory(categoryForm.name.trim(), categoryForm.description.trim());
+        toast.success('Category created');
+      }
+      resetCategoryForm();
+      fetchCategories();
+    } catch (error) {
+      console.error('Error saving category:', error);
+      toast.error(error?.message || error?.response?.data?.message || 'Failed to save category');
+    } finally {
+      setSavingCategory(false);
+    }
+  };
+
+  const handleDeleteCategory = async (id) => {
+    if (!window.confirm('Delete this category? Posts using it will keep their category_id but it will no longer resolve.')) return;
+    try {
+      await blogService.deleteCategory(id);
+      toast.success('Category deleted');
+      if (editingCategoryId === id) resetCategoryForm();
+      fetchCategories();
+    } catch (error) {
+      console.error('Error deleting category:', error);
+      toast.error(error?.message || error?.response?.data?.message || 'Failed to delete category');
+    }
+  };
+
   const filteredPosts = posts.filter((p) => {
     if (!searchTerm) return true;
     return p.title?.toLowerCase().includes(searchTerm.toLowerCase());
@@ -252,13 +308,22 @@ export function BlogPage() {
             Manage blog posts and categories
           </p>
         </div>
-        <button
-          onClick={() => { resetForm(); setShowModal(true); }}
-          className="flex items-center gap-2 px-6 py-3 bg-teal-600 text-white rounded-xl hover:bg-teal-700 transition-all shadow-md font-semibold"
-        >
-          <FiPlus size={20} />
-          New Post
-        </button>
+        <div className="flex items-center gap-3">
+          <button
+            onClick={() => { resetCategoryForm(); setShowCategoriesModal(true); }}
+            className="flex items-center gap-2 px-5 py-3 bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-700 transition-all font-semibold"
+          >
+            <FiFolder size={18} />
+            Categories
+          </button>
+          <button
+            onClick={() => { resetForm(); setShowModal(true); }}
+            className="flex items-center gap-2 px-6 py-3 bg-teal-600 text-white rounded-xl hover:bg-teal-700 transition-all shadow-md font-semibold"
+          >
+            <FiPlus size={20} />
+            New Post
+          </button>
+        </div>
       </div>
 
       {/* Stats */}
@@ -609,6 +674,109 @@ export function BlogPage() {
                   </>
                 )}
               </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Categories Modal */}
+      {showCategoriesModal && (
+        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+          <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl max-w-lg w-full max-h-[85vh] overflow-y-auto p-6 border border-slate-200 dark:border-slate-700">
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="text-xl font-bold text-slate-900 dark:text-white">
+                Blog Categories
+              </h2>
+              <button
+                onClick={() => { setShowCategoriesModal(false); resetCategoryForm(); }}
+                className="p-1 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg transition-colors"
+              >
+                <FiX size={20} className="text-slate-600 dark:text-slate-400" />
+              </button>
+            </div>
+
+            {/* Add / edit form */}
+            <div className="space-y-3 mb-6 p-4 bg-slate-50 dark:bg-slate-700/40 rounded-xl">
+              <div>
+                <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                  Name *
+                </label>
+                <input
+                  type="text"
+                  value={categoryForm.name}
+                  onChange={(e) => setCategoryForm((prev) => ({ ...prev, name: e.target.value }))}
+                  placeholder="e.g., Travel Tips"
+                  className="w-full px-3 py-2 border-2 border-slate-200 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none focus:border-teal-500 text-sm"
+                />
+              </div>
+              <div>
+                <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                  Description
+                </label>
+                <input
+                  type="text"
+                  value={categoryForm.description}
+                  onChange={(e) => setCategoryForm((prev) => ({ ...prev, description: e.target.value }))}
+                  placeholder="Optional short description"
+                  className="w-full px-3 py-2 border-2 border-slate-200 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none focus:border-teal-500 text-sm"
+                />
+              </div>
+              <div className="flex gap-2">
+                {editingCategoryId && (
+                  <button
+                    onClick={resetCategoryForm}
+                    className="flex-1 px-3 py-2 border-2 border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-200 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700 transition-all text-sm font-semibold"
+                  >
+                    Cancel Edit
+                  </button>
+                )}
+                <button
+                  onClick={handleSaveCategory}
+                  disabled={savingCategory}
+                  className="flex-1 flex items-center justify-center gap-2 px-3 py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700 disabled:opacity-50 transition-all text-sm font-semibold"
+                >
+                  {savingCategory ? 'Saving...' : editingCategoryId ? 'Update Category' : 'Add Category'}
+                </button>
+              </div>
+            </div>
+
+            {/* List */}
+            <div className="space-y-2">
+              {categories.length === 0 ? (
+                <p className="text-sm text-slate-500 dark:text-slate-400 text-center py-6">
+                  No categories yet. Add one above.
+                </p>
+              ) : (
+                categories.map((cat) => (
+                  <div
+                    key={cat.id}
+                    className="flex items-center justify-between gap-3 p-3 rounded-lg border border-slate-200 dark:border-slate-700"
+                  >
+                    <div className="min-w-0">
+                      <p className="font-semibold text-slate-900 dark:text-white text-sm truncate">{cat.name}</p>
+                      {cat.description && (
+                        <p className="text-xs text-slate-500 dark:text-slate-400 truncate">{cat.description}</p>
+                      )}
+                    </div>
+                    <div className="flex items-center gap-1 flex-shrink-0">
+                      <button
+                        onClick={() => handleEditCategory(cat)}
+                        title="Edit"
+                        className="p-2 rounded-lg text-teal-600 hover:bg-teal-50 dark:hover:bg-teal-900/20 transition-colors"
+                      >
+                        <FiEdit size={14} />
+                      </button>
+                      <button
+                        onClick={() => handleDeleteCategory(cat.id)}
+                        title="Delete"
+                        className="p-2 rounded-lg text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors"
+                      >
+                        <FiTrash2 size={14} />
+                      </button>
+                    </div>
+                  </div>
+                ))
+              )}
             </div>
           </div>
         </div>
