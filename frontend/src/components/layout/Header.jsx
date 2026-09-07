@@ -14,6 +14,7 @@ import {
   HiOutlineMoon, HiOutlineSun, HiOutlineBell, HiOutlineInformationCircle,
   HiOutlineEnvelope, HiOutlineCog6Tooth, HiOutlineSparkles,
   HiOutlineArrowRightOnRectangle, HiOutlineUserPlus, HiOutlineArrowLeftOnRectangle,
+  HiOutlineNewspaper,
 } from 'react-icons/hi2';
 import logoImg from '../../assets/logo4.webp';
 import { notificationsService } from '../../services';
@@ -37,6 +38,7 @@ const FiInfo = HiOutlineInformationCircle;
 const FiMail = HiOutlineEnvelope;
 const FiSettings = HiOutlineCog6Tooth;
 const FiCompass = HiOutlineSparkles;
+const FiNewspaper = HiOutlineNewspaper;
 const MdOutlineLogin = HiOutlineArrowLeftOnRectangle;
 const MdOutlinePersonAdd = HiOutlineUserPlus;
 const MdLogout = HiOutlineArrowRightOnRectangle;
@@ -246,6 +248,7 @@ const Header = () => {
     { label: t('common.home') || 'Home', path: '/', icon: FiHome },
     { label: t('common.explore') || 'Explore', path: '/search', icon: FiSearch},
     { label: t('common.customTrip') || 'Custom Trip', path: '/custom-trip', icon: FiCompass },
+    { label: t('common.blog') || 'Blog', path: '/blog', icon: FiNewspaper },
     { label: t('common.about') || 'About', path: '/about', icon: FiInfo },
     { label: t('common.contact') || 'Contact', path: '/contact', icon: FiMail },
     { label: t('common.savedTrips') || 'Saved Trips', path: '/dashboard/wishlist', icon: FiBookmark, requiresAuth: true },

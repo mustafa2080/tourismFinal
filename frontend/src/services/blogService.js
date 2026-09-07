@@ -1,231 +1,130 @@
 import apiClient from './apiClient';
 
+/**
+ * Blog service — matches the real backend routes mounted at /api/blog
+ * (backend/src/routes/blog.routes.ts). No comments/likes support exists
+ * on the backend, so those methods were removed rather than calling
+ * endpoints that don't exist.
+ */
 export const blogService = {
+  // ---------- Public ----------
+
   /**
-   * Get all blog posts with pagination and filters
-   * @param {Object} options - Options { limit, offset, category, search, sortBy, status }
-   * @returns {Promise<Object>} - { posts: Array, total: number, pages: number }
+   * Get published posts with pagination and filters.
+   * @param {Object} options - { limit, offset, category, search, tag }
+   * @returns {Promise<{data: Array, pagination: Object}>}
    */
   async getBlogPosts(options = {}) {
-    const { 
-      limit = 10, 
-      offset = 0, 
-      category = null, 
-      search = '', 
-      sortBy = 'recent',
-      status = 'published'
-    } = options;
-    
-    const params = { limit, offset, sortBy, status };
+    const { limit = 10, offset = 0, category = null, search = '', tag = null } = options;
+    const params = { limit, offset };
     if (category) params.category = category;
     if (search) params.search = search;
-    
-    return apiClient.get('/blog/posts', { params });
+    if (tag) params.tag = tag;
+    return apiClient.get('/blog', { params });
   },
 
-  /**
-   * Get single blog post by slug
-   * @param {string} slug - Post slug (URL-friendly title)
-   * @returns {Promise<Object>} - Full blog post with comments
-   */
+  /** Get a single published post by slug. */
   async getBlogPostBySlug(slug) {
-    return apiClient.get(`/blog/posts/${slug}`);
+    return apiClient.get(`/blog/${slug}`);
   },
 
-  /**
-   * Get blog post by ID
-   * @param {string} postId - Post ID
-   * @returns {Promise<Object>} - Full blog post
-   */
-  async getBlogPostById(postId) {
-    return apiClient.get(`/blog/posts/id/${postId}`);
-  },
-
-  /**
-   * Search blog posts
-   * @param {string} query - Search query
-   * @param {Object} options - Pagination options
-   * @returns {Promise<Array>} - Search results
-   */
+  /** Search published posts by free-text query. */
   async searchBlogPosts(query, options = {}) {
-    const { limit = 10, offset = 0 } = options;
-    return apiClient.get('/blog/posts/search', {
-      params: { q: query, limit, offset }
-    });
+    const { limit = 10 } = options;
+    return apiClient.get('/blog/search', { params: { q: query, limit } });
   },
 
-  /**
-   * Get recent blog posts
-   * @param {number} limit - Number of posts to return
-   * @returns {Promise<Array>} - Recent posts
-   */
+  /** Get the most recent published posts. */
   async getRecentPosts(limit = 5) {
-    return apiClient.get('/blog/posts/recent', { params: { limit } });
+    return apiClient.get('/blog/recent', { params: { limit } });
   },
 
-  /**
-   * Get blog posts by category
-   * @param {string} category - Category name/slug
-   * @param {Object} options - Pagination options
-   * @returns {Promise<Array>} - Posts in category
-   */
-  async getPostsByCategory(category, options = {}) {
-    const { limit = 10, offset = 0 } = options;
-    return apiClient.get(`/blog/categories/${category}/posts`, {
-      params: { limit, offset }
-    });
-  },
-
-  /**
-   * Get all blog categories
-   * @returns {Promise<Array>} - List of categories
-   */
+  /** Get all blog categories. */
   async getCategories() {
     return apiClient.get('/blog/categories');
   },
 
-  /**
-   * Get related posts for a blog post
-   * @param {string} postId - Post ID
-   * @param {number} limit - Number of related posts
-   * @returns {Promise<Array>} - Related posts
-   */
+  /** Get posts related to a given post (by category/tags). */
   async getRelatedPosts(postId, limit = 3) {
-    return apiClient.get(`/blog/posts/${postId}/related`, { params: { limit } });
+    return apiClient.get(`/blog/${postId}/related`, { params: { limit } });
   },
 
+  // ---------- Admin ----------
+
   /**
-   * Get featured blog posts
-   * @param {number} limit - Number of featured posts
-   * @returns {Promise<Array>} - Featured posts
+   * Get all posts for the admin list (published + drafts), with filters.
+   * @param {Object} options - { limit, offset, category, search, published }
    */
-  async getFeaturedPosts(limit = 3) {
-    return apiClient.get('/blog/featured', { params: { limit } });
+  async getAllPostsForAdmin(options = {}) {
+    const { limit = 20, offset = 0, category = null, search = '', published = undefined } = options;
+    const params = { limit, offset };
+    if (category) params.category = category;
+    if (search) params.search = search;
+    if (published !== undefined) params.published = published;
+    return apiClient.get('/blog/admin/all', { params });
+  },
+
+  /** Get a single post by ID for admin editing (works for drafts too). */
+  async getBlogPostByIdForAdmin(postId) {
+    return apiClient.get(`/blog/admin/${postId}`);
   },
 
   /**
-   * Create new blog post (admin only)
-   * @param {Object} postData - { title, slug, excerpt, content, featuredImage, category, tags }
-   * @returns {Promise<Object>} - Created post
+   * Create a new blog post.
+   * @param {Object} postData - { title, slug, excerpt, body, featuredImage, categoryId, tags, metaTitle, metaDescription, published }
    */
   async createBlogPost(postData) {
-    const { title, slug, excerpt, content, featuredImage, category, tags } = postData;
-    
+    const { title, body } = postData;
     if (!title || title.trim().length === 0) {
       throw new Error('Title is required');
     }
-    if (!slug || slug.trim().length === 0) {
-      throw new Error('Slug is required');
-    }
-    if (!content || content.trim().length < 50) {
+    if (!body || body.trim().length < 50) {
       throw new Error('Content must be at least 50 characters');
     }
-    
-    return apiClient.post('/admin/blog/posts', {
-      title: title.trim(),
-      slug: slug.trim(),
-      excerpt: excerpt?.trim() || '',
-      content: content.trim(),
-      featuredImage,
-      category,
-      tags: tags || []
-    });
+    return apiClient.post('/blog', postData);
   },
 
-  /**
-   * Update blog post (admin only)
-   * @param {string} postId - Post ID
-   * @param {Object} updateData - Updated fields
-   * @returns {Promise<Object>} - Updated post
-   */
+  /** Update an existing blog post (partial update). */
   async updateBlogPost(postId, updateData) {
-    const { title, slug, excerpt, content, featuredImage, category, tags } = updateData;
-    
-    if (content && content.trim().length < 50) {
+    if (updateData.body && updateData.body.trim().length < 50) {
       throw new Error('Content must be at least 50 characters');
     }
-    
-    const payload = {};
-    if (title) payload.title = title.trim();
-    if (slug) payload.slug = slug.trim();
-    if (excerpt !== undefined) payload.excerpt = excerpt.trim();
-    if (content) payload.content = content.trim();
-    if (featuredImage) payload.featuredImage = featuredImage;
-    if (category) payload.category = category;
-    if (tags) payload.tags = tags;
-    
-    return apiClient.put(`/admin/blog/posts/${postId}`, payload);
+    return apiClient.put(`/blog/${postId}`, updateData);
   },
 
-  /**
-   * Delete blog post (admin only)
-   * @param {string} postId - Post ID
-   * @returns {Promise<void>}
-   */
+  /** Delete a blog post. */
   async deleteBlogPost(postId) {
-    return apiClient.delete(`/admin/blog/posts/${postId}`);
+    return apiClient.delete(`/blog/${postId}`);
   },
 
-  /**
-   * Publish blog post (admin only)
-   * @param {string} postId - Post ID
-   * @param {string} publishDate - Publish date (optional, defaults to now)
-   * @returns {Promise<Object>} - Updated post
-   */
-  async publishBlogPost(postId, publishDate = null) {
-    return apiClient.post(`/admin/blog/posts/${postId}/publish`, { publishDate });
+  /** Publish a blog post. */
+  async publishBlogPost(postId) {
+    return apiClient.post(`/blog/${postId}/publish`);
   },
 
-  /**
-   * Unpublish blog post (admin only)
-   * @param {string} postId - Post ID
-   * @returns {Promise<Object>} - Updated post
-   */
+  /** Unpublish a blog post. */
   async unpublishBlogPost(postId) {
-    return apiClient.post(`/admin/blog/posts/${postId}/unpublish`);
+    return apiClient.post(`/blog/${postId}/unpublish`);
   },
 
-  /**
-   * Get blog post comments
-   * @param {string} postId - Post ID
-   * @param {Object} options - Pagination options
-   * @returns {Promise<Array>} - Comments
-   */
-  async getPostComments(postId, options = {}) {
-    const { limit = 10, offset = 0 } = options;
-    return apiClient.get(`/blog/posts/${postId}/comments`, {
-      params: { limit, offset }
-    });
-  },
-
-  /**
-   * Add comment to blog post
-   * @param {string} postId - Post ID
-   * @param {string} comment - Comment text
-   * @returns {Promise<Object>} - Created comment
-   */
-  async addComment(postId, comment) {
-    if (!comment || comment.trim().length < 3) {
-      throw new Error('Comment must be at least 3 characters');
-    }
-    
-    return apiClient.post(`/blog/posts/${postId}/comments`, { comment: comment.trim() });
-  },
-
-  /**
-   * Like/unlike blog post
-   * @param {string} postId - Post ID
-   * @returns {Promise<Object>} - Result { isLiked: boolean, likesCount: number }
-   */
-  async toggleLikePost(postId) {
-    return apiClient.post(`/blog/posts/${postId}/toggle-like`);
-  },
-
-  /**
-   * Get blog statistics (admin only)
-   * @returns {Promise<Object>} - Stats { totalPosts, published, draft, views, likes }
-   */
+  /** Get blog stats for the admin dashboard. */
   async getStats() {
-    return apiClient.get('/admin/blog/stats');
-  }
+    return apiClient.get('/blog/admin/stats');
+  },
+
+  // ---------- Categories (admin) ----------
+
+  async createCategory(name, description) {
+    return apiClient.post('/blog/admin/categories', { name, description });
+  },
+
+  async updateCategory(categoryId, updateData) {
+    return apiClient.put(`/blog/admin/categories/${categoryId}`, updateData);
+  },
+
+  async deleteCategory(categoryId) {
+    return apiClient.delete(`/blog/admin/categories/${categoryId}`);
+  },
 };
+
+export default blogService;

@@ -18,6 +18,7 @@ import {
   FiSettings,
   FiGift,
   FiMail,
+  FiEdit3,
 } from 'react-icons/fi';
 import { useAdmin } from '../context/AdminContext';
 import { useAuth } from '../../../hooks/useAuth';
@@ -123,6 +124,12 @@ export function Sidebar() {
       label: 'Categories', 
       icon: FiTag, 
       path: '/admin/categories' 
+    },
+    { 
+      id: 'blog', 
+      label: 'Blog', 
+      icon: FiEdit3, 
+      path: '/admin/blog' 
     },
     { 
       id: 'settings', 

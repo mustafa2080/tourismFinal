@@ -59,6 +59,8 @@ const CookieSettingsPage = lazy(() => import('./pages/CookieSettingsPage'));
 const FAQPage = lazy(() => import('./pages/FAQPage'));
 const CareersPage = lazy(() => import('./pages/CareersPage'));
 const PressPage = lazy(() => import('./pages/PressPage'));
+const BlogListPage = lazy(() => import('./pages/BlogListPage'));
+const BlogPostPage = lazy(() => import('./pages/BlogPostPage'));
 
 const AdminDashboard = lazy(() =>
   import('./pages/AdminDashboard/AdminDashboard').then(m => ({ default: m.AdminDashboard }))
@@ -73,6 +75,7 @@ const AuditLogsPage = lazy(() => import('./pages/AdminDashboard/pages/AuditLogsP
 const PackagesPage = lazy(() => import('./pages/AdminDashboard/pages/PackagesPage'));
 const AddonsPage = lazy(() => import('./pages/AdminDashboard/pages/AddonsPage'));
 const CategoriesPage = lazy(() => import('./pages/AdminDashboard/pages/CategoriesPage'));
+const AdminBlogPage = lazy(() => import('./pages/AdminDashboard/pages/BlogPage'));
 const SettingsPage = lazy(() => import('./pages/AdminDashboard/pages/SettingsPage'));
 const MyProfilePage = lazy(() => import('./pages/AdminDashboard/pages/MyProfilePage'));
 const ContactMessagesPage = lazy(() => import('./pages/AdminDashboard/pages/ContactMessagesPage'));
@@ -118,6 +121,10 @@ const AppRoutes = () => {
           <Route path="/careers" element={<CareersPage />} />
           <Route path="/press" element={<PressPage />} />
 
+          {/* Blog */}
+          <Route path="/blog" element={<BlogListPage />} />
+          <Route path="/blog/:slug" element={<BlogPostPage />} />
+
           {/* ============ AUTHENTICATION ROUTES ============ */}
 
           <Route path="/login" element={<LoginPage />} />
@@ -147,6 +154,7 @@ const AppRoutes = () => {
             <Route path="packages" element={<PackagesPage />} />
             <Route path="addons" element={<AddonsPage />} />
             <Route path="categories" element={<CategoriesPage />} />
+            <Route path="blog" element={<AdminBlogPage />} />
             <Route path="settings" element={<SettingsPage />} />
             <Route path="profile" element={<MyProfilePage />} />
             <Route path="contact" element={<ContactMessagesPage />} />
@@ -229,23 +237,6 @@ const AppRoutes = () => {
               </AdminProtectedRoute>
             }
           />
-
-          {/* ============ TODO ROUTES ============ */}
-
-          {/* Blog */}
-          {/* <Route path="/blog" element={<BlogListPage />} /> */}
-          {/* <Route path="/blog/:slug" element={<BlogArticlePage />} /> */}
-
-          {/* Admin Panel */}
-          {/* <Route path="/admin" element={<AdminDashboard />} /> */}
-          {/* <Route path="/admin/packages" element={<AdminPackages />} /> */}
-          {/* <Route path="/admin/bookings" element={<AdminBookings />} /> */}
-          {/* <Route path="/admin/customers" element={<AdminCustomers />} /> */}
-          {/* <Route path="/admin/blog" element={<AdminBlog />} /> */}
-
-          {/* Password Reset */}
-          {/* <Route path="/forgot-password" element={<ForgotPasswordPage />} /> */}
-          {/* <Route path="/reset-password/:token" element={<ResetPasswordPage />} /> */}
 
           {/* ============ 404 - CATCH ALL ============ */}
           <Route path="*" element={<Navigate to="/" replace />} />
