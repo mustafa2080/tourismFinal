@@ -162,7 +162,7 @@ export function BookingsPage() {
             <FiRefreshCw size={20} />
             Refresh
           </button>
-          <button className="flex items-center gap-2 px-6 py-3 bg-primary-600 text-white rounded-xl transition-all font-semibold shadow-lg hover:shadow-xl transform hover:scale-105">
+          <button className="flex items-center gap-2 px-6 py-3 bg-[#ED9A58] text-white rounded-xl transition-all font-semibold shadow-lg hover:shadow-xl transform hover:scale-105">
             <FiDownload size={20} />
             Export Report
           </button>
@@ -488,7 +488,7 @@ export function BookingsPage() {
 
               {/* Action Buttons */}
               <div className="flex gap-3 pt-6 border-t border-slate-200 dark:border-slate-700">
-                <button className="flex-1 px-6 py-3 bg-primary-600 text-white rounded-xl transition-all font-semibold shadow-lg hover:shadow-xl">
+                <button className="flex-1 px-6 py-3 bg-[#ED9A58] text-white rounded-xl transition-all font-semibold shadow-lg hover:shadow-xl">
                   Edit Booking
                 </button>
                 <button

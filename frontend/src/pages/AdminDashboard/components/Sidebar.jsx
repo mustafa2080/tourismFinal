@@ -283,7 +283,7 @@ export function Sidebar() {
           {/* Logout Button */}
           <button
             onClick={logOut}
-            className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-primary-600 transition-all duration-200 text-white font-medium text-sm shadow-lg hover:shadow-xl"
+            className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-[#ED9A58] transition-all duration-200 text-white font-medium text-sm shadow-lg hover:shadow-xl"
           >
             <FiLogOut size={18} />
             <span>Logout</span>

@@ -130,7 +130,7 @@ const AdvancedImageSlider = () => {
               {slide.subtitle}
             </p>
             <div className="flex flex-col sm:flex-row gap-3">
-              <button className="px-6 py-3 bg-primary-600 text-white font-bold rounded-lg hover:shadow-lg transition-all hover:scale-105">
+              <button className="px-6 py-3 bg-[#ED9A58] text-white font-bold rounded-lg hover:shadow-lg transition-all hover:scale-105">
                 Explore
               </button>
               <button className="px-6 py-3 bg-white/20 backdrop-blur-sm border border-white/40 text-white font-semibold rounded-lg hover:bg-white/30 transition-all">

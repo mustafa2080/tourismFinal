@@ -848,7 +848,7 @@ function PackagesPage() {
         </div>
         <button
           onClick={handleCreatePackage}
-          className="flex items-center justify-center gap-2 px-6 py-3 bg-primary-600 text-white rounded-xl hover:shadow-lg transition-all font-semibold shadow-lg transform hover:scale-105 "
+          className="flex items-center justify-center gap-2 px-6 py-3 bg-[#ED9A58] text-white rounded-xl hover:shadow-lg transition-all font-semibold shadow-lg transform hover:scale-105 "
         >
           <FiPlus size={22} />
           <span>Add New Package</span>
@@ -1571,7 +1571,7 @@ function PackagesPage() {
                 <button
                   onClick={handleSavePackage}
                   disabled={submitting}
-                  className="flex-1 px-6 py-3 rounded-xl bg-primary-600 text-white transition-all font-bold shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                  className="flex-1 px-6 py-3 rounded-xl bg-[#ED9A58] text-white transition-all font-bold shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 >
                   {submitting ? (
                     <>

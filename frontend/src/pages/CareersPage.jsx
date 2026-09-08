@@ -165,7 +165,7 @@ const CareersPage = () => {
                         Click "Apply Now" below to submit your application for this position. We review applications within 5-7 business days.
                       </p>
                       <button
-                        className="bg-primary-600 text-white px-6 py-3 rounded-lg font-semibold hover:shadow-lg hover:shadow-teal-500/30 transition-all flex items-center gap-2"
+                        className="bg-[#ED9A58] text-white px-6 py-3 rounded-lg font-semibold hover:shadow-lg hover:shadow-teal-500/30 transition-all flex items-center gap-2"
                         onClick={() => document.querySelector('.application-form')?.scrollIntoView({ behavior: 'smooth' })}
                       >
                         <Send size={18} />
@@ -229,7 +229,7 @@ const CareersPage = () => {
                     className="w-full bg-gray-50 dark:bg-slate-700 border-2 border-gray-300 dark:border-slate-600 rounded-lg px-4 py-3 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:border-teal-500 dark:focus:border-teal-400 focus:outline-none transition-all"
                   />
                 </div>
-                <button type="submit" className="w-full bg-primary-600 text-white py-3 rounded-lg font-bold hover:shadow-lg hover:shadow-teal-500/30 transition-all">
+                <button type="submit" className="w-full bg-[#ED9A58] text-white py-3 rounded-lg font-bold hover:shadow-lg hover:shadow-teal-500/30 transition-all">
                   <Send size={18} className="inline mr-2" />
                   Submit Application
                 </button>

@@ -515,14 +515,14 @@ export function RefundsPage() {
                 <>
                   <button
                     onClick={handleApproveRefund}
-                    className="flex-1 px-6 py-3 rounded-lg bg-primary-600 text-white transition-all font-bold flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform hover:scale-105"
+                    className="flex-1 px-6 py-3 rounded-lg bg-[#ED9A58] text-white transition-all font-bold flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform hover:scale-105"
                   >
                     <FiCheckCircle size={20} />
                     Approve Refund
                   </button>
                   <button
                     onClick={handleRejectRefund}
-                    className="flex-1 px-6 py-3 rounded-lg bg-primary-600 text-white transition-all font-bold flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform hover:scale-105"
+                    className="flex-1 px-6 py-3 rounded-lg bg-[#ED9A58] text-white transition-all font-bold flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform hover:scale-105"
                   >
                     <FiXCircle size={20} />
                     Reject Refund

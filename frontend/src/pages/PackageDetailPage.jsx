@@ -839,7 +839,7 @@ const PackageDetailPage = () => {
                                     ? 'bg-slate-400 cursor-not-allowed'
                                     : reviewRating === 0 || reviewComment.trim().length < 10
                                     ? 'bg-slate-300 dark:bg-slate-600 cursor-not-allowed opacity-50'
-                                    : 'bg-primary-600 active:scale-95 shadow-lg hover:shadow-xl'
+                                    : 'bg-[#ED9A58] active:scale-95 shadow-lg hover:shadow-xl'
                                 }`}
                               >
                                 <div className="flex items-center justify-center gap-2">

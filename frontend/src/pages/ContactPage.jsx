@@ -296,7 +296,7 @@ const ContactPage = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full px-6 py-3 bg-primary-600 text-white font-semibold rounded-lg transition-all hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 group"
+                  className="w-full px-6 py-3 bg-[#ED9A58] text-white font-semibold rounded-lg transition-all hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 group"
                 >
                   {isSubmitting ? (
                     <>
@@ -358,7 +358,7 @@ const ContactPage = () => {
                 <p className="text-slate-700 dark:text-slate-300 mb-4 text-sm">
                   {t('contactPage.newsletterDesc')}
                 </p>
-                <button className="w-full px-4 py-2 bg-primary-600 text-white font-semibold rounded-lg transition-all">
+                <button className="w-full px-4 py-2 bg-[#ED9A58] text-white font-semibold rounded-lg transition-all">
                   {t('contactPage.subscribeNow')}
                 </button>
               </div>

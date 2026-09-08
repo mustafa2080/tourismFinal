@@ -635,7 +635,7 @@ const HomePage = () => {
                 <div className="md:col-span-3 flex items-end">
                   <button
                     type="submit"
-                    className="w-full px-4 xs:px-6 py-2.5 xs:py-3 bg-primary-600 text-white font-bold rounded-full flex items-center justify-center gap-2 transition-all hover:shadow-xl hover:scale-105 group shadow-lg text-sm xs:text-base"
+                    className="w-full px-4 xs:px-6 py-2.5 xs:py-3 bg-[#ED9A58] text-white font-bold rounded-full flex items-center justify-center gap-2 transition-all hover:shadow-xl hover:scale-105 group shadow-lg text-sm xs:text-base"
                   >
                     <FiSearch size={16} className="group-hover:scale-110 transition-transform" />
                     <span className="hidden sm:inline">{t('navbar.search')}</span>

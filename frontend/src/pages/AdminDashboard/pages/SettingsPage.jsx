@@ -620,7 +620,7 @@ export function SettingsPage() {
           <button
             onClick={handleFillItineraryTranslations}
             disabled={fillingTranslations}
-            className="flex items-center justify-center gap-3 px-6 py-3 bg-primary-600 text-white rounded-xl disabled:opacity-50 disabled:cursor-not-allowed transition-all font-semibold shadow-md hover:shadow-lg"
+            className="flex items-center justify-center gap-3 px-6 py-3 bg-[#ED9A58] text-white rounded-xl disabled:opacity-50 disabled:cursor-not-allowed transition-all font-semibold shadow-md hover:shadow-lg"
           >
             <FiRefreshCw size={18} className={fillingTranslations ? 'animate-spin' : ''} />
             {fillingTranslations ? 'Filling Translations...' : 'Fill Missing Itinerary Translations'}
@@ -636,7 +636,7 @@ export function SettingsPage() {
         <button
           onClick={handleSaveSettings}
           disabled={!hasChanges || loading}
-          className="flex-1 flex items-center justify-center gap-3 px-6 py-4 bg-primary-600 text-white rounded-xl disabled:opacity-50 disabled:cursor-not-allowed transition-all font-bold shadow-lg hover:shadow-xl transform hover:scale-105"
+          className="flex-1 flex items-center justify-center gap-3 px-6 py-4 bg-[#ED9A58] text-white rounded-xl disabled:opacity-50 disabled:cursor-not-allowed transition-all font-bold shadow-lg hover:shadow-xl transform hover:scale-105"
         >
           <FiSave size={22} />
           {loading ? 'Saving Changes...' : 'Save All Settings'}

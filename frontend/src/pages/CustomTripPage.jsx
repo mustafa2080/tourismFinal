@@ -862,7 +862,7 @@ const CustomTripPage = () => {
                   type="button"
                   onClick={handleSubmit}
                   disabled={submitting}
-                  className="w-full flex items-center justify-center gap-2 px-5 py-3 bg-primary-600 disabled:opacity-60 text-white font-bold rounded-xl transition-all shadow-md"
+                  className="w-full flex items-center justify-center gap-2 px-5 py-3 bg-[#ED9A58] disabled:opacity-60 text-white font-bold rounded-xl transition-all shadow-md"
                 >
                   {submitting ? (
                     <>
@@ -897,7 +897,7 @@ const CustomTripPage = () => {
             <button
               type="button"
               onClick={goNext}
-              className="flex items-center gap-1.5 px-6 py-2.5 rounded-xl font-bold text-sm text-white bg-primary-600 shadow-md hover:shadow-lg transition-all"
+              className="flex items-center gap-1.5 px-6 py-2.5 rounded-xl font-bold text-sm text-white bg-[#ED9A58] shadow-md hover:shadow-lg transition-all"
             >
               Continue
               <FiArrowRight size={16} />

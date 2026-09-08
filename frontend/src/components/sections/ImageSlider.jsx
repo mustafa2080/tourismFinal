@@ -148,7 +148,7 @@ const ImageSlider = () => {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-delayed-2">
-            <button className="px-8 py-3 bg-primary-600 text-white font-bold rounded-lg transition-all duration-300 hover:shadow-lg hover:scale-105">
+            <button className="px-8 py-3 bg-[#ED9A58] text-white font-bold rounded-lg transition-all duration-300 hover:shadow-lg hover:scale-105">
               Explore Now
             </button>
             <button className="px-8 py-3 bg-white/20 hover:bg-white/30 backdrop-blur-sm border-2 border-white/40 text-white font-bold rounded-lg transition-all duration-300 hover:border-white/60">

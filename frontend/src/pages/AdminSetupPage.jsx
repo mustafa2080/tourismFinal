@@ -271,7 +271,7 @@ const AdminSetupPage = () => {
 
               <button
                 type="submit"
-                className="w-full py-3 bg-primary-600 text-white font-bold rounded-xl transition-all duration-300 flex items-center justify-center gap-2 group"
+                className="w-full py-3 bg-[#ED9A58] text-white font-bold rounded-xl transition-all duration-300 flex items-center justify-center gap-2 group"
               >
                 Verify Code
                 <FiArrowRight className="group-hover:translate-x-1 transition-transform" />
@@ -460,7 +460,7 @@ const AdminSetupPage = () => {
                 </button>
                 <button
                   type="submit"
-                  className="flex-1 py-3 bg-primary-600 text-white font-bold rounded-xl transition-all duration-300 flex items-center justify-center gap-2 group"
+                  className="flex-1 py-3 bg-[#ED9A58] text-white font-bold rounded-xl transition-all duration-300 flex items-center justify-center gap-2 group"
                 >
                   Continue
                   <FiArrowRight className="group-hover:translate-x-1 transition-transform" />
@@ -516,7 +516,7 @@ const AdminSetupPage = () => {
                 <button
                   onClick={handleConfirmCreateAdmin}
                   disabled={loading}
-                  className="flex-1 py-3 bg-primary-600 text-white font-bold rounded-xl transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 group"
+                  className="flex-1 py-3 bg-[#ED9A58] text-white font-bold rounded-xl transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 group"
                 >
                   {loading ? (
                     <>

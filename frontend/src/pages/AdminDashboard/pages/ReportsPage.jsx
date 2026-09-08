@@ -201,14 +201,14 @@ export function ReportsPage() {
           <button
             onClick={handleRefresh}
             disabled={refreshing}
-            className="flex-1 sm:flex-initial flex items-center justify-center gap-2 px-4 sm:px-6 py-3 bg-primary-600 text-white rounded-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed font-medium shadow-lg hover:shadow-xl"
+            className="flex-1 sm:flex-initial flex items-center justify-center gap-2 px-4 sm:px-6 py-3 bg-[#ED9A58] text-white rounded-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed font-medium shadow-lg hover:shadow-xl"
           >
             <FiRefreshCw className={`${refreshing ? 'animate-spin' : ''}`} size={18} />
             {refreshing ? 'Refreshing' : 'Refresh'}
           </button>
           <button
             onClick={handleExport}
-            className="flex-1 sm:flex-initial flex items-center justify-center gap-2 px-4 sm:px-6 py-3 bg-primary-600 text-slate-900 dark:text-white rounded-lg hover:shadow-lg transition-all font-medium"
+            className="flex-1 sm:flex-initial flex items-center justify-center gap-2 px-4 sm:px-6 py-3 bg-[#ED9A58] text-slate-900 dark:text-white rounded-lg hover:shadow-lg transition-all font-medium"
           >
             <FiDownload size={18} />
             Export

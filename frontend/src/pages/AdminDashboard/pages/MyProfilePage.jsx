@@ -330,7 +330,7 @@ export function MyProfilePage() {
               <button
                 onClick={handleSaveProfile}
                 disabled={loading}
-                className="flex-1 flex items-center justify-center gap-3 px-6 py-4 bg-primary-600 text-white rounded-xl disabled:opacity-50 disabled:cursor-not-allowed transition-all font-bold shadow-lg"
+                className="flex-1 flex items-center justify-center gap-3 px-6 py-4 bg-[#ED9A58] text-white rounded-xl disabled:opacity-50 disabled:cursor-not-allowed transition-all font-bold shadow-lg"
               >
                 <FiSave size={22} />
                 {loading ? t('dashboard.profile.saving') : t('dashboard.profile.saveChanges')}

@@ -1394,7 +1394,7 @@ const DashboardPage = () => {
                           <button
                             onClick={handleSaveProfile}
                             disabled={isSavingProfile}
-                            className="flex-1 flex items-center justify-center gap-2 px-4 md:px-6 py-2.5 md:py-3.5 bg-primary-600 text-white font-bold rounded-xl transition-all hover:shadow-lg hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed active:scale-95 group text-sm md:text-base"
+                            className="flex-1 flex items-center justify-center gap-2 px-4 md:px-6 py-2.5 md:py-3.5 bg-[#ED9A58] text-white font-bold rounded-xl transition-all hover:shadow-lg hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed active:scale-95 group text-sm md:text-base"
                           >
                             {isSavingProfile ? (
                               <>

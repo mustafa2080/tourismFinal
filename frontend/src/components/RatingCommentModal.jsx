@@ -244,7 +244,7 @@ export function RatingCommentModal({ isOpen, onClose, onSubmit, packageName, loa
             disabled={submitting || !isCommentValid || rating < 1}
             className={`flex-1 px-6 py-3 rounded-lg font-bold text-white flex items-center justify-center gap-2 transition-all transform disabled:scale-100 disabled:opacity-50 disabled:cursor-not-allowed ${
               submitting
-                ? 'bg-primary-600 '
+                ? 'bg-[#ED9A58] '
                 : ' shadow-lg hover:shadow-xl hover:scale-105 active:scale-95'
             }`}
           >

@@ -353,7 +353,7 @@ const LoginPage = () => {
                     <button
                       type="submit"
                       disabled={loading || errors.email || errors.password || !formData.email || !formData.password}
-                      className="w-full py-3.5 md:py-4 px-4 rounded-xl font-bold text-white bg-primary-600 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl hover:shadow-teal-500/40 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none disabled:shadow-none flex items-center justify-center gap-2 group"
+                      className="w-full py-3.5 md:py-4 px-4 rounded-xl font-bold text-white bg-[#ED9A58] transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl hover:shadow-teal-500/40 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none disabled:shadow-none flex items-center justify-center gap-2 group"
                     >
                       {loading ? (
                         <>
