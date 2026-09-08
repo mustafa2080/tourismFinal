@@ -75,7 +75,11 @@
 /* Search input enhanced styling */
 .search-input-enhanced {
   position: relative;
-  background-image: #0d9488;
+  background-image: linear-gradient(
+    to right,
+    #3b82f6 0%,
+    #06b6d4 100%
+  );
   background-size: 0% 100%;
   background-repeat: no-repeat;
   background-position: 0% 0%;
@@ -131,7 +135,7 @@ button:active::after {
 
 /* Filter tabs enhanced styling */
 .filter-tab-active {
-  background: #0d9488;
+  background: linear-gradient(135deg, #3b82f6 0%, #0ea5e9 100%);
   box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.3);
 }
 
@@ -209,7 +213,7 @@ button:active::after {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #0d9488;
+  background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%);
   color: white;
   font-weight: bold;
   font-size: 0.875rem;
@@ -238,32 +242,32 @@ textarea:focus {
 
 /* Message badge colors with gradient */
 .badge-pending {
-  background: #0d9488;
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
   color: #92400e;
 }
 
 .dark .badge-pending {
-  background: #0d9488;
+  background: linear-gradient(135deg, #854d0e 0%, #6b3a08 100%);
   color: #fcd34d;
 }
 
 .badge-read {
-  background: #0d9488;
+  background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
   color: #1e40af;
 }
 
 .dark .badge-read {
-  background: #0d9488;
+  background: linear-gradient(135deg, #0c2340 0%, #0f3d7f 100%);
   color: #93c5fd;
 }
 
 .badge-responded {
-  background: #0d9488;
+  background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
   color: #15803d;
 }
 
 .dark .badge-responded {
-  background: #0d9488;
+  background: linear-gradient(135deg, #092e20 0%, #0d3d2c 100%);
   color: #86efac;
 }
 
@@ -366,19 +370,19 @@ textarea:focus {
 
 /* Gradient backgrounds for depth */
 .gradient-bg-blue {
-  background: #0d9488;
+  background: linear-gradient(135deg, #3b82f6 0%, #0284c7 100%);
 }
 
 .gradient-bg-emerald {
-  background: #0d9488;
+  background: linear-gradient(135deg, #22c55e 0%, #059669 100%);
 }
 
 .gradient-bg-amber {
-  background: #0d9488;
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
 }
 
 .gradient-bg-cyan {
-  background: #0d9488;
+  background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
 }
 
 /* Improved focus visibility */
@@ -422,10 +426,10 @@ textarea:focus {
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: #0d9488;
+  background: linear-gradient(180deg, #3b82f6 0%, #06b6d4 100%);
   border-radius: 3px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: #0d9488;
+  background: linear-gradient(180deg, #0284c7 0%, #0891b2 100%);
 }

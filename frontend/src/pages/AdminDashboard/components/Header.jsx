@@ -90,7 +90,7 @@ export function Header() {
           <div className="flex items-center gap-3 flex-1 min-w-0">
             {/* Logo */}
             <div className="flex-shrink-0">
-              <div className="w-10 h-10 rounded-lg bg-primary-600 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-teal-500 to-teal-600 flex items-center justify-center">
                 <span className="text-white font-bold text-lg">A</span>
               </div>
             </div>
@@ -175,7 +175,7 @@ export function Header() {
               {/* Notifications Dropdown */}
               {notificationsOpen && (
                 <div className="absolute top-full right-0 mt-2 w-96 bg-white dark:bg-slate-800 rounded-xl shadow-2xl border border-slate-200 dark:border-slate-700 overflow-hidden z-50">
-                  <div className="p-4 bg-primary-600 border-b border-slate-200 dark:border-slate-700">
+                  <div className="p-4 bg-gradient-to-r from-teal-50 to-teal-100 dark:from-slate-700 dark:to-slate-600 border-b border-slate-200 dark:border-slate-700">
                     <h3 className="font-bold text-slate-900 dark:text-white">
                       Notifications
                     </h3>
@@ -242,7 +242,7 @@ export function Header() {
                 }}
                 className="flex items-center gap-2 px-3 py-2 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg transition-colors duration-200 group"
               >
-                <div className="w-9 h-9 rounded-full bg-primary-600 flex items-center justify-center text-white text-sm font-bold shadow-md flex-shrink-0 overflow-hidden">
+                <div className="w-9 h-9 rounded-full bg-gradient-to-br from-teal-500 to-orange-600 flex items-center justify-center text-white text-sm font-bold shadow-md flex-shrink-0 overflow-hidden">
                   {profileImageUrl ? (
                     <img 
                       src={profileImageUrl}
@@ -264,8 +264,8 @@ export function Header() {
                 <FiChevronDown
                   size={16}
                   className={`hidden sm:block text-slate-600 dark:text-slate-400 transition-transform duration-300 flex-shrink-0 ${
- profileOpen ? 'rotate-180' : ''
- }`}
+                    profileOpen ? 'rotate-180' : ''
+                  }`}
                 />
               </button>
 
@@ -273,7 +273,7 @@ export function Header() {
               {profileOpen && (
                 <div className="absolute top-full right-0 mt-2 w-56 bg-white dark:bg-slate-800 rounded-xl shadow-2xl border border-slate-200 dark:border-slate-700 overflow-hidden z-50">
                   {/* Profile Header */}
-                  <div className="p-4 bg-primary-600 border-b border-slate-200 dark:border-slate-700">
+                  <div className="p-4 bg-gradient-to-r from-teal-50 to-teal-100 dark:from-slate-700 dark:to-slate-600 border-b border-slate-200 dark:border-slate-700">
                     <p className="text-sm font-semibold text-slate-900 dark:text-white truncate">
                       {user?.name || 'Administrator'}
                     </p>

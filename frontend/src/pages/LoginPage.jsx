@@ -138,8 +138,8 @@ const LoginPage = () => {
       <div className="relative min-h-screen w-full overflow-hidden pt-20 pb-12">
         {/* Animated Background */}
         <div className="absolute inset-0 -z-10">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-primary-600 rounded-full blur-3xl animate-pulse" />
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary-600 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+          <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-teal-500/20 via-orange-500/20 to-pink-500/20 rounded-full blur-3xl animate-pulse" />
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-br from-orange-500/20 via-pink-500/20 to-red-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
         </div>
 
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -152,7 +152,7 @@ const LoginPage = () => {
                   <span className="text-sm font-bold text-teal-600 dark:text-teal-400">Welcome Back</span>
                 </div>
 
-                <h1 className="text-5xl lg:text-6xl font-bold bg-primary-600 bg-clip-text text-transparent">
+                <h1 className="text-5xl lg:text-6xl font-bold bg-gradient-to-r from-teal-600 via-orange-600 to-pink-600 bg-clip-text text-transparent">
                   Welcome to Your Travel Journey
                 </h1>
 
@@ -187,14 +187,14 @@ const LoginPage = () => {
               {/* Card Container */}
               <div className="relative">
                 {/* Gradient Border Effect */}
-                <div className="absolute -inset-0.5 bg-primary-600 rounded-2xl blur opacity-0 group-hover:opacity-100 transition duration-1000 group-hover:duration-200" />
+                <div className="absolute -inset-0.5 bg-gradient-to-r from-teal-600 via-orange-600 to-pink-600 rounded-2xl blur opacity-0 group-hover:opacity-100 transition duration-1000 group-hover:duration-200" />
 
                 {/* Form Card */}
                 <div className="relative bg-white dark:bg-slate-800 rounded-2xl p-8 md:p-10 shadow-2xl border border-slate-100 dark:border-slate-700">
                   {/* Header */}
                   <div className="text-center mb-8 space-y-3">
                     <div className="flex justify-center">
-                      <div className="relative w-16 h-16 bg-primary-600 rounded-xl flex items-center justify-center shadow-lg shadow-teal-500/30 group">
+                      <div className="relative w-16 h-16 bg-gradient-to-br from-teal-500 via-orange-500 to-pink-500 rounded-xl flex items-center justify-center shadow-lg shadow-teal-500/30 group">
                         <BiWorld className="text-3xl text-white group-hover:scale-110 group-hover:rotate-12 transition-all duration-300" />
                       </div>
                     </div>
@@ -232,12 +232,12 @@ const LoginPage = () => {
                           onFocus={() => setTouchedFields({ ...touchedFields, email: true })}
                           placeholder="you@example.com"
                           className={`w-full px-4 py-3.5 pl-12 rounded-xl border-2 transition-all duration-300 placeholder-slate-500 dark:placeholder-slate-400 outline-none ${
- errors.email && touchedFields.email
- ? 'border-red-500 dark:border-red-500 bg-red-50/50 dark:bg-red-900/10'
- : !errors.email && touchedFields.email && formData.email
- ? 'border-green-500 dark:border-green-500 bg-green-50/50 dark:bg-green-900/10'
- : 'border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 focus:border-teal-500 dark:focus:border-teal-400'
- } text-slate-900 dark:text-white`}
+                            errors.email && touchedFields.email
+                              ? 'border-red-500 dark:border-red-500 bg-red-50/50 dark:bg-red-900/10'
+                              : !errors.email && touchedFields.email && formData.email
+                              ? 'border-green-500 dark:border-green-500 bg-green-50/50 dark:bg-green-900/10'
+                              : 'border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 focus:border-teal-500 dark:focus:border-teal-400'
+                          } text-slate-900 dark:text-white`}
                         />
                         {!errors.email && touchedFields.email && formData.email && (
                           <FiCheckCircle className="absolute right-4 top-1/2 -translate-y-1/2 text-green-500 animate-pulse" size={20} />
@@ -279,12 +279,12 @@ const LoginPage = () => {
                           onFocus={() => setTouchedFields({ ...touchedFields, password: true })}
                           placeholder="••••••••"
                           className={`w-full px-4 py-3.5 pl-12 pr-12 rounded-xl border-2 transition-all duration-300 placeholder-slate-500 dark:placeholder-slate-400 outline-none ${
- errors.password && touchedFields.password
- ? 'border-red-500 dark:border-red-500 bg-red-50/50 dark:bg-red-900/10'
- : !errors.password && touchedFields.password && formData.password
- ? 'border-green-500 dark:border-green-500 bg-green-50/50 dark:bg-green-900/10'
- : 'border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 focus:border-teal-500 dark:focus:border-teal-400'
- } text-slate-900 dark:text-white`}
+                            errors.password && touchedFields.password
+                              ? 'border-red-500 dark:border-red-500 bg-red-50/50 dark:bg-red-900/10'
+                              : !errors.password && touchedFields.password && formData.password
+                              ? 'border-green-500 dark:border-green-500 bg-green-50/50 dark:bg-green-900/10'
+                              : 'border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 focus:border-teal-500 dark:focus:border-teal-400'
+                          } text-slate-900 dark:text-white`}
                         />
                         <button
                           type="button"
@@ -319,12 +319,12 @@ const LoginPage = () => {
                           <div className="w-full h-1.5 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
                             <div
                               className={`h-full transition-all duration-300 ${
- formData.password.length < 6
- ? 'w-1/3 bg-red-500'
- : formData.password.length < 8
- ? 'w-2/3 bg-yellow-500'
- : 'w-full bg-green-500'
- }`}
+                                formData.password.length < 6
+                                  ? 'w-1/3 bg-red-500'
+                                  : formData.password.length < 8
+                                  ? 'w-2/3 bg-yellow-500'
+                                  : 'w-full bg-green-500'
+                              }`}
                             />
                           </div>
                         </div>
@@ -384,7 +384,7 @@ const LoginPage = () => {
                   {/* Sign Up Link */}
                   <button
                     onClick={() => navigate('/signup')}
-                    className="w-full py-3.5 md:py-4 px-4 rounded-xl font-bold text-slate-900 dark:text-white bg-primary-600 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg"
+                    className="w-full py-3.5 md:py-4 px-4 rounded-xl font-bold text-slate-900 dark:text-white bg-gradient-to-r from-slate-100 to-slate-200 dark:from-slate-700 dark:to-slate-600 hover:from-slate-200 hover:to-slate-300 dark:hover:from-slate-600 dark:hover:to-slate-500 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg"
                   >
                     Create Account
                   </button>

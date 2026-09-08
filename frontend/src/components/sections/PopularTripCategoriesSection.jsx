@@ -227,7 +227,7 @@ const PopularTripCategoriesSection = () => {
 
   return (
     <section
-      className="w-full py-12 md:py-20 bg-primary-600"
+      className="w-full py-12 md:py-20 bg-gradient-to-br from-slate-50 via-teal-50 to-slate-100 dark:from-slate-900 dark:via-teal-900/30 dark:to-slate-800"
       style={{ display: 'block', visibility: 'visible', minHeight: '200px' }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -274,10 +274,10 @@ const PopularTripCategoriesSection = () => {
                   onMouseEnter={() => setHoveredCategoryId(category.id)}
                   onMouseLeave={() => setHoveredCategoryId(null)}
                   className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 flex items-center gap-2 group ${
- selectedCategory?.id === category.id
- ? 'bg-teal-600 text-white shadow-lg scale-105'
- : 'bg-white dark:bg-slate-800 text-slate-900 dark:text-white border-2 border-slate-300 dark:border-slate-600 hover:border-teal-500 dark:hover:border-teal-400'
- }`}
+                    selectedCategory?.id === category.id
+                      ? 'bg-teal-600 text-white shadow-lg scale-105'
+                      : 'bg-white dark:bg-slate-800 text-slate-900 dark:text-white border-2 border-slate-300 dark:border-slate-600 hover:border-teal-500 dark:hover:border-teal-400'
+                  }`}
                 >
                   <span>{category.name}</span>
                   {selectedCategory?.id === category.id && (
@@ -301,12 +301,12 @@ const PopularTripCategoriesSection = () => {
                           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                         />
                       ) : (
-                        <div className="w-full h-full bg-primary-600 transition-all flex items-center justify-center">
+                        <div className="w-full h-full bg-gradient-to-br from-teal-400 to-orange-500 group-hover:from-teal-500 group-hover:to-orange-600 transition-all flex items-center justify-center">
                           <BiWorld size={80} className="text-white/50" />
                         </div>
                       )}
                       {/* Overlay */}
-                      <div className="absolute inset-0 bg-primary-600"></div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
                     </div>
 
                     {/* Category Details */}
@@ -334,7 +334,7 @@ const PopularTripCategoriesSection = () => {
 
                   {/* Right: Trips Count Info */}
                   <div className="flex flex-col justify-center">
-                    <div className="bg-primary-600 rounded-xl p-6 md:p-8 border border-teal-200 dark:border-teal-800">
+                    <div className="bg-gradient-to-br from-teal-50 to-orange-50 dark:from-teal-900/20 dark:to-orange-900/20 rounded-xl p-6 md:p-8 border border-teal-200 dark:border-teal-800">
                       <div className="text-center mb-6">
                         <div className="text-4xl md:text-5xl font-bold text-teal-600 dark:text-teal-400 mb-2">
                           {categoriesWithCounts[selectedCategory?.id] ?? 0}
@@ -370,7 +370,7 @@ const PopularTripCategoriesSection = () => {
                           console.log(`📂 [PopularCategories] Browse button clicked: ${selectedCategory.id} - ${selectedCategory.name}`);
                           navigate(`/search?category=${selectedCategory.id}&categoryName=${encodeURIComponent(selectedCategory.name)}`);
                         }}
-                        className="w-full bg-primary-600 text-white font-bold py-3 rounded-lg transition-all group"
+                        className="w-full bg-gradient-to-r from-teal-600 to-orange-600 hover:from-teal-700 hover:to-orange-700 text-white font-bold py-3 rounded-lg transition-all group"
                       >
                         <span>{t('home.browseCategory') || 'Browse'} {selectedCategory.name}</span>
                       </Button>
@@ -399,7 +399,7 @@ const PopularTripCategoriesSection = () => {
                   <Spinner size="lg" />
                 </div>
               ) : displayedPackages.length === 0 ? (
-                <div className="text-center py-20 bg-primary-600 rounded-xl border-2 border-red-200 dark:border-red-800">
+                <div className="text-center py-20 bg-gradient-to-br from-red-50 to-orange-50 dark:from-red-900/20 dark:to-orange-900/20 rounded-xl border-2 border-red-200 dark:border-red-800">
                   <div className="mb-4 flex justify-center">
                     <div className="p-4 bg-red-100 dark:bg-red-900/30 rounded-full">
                       <BiWorld size={64} className="text-red-500" />
@@ -468,7 +468,7 @@ const PopularTripCategoriesSection = () => {
                       onClick={() => navigate(`/package/${pkg.id}`)}
                     >
                       {/* Image */}
-                      <div className="relative h-48 bg-primary-600 overflow-hidden">
+                      <div className="relative h-48 bg-gradient-to-br from-teal-400 to-orange-500 overflow-hidden">
                         {pkg.images && pkg.images.length > 0 && (pkg.images[0]?.image_data || pkg.images[0]?.url) ? (
                           <>
                             {pkg.images[0]?.image_data && (
@@ -514,7 +514,7 @@ const PopularTripCategoriesSection = () => {
                           {pkg.destination}
                         </div>
                         {pkg.average_rating && (
-                          <div className="absolute top-3 left-3 flex items-center gap-1.5 px-2.5 py-1.5 bg-primary-600 rounded-full backdrop-blur-sm shadow-md border border-amber-200/60 dark:border-amber-700/60">
+                          <div className="absolute top-3 left-3 flex items-center gap-1.5 px-2.5 py-1.5 bg-gradient-to-r from-amber-100 to-yellow-100 dark:from-amber-900/80 dark:to-yellow-900/80 rounded-full backdrop-blur-sm shadow-md border border-amber-200/60 dark:border-amber-700/60">
                             <FiStar size={16} className="fill-amber-500 text-amber-500 drop-shadow-md" />
                             <span className="text-xs font-bold text-amber-700 dark:text-amber-300">{parseFloat(pkg.average_rating).toFixed(1)}</span>
                           </div>

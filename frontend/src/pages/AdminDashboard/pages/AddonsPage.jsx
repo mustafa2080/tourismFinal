@@ -553,7 +553,7 @@ function AddonsPage() {
         </div>
         
         {/* Database Stats */}
-        <div className="bg-primary-600 rounded-lg p-4 border border-teal-200 dark:border-teal-700">
+        <div className="bg-gradient-to-br from-teal-50 to-teal-100 dark:from-teal-900/20 dark:to-teal-800/20 rounded-lg p-4 border border-teal-200 dark:border-teal-700">
           <div className="flex items-center gap-2 mb-2">
             <FiDatabase className="text-teal-600" size={18} />
             <span className="text-sm font-semibold text-slate-700 dark:text-slate-300">{t('addons.totalAddons')}</span>
@@ -561,7 +561,7 @@ function AddonsPage() {
           <p className="text-2xl font-bold text-teal-600 dark:text-teal-400">{dbStats.totalAddons}</p>
         </div>
         
-        <div className="bg-primary-600 rounded-lg p-4 border border-green-200 dark:border-green-700">
+        <div className="bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20 rounded-lg p-4 border border-green-200 dark:border-green-700">
           <div className="flex items-center gap-2 mb-2">
             <FiEye className="text-green-600" size={18} />
             <span className="text-sm font-semibold text-slate-700 dark:text-slate-300">{t('addons.available')}</span>
@@ -569,7 +569,7 @@ function AddonsPage() {
           <p className="text-2xl font-bold text-green-600 dark:text-green-400">{dbStats.availableAddons}</p>
         </div>
         
-        <div className="bg-primary-600 rounded-lg p-4 border border-red-200 dark:border-red-700">
+        <div className="bg-gradient-to-br from-red-50 to-red-100 dark:from-red-900/20 dark:to-red-800/20 rounded-lg p-4 border border-red-200 dark:border-red-700">
           <div className="flex items-center gap-2 mb-2">
             <FiX className="text-red-600" size={18} />
             <span className="text-sm font-semibold text-slate-700 dark:text-slate-300">{t('addons.unavailable')}</span>
@@ -591,7 +591,7 @@ function AddonsPage() {
         
         <button
           onClick={() => handleOpenModal('create')}
-          className="flex items-center justify-center gap-2 bg-primary-600 text-white px-6 py-3 rounded-xl font-semibold shadow-lg transition-all"
+          className="flex items-center justify-center gap-2 bg-gradient-to-r from-teal-600 to-teal-700 hover:from-teal-700 hover:to-teal-800 text-white px-6 py-3 rounded-xl font-semibold shadow-lg transition-all"
         >
           <FiPlus size={20} />
           {t('addons.addNew')}
@@ -657,10 +657,10 @@ function AddonsPage() {
                     {addon.description && <div className="text-sm text-slate-600 dark:text-slate-400 line-clamp-1">{addon.description}</div>}
                   </div>
                   <span className={`flex-shrink-0 px-2.5 py-1 rounded-full text-xs font-semibold ${
- addon.is_available
- ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'
- : 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200'
- }`}>
+                    addon.is_available
+                      ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'
+                      : 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200'
+                  }`}>
                     {addon.is_available ? '✓' : '✗'}
                   </span>
                 </div>
@@ -758,10 +758,10 @@ function AddonsPage() {
                       </td>
                       <td className="px-6 py-4">
                         <span className={`px-3 py-1 rounded-full text-xs font-semibold ${
- addon.is_available 
- ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'
- : 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200'
- }`}>
+                          addon.is_available 
+                            ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'
+                            : 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200'
+                        }`}>
                           {addon.is_available ? '✓ Available' : '✗ Unavailable'}
                         </span>
                       </td>

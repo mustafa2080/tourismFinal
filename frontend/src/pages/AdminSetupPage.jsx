@@ -196,7 +196,7 @@ const AdminSetupPage = () => {
   const passwordCheck = validatePassword(adminData.password);
 
   return (
-    <div className="min-h-screen bg-primary-600 flex items-center justify-center p-4 sm:p-6 lg:p-8">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-teal-900 to-slate-900 dark:from-black dark:via-slate-900 dark:to-black flex items-center justify-center p-4 sm:p-6 lg:p-8">
       {/* Animated Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 left-10 w-72 h-72 bg-teal-500/20 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
@@ -213,8 +213,8 @@ const AdminSetupPage = () => {
             {/* Icon */}
             <div className="flex justify-center">
               <div className="relative">
-                <div className="absolute inset-0 bg-primary-600 rounded-full blur-lg opacity-75"></div>
-                <div className="relative w-16 h-16 bg-primary-600 rounded-full flex items-center justify-center">
+                <div className="absolute inset-0 bg-gradient-to-r from-teal-600 to-orange-600 rounded-full blur-lg opacity-75"></div>
+                <div className="relative w-16 h-16 bg-gradient-to-br from-teal-600 to-orange-600 rounded-full flex items-center justify-center">
                   <BiShieldAlt className="text-white text-2xl" />
                 </div>
               </div>
@@ -236,8 +236,8 @@ const AdminSetupPage = () => {
                 <div
                   key={s}
                   className={`h-2 rounded-full transition-all duration-300 ${
- s <= step ? 'bg-primary-600 w-8' : 'bg-slate-600 w-2'
- }`}
+                    s <= step ? 'bg-gradient-to-r from-teal-500 to-orange-500 w-8' : 'bg-slate-600 w-2'
+                  }`}
                 ></div>
               ))}
             </div>
@@ -294,8 +294,8 @@ const AdminSetupPage = () => {
                     onChange={handleFieldChange}
                     placeholder="Your full name"
                     className={`w-full pl-12 pr-4 py-2.5 bg-white/10 dark:bg-slate-700/50 border ${
- errors.fullName ? 'border-red-500' : 'border-white/20 dark:border-slate-600'
- } text-white placeholder-slate-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 transition`}
+                      errors.fullName ? 'border-red-500' : 'border-white/20 dark:border-slate-600'
+                    } text-white placeholder-slate-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 transition`}
                   />
                 </div>
                 {errors.fullName && <p className="text-red-400 text-xs mt-1">{errors.fullName}</p>}
@@ -313,8 +313,8 @@ const AdminSetupPage = () => {
                     onChange={handleFieldChange}
                     placeholder="admin@example.com"
                     className={`w-full pl-12 pr-4 py-2.5 bg-white/10 dark:bg-slate-700/50 border ${
- errors.email ? 'border-red-500' : 'border-white/20 dark:border-slate-600'
- } text-white placeholder-slate-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 transition`}
+                      errors.email ? 'border-red-500' : 'border-white/20 dark:border-slate-600'
+                    } text-white placeholder-slate-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 transition`}
                   />
                 </div>
                 {errors.email && <p className="text-red-400 text-xs mt-1">{errors.email}</p>}
@@ -332,8 +332,8 @@ const AdminSetupPage = () => {
                     onChange={handleFieldChange}
                     placeholder="+20 1234567890"
                     className={`w-full pl-12 pr-4 py-2.5 bg-white/10 dark:bg-slate-700/50 border ${
- errors.phone ? 'border-red-500' : 'border-white/20 dark:border-slate-600'
- } text-white placeholder-slate-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 transition`}
+                      errors.phone ? 'border-red-500' : 'border-white/20 dark:border-slate-600'
+                    } text-white placeholder-slate-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 transition`}
                   />
                 </div>
                 {errors.phone && <p className="text-red-400 text-xs mt-1">{errors.phone}</p>}
@@ -351,8 +351,8 @@ const AdminSetupPage = () => {
                     onChange={handleFieldChange}
                     placeholder="Your city"
                     className={`w-full pl-12 pr-4 py-2.5 bg-white/10 dark:bg-slate-700/50 border ${
- errors.city ? 'border-red-500' : 'border-white/20 dark:border-slate-600'
- } text-white placeholder-slate-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 transition`}
+                      errors.city ? 'border-red-500' : 'border-white/20 dark:border-slate-600'
+                    } text-white placeholder-slate-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 transition`}
                   />
                 </div>
                 {errors.city && <p className="text-red-400 text-xs mt-1">{errors.city}</p>}
@@ -383,8 +383,8 @@ const AdminSetupPage = () => {
                     onChange={handleFieldChange}
                     placeholder="Create strong password"
                     className={`w-full pl-12 pr-12 py-2.5 bg-white/10 dark:bg-slate-700/50 border ${
- errors.password ? 'border-red-500' : 'border-white/20 dark:border-slate-600'
- } text-white placeholder-slate-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 transition`}
+                      errors.password ? 'border-red-500' : 'border-white/20 dark:border-slate-600'
+                    } text-white placeholder-slate-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 transition`}
                   />
                   <button
                     type="button"
@@ -435,8 +435,8 @@ const AdminSetupPage = () => {
                     onChange={handleFieldChange}
                     placeholder="Confirm password"
                     className={`w-full pl-12 pr-12 py-2.5 bg-white/10 dark:bg-slate-700/50 border ${
- errors.confirmPassword ? 'border-red-500' : 'border-white/20 dark:border-slate-600'
- } text-white placeholder-slate-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 transition`}
+                      errors.confirmPassword ? 'border-red-500' : 'border-white/20 dark:border-slate-600'
+                    } text-white placeholder-slate-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 transition`}
                   />
                   <button
                     type="button"

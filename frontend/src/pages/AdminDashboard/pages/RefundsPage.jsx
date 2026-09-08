@@ -113,7 +113,7 @@ export function RefundsPage() {
   };
 
   const StatCard = ({ icon: Icon, label, value, color, subtext }) => (
-    <div className={`bg-primary-600 ${color} rounded-xl shadow-lg p-6 text-white border border-opacity-20 group hover:shadow-xl transition-all duration-300 transform hover:scale-105`}>
+    <div className={`bg-gradient-to-br ${color} rounded-xl shadow-lg p-6 text-white border border-opacity-20 group hover:shadow-xl transition-all duration-300 transform hover:scale-105`}>
       <div className="flex items-start justify-between">
         <div className="flex-1">
           <p className="text-white/80 text-sm font-medium mb-2">{label}</p>
@@ -133,7 +133,7 @@ export function RefundsPage() {
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <div>
           <h1 className="text-2xl sm:text-3xl lg:text-5xl font-bold text-slate-900 dark:text-white flex items-center gap-3">
-            <div className="p-2 sm:p-3 bg-primary-600 rounded-xl shadow-lg flex-shrink-0">
+            <div className="p-2 sm:p-3 bg-gradient-to-br from-red-500 to-orange-600 rounded-xl shadow-lg flex-shrink-0">
               <MdOutlineSettingsBackupRestore className="text-white" size={24} />
             </div>
             Refunds Management
@@ -151,31 +151,31 @@ export function RefundsPage() {
             icon={MdOutlineAssignmentReturn}
             label="Total Requests"
             value={stats.totalRefunds || 0}
-            color=""
+            color="from-teal-500 to-teal-600"
           />
           <StatCard
             icon={FiClock}
             label="Pending"
             value={stats.pendingRefunds || 0}
-            color=""
+            color="from-orange-500 to-orange-600"
           />
           <StatCard
             icon={FiDollarSign}
             label="Total Amount"
             value={`$${(stats.totalAmount || 0).toLocaleString()}`}
-            color=""
+            color="from-green-500 to-emerald-600"
           />
           <StatCard
             icon={FiTrendingUp}
             label="Approval Rate"
             value={`${stats.approvalRate ? stats.approvalRate : 0}%`}
-            color=""
+            color="from-orange-500 to-pink-600"
           />
         </div>
       )}
 
       {/* Search & Filter Section */}
-      <div className="bg-primary-600 rounded-xl shadow-lg p-6 border border-slate-200 dark:border-slate-700">
+      <div className="bg-gradient-to-r from-slate-50 to-slate-100 dark:from-slate-800 dark:to-slate-700 rounded-xl shadow-lg p-6 border border-slate-200 dark:border-slate-700">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* Search */}
           <div className="relative">
@@ -284,7 +284,7 @@ export function RefundsPage() {
             <div className="hidden lg:block overflow-x-auto">
               <table className="w-full">
                 <thead>
-                  <tr className="bg-primary-600 border-b-2 border-slate-300 dark:border-slate-600">
+                  <tr className="bg-gradient-to-r from-slate-100 to-slate-50 dark:from-slate-800 dark:to-slate-700 border-b-2 border-slate-300 dark:border-slate-600">
                     <th className="px-6 py-4 text-left text-sm font-bold text-slate-900 dark:text-white">Booking #</th>
                     <th className="px-6 py-4 text-left text-sm font-bold text-slate-900 dark:text-white">User</th>
                     <th className="px-6 py-4 text-left text-sm font-bold text-slate-900 dark:text-white">Amount</th>
@@ -368,7 +368,7 @@ export function RefundsPage() {
         <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
           <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl max-w-3xl w-full max-h-[90vh] flex flex-col border border-slate-200 dark:border-slate-700 overflow-hidden animate-in fade-in scale-95 duration-200">
             {/* Modal Header */}
-            <div className="flex items-center justify-between p-4 sm:p-6 lg:p-8 bg-primary-600 text-white flex-shrink-0">
+            <div className="flex items-center justify-between p-4 sm:p-6 lg:p-8 bg-gradient-to-r from-red-600 to-orange-600 text-white flex-shrink-0">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
                   <MdOutlineSettingsBackupRestore size={22} />

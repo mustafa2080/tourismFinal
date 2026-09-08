@@ -22,23 +22,23 @@ const TermsOfServicePage = () => {
 
   return (
     <MainLayout>
-      <div className="min-h-screen bg-primary-600 dark:bg-primary-600">
+      <div className="min-h-screen bg-gradient-to-b from-slate-50 via-teal-50 to-white dark:bg-gradient-to-br dark:from-slate-900 dark:via-teal-900 dark:to-slate-900">
         {/* Progress Bar */}
       <div 
-        className="fixed top-0 left-0 h-1 bg-primary-600 z-50 transition-all duration-300 shadow-lg shadow-teal-500/50" 
+        className="fixed top-0 left-0 h-1 bg-gradient-to-r from-teal-500 via-teal-600 to-orange-600 z-50 transition-all duration-300 shadow-lg shadow-teal-500/50" 
         style={{ width: `${scrollProgress * 100}%` }}
       ></div>
 
       {/* Animated Background */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 right-0 -translate-y-1/2 translate-x-1/4 w-80 h-80 bg-primary-600 rounded-full mix-blend-screen filter blur-3xl opacity-20 animate-pulse"></div>
-        <div className="absolute bottom-0 -left-40 w-80 h-80 bg-primary-600 rounded-full mix-blend-screen filter blur-3xl opacity-20 animate-pulse" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-20 right-0 -translate-y-1/2 translate-x-1/4 w-80 h-80 bg-gradient-to-br from-teal-400 to-teal-500 rounded-full mix-blend-screen filter blur-3xl opacity-20 animate-pulse"></div>
+        <div className="absolute bottom-0 -left-40 w-80 h-80 bg-gradient-to-tr from-orange-400 to-teal-500 rounded-full mix-blend-screen filter blur-3xl opacity-20 animate-pulse" style={{ animationDelay: '2s' }}></div>
       </div>
 
       {/* Header */}
-      <div className="relative pt-20 pb-32 px-4 sm:px-6 lg:px-8 bg-primary-600">
+      <div className="relative pt-20 pb-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-teal-500 via-teal-400 to-transparent dark:from-slate-800 dark:via-teal-800 dark:to-transparent">
         <div className="relative max-w-4xl mx-auto text-center">
-          <div className="inline-flex items-center justify-center w-20 h-20 bg-primary-600 rounded-2xl mb-8 mx-auto shadow-2xl shadow-teal-500/40 ring-4 ring-teal-300/30 dark:ring-teal-400/30">
+          <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-teal-400 to-teal-600 rounded-2xl mb-8 mx-auto shadow-2xl shadow-teal-500/40 ring-4 ring-teal-300/30 dark:ring-teal-400/30">
             <Scale size={40} className="text-white" />
           </div>
 
@@ -81,10 +81,10 @@ const TermsOfServicePage = () => {
                       href={`#${section.id}`}
                       onClick={() => setActiveSection(section.id)}
                       className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-300 text-sm font-semibold group ${
- activeSection === section.id
- ? 'bg-primary-600 text-white shadow-lg shadow-teal-500/30'
- : 'text-slate-700 dark:text-teal-200 hover:bg-teal-100 dark:hover:bg-teal-900/40 hover:text-teal-800 dark:hover:text-white'
- }`}
+                        activeSection === section.id
+                          ? 'bg-gradient-to-r from-teal-500 to-teal-600 text-white shadow-lg shadow-teal-500/30'
+                          : 'text-slate-700 dark:text-teal-200 hover:bg-teal-100 dark:hover:bg-teal-900/40 hover:text-teal-800 dark:hover:text-white'
+                      }`}
                     >
                       <span>{section.icon}</span>
                       <span>{section.title}</span>
@@ -124,7 +124,7 @@ const TermsOfServicePage = () => {
                   TourHub is a platform that connects travelers with tour operators and travel experiences. We facilitate bookings and provide communication tools between users and service providers.
                 </p>
                 
-                <div className="bg-primary-600 border-2 border-amber-300 dark:border-amber-600/50 rounded-xl p-6">
+                <div className="bg-gradient-to-r from-amber-50 to-orange-50 dark:from-amber-900/20 dark:to-orange-900/20 border-2 border-amber-300 dark:border-amber-600/50 rounded-xl p-6">
                   <p className="text-amber-900 dark:text-amber-100 font-medium text-lg">
                     <span className="text-2xl mr-2">✈️</span>
                     <strong>Important:</strong> TourHub acts as a marketplace. Tour operators are independent contractors responsible for their services.
@@ -298,7 +298,7 @@ const TermsOfServicePage = () => {
 
             {/* Contact */}
             <section className="scroll-mt-20">
-              <div className="bg-primary-600 backdrop-blur-xl rounded-2xl p-8 border-2 border-teal-300 dark:border-teal-600/50 shadow-2xl dark:shadow-teal-900/30">
+              <div className="bg-gradient-to-r from-teal-400 to-teal-500 dark:from-teal-900/40 dark:to-teal-900/40 backdrop-blur-xl rounded-2xl p-8 border-2 border-teal-300 dark:border-teal-600/50 shadow-2xl dark:shadow-teal-900/30">
                 <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-6">📧 Questions?</h2>
                 <div className="grid sm:grid-cols-2 gap-4">
                   {[

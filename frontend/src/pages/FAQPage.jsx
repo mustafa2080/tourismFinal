@@ -113,9 +113,9 @@ const FAQPage = () => {
 
   return (
     <MainLayout>
-      <div className="min-h-screen bg-primary-600">
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
         {/* Progress Bar */}
-        <div className="fixed top-0 left-0 h-1.5 bg-primary-600 z-50 transition-all duration-300" style={{ width: `${scrollProgress * 100}%` }}></div>
+        <div className="fixed top-0 left-0 h-1.5 bg-gradient-to-r from-teal-600 via-teal-500 to-orange-600 z-50 transition-all duration-300" style={{ width: `${scrollProgress * 100}%` }}></div>
 
         {/* Animated Background - Light Mode */}
         <div className="fixed inset-0 overflow-hidden pointer-events-none dark:hidden">
@@ -132,7 +132,7 @@ const FAQPage = () => {
         {/* Header */}
         <div className="relative pt-20 pb-32 px-4 sm:px-6 lg:px-8">
           <div className="relative max-w-4xl mx-auto text-center">
-            <div className="inline-flex items-center justify-center w-20 h-20 bg-primary-600 rounded-2xl mb-8 mx-auto shadow-lg">
+            <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-teal-600 to-teal-600 rounded-2xl mb-8 mx-auto shadow-lg">
               <HelpCircle size={40} className="text-white" />
             </div>
 
@@ -216,7 +216,7 @@ const FAQPage = () => {
           )}
 
           {/* Still Have Questions */}
-          <div className="bg-primary-600 rounded-2xl p-8 border-2 border-teal-200 dark:border-teal-800 shadow-sm hover:shadow-md transition-all mt-12 text-center">
+          <div className="bg-gradient-to-r from-teal-50 to-teal-50 dark:from-teal-950/30 dark:to-teal-950/30 rounded-2xl p-8 border-2 border-teal-200 dark:border-teal-800 shadow-sm hover:shadow-md transition-all mt-12 text-center">
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Still have questions?</h2>
             <p className="text-gray-700 dark:text-gray-300 mb-8 text-lg">Our support team is here to help 24/7!</p>
 

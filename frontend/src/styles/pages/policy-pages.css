@@ -1,14 +1,14 @@
 /* POLICY PAGE STYLES */
 
 .policy-page {
-  background: #0d9488;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
   min-height: 100vh;
   padding: 40px 20px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .policy-header {
-  background: #0d9488;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
   padding: 60px 40px;
   border-radius: 12px;
@@ -59,7 +59,7 @@
 }
 
 .quick-nav {
-  background: #0d9488;
+  background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
   padding: 25px;
   border-radius: 8px;
   margin-bottom: 30px;
@@ -404,7 +404,7 @@
 .image-placeholder {
   width: 100%;
   height: 200px;
-  background: #0d9488;
+  background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
   border-radius: 6px;
   display: flex;
   align-items: center;
@@ -473,7 +473,7 @@
 
 .mention-badge {
   padding: 12px 20px;
-  background: #0d9488;
+  background: linear-gradient(135deg, #667eea, #764ba2);
   color: white;
   border-radius: 6px;
   font-weight: 600;
@@ -496,7 +496,7 @@
 
 .stat-box {
   padding: 30px;
-  background: #0d9488;
+  background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
   border-radius: 8px;
   border: 2px solid rgba(102, 126, 234, 0.3);
   text-align: center;
@@ -576,7 +576,7 @@
 
 /* NEWSLETTER */
 .newsletter {
-  background: #0d9488;
+  background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
   border: 2px solid rgba(102, 126, 234, 0.3);
   text-align: center;
 }

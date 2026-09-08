@@ -55,7 +55,7 @@
   justify-content: center;
   font-weight: bold;
   font-size: 0.75rem;
-  background: #0d9488;
+  background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
   color: white;
   box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
 }
@@ -63,7 +63,7 @@
 .timeline-line {
   width: 2px;
   height: 16px;
-  background: #0d9488;
+  background: linear-gradient(180deg, #3b82f6, #dbeafe);
   margin: 0.5rem 0;
 }
 

@@ -200,7 +200,7 @@ export function UsersPage() {
         {!loading && (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {/* Total Users */}
-            <div className="bg-primary-600 rounded-lg p-4 border border-teal-200 dark:border-teal-800">
+            <div className="bg-gradient-to-br from-teal-50 to-teal-100 dark:from-teal-900/20 dark:to-teal-900/30 rounded-lg p-4 border border-teal-200 dark:border-teal-800">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium text-teal-600 dark:text-teal-400 mb-1">Total Users</p>
@@ -213,7 +213,7 @@ export function UsersPage() {
             </div>
 
             {/* Customers */}
-            <div className="bg-primary-600 rounded-lg p-4 border border-green-200 dark:border-green-800">
+            <div className="bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-900/30 rounded-lg p-4 border border-green-200 dark:border-green-800">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium text-green-600 dark:text-green-400 mb-1">Customers</p>
@@ -228,7 +228,7 @@ export function UsersPage() {
             </div>
 
             {/* Admins */}
-            <div className="bg-primary-600 rounded-lg p-4 border border-orange-200 dark:border-orange-800">
+            <div className="bg-gradient-to-br from-orange-50 to-orange-100 dark:from-orange-900/20 dark:to-orange-900/30 rounded-lg p-4 border border-orange-200 dark:border-orange-800">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium text-orange-600 dark:text-orange-400 mb-1">Administrators</p>
@@ -243,7 +243,7 @@ export function UsersPage() {
             </div>
 
             {/* Banned Users */}
-            <div className="bg-primary-600 rounded-lg p-4 border border-red-200 dark:border-red-800">
+            <div className="bg-gradient-to-br from-red-50 to-red-100 dark:from-red-900/20 dark:to-red-900/30 rounded-lg p-4 border border-red-200 dark:border-red-800">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium text-red-600 dark:text-red-400 mb-1">Banned Users</p>
@@ -317,7 +317,7 @@ export function UsersPage() {
               {filteredUsers.map((user) => (
                 <div key={user.id} className="p-4 sm:p-5 space-y-3">
                   <div className="flex items-center gap-3">
-                    <div className="w-11 h-11 rounded-full bg-primary-600 flex items-center justify-center text-white text-sm font-bold flex-shrink-0">
+                    <div className="w-11 h-11 rounded-full bg-gradient-to-br from-teal-500 to-orange-500 flex items-center justify-center text-white text-sm font-bold flex-shrink-0">
                       {user.name?.[0]?.toUpperCase() || 'U'}
                     </div>
                     <div className="min-w-0 flex-1">
@@ -385,13 +385,13 @@ export function UsersPage() {
                     <tr
                       key={user.id}
                       className={`border-b border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-all duration-200 ${
- index % 2 === 0 ? 'bg-white dark:bg-slate-800' : 'bg-slate-50 dark:bg-slate-700/30'
- }`}
+                        index % 2 === 0 ? 'bg-white dark:bg-slate-800' : 'bg-slate-50 dark:bg-slate-700/30'
+                      }`}
                     >
                       {/* Name */}
                       <td className="px-6 py-4">
                         <div className="flex items-center gap-3">
-                          <div className="w-10 h-10 rounded-full bg-primary-600 flex items-center justify-center text-white text-sm font-bold flex-shrink-0">
+                          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-500 to-orange-500 flex items-center justify-center text-white text-sm font-bold flex-shrink-0">
                             {user.name?.[0]?.toUpperCase() || 'U'}
                           </div>
                           <div className="min-w-0">
@@ -509,7 +509,7 @@ export function UsersPage() {
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
           <div className="bg-white dark:bg-slate-800 rounded-xl shadow-2xl max-w-md w-full border border-slate-200 dark:border-slate-700 overflow-hidden animate-in fade-in">
             {/* Modal Header */}
-            <div className="flex items-center justify-between p-6 border-b border-slate-200 dark:border-slate-700 bg-primary-600">
+            <div className="flex items-center justify-between p-6 border-b border-slate-200 dark:border-slate-700 bg-gradient-to-r from-teal-50 to-orange-50 dark:from-slate-700/50 dark:to-slate-800/50">
               <h2 className="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
                 <FiUser size={24} className="text-teal-600 dark:text-teal-400" />
                 User Details
@@ -529,7 +529,7 @@ export function UsersPage() {
             <div className="p-6 space-y-4">
               {/* User Avatar */}
               <div className="flex justify-center mb-2">
-                <div className="w-16 h-16 rounded-full bg-primary-600 flex items-center justify-center text-white text-2xl font-bold shadow-lg">
+                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-teal-500 via-orange-500 to-pink-500 flex items-center justify-center text-white text-2xl font-bold shadow-lg">
                   {selectedUser.name?.[0]?.toUpperCase() || 'U'}
                 </div>
               </div>

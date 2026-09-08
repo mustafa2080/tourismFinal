@@ -49,9 +49,9 @@ const CareersPage = () => {
 
   return (
     <MainLayout>
-      <div className="min-h-screen bg-primary-600">
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
         {/* Progress Bar */}
-        <div className="fixed top-0 left-0 h-1.5 bg-primary-600 z-50 transition-all duration-300" style={{ width: `${scrollProgress * 100}%` }}></div>
+        <div className="fixed top-0 left-0 h-1.5 bg-gradient-to-r from-teal-600 via-orange-600 to-pink-600 z-50 transition-all duration-300" style={{ width: `${scrollProgress * 100}%` }}></div>
 
         {/* Animated Background - Light Mode */}
         <div className="fixed inset-0 overflow-hidden pointer-events-none dark:hidden">
@@ -68,7 +68,7 @@ const CareersPage = () => {
         {/* Header */}
         <div className="relative pt-20 pb-32 px-4 sm:px-6 lg:px-8">
           <div className="relative max-w-4xl mx-auto text-center">
-            <div className="inline-flex items-center justify-center w-20 h-20 bg-primary-600 rounded-2xl mb-8 mx-auto shadow-lg">
+            <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-teal-600 to-orange-600 rounded-2xl mb-8 mx-auto shadow-lg">
               <Briefcase size={40} className="text-white" />
             </div>
 
@@ -260,7 +260,7 @@ const CareersPage = () => {
           </div>
 
           {/* Internships */}
-          <div className="bg-primary-600 rounded-2xl p-8 border-2 border-teal-200 dark:border-teal-800 shadow-sm hover:shadow-md transition-all mb-12">
+          <div className="bg-gradient-to-r from-teal-50 to-orange-50 dark:from-teal-950/30 dark:to-orange-950/30 rounded-2xl p-8 border-2 border-teal-200 dark:border-teal-800 shadow-sm hover:shadow-md transition-all mb-12">
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">🎓 Internships & University Programs</h2>
             <p className="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
               We offer paid internships for students interested in tech, design, or business. Real-world experience, mentorship, and potential full-time opportunities.
@@ -271,7 +271,7 @@ const CareersPage = () => {
           </div>
 
           {/* Contact */}
-          <div className="bg-primary-600 rounded-2xl p-8 border-2 border-teal-200 dark:border-teal-800 shadow-sm hover:shadow-md transition-all">
+          <div className="bg-gradient-to-r from-teal-50 to-orange-50 dark:from-teal-950/30 dark:to-orange-950/30 rounded-2xl p-8 border-2 border-teal-200 dark:border-teal-800 shadow-sm hover:shadow-md transition-all">
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">📧 Questions?</h2>
             <div className="space-y-3">
               <p className="text-gray-700 dark:text-gray-300"><strong className="text-gray-900 dark:text-white">Email:</strong> careers@tourhub.com</p>

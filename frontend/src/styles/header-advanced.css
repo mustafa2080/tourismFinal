@@ -143,7 +143,7 @@ html.dark-mode-transitioning * {
   content: '';
   position: absolute;
   inset: 0;
-  background: #0d9488;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(168, 85, 247, 0.1));
   opacity: 0;
   transition: opacity 0.3s ease;
   z-index: -1;
@@ -155,7 +155,7 @@ html.dark-mode-transitioning * {
 
 .login-button:hover {
   border-color: rgba(59, 130, 246, 0.2);
-  background: #0d9488;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), rgba(168, 85, 247, 0.05));
 }
 
 /* Sign Up Button Gradient Animation */
@@ -214,13 +214,13 @@ html.dark-mode-transitioning * {
   content: '';
   position: absolute;
   inset: 0;
-  background: #0d9488;
+  background: linear-gradient(135deg, rgba(251, 191, 36, 0.1), rgba(244, 63, 94, 0.1));
   opacity: 0;
   transition: opacity 0.3s ease;
 }
 
 html.dark .theme-toggle::before {
-  background: #0d9488;
+  background: linear-gradient(135deg, rgba(96, 165, 250, 0.1), rgba(139, 92, 246, 0.1));
 }
 
 .theme-toggle:hover::before {
@@ -287,19 +287,19 @@ header {
 
 /* Avatar Gradient Animation */
 .avatar-gradient {
-  background: #0d9488;
+  background: linear-gradient(135deg, #3b82f6, #a855f7, #ec4899);
   background-size: 200% 200%;
   animation: gradientShift 6s ease infinite;
 }
 
 /* Divider Animation */
 .auth-divider {
-  background: #0d9488;
+  background: linear-gradient(90deg, transparent, var(--color-border), transparent);
   transition: background 0.3s ease;
 }
 
 html.dark .auth-divider {
-  background: #0d9488;
+  background: linear-gradient(90deg, transparent, var(--color-border), transparent);
 }
 
 /* Mobile Menu Container */
@@ -378,7 +378,7 @@ a:focus-visible {
   left: 0;
   width: 100%;
   height: 2px;
-  background: #0d9488;
+  background: linear-gradient(90deg, var(--color-blue-600), var(--color-purple-600));
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);

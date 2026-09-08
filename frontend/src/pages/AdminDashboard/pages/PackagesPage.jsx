@@ -837,7 +837,7 @@ function PackagesPage() {
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <div>
           <h1 className="text-2xl sm:text-3xl lg:text-5xl font-bold text-slate-900 dark:text-white flex items-center gap-3">
-            <div className="p-2 sm:p-3 bg-primary-600 rounded-xl shadow-lg flex-shrink-0">
+            <div className="p-2 sm:p-3 bg-gradient-to-br from-orange-500 to-red-600 rounded-xl shadow-lg flex-shrink-0">
               <MdTour className="text-white" size={24} />
             </div>
             Manage Packages
@@ -848,7 +848,7 @@ function PackagesPage() {
         </div>
         <button
           onClick={handleCreatePackage}
-          className="flex items-center justify-center gap-2 px-6 py-3 bg-primary-600 text-white rounded-xl hover:shadow-lg transition-all font-semibold shadow-lg transform hover:scale-105"
+          className="flex items-center justify-center gap-2 px-6 py-3 bg-primary-600 text-white rounded-xl hover:shadow-lg transition-all font-semibold shadow-lg transform hover:scale-105 "
         >
           <FiPlus size={22} />
           <span>Add New Package</span>
@@ -857,7 +857,7 @@ function PackagesPage() {
 
       {/* Statistics Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div className="bg-primary-600 rounded-2xl p-6 border border-teal-200 dark:border-teal-700/50 shadow-lg hover:shadow-xl transition-all">
+        <div className="bg-gradient-to-br from-teal-50 to-teal-100 dark:from-teal-900/20 dark:to-teal-800/20 rounded-2xl p-6 border border-teal-200 dark:border-teal-700/50 shadow-lg hover:shadow-xl transition-all">
           <div className="flex items-center justify-between mb-2">
             <p className="text-teal-600 dark:text-teal-400 text-sm font-bold uppercase tracking-wide">Total Packages</p>
             <MdTour className="text-teal-600 dark:text-teal-400" size={24} />
@@ -866,7 +866,7 @@ function PackagesPage() {
           <p className="text-xs text-teal-600 dark:text-teal-400 mt-2">All available packages</p>
         </div>
 
-        <div className="bg-primary-600 rounded-2xl p-6 border border-yellow-200 dark:border-yellow-700/50 shadow-lg hover:shadow-xl transition-all">
+        <div className="bg-gradient-to-br from-yellow-50 to-yellow-100 dark:from-yellow-900/20 dark:to-yellow-800/20 rounded-2xl p-6 border border-yellow-200 dark:border-yellow-700/50 shadow-lg hover:shadow-xl transition-all">
           <div className="flex items-center justify-between mb-2">
             <p className="text-yellow-600 dark:text-yellow-400 text-sm font-bold uppercase tracking-wide">Featured Packages</p>
             <FiTag className="text-yellow-600 dark:text-yellow-400" size={24} />
@@ -875,7 +875,7 @@ function PackagesPage() {
           <p className="text-xs text-yellow-600 dark:text-yellow-400 mt-2">Featured packages</p>
         </div>
 
-        <div className="bg-primary-600 rounded-2xl p-6 border border-green-200 dark:border-green-700/50 shadow-lg hover:shadow-xl transition-all">
+        <div className="bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20 rounded-2xl p-6 border border-green-200 dark:border-green-700/50 shadow-lg hover:shadow-xl transition-all">
           <div className="flex items-center justify-between mb-2">
             <p className="text-green-600 dark:text-green-400 text-sm font-bold uppercase tracking-wide">Average Price</p>
             <FiDollarSign className="text-green-600 dark:text-green-400" size={24} />
@@ -884,7 +884,7 @@ function PackagesPage() {
           <p className="text-xs text-green-600 dark:text-green-400 mt-2">Average price</p>
         </div>
 
-        <div className="bg-primary-600 rounded-2xl p-6 border border-orange-200 dark:border-orange-700/50 shadow-lg hover:shadow-xl transition-all">
+        <div className="bg-gradient-to-br from-orange-50 to-orange-100 dark:from-orange-900/20 dark:to-orange-800/20 rounded-2xl p-6 border border-orange-200 dark:border-orange-700/50 shadow-lg hover:shadow-xl transition-all">
           <div className="flex items-center justify-between mb-2">
             <p className="text-orange-600 dark:text-orange-400 text-sm font-bold uppercase tracking-wide">Average Rating</p>
             <FiStar className="text-orange-600 dark:text-orange-400" size={24} />
@@ -895,7 +895,7 @@ function PackagesPage() {
       </div>
 
       {/* Filters Section */}
-      <div className="bg-primary-600 rounded-2xl shadow-lg p-6 border border-slate-200 dark:border-slate-700">
+      <div className="bg-gradient-to-r from-white to-slate-50 dark:from-slate-800 dark:to-slate-700 rounded-2xl shadow-lg p-6 border border-slate-200 dark:border-slate-700">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
           <div className="relative md:col-span-2">
             <FiSearch className="absolute left-4 top-3.5 text-slate-400 dark:text-slate-500" size={20} />
@@ -928,20 +928,20 @@ function PackagesPage() {
           <button
             onClick={() => setFilterFeatured('all')}
             className={`px-4 py-2 rounded-lg font-semibold transition-all text-sm ${
- filterFeatured === 'all'
- ? 'bg-teal-600 text-white shadow-lg'
- : 'bg-slate-200 dark:bg-slate-600 text-slate-900 dark:text-white hover:bg-slate-300 dark:hover:bg-slate-500'
- }`}
+              filterFeatured === 'all'
+                ? 'bg-teal-600 text-white shadow-lg'
+                : 'bg-slate-200 dark:bg-slate-600 text-slate-900 dark:text-white hover:bg-slate-300 dark:hover:bg-slate-500'
+            }`}
           >
             All
           </button>
           <button
             onClick={() => setFilterFeatured('featured')}
             className={`px-4 py-2 rounded-lg font-semibold transition-all text-sm flex items-center gap-2 ${
- filterFeatured === 'featured'
- ? 'bg-yellow-500 text-white shadow-lg'
- : 'bg-slate-200 dark:bg-slate-600 text-slate-900 dark:text-white hover:bg-slate-300 dark:hover:bg-slate-500'
- }`}
+              filterFeatured === 'featured'
+                ? 'bg-yellow-500 text-white shadow-lg'
+                : 'bg-slate-200 dark:bg-slate-600 text-slate-900 dark:text-white hover:bg-slate-300 dark:hover:bg-slate-500'
+            }`}
           >
             <FiTag size={16} />
             Featured
@@ -949,10 +949,10 @@ function PackagesPage() {
           <button
             onClick={() => setFilterFeatured('regular')}
             className={`px-4 py-2 rounded-lg font-semibold transition-all text-sm ${
- filterFeatured === 'regular'
- ? 'bg-slate-600 text-white shadow-lg'
- : 'bg-slate-200 dark:bg-slate-600 text-slate-900 dark:text-white hover:bg-slate-300 dark:hover:bg-slate-500'
- }`}
+              filterFeatured === 'regular'
+                ? 'bg-slate-600 text-white shadow-lg'
+                : 'bg-slate-200 dark:bg-slate-600 text-slate-900 dark:text-white hover:bg-slate-300 dark:hover:bg-slate-500'
+            }`}
           >
             Regular
           </button>
@@ -981,7 +981,7 @@ function PackagesPage() {
               key={pkg.id}
               className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-700 overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 group"
             >
-              <div className="relative h-48 bg-primary-600 overflow-hidden">
+              <div className="relative h-48 bg-gradient-to-br from-teal-400 to-teal-600 overflow-hidden">
                 {pkg.images && pkg.images.length > 0 ? (
                   <img 
                     src={(() => {
@@ -1102,7 +1102,7 @@ function PackagesPage() {
           <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl max-w-2xl w-full border border-slate-200 dark:border-slate-700 overflow-hidden max-h-[90vh] overflow-y-auto">
             
             {/* Modal Header */}
-            <div className="flex items-center justify-between p-4 sm:p-6 lg:p-8 bg-primary-600 text-white sticky top-0 z-10">
+            <div className="flex items-center justify-between p-4 sm:p-6 lg:p-8 bg-gradient-to-r from-teal-600 to-orange-600 text-white sticky top-0 z-10">
               <div className="flex items-center gap-3 min-w-0">
                 <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-white/20 flex items-center justify-center backdrop-blur-sm flex-shrink-0">
                   <MdTour size={22} />

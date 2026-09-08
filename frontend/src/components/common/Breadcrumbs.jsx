@@ -34,8 +34,8 @@ const Breadcrumbs = ({
             {item.href || item.onClick ? (
               <button
                 className={`breadcrumbs-link ${
- item.active ? 'active' : ''
- } ${item.disabled ? 'disabled' : ''}`}
+                  item.active ? 'active' : ''
+                } ${item.disabled ? 'disabled' : ''}`}
                 onClick={() => handleItemClick(item, index)}
                 disabled={item.disabled}
                 aria-current={item.active ? 'page' : undefined}
@@ -48,8 +48,8 @@ const Breadcrumbs = ({
             ) : (
               <span
                 className={`breadcrumbs-text ${
- item.active ? 'active' : ''
- }`}
+                  item.active ? 'active' : ''
+                }`}
               >
                 {item.icon && (
                   <span className="breadcrumbs-icon">{item.icon}</span>

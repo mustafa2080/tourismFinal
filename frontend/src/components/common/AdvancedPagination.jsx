@@ -96,12 +96,12 @@ const AdvancedPagination = ({
               onClick={() => handlePageClick(page)}
               disabled={page === '...' || disabled}
               className={`w-10 h-10 rounded-lg font-semibold transition ${
- page === currentPage
- ? 'bg-teal-600 text-white shadow-lg'
- : page === '...'
- ? 'cursor-default text-gray-500'
- : 'hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-900 dark:text-white'
- }`}
+                page === currentPage
+                  ? 'bg-teal-600 text-white shadow-lg'
+                  : page === '...'
+                  ? 'cursor-default text-gray-500'
+                  : 'hover:bg-gray-100 dark:hover:bg-slate-700 text-gray-900 dark:text-white'
+              }`}
               aria-current={page === currentPage ? 'page' : undefined}
             >
               {page}
@@ -175,7 +175,7 @@ const AdvancedPagination = ({
     <div className={`space-y-6 ${className}`}>
       {/* Info Row */}
       {showItemsInfo && totalItems > 0 && (
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 px-4 py-3 bg-primary-600 rounded-lg border border-teal-200 dark:border-slate-600">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 px-4 py-3 bg-gradient-to-r from-teal-50 to-orange-50 dark:from-slate-800 dark:to-slate-700/50 rounded-lg border border-teal-200 dark:border-slate-600">
           <div className="text-sm text-gray-700 dark:text-slate-300">
             Showing <span className="font-bold text-teal-600 dark:text-teal-400">{startItem}</span> to{' '}
             <span className="font-bold text-teal-600 dark:text-teal-400">{endItem}</span> of{' '}
@@ -221,12 +221,12 @@ const AdvancedPagination = ({
               onClick={() => handlePageClick(page)}
               disabled={page === '...' || disabled}
               className={`w-10 h-10 rounded-lg font-semibold transition-all transform ${
- page === currentPage
- ? 'bg-primary-600 text-white shadow-lg shadow-teal-400/50 scale-110'
- : page === '...'
- ? 'cursor-default text-gray-400 dark:text-slate-500'
- : 'bg-white dark:bg-slate-800 border border-gray-300 dark:border-slate-600 text-gray-900 dark:text-white hover:border-teal-500 dark:hover:border-teal-400 hover:text-teal-600 dark:hover:text-teal-400 hover:shadow-md'
- }`}
+                page === currentPage
+                  ? 'bg-gradient-to-br from-teal-600 to-orange-600 text-white shadow-lg shadow-teal-400/50 scale-110'
+                  : page === '...'
+                  ? 'cursor-default text-gray-400 dark:text-slate-500'
+                  : 'bg-white dark:bg-slate-800 border border-gray-300 dark:border-slate-600 text-gray-900 dark:text-white hover:border-teal-500 dark:hover:border-teal-400 hover:text-teal-600 dark:hover:text-teal-400 hover:shadow-md'
+              }`}
               aria-current={page === currentPage ? 'page' : undefined}
             >
               {page}

@@ -157,10 +157,10 @@ export function MyProfilePage() {
         <button
           onClick={editing ? handleCancel : handleEditClick}
           className={`flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all shadow-md ${
- editing
- ? 'bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600'
- : 'bg-teal-600 text-white hover:bg-teal-700'
- }`}
+            editing
+              ? 'bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600'
+              : 'bg-teal-600 text-white hover:bg-teal-700'
+          }`}
         >
           {editing ? (
             <>
@@ -178,11 +178,11 @@ export function MyProfilePage() {
 
       {/* Main Profile Card */}
       <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
-        <div className="bg-primary-600 px-6 md:px-8 py-8">
+        <div className="bg-gradient-to-r from-teal-50 to-orange-50 dark:from-slate-700 dark:to-slate-600 px-6 md:px-8 py-8">
           <div className="flex flex-col md:flex-row items-center gap-6">
             {/* Avatar */}
             <div className="relative group">
-              <div className="w-24 h-24 rounded-full bg-primary-600 flex items-center justify-center text-white text-4xl font-bold shadow-lg flex-shrink-0 overflow-hidden">
+              <div className="w-24 h-24 rounded-full bg-gradient-to-br from-teal-500 to-orange-600 flex items-center justify-center text-white text-4xl font-bold shadow-lg flex-shrink-0 overflow-hidden">
                 {avatarPreview ? (
                   <img 
                     src={avatarPreview} 
@@ -349,7 +349,7 @@ export function MyProfilePage() {
 
       {/* Additional Info Card */}
       <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
-        <div className="bg-primary-600 px-6 md:px-8 py-5 border-b border-slate-200 dark:border-slate-700">
+        <div className="bg-gradient-to-r from-orange-50 to-pink-50 dark:from-slate-700 dark:to-slate-600 px-6 md:px-8 py-5 border-b border-slate-200 dark:border-slate-700">
           <h3 className="text-xl font-bold text-slate-900 dark:text-white">{t('dashboard.profile.accountStatus')}</h3>
         </div>
         <div className="p-6 md:p-8 space-y-4">

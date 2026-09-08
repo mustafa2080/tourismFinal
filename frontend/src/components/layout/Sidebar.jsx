@@ -145,7 +145,7 @@ const Sidebar = ({ isAdmin = false }) => {
       {/* Mobile Sidebar Toggle Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 z-50 lg:hidden p-3 rounded-full bg-primary-600 text-white shadow-lg hover:shadow-xl transition-all"
+        className="fixed bottom-6 right-6 z-50 lg:hidden p-3 rounded-full bg-gradient-to-br from-teal-500 to-orange-600 text-white shadow-lg hover:shadow-xl transition-all"
         aria-label="Toggle sidebar"
       >
         {isOpen ? <FiX size={24} /> : <FiMenu size={24} />}
@@ -162,8 +162,8 @@ const Sidebar = ({ isAdmin = false }) => {
       {/* Sidebar */}
       <aside
         className={`fixed lg:static left-0 top-16 lg:top-0 z-40 w-64 h-[calc(100vh-4rem)] lg:h-screen bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-700 transition-transform duration-300 lg:translate-x-0 overflow-y-auto ${
- isOpen ? 'translate-x-0' : '-translate-x-full'
- }`}
+          isOpen ? 'translate-x-0' : '-translate-x-full'
+        }`}
       >
         <nav className="p-4 space-y-2">
           {menus.map((item) => (
@@ -172,10 +172,10 @@ const Sidebar = ({ isAdmin = false }) => {
               <button
                 onClick={() => handleMenuClick(item)}
                 className={`w-full flex items-center justify-between px-4 py-3 rounded-lg font-medium transition-all duration-200 ${
- isActive(item.path, item.exact)
- ? 'bg-primary-600 text-teal-600 dark:text-teal-400 border-l-2 border-teal-600'
- : 'text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800'
- }`}
+                  isActive(item.path, item.exact)
+                    ? 'bg-gradient-to-r from-teal-500/10 to-orange-600/10 text-teal-600 dark:text-teal-400 border-l-2 border-teal-600'
+                    : 'text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800'
+                }`}
               >
                 <div className="flex items-center gap-3">
                   <item.icon size={20} />
@@ -185,8 +185,8 @@ const Sidebar = ({ isAdmin = false }) => {
                   <FiChevronRight
                     size={18}
                     className={`transition-transform ${
- expandedMenu === item.path ? 'rotate-90' : ''
- }`}
+                      expandedMenu === item.path ? 'rotate-90' : ''
+                    }`}
                   />
                 )}
               </button>
@@ -199,10 +199,10 @@ const Sidebar = ({ isAdmin = false }) => {
                       key={subitem.path}
                       onClick={() => navigate(subitem.path)}
                       className={`w-full flex items-center gap-3 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
- isActive(subitem.path)
- ? 'text-teal-600 dark:text-teal-400 bg-teal-50 dark:bg-teal-900/20'
- : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200'
- }`}
+                        isActive(subitem.path)
+                          ? 'text-teal-600 dark:text-teal-400 bg-teal-50 dark:bg-teal-900/20'
+                          : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200'
+                      }`}
                     >
                       <span className="w-2 h-2 rounded-full bg-current" />
                       {subitem.label}

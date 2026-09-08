@@ -305,7 +305,7 @@ const CustomTripPage = () => {
             <div className="flex flex-col sm:flex-row gap-3">
               <button
                 onClick={() => navigate(isAuthenticated ? '/dashboard' : '/')}
-                className="flex-1 px-5 py-2.5 bg-primary-600 text-white font-semibold rounded-xl transition-all"
+                className="flex-1 px-5 py-2.5 bg-gradient-to-r from-teal-600 to-orange-600 hover:from-teal-700 hover:to-orange-700 text-white font-semibold rounded-xl transition-all"
               >
                 {isAuthenticated ? 'Go to Dashboard' : 'Back to Home'}
               </button>
@@ -328,7 +328,7 @@ const CustomTripPage = () => {
       <Header />
 
       {/* Hero */}
-      <section className="relative pt-10 pb-8 px-4 sm:px-6 lg:px-8 bg-primary-600">
+      <section className="relative pt-10 pb-8 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-teal-600 to-orange-600 dark:from-teal-800 dark:to-orange-900">
         <div className="max-w-3xl mx-auto text-center text-white">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/15 text-sm font-semibold mb-3">
             <FiCompass size={14} />
@@ -353,19 +353,19 @@ const CustomTripPage = () => {
                 <div className="flex flex-col items-center gap-1">
                   <div
                     className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold transition-all ${
- step === s.id
- ? 'bg-primary-600 text-white shadow-md'
- : step > s.id
- ? 'bg-emerald-500 text-white'
- : 'bg-slate-100 dark:bg-slate-700 text-slate-400 dark:text-slate-500'
- }`}
+                      step === s.id
+                        ? 'bg-gradient-to-r from-teal-600 to-orange-600 text-white shadow-md'
+                        : step > s.id
+                        ? 'bg-emerald-500 text-white'
+                        : 'bg-slate-100 dark:bg-slate-700 text-slate-400 dark:text-slate-500'
+                    }`}
                   >
                     {step > s.id ? <FiCheckCircle size={16} /> : s.id}
                   </div>
                   <span
                     className={`text-[11px] font-medium hidden sm:block ${
- step === s.id ? 'text-teal-600 dark:text-teal-400' : 'text-slate-400 dark:text-slate-500'
- }`}
+                      step === s.id ? 'text-teal-600 dark:text-teal-400' : 'text-slate-400 dark:text-slate-500'
+                    }`}
                   >
                     {s.label}
                   </span>
@@ -373,8 +373,8 @@ const CustomTripPage = () => {
                 {idx < STEPS.length - 1 && (
                   <div
                     className={`flex-1 h-0.5 mx-2 rounded-full transition-all ${
- step > s.id ? 'bg-emerald-500' : 'bg-slate-200 dark:bg-slate-700'
- }`}
+                      step > s.id ? 'bg-emerald-500' : 'bg-slate-200 dark:bg-slate-700'
+                    }`}
                   />
                 )}
               </div>
@@ -389,7 +389,7 @@ const CustomTripPage = () => {
         {step === 1 && (
           <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 p-6 sm:p-8">
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 rounded-lg bg-primary-600 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-teal-500 to-orange-600 flex items-center justify-center">
                 <FiMapPin size={18} className="text-white" />
               </div>
               <div>
@@ -415,10 +415,10 @@ const CustomTripPage = () => {
                           type="button"
                           onClick={() => { setDestination(name); setUseCustomDestination(false); }}
                           className={`px-4 py-3 rounded-xl text-sm font-semibold border-2 transition-all text-left ${
- active
- ? 'border-teal-600 bg-teal-50 dark:bg-teal-900/20 text-teal-700 dark:text-teal-300'
- : 'border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-teal-300 dark:hover:border-teal-700'
- }`}
+                            active
+                              ? 'border-teal-600 bg-teal-50 dark:bg-teal-900/20 text-teal-700 dark:text-teal-300'
+                              : 'border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-teal-300 dark:hover:border-teal-700'
+                          }`}
                         >
                           {name}
                         </button>
@@ -443,8 +443,8 @@ const CustomTripPage = () => {
                   onFocus={() => setUseCustomDestination(true)}
                   placeholder="e.g. Santorini, Greece"
                   className={`w-full px-4 py-3 rounded-xl border-2 bg-white dark:bg-slate-900 text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none transition-all ${
- errors.destination ? 'border-red-400' : 'border-slate-200 dark:border-slate-700 focus:border-teal-500'
- }`}
+                    errors.destination ? 'border-red-400' : 'border-slate-200 dark:border-slate-700 focus:border-teal-500'
+                  }`}
                 />
                 {errors.destination && (
                   <p className="text-sm text-red-500 mt-2">{errors.destination}</p>
@@ -459,7 +459,7 @@ const CustomTripPage = () => {
           <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 p-6 sm:p-8 space-y-8">
             <div>
               <div className="flex items-center gap-3 mb-5">
-                <div className="w-10 h-10 rounded-lg bg-primary-600 flex items-center justify-center">
+                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-teal-500 to-orange-600 flex items-center justify-center">
                   <FiCalendar size={18} className="text-white" />
                 </div>
                 <h2 className="text-lg font-bold text-slate-900 dark:text-white">When are you traveling?</h2>
@@ -473,8 +473,8 @@ const CustomTripPage = () => {
                     min={new Date().toISOString().split('T')[0]}
                     onChange={(e) => setDateStart(e.target.value)}
                     className={`w-full px-4 py-2.5 rounded-xl border-2 bg-white dark:bg-slate-900 text-slate-900 dark:text-white focus:outline-none ${
- errors.dateStart ? 'border-red-400' : 'border-slate-200 dark:border-slate-700 focus:border-teal-500'
- }`}
+                      errors.dateStart ? 'border-red-400' : 'border-slate-200 dark:border-slate-700 focus:border-teal-500'
+                    }`}
                   />
                   {errors.dateStart && <p className="text-sm text-red-500 mt-1.5">{errors.dateStart}</p>}
                 </div>
@@ -486,8 +486,8 @@ const CustomTripPage = () => {
                     min={dateStart || new Date().toISOString().split('T')[0]}
                     onChange={(e) => setDateEnd(e.target.value)}
                     className={`w-full px-4 py-2.5 rounded-xl border-2 bg-white dark:bg-slate-900 text-slate-900 dark:text-white focus:outline-none ${
- errors.dateEnd ? 'border-red-400' : 'border-slate-200 dark:border-slate-700 focus:border-teal-500'
- }`}
+                      errors.dateEnd ? 'border-red-400' : 'border-slate-200 dark:border-slate-700 focus:border-teal-500'
+                    }`}
                   />
                   {errors.dateEnd && <p className="text-sm text-red-500 mt-1.5">{errors.dateEnd}</p>}
                 </div>
@@ -499,7 +499,7 @@ const CustomTripPage = () => {
 
             <div>
               <div className="flex items-center gap-3 mb-5">
-                <div className="w-10 h-10 rounded-lg bg-primary-600 flex items-center justify-center">
+                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-teal-500 to-orange-600 flex items-center justify-center">
                   <FiUsers size={18} className="text-white" />
                 </div>
                 <h2 className="text-lg font-bold text-slate-900 dark:text-white">Who's traveling?</h2>
@@ -548,10 +548,10 @@ const CustomTripPage = () => {
                     type="button"
                     onClick={() => setBudgetTier(tier.id)}
                     className={`px-3 py-3 rounded-xl border-2 text-center transition-all ${
- budgetTier === tier.id
- ? 'border-teal-600 bg-teal-50 dark:bg-teal-900/20'
- : 'border-slate-200 dark:border-slate-700 hover:border-teal-300'
- }`}
+                      budgetTier === tier.id
+                        ? 'border-teal-600 bg-teal-50 dark:bg-teal-900/20'
+                        : 'border-slate-200 dark:border-slate-700 hover:border-teal-300'
+                    }`}
                   >
                     <div className="text-xl mb-1">{tier.emoji}</div>
                     <div className="text-xs font-bold text-slate-900 dark:text-white">{tier.label}</div>
@@ -569,10 +569,10 @@ const CustomTripPage = () => {
                     type="button"
                     onClick={() => setPace(p.id)}
                     className={`px-3 py-3 rounded-xl border-2 text-center transition-all ${
- pace === p.id
- ? 'border-teal-600 bg-teal-50 dark:bg-teal-900/20'
- : 'border-slate-200 dark:border-slate-700 hover:border-teal-300'
- }`}
+                      pace === p.id
+                        ? 'border-teal-600 bg-teal-50 dark:bg-teal-900/20'
+                        : 'border-slate-200 dark:border-slate-700 hover:border-teal-300'
+                    }`}
                   >
                     <div className="text-xl mb-1">{p.emoji}</div>
                     <div className="text-xs font-bold text-slate-900 dark:text-white">{p.label}</div>
@@ -590,10 +590,10 @@ const CustomTripPage = () => {
                     type="button"
                     onClick={() => toggleInterest(tag)}
                     className={`px-3.5 py-2 rounded-full text-sm font-medium border-2 transition-all ${
- interests.includes(tag)
- ? 'border-teal-600 bg-teal-600 text-white'
- : 'border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:border-teal-300'
- }`}
+                      interests.includes(tag)
+                        ? 'border-teal-600 bg-teal-600 text-white'
+                        : 'border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:border-teal-300'
+                    }`}
                   >
                     {tag}
                   </button>
@@ -608,7 +608,7 @@ const CustomTripPage = () => {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             <div className="lg:col-span-2 bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 p-6 sm:p-8">
               <div className="flex items-center gap-3 mb-5">
-                <div className="w-10 h-10 rounded-lg bg-primary-600 flex items-center justify-center">
+                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-teal-500 to-orange-600 flex items-center justify-center">
                   <FiEdit3 size={18} className="text-white" />
                 </div>
                 <div>
@@ -627,10 +627,10 @@ const CustomTripPage = () => {
                       type="button"
                       onClick={() => setActiveItemType(type)}
                       className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-semibold whitespace-nowrap transition-all ${
- activeItemType === type
- ? 'bg-primary-600 text-white shadow-sm'
- : 'bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600'
- }`}
+                        activeItemType === type
+                          ? 'bg-gradient-to-r from-teal-600 to-orange-600 text-white shadow-sm'
+                          : 'bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600'
+                      }`}
                     >
                       <Icon size={15} />
                       {meta.label}
@@ -663,8 +663,8 @@ const CustomTripPage = () => {
                       <div
                         key={opt.id}
                         className={`rounded-xl border-2 overflow-hidden transition-all ${
- selected ? 'border-teal-500 ring-2 ring-teal-100 dark:ring-teal-900/30' : 'border-slate-200 dark:border-slate-700'
- }`}
+                          selected ? 'border-teal-500 ring-2 ring-teal-100 dark:ring-teal-900/30' : 'border-slate-200 dark:border-slate-700'
+                        }`}
                       >
                         {opt.image && (
                           <img src={opt.image} alt={opt.name} className="w-full h-32 object-cover" loading="lazy" />
@@ -708,8 +708,8 @@ const CustomTripPage = () => {
                         type="button"
                         onClick={() => setDisplayCurrency(c)}
                         className={`px-2.5 py-1 rounded-full text-[11px] font-bold transition-all ${
- displayCurrency === c ? 'bg-teal-600 text-white' : 'text-slate-500 dark:text-slate-400'
- }`}
+                          displayCurrency === c ? 'bg-teal-600 text-white' : 'text-slate-500 dark:text-slate-400'
+                        }`}
                       >
                         {c}
                       </button>
@@ -764,7 +764,7 @@ const CustomTripPage = () => {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             <div className="lg:col-span-2 bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 p-6 sm:p-8">
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 rounded-lg bg-primary-600 flex items-center justify-center">
+                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-teal-500 to-orange-600 flex items-center justify-center">
                   <FiSend size={18} className="text-white" />
                 </div>
                 <h2 className="text-lg font-bold text-slate-900 dark:text-white">Almost there</h2>
@@ -785,8 +785,8 @@ const CustomTripPage = () => {
                     onChange={(e) => setContactName(e.target.value)}
                     placeholder="Your name"
                     className={`w-full px-4 py-2.5 rounded-xl border-2 bg-white dark:bg-slate-900 text-slate-900 dark:text-white focus:outline-none ${
- errors.contactName ? 'border-red-400' : 'border-slate-200 dark:border-slate-700 focus:border-teal-500'
- }`}
+                      errors.contactName ? 'border-red-400' : 'border-slate-200 dark:border-slate-700 focus:border-teal-500'
+                    }`}
                   />
                   {errors.contactName && <p className="text-sm text-red-500 mt-1.5">{errors.contactName}</p>}
                 </div>
@@ -799,8 +799,8 @@ const CustomTripPage = () => {
                       onChange={(e) => setContactEmail(e.target.value)}
                       placeholder="you@example.com"
                       className={`w-full px-4 py-2.5 rounded-xl border-2 bg-white dark:bg-slate-900 text-slate-900 dark:text-white focus:outline-none ${
- errors.contactEmail ? 'border-red-400' : 'border-slate-200 dark:border-slate-700 focus:border-teal-500'
- }`}
+                        errors.contactEmail ? 'border-red-400' : 'border-slate-200 dark:border-slate-700 focus:border-teal-500'
+                      }`}
                     />
                     {errors.contactEmail && <p className="text-sm text-red-500 mt-1.5">{errors.contactEmail}</p>}
                   </div>
