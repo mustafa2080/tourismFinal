@@ -18,7 +18,7 @@ const ImageSlider = () => {
       subtitle: 'Experience pristine beaches and crystal clear waters',
       image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&h=600&fit=crop',
       category: 'Beach',
-      color: 'from-teal-500 to-teal-600',
+      color: ' ',
     },
     {
       id: 2,
@@ -26,7 +26,7 @@ const ImageSlider = () => {
       subtitle: 'Discover breathtaking peaks and thrilling trails',
       image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&h=600&fit=crop',
       category: 'Adventure',
-      color: 'from-green-500 to-emerald-600',
+      color: ' ',
     },
     {
       id: 3,
@@ -34,7 +34,7 @@ const ImageSlider = () => {
       subtitle: 'Explore ancient ruins and rich traditions',
       image: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=1200&h=600&fit=crop',
       category: 'Cultural',
-      color: 'from-amber-500 to-orange-600',
+      color: ' ',
     },
     {
       id: 4,
@@ -42,7 +42,7 @@ const ImageSlider = () => {
       subtitle: 'Feel the magic of endless golden dunes',
       image: 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=1200&h=600&fit=crop',
       category: 'Desert',
-      color: 'from-yellow-500 to-amber-600',
+      color: ' ',
     },
     {
       id: 5,
@@ -50,7 +50,7 @@ const ImageSlider = () => {
       subtitle: 'Discover vibrant cities and modern wonders',
       image: 'https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=1200&h=600&fit=crop',
       category: 'City',
-      color: 'from-orange-500 to-pink-600',
+      color: ' ',
     },
     {
       id: 6,
@@ -58,7 +58,7 @@ const ImageSlider = () => {
       subtitle: 'Immerse yourself in nature and wildlife',
       image: 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=1200&h=600&fit=crop',
       category: 'Nature',
-      color: 'from-teal-500 to-green-600',
+      color: ' ',
     },
   ];
 
@@ -115,7 +115,7 @@ const ImageSlider = () => {
                 className="w-full h-full object-cover"
               />
               {/* Gradient Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent"></div>
+              <div className="absolute inset-0 bg-[#ED9A58] "></div>
             </div>
           </div>
         ))}
@@ -130,7 +130,7 @@ const ImageSlider = () => {
         <div className="max-w-2xl">
           {/* Category Badge */}
           <div className="inline-flex items-center gap-2 mb-4 px-4 py-2 bg-white/20 backdrop-blur-sm border border-white/30 rounded-full">
-            <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${slide.color}`}></div>
+            <div className={`w-2 h-2 rounded-full bg-[#ED9A58] ${slide.color}`}></div>
             <span className="text-sm font-bold text-white uppercase tracking-widest">
               {slide.category}
             </span>
@@ -205,7 +205,7 @@ const ImageSlider = () => {
       {/* Progress Bar */}
       <div className="absolute bottom-0 left-0 h-1 bg-white/20 w-full">
         <div
-          className={`h-full bg-gradient-to-r from-teal-600 to-orange-600 transition-all duration-300`}
+          className={`h-full bg-[#ED9A58] transition-all duration-300`}
           style={{
             width: `${((currentSlide + 1) / slides.length) * 100}%`,
           }}
@@ -213,7 +213,7 @@ const ImageSlider = () => {
       </div>
 
       {/* Thumbnail Strip */}
-      <div className="absolute left-0 right-0 bottom-0 z-10 bg-gradient-to-t from-black/60 to-transparent p-6 hidden lg:flex gap-3 justify-center overflow-x-auto">
+      <div className="absolute left-0 right-0 bottom-0 z-10 bg-[#ED9A58] p-6 hidden lg:flex gap-3 justify-center overflow-x-auto">
         {slides.map((s, index) => (
           <button
             key={s.id}

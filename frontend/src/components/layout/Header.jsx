@@ -351,50 +351,50 @@ const Header = () => {
                   {unreadCount > 0 && (
                     <span className="absolute top-0 right-0 flex items-center justify-center w-5 h-5 text-xs font-bold text-white bg-red-500 rounded-full animate-pulse ring-2 ring-white dark:ring-slate-800">
                       {unreadCount > 9 ? '9+' : unreadCount}
-                    </span>
-                  )}
-                </button>
+ </span>
+ )}
+ </button>
 
-                {notificationsOpen && createPortal(
-                  <>
-                    <div
-                      className="fixed inset-0 z-[9998]"
-                      onClick={() => setNotificationsOpen(false)}
-                    />
-                    <div
-                      className="fixed w-80 bg-white dark:bg-slate-800 rounded-xl shadow-2xl shadow-slate-900/10 dark:shadow-black/40 border border-slate-200/80 dark:border-slate-700/80 overflow-hidden z-[9999] animate-in fade-in slide-in-from-top-2 duration-200"
-                      style={{ top: notifMenuPosition.top, right: notifMenuPosition.right }}
-                    >
-                    <div className="px-4 py-3 border-b border-slate-200 dark:border-slate-700 bg-gradient-to-r from-teal-50 to-orange-50 dark:from-slate-900 dark:to-slate-800">
-                      <div className="flex items-center justify-between">
-                        <h3 className="font-semibold text-slate-900 dark:text-white text-sm">Notifications</h3>
-                        {unreadCount > 0 && (
-                          <span className="text-xs bg-red-500 text-white px-2 py-1 rounded-full font-medium">
-                            {unreadCount} new
-                          </span>
-                        )}
-                      </div>
-                    </div>
-                    <div className="max-h-72 overflow-y-auto">
-                      {loadingNotifications ? (
-                        <div className="px-4 py-8 text-center">
-                          <div className="inline-block w-6 h-6 border-2 border-teal-500 border-t-transparent rounded-full animate-spin"></div>
-                        </div>
-                      ) : notifications.length > 0 ? (
-                        notifications.map((notif, idx) => (
-                          <div 
-                            key={notif.id || idx}
-                            onClick={async () => {
-                              // Mark as read when clicked
-                              if (!notif.is_read && !notif.read) {
-                                try {
-                                  await notificationsService.markAsRead(notif.id);
-                                  // Update notifications list properly
-                                  setNotifications(prev => {
-                                    const updated = prev.map(n => 
-                                      n.id === notif.id ? { ...n, is_read: true, read: true } : n
-                                    );
-                                    console.log('✅ Notification marked as read. Updated list:', updated);
+ {notificationsOpen && createPortal(
+ <>
+ <div
+ className="fixed inset-0 z-[9998]"
+ onClick={() => setNotificationsOpen(false)}
+ />
+ <div
+ className="fixed w-80 bg-white dark:bg-slate-800 rounded-xl shadow-2xl shadow-slate-900/10 dark:shadow-black/40 border border-slate-200/80 dark:border-slate-700/80 overflow-hidden z-[9999] animate-in fade-in slide-in-from-top-2 duration-200"
+ style={{ top: notifMenuPosition.top, right: notifMenuPosition.right }}
+ >
+ <div className="px-4 py-3 border-b border-slate-200 dark:border-slate-700 bg-[#ED9A58] ">
+ <div className="flex items-center justify-between">
+ <h3 className="font-semibold text-slate-900 dark:text-white text-sm">Notifications</h3>
+ {unreadCount > 0 && (
+ <span className="text-xs bg-red-500 text-white px-2 py-1 rounded-full font-medium">
+ {unreadCount} new
+ </span>
+ )}
+ </div>
+ </div>
+ <div className="max-h-72 overflow-y-auto">
+ {loadingNotifications ? (
+ <div className="px-4 py-8 text-center">
+ <div className="inline-block w-6 h-6 border-2 border-teal-500 border-t-transparent rounded-full animate-spin"></div>
+ </div>
+ ) : notifications.length > 0 ? (
+ notifications.map((notif, idx) => (
+ <div 
+ key={notif.id || idx}
+ onClick={async () => {
+ // Mark as read when clicked
+ if (!notif.is_read && !notif.read) {
+ try {
+ await notificationsService.markAsRead(notif.id);
+ // Update notifications list properly
+ setNotifications(prev => {
+ const updated = prev.map(n => 
+ n.id === notif.id ? { ...n, is_read: true, read: true } : n
+ );
+ console.log('✅ Notification marked as read. Updated list:', updated);
                                     return updated;
                                   });
                                   showSuccessToast('Notification marked as read');
@@ -428,53 +428,53 @@ const Header = () => {
                                 </p>
                                 <p className="text-xs text-slate-500 dark:text-slate-500 mt-2">
                                   {new Date(notif.created_at).toLocaleDateString()} {new Date(notif.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
-                                </p>
-                              </div>
-                              {!notif.is_read && (
-                                <div className="w-2 h-2 bg-teal-500 rounded-full flex-shrink-0 mt-1" />
-                              )}
-                            </div>
-                          </div>
-                        ))
-                      ) : (
-                        <div className="px-4 py-8 text-center">
-                          <FiBell size={32} className="text-slate-300 dark:text-slate-600 mx-auto mb-2 opacity-50" />
-                          <p className="text-sm text-slate-500 dark:text-slate-400">No notifications</p>
-                        </div>
-                      )}
-                    </div>
-                    </div>
-                  </>,
-                  document.body
-                )}
-              </div>
-            )}
+ </p>
+ </div>
+ {!notif.is_read && (
+ <div className="w-2 h-2 bg-teal-500 rounded-full flex-shrink-0 mt-1" />
+ )}
+ </div>
+ </div>
+ ))
+ ) : (
+ <div className="px-4 py-8 text-center">
+ <FiBell size={32} className="text-slate-300 dark:text-slate-600 mx-auto mb-2 opacity-50" />
+ <p className="text-sm text-slate-500 dark:text-slate-400">No notifications</p>
+ </div>
+ )}
+ </div>
+ </div>
+ </>,
+ document.body
+ )}
+ </div>
+ )}
 
-            {/* Auth Section */}
-            {isAuthenticated && user ? (
-              <div className="relative flex items-center">
-                <div className="hidden sm:block h-6 w-px bg-slate-200 dark:bg-slate-700 mx-1" />
-                <button
-                  ref={userMenuButtonRef}
-                  onClick={() => setUserDropdownOpen(!userDropdownOpen)}
-                  className="hidden sm:flex items-center gap-2 p-1.5 pl-2.5 rounded-full border border-slate-200/70 dark:border-slate-700/70 hover:bg-slate-100 dark:hover:bg-slate-800 hover:border-slate-300 dark:hover:border-slate-600 transition-all duration-300 group"
-                >
-                  {profileImageUrl ? (
-                    <img 
-                      src={profileImageUrl}
-                      alt={user.name}
-                      className="w-8 lg:w-9 h-8 lg:h-9 rounded-full object-cover group-hover:shadow-md group-hover:shadow-teal-500/20 group-hover:scale-105 transition-all duration-300 border border-slate-200 dark:border-slate-700"
-                      onError={() => setProfileImageUrl(null)}
-                    />
-                  ) : user.avatar ? (
-                    <img 
-                      src={user.avatar} 
-                      alt={user.name}
-                      className="w-8 lg:w-9 h-8 lg:h-9 rounded-full object-cover group-hover:shadow-lg transition-all duration-300"
-                    />
-                  ) : (
-                    <div className="w-8 lg:w-9 h-8 lg:h-9 bg-gradient-to-br from-teal-500 via-orange-500 to-pink-500 rounded-full flex items-center justify-center text-white text-xs font-bold">
-                      {user.name?.[0]?.toUpperCase() || 'U'}
+ {/* Auth Section */}
+ {isAuthenticated && user ? (
+ <div className="relative flex items-center">
+ <div className="hidden sm:block h-6 w-px bg-slate-200 dark:bg-slate-700 mx-1" />
+ <button
+ ref={userMenuButtonRef}
+ onClick={() => setUserDropdownOpen(!userDropdownOpen)}
+ className="hidden sm:flex items-center gap-2 p-1.5 pl-2.5 rounded-full border border-slate-200/70 dark:border-slate-700/70 hover:bg-slate-100 dark:hover:bg-slate-800 hover:border-slate-300 dark:hover:border-slate-600 transition-all duration-300 group"
+ >
+ {profileImageUrl ? (
+ <img 
+ src={profileImageUrl}
+ alt={user.name}
+ className="w-8 lg:w-9 h-8 lg:h-9 rounded-full object-cover group-hover:shadow-md group-hover:shadow-teal-500/20 group-hover:scale-105 transition-all duration-300 border border-slate-200 dark:border-slate-700"
+ onError={() => setProfileImageUrl(null)}
+ />
+ ) : user.avatar ? (
+ <img 
+ src={user.avatar} 
+ alt={user.name}
+ className="w-8 lg:w-9 h-8 lg:h-9 rounded-full object-cover group-hover:shadow-lg transition-all duration-300"
+ />
+ ) : (
+ <div className="w-8 lg:w-9 h-8 lg:h-9 bg-[#ED9A58] rounded-full flex items-center justify-center text-white text-xs font-bold">
+ {user.name?.[0]?.toUpperCase() || 'U'}
                     </div>
                   )}
                   <span className="font-semibold text-slate-700 dark:text-slate-200 hidden lg:inline text-sm">
@@ -483,38 +483,38 @@ const Header = () => {
                   <FiChevronDown
                     size={16}
                     className={`transition-transform duration-300 text-slate-600 dark:text-slate-400 ${userDropdownOpen ? 'rotate-180' : ''}`}
-                  />
-                </button>
+ />
+ </button>
 
-                {userDropdownOpen && createPortal(
-                  <>
-                    {/* Transparent overlay to catch outside clicks and close the menu */}
-                    <div
-                      className="fixed inset-0 z-[9998]"
-                      onClick={() => setUserDropdownOpen(false)}
-                    />
-                    <div
-                      className="fixed w-64 bg-white dark:bg-slate-800 rounded-xl shadow-2xl shadow-slate-900/10 dark:shadow-black/40 border border-slate-200/80 dark:border-slate-700/80 overflow-hidden z-[9999] animate-in fade-in slide-in-from-top-2 duration-200"
-                      style={{ top: userMenuPosition.top, right: userMenuPosition.right }}
-                    >
-                    <div className="px-4 py-3 border-b border-slate-200 dark:border-slate-700 bg-gradient-to-r from-teal-50 to-orange-50 dark:from-slate-900 dark:to-slate-800">
-                      <div className="flex items-center gap-3">
-                        {profileImageUrl ? (
-                          <img 
-                            src={profileImageUrl}
-                            alt={user.name}
-                            className="w-10 h-10 rounded-full object-cover border-2 border-white dark:border-slate-700"
-                            onError={() => setProfileImageUrl(null)}
-                          />
-                        ) : user.avatar ? (
-                          <img 
-                            src={user.avatar} 
-                            alt={user.name}
-                            className="w-10 h-10 rounded-full object-cover border-2 border-white dark:border-slate-700"
-                          />
-                        ) : (
-                          <div className="w-10 h-10 bg-gradient-to-br from-teal-500 via-orange-500 to-pink-500 rounded-full flex items-center justify-center text-white text-sm font-bold">
-                            {user.name?.[0]?.toUpperCase() || 'U'}
+ {userDropdownOpen && createPortal(
+ <>
+ {/* Transparent overlay to catch outside clicks and close the menu */}
+ <div
+ className="fixed inset-0 z-[9998]"
+ onClick={() => setUserDropdownOpen(false)}
+ />
+ <div
+ className="fixed w-64 bg-white dark:bg-slate-800 rounded-xl shadow-2xl shadow-slate-900/10 dark:shadow-black/40 border border-slate-200/80 dark:border-slate-700/80 overflow-hidden z-[9999] animate-in fade-in slide-in-from-top-2 duration-200"
+ style={{ top: userMenuPosition.top, right: userMenuPosition.right }}
+ >
+ <div className="px-4 py-3 border-b border-slate-200 dark:border-slate-700 bg-[#ED9A58] ">
+ <div className="flex items-center gap-3">
+ {profileImageUrl ? (
+ <img 
+ src={profileImageUrl}
+ alt={user.name}
+ className="w-10 h-10 rounded-full object-cover border-2 border-white dark:border-slate-700"
+ onError={() => setProfileImageUrl(null)}
+ />
+ ) : user.avatar ? (
+ <img 
+ src={user.avatar} 
+ alt={user.name}
+ className="w-10 h-10 rounded-full object-cover border-2 border-white dark:border-slate-700"
+ />
+ ) : (
+ <div className="w-10 h-10 rounded-full flex items-center justify-center text-white text-sm font-bold">
+ {user.name?.[0]?.toUpperCase() || 'U'}
                           </div>
                         )}
                         <div className="flex-1 min-w-0">
@@ -552,50 +552,50 @@ const Header = () => {
                           <button
                             onClick={() => {
                               navigate('/admin');
-                              setUserDropdownOpen(false);
-                            }}
-                            className="w-full px-4 py-2 text-left text-xs sm:text-sm hover:bg-teal-50 dark:hover:bg-teal-900/20 flex items-center gap-3 text-teal-600 dark:text-teal-400 transition-colors group font-semibold"
-                          >
-                            <span className="text-sm">⚙️</span>
-                            <span>Admin Panel</span>
-                          </button>
-                        </>
-                      )}
-                      
-                      <button
-                        onClick={handleLogout}
-                        className="w-full px-4 py-2 text-left text-xs sm:text-sm hover:bg-red-50 dark:hover:bg-red-900/20 flex items-center gap-3 text-red-600 dark:text-red-400 transition-colors duration-200 group"
-                      >
-                        <MdLogout size={14} className="group-hover:scale-110 transition-transform duration-200 flex-shrink-0" />
-                        <span>Logout</span>
-                      </button>
-                    </div>
-                    </div>
-                  </>,
-                  document.body
-                )}
+ setUserDropdownOpen(false);
+ }}
+ className="w-full px-4 py-2 text-left text-xs sm:text-sm hover:bg-teal-50 dark:hover:bg-teal-900/20 flex items-center gap-3 text-teal-600 dark:text-teal-400 transition-colors group font-semibold"
+ >
+ <span className="text-sm">⚙️</span>
+ <span>Admin Panel</span>
+ </button>
+ </>
+ )}
+ 
+ <button
+ onClick={handleLogout}
+ className="w-full px-4 py-2 text-left text-xs sm:text-sm hover:bg-red-50 dark:hover:bg-red-900/20 flex items-center gap-3 text-red-600 dark:text-red-400 transition-colors duration-200 group"
+ >
+ <MdLogout size={14} className="group-hover:scale-110 transition-transform duration-200 flex-shrink-0" />
+ <span>Logout</span>
+ </button>
+ </div>
+ </div>
+ </>,
+ document.body
+ )}
 
-                <button
-                  ref={userMenuButtonMobileRef}
-                  onClick={() => setUserDropdownOpen(!userDropdownOpen)}
-                  className="sm:hidden p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-all duration-300 hover:scale-105 active:scale-95"
-                >
-                  {profileImageUrl ? (
-                    <img 
-                      src={profileImageUrl}
-                      alt={user.name}
-                      className="w-7 h-7 rounded-full object-cover border-2 border-slate-300 dark:border-slate-600"
-                      onError={() => setProfileImageUrl(null)}
-                    />
-                  ) : user.avatar ? (
-                    <img 
-                      src={user.avatar} 
-                      alt={user.name}
-                      className="w-7 h-7 rounded-full object-cover border-2 border-slate-300 dark:border-slate-600"
-                    />
-                  ) : (
-                    <div className="w-7 h-7 bg-gradient-to-br from-teal-500 to-orange-600 rounded-full flex items-center justify-center text-white text-xs font-bold">
-                      {user.name?.[0]?.toUpperCase() || 'U'}
+ <button
+ ref={userMenuButtonMobileRef}
+ onClick={() => setUserDropdownOpen(!userDropdownOpen)}
+ className="sm:hidden p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-all duration-300 hover:scale-105 active:scale-95"
+ >
+ {profileImageUrl ? (
+ <img 
+ src={profileImageUrl}
+ alt={user.name}
+ className="w-7 h-7 rounded-full object-cover border-2 border-slate-300 dark:border-slate-600"
+ onError={() => setProfileImageUrl(null)}
+ />
+ ) : user.avatar ? (
+ <img 
+ src={user.avatar} 
+ alt={user.name}
+ className="w-7 h-7 rounded-full object-cover border-2 border-slate-300 dark:border-slate-600"
+ />
+ ) : (
+ <div className="w-7 h-7 bg-[#ED9A58] rounded-full flex items-center justify-center text-white text-xs font-bold">
+ {user.name?.[0]?.toUpperCase() || 'U'}
                     </div>
                   )}
                 </button>
@@ -606,86 +606,86 @@ const Header = () => {
                   variant="ghost"
                   size="sm"
                   onClick={() => navigate('/login')}
-                  className="flex items-center gap-1.5 text-xs lg:text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-teal-600 dark:hover:text-teal-400 hover:bg-teal-50/50 dark:hover:bg-teal-900/20 transition-all duration-300 px-2.5 lg:px-3.5 py-2 rounded-full"
-                >
-                  <MdOutlineLogin size={16} className="flex-shrink-0" />
-                  <span className="hidden lg:inline">Login</span>
-                </Button>
+ className="flex items-center gap-1.5 text-xs lg:text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-teal-600 dark:hover:text-teal-400 hover:bg-teal-50/50 dark:hover:bg-teal-900/20 transition-all duration-300 px-2.5 lg:px-3.5 py-2 rounded-full"
+ >
+ <MdOutlineLogin size={16} className="flex-shrink-0" />
+ <span className="hidden lg:inline">Login</span>
+ </Button>
 
-                <div className="hidden lg:block h-6 w-px bg-gradient-to-b from-transparent via-slate-300 dark:via-slate-600 to-transparent" />
+ <div className="hidden lg:block h-6 w-px bg-[#ED9A58] " />
 
-                <Button
-                  variant="primary"
-                  size="sm"
-                  onClick={() => navigate('/signup')}
-                  className="flex items-center gap-1.5 text-xs lg:text-sm font-bold bg-gradient-to-r from-teal-600 to-orange-600 hover:from-teal-700 hover:to-orange-700 text-white shadow-md hover:shadow-lg hover:shadow-orange-500/25 transition-all duration-300 px-3.5 lg:px-4.5 py-2 rounded-full"
-                >
-                  <MdOutlinePersonAdd size={16} className="flex-shrink-0" />
-                  <span>Sign Up</span>
-                </Button>
-              </div>
-            )}
+ <Button
+ variant="primary"
+ size="sm"
+ onClick={() => navigate('/signup')}
+ className="flex items-center gap-1.5 text-xs lg:text-sm font-bold bg-[#ED9A58] text-white shadow-md hover:shadow-lg hover:shadow-orange-500/25 transition-all duration-300 px-3.5 lg:px-4.5 py-2 rounded-full"
+ >
+ <MdOutlinePersonAdd size={16} className="flex-shrink-0" />
+ <span>Sign Up</span>
+ </Button>
+ </div>
+ )}
 
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className={`lg:hidden p-2 rounded-lg transition-all duration-300 active:scale-90 ${
-                mobileMenuOpen
-                  ? 'bg-teal-50 dark:bg-teal-900/30 text-teal-600 dark:text-teal-400'
+ {/* Mobile Menu Button */}
+ <button
+ onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+ className={`lg:hidden p-2 rounded-lg transition-all duration-300 active:scale-90 ${
+ mobileMenuOpen
+ ? 'bg-teal-50 dark:bg-teal-900/30 text-teal-600 dark:text-teal-400'
                   : 'hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200'
-              }`}
-              aria-label="Toggle menu"
-              aria-expanded={mobileMenuOpen}
-            >
-              {mobileMenuOpen ? <FiX size={22} /> : <FiMenu size={22} />}
-            </button>
-          </div>
-        </div>
-      </div>
+ }`}
+ aria-label="Toggle menu"
+ aria-expanded={mobileMenuOpen}
+ >
+ {mobileMenuOpen ? <FiX size={22} /> : <FiMenu size={22} />}
+ </button>
+ </div>
+ </div>
+ </div>
 
-      {/* Mobile Side Drawer - rendered via portal so it always covers the full viewport,
-          regardless of any backdrop-blur/transform on ancestor elements like <header> */}
-      {mobileMenuOpen && createPortal(
-        <>
-          {/* Overlay */}
-          <div
-            className="lg:hidden fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-[9998] animate-in fade-in duration-300"
-            onClick={() => setMobileMenuOpen(false)}
-          />
+ {/* Mobile Side Drawer - rendered via portal so it always covers the full viewport,
+ regardless of any backdrop-blur/transform on ancestor elements like <header> */}
+ {mobileMenuOpen && createPortal(
+ <>
+ {/* Overlay */}
+ <div
+ className="lg:hidden fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-[9998] animate-in fade-in duration-300"
+ onClick={() => setMobileMenuOpen(false)}
+ />
 
-          {/* Drawer panel */}
-          <div className="lg:hidden fixed top-0 right-0 h-screen w-[86%] xs:w-[82%] max-w-[340px] bg-white dark:bg-slate-900 z-[9999] shadow-2xl flex flex-col animate-in slide-in-from-right duration-300">
-            {/* Drawer header */}
-            <div className="flex items-center justify-between px-5 py-4 bg-gradient-to-r from-teal-600 to-orange-600 flex-shrink-0">
-              <div className="flex items-center gap-2.5">
-                <img src={logoImg} alt="Travluyo" className="h-11 w-auto object-contain drop-shadow-md" />
-                <span className="text-white font-extrabold text-lg tracking-tight">Travluyo</span>
-              </div>
-              <button
-                onClick={() => setMobileMenuOpen(false)}
-                className="p-2 rounded-full bg-white/15 hover:bg-white/25 text-white transition-all duration-200 active:scale-90"
-                aria-label="Close menu"
-              >
-                <FiX size={20} />
-              </button>
-            </div>
+ {/* Drawer panel */}
+ <div className="lg:hidden fixed top-0 right-0 h-screen w-[86%] xs:w-[82%] max-w-[340px] bg-white dark:bg-slate-900 z-[9999] shadow-2xl flex flex-col animate-in slide-in-from-right duration-300">
+ {/* Drawer header */}
+ <div className="flex items-center justify-between px-5 py-4 bg-[#ED9A58] flex-shrink-0">
+ <div className="flex items-center gap-2.5">
+ <img src={logoImg} alt="Travluyo" className="h-11 w-auto object-contain drop-shadow-md" />
+ <span className="text-white font-extrabold text-lg tracking-tight">Travluyo</span>
+ </div>
+ <button
+ onClick={() => setMobileMenuOpen(false)}
+ className="p-2 rounded-full bg-white/15 hover:bg-white/25 text-white transition-all duration-200 active:scale-90"
+ aria-label="Close menu"
+ >
+ <FiX size={20} />
+ </button>
+ </div>
 
-            {/* Drawer body (scrollable) */}
-            <div className="flex-1 overflow-y-auto px-4 py-5">
-              <nav className="flex flex-col gap-1">
-                {navLinks.map((link) => {
-                  const Icon = link.icon;
-                  if (link.requiresAuth && !isAuthenticated) return null;
-                  return (
-                    <button
-                      key={link.path}
-                      onClick={() => {
-                        navigate(link.path);
-                        setMobileMenuOpen(false);
-                      }}
-                      className={`flex items-center gap-3 px-4 py-3 rounded-xl font-semibold text-sm transition-all duration-200 active:scale-[0.98] ${
-                        isActive(link.path)
-                          ? 'bg-gradient-to-r from-teal-50 to-orange-50 dark:from-teal-900/20 dark:to-orange-900/20 text-teal-600 dark:text-teal-400 shadow-sm'
+ {/* Drawer body (scrollable) */}
+ <div className="flex-1 overflow-y-auto px-4 py-5">
+ <nav className="flex flex-col gap-1">
+ {navLinks.map((link) => {
+ const Icon = link.icon;
+ if (link.requiresAuth && !isAuthenticated) return null;
+ return (
+ <button
+ key={link.path}
+ onClick={() => {
+ navigate(link.path);
+ setMobileMenuOpen(false);
+ }}
+ className={`flex items-center gap-3 px-4 py-3 rounded-xl font-semibold text-sm transition-all duration-200 active:scale-[0.98] ${
+ isActive(link.path)
+ ? 'bg-gradient-to-r from-teal-50 to-orange-50 dark:from-teal-900/20 dark:to-orange-900/20 text-teal-600 dark:text-teal-400 shadow-sm'
                           : 'text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-teal-600'
                       }`}
                     >
@@ -756,7 +756,7 @@ const Header = () => {
                     navigate('/signup');
                     setMobileMenuOpen(false);
                   }}
-                  className="w-full justify-center bg-gradient-to-r from-teal-600 to-orange-600 text-white py-2.5 rounded-xl font-bold text-sm shadow-md shadow-teal-600/30"
+                  className="w-full justify-center bg-[#ED9A58] text-white py-2.5 rounded-xl font-bold text-sm shadow-md shadow-teal-600/30"
                 >
                   <MdOutlinePersonAdd size={18} className="mr-2" />
                   Sign Up

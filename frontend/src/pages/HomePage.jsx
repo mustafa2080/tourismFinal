@@ -71,19 +71,19 @@ const HomePage = () => {
         title: t('home.title'),
         subtitle: t('home.subtitle'),
         image: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=1200&h=700&fit=crop&q=75&auto=format',
-        color: 'from-teal-600 to-orange-600',
+        color: ' ',
       },
       {
         title: t('home.title'),
         subtitle: t('home.subtitle'),
         image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&h=700&fit=crop&q=75&auto=format',
-        color: 'from-teal-500 to-teal-600',
+        color: ' ',
       },
       {
         title: t('home.becomeGuide'),
         subtitle: t('home.becomeGuideDesc'),
         image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&h=700&fit=crop&q=75&auto=format',
-        color: 'from-green-500 to-teal-600',
+        color: ' ',
       },
     ]);
     setHeroSlide(0); // Reset to first slide
@@ -407,7 +407,7 @@ const HomePage = () => {
     title: t('home.title') || 'Explore the World',
     subtitle: t('home.subtitle') || 'Discover amazing destinations and create unforgettable memories',
     image: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=1200&h=700&fit=crop',
-    color: 'from-teal-600 to-orange-600',
+    color: ' ',
   };
 
   // Hero parallax: background drifts slower than scroll, content fades out
@@ -449,7 +449,7 @@ const HomePage = () => {
                 decoding={idx === 0 ? 'sync' : 'async'}
               />
               {/* Gradient Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-transparent"></div>
+              <div className="absolute inset-0 bg-[#ED9A58] "></div>
             </div>
           ))}
         </motion.div>
@@ -760,44 +760,44 @@ const HomePage = () => {
             </h2>
             <p className="text-base md:text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
               {t('home.handpickedDescription') || 'Explore our curated collection of the best travel experiences'}
-            </p>
-          </Reveal>
+ </p>
+ </Reveal>
 
-          {/* Loading / Packages */}
-          {loading ? (
-            <div className="flex justify-center py-16">
-              <Spinner size="lg" />
-            </div>
-          ) : featuredPackages.length === 0 ? (
-            <div className="text-center py-16 bg-slate-50 dark:bg-slate-900/50 rounded-lg border border-slate-200 dark:border-slate-700">
-              <BiWorld size={48} className="mx-auto mb-4 text-slate-400" />
-              <p className="text-slate-600 dark:text-slate-400 mb-2">No trips available at the moment</p>
-              <p className="text-sm text-slate-500 dark:text-slate-500">Check back soon for new travel packages!</p>
-            </div>
-          ) : (
-            <>
-              <StaggerGroup key={`grid-${i18n.language}`} className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 xs:gap-3 sm:gap-4 md:gap-5 lg:gap-6">
-                {translatedFeaturedPackages.map((translatedPkg, idx) => {
-                  const pkg = featuredPackages[idx];
-                  return (
-                    <StaggerItem key={`${pkg.id}-${i18n.language}`}>
-                    <Card
-                      className="overflow-hidden rounded-2xl border border-slate-200/70 dark:border-slate-700/60 hover:shadow-xl hover:shadow-slate-900/10 dark:hover:shadow-black/30 transition-all duration-300 hover:-translate-y-1.5 cursor-pointer group flex flex-col h-full"
-                      onClick={() => navigate(`/package/${pkg.id}`)}
-                    >
-                      {/* Image */}
-                      <div className="relative h-36 xs:h-44 sm:h-52 md:h-56 bg-gradient-to-br from-teal-400 to-orange-500 overflow-hidden group">
-                        {pkg.images && pkg.images.length > 0 && (pkg.images[0]?.image_data || pkg.images[0]?.url) ? (
-                          <>
-                            {pkg.images[0]?.image_data && (
-                              <img
-                                src={convertImageDataToUrl(pkg.images[0].image_data)}
-                                alt={translatedPkg.display_title}
-                                loading="lazy"
-                                decoding="async"
-                                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                                onError={(e) => {
-                                  e.target.style.display = 'none';
+ {/* Loading / Packages */}
+ {loading ? (
+ <div className="flex justify-center py-16">
+ <Spinner size="lg" />
+ </div>
+ ) : featuredPackages.length === 0 ? (
+ <div className="text-center py-16 bg-slate-50 dark:bg-slate-900/50 rounded-lg border border-slate-200 dark:border-slate-700">
+ <BiWorld size={48} className="mx-auto mb-4 text-slate-400" />
+ <p className="text-slate-600 dark:text-slate-400 mb-2">No trips available at the moment</p>
+ <p className="text-sm text-slate-500 dark:text-slate-500">Check back soon for new travel packages!</p>
+ </div>
+ ) : (
+ <>
+ <StaggerGroup key={`grid-${i18n.language}`} className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 xs:gap-3 sm:gap-4 md:gap-5 lg:gap-6">
+ {translatedFeaturedPackages.map((translatedPkg, idx) => {
+ const pkg = featuredPackages[idx];
+ return (
+ <StaggerItem key={`${pkg.id}-${i18n.language}`}>
+ <Card
+ className="overflow-hidden rounded-2xl border border-slate-200/70 dark:border-slate-700/60 hover:shadow-xl hover:shadow-slate-900/10 dark:hover:shadow-black/30 transition-all duration-300 hover:-translate-y-1.5 cursor-pointer group flex flex-col h-full"
+ onClick={() => navigate(`/package/${pkg.id}`)}
+ >
+ {/* Image */}
+ <div className="relative h-36 xs:h-44 sm:h-52 md:h-56 bg-[#ED9A58] overflow-hidden group">
+ {pkg.images && pkg.images.length > 0 && (pkg.images[0]?.image_data || pkg.images[0]?.url) ? (
+ <>
+ {pkg.images[0]?.image_data && (
+ <img
+ src={convertImageDataToUrl(pkg.images[0].image_data)}
+ alt={translatedPkg.display_title}
+ loading="lazy"
+ decoding="async"
+ className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+ onError={(e) => {
+ e.target.style.display = 'none';
                                 }}
                               />
                             )}
@@ -823,38 +823,38 @@ const HomePage = () => {
                             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                             onError={(e) => {
                               e.target.style.display = 'none';
-                            }}
-                          />
-                        )}
-                        
-                        {/* Bottom gradient for legibility */}
-                        <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/40 to-transparent pointer-events-none" />
-                        {/* Top gradient so badges stay legible on light images */}
-                        <div className="absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-black/25 to-transparent pointer-events-none" />
+ }}
+ />
+ )}
+ 
+ {/* Bottom gradient for legibility */}
+ <div className="absolute inset-x-0 bottom-0 h-16 bg-[#ED9A58] pointer-events-none" />
+ {/* Top gradient so badges stay legible on light images */}
+ <div className="absolute inset-x-0 top-0 h-16 pointer-events-none" />
 
-                        {/* Badges */}
-                        <div className="absolute top-3 right-3 px-3 py-1 bg-white/95 dark:bg-slate-900/90 rounded-full text-xs font-bold text-slate-800 dark:text-white shadow-sm line-clamp-1">
-                          {pkg.destination}
-                        </div>
-                        {pkg.average_rating !== undefined && pkg.average_rating !== null && pkg.average_rating > 0 && (
-                          <div className="absolute top-3 left-3 flex items-center gap-1.5 px-2.5 py-1.5 bg-gradient-to-r from-amber-100 to-yellow-100 dark:from-amber-900/80 dark:to-yellow-900/80 rounded-full backdrop-blur-sm shadow-md border border-amber-200/60 dark:border-amber-700/60">
-                            <FiStar size={16} className="fill-amber-500 text-amber-500 drop-shadow-md" />
-                            <span className="text-xs font-bold text-amber-700 dark:text-amber-300">{parseFloat(pkg.average_rating).toFixed(1)}</span>
-                          </div>
-                        )}
-                      </div>
+ {/* Badges */}
+ <div className="absolute top-3 right-3 px-3 py-1 bg-white/95 dark:bg-slate-900/90 rounded-full text-xs font-bold text-slate-800 dark:text-white shadow-sm line-clamp-1">
+ {pkg.destination}
+ </div>
+ {pkg.average_rating !== undefined && pkg.average_rating !== null && pkg.average_rating > 0 && (
+ <div className="absolute top-3 left-3 flex items-center gap-1.5 px-2.5 py-1.5 rounded-full backdrop-blur-sm shadow-md border border-amber-200/60 dark:border-amber-700/60">
+ <FiStar size={16} className="fill-amber-500 text-amber-500 drop-shadow-md" />
+ <span className="text-xs font-bold text-amber-700 dark:text-amber-300">{parseFloat(pkg.average_rating).toFixed(1)}</span>
+ </div>
+ )}
+ </div>
 
-                      {/* Content */}
-                      <div className="p-3 xs:p-3.5 sm:p-4 md:p-5 flex flex-col flex-1 gap-3">
-                        <h3 className="font-bold text-xs xs:text-sm sm:text-base md:text-lg text-slate-900 dark:text-white line-clamp-2 min-h-[2.5em] group-hover:text-teal-600 transition-colors" title={translatedPkg.display_title}>
-                          {translatedPkg.display_title}
-                        </h3>
+ {/* Content */}
+ <div className="p-3 xs:p-3.5 sm:p-4 md:p-5 flex flex-col flex-1 gap-3">
+ <h3 className="font-bold text-xs xs:text-sm sm:text-base md:text-lg text-slate-900 dark:text-white line-clamp-2 min-h-[2.5em] group-hover:text-teal-600 transition-colors" title={translatedPkg.display_title}>
+ {translatedPkg.display_title}
+ </h3>
 
-                        {/* Meta Info */}
-                        <div className="flex items-center gap-3 text-xs xs:text-sm text-slate-600 dark:text-slate-400">
-                          <div className="flex items-center gap-1.5">
-                            <FiCalendar size={15} className="text-teal-500 flex-shrink-0" />
-                            <span>{pkg.duration_days} {t('common.days') || 'Days'}</span>
+ {/* Meta Info */}
+ <div className="flex items-center gap-3 text-xs xs:text-sm text-slate-600 dark:text-slate-400">
+ <div className="flex items-center gap-1.5">
+ <FiCalendar size={15} className="text-teal-500 flex-shrink-0" />
+ <span>{pkg.duration_days} {t('common.days') || 'Days'}</span>
                           </div>
                           <span className="w-1 h-1 rounded-full bg-slate-300 dark:bg-slate-600 flex-shrink-0" />
                           <div className="flex items-center gap-1.5 min-w-0">
@@ -930,24 +930,24 @@ const HomePage = () => {
                 <Button
                   size="lg"
                   onClick={() => navigate('/search')}
-                  className="bg-teal-600 hover:bg-teal-700 text-white px-8 md:px-10 py-3 rounded-full group transition-all inline-flex items-center gap-2 font-bold shadow-sm hover:shadow-md"
-                >
-                  <span>Explore All Packages</span>
-                  <FiArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                </Button>
-              </Reveal>
-            </>
-          )}
-        </div>
-      </section>
+ className="bg-teal-600 hover:bg-teal-700 text-white px-8 md:px-10 py-3 rounded-full group transition-all inline-flex items-center gap-2 font-bold shadow-sm hover:shadow-md"
+ >
+ <span>Explore All Packages</span>
+ <FiArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+ </Button>
+ </Reveal>
+ </>
+ )}
+ </div>
+ </section>
 
-      {/* ==================== CATEGORIES SECTION ==================== */}
-      <Reveal y={32}>
-        <PopularTripCategoriesSection />
-      </Reveal>
+ {/* ==================== CATEGORIES SECTION ==================== */}
+ <Reveal y={32}>
+ <PopularTripCategoriesSection />
+ </Reveal>
 
-      {/* ==================== STATISTICS ==================== */}
-      <section className="py-6 sm:py-8 md:py-12 lg:py-20 bg-gradient-to-r from-emerald-600 via-amber-600 to-pink-600 dark:from-emerald-900 dark:via-amber-900 dark:to-pink-900" style={{ display: 'block', visibility: 'visible', minHeight: '150px' }}>
+ {/* ==================== STATISTICS ==================== */}
+ <section className="py-6 sm:py-8 md:py-12 lg:py-20 bg-[#ED9A58] " style={{ display: 'block', visibility: 'visible', minHeight: '150px' }}>
         <div ref={statsRef} className="w-full max-w-7xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8">
           <StaggerGroup className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 md:gap-6 lg:gap-8" staggerDelay={0.15}>
             {stats.map((stat, idx) => {
@@ -998,44 +998,44 @@ const HomePage = () => {
                   const initials = review.user?.full_name 
                     ? review.user.full_name.split(' ').map(n => n[0]).join('').toUpperCase()
                     : review.user?.username?.substring(0, 2).toUpperCase() || 'U';
-                  
-                  return (
-                    <StaggerItem key={review.id || idx}>
-                    <Card
-                      className="group relative overflow-hidden bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-800 dark:to-slate-700 border border-slate-200 dark:border-slate-700 hover:border-teal-300 dark:hover:border-teal-500 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
-                    >
-                      <div className="p-5 md:p-6 space-y-4 h-full flex flex-col">
-                        {/* Rating Stars */}
-                        <div className="flex gap-1">
-                          {[...Array(5)].map((_, i) => (
-                            <FiStar 
-                              key={i} 
-                              size={16} 
-                              className={`${
-                                i < (review.rating || 0)
-                                  ? 'text-yellow-400 fill-yellow-400' 
+ 
+ return (
+ <StaggerItem key={review.id || idx}>
+ <Card
+ className="group relative overflow-hidden bg-[#ED9A58] border border-slate-200 dark:border-slate-700 hover:border-teal-300 dark:hover:border-teal-500 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
+ >
+ <div className="p-5 md:p-6 space-y-4 h-full flex flex-col">
+ {/* Rating Stars */}
+ <div className="flex gap-1">
+ {[...Array(5)].map((_, i) => (
+ <FiStar 
+ key={i} 
+ size={16} 
+ className={`${
+ i < (review.rating || 0)
+ ? 'text-yellow-400 fill-yellow-400' 
                                   : 'text-slate-300 dark:text-slate-600'
-                              }`}
-                            />
-                          ))}
-                        </div>
+ }`}
+ />
+ ))}
+ </div>
 
-                        {/* Review Comment */}
-                        <p className="text-slate-700 dark:text-slate-200 text-sm md:text-base leading-relaxed flex-grow line-clamp-4">
-                          {review.comment || review.text}
-                        </p>
+ {/* Review Comment */}
+ <p className="text-slate-700 dark:text-slate-200 text-sm md:text-base leading-relaxed flex-grow line-clamp-4">
+ {review.comment || review.text}
+ </p>
 
-                        {/* Divider */}
-                        <div className="h-px bg-gradient-to-r from-slate-300 to-transparent dark:from-slate-600"></div>
+ {/* Divider */}
+ <div className="h-px bg-[#ED9A58] "></div>
 
-                        {/* Author */}
-                        <div className="flex items-center gap-3 pt-2">
-                          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-500 to-orange-500 flex items-center justify-center text-white text-xs font-bold flex-shrink-0">
-                            {initials}
-                          </div>
-                          <div className="flex-1 min-w-0">
-                            <p className="font-semibold text-slate-900 dark:text-white text-sm truncate">
-                              {review.user?.full_name || review.user?.username || 'Traveler'}
+ {/* Author */}
+ <div className="flex items-center gap-3 pt-2">
+ <div className="w-10 h-10 rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0">
+ {initials}
+ </div>
+ <div className="flex-1 min-w-0">
+ <p className="font-semibold text-slate-900 dark:text-white text-sm truncate">
+ {review.user?.full_name || review.user?.username || 'Traveler'}
                             </p>
                             <p className="text-xs text-slate-500 dark:text-slate-400">
                               {new Date(review.created_at).toLocaleDateString('en-US', { 
@@ -1058,38 +1058,38 @@ const HomePage = () => {
                 <Button
                   size="lg"
                   onClick={() => navigate('/search')}
-                  className="bg-teal-600 hover:bg-teal-700 text-white px-8 md:px-10 py-3 rounded-full group transition-all inline-flex items-center gap-2 font-bold shadow-sm hover:shadow-md"
-                >
-                  <span>View All Reviews</span>
-                  <FiArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                </Button>
-              </div>
-            </>
-          ) : (
-            <div className="text-center py-12">
-              <BiWorld size={48} className="mx-auto mb-4 text-slate-400" />
-              <p className="text-slate-600 dark:text-slate-400 mb-6">No reviews available yet. Be the first to review!</p>
-            </div>
-          )}
-        </div>
-      </section>
+ className="bg-teal-600 hover:bg-teal-700 text-white px-8 md:px-10 py-3 rounded-full group transition-all inline-flex items-center gap-2 font-bold shadow-sm hover:shadow-md"
+ >
+ <span>View All Reviews</span>
+ <FiArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+ </Button>
+ </div>
+ </>
+ ) : (
+ <div className="text-center py-12">
+ <BiWorld size={48} className="mx-auto mb-4 text-slate-400" />
+ <p className="text-slate-600 dark:text-slate-400 mb-6">No reviews available yet. Be the first to review!</p>
+ </div>
+ )}
+ </div>
+ </section>
 
-      {/* ==================== TESTIMONIALS - MODERN DESIGN ==================== */}
-      <section className="py-6 sm:py-8 md:py-16 lg:py-32 bg-gradient-to-br from-slate-50 via-white to-teal-50 dark:from-slate-950 dark:via-slate-900 dark:to-teal-950 relative" style={{ display: 'block', visibility: 'visible', minHeight: '200px' }}>
-        <div className="absolute top-0 right-0 w-48 sm:w-96 h-48 sm:h-96 bg-teal-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 -z-10 dark:opacity-10"></div>
-        <div className="absolute bottom-0 left-0 w-48 sm:w-96 h-48 sm:h-96 bg-orange-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 -z-10 dark:opacity-10"></div>
+ {/* ==================== TESTIMONIALS - MODERN DESIGN ==================== */}
+ <section className="py-6 sm:py-8 md:py-16 lg:py-32 bg-[#ED9A58] relative" style={{ display: 'block', visibility: 'visible', minHeight: '200px' }}>
+ <div className="absolute top-0 right-0 w-48 sm:w-96 h-48 sm:h-96 bg-teal-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 -z-10 dark:opacity-10"></div>
+ <div className="absolute bottom-0 left-0 w-48 sm:w-96 h-48 sm:h-96 bg-orange-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 -z-10 dark:opacity-10"></div>
 
-        <div className="w-full max-w-7xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8 relative">
-          {/* Header */}
-          <Reveal>
-          <div className="text-center mb-12 md:mb-20 space-y-3 md:space-y-4">
-            <div className="inline-block">
-              <Badge className="bg-gradient-to-r from-orange-200 to-teal-200 dark:from-orange-900/30 dark:to-teal-900/30 text-orange-700 dark:text-orange-300 mb-4 px-4 py-2 rounded-full text-xs md:text-sm font-bold border border-orange-300/30 dark:border-orange-700/30">
-                ⭐ CLIENT TESTIMONIALS
-              </Badge>
-            </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-orange-600 dark:from-white dark:to-orange-300 leading-tight">
-              {t('home.whatOurTravelersDay') || 'What Our Travelers Say'}
+ <div className="w-full max-w-7xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8 relative">
+ {/* Header */}
+ <Reveal>
+ <div className="text-center mb-12 md:mb-20 space-y-3 md:space-y-4">
+ <div className="inline-block">
+ <Badge className="bg-[#ED9A58] text-orange-700 dark:text-orange-300 mb-4 px-4 py-2 rounded-full text-xs md:text-sm font-bold border border-orange-300/30 dark:border-orange-700/30">
+ ⭐ CLIENT TESTIMONIALS
+ </Badge>
+ </div>
+ <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black bg-clip-text text-transparent leading-tight">
+ {t('home.whatOurTravelersDay') || 'What Our Travelers Say'}
             </h2>
             <p className="text-base sm:text-lg md:text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto font-medium">
               {t('home.joinThousands') || 'Join thousands of satisfied travelers who\'ve discovered their perfect journey with us'}
@@ -1115,7 +1115,7 @@ const HomePage = () => {
                     className="group relative overflow-hidden bg-white dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 hover:border-orange-300 dark:hover:border-orange-500 shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-4 backdrop-blur-sm"
                   >
                     {/* Gradient overlay on hover */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-orange-50/0 to-teal-50/0 dark:from-orange-900/0 dark:to-teal-900/0 group-hover:from-orange-50 group-hover:to-teal-50 dark:group-hover:from-orange-900/10 dark:group-hover:to-teal-900/10 transition-all duration-500 -z-0"></div>
+                    <div className="absolute inset-0 bg-[#ED9A58] transition-all duration-500 -z-0"></div>
 
                     <div className="relative z-10 p-4 md:p-6 lg:p-8 h-full flex flex-col">
                       {/* Top Section - Rating */}
@@ -1133,13 +1133,13 @@ const HomePage = () => {
                             />
                           ))}
                         </div>
-                        <div className="w-8 h-8 rounded-full bg-gradient-to-br from-orange-400 to-teal-400 flex items-center justify-center text-white text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div className="w-8 h-8 rounded-full bg-[#ED9A58] flex items-center justify-center text-white text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                           ✓
                         </div>
                       </div>
 
                       {/* Quote Icon */}
-                      <div className="inline-flex w-8 md:w-10 h-8 md:h-10 rounded-lg bg-gradient-to-br from-orange-100 to-teal-100 dark:from-orange-900/30 dark:to-teal-900/30 items-center justify-center mb-3 md:mb-4 text-orange-600 dark:text-orange-300 text-lg md:text-xl group-hover:scale-110 transition-transform duration-300">
+                      <div className="inline-flex w-8 md:w-10 h-8 md:h-10 rounded-lg bg-[#ED9A58] items-center justify-center mb-3 md:mb-4 text-orange-600 dark:text-orange-300 text-lg md:text-xl group-hover:scale-110 transition-transform duration-300">
                         "
                       </div>
 
@@ -1212,11 +1212,11 @@ const HomePage = () => {
                     </p>
 
                     {/* Divider */}
-                    <div className="my-4 md:my-6 h-1 bg-gradient-to-r from-orange-200 via-teal-200 to-transparent dark:from-orange-700/50 dark:via-teal-700/50 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="my-4 md:my-6 h-1 bg-[#ED9A58] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
                     {/* Author Info */}
                     <div className="flex items-center gap-3 md:gap-4 pt-2">
-                      <div className="w-10 md:w-12 h-10 md:h-12 rounded-full bg-gradient-to-br from-teal-500 via-orange-500 to-pink-500 flex items-center justify-center text-white text-xs md:text-sm font-bold shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110 flex-shrink-0">
+                      <div className="w-10 md:w-12 h-10 md:h-12 rounded-full bg-[#ED9A58] flex items-center justify-center text-white text-xs md:text-sm font-bold shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110 flex-shrink-0">
                         {testimonial.avatar}
                       </div>
                       <div className="flex-1 min-w-0">
@@ -1239,19 +1239,19 @@ const HomePage = () => {
           <Reveal>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 md:gap-5 lg:gap-6 mt-8 md:mt-12 lg:mt-16">
             <div className="text-center p-3 xs:p-4 sm:p-6 md:p-8 bg-white dark:bg-slate-800/50 rounded-xl sm:rounded-2xl border border-slate-200 dark:border-slate-700 hover:border-orange-300 dark:hover:border-orange-500 transition-all hover:shadow-lg group">
-              <div className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-black bg-clip-text text-transparent bg-gradient-to-r from-teal-600 to-orange-600 mb-1 md:mb-2 group-hover:scale-110 transition-transform duration-300">
+              <div className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-black bg-clip-text text-transparent bg-[#ED9A58] mb-1 md:mb-2 group-hover:scale-110 transition-transform duration-300">
                 4.9
               </div>
               <p className="text-xs xs:text-sm md:text-base text-slate-600 dark:text-slate-300 font-semibold">Average Rating</p>
             </div>
             <div className="text-center p-3 xs:p-4 sm:p-6 md:p-8 bg-white dark:bg-slate-800/50 rounded-xl sm:rounded-2xl border border-slate-200 dark:border-slate-700 hover:border-orange-300 dark:hover:border-orange-500 transition-all hover:shadow-lg group">
-              <div className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-black bg-clip-text text-transparent bg-gradient-to-r from-orange-600 to-pink-600 mb-1 md:mb-2 group-hover:scale-110 transition-transform duration-300">
+              <div className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-black bg-clip-text text-transparent bg-[#ED9A58] mb-1 md:mb-2 group-hover:scale-110 transition-transform duration-300">
                 5K+
               </div>
               <p className="text-xs xs:text-sm md:text-base text-slate-600 dark:text-slate-300 font-semibold">Reviews</p>
             </div>
             <div className="text-center p-3 xs:p-4 sm:p-6 md:p-8 bg-white dark:bg-slate-800/50 rounded-xl sm:rounded-2xl border border-slate-200 dark:border-slate-700 hover:border-orange-300 dark:hover:border-orange-500 transition-all hover:shadow-lg group">
-              <div className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-black bg-clip-text text-transparent bg-gradient-to-r from-pink-600 to-orange-600 mb-1 md:mb-2 group-hover:scale-110 transition-transform duration-300">
+              <div className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-black bg-clip-text text-transparent bg-[#ED9A58] mb-1 md:mb-2 group-hover:scale-110 transition-transform duration-300">
                 98%
               </div>
               <p className="text-xs xs:text-sm md:text-base text-slate-600 dark:text-slate-300 font-semibold">Satisfaction</p>
@@ -1262,7 +1262,7 @@ const HomePage = () => {
       </section>
 
       {/* ==================== FINAL CTA ==================== */}
-      <section className="py-8 sm:py-12 md:py-16 lg:py-24 bg-gradient-to-br from-slate-900 to-slate-800 dark:from-slate-950 dark:to-slate-900 relative overflow-hidden" style={{ display: 'block', visibility: 'visible', minHeight: '150px' }}>
+      <section className="py-8 sm:py-12 md:py-16 lg:py-24 bg-[#ED9A58] relative overflow-hidden" style={{ display: 'block', visibility: 'visible', minHeight: '150px' }}>
         <motion.div
           className="absolute inset-0 -z-0 opacity-20"
           style={{
@@ -1283,7 +1283,7 @@ const HomePage = () => {
           <div className="flex flex-col xs:flex-row gap-3 xs:gap-4 justify-center">
             <Button
               onClick={() => navigate('/search')}
-              className="bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-700 hover:to-emerald-700 text-white font-bold px-6 xs:px-8 md:px-10 py-2.5 xs:py-3 rounded-full flex items-center justify-center gap-2 group transition-all shadow-lg text-sm xs:text-base"
+              className="bg-[#ED9A58] text-white font-bold px-6 xs:px-8 md:px-10 py-2.5 xs:py-3 rounded-full flex items-center justify-center gap-2 group transition-all shadow-lg text-sm xs:text-base"
             >
               <FiSearch size={16} />
               <span>Explore Now</span>

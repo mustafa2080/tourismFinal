@@ -146,7 +146,7 @@ input:focus, textarea:focus, select:focus {
 
 /* Gradient text effect */
 .gradient-text {
-  background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%);
+  background: #ED9A58;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

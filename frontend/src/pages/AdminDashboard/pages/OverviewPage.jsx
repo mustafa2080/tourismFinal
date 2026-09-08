@@ -84,12 +84,12 @@ export default function OverviewPage() {
           )}
         </div>
         <div
-          className={`p-4 rounded-xl bg-gradient-to-br ${
-            title.includes('Revenue') ? 'from-green-500 to-green-600' :
-            title.includes('Bookings') ? 'from-teal-500 to-teal-600' :
-            title.includes('Users') ? 'from-orange-500 to-orange-600' :
-            'from-orange-500 to-orange-600'
-          } text-white group-hover:scale-110 transition-transform`}
+          className={`p-4 rounded-xl bg-[#ED9A58] ${
+ title.includes('Revenue') ? ' ' :
+ title.includes('Bookings') ? ' ' :
+ title.includes('Users') ? ' ' :
+ ' '
+ } text-white group-hover:scale-110 transition-transform`}
         >
           <Icon size={28} />
         </div>
@@ -196,104 +196,104 @@ export default function OverviewPage() {
                     border: 'none', 
                     borderRadius: '8px',
                     color: '#fff'
-                  }}
-                />
-                <Area 
-                  type="monotone" 
-                  dataKey="revenue" 
-                  stroke="#3b82f6" 
-                  fillOpacity={1} 
-                  fill="url(#colorRevenue)"
-                  name="Revenue"
-                />
-              </AreaChart>
-            </ResponsiveContainer>
-          ) : (
-            <div className="h-80 flex items-center justify-center text-slate-500">No data available</div>
-          )}
-        </div>
+ }}
+ />
+ <Area 
+ type="monotone" 
+ dataKey="revenue" 
+ stroke="#3b82f6" 
+ fillOpacity={1} 
+ fill="url(#colorRevenue)"
+ name="Revenue"
+ />
+ </AreaChart>
+ </ResponsiveContainer>
+ ) : (
+ <div className="h-80 flex items-center justify-center text-slate-500">No data available</div>
+ )}
+ </div>
 
-        {/* Booking Status Distribution */}
-        <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-lg border border-slate-200 dark:border-slate-700">
-          <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-6">Booking Status</h2>
-          {bookingChart.length > 0 ? (
-            <ResponsiveContainer width="100%" height={300}>
-              <PieChart>
-                <Pie
-                  data={bookingChart}
-                  cx="50%"
-                  cy="50%"
-                  labelLine={false}
-                  label={({ status, value }) => `${status}: ${value}`}
-                  outerRadius={100}
-                  fill="#8884d8"
-                  dataKey="value"
-                >
-                  {bookingChart.map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={entry.color} />
-                  ))}
-                </Pie>
-                <Tooltip />
-              </PieChart>
-            </ResponsiveContainer>
-          ) : (
-            <div className="h-80 flex items-center justify-center text-slate-500">No data available</div>
-          )}
-        </div>
-      </div>
+ {/* Booking Status Distribution */}
+ <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-lg border border-slate-200 dark:border-slate-700">
+ <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-6">Booking Status</h2>
+ {bookingChart.length > 0 ? (
+ <ResponsiveContainer width="100%" height={300}>
+ <PieChart>
+ <Pie
+ data={bookingChart}
+ cx="50%"
+ cy="50%"
+ labelLine={false}
+ label={({ status, value }) => `${status}: ${value}`}
+ outerRadius={100}
+ fill="#8884d8"
+ dataKey="value"
+ >
+ {bookingChart.map((entry, index) => (
+ <Cell key={`cell-${index}`} fill={entry.color} />
+ ))}
+ </Pie>
+ <Tooltip />
+ </PieChart>
+ </ResponsiveContainer>
+ ) : (
+ <div className="h-80 flex items-center justify-center text-slate-500">No data available</div>
+ )}
+ </div>
+ </div>
 
-      {/* Performance Metrics */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {/* Booking Status Breakdown */}
-        <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-lg border border-slate-200 dark:border-slate-700">
-          <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-4">Status Breakdown</h2>
-          <div className="space-y-3">
-            {bookingChart.map((item, idx) => (
-              <div key={idx} className="flex items-center justify-between p-3 bg-slate-50 dark:bg-slate-700/50 rounded-lg">
-                <div className="flex items-center gap-3">
-                  <div className="w-3 h-3 rounded-full" style={{ backgroundColor: item.color }}></div>
-                  <span className="text-slate-700 dark:text-slate-300">{item.status}</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="font-bold text-slate-900 dark:text-white">{item.value}</span>
-                  <span className="text-xs text-slate-500 dark:text-slate-400">
-                    ({statsData?.totalBookings ? ((item.value / statsData.totalBookings) * 100).toFixed(1) : 0}%)
-                  </span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+ {/* Performance Metrics */}
+ <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+ {/* Booking Status Breakdown */}
+ <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-lg border border-slate-200 dark:border-slate-700">
+ <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-4">Status Breakdown</h2>
+ <div className="space-y-3">
+ {bookingChart.map((item, idx) => (
+ <div key={idx} className="flex items-center justify-between p-3 bg-slate-50 dark:bg-slate-700/50 rounded-lg">
+ <div className="flex items-center gap-3">
+ <div className="w-3 h-3 rounded-full" style={{ backgroundColor: item.color }}></div>
+ <span className="text-slate-700 dark:text-slate-300">{item.status}</span>
+ </div>
+ <div className="flex items-center gap-2">
+ <span className="font-bold text-slate-900 dark:text-white">{item.value}</span>
+ <span className="text-xs text-slate-500 dark:text-slate-400">
+ ({statsData?.totalBookings ? ((item.value / statsData.totalBookings) * 100).toFixed(1) : 0}%)
+ </span>
+ </div>
+ </div>
+ ))}
+ </div>
+ </div>
 
-        {/* Top Metrics */}
-        {statsData && (
-          <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-lg border border-slate-200 dark:border-slate-700">
-            <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-4">Key Metrics</h2>
-            <div className="space-y-3">
-              <div className="p-3 bg-gradient-to-r from-teal-50 to-teal-100 dark:from-teal-900/20 dark:to-teal-800/20 rounded-lg border border-teal-200 dark:border-teal-700">
-                <div className="flex items-center justify-between">
-                  <span className="text-sm text-slate-700 dark:text-slate-300">Avg Order Value</span>
-                  <span className="font-bold text-slate-900 dark:text-white">${statsData.avgOrderValue?.toFixed(2)}</span>
-                </div>
-              </div>
-              <div className="p-3 bg-gradient-to-r from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20 rounded-lg border border-green-200 dark:border-green-700">
-                <div className="flex items-center justify-between">
-                  <span className="text-sm text-slate-700 dark:text-slate-300">Conversion Rate</span>
-                  <span className="font-bold text-slate-900 dark:text-white">{statsData.conversionRate?.toFixed(2)}%</span>
-                </div>
-              </div>
-              <div className="p-3 bg-gradient-to-r from-orange-50 to-orange-100 dark:from-orange-900/20 dark:to-orange-800/20 rounded-lg border border-orange-200 dark:border-orange-700">
-                <div className="flex items-center justify-between">
-                  <span className="text-sm text-slate-700 dark:text-slate-300">Revenue Growth</span>
-                  <span className={`font-bold ${statsData.revenueGrowth >= 0 ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>
+ {/* Top Metrics */}
+ {statsData && (
+ <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-lg border border-slate-200 dark:border-slate-700">
+ <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-4">Key Metrics</h2>
+ <div className="space-y-3">
+ <div className="p-3 bg-[#ED9A58] rounded-lg border border-teal-200 dark:border-teal-700">
+ <div className="flex items-center justify-between">
+ <span className="text-sm text-slate-700 dark:text-slate-300">Avg Order Value</span>
+ <span className="font-bold text-slate-900 dark:text-white">${statsData.avgOrderValue?.toFixed(2)}</span>
+ </div>
+ </div>
+ <div className="p-3 rounded-lg border border-green-200 dark:border-green-700">
+ <div className="flex items-center justify-between">
+ <span className="text-sm text-slate-700 dark:text-slate-300">Conversion Rate</span>
+ <span className="font-bold text-slate-900 dark:text-white">{statsData.conversionRate?.toFixed(2)}%</span>
+ </div>
+ </div>
+ <div className="p-3 rounded-lg border border-orange-200 dark:border-orange-700">
+ <div className="flex items-center justify-between">
+ <span className="text-sm text-slate-700 dark:text-slate-300">Revenue Growth</span>
+ <span className={`font-bold ${statsData.revenueGrowth >= 0 ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>
                     {statsData.revenueGrowth >= 0 ? '+' : ''}{statsData.revenueGrowth?.toFixed(2)}%
-                  </span>
-                </div>
-              </div>
-              <div className="p-3 bg-gradient-to-r from-orange-50 to-orange-100 dark:from-orange-900/20 dark:to-orange-800/20 rounded-lg border border-orange-200 dark:border-orange-700">
-                <div className="flex items-center justify-between">
-                  <span className="text-sm text-slate-700 dark:text-slate-300">User Growth</span>
-                  <span className={`font-bold ${statsData.userGrowth >= 0 ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>
+ </span>
+ </div>
+ </div>
+ <div className="p-3 bg-[#ED9A58] rounded-lg border border-orange-200 dark:border-orange-700">
+ <div className="flex items-center justify-between">
+ <span className="text-sm text-slate-700 dark:text-slate-300">User Growth</span>
+ <span className={`font-bold ${statsData.userGrowth >= 0 ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>
                     {statsData.userGrowth >= 0 ? '+' : ''}{statsData.userGrowth?.toFixed(2)}%
                   </span>
                 </div>

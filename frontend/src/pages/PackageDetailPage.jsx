@@ -511,7 +511,7 @@ const PackageDetailPage = () => {
 
   return (
     <MainLayout>
-      <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white dark:from-slate-900 dark:to-slate-800">
+      <div className="min-h-screen bg-[#ED9A58] ">
         {/* HERO GALLERY SECTION */}
         <div className="relative h-[350px] sm:h-[450px] lg:h-[550px] bg-black overflow-hidden group">
           {/* Main Image */}
@@ -533,7 +533,7 @@ const PackageDetailPage = () => {
                 alt={currentImage.alt_text || 'Package image'}
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-[#ED9A58] " />
             </div>
           )}
 
@@ -620,7 +620,7 @@ const PackageDetailPage = () => {
 
               {/* Highlights Card */}
               {displayPkg.highlights && displayPkg.highlights.length > 0 && (
-                <div className="bg-gradient-to-r from-teal-50 to-teal-50 dark:from-teal-900/20 dark:to-teal-900/20 rounded-xl p-6 border border-teal-200 dark:border-teal-700">
+                <div className="bg-[#ED9A58] rounded-xl p-6 border border-teal-200 dark:border-teal-700">
                   <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-4">{t('packageDetail.highlights')}</h3>
                   <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                     {displayPkg.highlights.map((highlight, idx) => (
@@ -701,7 +701,7 @@ const PackageDetailPage = () => {
                     <div className="space-y-6">
                       {/* Add Review Section */}
                       {isAuthenticated && (
-                        <div className="bg-gradient-to-r from-teal-50 to-teal-50 dark:from-teal-900/20 dark:to-teal-900/20 rounded-xl p-6 border border-teal-200 dark:border-teal-700">
+                        <div className="bg-[#ED9A58] rounded-xl p-6 border border-teal-200 dark:border-teal-700">
                           <div className="flex justify-between items-center mb-4">
                             <h4 className="text-lg font-bold text-slate-900 dark:text-white">Share Your Experience</h4>
                             <button
@@ -769,20 +769,20 @@ const PackageDetailPage = () => {
                               {/* Rating Selection */}
                               <div>
                                 <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-3">Rating * {hoverRating > 0 && <span className="text-yellow-500">({['', 'Poor', 'Fair', 'Good', 'Very Good', 'Excellent'][hoverRating]})</span>}</label>
-                                <div className="flex gap-3 p-4 bg-gradient-to-r from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20 rounded-lg border border-yellow-200 dark:border-yellow-700">
-                                  {[1, 2, 3, 4, 5].map(star => (
-                                    <button
-                                      key={star}
-                                      onClick={() => setReviewRating(star)}
-                                      onMouseEnter={() => setHoverRating(star)}
-                                      onMouseLeave={() => setHoverRating(0)}
-                                      className="transition-all duration-200 transform hover:scale-125 active:scale-95"
-                                    >
-                                      <FiStar
-                                        size={40}
-                                        className={`transition-all duration-200 ${
-                                          star <= (hoverRating || reviewRating)
-                                            ? 'fill-yellow-400 text-yellow-400 drop-shadow-lg'
+ <div className="flex gap-3 p-4 bg-[#ED9A58] rounded-lg border border-yellow-200 dark:border-yellow-700">
+ {[1, 2, 3, 4, 5].map(star => (
+ <button
+ key={star}
+ onClick={() => setReviewRating(star)}
+ onMouseEnter={() => setHoverRating(star)}
+ onMouseLeave={() => setHoverRating(0)}
+ className="transition-all duration-200 transform hover:scale-125 active:scale-95"
+ >
+ <FiStar
+ size={40}
+ className={`transition-all duration-200 ${
+ star <= (hoverRating || reviewRating)
+ ? 'fill-yellow-400 text-yellow-400 drop-shadow-lg'
                                             : 'text-slate-300 dark:text-slate-600'
                                         }`}
                                       />
@@ -840,52 +840,52 @@ const PackageDetailPage = () => {
                                     : reviewRating === 0 || reviewComment.trim().length < 10
                                     ? 'bg-slate-300 dark:bg-slate-600 cursor-not-allowed opacity-50'
                                     : 'bg-[#ED9A58] active:scale-95 shadow-lg hover:shadow-xl'
-                                }`}
-                              >
-                                <div className="flex items-center justify-center gap-2">
-                                  {submitReviewLoading ? (
-                                    <>
-                                      <span className="animate-spin">⏳</span>
-                                      <span>Submitting...</span>
-                                    </>
-                                  ) : reviewRating === 0 || reviewComment.trim().length < 10 ? (
-                                    <>
-                                      <span>🔒</span>
-                                      <span>Complete the form above</span>
-                                    </>
-                                  ) : (
-                                    <>
-                                      <span>✨</span>
-                                      <span>Submit Review</span>
-                                    </>
-                                  )}
-                                </div>
-                              </button>
-                            </div>
-                          )}
-                        </div>
-                      )}
+ }`}
+ >
+ <div className="flex items-center justify-center gap-2">
+ {submitReviewLoading ? (
+ <>
+ <span className="animate-spin">⏳</span>
+ <span>Submitting...</span>
+ </>
+ ) : reviewRating === 0 || reviewComment.trim().length < 10 ? (
+ <>
+ <span>🔒</span>
+ <span>Complete the form above</span>
+ </>
+ ) : (
+ <>
+ <span>✨</span>
+ <span>Submit Review</span>
+ </>
+ )}
+ </div>
+ </button>
+ </div>
+ )}
+ </div>
+ )}
 
-                      {/* Reviews List */}
-                      <div className="space-y-4">
-                        <h4 className="text-lg font-bold text-slate-900 dark:text-white">
-                          Reviews ({reviews.length})
-                        </h4>
-                        
-                        {reviewsLoading ? (
-                          <div className="flex items-center justify-center py-8">
-                            <Spinner size="sm" />
-                            <span className="ml-2 text-slate-600 dark:text-slate-400">Loading reviews...</span>
-                          </div>
-                        ) : reviews && reviews.length > 0 ? (
-                          <div className="space-y-4">
-                            {reviews.map((review, idx) => (
-                              <div key={idx} className="bg-gradient-to-r from-slate-50 to-slate-100 dark:from-slate-800 dark:to-slate-900 rounded-lg p-5 border-l-4 border-yellow-400 hover:shadow-lg transition-all duration-200">
-                                <div className="flex items-start justify-between mb-3">
-                                  <div className="flex-1">
-                                    <div className="flex items-center gap-3 mb-2">
-                                      <div className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-400 to-orange-500 flex items-center justify-center text-white font-bold">
-                                        {(review.user?.name || 'A')[0]}
+ {/* Reviews List */}
+ <div className="space-y-4">
+ <h4 className="text-lg font-bold text-slate-900 dark:text-white">
+ Reviews ({reviews.length})
+ </h4>
+ 
+ {reviewsLoading ? (
+ <div className="flex items-center justify-center py-8">
+ <Spinner size="sm" />
+ <span className="ml-2 text-slate-600 dark:text-slate-400">Loading reviews...</span>
+ </div>
+ ) : reviews && reviews.length > 0 ? (
+ <div className="space-y-4">
+ {reviews.map((review, idx) => (
+ <div key={idx} className="bg-[#ED9A58] rounded-lg p-5 border-l-4 border-yellow-400 hover:shadow-lg transition-all duration-200">
+ <div className="flex items-start justify-between mb-3">
+ <div className="flex-1">
+ <div className="flex items-center gap-3 mb-2">
+ <div className="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold">
+ {(review.user?.name || 'A')[0]}
                                       </div>
                                       <div className="flex-1">
                                         <h5 className="font-bold text-slate-900 dark:text-white">{review.user?.name || 'Anonymous'}</h5>
@@ -926,7 +926,7 @@ const PackageDetailPage = () => {
                             ))}
                           </div>
                         ) : (
-                          <div className="text-center py-12 bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-800 dark:to-slate-900 rounded-lg border-2 border-dashed border-slate-300 dark:border-slate-600">
+                          <div className="text-center py-12 bg-[#ED9A58] rounded-lg border-2 border-dashed border-slate-300 dark:border-slate-600">
                             <div className="text-4xl mb-3">💬</div>
                             <p className="text-slate-600 dark:text-slate-400 text-lg font-semibold mb-2">
                               No reviews yet

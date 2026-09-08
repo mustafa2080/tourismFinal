@@ -816,117 +816,117 @@ function PackagesPage() {
     } catch (error) {
       console.error('Error deleting package:', error);
       const errorMessage = error.response?.data?.message || error.message || 'Failed to delete package';
-      toast.error(`❌ ${errorMessage}`, { id: `delete-${pkgId}` });
-    }
-  };
+ toast.error(`❌ ${errorMessage}`, { id: `delete-${pkgId}` });
+ }
+ };
 
-  const stats = {
-    total: packages.length,
-    featured: packages.filter(p => p.featured).length,
-    avgPrice: packages.length > 0 
-      ? (packages.reduce((sum, p) => sum + (parseFloat(p.base_price) || 0), 0) / packages.length).toFixed(0)
-      : 0,
-    avgRating: packages.length > 0 
-      ? (packages.reduce((sum, p) => sum + (parseFloat(p.average_rating) || 0), 0) / packages.length).toFixed(1)
-      : 0,
-  };
+ const stats = {
+ total: packages.length,
+ featured: packages.filter(p => p.featured).length,
+ avgPrice: packages.length > 0 
+ ? (packages.reduce((sum, p) => sum + (parseFloat(p.base_price) || 0), 0) / packages.length).toFixed(0)
+ : 0,
+ avgRating: packages.length > 0 
+ ? (packages.reduce((sum, p) => sum + (parseFloat(p.average_rating) || 0), 0) / packages.length).toFixed(1)
+ : 0,
+ };
 
-  return (
-    <div className="space-y-6 pb-8">
-      {/* Header */}
-      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-        <div>
-          <h1 className="text-2xl sm:text-3xl lg:text-5xl font-bold text-slate-900 dark:text-white flex items-center gap-3">
-            <div className="p-2 sm:p-3 bg-gradient-to-br from-orange-500 to-red-600 rounded-xl shadow-lg flex-shrink-0">
-              <MdTour className="text-white" size={24} />
-            </div>
-            Manage Packages
-          </h1>
-          <p className="text-slate-600 dark:text-slate-400 mt-3 text-sm sm:text-base lg:text-lg">
-            Manage all tour packages and their details
-          </p>
-        </div>
-        <button
-          onClick={handleCreatePackage}
-          className="flex items-center justify-center gap-2 px-6 py-3 bg-[#ED9A58] text-white rounded-xl hover:shadow-lg transition-all font-semibold shadow-lg transform hover:scale-105 "
-        >
-          <FiPlus size={22} />
-          <span>Add New Package</span>
-        </button>
-      </div>
+ return (
+ <div className="space-y-6 pb-8">
+ {/* Header */}
+ <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+ <div>
+ <h1 className="text-2xl sm:text-3xl lg:text-5xl font-bold text-slate-900 dark:text-white flex items-center gap-3">
+ <div className="p-2 sm:p-3 bg-[#ED9A58] rounded-xl shadow-lg flex-shrink-0">
+ <MdTour className="text-white" size={24} />
+ </div>
+ Manage Packages
+ </h1>
+ <p className="text-slate-600 dark:text-slate-400 mt-3 text-sm sm:text-base lg:text-lg">
+ Manage all tour packages and their details
+ </p>
+ </div>
+ <button
+ onClick={handleCreatePackage}
+ className="flex items-center justify-center gap-2 px-6 py-3 bg-[#ED9A58] text-white rounded-xl hover:shadow-lg transition-all font-semibold shadow-lg transform hover:scale-105 "
+ >
+ <FiPlus size={22} />
+ <span>Add New Package</span>
+ </button>
+ </div>
 
-      {/* Statistics Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div className="bg-gradient-to-br from-teal-50 to-teal-100 dark:from-teal-900/20 dark:to-teal-800/20 rounded-2xl p-6 border border-teal-200 dark:border-teal-700/50 shadow-lg hover:shadow-xl transition-all">
-          <div className="flex items-center justify-between mb-2">
-            <p className="text-teal-600 dark:text-teal-400 text-sm font-bold uppercase tracking-wide">Total Packages</p>
-            <MdTour className="text-teal-600 dark:text-teal-400" size={24} />
-          </div>
-          <p className="text-3xl font-bold text-teal-900 dark:text-teal-100">{stats.total}</p>
-          <p className="text-xs text-teal-600 dark:text-teal-400 mt-2">All available packages</p>
-        </div>
+ {/* Statistics Cards */}
+ <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+ <div className=" rounded-2xl p-6 border border-teal-200 dark:border-teal-700/50 shadow-lg hover:shadow-xl transition-all">
+ <div className="flex items-center justify-between mb-2">
+ <p className="text-teal-600 dark:text-teal-400 text-sm font-bold uppercase tracking-wide">Total Packages</p>
+ <MdTour className="text-teal-600 dark:text-teal-400" size={24} />
+ </div>
+ <p className="text-3xl font-bold text-teal-900 dark:text-teal-100">{stats.total}</p>
+ <p className="text-xs text-teal-600 dark:text-teal-400 mt-2">All available packages</p>
+ </div>
 
-        <div className="bg-gradient-to-br from-yellow-50 to-yellow-100 dark:from-yellow-900/20 dark:to-yellow-800/20 rounded-2xl p-6 border border-yellow-200 dark:border-yellow-700/50 shadow-lg hover:shadow-xl transition-all">
-          <div className="flex items-center justify-between mb-2">
-            <p className="text-yellow-600 dark:text-yellow-400 text-sm font-bold uppercase tracking-wide">Featured Packages</p>
-            <FiTag className="text-yellow-600 dark:text-yellow-400" size={24} />
-          </div>
-          <p className="text-3xl font-bold text-yellow-900 dark:text-yellow-100">{stats.featured}</p>
-          <p className="text-xs text-yellow-600 dark:text-yellow-400 mt-2">Featured packages</p>
-        </div>
+ <div className=" rounded-2xl p-6 border border-yellow-200 dark:border-yellow-700/50 shadow-lg hover:shadow-xl transition-all">
+ <div className="flex items-center justify-between mb-2">
+ <p className="text-yellow-600 dark:text-yellow-400 text-sm font-bold uppercase tracking-wide">Featured Packages</p>
+ <FiTag className="text-yellow-600 dark:text-yellow-400" size={24} />
+ </div>
+ <p className="text-3xl font-bold text-yellow-900 dark:text-yellow-100">{stats.featured}</p>
+ <p className="text-xs text-yellow-600 dark:text-yellow-400 mt-2">Featured packages</p>
+ </div>
 
-        <div className="bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20 rounded-2xl p-6 border border-green-200 dark:border-green-700/50 shadow-lg hover:shadow-xl transition-all">
-          <div className="flex items-center justify-between mb-2">
-            <p className="text-green-600 dark:text-green-400 text-sm font-bold uppercase tracking-wide">Average Price</p>
-            <FiDollarSign className="text-green-600 dark:text-green-400" size={24} />
-          </div>
-          <p className="text-3xl font-bold text-green-900 dark:text-green-100">${stats.avgPrice}</p>
-          <p className="text-xs text-green-600 dark:text-green-400 mt-2">Average price</p>
-        </div>
+ <div className=" rounded-2xl p-6 border border-green-200 dark:border-green-700/50 shadow-lg hover:shadow-xl transition-all">
+ <div className="flex items-center justify-between mb-2">
+ <p className="text-green-600 dark:text-green-400 text-sm font-bold uppercase tracking-wide">Average Price</p>
+ <FiDollarSign className="text-green-600 dark:text-green-400" size={24} />
+ </div>
+ <p className="text-3xl font-bold text-green-900 dark:text-green-100">${stats.avgPrice}</p>
+ <p className="text-xs text-green-600 dark:text-green-400 mt-2">Average price</p>
+ </div>
 
-        <div className="bg-gradient-to-br from-orange-50 to-orange-100 dark:from-orange-900/20 dark:to-orange-800/20 rounded-2xl p-6 border border-orange-200 dark:border-orange-700/50 shadow-lg hover:shadow-xl transition-all">
-          <div className="flex items-center justify-between mb-2">
-            <p className="text-orange-600 dark:text-orange-400 text-sm font-bold uppercase tracking-wide">Average Rating</p>
-            <FiStar className="text-orange-600 dark:text-orange-400" size={24} />
-          </div>
-          <p className="text-3xl font-bold text-orange-900 dark:text-orange-100">{stats.avgRating} stars</p>
-          <p className="text-xs text-orange-600 dark:text-orange-400 mt-2">Overall rating</p>
-        </div>
-      </div>
+ <div className=" rounded-2xl p-6 border border-orange-200 dark:border-orange-700/50 shadow-lg hover:shadow-xl transition-all">
+ <div className="flex items-center justify-between mb-2">
+ <p className="text-orange-600 dark:text-orange-400 text-sm font-bold uppercase tracking-wide">Average Rating</p>
+ <FiStar className="text-orange-600 dark:text-orange-400" size={24} />
+ </div>
+ <p className="text-3xl font-bold text-orange-900 dark:text-orange-100">{stats.avgRating} stars</p>
+ <p className="text-xs text-orange-600 dark:text-orange-400 mt-2">Overall rating</p>
+ </div>
+ </div>
 
-      {/* Filters Section */}
-      <div className="bg-gradient-to-r from-white to-slate-50 dark:from-slate-800 dark:to-slate-700 rounded-2xl shadow-lg p-6 border border-slate-200 dark:border-slate-700">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-          <div className="relative md:col-span-2">
-            <FiSearch className="absolute left-4 top-3.5 text-slate-400 dark:text-slate-500" size={20} />
-            <input
-              type="text"
-              placeholder="Search by package or destination..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-12 pr-4 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-xl bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-500 dark:placeholder-slate-400 focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 transition-all"
-            />
-          </div>
+ {/* Filters Section */}
+ <div className=" rounded-2xl shadow-lg p-6 border border-slate-200 dark:border-slate-700">
+ <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+ <div className="relative md:col-span-2">
+ <FiSearch className="absolute left-4 top-3.5 text-slate-400 dark:text-slate-500" size={20} />
+ <input
+ type="text"
+ placeholder="Search by package or destination..."
+ value={searchTerm}
+ onChange={(e) => setSearchTerm(e.target.value)}
+ className="w-full pl-12 pr-4 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-xl bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-500 dark:placeholder-slate-400 focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 transition-all"
+ />
+ </div>
 
-          <div className="relative">
-            <FiChevronDown className="absolute left-4 top-3.5 text-slate-400 dark:text-slate-500 pointer-events-none" size={20} />
-            <select
-              value={sortBy}
-              onChange={(e) => setSortBy(e.target.value)}
-              className="w-full pl-12 pr-4 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-xl bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 transition-all appearance-none font-medium"
-            >
-              <option value="recent">Most Recent</option>
-              <option value="price_low">Price: Low to High</option>
-              <option value="price_high">Price: High to Low</option>
-              <option value="duration">Duration</option>
-              <option value="rating">Rating</option>
-            </select>
-          </div>
-        </div>
+ <div className="relative">
+ <FiChevronDown className="absolute left-4 top-3.5 text-slate-400 dark:text-slate-500 pointer-events-none" size={20} />
+ <select
+ value={sortBy}
+ onChange={(e) => setSortBy(e.target.value)}
+ className="w-full pl-12 pr-4 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-xl bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 transition-all appearance-none font-medium"
+ >
+ <option value="recent">Most Recent</option>
+ <option value="price_low">Price: Low to High</option>
+ <option value="price_high">Price: High to Low</option>
+ <option value="duration">Duration</option>
+ <option value="rating">Rating</option>
+ </select>
+ </div>
+ </div>
 
-        <div className="flex gap-3 flex-wrap">
-          <button
-            onClick={() => setFilterFeatured('all')}
+ <div className="flex gap-3 flex-wrap">
+ <button
+ onClick={() => setFilterFeatured('all')}
             className={`px-4 py-2 rounded-lg font-semibold transition-all text-sm ${
               filterFeatured === 'all'
                 ? 'bg-teal-600 text-white shadow-lg'
@@ -952,41 +952,41 @@ function PackagesPage() {
               filterFeatured === 'regular'
                 ? 'bg-slate-600 text-white shadow-lg'
                 : 'bg-slate-200 dark:bg-slate-600 text-slate-900 dark:text-white hover:bg-slate-300 dark:hover:bg-slate-500'
-            }`}
-          >
-            Regular
-          </button>
-          <button
-            onClick={fetchPackages}
-            className="ml-auto px-4 py-2 rounded-lg bg-slate-200 dark:bg-slate-600 text-slate-900 dark:text-white hover:bg-slate-300 dark:hover:bg-slate-500 transition-all flex items-center gap-2 font-semibold text-sm"
-          >
-            <FiRefreshCw size={16} />
-            Refresh
-          </button>
-        </div>
-      </div>
+ }`}
+ >
+ Regular
+ </button>
+ <button
+ onClick={fetchPackages}
+ className="ml-auto px-4 py-2 rounded-lg bg-slate-200 dark:bg-slate-600 text-slate-900 dark:text-white hover:bg-slate-300 dark:hover:bg-slate-500 transition-all flex items-center gap-2 font-semibold text-sm"
+ >
+ <FiRefreshCw size={16} />
+ Refresh
+ </button>
+ </div>
+ </div>
 
-      {/* Packages Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {loading ? (
-          <div className="col-span-full flex items-center justify-center h-96">
-            <div className="text-center">
-              <div className="inline-block animate-spin rounded-full h-16 w-16 border-4 border-slate-300 dark:border-slate-600 border-t-teal-600 dark:border-t-teal-400 mb-4"></div>
-              <p className="text-lg text-slate-600 dark:text-slate-400 font-medium">Loading packages...</p>
-            </div>
-          </div>
-        ) : filteredAndSortedPackages.length > 0 ? (
-          filteredAndSortedPackages.map((pkg) => (
-            <div
-              key={pkg.id}
-              className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-700 overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 group"
-            >
-              <div className="relative h-48 bg-gradient-to-br from-teal-400 to-teal-600 overflow-hidden">
-                {pkg.images && pkg.images.length > 0 ? (
-                  <img 
-                    src={(() => {
-                      const imageData = pkg.images[0]?.image_data;
-                      if (!imageData) return pkg.images[0]?.url || '';
+ {/* Packages Grid */}
+ <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+ {loading ? (
+ <div className="col-span-full flex items-center justify-center h-96">
+ <div className="text-center">
+ <div className="inline-block animate-spin rounded-full h-16 w-16 border-4 border-slate-300 dark:border-slate-600 border-t-teal-600 dark:border-t-teal-400 mb-4"></div>
+ <p className="text-lg text-slate-600 dark:text-slate-400 font-medium">Loading packages...</p>
+ </div>
+ </div>
+ ) : filteredAndSortedPackages.length > 0 ? (
+ filteredAndSortedPackages.map((pkg) => (
+ <div
+ key={pkg.id}
+ className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-700 overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 group"
+ >
+ <div className="relative h-48 bg-[#ED9A58] overflow-hidden">
+ {pkg.images && pkg.images.length > 0 ? (
+ <img 
+ src={(() => {
+ const imageData = pkg.images[0]?.image_data;
+ if (!imageData) return pkg.images[0]?.url || '';
                       
                       if (typeof imageData === 'string') {
                         return `data:image/jpeg;base64,${imageData}`;
@@ -1055,61 +1055,61 @@ function PackagesPage() {
 
                 <p className="text-sm text-slate-600 dark:text-slate-400 line-clamp-2 h-10">
                   {pkg.short_desc || 'No description'}
-                </p>
+ </p>
 
-                <div className="flex gap-2 pt-2">
-                  <button
-                    onClick={() => handleViewPackage(pkg)}
-                    className="flex-1 flex items-center justify-center gap-2 px-3 py-2.5 rounded-xl bg-teal-100 dark:bg-teal-900/30 text-teal-700 dark:text-teal-400 hover:bg-teal-200 dark:hover:bg-teal-900/50 transition-all text-sm font-semibold hover:shadow-lg"
-                  >
-                    <FiEye size={16} />
-                    View
-                  </button>
-                  <button
-                    onClick={() => handleEditPackage(pkg)}
-                    className="flex-1 flex items-center justify-center gap-2 px-3 py-2.5 rounded-xl bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400 hover:bg-orange-200 dark:hover:bg-orange-900/50 transition-all text-sm font-semibold hover:shadow-lg"
-                  >
-                    <FiEdit2 size={16} />
-                    Edit
-                  </button>
-                  <button
-                    onClick={() => handleDeletePackage(pkg.id)}
-                    className="flex-1 flex items-center justify-center gap-2 px-3 py-2.5 rounded-xl bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400 hover:bg-red-200 dark:hover:bg-red-900/50 transition-all text-sm font-semibold hover:shadow-lg"
-                  >
-                    <FiTrash2 size={16} />
-                    Delete
-                  </button>
-                </div>
-              </div>
-            </div>
-          ))
-        ) : (
-          <div className="col-span-full">
-            <div className="bg-white dark:bg-slate-800 rounded-2xl p-16 text-center border border-slate-200 dark:border-slate-700 shadow-lg">
-              <div className="inline-flex items-center justify-center w-24 h-24 rounded-full bg-slate-100 dark:bg-slate-700 mb-4">
-                <MdTour className="text-slate-400 dark:text-slate-500" size={48} />
-              </div>
-              <p className="text-xl text-slate-600 dark:text-slate-400 font-bold">No packages found</p>
-              <p className="text-sm text-slate-500 dark:text-slate-500 mt-2">Try adjusting your search or filters</p>
-            </div>
-          </div>
-        )}
-      </div>
+ <div className="flex gap-2 pt-2">
+ <button
+ onClick={() => handleViewPackage(pkg)}
+ className="flex-1 flex items-center justify-center gap-2 px-3 py-2.5 rounded-xl bg-teal-100 dark:bg-teal-900/30 text-teal-700 dark:text-teal-400 hover:bg-teal-200 dark:hover:bg-teal-900/50 transition-all text-sm font-semibold hover:shadow-lg"
+ >
+ <FiEye size={16} />
+ View
+ </button>
+ <button
+ onClick={() => handleEditPackage(pkg)}
+ className="flex-1 flex items-center justify-center gap-2 px-3 py-2.5 rounded-xl bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400 hover:bg-orange-200 dark:hover:bg-orange-900/50 transition-all text-sm font-semibold hover:shadow-lg"
+ >
+ <FiEdit2 size={16} />
+ Edit
+ </button>
+ <button
+ onClick={() => handleDeletePackage(pkg.id)}
+ className="flex-1 flex items-center justify-center gap-2 px-3 py-2.5 rounded-xl bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400 hover:bg-red-200 dark:hover:bg-red-900/50 transition-all text-sm font-semibold hover:shadow-lg"
+ >
+ <FiTrash2 size={16} />
+ Delete
+ </button>
+ </div>
+ </div>
+ </div>
+ ))
+ ) : (
+ <div className="col-span-full">
+ <div className="bg-white dark:bg-slate-800 rounded-2xl p-16 text-center border border-slate-200 dark:border-slate-700 shadow-lg">
+ <div className="inline-flex items-center justify-center w-24 h-24 rounded-full bg-slate-100 dark:bg-slate-700 mb-4">
+ <MdTour className="text-slate-400 dark:text-slate-500" size={48} />
+ </div>
+ <p className="text-xl text-slate-600 dark:text-slate-400 font-bold">No packages found</p>
+ <p className="text-sm text-slate-500 dark:text-slate-500 mt-2">Try adjusting your search or filters</p>
+ </div>
+ </div>
+ )}
+ </div>
 
-      {/* Modal */}
-      {showModal && (
-        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-          <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl max-w-2xl w-full border border-slate-200 dark:border-slate-700 overflow-hidden max-h-[90vh] overflow-y-auto">
-            
-            {/* Modal Header */}
-            <div className="flex items-center justify-between p-4 sm:p-6 lg:p-8 bg-gradient-to-r from-teal-600 to-orange-600 text-white sticky top-0 z-10">
-              <div className="flex items-center gap-3 min-w-0">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-white/20 flex items-center justify-center backdrop-blur-sm flex-shrink-0">
-                  <MdTour size={22} />
-                </div>
-                <div className="min-w-0">
-                  <h2 className="text-lg sm:text-2xl font-bold truncate">
-                    {modalMode === 'view' ? 'Package Details' : modalMode === 'edit' ? 'Edit Package' : 'Create New Package'}
+ {/* Modal */}
+ {showModal && (
+ <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+ <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl max-w-2xl w-full border border-slate-200 dark:border-slate-700 overflow-hidden max-h-[90vh] overflow-y-auto">
+ 
+ {/* Modal Header */}
+ <div className="flex items-center justify-between p-4 sm:p-6 lg:p-8 bg-[#ED9A58] text-white sticky top-0 z-10">
+ <div className="flex items-center gap-3 min-w-0">
+ <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-white/20 flex items-center justify-center backdrop-blur-sm flex-shrink-0">
+ <MdTour size={22} />
+ </div>
+ <div className="min-w-0">
+ <h2 className="text-lg sm:text-2xl font-bold truncate">
+ {modalMode === 'view' ? 'Package Details' : modalMode === 'edit' ? 'Edit Package' : 'Create New Package'}
                   </h2>
                   <p className="text-white/80 text-xs sm:text-sm mt-0.5 hidden sm:block">
                     {modalMode === 'view' ? 'View package information' : 'Update package details'}

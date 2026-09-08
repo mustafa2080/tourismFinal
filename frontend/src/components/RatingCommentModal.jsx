@@ -76,7 +76,7 @@ export function RatingCommentModal({ isOpen, onClose, onSubmit, packageName, loa
       <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl max-w-2xl w-full border border-slate-200 dark:border-slate-700 overflow-hidden animate-modal-in">
         
         {/* Header */}
-        <div className="flex items-center justify-between p-8 bg-gradient-to-r from-teal-600 to-orange-600 text-white">
+        <div className="flex items-center justify-between p-8 bg-[#ED9A58] text-white">
           <div className="flex items-center gap-3">
             <div className="p-3 bg-white/20 rounded-lg backdrop-blur">
               <MdOutlineRateReview size={28} />
@@ -203,7 +203,7 @@ export function RatingCommentModal({ isOpen, onClose, onSubmit, packageName, loa
           </div>
 
           {/* Summary Card */}
-          <div className="bg-gradient-to-r from-teal-50 to-orange-50 dark:from-teal-900/20 dark:to-orange-900/20 rounded-xl p-6 border border-teal-200 dark:border-teal-800">
+          <div className="bg-[#ED9A58] rounded-xl p-6 border border-teal-200 dark:border-teal-800">
             <p className="text-sm font-semibold text-slate-900 dark:text-white mb-3">Summary</p>
             <div className="flex items-center justify-between">
               <div>

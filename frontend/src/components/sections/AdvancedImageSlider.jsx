@@ -109,7 +109,7 @@ const AdvancedImageSlider = () => {
                 alt={s.title}
                 className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent"></div>
+              <div className="absolute inset-0 bg-[#ED9A58] "></div>
             </div>
           ))}
         </div>
@@ -179,7 +179,7 @@ const AdvancedImageSlider = () => {
         {/* Progress Bar */}
         <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-white/20">
           <div
-            className="h-full bg-gradient-to-r from-teal-500 to-orange-500 transition-all duration-500"
+            className="h-full bg-[#ED9A58] transition-all duration-500"
             style={{ width: `${((currentSlide + 1) / slides.length) * 100}%` }}
           ></div>
         </div>
@@ -189,7 +189,7 @@ const AdvancedImageSlider = () => {
       {showStats && (
         <div className="grid grid-cols-3 gap-3 sm:gap-4">
           {/* Visitors */}
-          <div className="bg-gradient-to-br from-teal-50 to-teal-100 dark:from-teal-900/30 dark:to-teal-800/30 rounded-2xl p-4 border border-teal-200 dark:border-teal-700/50">
+          <div className="bg-[#ED9A58] rounded-2xl p-4 border border-teal-200 dark:border-teal-700/50">
             <div className="text-2xl sm:text-3xl font-black text-teal-600 dark:text-teal-400 mb-1">
               {slide.stats.visitors}
             </div>
@@ -199,7 +199,7 @@ const AdvancedImageSlider = () => {
           </div>
 
           {/* Rating */}
-          <div className="bg-gradient-to-br from-yellow-50 to-amber-100 dark:from-yellow-900/30 dark:to-amber-800/30 rounded-2xl p-4 border border-yellow-200 dark:border-yellow-700/50">
+          <div className="bg-[#ED9A58] rounded-2xl p-4 border border-yellow-200 dark:border-yellow-700/50">
             <div className="text-2xl sm:text-3xl font-black text-yellow-600 dark:text-yellow-400 mb-1">
               {slide.stats.rating}
             </div>
@@ -209,7 +209,7 @@ const AdvancedImageSlider = () => {
           </div>
 
           {/* Duration */}
-          <div className="bg-gradient-to-br from-green-50 to-emerald-100 dark:from-green-900/30 dark:to-emerald-800/30 rounded-2xl p-4 border border-green-200 dark:border-green-700/50">
+          <div className="bg-[#ED9A58] rounded-2xl p-4 border border-green-200 dark:border-green-700/50">
             <div className="text-xl sm:text-2xl font-black text-green-600 dark:text-green-400 mb-1">
               {slide.stats.duration}
             </div>

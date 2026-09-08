@@ -16,7 +16,7 @@ export function ProtectedRoute({ children }) {
   if (loading) {
     console.log('⏳ [AdminProtectedRoute] Still loading user data...');
     return (
-      <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-slate-900 to-slate-800">
+      <div className="flex items-center justify-center min-h-screen bg-[#ED9A58] ">
         <div className="text-center space-y-4">
           <div className="w-16 h-16 border-4 border-teal-200 border-t-teal-600 rounded-full animate-spin mx-auto"></div>
           <p className="text-white text-lg font-medium">Loading...</p>

@@ -4,8 +4,8 @@
 
 /* Root CSS Variables */
 :root {
-  --hero-gradient-1: linear-gradient(135deg, rgba(59, 130, 246, 0.4), rgba(168, 85, 247, 0.4));
-  --hero-gradient-2: linear-gradient(to right, rgba(59, 130, 246, 0.2), rgba(168, 85, 247, 0.2));
+  --hero-gradient-1: #ED9A58;
+  --hero-gradient-2: #ED9A58;
   --hero-blur-strong: blur(12px);
   --hero-transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -261,7 +261,7 @@
    ============================================ */
 
 .hero-title-gradient {
-  background: linear-gradient(135deg, #60a5fa, #a78bfa, #f472b6);
+  background: #ED9A58;
   background-size: 300% 300%;
   animation: gradientFlow 8s ease infinite;
   -webkit-background-clip: text;
@@ -302,11 +302,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(59, 130, 246, 0.2) 0%,
-    rgba(168, 85, 247, 0.1) 100%
-  );
+  background: #ED9A58;
   opacity: 0;
   transition: opacity 0.4s ease;
 }
@@ -635,7 +631,7 @@ section[style*="minHeight: 600px"]::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at bottom right, rgba(59, 130, 246, 0.1), transparent);
+  background: #ED9A58;
   pointer-events: none;
   z-index: 1;
 }
@@ -647,5 +643,5 @@ section[style*="minHeight: 600px"] > .relative {
 
 /* Improved gradient overlay consistency */
 .absolute.inset-0.bg-gradient-to-r {
-  background: linear-gradient(to right, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.1)) !important;
+  background: #ED9A58 !important;
 }

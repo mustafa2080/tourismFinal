@@ -119,7 +119,7 @@ const Footer = () => {
       {/* Newsletter Section - Premium Gradient */}
       <div className="relative overflow-hidden">
         {/* Animated Background */}
-        <div className="absolute inset-0 bg-gradient-to-r from-emerald-600 to-rose-600 opacity-90"></div>
+        <div className="absolute inset-0 bg-[#ED9A58] opacity-90"></div>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(59,130,246,0.3),transparent_40%),radial-gradient(circle_at_70%_50%,rgba(168,85,247,0.3),transparent_40%)]"></div>
         <div className="absolute inset-0 backdrop-blur-3xl opacity-40"></div>
         
@@ -204,123 +204,123 @@ const Footer = () => {
 
             <p className="text-slate-400 text-sm mb-6 leading-relaxed">
               Your gateway to unforgettable journeys. Explore the world's most beautiful destinations with us.
-            </p>
+ </p>
 
-            {/* Contact Info */}
-            <div className="space-y-3">
-              <a
-                href="tel:+201000000000"
-                className="flex items-center gap-3 text-slate-400 hover:text-teal-400 transition-all duration-200 text-sm group"
-              >
-                <div className="w-9 h-9 bg-gradient-to-br from-teal-500/20 to-orange-500/20 rounded-lg flex items-center justify-center group-hover:shadow-md transition-all group-hover:scale-110 border border-teal-500/20">
-                  <FiPhone size={16} />
-                </div>
-                <span className="group-hover:translate-x-1 transition-transform">+20 1000 000 000</span>
-              </a>
+ {/* Contact Info */}
+ <div className="space-y-3">
+ <a
+ href="tel:+201000000000"
+ className="flex items-center gap-3 text-slate-400 hover:text-teal-400 transition-all duration-200 text-sm group"
+ >
+ <div className="w-9 h-9 bg-[#ED9A58] rounded-lg flex items-center justify-center group-hover:shadow-md transition-all group-hover:scale-110 border border-teal-500/20">
+ <FiPhone size={16} />
+ </div>
+ <span className="group-hover:translate-x-1 transition-transform">+20 1000 000 000</span>
+ </a>
 
-              <a
-                href="mailto:support@travluyo.com"
-                className="flex items-center gap-3 text-slate-400 hover:text-teal-400 transition-all duration-200 text-sm group"
-              >
-                <div className="w-9 h-9 bg-gradient-to-br from-teal-500/20 to-orange-500/20 rounded-lg flex items-center justify-center group-hover:shadow-md transition-all group-hover:scale-110 border border-teal-500/20">
-                  <FiMail size={16} />
-                </div>
-                <span className="group-hover:translate-x-1 transition-transform">support@travluyo.com</span>
-              </a>
+ <a
+ href="mailto:support@travluyo.com"
+ className="flex items-center gap-3 text-slate-400 hover:text-teal-400 transition-all duration-200 text-sm group"
+ >
+ <div className="w-9 h-9 rounded-lg flex items-center justify-center group-hover:shadow-md transition-all group-hover:scale-110 border border-teal-500/20">
+ <FiMail size={16} />
+ </div>
+ <span className="group-hover:translate-x-1 transition-transform">support@travluyo.com</span>
+ </a>
 
-              <div className="flex items-start gap-3 text-slate-400 text-sm group">
-                <div className="w-9 h-9 bg-gradient-to-br from-teal-500/20 to-orange-500/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-0 group-hover:shadow-md transition-all group-hover:scale-110 border border-teal-500/20">
-                  <FiMapPin size={16} />
-                </div>
-                <div className="group-hover:translate-x-1 transition-transform">
-                  <p>Cairo, Egypt</p>
-                  <p className="text-xs text-slate-500 mt-0.5">24/7 Support</p>
-                </div>
-              </div>
-            </div>
-          </div>
+ <div className="flex items-start gap-3 text-slate-400 text-sm group">
+ <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 mt-0 group-hover:shadow-md transition-all group-hover:scale-110 border border-teal-500/20">
+ <FiMapPin size={16} />
+ </div>
+ <div className="group-hover:translate-x-1 transition-transform">
+ <p>Cairo, Egypt</p>
+ <p className="text-xs text-slate-500 mt-0.5">24/7 Support</p>
+ </div>
+ </div>
+ </div>
+ </div>
 
-          {/* Footer Links */}
-          {footerSections.map((section) => (
-            <div key={section.title}>
-              <h3 className="font-bold text-slate-100 mb-5 text-sm uppercase tracking-wider">
-                {section.title}
-              </h3>
-              <ul className="space-y-3">
-                {section.links.map((link) => (
-                  <li key={link.path}>
-                    <button
-                      onClick={() => navigate(link.path)}
-                      className="text-slate-400 hover:text-teal-400 transition-all duration-200 text-sm font-medium hover:translate-x-0.5 inline-flex items-center gap-1 group"
-                    >
-                      {link.label}
-                      <FiArrowRight size={14} className="opacity-0 group-hover:opacity-100 transition-opacity" />
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
+ {/* Footer Links */}
+ {footerSections.map((section) => (
+ <div key={section.title}>
+ <h3 className="font-bold text-slate-100 mb-5 text-sm uppercase tracking-wider">
+ {section.title}
+ </h3>
+ <ul className="space-y-3">
+ {section.links.map((link) => (
+ <li key={link.path}>
+ <button
+ onClick={() => navigate(link.path)}
+ className="text-slate-400 hover:text-teal-400 transition-all duration-200 text-sm font-medium hover:translate-x-0.5 inline-flex items-center gap-1 group"
+ >
+ {link.label}
+ <FiArrowRight size={14} className="opacity-0 group-hover:opacity-100 transition-opacity" />
+ </button>
+ </li>
+ ))}
+ </ul>
+ </div>
+ ))}
+ </div>
 
-        {/* Divider */}
-        <div className="border-t border-slate-800 my-12" />
+ {/* Divider */}
+ <div className="border-t border-slate-800 my-12" />
 
-        {/* Bottom Section */}
-        <div className="space-y-6">
-          {/* Top Row */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* Copyright */}
-            <div className="text-slate-400 text-sm">
-              <p>© {currentYear} Travluyo.</p>
-              <p>All rights reserved.</p>
-            </div>
+ {/* Bottom Section */}
+ <div className="space-y-6">
+ {/* Top Row */}
+ <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+ {/* Copyright */}
+ <div className="text-slate-400 text-sm">
+ <p>© {currentYear} Travluyo.</p>
+ <p>All rights reserved.</p>
+ </div>
 
-            {/* Social Links - Centered */}
-            <div className="flex flex-col items-start md:items-center gap-3">
-              <span className="text-slate-400 text-sm font-medium">Follow Us:</span>
-              <div className="flex gap-3">
-                {socialLinks.map((social) => {
-                  const Icon = social.icon;
-                  return (
-                    <a
-                      key={social.label}
-                      href={social.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-9 h-9 rounded-full bg-slate-800 hover:bg-teal-600 text-slate-400 hover:text-white flex items-center justify-center transition-all duration-300 group"
-                      aria-label={social.label}
-                      title={social.label}
-                    >
-                      <Icon size={18} className="group-hover:rotate-12 transition-transform" />
-                    </a>
-                  );
-                })}
-              </div>
-            </div>
+ {/* Social Links - Centered */}
+ <div className="flex flex-col items-start md:items-center gap-3">
+ <span className="text-slate-400 text-sm font-medium">Follow Us:</span>
+ <div className="flex gap-3">
+ {socialLinks.map((social) => {
+ const Icon = social.icon;
+ return (
+ <a
+ key={social.label}
+ href={social.url}
+ target="_blank"
+ rel="noopener noreferrer"
+ className="w-9 h-9 rounded-full bg-slate-800 hover:bg-teal-600 text-slate-400 hover:text-white flex items-center justify-center transition-all duration-300 group"
+ aria-label={social.label}
+ title={social.label}
+ >
+ <Icon size={18} className="group-hover:rotate-12 transition-transform" />
+ </a>
+ );
+ })}
+ </div>
+ </div>
 
-            {/* Payment Methods - Right */}
-            <div className="flex flex-col items-start md:items-end gap-3">
-              <span className="text-slate-400 text-sm font-medium">We Accept:</span>
-              <div className="flex gap-2 flex-wrap justify-start md:justify-end">
-                {paymentMethods.map((method) => (
-                  <div
-                    key={method.name}
-                    className="px-3 py-2 bg-slate-800 hover:bg-gradient-to-br hover:from-teal-500/30 hover:to-orange-500/30 rounded-lg text-xs text-slate-300 font-semibold hover:text-white transition-all hover:scale-110 border border-slate-700 hover:border-teal-500/50 flex items-center gap-1.5 cursor-default"
-                    title={method.name}
-                  >
-                    <span>{method.icon}</span>
-                    <span className="hidden sm:inline">{method.name}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
+ {/* Payment Methods - Right */}
+ <div className="flex flex-col items-start md:items-end gap-3">
+ <span className="text-slate-400 text-sm font-medium">We Accept:</span>
+ <div className="flex gap-2 flex-wrap justify-start md:justify-end">
+ {paymentMethods.map((method) => (
+ <div
+ key={method.name}
+ className="px-3 py-2 bg-slate-800 hover:bg-[#ED9A58] rounded-lg text-xs text-slate-300 font-semibold hover:text-white transition-all hover:scale-110 border border-slate-700 hover:border-teal-500/50 flex items-center gap-1.5 cursor-default"
+ title={method.name}
+ >
+ <span>{method.icon}</span>
+ <span className="hidden sm:inline">{method.name}</span>
+ </div>
+ ))}
+ </div>
+ </div>
+ </div>
 
-          {/* Back to Top */}
-          <div className="border-t border-slate-800 pt-6 flex justify-center">
-            <button
-              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+ {/* Back to Top */}
+ <div className="border-t border-slate-800 pt-6 flex justify-center">
+ <button
+ onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 transition-colors text-sm font-medium"
             >
               <span>Back to Top</span>

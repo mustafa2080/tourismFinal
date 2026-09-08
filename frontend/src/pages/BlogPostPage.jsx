@@ -56,7 +56,7 @@ const BlogPostPage = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 flex flex-col">
+      <div className="min-h-screen bg-[#ED9A58] flex flex-col">
         <Header />
         <div className="flex-1 flex justify-center items-center">
           <div className="w-12 h-12 border-4 border-teal-500 border-t-transparent rounded-full animate-spin" />
@@ -68,7 +68,7 @@ const BlogPostPage = () => {
 
   if (notFound || !post) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 flex flex-col">
+      <div className="min-h-screen bg-[#ED9A58] flex flex-col">
         <Header />
         <div className="flex-1 flex flex-col items-center justify-center px-4 text-center py-24">
           <h1 className="text-2xl font-bold text-slate-900 dark:text-white mb-3">
@@ -79,7 +79,7 @@ const BlogPostPage = () => {
           </p>
           <button
             onClick={() => navigate('/blog')}
-            className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-teal-600 to-orange-600 text-white font-semibold rounded-lg hover:shadow-lg transition-all"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-[#ED9A58] text-white font-semibold rounded-lg hover:shadow-lg transition-all"
           >
             <FiArrowLeft size={18} /> Back to Blog
           </button>
@@ -90,12 +90,12 @@ const BlogPostPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 flex flex-col">
+    <div className="min-h-screen bg-[#ED9A58] flex flex-col">
       <Header />
 
       <article className="flex-1">
         {/* Cover image */}
-        <div className="w-full h-64 sm:h-80 md:h-96 bg-gradient-to-br from-teal-500 via-orange-500 to-pink-500 relative overflow-hidden">
+        <div className="w-full h-64 sm:h-80 md:h-96 bg-[#ED9A58] relative overflow-hidden">
           {post.featured_image && (
             <img
               src={post.featured_image}
@@ -103,7 +103,7 @@ const BlogPostPage = () => {
               className="w-full h-full object-cover"
             />
           )}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+          <div className="absolute inset-0 bg-[#ED9A58] " />
           <div className="absolute bottom-0 left-0 right-0 px-4 sm:px-6 lg:px-8 pb-8">
             <div className="max-w-4xl mx-auto">
               {post.category?.name && (
@@ -170,7 +170,7 @@ const BlogPostPage = () => {
                     to={`/blog/${r.slug}`}
                     className="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden hover:shadow-lg transition-all group"
                   >
-                    <div className="h-32 bg-gradient-to-br from-teal-500 to-orange-500 overflow-hidden">
+                    <div className="h-32 bg-[#ED9A58] overflow-hidden">
                       {r.featured_image && (
                         <img src={r.featured_image} alt={r.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform" />
                       )}

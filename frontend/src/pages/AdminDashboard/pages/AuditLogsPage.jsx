@@ -98,7 +98,7 @@ export function AuditLogsPage() {
   };
 
   const StatCard = ({ icon: Icon, label, value, color }) => (
-    <div className={`bg-gradient-to-br ${color} rounded-xl shadow-lg p-6 text-white border border-opacity-20 group hover:shadow-xl transition-all duration-300 transform hover:scale-105`}>
+    <div className={`bg-[#ED9A58] ${color} rounded-xl shadow-lg p-6 text-white border border-opacity-20 group hover:shadow-xl transition-all duration-300 transform hover:scale-105`}>
       <div className="flex items-start justify-between">
         <div>
           <p className="text-white/80 text-sm font-medium mb-2">{label}</p>
@@ -122,7 +122,7 @@ export function AuditLogsPage() {
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <div>
           <h1 className="text-2xl sm:text-3xl lg:text-5xl font-bold text-slate-900 dark:text-white flex items-center gap-3">
-            <div className="p-2 sm:p-3 bg-gradient-to-br from-orange-500 to-teal-600 rounded-xl shadow-lg flex-shrink-0">
+            <div className="p-2 sm:p-3 bg-[#ED9A58] rounded-xl shadow-lg flex-shrink-0">
               <MdOutlineHistory className="text-white" size={24} />
             </div>
             Audit Logs
@@ -139,30 +139,30 @@ export function AuditLogsPage() {
           icon={FiActivity}
           label="Total Actions"
           value={totalActions}
-          color="from-teal-500 to-teal-600"
+          color=" "
         />
         <StatCard
           icon={FiTrendingUp}
           label="Approvals"
           value={approvalActions}
-          color="from-green-500 to-emerald-600"
+          color=" "
         />
         <StatCard
           icon={FiBarChart2}
           label="Rejections"
           value={rejectionActions}
-          color="from-red-500 to-red-600"
+          color=" "
         />
         <StatCard
           icon={FiCalendar}
           label="Updates"
           value={updateActions}
-          color="from-orange-500 to-pink-600"
+          color=" "
         />
       </div>
 
       {/* Search and Filter Section */}
-      <div className="bg-gradient-to-r from-slate-50 to-slate-100 dark:from-slate-800 dark:to-slate-700 rounded-xl shadow-lg p-6 border border-slate-200 dark:border-slate-700">
+      <div className="bg-[#ED9A58] rounded-xl shadow-lg p-6 border border-slate-200 dark:border-slate-700">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* Search */}
           <div className="relative">
@@ -247,7 +247,7 @@ export function AuditLogsPage() {
           <div className="hidden lg:block overflow-x-auto">
             <table className="w-full">
               <thead>
-                <tr className="bg-gradient-to-r from-slate-100 to-slate-50 dark:from-slate-800 dark:to-slate-700 border-b-2 border-slate-300 dark:border-slate-600">
+                <tr className="bg-[#ED9A58] border-b-2 border-slate-300 dark:border-slate-600">
                   <th className="px-6 py-4 text-left text-sm font-bold text-slate-900 dark:text-white">Action</th>
                   <th className="px-6 py-4 text-left text-sm font-bold text-slate-900 dark:text-white">Target</th>
                   <th className="px-6 py-4 text-left text-sm font-bold text-slate-900 dark:text-white">Admin</th>
@@ -340,7 +340,7 @@ export function AuditLogsPage() {
         <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
           <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl max-w-3xl w-full flex flex-col max-h-[90vh] border border-slate-200 dark:border-slate-700 overflow-hidden animate-in fade-in scale-95 duration-200">
             {/* Modal Header */}
-            <div className="flex items-center justify-between p-4 sm:p-6 lg:p-8 bg-gradient-to-r from-orange-600 to-teal-600 text-white flex-shrink-0">
+            <div className="flex items-center justify-between p-4 sm:p-6 lg:p-8 bg-[#ED9A58] text-white flex-shrink-0">
               <div className="flex items-center gap-3 min-w-0">
                 <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
                   <MdOutlineHistory size={22} />
@@ -372,7 +372,7 @@ export function AuditLogsPage() {
               </div>
 
               {/* Admin Information */}
-              <div className="bg-gradient-to-br from-orange-50 to-pink-50 dark:from-orange-900/20 dark:to-pink-900/20 rounded-xl p-6 border border-orange-200 dark:border-orange-800">
+              <div className="bg-[#ED9A58] rounded-xl p-6 border border-orange-200 dark:border-orange-800">
                 <p className="text-xs font-bold text-orange-600 dark:text-orange-400 uppercase tracking-wide mb-3">Admin Information</p>
                 <div className="space-y-2">
                   <p className="text-slate-600 dark:text-slate-400 text-sm">
@@ -385,7 +385,7 @@ export function AuditLogsPage() {
               </div>
 
               {/* Date & Time */}
-              <div className="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-xl p-6 border border-green-200 dark:border-green-800">
+              <div className="bg-[#ED9A58] rounded-xl p-6 border border-green-200 dark:border-green-800">
                 <p className="text-xs font-bold text-green-600 dark:text-green-400 uppercase tracking-wide mb-3">Timestamp</p>
                 <div className="space-y-2">
                   <p className="text-lg font-bold text-slate-900 dark:text-white">
@@ -423,7 +423,7 @@ export function AuditLogsPage() {
             <div className="p-4 sm:p-6 lg:p-8 bg-slate-50 dark:bg-slate-700/50 border-t border-slate-200 dark:border-slate-700">
               <button
                 onClick={() => setShowModal(false)}
-                className="w-full px-6 py-3 rounded-lg bg-gradient-to-r from-teal-600 to-orange-600 text-white hover:from-teal-700 hover:to-orange-700 transition-all font-bold shadow-lg hover:shadow-xl"
+                className="w-full px-6 py-3 rounded-lg bg-[#ED9A58] text-white transition-all font-bold shadow-lg hover:shadow-xl"
               >
                 Close
               </button>

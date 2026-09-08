@@ -316,33 +316,33 @@ const SearchPage = () => {
     const img = pkg.images[0];
     if (img.image_data) {
       if (typeof img.image_data === 'string') {
-        return `data:image/jpeg;base64,${img.image_data}`;
-      } else if (img.image_data.data?.length) {
-        const str = String.fromCharCode.apply(null, img.image_data.data);
-        return `data:image/jpeg;base64,${btoa(str)}`;
-      }
-    }
-    return img.url || null;
-  };
+ return `data:image/jpeg;base64,${img.image_data}`;
+ } else if (img.image_data.data?.length) {
+ const str = String.fromCharCode.apply(null, img.image_data.data);
+ return `data:image/jpeg;base64,${btoa(str)}`;
+ }
+ }
+ return img.url || null;
+ };
 
-  return (
-    <MainLayout>
-      {/* Hero Search */}
-      <div className="bg-gradient-to-br from-teal-600 to-orange-600 text-white py-8 md:py-12">
-        <div className="max-w-7xl mx-auto px-4 md:px-8">
-          <h1 className="text-3xl md:text-4xl font-bold mb-6 flex items-center gap-3">
-            {categoryId && categoryName
-              ? (
-                <>
-                  <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-white/20 rounded-full text-lg">
-                    📂 {categoryName}
-                  </span>
-                  <span>Trips</span>
-                </>
-              )
-              : searchQuery
-              ? `Search Results for "${searchQuery}"`
-              : t('searchPageExact.findYourPerfectTrip')
+ return (
+ <MainLayout>
+ {/* Hero Search */}
+ <div className="bg-[#ED9A58] text-white py-8 md:py-12">
+ <div className="max-w-7xl mx-auto px-4 md:px-8">
+ <h1 className="text-3xl md:text-4xl font-bold mb-6 flex items-center gap-3">
+ {categoryId && categoryName
+ ? (
+ <>
+ <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-white/20 rounded-full text-lg">
+ 📂 {categoryName}
+ </span>
+ <span>Trips</span>
+ </>
+ )
+ : searchQuery
+ ? `Search Results for "${searchQuery}"`
+ : t('searchPageExact.findYourPerfectTrip')
             }
           </h1>
           {categoryId && (

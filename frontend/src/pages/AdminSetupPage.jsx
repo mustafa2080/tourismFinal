@@ -196,7 +196,7 @@ const AdminSetupPage = () => {
   const passwordCheck = validatePassword(adminData.password);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-teal-900 to-slate-900 dark:from-black dark:via-slate-900 dark:to-black flex items-center justify-center p-4 sm:p-6 lg:p-8">
+    <div className="min-h-screen bg-[#ED9A58] flex items-center justify-center p-4 sm:p-6 lg:p-8">
       {/* Animated Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 left-10 w-72 h-72 bg-teal-500/20 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
@@ -213,8 +213,8 @@ const AdminSetupPage = () => {
             {/* Icon */}
             <div className="flex justify-center">
               <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-teal-600 to-orange-600 rounded-full blur-lg opacity-75"></div>
-                <div className="relative w-16 h-16 bg-gradient-to-br from-teal-600 to-orange-600 rounded-full flex items-center justify-center">
+                <div className="absolute inset-0 bg-[#ED9A58] rounded-full blur-lg opacity-75"></div>
+                <div className="relative w-16 h-16 bg-[#ED9A58] rounded-full flex items-center justify-center">
                   <BiShieldAlt className="text-white text-2xl" />
                 </div>
               </div>
@@ -236,8 +236,8 @@ const AdminSetupPage = () => {
                 <div
                   key={s}
                   className={`h-2 rounded-full transition-all duration-300 ${
-                    s <= step ? 'bg-gradient-to-r from-teal-500 to-orange-500 w-8' : 'bg-slate-600 w-2'
-                  }`}
+ s <= step ? 'bg-[#ED9A58] w-8' : 'bg-slate-600 w-2'
+ }`}
                 ></div>
               ))}
             </div>

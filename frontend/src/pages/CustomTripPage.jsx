@@ -305,7 +305,7 @@ const CustomTripPage = () => {
             <div className="flex flex-col sm:flex-row gap-3">
               <button
                 onClick={() => navigate(isAuthenticated ? '/dashboard' : '/')}
-                className="flex-1 px-5 py-2.5 bg-gradient-to-r from-teal-600 to-orange-600 hover:from-teal-700 hover:to-orange-700 text-white font-semibold rounded-xl transition-all"
+                className="flex-1 px-5 py-2.5 bg-[#ED9A58] text-white font-semibold rounded-xl transition-all"
               >
                 {isAuthenticated ? 'Go to Dashboard' : 'Back to Home'}
               </button>
@@ -328,7 +328,7 @@ const CustomTripPage = () => {
       <Header />
 
       {/* Hero */}
-      <section className="relative pt-10 pb-8 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-teal-600 to-orange-600 dark:from-teal-800 dark:to-orange-900">
+      <section className="relative pt-10 pb-8 px-4 sm:px-6 lg:px-8 bg-[#ED9A58] ">
         <div className="max-w-3xl mx-auto text-center text-white">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/15 text-sm font-semibold mb-3">
             <FiCompass size={14} />
@@ -353,12 +353,12 @@ const CustomTripPage = () => {
                 <div className="flex flex-col items-center gap-1">
                   <div
                     className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold transition-all ${
-                      step === s.id
-                        ? 'bg-gradient-to-r from-teal-600 to-orange-600 text-white shadow-md'
-                        : step > s.id
-                        ? 'bg-emerald-500 text-white'
-                        : 'bg-slate-100 dark:bg-slate-700 text-slate-400 dark:text-slate-500'
-                    }`}
+ step === s.id
+ ? 'bg-[#ED9A58] text-white shadow-md'
+ : step > s.id
+ ? 'bg-emerald-500 text-white'
+ : 'bg-slate-100 dark:bg-slate-700 text-slate-400 dark:text-slate-500'
+ }`}
                   >
                     {step > s.id ? <FiCheckCircle size={16} /> : s.id}
                   </div>
@@ -389,7 +389,7 @@ const CustomTripPage = () => {
         {step === 1 && (
           <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 p-6 sm:p-8">
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-teal-500 to-orange-600 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-lg bg-[#ED9A58] flex items-center justify-center">
                 <FiMapPin size={18} className="text-white" />
               </div>
               <div>
@@ -459,7 +459,7 @@ const CustomTripPage = () => {
           <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 p-6 sm:p-8 space-y-8">
             <div>
               <div className="flex items-center gap-3 mb-5">
-                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-teal-500 to-orange-600 flex items-center justify-center">
+                <div className="w-10 h-10 rounded-lg bg-[#ED9A58] flex items-center justify-center">
                   <FiCalendar size={18} className="text-white" />
                 </div>
                 <h2 className="text-lg font-bold text-slate-900 dark:text-white">When are you traveling?</h2>
@@ -499,7 +499,7 @@ const CustomTripPage = () => {
 
             <div>
               <div className="flex items-center gap-3 mb-5">
-                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-teal-500 to-orange-600 flex items-center justify-center">
+                <div className="w-10 h-10 rounded-lg bg-[#ED9A58] flex items-center justify-center">
                   <FiUsers size={18} className="text-white" />
                 </div>
                 <h2 className="text-lg font-bold text-slate-900 dark:text-white">Who's traveling?</h2>
@@ -593,42 +593,42 @@ const CustomTripPage = () => {
                       interests.includes(tag)
                         ? 'border-teal-600 bg-teal-600 text-white'
                         : 'border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:border-teal-300'
-                    }`}
-                  >
-                    {tag}
-                  </button>
-                ))}
-              </div>
-            </div>
-          </div>
-        )}
+ }`}
+ >
+ {tag}
+ </button>
+ ))}
+ </div>
+ </div>
+ </div>
+ )}
 
-        {/* Step 3 — Build the trip */}
-        {step === 3 && (
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            <div className="lg:col-span-2 bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 p-6 sm:p-8">
-              <div className="flex items-center gap-3 mb-5">
-                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-teal-500 to-orange-600 flex items-center justify-center">
-                  <FiEdit3 size={18} className="text-white" />
-                </div>
-                <div>
-                  <h2 className="text-lg font-bold text-slate-900 dark:text-white">Pick what you want</h2>
-                  <p className="text-sm text-slate-500 dark:text-slate-400">for {effectiveDestination}</p>
-                </div>
-              </div>
+ {/* Step 3 — Build the trip */}
+ {step === 3 && (
+ <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+ <div className="lg:col-span-2 bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 p-6 sm:p-8">
+ <div className="flex items-center gap-3 mb-5">
+ <div className="w-10 h-10 rounded-lg bg-[#ED9A58] flex items-center justify-center">
+ <FiEdit3 size={18} className="text-white" />
+ </div>
+ <div>
+ <h2 className="text-lg font-bold text-slate-900 dark:text-white">Pick what you want</h2>
+ <p className="text-sm text-slate-500 dark:text-slate-400">for {effectiveDestination}</p>
+ </div>
+ </div>
 
-              {/* Type tabs */}
-              <div className="flex gap-2 mb-5 overflow-x-auto pb-1">
-                {Object.entries(ITEM_TYPE_META).map(([type, meta]) => {
-                  const Icon = meta.icon;
-                  return (
-                    <button
-                      key={type}
-                      type="button"
-                      onClick={() => setActiveItemType(type)}
-                      className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-semibold whitespace-nowrap transition-all ${
-                        activeItemType === type
-                          ? 'bg-gradient-to-r from-teal-600 to-orange-600 text-white shadow-sm'
+ {/* Type tabs */}
+ <div className="flex gap-2 mb-5 overflow-x-auto pb-1">
+ {Object.entries(ITEM_TYPE_META).map(([type, meta]) => {
+ const Icon = meta.icon;
+ return (
+ <button
+ key={type}
+ type="button"
+ onClick={() => setActiveItemType(type)}
+ className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-semibold whitespace-nowrap transition-all ${
+ activeItemType === type
+ ? 'bg-gradient-to-r from-teal-600 to-orange-600 text-white shadow-sm'
                           : 'bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600'
                       }`}
                     >
@@ -709,83 +709,83 @@ const CustomTripPage = () => {
                         onClick={() => setDisplayCurrency(c)}
                         className={`px-2.5 py-1 rounded-full text-[11px] font-bold transition-all ${
                           displayCurrency === c ? 'bg-teal-600 text-white' : 'text-slate-500 dark:text-slate-400'
-                        }`}
-                      >
-                        {c}
-                      </button>
-                    ))}
-                  </div>
-                </div>
+ }`}
+ >
+ {c}
+ </button>
+ ))}
+ </div>
+ </div>
 
-                {selectedItems.length === 0 ? (
-                  <p className="text-sm text-slate-400 dark:text-slate-500 text-center py-8">
-                    Nothing added yet. Pick items from the catalog.
-                  </p>
-                ) : (
-                  <div className="space-y-3 max-h-80 overflow-y-auto pr-1 mb-4">
-                    {selectedItems.map((item) => (
-                      <div key={item.id} className="flex items-start justify-between gap-2 pb-3 border-b border-slate-100 dark:border-slate-700 last:border-0">
-                        <div className="min-w-0 flex-1">
-                          <p className="text-xs font-semibold text-slate-900 dark:text-white truncate">{item.name}</p>
-                          <p className="text-xs text-slate-400">{displayTotal(item.price)} each</p>
-                          <div className="flex items-center gap-2 mt-1.5">
-                            <button type="button" onClick={() => changeItemQuantity(item.id, -1)} className="w-5 h-5 rounded-full bg-slate-100 dark:bg-slate-700 flex items-center justify-center text-slate-500 hover:bg-slate-200 dark:hover:bg-slate-600">
-                              <FiMinus size={10} />
-                            </button>
-                            <span className="text-xs font-bold w-4 text-center text-slate-900 dark:text-white">{item.quantity}</span>
-                            <button type="button" onClick={() => changeItemQuantity(item.id, 1)} className="w-5 h-5 rounded-full bg-slate-100 dark:bg-slate-700 flex items-center justify-center text-slate-500 hover:bg-slate-200 dark:hover:bg-slate-600">
-                              <FiPlus size={10} />
-                            </button>
-                          </div>
-                        </div>
-                        <button
-                          type="button"
-                          onClick={() => removeItem(item.id)}
-                          className="p-1.5 rounded-lg text-slate-300 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 transition-all flex-shrink-0"
-                        >
-                          <FiTrash2 size={14} />
-                        </button>
-                      </div>
-                    ))}
-                  </div>
-                )}
+ {selectedItems.length === 0 ? (
+ <p className="text-sm text-slate-400 dark:text-slate-500 text-center py-8">
+ Nothing added yet. Pick items from the catalog.
+ </p>
+ ) : (
+ <div className="space-y-3 max-h-80 overflow-y-auto pr-1 mb-4">
+ {selectedItems.map((item) => (
+ <div key={item.id} className="flex items-start justify-between gap-2 pb-3 border-b border-slate-100 dark:border-slate-700 last:border-0">
+ <div className="min-w-0 flex-1">
+ <p className="text-xs font-semibold text-slate-900 dark:text-white truncate">{item.name}</p>
+ <p className="text-xs text-slate-400">{displayTotal(item.price)} each</p>
+ <div className="flex items-center gap-2 mt-1.5">
+ <button type="button" onClick={() => changeItemQuantity(item.id, -1)} className="w-5 h-5 rounded-full bg-slate-100 dark:bg-slate-700 flex items-center justify-center text-slate-500 hover:bg-slate-200 dark:hover:bg-slate-600">
+ <FiMinus size={10} />
+ </button>
+ <span className="text-xs font-bold w-4 text-center text-slate-900 dark:text-white">{item.quantity}</span>
+ <button type="button" onClick={() => changeItemQuantity(item.id, 1)} className="w-5 h-5 rounded-full bg-slate-100 dark:bg-slate-700 flex items-center justify-center text-slate-500 hover:bg-slate-200 dark:hover:bg-slate-600">
+ <FiPlus size={10} />
+ </button>
+ </div>
+ </div>
+ <button
+ type="button"
+ onClick={() => removeItem(item.id)}
+ className="p-1.5 rounded-lg text-slate-300 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 transition-all flex-shrink-0"
+ >
+ <FiTrash2 size={14} />
+ </button>
+ </div>
+ ))}
+ </div>
+ )}
 
-                <div className="pt-3 border-t border-slate-200 dark:border-slate-700 flex items-center justify-between">
-                  <span className="text-sm font-bold text-slate-900 dark:text-white">Estimated total</span>
-                  <span className="text-lg font-bold text-teal-600 dark:text-teal-400">{displayTotal(estimatedTotalUsd)}</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
+ <div className="pt-3 border-t border-slate-200 dark:border-slate-700 flex items-center justify-between">
+ <span className="text-sm font-bold text-slate-900 dark:text-white">Estimated total</span>
+ <span className="text-lg font-bold text-teal-600 dark:text-teal-400">{displayTotal(estimatedTotalUsd)}</span>
+ </div>
+ </div>
+ </div>
+ </div>
+ )}
 
-        {/* Step 4 — Review & Send */}
-        {step === 4 && (
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            <div className="lg:col-span-2 bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 p-6 sm:p-8">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-teal-500 to-orange-600 flex items-center justify-center">
-                  <FiSend size={18} className="text-white" />
-                </div>
-                <h2 className="text-lg font-bold text-slate-900 dark:text-white">Almost there</h2>
-              </div>
+ {/* Step 4 — Review & Send */}
+ {step === 4 && (
+ <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+ <div className="lg:col-span-2 bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 p-6 sm:p-8">
+ <div className="flex items-center gap-3 mb-6">
+ <div className="w-10 h-10 rounded-lg bg-[#ED9A58] flex items-center justify-center">
+ <FiSend size={18} className="text-white" />
+ </div>
+ <h2 className="text-lg font-bold text-slate-900 dark:text-white">Almost there</h2>
+ </div>
 
-              {submitError && (
-                <div className="mb-5 px-4 py-3 rounded-xl bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 text-sm font-medium">
-                  {submitError}
-                </div>
-              )}
+ {submitError && (
+ <div className="mb-5 px-4 py-3 rounded-xl bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 text-sm font-medium">
+ {submitError}
+ </div>
+ )}
 
-              <div className="space-y-4">
-                <div>
-                  <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1.5">Full name</label>
-                  <input
-                    type="text"
-                    value={contactName}
-                    onChange={(e) => setContactName(e.target.value)}
-                    placeholder="Your name"
-                    className={`w-full px-4 py-2.5 rounded-xl border-2 bg-white dark:bg-slate-900 text-slate-900 dark:text-white focus:outline-none ${
-                      errors.contactName ? 'border-red-400' : 'border-slate-200 dark:border-slate-700 focus:border-teal-500'
+ <div className="space-y-4">
+ <div>
+ <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1.5">Full name</label>
+ <input
+ type="text"
+ value={contactName}
+ onChange={(e) => setContactName(e.target.value)}
+ placeholder="Your name"
+ className={`w-full px-4 py-2.5 rounded-xl border-2 bg-white dark:bg-slate-900 text-slate-900 dark:text-white focus:outline-none ${
+ errors.contactName ? 'border-red-400' : 'border-slate-200 dark:border-slate-700 focus:border-teal-500'
                     }`}
                   />
                   {errors.contactName && <p className="text-sm text-red-500 mt-1.5">{errors.contactName}</p>}

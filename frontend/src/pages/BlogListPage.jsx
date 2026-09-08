@@ -86,14 +86,14 @@ const BlogListPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 flex flex-col">
+    <div className="min-h-screen bg-[#ED9A58] flex flex-col">
       <Header />
 
       {/* Hero */}
       <section className="relative pt-8 sm:pt-12 md:pt-20 pb-10 sm:pb-14 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4 leading-tight">
-            Our <span className="bg-gradient-to-r from-teal-600 to-orange-600 bg-clip-text text-transparent">Travel Blog</span>
+            Our <span className="bg-[#ED9A58] bg-clip-text text-transparent">Travel Blog</span>
           </h1>
           <p className="text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
             Stories, guides, and inspiration to help you plan your next adventure.
@@ -120,10 +120,10 @@ const BlogListPage = () => {
               <button
                 onClick={() => updateParams({ category: '' })}
                 className={`px-4 py-2 rounded-full text-sm font-semibold transition-all ${
-                  !activeCategory
-                    ? 'bg-gradient-to-r from-teal-600 to-orange-600 text-white shadow-md'
-                    : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:border-teal-400'
-                }`}
+ !activeCategory
+ ? 'bg-[#ED9A58] text-white shadow-md'
+ : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:border-teal-400'
+ }`}
               >
                 All
               </button>
@@ -132,10 +132,10 @@ const BlogListPage = () => {
                   key={cat.id}
                   onClick={() => updateParams({ category: cat.slug })}
                   className={`px-4 py-2 rounded-full text-sm font-semibold transition-all ${
-                    activeCategory === cat.slug
-                      ? 'bg-gradient-to-r from-teal-600 to-orange-600 text-white shadow-md'
-                      : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:border-teal-400'
-                  }`}
+ activeCategory === cat.slug
+ ? 'bg-[#ED9A58] text-white shadow-md'
+ : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:border-teal-400'
+ }`}
                 >
                   {cat.name}
                 </button>
@@ -169,7 +169,7 @@ const BlogListPage = () => {
                   onClick={() => navigate(`/blog/${post.slug}`)}
                   className="bg-white dark:bg-slate-800 rounded-2xl shadow-md border border-slate-200 dark:border-slate-700 overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all cursor-pointer group flex flex-col"
                 >
-                  <div className="h-48 bg-gradient-to-br from-teal-500 via-orange-500 to-pink-500 relative overflow-hidden">
+                  <div className="h-48 bg-[#ED9A58] relative overflow-hidden">
                     {post.featured_image ? (
                       <img
                         src={post.featured_image}

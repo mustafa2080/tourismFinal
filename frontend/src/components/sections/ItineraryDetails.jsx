@@ -249,20 +249,20 @@ const ItineraryDayItem = ({ day, isExpanded, onToggle }) => {
             isExpanded
               ? 'border-teal-500 bg-teal-50 dark:bg-teal-900/20'
               : 'border-slate-200 dark:border-slate-700 hover:border-teal-300 bg-white dark:bg-slate-800'
-          }`}
-        >
-          <div className="flex items-center justify-between">
-            <div className="text-left">
-              <div className="flex items-center gap-3">
-                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-br from-teal-400 to-teal-600 flex items-center justify-center text-white font-bold text-sm">
-                  {day.day_number || day.day}
-                </div>
-                <div>
-                  <h3 className="font-semibold text-slate-900 dark:text-white text-left">
-                    {day.display_title || day.title || `Day ${day.day_number || day.day}`}
-                  </h3>
-                  <p className="text-sm text-slate-500 dark:text-slate-400 text-left">
-                    {(day.display_description || day.description)?.substring(0, 60) || 'No description'}
+ }`}
+ >
+ <div className="flex items-center justify-between">
+ <div className="text-left">
+ <div className="flex items-center gap-3">
+ <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[#ED9A58] flex items-center justify-center text-white font-bold text-sm">
+ {day.day_number || day.day}
+ </div>
+ <div>
+ <h3 className="font-semibold text-slate-900 dark:text-white text-left">
+ {day.display_title || day.title || `Day ${day.day_number || day.day}`}
+ </h3>
+ <p className="text-sm text-slate-500 dark:text-slate-400 text-left">
+ {(day.display_description || day.description)?.substring(0, 60) || 'No description'}
                     {(day.display_description || day.description) && (day.display_description || day.description).length > 60 ? '...' : ''}
                   </p>
                 </div>
@@ -425,18 +425,18 @@ const ItineraryTimeline = ({ days }) => {
     <div className="space-y-4">
       <h3 className="font-semibold text-slate-900 dark:text-white text-sm mb-4">
         {t('itinerary.tripTimeline', 'Trip Timeline')}
-      </h3>
-      <div className="flex items-center justify-between px-2">
-        {days.map((day, index) => (
-          <div key={day.id || index} className="flex flex-col items-center">
-            {/* Day Marker */}
-            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-teal-400 to-teal-600 flex items-center justify-center text-white text-xs font-bold mb-2">
-              {day.day_number || day.day}
-            </div>
+ </h3>
+ <div className="flex items-center justify-between px-2">
+ {days.map((day, index) => (
+ <div key={day.id || index} className="flex flex-col items-center">
+ {/* Day Marker */}
+ <div className="w-8 h-8 rounded-full bg-[#ED9A58] flex items-center justify-center text-white text-xs font-bold mb-2">
+ {day.day_number || day.day}
+ </div>
 
-            {/* Label */}
-            <p className="text-xs text-slate-600 dark:text-slate-400 font-medium">
-              {t('itinerary.day', 'Day')} {day.day_number || day.day}
+ {/* Label */}
+ <p className="text-xs text-slate-600 dark:text-slate-400 font-medium">
+ {t('itinerary.day', 'Day')} {day.day_number || day.day}
             </p>
 
             {/* Line */}

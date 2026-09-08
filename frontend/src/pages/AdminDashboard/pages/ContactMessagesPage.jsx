@@ -91,11 +91,11 @@ export function ContactMessagesPage() {
   const getStatusBadgeColor = (status) => {
     switch (status) {
       case 'pending':
-        return 'bg-gradient-to-br from-amber-50 to-amber-100/50 text-amber-700 dark:from-amber-900/30 dark:to-amber-900/20 dark:text-amber-300 border border-amber-200 dark:border-amber-800/30';
+        return 'bg-[#ED9A58] text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-800/30';
       case 'read':
-        return 'bg-gradient-to-br from-teal-50 to-teal-100/50 text-teal-700 dark:from-teal-900/30 dark:to-teal-900/20 dark:text-teal-300 border border-teal-200 dark:border-teal-800/30';
+        return 'bg-[#ED9A58] text-teal-700 dark:text-teal-300 border border-teal-200 dark:border-teal-800/30';
       case 'responded':
-        return 'bg-gradient-to-br from-emerald-50 to-emerald-100/50 text-emerald-700 dark:from-emerald-900/30 dark:to-emerald-900/20 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/30';
+        return 'bg-[#ED9A58] text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/30';
       default:
         return 'bg-gray-100 text-gray-800 dark:bg-gray-900/30 dark:text-gray-300';
     }
@@ -142,19 +142,19 @@ export function ContactMessagesPage() {
   const stats = getStats();
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 p-4 md:p-6 lg:p-8">
+    <div className="min-h-screen bg-[#ED9A58] p-4 md:p-6 lg:p-8">
       <div className="space-y-6 max-w-7xl mx-auto">
         {/* Header Section */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div className="space-y-1">
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-teal-600 to-teal-600 dark:from-teal-400 dark:to-teal-400 bg-clip-text text-transparent">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold bg-[#ED9A58] bg-clip-text text-transparent">
               Contact Messages
             </h1>
             <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base lg:text-lg">Manage and respond to customer inquiries</p>
           </div>
           <button
             onClick={() => fetchMessages(filterStatus)}
-            className="group flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-teal-600 to-teal-700 hover:from-teal-700 hover:to-teal-800 text-white font-semibold rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 active:scale-95"
+            className="group flex items-center justify-center gap-2 px-6 py-3 bg-[#ED9A58] text-white font-semibold rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 active:scale-95"
           >
             <FiRefreshCw size={20} className="group-hover:rotate-180 transition-transform duration-500" />
             <span className="hidden sm:inline">Refresh</span>
@@ -164,10 +164,10 @@ export function ContactMessagesPage() {
         {/* Stats Cards */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
           {[
-            { label: 'Total', value: stats.total, icon: FiMessageSquare, color: 'from-teal-500 to-teal-600' },
-            { label: 'Pending', value: stats.pending, icon: FiAlertCircle, color: 'from-amber-500 to-amber-600' },
-            { label: 'Read', value: stats.read, icon: FiMail, color: 'from-orange-500 to-orange-600' },
-            { label: 'Responded', value: stats.responded, icon: FiCheckCircle, color: 'from-emerald-500 to-emerald-600' }
+            { label: 'Total', value: stats.total, icon: FiMessageSquare, color: ' ' },
+            { label: 'Pending', value: stats.pending, icon: FiAlertCircle, color: ' ' },
+            { label: 'Read', value: stats.read, icon: FiMail, color: ' ' },
+            { label: 'Responded', value: stats.responded, icon: FiCheckCircle, color: ' ' }
           ].map((stat, idx) => {
             const Icon = stat.icon;
             return (
@@ -180,7 +180,7 @@ export function ContactMessagesPage() {
                     <p className="text-gray-600 dark:text-gray-400 text-sm font-medium mb-1">{stat.label}</p>
                     <p className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">{stat.value}</p>
                   </div>
-                  <div className={`bg-gradient-to-br ${stat.color} p-3 rounded-xl transform group-hover:scale-110 transition-transform`}>
+                  <div className={`bg-[#ED9A58] ${stat.color} p-3 rounded-xl transform group-hover:scale-110 transition-transform`}>
                     <Icon className="w-6 h-6 text-white" />
                   </div>
                 </div>
@@ -223,10 +223,10 @@ export function ContactMessagesPage() {
                 key={tab.id}
                 onClick={() => setFilterStatus(tab.id)}
                 className={`flex items-center gap-2 px-4 py-2 rounded-lg font-semibold transition-all duration-300 whitespace-nowrap ${
-                  isActive
-                    ? 'bg-gradient-to-r from-teal-600 to-teal-700 text-white shadow-lg'
-                    : 'bg-white dark:bg-slate-800/50 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-slate-700/50 hover:bg-gray-50 dark:hover:bg-slate-700/50'
-                }`}
+ isActive
+ ? 'bg-[#ED9A58] text-white shadow-lg'
+ : 'bg-white dark:bg-slate-800/50 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-slate-700/50 hover:bg-gray-50 dark:hover:bg-slate-700/50'
+ }`}
               >
                 <Icon size={18} />
                 <span className="hidden sm:inline">{tab.label}</span>
@@ -243,13 +243,13 @@ export function ContactMessagesPage() {
             {loading ? (
               <div className="flex flex-col items-center justify-center h-96">
                 <div className="relative w-16 h-16 mb-4">
-                  <div className="absolute inset-0 bg-gradient-to-r from-teal-600 to-teal-600 rounded-full animate-spin" style={{maskImage: 'radial-gradient(farthest-side, transparent calc(100% - 4px), black calc(100% - 4px))'}}></div>
+                  <div className="absolute inset-0 bg-[#ED9A58] rounded-full animate-spin" style={{maskImage: 'radial-gradient(farthest-side, transparent calc(100% - 4px), black calc(100% - 4px))'}}></div>
                 </div>
                 <p className="text-gray-600 dark:text-gray-400 font-medium">Loading messages...</p>
               </div>
             ) : filteredMessages.length === 0 ? (
               <div className="flex flex-col items-center justify-center h-96 bg-white dark:bg-slate-800/50 backdrop-blur-xl rounded-xl border border-gray-200/50 dark:border-slate-700/50">
-                <div className="bg-gradient-to-br from-teal-100 to-teal-100 dark:from-teal-900/30 dark:to-teal-900/30 p-6 rounded-full mb-4">
+                <div className="bg-[#ED9A58] p-6 rounded-full mb-4">
                   <FiMessageSquare size={48} className="text-teal-600 dark:text-teal-400" />
                 </div>
                 <p className="text-gray-600 dark:text-gray-400 text-lg font-medium mb-1">No messages found</p>
@@ -267,17 +267,17 @@ export function ContactMessagesPage() {
                       setAdminNotes(message.admin_notes || '');
                     }}
                     className={`group relative p-4 md:p-5 rounded-xl border transition-all duration-300 cursor-pointer transform hover:scale-102 ${
-                      selectedMessage?.id === message.id
-                        ? 'bg-gradient-to-r from-teal-50 to-teal-50 dark:from-teal-900/30 dark:to-teal-900/30 border-teal-300 dark:border-teal-700/50 shadow-lg'
-                        : 'bg-white dark:bg-slate-800/50 backdrop-blur-xl border-gray-200/50 dark:border-slate-700/50 hover:border-gray-300 dark:hover:border-slate-600/50 hover:shadow-md'
-                    }`}
+ selectedMessage?.id === message.id
+ ? 'bg-[#ED9A58] border-teal-300 dark:border-teal-700/50 shadow-lg'
+ : 'bg-white dark:bg-slate-800/50 backdrop-blur-xl border-gray-200/50 dark:border-slate-700/50 hover:border-gray-300 dark:hover:border-slate-600/50 hover:shadow-md'
+ }`}
                     style={{animationDelay: `${index * 50}ms`}}
                   >
                     <div className="flex items-start justify-between gap-4">
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-3 mb-2 flex-wrap">
                           <div className="flex items-center gap-2">
-                            <div className="w-8 h-8 bg-gradient-to-br from-teal-500 to-teal-500 rounded-lg flex items-center justify-center text-white font-bold text-sm">
+                            <div className="w-8 h-8 bg-[#ED9A58] rounded-lg flex items-center justify-center text-white font-bold text-sm">
                               {message.name.charAt(0).toUpperCase()}
                             </div>
                             <h3 className="font-semibold text-gray-900 dark:text-white truncate text-sm md:text-base">
@@ -428,7 +428,7 @@ export function ContactMessagesPage() {
                   {selectedMessage.status !== 'read' && (
                     <button
                       onClick={() => updateMessageStatus(selectedMessage.id, 'read')}
-                      className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-teal-600 to-teal-700 hover:from-teal-700 hover:to-teal-800 text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-md hover:shadow-lg"
+                      className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-[#ED9A58] text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-md hover:shadow-lg"
                     >
                       <FiCheckCircle size={18} />
                       Mark as Read
@@ -438,7 +438,7 @@ export function ContactMessagesPage() {
                   {selectedMessage.status !== 'responded' && (
                     <button
                       onClick={() => updateMessageStatus(selectedMessage.id, 'responded')}
-                      className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-700 hover:to-emerald-800 text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-md hover:shadow-lg"
+                      className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-[#ED9A58] text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-md hover:shadow-lg"
                     >
                       <FiCheckCircle size={18} />
                       Mark as Responded
@@ -447,7 +447,7 @@ export function ContactMessagesPage() {
 
                   <button
                     onClick={() => deleteMessage(selectedMessage.id)}
-                    className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-md hover:shadow-lg"
+                    className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-[#ED9A58] text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-md hover:shadow-lg"
                   >
                     <FiTrash2 size={18} />
                     Delete Message
@@ -456,7 +456,7 @@ export function ContactMessagesPage() {
               </div>
             ) : (
               <div className="sticky top-6 h-96 bg-white dark:bg-slate-800/50 backdrop-blur-xl rounded-xl border border-gray-200/50 dark:border-slate-700/50 flex flex-col items-center justify-center p-6 text-center">
-                <div className="bg-gradient-to-br from-teal-100 to-teal-100 dark:from-teal-900/30 dark:to-teal-900/30 p-6 rounded-full mb-4">
+                <div className="bg-[#ED9A58] p-6 rounded-full mb-4">
                   <FiMessageSquare size={48} className="text-teal-600 dark:text-teal-400" />
                 </div>
                 <p className="text-gray-600 dark:text-gray-400 font-medium text-lg mb-1">No message selected</p>

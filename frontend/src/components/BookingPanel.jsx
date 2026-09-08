@@ -82,7 +82,7 @@ const BookingPanel = ({
       </div>
 
       {/* Price Card */}
-      <div className="bg-gradient-to-br from-teal-50 to-teal-50 dark:from-teal-900/30 dark:to-teal-900/30 rounded-xl p-6 border-2 border-teal-300 dark:border-teal-600 shadow-lg">
+      <div className="bg-[#ED9A58] rounded-xl p-6 border-2 border-teal-300 dark:border-teal-600 shadow-lg">
         <div className="space-y-6">
           {/* Price Display - Total price, scales with number of persons */}
           <div className="text-center pb-4 border-b-2 border-teal-200 dark:border-teal-700">
@@ -236,7 +236,7 @@ const BookingPanel = ({
           <Button
             onClick={onBookNow}
             loading={isBookingLoading}
-            className="w-full bg-gradient-to-r from-teal-600 to-teal-600 hover:from-teal-700 hover:to-teal-700 text-white font-bold py-3 rounded-lg"
+            className="w-full bg-[#ED9A58] text-white font-bold py-3 rounded-lg"
           >
             Book Now
           </Button>

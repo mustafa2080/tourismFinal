@@ -31,9 +31,9 @@ const PressPage = () => {
 
   return (
     <MainLayout>
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-teal-50">
+      <div className="min-h-screen bg-[#ED9A58] ">
         {/* Progress Bar */}
-      <div className="fixed top-0 left-0 h-1 bg-gradient-to-r from-teal-600 via-teal-500 to-teal-400 z-50 transition-all duration-300" style={{ width: `${scrollProgress * 100}%` }}></div>
+      <div className="fixed top-0 left-0 h-1 bg-[#ED9A58] z-50 transition-all duration-300" style={{ width: `${scrollProgress * 100}%` }}></div>
 
       {/* Animated Background */}
       <div className="hidden">
@@ -42,9 +42,9 @@ const PressPage = () => {
       </div>
 
       {/* Header */}
-      <div className="relative pt-20 pb-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-teal-600 to-teal-700">
+      <div className="relative pt-20 pb-32 px-4 sm:px-6 lg:px-8 bg-[#ED9A58] ">
         <div className="relative max-w-4xl mx-auto text-center">
-          <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-teal-600 to-teal-700 rounded-2xl mb-8 mx-auto shadow-2xl">
+          <div className="inline-flex items-center justify-center w-20 h-20 bg-[#ED9A58] rounded-2xl mb-8 mx-auto shadow-2xl">
             <TrendingUp size={40} className="text-white" />
           </div>
 
@@ -84,10 +84,10 @@ const PressPage = () => {
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
                 className={`px-4 py-2 rounded-lg font-medium transition-all ${
-                  selectedCategory === cat
-                    ? 'bg-gradient-to-r from-teal-600 to-teal-700 text-white shadow-lg'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200 border border-gray-300'
-                }`}
+ selectedCategory === cat
+ ? 'bg-[#ED9A58] text-white shadow-lg'
+ : 'bg-gray-100 text-gray-700 hover:bg-gray-200 border border-gray-300'
+ }`}
               >
                 {cat.charAt(0).toUpperCase() + cat.slice(1)}
               </button>

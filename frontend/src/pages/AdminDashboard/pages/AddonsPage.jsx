@@ -549,30 +549,30 @@ function AddonsPage() {
           <div>
             <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">{t('addons.title')}</h1>
             <p className="text-slate-600 dark:text-slate-400 mt-1">{t('addons.description')}</p>
-          </div>
-        </div>
-        
-        {/* Database Stats */}
-        <div className="bg-gradient-to-br from-teal-50 to-teal-100 dark:from-teal-900/20 dark:to-teal-800/20 rounded-lg p-4 border border-teal-200 dark:border-teal-700">
-          <div className="flex items-center gap-2 mb-2">
-            <FiDatabase className="text-teal-600" size={18} />
-            <span className="text-sm font-semibold text-slate-700 dark:text-slate-300">{t('addons.totalAddons')}</span>
-          </div>
-          <p className="text-2xl font-bold text-teal-600 dark:text-teal-400">{dbStats.totalAddons}</p>
-        </div>
-        
-        <div className="bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20 rounded-lg p-4 border border-green-200 dark:border-green-700">
-          <div className="flex items-center gap-2 mb-2">
-            <FiEye className="text-green-600" size={18} />
-            <span className="text-sm font-semibold text-slate-700 dark:text-slate-300">{t('addons.available')}</span>
-          </div>
-          <p className="text-2xl font-bold text-green-600 dark:text-green-400">{dbStats.availableAddons}</p>
-        </div>
-        
-        <div className="bg-gradient-to-br from-red-50 to-red-100 dark:from-red-900/20 dark:to-red-800/20 rounded-lg p-4 border border-red-200 dark:border-red-700">
-          <div className="flex items-center gap-2 mb-2">
-            <FiX className="text-red-600" size={18} />
-            <span className="text-sm font-semibold text-slate-700 dark:text-slate-300">{t('addons.unavailable')}</span>
+ </div>
+ </div>
+ 
+ {/* Database Stats */}
+ <div className="bg-[#ED9A58] rounded-lg p-4 border border-teal-200 dark:border-teal-700">
+ <div className="flex items-center gap-2 mb-2">
+ <FiDatabase className="text-teal-600" size={18} />
+ <span className="text-sm font-semibold text-slate-700 dark:text-slate-300">{t('addons.totalAddons')}</span>
+ </div>
+ <p className="text-2xl font-bold text-teal-600 dark:text-teal-400">{dbStats.totalAddons}</p>
+ </div>
+ 
+ <div className="bg-[#ED9A58] rounded-lg p-4 border border-green-200 dark:border-green-700">
+ <div className="flex items-center gap-2 mb-2">
+ <FiEye className="text-green-600" size={18} />
+ <span className="text-sm font-semibold text-slate-700 dark:text-slate-300">{t('addons.available')}</span>
+ </div>
+ <p className="text-2xl font-bold text-green-600 dark:text-green-400">{dbStats.availableAddons}</p>
+ </div>
+ 
+ <div className="bg-[#ED9A58] rounded-lg p-4 border border-red-200 dark:border-red-700">
+ <div className="flex items-center gap-2 mb-2">
+ <FiX className="text-red-600" size={18} />
+ <span className="text-sm font-semibold text-slate-700 dark:text-slate-300">{t('addons.unavailable')}</span>
           </div>
           <p className="text-2xl font-bold text-red-600 dark:text-red-400">{dbStats.unavailableAddons}</p>
         </div>
@@ -591,10 +591,10 @@ function AddonsPage() {
         
         <button
           onClick={() => handleOpenModal('create')}
-          className="flex items-center justify-center gap-2 bg-gradient-to-r from-teal-600 to-teal-700 hover:from-teal-700 hover:to-teal-800 text-white px-6 py-3 rounded-xl font-semibold shadow-lg transition-all"
-        >
-          <FiPlus size={20} />
-          {t('addons.addNew')}
+ className="flex items-center justify-center gap-2 bg-[#ED9A58] text-white px-6 py-3 rounded-xl font-semibold shadow-lg transition-all"
+ >
+ <FiPlus size={20} />
+ {t('addons.addNew')}
         </button>
       </div>
 

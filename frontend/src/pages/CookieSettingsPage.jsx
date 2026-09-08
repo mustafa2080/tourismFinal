@@ -69,9 +69,9 @@ const CookieSettingsPage = () => {
 
   return (
     <MainLayout>
-      <div className="min-h-screen bg-white dark:bg-gradient-to-br dark:from-slate-950 dark:via-rose-950 dark:to-slate-950">
+      <div className="min-h-screen bg-white dark:bg-[#ED9A58] ">
         {/* Progress Bar */}
-      <div className="fixed top-0 left-0 h-1 bg-gradient-to-r from-rose-500 via-pink-500 to-red-500 z-50 transition-all duration-300" style={{ width: `${scrollProgress * 100}%` }}></div>
+      <div className="fixed top-0 left-0 h-1 bg-[#ED9A58] z-50 transition-all duration-300" style={{ width: `${scrollProgress * 100}%` }}></div>
 
       {/* Animated Background */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
@@ -82,7 +82,7 @@ const CookieSettingsPage = () => {
       {/* Header */}
       <div className="relative pt-20 pb-32 px-4 sm:px-6 lg:px-8">
         <div className="relative max-w-4xl mx-auto text-center">
-          <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-rose-500 to-pink-600 rounded-2xl mb-8 mx-auto shadow-2xl">
+          <div className="inline-flex items-center justify-center w-20 h-20 bg-[#ED9A58] rounded-2xl mb-8 mx-auto shadow-2xl">
             <Cookie size={40} className="text-white" />
           </div>
 
@@ -99,7 +99,7 @@ const CookieSettingsPage = () => {
       {/* Main Content */}
       <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
         {/* Cookie Control Panel */}
-        <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-2xl p-8 border border-white/20 shadow-2xl mb-8">
+        <div className="bg-[#ED9A58] backdrop-blur-xl rounded-2xl p-8 border border-white/20 shadow-2xl mb-8">
           <h2 className="text-4xl font-bold text-white mb-8 flex items-center gap-3">
             <Settings size={32} className="text-rose-400" />
             Your Cookie Preferences
@@ -154,7 +154,7 @@ const CookieSettingsPage = () => {
             </button>
             <button
               onClick={() => setCookies({ necessary: true, analytics: true, marketing: true, preferences: true })}
-              className="flex-1 px-4 py-3 bg-gradient-to-r from-rose-500 to-pink-600 text-white rounded-lg font-bold hover:shadow-lg hover:shadow-rose-500/30 transition-all"
+              className="flex-1 px-4 py-3 bg-[#ED9A58] text-white rounded-lg font-bold hover:shadow-lg hover:shadow-rose-500/30 transition-all"
             >
               Accept All
             </button>
@@ -169,57 +169,57 @@ const CookieSettingsPage = () => {
         </div>
 
         {/* What Are Cookies */}
-        <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-2xl p-8 border border-white/20 shadow-2xl mb-8">
+        <div className="bg-[#ED9A58] backdrop-blur-xl rounded-2xl p-8 border border-white/20 shadow-2xl mb-8">
           <h2 className="text-3xl font-bold text-white mb-4">What Are Cookies?</h2>
           <p className="text-rose-100 mb-4">
             Cookies are small text files stored on your device when you visit websites. They're used to remember your login, preferences, and improve your experience.
-          </p>
-          <p className="text-rose-100">
-            There are two types: session cookies (deleted when closing browser) and persistent cookies (remain for days/months/years).
-          </p>
-        </div>
+ </p>
+ <p className="text-rose-100">
+ There are two types: session cookies (deleted when closing browser) and persistent cookies (remain for days/months/years).
+ </p>
+ </div>
 
-        {/* Cookie Table */}
-        <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-2xl p-8 border border-white/20 shadow-2xl mb-8">
-          <h2 className="text-3xl font-bold text-white mb-6">Cookies We Use</h2>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="border-b border-white/20">
-                  <th className="text-left py-3 px-4 text-rose-200 font-bold">Cookie</th>
-                  <th className="text-left py-3 px-4 text-rose-200 font-bold">Type</th>
-                  <th className="text-left py-3 px-4 text-rose-200 font-bold">Purpose</th>
-                  <th className="text-left py-3 px-4 text-rose-200 font-bold">Duration</th>
-                </tr>
-              </thead>
-              <tbody>
-                {[
-                  { name: 'session_id', type: 'Necessary', purpose: 'Session management', dur: 'Session' },
+ {/* Cookie Table */}
+ <div className="bg-[#ED9A58] backdrop-blur-xl rounded-2xl p-8 border border-white/20 shadow-2xl mb-8">
+ <h2 className="text-3xl font-bold text-white mb-6">Cookies We Use</h2>
+ 
+ <div className="overflow-x-auto">
+ <table className="w-full text-sm">
+ <thead>
+ <tr className="border-b border-white/20">
+ <th className="text-left py-3 px-4 text-rose-200 font-bold">Cookie</th>
+ <th className="text-left py-3 px-4 text-rose-200 font-bold">Type</th>
+ <th className="text-left py-3 px-4 text-rose-200 font-bold">Purpose</th>
+ <th className="text-left py-3 px-4 text-rose-200 font-bold">Duration</th>
+ </tr>
+ </thead>
+ <tbody>
+ {[
+ { name: 'session_id', type: 'Necessary', purpose: 'Session management', dur: 'Session' },
                   { name: 'auth_token', type: 'Necessary', purpose: 'Authentication', dur: '30 days' },
                   { name: '_ga', type: 'Analytics', purpose: 'Google Analytics', dur: '2 years' },
                   { name: 'fbp', type: 'Marketing', purpose: 'Facebook Tracking', dur: '90 days' },
                   { name: 'user_theme', type: 'Preferences', purpose: 'Theme choice', dur: '1 year' },
-                ].map((c, i) => (
-                  <tr key={i} className="border-b border-white/10 hover:bg-white/5">
-                    <td className="py-3 px-4 text-white font-mono text-xs">{c.name}</td>
-                    <td className="py-3 px-4 text-rose-200 text-xs">{c.type}</td>
-                    <td className="py-3 px-4 text-rose-100 text-xs">{c.purpose}</td>
-                    <td className="py-3 px-4 text-rose-200 text-xs">{c.dur}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
+ ].map((c, i) => (
+ <tr key={i} className="border-b border-white/10 hover:bg-white/5">
+ <td className="py-3 px-4 text-white font-mono text-xs">{c.name}</td>
+ <td className="py-3 px-4 text-rose-200 text-xs">{c.type}</td>
+ <td className="py-3 px-4 text-rose-100 text-xs">{c.purpose}</td>
+ <td className="py-3 px-4 text-rose-200 text-xs">{c.dur}</td>
+ </tr>
+ ))}
+ </tbody>
+ </table>
+ </div>
+ </div>
 
-        {/* Browser Controls */}
-        <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-2xl p-8 border border-white/20 shadow-2xl mb-8">
-          <h2 className="text-3xl font-bold text-white mb-6">Manage Cookies in Your Browser</h2>
+ {/* Browser Controls */}
+ <div className="bg-[#ED9A58] backdrop-blur-xl rounded-2xl p-8 border border-white/20 shadow-2xl mb-8">
+ <h2 className="text-3xl font-bold text-white mb-6">Manage Cookies in Your Browser</h2>
 
-          <div className="grid md:grid-cols-2 gap-4">
-            {[
-              { browser: 'Chrome', path: 'Settings → Privacy → Cookies' },
+ <div className="grid md:grid-cols-2 gap-4">
+ {[
+ { browser: 'Chrome', path: 'Settings → Privacy → Cookies' },
               { browser: 'Firefox', path: 'Preferences → Privacy → Cookies' },
               { browser: 'Safari', path: 'Preferences → Privacy → Cookies' },
               { browser: 'Edge', path: 'Settings → Privacy → Cookies' },
@@ -239,7 +239,7 @@ const CookieSettingsPage = () => {
         </div>
 
         {/* Third-Party Services */}
-        <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-2xl p-8 border border-white/20 shadow-2xl mb-8">
+        <div className="bg-[#ED9A58] backdrop-blur-xl rounded-2xl p-8 border border-white/20 shadow-2xl mb-8">
           <h2 className="text-3xl font-bold text-white mb-6">Third-Party Cookie Providers</h2>
 
           <div className="space-y-4">
@@ -262,7 +262,7 @@ const CookieSettingsPage = () => {
         </div>
 
         {/* FAQs */}
-        <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-2xl p-8 border border-white/20 shadow-2xl mb-8">
+        <div className="bg-[#ED9A58] backdrop-blur-xl rounded-2xl p-8 border border-white/20 shadow-2xl mb-8">
           <h2 className="text-3xl font-bold text-white mb-6">Frequently Asked Questions</h2>
 
           <div className="space-y-4">
@@ -282,7 +282,7 @@ const CookieSettingsPage = () => {
         </div>
 
         {/* Contact */}
-        <div className="bg-gradient-to-r from-rose-500/20 to-pink-500/20 backdrop-blur-xl rounded-2xl p-8 border border-white/20 shadow-2xl">
+        <div className="bg-[#ED9A58] backdrop-blur-xl rounded-2xl p-8 border border-white/20 shadow-2xl">
           <h2 className="text-3xl font-bold text-white mb-4">📧 Questions About Cookies?</h2>
           <div className="space-y-2">
             <p className="text-rose-100"><strong>Email:</strong> cookies@tourhub.com</p>

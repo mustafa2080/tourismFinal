@@ -102,96 +102,96 @@ const FAQPage = () => {
   ];
 
   const filtered = search.trim() === '' 
-    ? faqs 
-    : faqs.map(cat => ({
-        ...cat,
-        items: cat.items.filter(item => 
-          item.q.toLowerCase().includes(search.toLowerCase()) || 
-          item.a.toLowerCase().includes(search.toLowerCase())
-        )
-      })).filter(cat => cat.items.length > 0);
+ ? faqs 
+ : faqs.map(cat => ({
+ ...cat,
+ items: cat.items.filter(item => 
+ item.q.toLowerCase().includes(search.toLowerCase()) || 
+ item.a.toLowerCase().includes(search.toLowerCase())
+ )
+ })).filter(cat => cat.items.length > 0);
 
-  return (
-    <MainLayout>
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
-        {/* Progress Bar */}
-        <div className="fixed top-0 left-0 h-1.5 bg-gradient-to-r from-teal-600 via-teal-500 to-orange-600 z-50 transition-all duration-300" style={{ width: `${scrollProgress * 100}%` }}></div>
+ return (
+ <MainLayout>
+ <div className="min-h-screen bg-[#ED9A58] ">
+ {/* Progress Bar */}
+ <div className="fixed top-0 left-0 h-1.5 z-50 transition-all duration-300" style={{ width: `${scrollProgress * 100}%` }}></div>
 
-        {/* Animated Background - Light Mode */}
-        <div className="fixed inset-0 overflow-hidden pointer-events-none dark:hidden">
-          <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-96 h-96 bg-teal-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
-          <div className="absolute -bottom-40 left-0 w-96 h-96 bg-teal-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse" style={{ animationDelay: '2s' }}></div>
+ {/* Animated Background - Light Mode */}
+ <div className="fixed inset-0 overflow-hidden pointer-events-none dark:hidden">
+ <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-96 h-96 bg-teal-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
+ <div className="absolute -bottom-40 left-0 w-96 h-96 bg-teal-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse" style={{ animationDelay: '2s' }}></div>
         </div>
 
         {/* Animated Background - Dark Mode */}
         <div className="fixed inset-0 overflow-hidden pointer-events-none hidden dark:block">
           <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-96 h-96 bg-teal-600 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
           <div className="absolute -bottom-40 left-0 w-96 h-96 bg-teal-600 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse" style={{ animationDelay: '2s' }}></div>
-        </div>
+ </div>
 
-        {/* Header */}
-        <div className="relative pt-20 pb-32 px-4 sm:px-6 lg:px-8">
-          <div className="relative max-w-4xl mx-auto text-center">
-            <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-teal-600 to-teal-600 rounded-2xl mb-8 mx-auto shadow-lg">
-              <HelpCircle size={40} className="text-white" />
-            </div>
+ {/* Header */}
+ <div className="relative pt-20 pb-32 px-4 sm:px-6 lg:px-8">
+ <div className="relative max-w-4xl mx-auto text-center">
+ <div className="inline-flex items-center justify-center w-20 h-20 bg-[#ED9A58] rounded-2xl mb-8 mx-auto shadow-lg">
+ <HelpCircle size={40} className="text-white" />
+ </div>
 
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
-              Frequently Asked Questions
-            </h1>
+ <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
+ Frequently Asked Questions
+ </h1>
 
-            <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed">
-              Find quick answers to common questions about TourHub.
-            </p>
-          </div>
-        </div>
+ <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed">
+ Find quick answers to common questions about TourHub.
+ </p>
+ </div>
+ </div>
 
-        {/* Main Content */}
-        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
-          {/* Search */}
-          <div className="mb-12">
-            <div className="bg-white dark:bg-slate-800/50 rounded-xl border-2 border-gray-300 dark:border-slate-700 p-4 flex items-center gap-3 hover:border-teal-400 dark:hover:border-teal-500 transition-all">
-              <Search className="text-teal-600 dark:text-teal-400" size={24} />
-              <input
-                type="text"
-                placeholder="Search questions..."
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                className="flex-1 bg-transparent text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none text-lg"
-              />
-            </div>
-            {search && (
-              <p className="text-teal-600 dark:text-teal-400 text-sm mt-3 font-medium">
-                ✓ Found {filtered.reduce((a, c) => a + c.items.length, 0)} questions matching your search
-              </p>
-            )}
-          </div>
+ {/* Main Content */}
+ <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+ {/* Search */}
+ <div className="mb-12">
+ <div className="bg-white dark:bg-slate-800/50 rounded-xl border-2 border-gray-300 dark:border-slate-700 p-4 flex items-center gap-3 hover:border-teal-400 dark:hover:border-teal-500 transition-all">
+ <Search className="text-teal-600 dark:text-teal-400" size={24} />
+ <input
+ type="text"
+ placeholder="Search questions..."
+ value={search}
+ onChange={(e) => setSearch(e.target.value)}
+ className="flex-1 bg-transparent text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none text-lg"
+ />
+ </div>
+ {search && (
+ <p className="text-teal-600 dark:text-teal-400 text-sm mt-3 font-medium">
+ ✓ Found {filtered.reduce((a, c) => a + c.items.length, 0)} questions matching your search
+ </p>
+ )}
+ </div>
 
-          {/* FAQs */}
-          {filtered.length > 0 ? (
-            <div className="space-y-8">
-              {filtered.map((category, catIdx) => (
-                <div key={catIdx} className="bg-white dark:bg-slate-800/50 rounded-2xl p-8 border border-gray-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-all">
-                  <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8 flex items-center gap-3">
-                    <span className="text-4xl">{category.icon}</span>
-                    <span>{category.cat}</span>
-                  </h2>
+ {/* FAQs */}
+ {filtered.length > 0 ? (
+ <div className="space-y-8">
+ {filtered.map((category, catIdx) => (
+ <div key={catIdx} className="bg-white dark:bg-slate-800/50 rounded-2xl p-8 border border-gray-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-all">
+ <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8 flex items-center gap-3">
+ <span className="text-4xl">{category.icon}</span>
+ <span>{category.cat}</span>
+ </h2>
 
-                  <div className="space-y-3">
-                    {category.items.map((item, idx) => {
-                      const key = `${catIdx}-${idx}`;
-                      const isOpen = expanded[key];
+ <div className="space-y-3">
+ {category.items.map((item, idx) => {
+ const key = `${catIdx}-${idx}`;
+ const isOpen = expanded[key];
 
-                      return (
-                        <div key={key} className="bg-gray-50 dark:bg-slate-700/50 rounded-lg border-2 border-gray-200 dark:border-slate-600 hover:border-teal-400 dark:hover:border-teal-500 overflow-hidden transition-all">
-                          <button
-                            onClick={() => setExpanded(p => ({ ...p, [key]: !p[key] }))}
-                            className="w-full px-6 py-4 flex items-center justify-between hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors text-left group"
-                          >
-                            <h3 className="font-semibold text-gray-900 dark:text-white pr-4 group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors text-lg">{item.q}</h3>
-                            <ChevronDown 
-                              size={20} 
-                              className={`text-teal-600 dark:text-teal-400 flex-shrink-0 transition-transform font-bold ${isOpen ? 'rotate-180' : ''}`} 
+ return (
+ <div key={key} className="bg-gray-50 dark:bg-slate-700/50 rounded-lg border-2 border-gray-200 dark:border-slate-600 hover:border-teal-400 dark:hover:border-teal-500 overflow-hidden transition-all">
+ <button
+ onClick={() => setExpanded(p => ({ ...p, [key]: !p[key] }))}
+ className="w-full px-6 py-4 flex items-center justify-between hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors text-left group"
+ >
+ <h3 className="font-semibold text-gray-900 dark:text-white pr-4 group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors text-lg">{item.q}</h3>
+ <ChevronDown 
+ size={20} 
+ className={`text-teal-600 dark:text-teal-400 flex-shrink-0 transition-transform font-bold ${isOpen ? 'rotate-180' : ''}`} 
                             />
                           </button>
 
@@ -216,7 +216,7 @@ const FAQPage = () => {
           )}
 
           {/* Still Have Questions */}
-          <div className="bg-gradient-to-r from-teal-50 to-teal-50 dark:from-teal-950/30 dark:to-teal-950/30 rounded-2xl p-8 border-2 border-teal-200 dark:border-teal-800 shadow-sm hover:shadow-md transition-all mt-12 text-center">
+          <div className="bg-[#ED9A58] rounded-2xl p-8 border-2 border-teal-200 dark:border-teal-800 shadow-sm hover:shadow-md transition-all mt-12 text-center">
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Still have questions?</h2>
             <p className="text-gray-700 dark:text-gray-300 mb-8 text-lg">Our support team is here to help 24/7!</p>
 

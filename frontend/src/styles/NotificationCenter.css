@@ -35,7 +35,7 @@
   position: absolute;
   top: -5px;
   right: -5px;
-  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  background: #ED9A58;
   color: white;
   border-radius: 50%;
   width: 22px;
@@ -154,7 +154,7 @@
 }
 
 .filter-btn.active {
-  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  background: #ED9A58;
   color: white;
   border-color: #3b82f6;
 }

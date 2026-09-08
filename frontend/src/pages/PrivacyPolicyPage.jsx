@@ -30,23 +30,23 @@ const PrivacyPolicyPage = () => {
 
   return (
     <MainLayout>
-      <div className="min-h-screen bg-gradient-to-b from-slate-50 via-orange-50 to-white dark:bg-gradient-to-br dark:from-slate-900 dark:via-orange-900 dark:to-slate-900">
+      <div className="min-h-screen bg-[#ED9A58] dark:bg-[#ED9A58] ">
         {/* Progress Bar */}
       <div 
-        className="fixed top-0 left-0 h-1 bg-gradient-to-r from-teal-500 via-orange-600 to-pink-600 z-50 transition-all duration-300 shadow-lg shadow-orange-500/50" 
+        className="fixed top-0 left-0 h-1 bg-[#ED9A58] z-50 transition-all duration-300 shadow-lg shadow-orange-500/50" 
         style={{ width: `${scrollProgress * 100}%` }}
       ></div>
 
       {/* Animated Background */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 right-0 -translate-y-1/2 translate-x-1/4 w-80 h-80 bg-gradient-to-br from-teal-400 to-orange-500 rounded-full mix-blend-screen filter blur-3xl opacity-20 animate-pulse"></div>
-        <div className="absolute bottom-0 -left-40 w-80 h-80 bg-gradient-to-tr from-pink-400 to-orange-500 rounded-full mix-blend-screen filter blur-3xl opacity-20 animate-pulse" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-20 right-0 -translate-y-1/2 translate-x-1/4 w-80 h-80 bg-[#ED9A58] rounded-full mix-blend-screen filter blur-3xl opacity-20 animate-pulse"></div>
+        <div className="absolute bottom-0 -left-40 w-80 h-80 bg-[#ED9A58] rounded-full mix-blend-screen filter blur-3xl opacity-20 animate-pulse" style={{ animationDelay: '2s' }}></div>
       </div>
 
       {/* Header */}
-      <div className="relative pt-20 pb-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-teal-500 via-orange-400 to-transparent dark:from-slate-800 dark:via-orange-800 dark:to-transparent">
+      <div className="relative pt-20 pb-32 px-4 sm:px-6 lg:px-8 bg-[#ED9A58] ">
         <div className="relative max-w-4xl mx-auto text-center">
-          <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-teal-500 to-orange-600 rounded-2xl mb-8 mx-auto shadow-2xl shadow-orange-500/40 ring-4 ring-orange-300/30 dark:ring-orange-400/30">
+          <div className="inline-flex items-center justify-center w-20 h-20 bg-[#ED9A58] rounded-2xl mb-8 mx-auto shadow-2xl shadow-orange-500/40 ring-4 ring-orange-300/30 dark:ring-orange-400/30">
             <Lock size={40} className="text-white" />
           </div>
 
@@ -255,23 +255,23 @@ const PrivacyPolicyPage = () => {
                     { title: 'Right to Data Portability', desc: 'Receive your data in a portable format' },
                     { title: 'Right to Opt-Out', desc: 'Unsubscribe from marketing communications' },
                     { title: 'Right to Lodge a Complaint', desc: 'Contact your local data protection authority' },
-                  ].map((right, idx) => (
-                    <div key={idx} className="bg-teal-50 dark:bg-teal-900/20 rounded-lg p-4 border-2 border-teal-300 dark:border-teal-600/50 hover:border-teal-400 dark:hover:border-teal-400/70 transition-all duration-300">
-                      <h3 className="font-bold text-teal-900 dark:text-teal-100 mb-2">{right.title}</h3>
-                      <p className="text-teal-800 dark:text-teal-200 font-medium">{right.desc}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </section>
+ ].map((right, idx) => (
+ <div key={idx} className="bg-teal-50 dark:bg-teal-900/20 rounded-lg p-4 border-2 border-teal-300 dark:border-teal-600/50 hover:border-teal-400 dark:hover:border-teal-400/70 transition-all duration-300">
+ <h3 className="font-bold text-teal-900 dark:text-teal-100 mb-2">{right.title}</h3>
+ <p className="text-teal-800 dark:text-teal-200 font-medium">{right.desc}</p>
+ </div>
+ ))}
+ </div>
+ </div>
+ </section>
 
-            {/* Contact Section */}
-            <section className="scroll-mt-20">
-              <div className="bg-gradient-to-r from-teal-400 to-orange-500 dark:from-teal-900/40 dark:to-orange-900/40 backdrop-blur-xl rounded-2xl p-8 border-2 border-teal-300 dark:border-teal-600/50 shadow-2xl dark:shadow-teal-900/30">
-                <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-6">📧 Contact Us</h2>
-                <div className="grid sm:grid-cols-2 gap-4">
-                  {[
-                    { label: 'Email', value: 'privacy@tourhub.com' },
+ {/* Contact Section */}
+ <section className="scroll-mt-20">
+ <div className="bg-[#ED9A58] backdrop-blur-xl rounded-2xl p-8 border-2 border-teal-300 dark:border-teal-600/50 shadow-2xl dark:shadow-teal-900/30">
+ <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-6">📧 Contact Us</h2>
+ <div className="grid sm:grid-cols-2 gap-4">
+ {[
+ { label: 'Email', value: 'privacy@tourhub.com' },
                     { label: 'Phone', value: '+1 (555) 123-4567' },
                     { label: 'DPO', value: 'dpo@tourhub.com' },
                     { label: 'Address', value: '123 Tourism Street, Travel City' },
