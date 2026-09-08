@@ -33,10 +33,10 @@ const RefundPolicyPage = () => {
 
   return (
     <MainLayout>
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
+      <div className="min-h-screen bg-primary-600">
         {/* Progress Bar */}
         <div 
-          className="fixed top-0 left-0 h-1.5 bg-gradient-to-r from-green-600 via-emerald-500 to-teal-600 z-50 transition-all duration-300" 
+          className="fixed top-0 left-0 h-1.5 bg-primary-600 z-50 transition-all duration-300" 
           style={{ width: `${scrollProgress * 100}%` }}
         ></div>
 
@@ -55,7 +55,7 @@ const RefundPolicyPage = () => {
         {/* Header */}
         <div className="relative pt-20 pb-32 px-4 sm:px-6 lg:px-8">
           <div className="relative max-w-4xl mx-auto text-center">
-            <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-green-600 to-emerald-600 rounded-2xl mb-8 mx-auto shadow-lg">
+            <div className="inline-flex items-center justify-center w-20 h-20 bg-primary-600 rounded-2xl mb-8 mx-auto shadow-lg">
               <RotateCcw size={40} className="text-white" />
             </div>
 
@@ -98,10 +98,10 @@ const RefundPolicyPage = () => {
                         href={`#${item.id}`}
                         onClick={() => setActiveSection(item.id)}
                         className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-300 text-sm font-medium ${
-                          activeSection === item.id
-                            ? 'bg-gradient-to-r from-green-600 to-emerald-600 text-white shadow-md'
-                            : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700'
-                        }`}
+ activeSection === item.id
+ ? 'bg-primary-600 text-white shadow-md'
+ : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700'
+ }`}
                       >
                         <span>{item.icon}</span>
                         <span>{item.label}</span>
@@ -236,10 +236,10 @@ const RefundPolicyPage = () => {
                       <div 
                         key={idx} 
                         className={`flex items-center gap-4 p-4 rounded-lg border-2 transition-all ${
-                          item.highlight
-                            ? 'bg-green-50 dark:bg-green-950/30 border-green-400 dark:border-green-700'
-                            : 'bg-gray-50 dark:bg-slate-700/50 border-gray-200 dark:border-slate-600'
-                        }`}
+ item.highlight
+ ? 'bg-green-50 dark:bg-green-950/30 border-green-400 dark:border-green-700'
+ : 'bg-gray-50 dark:bg-slate-700/50 border-gray-200 dark:border-slate-600'
+ }`}
                       >
                         <span className="text-2xl">{item.icon}</span>
                         <div className="flex-1">
@@ -324,7 +324,7 @@ const RefundPolicyPage = () => {
 
               {/* Contact */}
               <section className="scroll-mt-20">
-                <div className="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-950/30 dark:to-emerald-950/30 rounded-2xl p-8 border-2 border-green-200 dark:border-green-800 shadow-sm hover:shadow-md transition-all">
+                <div className="bg-primary-600 rounded-2xl p-8 border-2 border-green-200 dark:border-green-800 shadow-sm hover:shadow-md transition-all">
                   <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">📧 Need Help?</h2>
                   <div className="grid sm:grid-cols-2 gap-6">
                     {[

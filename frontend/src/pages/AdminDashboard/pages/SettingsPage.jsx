@@ -232,7 +232,7 @@ export function SettingsPage() {
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <div className="flex items-center gap-3 sm:gap-4">
-          <div className="p-2 sm:p-3 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl shadow-lg flex-shrink-0">
+          <div className="p-2 sm:p-3 bg-primary-600 rounded-xl shadow-lg flex-shrink-0">
             <FiSettings className="text-white" size={24} />
           </div>
           <div>
@@ -261,7 +261,7 @@ export function SettingsPage() {
 
       {/* General Settings */}
       <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
-        <div className="bg-gradient-to-r from-teal-50 to-orange-50 dark:from-slate-700 dark:to-slate-600 px-6 py-5 border-b border-slate-200 dark:border-slate-700 flex items-center gap-3">
+        <div className="bg-primary-600 px-6 py-5 border-b border-slate-200 dark:border-slate-700 flex items-center gap-3">
           <FiGlobe className="text-teal-600 dark:text-teal-400" size={24} />
           <h2 className="text-xl font-bold text-slate-900 dark:text-white">General Settings</h2>
         </div>
@@ -328,7 +328,7 @@ export function SettingsPage() {
 
       {/* Email Configuration */}
       <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
-        <div className="bg-gradient-to-r from-orange-50 to-pink-50 dark:from-slate-700 dark:to-slate-600 px-6 py-5 border-b border-slate-200 dark:border-slate-700 flex items-center justify-between">
+        <div className="bg-primary-600 px-6 py-5 border-b border-slate-200 dark:border-slate-700 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <FiMail className="text-orange-600 dark:text-orange-400" size={24} />
             <h2 className="text-xl font-bold text-slate-900 dark:text-white">Email Configuration</h2>
@@ -433,7 +433,7 @@ export function SettingsPage() {
 
       {/* Booking Settings */}
       <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
-        <div className="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-slate-700 dark:to-slate-600 px-6 py-5 border-b border-slate-200 dark:border-slate-700 flex items-center gap-3">
+        <div className="bg-primary-600 px-6 py-5 border-b border-slate-200 dark:border-slate-700 flex items-center gap-3">
           <FiDollarSign className="text-green-600 dark:text-green-400" size={24} />
           <h2 className="text-xl font-bold text-slate-900 dark:text-white">Booking Settings</h2>
         </div>
@@ -499,7 +499,7 @@ export function SettingsPage() {
 
       {/* System Settings */}
       <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
-        <div className="bg-gradient-to-r from-orange-50 to-red-50 dark:from-slate-700 dark:to-slate-600 px-6 py-5 border-b border-slate-200 dark:border-slate-700 flex items-center gap-3">
+        <div className="bg-primary-600 px-6 py-5 border-b border-slate-200 dark:border-slate-700 flex items-center gap-3">
           <FiDatabase className="text-orange-600 dark:text-orange-400" size={24} />
           <h2 className="text-xl font-bold text-slate-900 dark:text-white">System Settings</h2>
         </div>
@@ -581,7 +581,7 @@ export function SettingsPage() {
 
       {/* Languages Settings */}
       <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
-        <div className="bg-gradient-to-r from-orange-50 to-pink-50 dark:from-slate-700 dark:to-slate-600 px-6 py-5 border-b border-slate-200 dark:border-slate-700 flex items-center gap-3">
+        <div className="bg-primary-600 px-6 py-5 border-b border-slate-200 dark:border-slate-700 flex items-center gap-3">
           <FiGlobe className="text-orange-600 dark:text-orange-400" size={24} />
           <h2 className="text-xl font-bold text-slate-900 dark:text-white">Supported Languages</h2>
         </div>
@@ -591,7 +591,7 @@ export function SettingsPage() {
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
             {getAvailableLanguages().map((lang) => (
-              <div key={lang.code} className="p-4 rounded-xl bg-gradient-to-br from-teal-50 to-teal-100 dark:from-teal-900/20 dark:to-teal-800/20 border-2 border-teal-200 dark:border-teal-700 text-center hover:shadow-lg transition-all">
+              <div key={lang.code} className="p-4 rounded-xl bg-primary-600 border-2 border-teal-200 dark:border-teal-700 text-center hover:shadow-lg transition-all">
                 <div className="text-3xl mb-2">{lang.flag}</div>
                 <h3 className="font-bold text-slate-900 dark:text-white text-lg">{lang.name}</h3>
                 <p className="text-xs text-slate-600 dark:text-slate-400 mt-1">{lang.nativeName}</p>
@@ -609,7 +609,7 @@ export function SettingsPage() {
 
       {/* Translation Data Management */}
       <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
-        <div className="bg-gradient-to-r from-orange-50 to-teal-50 dark:from-slate-700 dark:to-slate-600 px-6 py-5 border-b border-slate-200 dark:border-slate-700 flex items-center gap-3">
+        <div className="bg-primary-600 px-6 py-5 border-b border-slate-200 dark:border-slate-700 flex items-center gap-3">
           <FiDatabase className="text-orange-600 dark:text-orange-400" size={24} />
           <h2 className="text-xl font-bold text-slate-900 dark:text-white">Translation Data Management</h2>
         </div>
@@ -620,7 +620,7 @@ export function SettingsPage() {
           <button
             onClick={handleFillItineraryTranslations}
             disabled={fillingTranslations}
-            className="flex items-center justify-center gap-3 px-6 py-3 bg-gradient-to-r from-orange-600 to-teal-600 text-white rounded-xl hover:from-orange-700 hover:to-teal-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all font-semibold shadow-md hover:shadow-lg"
+            className="flex items-center justify-center gap-3 px-6 py-3 bg-primary-600 text-white rounded-xl disabled:opacity-50 disabled:cursor-not-allowed transition-all font-semibold shadow-md hover:shadow-lg"
           >
             <FiRefreshCw size={18} className={fillingTranslations ? 'animate-spin' : ''} />
             {fillingTranslations ? 'Filling Translations...' : 'Fill Missing Itinerary Translations'}
@@ -636,7 +636,7 @@ export function SettingsPage() {
         <button
           onClick={handleSaveSettings}
           disabled={!hasChanges || loading}
-          className="flex-1 flex items-center justify-center gap-3 px-6 py-4 bg-gradient-to-r from-teal-600 to-orange-600 text-white rounded-xl hover:from-teal-700 hover:to-orange-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all font-bold shadow-lg hover:shadow-xl transform hover:scale-105"
+          className="flex-1 flex items-center justify-center gap-3 px-6 py-4 bg-primary-600 text-white rounded-xl disabled:opacity-50 disabled:cursor-not-allowed transition-all font-bold shadow-lg hover:shadow-xl transform hover:scale-105"
         >
           <FiSave size={22} />
           {loading ? 'Saving Changes...' : 'Save All Settings'}

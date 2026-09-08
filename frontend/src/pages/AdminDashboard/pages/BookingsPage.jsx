@@ -92,21 +92,21 @@ export function BookingsPage() {
   const getStatusConfig = (status) => {
     const configs = {
       'confirmed': {
-        color: 'from-green-500 to-emerald-500',
+        color: '',
         bgColor: 'bg-green-100 dark:bg-green-900/30',
         textColor: 'text-green-700 dark:text-green-400',
         icon: FiCheckCircle,
         badge: 'Confirmed'
       },
       'cancelled': {
-        color: 'from-red-500 to-rose-500',
+        color: '',
         bgColor: 'bg-red-100 dark:bg-red-900/30',
         textColor: 'text-red-700 dark:text-red-400',
         icon: FiXCircle,
         badge: 'Cancelled'
       },
       'completed': {
-        color: 'from-teal-500 to-orange-500',
+        color: '',
         bgColor: 'bg-teal-100 dark:bg-teal-900/30',
         textColor: 'text-teal-700 dark:text-teal-400',
         icon: FiCheck,
@@ -126,7 +126,7 @@ export function BookingsPage() {
     return (
       <div className="flex items-center justify-center min-h-screen">
         <div className="text-center">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-teal-500 to-orange-600 mb-4">
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary-600 mb-4">
             <FiLoader className="text-3xl text-white animate-spin" />
           </div>
           <p className="text-lg font-semibold text-slate-900 dark:text-white">Loading bookings...</p>
@@ -142,11 +142,11 @@ export function BookingsPage() {
       <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
         <div>
           <div className="flex items-center gap-3 mb-2">
-            <div className="p-3 bg-gradient-to-br from-teal-500 to-orange-600 rounded-xl shadow-lg">
+            <div className="p-3 bg-primary-600 rounded-xl shadow-lg">
               <FiTrendingUp className="text-white" size={28} />
             </div>
             <div>
-              <h1 className="text-4xl font-bold bg-gradient-to-r from-teal-600 to-orange-600 bg-clip-text text-transparent">
+              <h1 className="text-4xl font-bold bg-primary-600 bg-clip-text text-transparent">
                 Bookings Management
               </h1>
               <p className="text-slate-600 dark:text-slate-400 text-sm mt-1">
@@ -162,7 +162,7 @@ export function BookingsPage() {
             <FiRefreshCw size={20} />
             Refresh
           </button>
-          <button className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-green-500 to-emerald-500 text-white rounded-xl hover:from-green-600 hover:to-emerald-600 transition-all font-semibold shadow-lg hover:shadow-xl transform hover:scale-105">
+          <button className="flex items-center gap-2 px-6 py-3 bg-primary-600 text-white rounded-xl transition-all font-semibold shadow-lg hover:shadow-xl transform hover:scale-105">
             <FiDownload size={20} />
             Export Report
           </button>
@@ -172,24 +172,24 @@ export function BookingsPage() {
       {/* Stats Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {[
-          { label: 'Total Bookings', value: stats.total || bookings.length, icon: FiCalendar, color: 'from-teal-500 to-teal-600' },
-          { label: 'Confirmed', value: stats.confirmed || 0, icon: FiCheckCircle, color: 'from-green-500 to-emerald-500' },
-          { label: 'Completed', value: stats.completed || 0, icon: FiCheck, color: 'from-orange-500 to-orange-600' },
-          { label: 'Cancelled', value: stats.cancelled || 0, icon: FiXCircle, color: 'from-red-500 to-rose-500' },
+          { label: 'Total Bookings', value: stats.total || bookings.length, icon: FiCalendar, color: '' },
+          { label: 'Confirmed', value: stats.confirmed || 0, icon: FiCheckCircle, color: '' },
+          { label: 'Completed', value: stats.completed || 0, icon: FiCheck, color: '' },
+          { label: 'Cancelled', value: stats.cancelled || 0, icon: FiXCircle, color: '' },
         ].map((stat, idx) => {
           const Icon = stat.icon;
-          const gradientClass = `bg-gradient-to-r ${stat.color}`;
+          const gradientClass = `bg-primary-600 ${stat.color}`;
           return (
             <div key={idx} className="group stat-card bg-white dark:bg-slate-800 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-700 overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
               <div className={`h-2 ${gradientClass}`}></div>
               <div className="p-6">
                 <div className="flex items-center justify-between mb-4">
                   <span className="text-sm font-semibold text-slate-600 dark:text-slate-400 uppercase tracking-wide">{stat.label}</span>
-                  <div className={`p-3 bg-gradient-to-br ${stat.color} rounded-lg shadow-md group-hover:scale-110 transition-transform`}>
+                  <div className={`p-3 bg-primary-600 ${stat.color} rounded-lg shadow-md group-hover:scale-110 transition-transform`}>
                     <Icon className="text-white" size={20} />
                   </div>
                 </div>
-                <div className={`text-4xl font-bold bg-gradient-to-r ${stat.color} bg-clip-text text-transparent`}>
+                <div className={`text-4xl font-bold bg-primary-600 ${stat.color} bg-clip-text text-transparent`}>
                   {stat.value}
                 </div>
               </div>
@@ -322,7 +322,7 @@ export function BookingsPage() {
                         setSelectedBooking(booking);
                         setShowModal(true);
                       }}
-                      className="flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-teal-500 to-orange-500 text-white rounded-xl hover:from-teal-600 hover:to-orange-600 transition-all font-semibold shadow-md hover:shadow-lg transform hover:scale-105"
+                      className="flex items-center justify-center gap-2 px-6 py-3 bg-primary-600 text-white rounded-xl transition-all font-semibold shadow-md hover:shadow-lg transform hover:scale-105"
                     >
                       <FiEye size={18} />
                       View Details
@@ -333,7 +333,7 @@ export function BookingsPage() {
                         // Navigate to refunds page with this booking
                         window.location.href = `/admin/dashboard/refunds?bookingId=${booking.id}`;
                       }}
-                      className="flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-red-500 to-orange-500 text-white rounded-xl hover:from-red-600 hover:to-orange-600 transition-all font-semibold shadow-md hover:shadow-lg transform hover:scale-105"
+                      className="flex items-center justify-center gap-2 px-6 py-3 bg-primary-600 text-white rounded-xl transition-all font-semibold shadow-md hover:shadow-lg transform hover:scale-105"
                     >
                       <FiRefreshCw size={18} />
                       Process Refund
@@ -382,7 +382,7 @@ export function BookingsPage() {
           <button
             onClick={() => setPagination(prev => ({ ...prev, offset: prev.offset + prev.limit }))}
             disabled={pagination.offset + pagination.limit >= pagination.total}
-            className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-teal-500 to-orange-500 text-white rounded-xl hover:from-teal-600 hover:to-orange-600 disabled:opacity-50 disabled:cursor-not-allowed transition-all font-semibold"
+            className="flex items-center gap-2 px-6 py-3 bg-primary-600 text-white rounded-xl disabled:opacity-50 disabled:cursor-not-allowed transition-all font-semibold"
           >
             Next →
           </button>
@@ -394,7 +394,7 @@ export function BookingsPage() {
         <div className="modal-overlay fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4 backdrop-blur-sm">
           <div className="modal-content bg-white dark:bg-slate-800 rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl custom-scrollbar">
             {/* Modal Header */}
-            <div className="sticky top-0 bg-gradient-to-r from-teal-500 to-orange-600 px-8 py-6 flex items-center justify-between">
+            <div className="sticky top-0 bg-primary-600 px-8 py-6 flex items-center justify-between">
               <div>
                 <h2 className="text-3xl font-bold text-white">Booking Details</h2>
                 <p className="text-teal-100 text-sm mt-1">Booking ID: {selectedBooking.id}</p>
@@ -410,7 +410,7 @@ export function BookingsPage() {
             {/* Modal Content */}
             <div className="p-8 space-y-6">
               {/* Status Overview */}
-              <div className={`rounded-2xl p-6 bg-gradient-to-br ${getStatusConfig(selectedBooking.status).color}`}>
+              <div className={`rounded-2xl p-6 bg-primary-600 ${getStatusConfig(selectedBooking.status).color}`}>
                 <div className="flex items-center gap-3">
                   {(() => {
                     const Icon = getStatusConfig(selectedBooking.status).icon;
@@ -488,7 +488,7 @@ export function BookingsPage() {
 
               {/* Action Buttons */}
               <div className="flex gap-3 pt-6 border-t border-slate-200 dark:border-slate-700">
-                <button className="flex-1 px-6 py-3 bg-gradient-to-r from-teal-500 to-orange-500 text-white rounded-xl hover:from-teal-600 hover:to-orange-600 transition-all font-semibold shadow-lg hover:shadow-xl">
+                <button className="flex-1 px-6 py-3 bg-primary-600 text-white rounded-xl transition-all font-semibold shadow-lg hover:shadow-xl">
                   Edit Booking
                 </button>
                 <button

@@ -246,15 +246,15 @@ const ItineraryDayItem = ({ day, isExpanded, onToggle }) => {
       >
         <div
           className={`w-full p-4 rounded-lg border-2 transition-all ${
-            isExpanded
-              ? 'border-teal-500 bg-teal-50 dark:bg-teal-900/20'
-              : 'border-slate-200 dark:border-slate-700 hover:border-teal-300 bg-white dark:bg-slate-800'
-          }`}
+ isExpanded
+ ? 'border-teal-500 bg-teal-50 dark:bg-teal-900/20'
+ : 'border-slate-200 dark:border-slate-700 hover:border-teal-300 bg-white dark:bg-slate-800'
+ }`}
         >
           <div className="flex items-center justify-between">
             <div className="text-left">
               <div className="flex items-center gap-3">
-                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-br from-teal-400 to-teal-600 flex items-center justify-center text-white font-bold text-sm">
+                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary-600 flex items-center justify-center text-white font-bold text-sm">
                   {day.day_number || day.day}
                 </div>
                 <div>
@@ -275,10 +275,10 @@ const ItineraryDayItem = ({ day, isExpanded, onToggle }) => {
               <FiChevronDown
                 size={20}
                 className={`${
-                  isExpanded
-                    ? 'text-teal-600'
-                    : 'text-slate-400 group-hover:text-slate-600'
-                }`}
+ isExpanded
+ ? 'text-teal-600'
+ : 'text-slate-400 group-hover:text-slate-600'
+ }`}
               />
             </motion.div>
           </div>
@@ -430,7 +430,7 @@ const ItineraryTimeline = ({ days }) => {
         {days.map((day, index) => (
           <div key={day.id || index} className="flex flex-col items-center">
             {/* Day Marker */}
-            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-teal-400 to-teal-600 flex items-center justify-center text-white text-xs font-bold mb-2">
+            <div className="w-8 h-8 rounded-full bg-primary-600 flex items-center justify-center text-white text-xs font-bold mb-2">
               {day.day_number || day.day}
             </div>
 

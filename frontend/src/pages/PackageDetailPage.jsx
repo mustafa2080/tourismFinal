@@ -511,7 +511,7 @@ const PackageDetailPage = () => {
 
   return (
     <MainLayout>
-      <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white dark:from-slate-900 dark:to-slate-800">
+      <div className="min-h-screen bg-primary-600">
         {/* HERO GALLERY SECTION */}
         <div className="relative h-[350px] sm:h-[450px] lg:h-[550px] bg-black overflow-hidden group">
           {/* Main Image */}
@@ -533,7 +533,7 @@ const PackageDetailPage = () => {
                 alt={currentImage.alt_text || 'Package image'}
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-primary-600" />
             </div>
           )}
 
@@ -546,10 +546,10 @@ const PackageDetailPage = () => {
               onClick={handleWishlist}
               disabled={wishlistLoading}
               className={`p-3 rounded-full backdrop-blur-md transition-all transform hover:scale-110 ${
-                isWishlisted
-                  ? 'bg-red-500 text-white shadow-lg'
-                  : 'bg-white/20 text-white hover:bg-white/40'
-              } ${wishlistLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
+ isWishlisted
+ ? 'bg-red-500 text-white shadow-lg'
+ : 'bg-white/20 text-white hover:bg-white/40'
+ } ${wishlistLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
             >
               <FiHeart size={24} fill={isWishlisted ? 'currentColor' : 'none'} />
             </button>
@@ -563,10 +563,10 @@ const PackageDetailPage = () => {
                   key={idx}
                   onClick={() => setSelectedImage(idx)}
                   className={`flex-shrink-0 h-16 w-24 rounded-lg overflow-hidden border-2 transition-all ${
-                    selectedImage === idx
-                      ? 'border-teal-400 shadow-lg scale-105'
-                      : 'border-white/30 hover:border-white/60 opacity-70 hover:opacity-100'
-                  }`}
+ selectedImage === idx
+ ? 'border-teal-400 shadow-lg scale-105'
+ : 'border-white/30 hover:border-white/60 opacity-70 hover:opacity-100'
+ }`}
                 >
                   <img
                     src={(() => {
@@ -620,7 +620,7 @@ const PackageDetailPage = () => {
 
               {/* Highlights Card */}
               {displayPkg.highlights && displayPkg.highlights.length > 0 && (
-                <div className="bg-gradient-to-r from-teal-50 to-teal-50 dark:from-teal-900/20 dark:to-teal-900/20 rounded-xl p-6 border border-teal-200 dark:border-teal-700">
+                <div className="bg-primary-600 rounded-xl p-6 border border-teal-200 dark:border-teal-700">
                   <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-4">{t('packageDetail.highlights')}</h3>
                   <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                     {displayPkg.highlights.map((highlight, idx) => (
@@ -641,10 +641,10 @@ const PackageDetailPage = () => {
                       key={tab}
                       onClick={() => setActiveTab(tab)}
                       className={`px-6 py-3 font-semibold transition-all border-b-2 ${
-                        activeTab === tab
-                          ? 'text-teal-600 dark:text-teal-400 border-teal-600 dark:border-teal-400'
-                          : 'text-slate-600 dark:text-slate-400 border-transparent hover:text-slate-900 dark:hover:text-slate-200'
-                      }`}
+ activeTab === tab
+ ? 'text-teal-600 dark:text-teal-400 border-teal-600 dark:border-teal-400'
+ : 'text-slate-600 dark:text-slate-400 border-transparent hover:text-slate-900 dark:hover:text-slate-200'
+ }`}
                     >
                       {t(`packageDetail.tabs.${tab}`)}
                     </button>
@@ -701,17 +701,17 @@ const PackageDetailPage = () => {
                     <div className="space-y-6">
                       {/* Add Review Section */}
                       {isAuthenticated && (
-                        <div className="bg-gradient-to-r from-teal-50 to-teal-50 dark:from-teal-900/20 dark:to-teal-900/20 rounded-xl p-6 border border-teal-200 dark:border-teal-700">
+                        <div className="bg-primary-600 rounded-xl p-6 border border-teal-200 dark:border-teal-700">
                           <div className="flex justify-between items-center mb-4">
                             <h4 className="text-lg font-bold text-slate-900 dark:text-white">Share Your Experience</h4>
                             <button
                               onClick={() => setShowReviewForm(!showReviewForm)}
                               disabled={!userBooking}
                               className={`px-4 py-2 text-white rounded-lg transition text-sm font-semibold ${
-                                !userBooking
-                                  ? 'bg-slate-400 cursor-not-allowed opacity-50'
-                                  : 'bg-teal-600 hover:bg-teal-700'
-                              }`}
+ !userBooking
+ ? 'bg-slate-400 cursor-not-allowed opacity-50'
+ : 'bg-teal-600 hover:bg-teal-700'
+ }`}
                             >
                               {showReviewForm ? '✕ Cancel' : '+ Add Review'}
                             </button>
@@ -720,15 +720,15 @@ const PackageDetailPage = () => {
                           {/* Alert if user hasn't completed trip or booking is cancelled */}
                           {userBooking && userBooking.status !== 'completed' && (
                             <div className={`mb-4 p-4 border rounded-lg flex items-start gap-3 ${
-                              userBooking.status === 'cancelled'
-                                ? 'bg-red-50 dark:bg-red-900/20 border-red-300 dark:border-red-700'
-                                : 'bg-amber-50 dark:bg-amber-900/20 border-amber-300 dark:border-amber-700'
-                            }`}>
+ userBooking.status === 'cancelled'
+ ? 'bg-red-50 dark:bg-red-900/20 border-red-300 dark:border-red-700'
+ : 'bg-amber-50 dark:bg-amber-900/20 border-amber-300 dark:border-amber-700'
+ }`}>
                               <FiAlertCircle size={20} className={`flex-shrink-0 mt-0.5 ${
-                                userBooking.status === 'cancelled'
-                                  ? 'text-red-600 dark:text-red-400'
-                                  : 'text-amber-600 dark:text-amber-400'
-                              }`} />
+ userBooking.status === 'cancelled'
+ ? 'text-red-600 dark:text-red-400'
+ : 'text-amber-600 dark:text-amber-400'
+ }`} />
                               <div className="flex-1">
                                 {userBooking.status === 'cancelled' ? (
                                   <>
@@ -751,10 +751,10 @@ const PackageDetailPage = () => {
                                       onClick={handleCompleteTrip}
                                       disabled={completingTrip}
                                       className={`px-4 py-2 rounded-lg font-semibold text-sm text-white transition-all ${
-                                        completingTrip
-                                          ? 'bg-slate-400 cursor-not-allowed'
-                                          : 'bg-amber-600 hover:bg-amber-700 active:scale-95'
-                                      }`}
+ completingTrip
+ ? 'bg-slate-400 cursor-not-allowed'
+ : 'bg-amber-600 hover:bg-amber-700 active:scale-95'
+ }`}
                                     >
                                       {completingTrip ? '⏳ Processing...' : '✓ Mark Trip Complete'}
                                     </button>
@@ -769,7 +769,7 @@ const PackageDetailPage = () => {
                               {/* Rating Selection */}
                               <div>
                                 <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-3">Rating * {hoverRating > 0 && <span className="text-yellow-500">({['', 'Poor', 'Fair', 'Good', 'Very Good', 'Excellent'][hoverRating]})</span>}</label>
-                                <div className="flex gap-3 p-4 bg-gradient-to-r from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20 rounded-lg border border-yellow-200 dark:border-yellow-700">
+                                <div className="flex gap-3 p-4 bg-primary-600 rounded-lg border border-yellow-200 dark:border-yellow-700">
                                   {[1, 2, 3, 4, 5].map(star => (
                                     <button
                                       key={star}
@@ -781,10 +781,10 @@ const PackageDetailPage = () => {
                                       <FiStar
                                         size={40}
                                         className={`transition-all duration-200 ${
-                                          star <= (hoverRating || reviewRating)
-                                            ? 'fill-yellow-400 text-yellow-400 drop-shadow-lg'
-                                            : 'text-slate-300 dark:text-slate-600'
-                                        }`}
+ star <= (hoverRating || reviewRating)
+ ? 'fill-yellow-400 text-yellow-400 drop-shadow-lg'
+ : 'text-slate-300 dark:text-slate-600'
+ }`}
                                       />
                                     </button>
                                   ))}
@@ -808,20 +808,20 @@ const PackageDetailPage = () => {
                                   onChange={(e) => setReviewComment(e.target.value)}
                                   placeholder="Share your experience with this trip... 💭"
                                   className={`w-full px-4 py-3 rounded-lg border-2 transition-all bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-500 dark:placeholder-slate-400 focus:outline-none ${
-                                    reviewComment.trim().length >= 10
-                                      ? 'border-green-500 focus:ring-2 focus:ring-green-400'
-                                      : 'border-slate-300 dark:border-slate-600 focus:border-teal-500 focus:ring-2 focus:ring-teal-400'
-                                  }`}
+ reviewComment.trim().length >= 10
+ ? 'border-green-500 focus:ring-2 focus:ring-green-400'
+ : 'border-slate-300 dark:border-slate-600 focus:border-teal-500 focus:ring-2 focus:ring-teal-400'
+ }`}
                                   rows="4"
                                 />
                                 <div className="flex justify-between items-center mt-2">
                                   <p className={`text-xs font-semibold ${
-                                    reviewComment.length > 500
-                                      ? 'text-red-600'
-                                      : reviewComment.trim().length >= 10
-                                      ? 'text-green-600'
-                                      : 'text-slate-600 dark:text-slate-400'
-                                  }`}>
+ reviewComment.length > 500
+ ? 'text-red-600'
+ : reviewComment.trim().length >= 10
+ ? 'text-green-600'
+ : 'text-slate-600 dark:text-slate-400'
+ }`}>
                                     {reviewComment.length}/500 characters
                                   </p>
                                   {reviewComment.trim().length >= 10 && (
@@ -835,12 +835,12 @@ const PackageDetailPage = () => {
                                 onClick={handleSubmitReview}
                                 disabled={submitReviewLoading || reviewRating === 0 || reviewComment.trim().length < 10}
                                 className={`w-full px-6 py-4 rounded-lg font-bold text-white transition-all duration-200 transform ${
-                                  submitReviewLoading
-                                    ? 'bg-slate-400 cursor-not-allowed'
-                                    : reviewRating === 0 || reviewComment.trim().length < 10
-                                    ? 'bg-slate-300 dark:bg-slate-600 cursor-not-allowed opacity-50'
-                                    : 'bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 active:scale-95 shadow-lg hover:shadow-xl'
-                                }`}
+ submitReviewLoading
+ ? 'bg-slate-400 cursor-not-allowed'
+ : reviewRating === 0 || reviewComment.trim().length < 10
+ ? 'bg-slate-300 dark:bg-slate-600 cursor-not-allowed opacity-50'
+ : 'bg-primary-600 active:scale-95 shadow-lg hover:shadow-xl'
+ }`}
                               >
                                 <div className="flex items-center justify-center gap-2">
                                   {submitReviewLoading ? (
@@ -880,11 +880,11 @@ const PackageDetailPage = () => {
                         ) : reviews && reviews.length > 0 ? (
                           <div className="space-y-4">
                             {reviews.map((review, idx) => (
-                              <div key={idx} className="bg-gradient-to-r from-slate-50 to-slate-100 dark:from-slate-800 dark:to-slate-900 rounded-lg p-5 border-l-4 border-yellow-400 hover:shadow-lg transition-all duration-200">
+                              <div key={idx} className="bg-primary-600 rounded-lg p-5 border-l-4 border-yellow-400 hover:shadow-lg transition-all duration-200">
                                 <div className="flex items-start justify-between mb-3">
                                   <div className="flex-1">
                                     <div className="flex items-center gap-3 mb-2">
-                                      <div className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-400 to-orange-500 flex items-center justify-center text-white font-bold">
+                                      <div className="w-10 h-10 rounded-full bg-primary-600 flex items-center justify-center text-white font-bold">
                                         {(review.user?.name || 'A')[0]}
                                       </div>
                                       <div className="flex-1">
@@ -926,7 +926,7 @@ const PackageDetailPage = () => {
                             ))}
                           </div>
                         ) : (
-                          <div className="text-center py-12 bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-800 dark:to-slate-900 rounded-lg border-2 border-dashed border-slate-300 dark:border-slate-600">
+                          <div className="text-center py-12 bg-primary-600 rounded-lg border-2 border-dashed border-slate-300 dark:border-slate-600">
                             <div className="text-4xl mb-3">💬</div>
                             <p className="text-slate-600 dark:text-slate-400 text-lg font-semibold mb-2">
                               No reviews yet

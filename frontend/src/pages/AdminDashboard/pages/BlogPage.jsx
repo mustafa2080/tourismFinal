@@ -399,7 +399,7 @@ export function BlogPage() {
                   <tr key={post.id} className="hover:bg-slate-50 dark:hover:bg-slate-700/30 transition-colors">
                     <td className="px-5 py-3">
                       <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-teal-500 to-orange-500 flex-shrink-0 overflow-hidden flex items-center justify-center text-white font-bold">
+                        <div className="w-10 h-10 rounded-lg bg-primary-600 flex-shrink-0 overflow-hidden flex items-center justify-center text-white font-bold">
                           {post.featured_image ? (
                             <img src={post.featured_image} alt="" className="w-full h-full object-cover" />
                           ) : (
@@ -417,10 +417,10 @@ export function BlogPage() {
                     </td>
                     <td className="px-5 py-3">
                       <span className={`px-2.5 py-1 rounded-full text-xs font-semibold ${
-                        post.published
-                          ? 'bg-green-50 text-green-700 dark:bg-green-900/20 dark:text-green-400'
-                          : 'bg-slate-100 text-slate-600 dark:bg-slate-700 dark:text-slate-300'
-                      }`}>
+ post.published
+ ? 'bg-green-50 text-green-700 dark:bg-green-900/20 dark:text-green-400'
+ : 'bg-slate-100 text-slate-600 dark:bg-slate-700 dark:text-slate-300'
+ }`}>
                         {post.published ? 'Published' : 'Draft'}
                       </span>
                     </td>

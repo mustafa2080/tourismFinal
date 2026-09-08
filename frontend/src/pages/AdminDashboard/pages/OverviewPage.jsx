@@ -84,12 +84,12 @@ export default function OverviewPage() {
           )}
         </div>
         <div
-          className={`p-4 rounded-xl bg-gradient-to-br ${
-            title.includes('Revenue') ? 'from-green-500 to-green-600' :
-            title.includes('Bookings') ? 'from-teal-500 to-teal-600' :
-            title.includes('Users') ? 'from-orange-500 to-orange-600' :
-            'from-orange-500 to-orange-600'
-          } text-white group-hover:scale-110 transition-transform`}
+          className={`p-4 rounded-xl bg-primary-600 ${
+ title.includes('Revenue') ? ' ' :
+ title.includes('Bookings') ? ' ' :
+ title.includes('Users') ? ' ' :
+ ' '
+ } text-white group-hover:scale-110 transition-transform`}
         >
           <Icon size={28} />
         </div>
@@ -126,10 +126,10 @@ export default function OverviewPage() {
               key={range}
               onClick={() => setTimeRange(range)}
               className={`px-4 py-2 rounded-lg font-medium transition-all ${
-                timeRange === range
-                  ? 'bg-teal-600 text-white shadow-lg'
-                  : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:border-teal-400'
-              }`}
+ timeRange === range
+ ? 'bg-teal-600 text-white shadow-lg'
+ : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:border-teal-400'
+ }`}
             >
               {range === '7days' ? '7 Days' : range === '30days' ? '30 Days' : '90 Days'}
             </button>
@@ -270,19 +270,19 @@ export default function OverviewPage() {
           <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-lg border border-slate-200 dark:border-slate-700">
             <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-4">Key Metrics</h2>
             <div className="space-y-3">
-              <div className="p-3 bg-gradient-to-r from-teal-50 to-teal-100 dark:from-teal-900/20 dark:to-teal-800/20 rounded-lg border border-teal-200 dark:border-teal-700">
+              <div className="p-3 bg-primary-600 rounded-lg border border-teal-200 dark:border-teal-700">
                 <div className="flex items-center justify-between">
                   <span className="text-sm text-slate-700 dark:text-slate-300">Avg Order Value</span>
                   <span className="font-bold text-slate-900 dark:text-white">${statsData.avgOrderValue?.toFixed(2)}</span>
                 </div>
               </div>
-              <div className="p-3 bg-gradient-to-r from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20 rounded-lg border border-green-200 dark:border-green-700">
+              <div className="p-3 bg-primary-600 rounded-lg border border-green-200 dark:border-green-700">
                 <div className="flex items-center justify-between">
                   <span className="text-sm text-slate-700 dark:text-slate-300">Conversion Rate</span>
                   <span className="font-bold text-slate-900 dark:text-white">{statsData.conversionRate?.toFixed(2)}%</span>
                 </div>
               </div>
-              <div className="p-3 bg-gradient-to-r from-orange-50 to-orange-100 dark:from-orange-900/20 dark:to-orange-800/20 rounded-lg border border-orange-200 dark:border-orange-700">
+              <div className="p-3 bg-primary-600 rounded-lg border border-orange-200 dark:border-orange-700">
                 <div className="flex items-center justify-between">
                   <span className="text-sm text-slate-700 dark:text-slate-300">Revenue Growth</span>
                   <span className={`font-bold ${statsData.revenueGrowth >= 0 ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>
@@ -290,7 +290,7 @@ export default function OverviewPage() {
                   </span>
                 </div>
               </div>
-              <div className="p-3 bg-gradient-to-r from-orange-50 to-orange-100 dark:from-orange-900/20 dark:to-orange-800/20 rounded-lg border border-orange-200 dark:border-orange-700">
+              <div className="p-3 bg-primary-600 rounded-lg border border-orange-200 dark:border-orange-700">
                 <div className="flex items-center justify-between">
                   <span className="text-sm text-slate-700 dark:text-slate-300">User Growth</span>
                   <span className={`font-bold ${statsData.userGrowth >= 0 ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>

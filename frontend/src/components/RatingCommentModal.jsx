@@ -76,7 +76,7 @@ export function RatingCommentModal({ isOpen, onClose, onSubmit, packageName, loa
       <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl max-w-2xl w-full border border-slate-200 dark:border-slate-700 overflow-hidden animate-modal-in">
         
         {/* Header */}
-        <div className="flex items-center justify-between p-8 bg-gradient-to-r from-teal-600 to-orange-600 text-white">
+        <div className="flex items-center justify-between p-8 bg-primary-600 text-white">
           <div className="flex items-center gap-3">
             <div className="p-3 bg-white/20 rounded-lg backdrop-blur">
               <MdOutlineRateReview size={28} />
@@ -118,12 +118,12 @@ export function RatingCommentModal({ isOpen, onClose, onSubmit, packageName, loa
                   <FiStar
                     size={56}
                     className={`transition-all duration-300 ${
-                      star <= displayRating
-                        ? 'fill-yellow-400 text-yellow-400 drop-shadow-lg scale-110 animate-pulse'
-                        : 'text-slate-300 dark:text-slate-600 scale-100'
-                    } ${
-                      star <= hoverRating ? 'animate-bounce' : ''
-                    } hover:scale-125 cursor-pointer`}
+ star <= displayRating
+ ? 'fill-yellow-400 text-yellow-400 drop-shadow-lg scale-110 animate-pulse'
+ : 'text-slate-300 dark:text-slate-600 scale-100'
+ } ${
+ star <= hoverRating ? 'animate-bounce' : ''
+ } hover:scale-125 cursor-pointer`}
                   />
                   {/* Hover tooltip */}
                   <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 text-xs font-bold py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
@@ -160,12 +160,12 @@ export function RatingCommentModal({ isOpen, onClose, onSubmit, packageName, loa
                 onChange={(e) => setComment(e.target.value)}
                 placeholder="Tell us about your experience with this tour... (minimum 10 characters)"
                 className={`w-full px-4 py-3 border-2 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-500 dark:placeholder-slate-400 focus:outline-none transition-all duration-300 resize-none ${
-                  errors.comment
-                    ? 'border-red-500 focus:ring-2 focus:ring-red-500/20'
-                    : isCommentValid && commentLength > 0
-                    ? 'border-green-500 focus:border-green-600 focus:ring-2 focus:ring-green-500/20'
-                    : 'border-slate-300 dark:border-slate-600 focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20'
-                }`}
+ errors.comment
+ ? 'border-red-500 focus:ring-2 focus:ring-red-500/20'
+ : isCommentValid && commentLength > 0
+ ? 'border-green-500 focus:border-green-600 focus:ring-2 focus:ring-green-500/20'
+ : 'border-slate-300 dark:border-slate-600 focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20'
+ }`}
                 rows="5"
                 disabled={submitting}
               />
@@ -173,12 +173,12 @@ export function RatingCommentModal({ isOpen, onClose, onSubmit, packageName, loa
               {/* Character counter */}
               <div className="absolute bottom-3 right-3 text-xs font-semibold">
                 <span className={`${
-                  commentLength < 10
-                    ? 'text-slate-400 dark:text-slate-500'
-                    : commentLength > 500
-                    ? 'text-red-500'
-                    : 'text-green-500'
-                }`}>
+ commentLength < 10
+ ? 'text-slate-400 dark:text-slate-500'
+ : commentLength > 500
+ ? 'text-red-500'
+ : 'text-green-500'
+ }`}>
                   {commentLength}
                 </span>
                 <span className="text-slate-400 dark:text-slate-500">/500</span>
@@ -203,7 +203,7 @@ export function RatingCommentModal({ isOpen, onClose, onSubmit, packageName, loa
           </div>
 
           {/* Summary Card */}
-          <div className="bg-gradient-to-r from-teal-50 to-orange-50 dark:from-teal-900/20 dark:to-orange-900/20 rounded-xl p-6 border border-teal-200 dark:border-teal-800">
+          <div className="bg-primary-600 rounded-xl p-6 border border-teal-200 dark:border-teal-800">
             <p className="text-sm font-semibold text-slate-900 dark:text-white mb-3">Summary</p>
             <div className="flex items-center justify-between">
               <div>
@@ -221,8 +221,8 @@ export function RatingCommentModal({ isOpen, onClose, onSubmit, packageName, loa
               <div>
                 <p className="text-slate-600 dark:text-slate-400 text-sm">Comment Length</p>
                 <p className={`text-lg font-bold mt-1 ${
-                  isCommentValid ? 'text-green-500' : commentLength > 0 ? 'text-yellow-500' : 'text-slate-400'
-                }`}>
+ isCommentValid ? 'text-green-500' : commentLength > 0 ? 'text-yellow-500' : 'text-slate-400'
+ }`}>
                   {commentLength > 0 ? `${commentLength}/500` : '—'}
                 </p>
               </div>
@@ -243,10 +243,10 @@ export function RatingCommentModal({ isOpen, onClose, onSubmit, packageName, loa
             onClick={handleSubmit}
             disabled={submitting || !isCommentValid || rating < 1}
             className={`flex-1 px-6 py-3 rounded-lg font-bold text-white flex items-center justify-center gap-2 transition-all transform disabled:scale-100 disabled:opacity-50 disabled:cursor-not-allowed ${
-              submitting
-                ? 'bg-gradient-to-r from-slate-400 to-slate-500'
-                : 'bg-gradient-to-r from-teal-600 to-orange-600 hover:from-teal-700 hover:to-orange-700 shadow-lg hover:shadow-xl hover:scale-105 active:scale-95'
-            }`}
+ submitting
+ ? 'bg-primary-600 '
+ : 'bg-primary-600 shadow-lg hover:shadow-xl hover:scale-105 active:scale-95'
+ }`}
           >
             {submitting ? (
               <>

@@ -328,7 +328,7 @@ const SearchPage = () => {
   return (
     <MainLayout>
       {/* Hero Search */}
-      <div className="bg-gradient-to-br from-teal-600 to-orange-600 text-white py-8 md:py-12">
+      <div className="bg-primary-600 text-white py-8 md:py-12">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           <h1 className="text-3xl md:text-4xl font-bold mb-6 flex items-center gap-3">
             {categoryId && categoryName
@@ -591,10 +591,10 @@ const SearchPage = () => {
                         key={opt.value}
                         onClick={() => handleFilterChange('minRating', opt.value)}
                         className={`w-full text-left px-4 py-3 rounded-lg transition text-sm font-semibold ${
-                          filters.minRating === opt.value
-                            ? 'bg-teal-600 text-white shadow-md transform scale-105'
-                            : 'hover:bg-gray-100 text-gray-700 border-2 border-transparent hover:border-teal-300'
-                        }`}
+ filters.minRating === opt.value
+ ? 'bg-teal-600 text-white shadow-md transform scale-105'
+ : 'hover:bg-gray-100 text-gray-700 border-2 border-transparent hover:border-teal-300'
+ }`}
                       >
                         <div className="flex items-center justify-between">
                           <span>{opt.label}</span>
@@ -619,10 +619,10 @@ const SearchPage = () => {
                         key={opt.value}
                         onClick={() => handleFilterChange('sortBy', opt.value)}
                         className={`w-full text-left px-4 py-3 rounded-lg transition text-sm font-semibold ${
-                          filters.sortBy === opt.value
-                            ? 'bg-teal-600 text-white shadow-md transform scale-105'
-                            : 'hover:bg-gray-100 text-gray-700 border-2 border-transparent hover:border-teal-300'
-                        }`}
+ filters.sortBy === opt.value
+ ? 'bg-teal-600 text-white shadow-md transform scale-105'
+ : 'hover:bg-gray-100 text-gray-700 border-2 border-transparent hover:border-teal-300'
+ }`}
                       >
                         <div className="flex items-center justify-between">
                           <span>{opt.label}</span>
@@ -700,8 +700,8 @@ const SearchPage = () => {
                           onClick={(e) => handleToggleWishlist(e, pkg.id)}
                           disabled={wishlistUpdating.has(pkg.id)}
                           className={`absolute top-3 right-3 p-2 rounded-full transition ${
-                            isWishlisted(pkg.id) ? 'bg-red-500 text-white' : 'bg-white text-gray-600 hover:bg-red-50'
-                          } ${wishlistUpdating.has(pkg.id) ? 'opacity-50 cursor-not-allowed' : ''}`}
+ isWishlisted(pkg.id) ? 'bg-red-500 text-white' : 'bg-white text-gray-600 hover:bg-red-50'
+ } ${wishlistUpdating.has(pkg.id) ? 'opacity-50 cursor-not-allowed' : ''}`}
                         >
                           <FiHeart size={18} fill={isWishlisted(pkg.id) ? 'currentColor' : 'none'} />
                         </button>

@@ -188,7 +188,7 @@ export function ReportsPage() {
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <div>
           <h1 className="text-2xl sm:text-3xl lg:text-5xl font-bold text-slate-900 dark:text-white flex items-center gap-3">
-            <div className="p-2 sm:p-3 bg-gradient-to-br from-teal-500 to-teal-600 rounded-xl shadow-lg flex-shrink-0">
+            <div className="p-2 sm:p-3 bg-primary-600 rounded-xl shadow-lg flex-shrink-0">
               <MdOutlineAssessment className="text-white" size={24} />
             </div>
             Reports & Analytics
@@ -201,14 +201,14 @@ export function ReportsPage() {
           <button
             onClick={handleRefresh}
             disabled={refreshing}
-            className="flex-1 sm:flex-initial flex items-center justify-center gap-2 px-4 sm:px-6 py-3 bg-gradient-to-r from-teal-600 to-teal-700 hover:from-teal-700 hover:to-teal-800 text-white rounded-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed font-medium shadow-lg hover:shadow-xl"
+            className="flex-1 sm:flex-initial flex items-center justify-center gap-2 px-4 sm:px-6 py-3 bg-primary-600 text-white rounded-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed font-medium shadow-lg hover:shadow-xl"
           >
             <FiRefreshCw className={`${refreshing ? 'animate-spin' : ''}`} size={18} />
             {refreshing ? 'Refreshing' : 'Refresh'}
           </button>
           <button
             onClick={handleExport}
-            className="flex-1 sm:flex-initial flex items-center justify-center gap-2 px-4 sm:px-6 py-3 bg-gradient-to-r from-slate-200 to-slate-300 dark:from-slate-700 dark:to-slate-600 text-slate-900 dark:text-white rounded-lg hover:shadow-lg transition-all font-medium"
+            className="flex-1 sm:flex-initial flex items-center justify-center gap-2 px-4 sm:px-6 py-3 bg-primary-600 text-slate-900 dark:text-white rounded-lg hover:shadow-lg transition-all font-medium"
           >
             <FiDownload size={18} />
             Export
@@ -217,7 +217,7 @@ export function ReportsPage() {
       </div>
 
       {/* Date Range Filter */}
-      <div className="bg-gradient-to-r from-teal-50 via-orange-50 to-teal-50 dark:from-slate-800 dark:via-slate-800 dark:to-slate-800 rounded-xl shadow-lg p-6 border border-teal-200 dark:border-slate-700">
+      <div className="bg-primary-600 rounded-xl shadow-lg p-6 border border-teal-200 dark:border-slate-700">
         <div className="flex flex-col sm:flex-row gap-6 items-end">
           <div className="flex-1">
             <label className="block text-sm font-bold text-slate-900 dark:text-white mb-3 flex items-center gap-2">
@@ -256,19 +256,19 @@ export function ReportsPage() {
                 label="Total Revenue"
                 value={`$${(revenueData.totalRevenue / 1000).toFixed(1)}K`}
                 change={revenueData.growthRate}
-                bgGradient="bg-gradient-to-br from-teal-500 via-teal-600 to-teal-600"
+                bgGradient="bg-primary-600"
               />
               <MetricCard
                 icon={FiShoppingCart}
                 label="Total Bookings"
                 value={revenueData.totalBookings || 0}
-                bgGradient="bg-gradient-to-br from-emerald-500 via-emerald-600 to-teal-600"
+                bgGradient="bg-primary-600"
               />
               <MetricCard
                 icon={FiTrendingUp}
                 label="Avg Booking Value"
                 value={`$${revenueData.averageBookingValue?.toFixed(0) || 0}`}
-                bgGradient="bg-gradient-to-br from-orange-500 via-orange-600 to-pink-600"
+                bgGradient="bg-primary-600"
               />
             </>
           ) : (
@@ -283,7 +283,7 @@ export function ReportsPage() {
             label="Total Customers"
             value={customerStats?.totalCustomers || 0}
             change={customerStats?.totalCustomers > 0 ? Math.round((customerStats?.newCustomersThisMonth || 0) / customerStats.totalCustomers * 100) : 0}
-            bgGradient="bg-gradient-to-br from-orange-500 via-orange-600 to-red-600"
+            bgGradient="bg-primary-600"
           />
         </div>
       )}

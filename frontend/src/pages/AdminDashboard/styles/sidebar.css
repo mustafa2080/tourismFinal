@@ -110,7 +110,7 @@ nav a:active {
   right: 0;
   padding: 1rem;
   border-top: 1px solid rgba(71, 85, 105, 0.3);
-  background: linear-gradient(to top, rgba(15, 23, 42, 0.8), transparent);
+  background: #0d9488;
 }
 
 @media (max-width: 1023px) {

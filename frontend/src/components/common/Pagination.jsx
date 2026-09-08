@@ -100,8 +100,8 @@ const Pagination = ({
           <button
             key={index}
             className={`pagination-number ${
-              page === currentPage ? 'active' : ''
-            } ${page === '...' ? 'ellipsis' : ''}`}
+ page === currentPage ? 'active' : ''
+ } ${page === '...' ? 'ellipsis' : ''}`}
             onClick={() => handlePageClick(page)}
             disabled={page === '...' || disabled}
             aria-label={page === '...' ? 'More pages' : `Page ${page}`}

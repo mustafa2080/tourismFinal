@@ -36,25 +36,25 @@ const AboutPage = () => {
       icon: FiGlobe,
       title: t('aboutPage.globalReach'),
       description: t('aboutPage.globalReachDesc'),
-      color: 'from-teal-500 to-teal-600',
+      color: '',
     },
     {
       icon: FiUsers,
       title: t('aboutPage.customerFirst'),
       description: t('aboutPage.customerFirstDesc'),
-      color: 'from-orange-500 to-orange-600',
+      color: '',
     },
     {
       icon: FiTarget,
       title: t('aboutPage.qualityTours'),
       description: t('aboutPage.qualityToursDesc'),
-      color: 'from-pink-500 to-pink-600',
+      color: '',
     },
     {
       icon: FiTrendingUp,
       title: t('aboutPage.bestPrices'),
       description: t('aboutPage.bestPricesDesc'),
-      color: 'from-green-500 to-green-600',
+      color: '',
     },
   ];
 
@@ -66,7 +66,7 @@ const AboutPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 flex flex-col">
+    <div className="min-h-screen bg-primary-600 flex flex-col">
       <Header />
 
       {/* Hero Section */}
@@ -74,7 +74,7 @@ const AboutPage = () => {
         <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 dark:text-white mb-6 leading-tight">
-              {t('aboutPage.heroTitle')} <span className="bg-gradient-to-r from-teal-600 to-orange-600 bg-clip-text text-transparent">Voyager Tours</span>
+              {t('aboutPage.heroTitle')} <span className="bg-primary-600 bg-clip-text text-transparent">Voyager Tours</span>
             </h1>
             <p className="text-lg sm:text-xl text-slate-600 dark:text-slate-300 leading-relaxed">
               {t('aboutPage.heroDescription')}
@@ -116,7 +116,7 @@ const AboutPage = () => {
               </p>
               <button
                 onClick={() => navigate('/contact')}
-                className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-teal-600 to-orange-600 hover:from-teal-700 hover:to-orange-700 text-white font-semibold rounded-lg transition-all hover:shadow-lg group"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-primary-600 text-white font-semibold rounded-lg transition-all hover:shadow-lg group"
               >
                 {t('aboutPage.getInTouch')}
                 <FiArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
@@ -124,7 +124,7 @@ const AboutPage = () => {
             </div>
 
             <div className="relative">
-              <div className="w-full bg-gradient-to-br from-teal-500 via-orange-500 to-pink-500 dark:from-teal-700 dark:via-orange-700 dark:to-pink-700 rounded-2xl p-8 text-center text-white">
+              <div className="w-full bg-primary-600 rounded-2xl p-8 text-center text-white">
                 <BiWorld size={100} className="mx-auto mb-4 opacity-80" />
                 <h3 className="text-3xl font-bold mb-2">Travel the World</h3>
                 <p className="text-teal-100">With Confidence & Comfort</p>
@@ -149,7 +149,7 @@ const AboutPage = () => {
                   key={index}
                   className="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-sm border border-slate-200 dark:border-slate-700 hover:shadow-lg hover:scale-105 transition-all group"
                 >
-                  <div className={`w-14 h-14 rounded-lg bg-gradient-to-br ${value.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
+                  <div className={`w-14 h-14 rounded-lg bg-primary-600 ${value.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
                     <Icon size={28} className="text-white" />
                   </div>
                   <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-3">
@@ -176,7 +176,7 @@ const AboutPage = () => {
             {team.map((member, index) => (
               <div
                 key={index}
-                className="bg-gradient-to-br from-teal-50 to-orange-50 dark:from-slate-800 dark:to-slate-700 rounded-xl p-6 text-center hover:shadow-lg transition-all"
+                className="bg-primary-600 rounded-xl p-6 text-center hover:shadow-lg transition-all"
               >
                 <div className="text-6xl mb-4 flex justify-center">{member.image}</div>
                 <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2">
@@ -212,7 +212,7 @@ const AboutPage = () => {
                   t('aboutPage.moneyBackGuarantee'),
                 ].map((reason, index) => (
                   <li key={index} className="flex items-start gap-3">
-                    <div className="w-6 h-6 rounded-full bg-gradient-to-r from-teal-600 to-orange-600 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <div className="w-6 h-6 rounded-full bg-primary-600 flex items-center justify-center flex-shrink-0 mt-0.5">
                       <FiCheck size={16} className="text-white" />
                     </div>
                     <span className="text-slate-700 dark:text-slate-300 leading-relaxed">
@@ -223,7 +223,7 @@ const AboutPage = () => {
               </ul>
             </div>
 
-            <div className="bg-gradient-to-br from-green-500 to-teal-500 dark:from-green-700 dark:to-teal-700 rounded-2xl p-8 text-white">
+            <div className="bg-primary-600 rounded-2xl p-8 text-white">
               <div className="space-y-6">
                 <div>
                   <p className="text-5xl font-bold mb-2">98%</p>
@@ -244,7 +244,7 @@ const AboutPage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-teal-600 to-orange-600 dark:from-teal-800 dark:to-orange-800">
+      <section className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-primary-600">
         <div className="max-w-4xl mx-auto text-center text-white">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             {t('aboutPage.readyToStart')}

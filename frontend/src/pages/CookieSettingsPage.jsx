@@ -69,9 +69,9 @@ const CookieSettingsPage = () => {
 
   return (
     <MainLayout>
-      <div className="min-h-screen bg-white dark:bg-gradient-to-br dark:from-slate-950 dark:via-rose-950 dark:to-slate-950">
+      <div className="min-h-screen bg-white dark:bg-primary-600">
         {/* Progress Bar */}
-      <div className="fixed top-0 left-0 h-1 bg-gradient-to-r from-rose-500 via-pink-500 to-red-500 z-50 transition-all duration-300" style={{ width: `${scrollProgress * 100}%` }}></div>
+      <div className="fixed top-0 left-0 h-1 bg-primary-600 z-50 transition-all duration-300" style={{ width: `${scrollProgress * 100}%` }}></div>
 
       {/* Animated Background */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
@@ -82,7 +82,7 @@ const CookieSettingsPage = () => {
       {/* Header */}
       <div className="relative pt-20 pb-32 px-4 sm:px-6 lg:px-8">
         <div className="relative max-w-4xl mx-auto text-center">
-          <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-rose-500 to-pink-600 rounded-2xl mb-8 mx-auto shadow-2xl">
+          <div className="inline-flex items-center justify-center w-20 h-20 bg-primary-600 rounded-2xl mb-8 mx-auto shadow-2xl">
             <Cookie size={40} className="text-white" />
           </div>
 
@@ -99,7 +99,7 @@ const CookieSettingsPage = () => {
       {/* Main Content */}
       <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
         {/* Cookie Control Panel */}
-        <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-2xl p-8 border border-white/20 shadow-2xl mb-8">
+        <div className="bg-primary-600 backdrop-blur-xl rounded-2xl p-8 border border-white/20 shadow-2xl mb-8">
           <h2 className="text-4xl font-bold text-white mb-8 flex items-center gap-3">
             <Settings size={32} className="text-rose-400" />
             Your Cookie Preferences
@@ -108,18 +108,18 @@ const CookieSettingsPage = () => {
           <div className="space-y-4 mb-8">
             {cookieCategories.map((cat) => (
               <div key={cat.type} className={`rounded-xl p-6 border transition-all ${
-                cat.enabled ? 'bg-white/10 border-white/20' : 'bg-white/5 border-white/10'
-              }`}>
+ cat.enabled ? 'bg-white/10 border-white/20' : 'bg-white/5 border-white/10'
+ }`}>
                 <div className="flex items-start justify-between mb-3">
                   <div className="flex-1">
                     <h3 className="text-xl font-bold text-white mb-2 flex items-center gap-2">
                       <span className="text-2xl">{cat.icon}</span>
                       {cat.name}
                       <span className={`text-xs px-2 py-1 rounded-full ${
-                        cat.status === 'always' 
-                          ? 'bg-green-500/20 text-green-200' 
-                          : 'bg-white/10 text-rose-200'
-                      }`}>
+ cat.status === 'always' 
+ ? 'bg-green-500/20 text-green-200' 
+ : 'bg-white/10 text-rose-200'
+ }`}>
                         {cat.status === 'always' ? 'Always Active' : 'Optional'}
                       </span>
                     </h3>
@@ -154,7 +154,7 @@ const CookieSettingsPage = () => {
             </button>
             <button
               onClick={() => setCookies({ necessary: true, analytics: true, marketing: true, preferences: true })}
-              className="flex-1 px-4 py-3 bg-gradient-to-r from-rose-500 to-pink-600 text-white rounded-lg font-bold hover:shadow-lg hover:shadow-rose-500/30 transition-all"
+              className="flex-1 px-4 py-3 bg-primary-600 text-white rounded-lg font-bold hover:shadow-lg hover:shadow-rose-500/30 transition-all"
             >
               Accept All
             </button>
@@ -169,7 +169,7 @@ const CookieSettingsPage = () => {
         </div>
 
         {/* What Are Cookies */}
-        <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-2xl p-8 border border-white/20 shadow-2xl mb-8">
+        <div className="bg-primary-600 backdrop-blur-xl rounded-2xl p-8 border border-white/20 shadow-2xl mb-8">
           <h2 className="text-3xl font-bold text-white mb-4">What Are Cookies?</h2>
           <p className="text-rose-100 mb-4">
             Cookies are small text files stored on your device when you visit websites. They're used to remember your login, preferences, and improve your experience.
@@ -180,7 +180,7 @@ const CookieSettingsPage = () => {
         </div>
 
         {/* Cookie Table */}
-        <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-2xl p-8 border border-white/20 shadow-2xl mb-8">
+        <div className="bg-primary-600 backdrop-blur-xl rounded-2xl p-8 border border-white/20 shadow-2xl mb-8">
           <h2 className="text-3xl font-bold text-white mb-6">Cookies We Use</h2>
           
           <div className="overflow-x-auto">
@@ -214,7 +214,7 @@ const CookieSettingsPage = () => {
         </div>
 
         {/* Browser Controls */}
-        <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-2xl p-8 border border-white/20 shadow-2xl mb-8">
+        <div className="bg-primary-600 backdrop-blur-xl rounded-2xl p-8 border border-white/20 shadow-2xl mb-8">
           <h2 className="text-3xl font-bold text-white mb-6">Manage Cookies in Your Browser</h2>
 
           <div className="grid md:grid-cols-2 gap-4">
@@ -239,7 +239,7 @@ const CookieSettingsPage = () => {
         </div>
 
         {/* Third-Party Services */}
-        <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-2xl p-8 border border-white/20 shadow-2xl mb-8">
+        <div className="bg-primary-600 backdrop-blur-xl rounded-2xl p-8 border border-white/20 shadow-2xl mb-8">
           <h2 className="text-3xl font-bold text-white mb-6">Third-Party Cookie Providers</h2>
 
           <div className="space-y-4">
@@ -262,7 +262,7 @@ const CookieSettingsPage = () => {
         </div>
 
         {/* FAQs */}
-        <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-2xl p-8 border border-white/20 shadow-2xl mb-8">
+        <div className="bg-primary-600 backdrop-blur-xl rounded-2xl p-8 border border-white/20 shadow-2xl mb-8">
           <h2 className="text-3xl font-bold text-white mb-6">Frequently Asked Questions</h2>
 
           <div className="space-y-4">
@@ -282,7 +282,7 @@ const CookieSettingsPage = () => {
         </div>
 
         {/* Contact */}
-        <div className="bg-gradient-to-r from-rose-500/20 to-pink-500/20 backdrop-blur-xl rounded-2xl p-8 border border-white/20 shadow-2xl">
+        <div className="bg-primary-600 backdrop-blur-xl rounded-2xl p-8 border border-white/20 shadow-2xl">
           <h2 className="text-3xl font-bold text-white mb-4">📧 Questions About Cookies?</h2>
           <div className="space-y-2">
             <p className="text-rose-100"><strong>Email:</strong> cookies@tourhub.com</p>

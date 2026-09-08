@@ -18,7 +18,7 @@ const ImageSlider = () => {
       subtitle: 'Experience pristine beaches and crystal clear waters',
       image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&h=600&fit=crop',
       category: 'Beach',
-      color: 'from-teal-500 to-teal-600',
+      color: '',
     },
     {
       id: 2,
@@ -26,7 +26,7 @@ const ImageSlider = () => {
       subtitle: 'Discover breathtaking peaks and thrilling trails',
       image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&h=600&fit=crop',
       category: 'Adventure',
-      color: 'from-green-500 to-emerald-600',
+      color: '',
     },
     {
       id: 3,
@@ -34,7 +34,7 @@ const ImageSlider = () => {
       subtitle: 'Explore ancient ruins and rich traditions',
       image: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=1200&h=600&fit=crop',
       category: 'Cultural',
-      color: 'from-amber-500 to-orange-600',
+      color: '',
     },
     {
       id: 4,
@@ -42,7 +42,7 @@ const ImageSlider = () => {
       subtitle: 'Feel the magic of endless golden dunes',
       image: 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=1200&h=600&fit=crop',
       category: 'Desert',
-      color: 'from-yellow-500 to-amber-600',
+      color: '',
     },
     {
       id: 5,
@@ -50,7 +50,7 @@ const ImageSlider = () => {
       subtitle: 'Discover vibrant cities and modern wonders',
       image: 'https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=1200&h=600&fit=crop',
       category: 'City',
-      color: 'from-orange-500 to-pink-600',
+      color: '',
     },
     {
       id: 6,
@@ -58,7 +58,7 @@ const ImageSlider = () => {
       subtitle: 'Immerse yourself in nature and wildlife',
       image: 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=1200&h=600&fit=crop',
       category: 'Nature',
-      color: 'from-teal-500 to-green-600',
+      color: '',
     },
   ];
 
@@ -104,8 +104,8 @@ const ImageSlider = () => {
           <div
             key={s.id}
             className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-              index === currentSlide ? 'opacity-100' : 'opacity-0'
-            }`}
+ index === currentSlide ? 'opacity-100' : 'opacity-0'
+ }`}
           >
             {/* Background Image */}
             <div className="absolute inset-0">
@@ -115,7 +115,7 @@ const ImageSlider = () => {
                 className="w-full h-full object-cover"
               />
               {/* Gradient Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent"></div>
+              <div className="absolute inset-0 bg-primary-600"></div>
             </div>
           </div>
         ))}
@@ -130,7 +130,7 @@ const ImageSlider = () => {
         <div className="max-w-2xl">
           {/* Category Badge */}
           <div className="inline-flex items-center gap-2 mb-4 px-4 py-2 bg-white/20 backdrop-blur-sm border border-white/30 rounded-full">
-            <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${slide.color}`}></div>
+            <div className={`w-2 h-2 rounded-full bg-primary-600 ${slide.color}`}></div>
             <span className="text-sm font-bold text-white uppercase tracking-widest">
               {slide.category}
             </span>
@@ -148,7 +148,7 @@ const ImageSlider = () => {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-delayed-2">
-            <button className="px-8 py-3 bg-gradient-to-r from-teal-600 to-orange-600 hover:from-teal-700 hover:to-orange-700 text-white font-bold rounded-lg transition-all duration-300 hover:shadow-lg hover:scale-105">
+            <button className="px-8 py-3 bg-primary-600 text-white font-bold rounded-lg transition-all duration-300 hover:shadow-lg hover:scale-105">
               Explore Now
             </button>
             <button className="px-8 py-3 bg-white/20 hover:bg-white/30 backdrop-blur-sm border-2 border-white/40 text-white font-bold rounded-lg transition-all duration-300 hover:border-white/60">
@@ -193,10 +193,10 @@ const ImageSlider = () => {
             key={index}
             onClick={() => goToSlide(index)}
             className={`transition-all duration-300 rounded-full ${
-              index === currentSlide
-                ? 'w-10 h-2.5 bg-white'
-                : 'w-2.5 h-2.5 bg-white/50 hover:bg-white/70'
-            }`}
+ index === currentSlide
+ ? 'w-10 h-2.5 bg-white'
+ : 'w-2.5 h-2.5 bg-white/50 hover:bg-white/70'
+ }`}
             aria-label={`Go to slide ${index + 1}`}
           ></button>
         ))}
@@ -205,7 +205,7 @@ const ImageSlider = () => {
       {/* Progress Bar */}
       <div className="absolute bottom-0 left-0 h-1 bg-white/20 w-full">
         <div
-          className={`h-full bg-gradient-to-r from-teal-600 to-orange-600 transition-all duration-300`}
+          className={`h-full bg-primary-600 transition-all duration-300`}
           style={{
             width: `${((currentSlide + 1) / slides.length) * 100}%`,
           }}
@@ -213,16 +213,16 @@ const ImageSlider = () => {
       </div>
 
       {/* Thumbnail Strip */}
-      <div className="absolute left-0 right-0 bottom-0 z-10 bg-gradient-to-t from-black/60 to-transparent p-6 hidden lg:flex gap-3 justify-center overflow-x-auto">
+      <div className="absolute left-0 right-0 bottom-0 z-10 bg-primary-600 p-6 hidden lg:flex gap-3 justify-center overflow-x-auto">
         {slides.map((s, index) => (
           <button
             key={s.id}
             onClick={() => goToSlide(index)}
             className={`flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2 transition-all duration-300 hover:scale-110 ${
-              index === currentSlide
-                ? 'border-white ring-2 ring-white/50 scale-110'
-                : 'border-white/30 hover:border-white/60'
-            }`}
+ index === currentSlide
+ ? 'border-white ring-2 ring-white/50 scale-110'
+ : 'border-white/30 hover:border-white/60'
+ }`}
           >
             <img
               src={s.image}

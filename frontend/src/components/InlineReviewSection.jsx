@@ -55,7 +55,7 @@ const InlineReviewSection = ({
     <div className="space-y-6">
       {/* Review Form - Only show if user hasn't reviewed yet */}
       {isAuthenticated && !userReview && (
-        <Card className="p-6 bg-gradient-to-br from-teal-50 to-orange-50 dark:from-teal-900/20 dark:to-orange-900/20 shadow-sm hover:shadow-md transition-shadow border border-teal-200 dark:border-teal-800">
+        <Card className="p-6 bg-primary-600 shadow-sm hover:shadow-md transition-shadow border border-teal-200 dark:border-teal-800">
           <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Share Your Review</h3>
           
           {/* Rating */}
@@ -75,10 +75,10 @@ const InlineReviewSection = ({
                   <FiStar
                     size={32}
                     className={`${
-                      star <= (hoveredRating || rating)
-                        ? 'fill-yellow-400 text-yellow-400'
-                        : 'text-gray-300 dark:text-gray-600'
-                    } transition-colors`}
+ star <= (hoveredRating || rating)
+ ? 'fill-yellow-400 text-yellow-400'
+ : 'text-gray-300 dark:text-gray-600'
+ } transition-colors`}
                   />
                 </button>
               ))}
@@ -107,7 +107,7 @@ const InlineReviewSection = ({
           <Button
             onClick={handleSubmit}
             disabled={isSubmitting || !rating || comment.trim().length < 10}
-            className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-teal-600 to-orange-600 hover:from-teal-700 hover:to-orange-700 text-white font-semibold"
+            className="w-full flex items-center justify-center gap-2 bg-primary-600 text-white font-semibold"
           >
             <FiSend size={18} />
             {isSubmitting ? 'Submitting...' : 'Submit Review'}
@@ -117,7 +117,7 @@ const InlineReviewSection = ({
 
       {/* Already Reviewed Badge */}
       {isAuthenticated && userReview && (
-        <Card className="p-4 bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 border-2 border-green-300 dark:border-green-700 rounded-xl">
+        <Card className="p-4 bg-primary-600 border-2 border-green-300 dark:border-green-700 rounded-xl">
           <div className="flex items-center gap-3">
             <div className="flex-shrink-0 w-10 h-10 rounded-full bg-green-500 flex items-center justify-center">
               <FiCheck size={20} className="text-white" />
@@ -165,10 +165,10 @@ const InlineReviewSection = ({
                             key={i}
                             size={16}
                             className={`${
-                              i < review.rating
-                                ? 'fill-yellow-400 text-yellow-400'
-                                : 'text-gray-300 dark:text-gray-600'
-                            }`}
+ i < review.rating
+ ? 'fill-yellow-400 text-yellow-400'
+ : 'text-gray-300 dark:text-gray-600'
+ }`}
                           />
                         ))}
                       </div>

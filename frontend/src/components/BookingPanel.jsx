@@ -65,10 +65,10 @@ const BookingPanel = ({
           <button
             onClick={toggleCurrency}
             className={`px-4 py-2 rounded-lg font-bold transition-all ${
-              currency === 'USD'
-                ? 'bg-teal-600 text-white'
-                : 'bg-green-600 text-white'
-            }`}
+ currency === 'USD'
+ ? 'bg-teal-600 text-white'
+ : 'bg-green-600 text-white'
+ }`}
           >
             {currency === 'USD' ? '$ USD' : '£ EGP'}
           </button>
@@ -82,7 +82,7 @@ const BookingPanel = ({
       </div>
 
       {/* Price Card */}
-      <div className="bg-gradient-to-br from-teal-50 to-teal-50 dark:from-teal-900/30 dark:to-teal-900/30 rounded-xl p-6 border-2 border-teal-300 dark:border-teal-600 shadow-lg">
+      <div className="bg-primary-600 rounded-xl p-6 border-2 border-teal-300 dark:border-teal-600 shadow-lg">
         <div className="space-y-6">
           {/* Price Display - Total price, scales with number of persons */}
           <div className="text-center pb-4 border-b-2 border-teal-200 dark:border-teal-700">
@@ -141,10 +141,10 @@ const BookingPanel = ({
                     key={room.id}
                     onClick={() => onSelectRoomType(room)}
                     className={`w-full p-3 rounded-lg text-left transition-all border-2 ${
-                      selectedRoomType?.id === room.id
-                        ? 'bg-teal-100 dark:bg-teal-900 border-teal-600 dark:border-teal-400'
-                        : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 hover:border-teal-400'
-                    }`}
+ selectedRoomType?.id === room.id
+ ? 'bg-teal-100 dark:bg-teal-900 border-teal-600 dark:border-teal-400'
+ : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 hover:border-teal-400'
+ }`}
                   >
                     <div className="flex justify-between items-center">
                       <span className="font-semibold text-slate-900 dark:text-white">{room.name}</span>
@@ -236,7 +236,7 @@ const BookingPanel = ({
           <Button
             onClick={onBookNow}
             loading={isBookingLoading}
-            className="w-full bg-gradient-to-r from-teal-600 to-teal-600 hover:from-teal-700 hover:to-teal-700 text-white font-bold py-3 rounded-lg"
+            className="w-full bg-primary-600 text-white font-bold py-3 rounded-lg"
           >
             Book Now
           </Button>

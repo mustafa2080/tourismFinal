@@ -90,8 +90,8 @@ const SignupPage = () => {
       <div className="relative min-h-screen w-full overflow-hidden pt-20 pb-12">
         {/* Animated Background */}
         <div className="absolute inset-0 -z-10">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-teal-500/20 via-orange-500/20 to-pink-500/20 rounded-full blur-3xl animate-pulse" />
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-br from-orange-500/20 via-pink-500/20 to-red-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+          <div className="absolute top-0 right-0 w-96 h-96 bg-primary-600 rounded-full blur-3xl animate-pulse" />
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary-600 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
         </div>
 
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -104,7 +104,7 @@ const SignupPage = () => {
                   <span className="text-sm font-bold text-green-600 dark:text-green-400">Join Us Today</span>
                 </div>
 
-                <h1 className="text-5xl lg:text-6xl font-bold bg-gradient-to-r from-teal-600 via-orange-600 to-pink-600 bg-clip-text text-transparent">
+                <h1 className="text-5xl lg:text-6xl font-bold bg-primary-600 bg-clip-text text-transparent">
                   Start Your Adventure
                 </h1>
 
@@ -155,7 +155,7 @@ const SignupPage = () => {
                 {/* Header */}
                 <div className="text-center mb-8 space-y-3">
                   <div className="flex justify-center">
-                    <div className="relative w-16 h-16 bg-gradient-to-br from-green-500 via-teal-500 to-orange-500 rounded-xl flex items-center justify-center shadow-lg shadow-green-500/30 group">
+                    <div className="relative w-16 h-16 bg-primary-600 rounded-xl flex items-center justify-center shadow-lg shadow-green-500/30 group">
                       <FiUser className="text-3xl text-white group-hover:scale-110 group-hover:rotate-12 transition-all duration-300" />
                     </div>
                   </div>
@@ -271,7 +271,7 @@ const SignupPage = () => {
                   <button
                     type="submit"
                     disabled={loading || !isFormValid}
-                    className="w-full py-3.5 md:py-4 px-4 rounded-xl font-bold text-white bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-700 hover:to-teal-700 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl hover:shadow-green-500/40 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none disabled:shadow-none flex items-center justify-center gap-2 group"
+                    className="w-full py-3.5 md:py-4 px-4 rounded-xl font-bold text-white bg-primary-600 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl hover:shadow-green-500/40 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none disabled:shadow-none flex items-center justify-center gap-2 group"
                   >
                     {loading ? (
                       <>
@@ -302,7 +302,7 @@ const SignupPage = () => {
                 {/* Login Link */}
                 <button
                   onClick={() => navigate('/login')}
-                  className="w-full py-3.5 md:py-4 px-4 rounded-xl font-bold text-slate-900 dark:text-white bg-gradient-to-r from-slate-100 to-slate-200 dark:from-slate-700 dark:to-slate-600 hover:from-slate-200 hover:to-slate-300 dark:hover:from-slate-600 dark:hover:to-slate-500 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg"
+                  className="w-full py-3.5 md:py-4 px-4 rounded-xl font-bold text-slate-900 dark:text-white bg-primary-600 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg"
                 >
                   Sign In Instead
                 </button>
@@ -351,12 +351,12 @@ const FormField = ({
         onFocus={onFocus}
         placeholder={placeholder}
         className={`w-full px-4 py-3.5 pl-12 pr-12 rounded-xl border-2 transition-all duration-300 placeholder-slate-500 dark:placeholder-slate-400 outline-none ${
-          error && isTouched
-            ? 'border-red-500 dark:border-red-500 bg-red-50/50 dark:bg-red-900/10'
-            : isValid
-              ? 'border-green-500 dark:border-green-500 bg-green-50/50 dark:bg-green-900/10'
-              : 'border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 focus:border-teal-500 dark:focus:border-teal-400'
-        } text-slate-900 dark:text-white`}
+ error && isTouched
+ ? 'border-red-500 dark:border-red-500 bg-red-50/50 dark:bg-red-900/10'
+ : isValid
+ ? 'border-green-500 dark:border-green-500 bg-green-50/50 dark:bg-green-900/10'
+ : 'border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 focus:border-teal-500 dark:focus:border-teal-400'
+ } text-slate-900 dark:text-white`}
       />
       {isValid && <FiCheck className="absolute right-4 top-1/2 -translate-y-1/2 text-green-500" size={20} />}
     </div>
@@ -401,12 +401,12 @@ const PasswordField = ({
         onFocus={onFocus}
         placeholder={placeholder}
         className={`w-full px-4 py-3.5 pl-12 pr-12 rounded-xl border-2 transition-all duration-300 placeholder-slate-500 dark:placeholder-slate-400 outline-none ${
-          error && isTouched
-            ? 'border-red-500 dark:border-red-500 bg-red-50/50 dark:bg-red-900/10'
-            : isValid
-              ? 'border-green-500 dark:border-green-500 bg-green-50/50 dark:bg-green-900/10'
-              : 'border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 focus:border-teal-500 dark:focus:border-teal-400'
-        } text-slate-900 dark:text-white`}
+ error && isTouched
+ ? 'border-red-500 dark:border-red-500 bg-red-50/50 dark:bg-red-900/10'
+ : isValid
+ ? 'border-green-500 dark:border-green-500 bg-green-50/50 dark:bg-green-900/10'
+ : 'border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 focus:border-teal-500 dark:focus:border-teal-400'
+ } text-slate-900 dark:text-white`}
       />
       <button
         type="button"
@@ -456,10 +456,10 @@ const PasswordField = ({
 // Terms Checkbox Component
 const TermsCheckbox = ({ checked, onChange, error, isTouched }) => (
   <div className={`p-4 rounded-xl border-2 transition-all duration-300 ${
-    error && isTouched
-      ? 'border-red-500 dark:border-red-500 bg-red-50/50 dark:bg-red-900/10'
-      : 'border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700/50'
-  }`}>
+ error && isTouched
+ ? 'border-red-500 dark:border-red-500 bg-red-50/50 dark:bg-red-900/10'
+ : 'border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700/50'
+ }`}>
     <label className="flex items-start gap-3 cursor-pointer">
       <input
         type="checkbox"

@@ -57,7 +57,7 @@
   left: 0;
   width: 100%;
   height: 2px;
-  background: linear-gradient(90deg, #3b82f6, #a855f7);
+  background: #0d9488;
   transform: translateX(-100%);
   transition: transform 0.3s ease;
 }
@@ -83,7 +83,7 @@
   top: 0;
   bottom: 0;
   width: 3px;
-  background: linear-gradient(180deg, #3b82f6, #a855f7);
+  background: #0d9488;
   opacity: 0;
   transition: opacity 0.2s ease;
 }
@@ -116,7 +116,7 @@
   left: 0;
   width: 100%;
   height: 2px;
-  background: linear-gradient(90deg, #3b82f6, #a855f7);
+  background: #0d9488;
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.3s ease;
@@ -175,7 +175,7 @@
   content: '';
   position: absolute;
   inset: -2px;
-  background: linear-gradient(135deg, #3b82f6, #a855f7);
+  background: #0d9488;
   border-radius: inherit;
   opacity: 0;
   z-index: -1;
@@ -264,13 +264,7 @@ html.dark {
 }
 
 .gradient-text-animated {
-  background: linear-gradient(
-    90deg,
-    #3b82f6,
-    #a855f7,
-    #ec4899,
-    #3b82f6
-  );
+  background: #0d9488;
   background-size: 300% 300%;
   animation: gradientFlow 3s ease infinite;
   -webkit-background-clip: text;
@@ -365,11 +359,7 @@ input:focus-visible {
 /* Dark mode optimizations */
 @media (prefers-color-scheme: dark) {
   .gradient-overlay {
-    background: linear-gradient(
-      180deg,
-      rgba(15, 23, 42, 0.8) 0%,
-      rgba(15, 23, 42, 0.95) 100%
-    );
+    background: #0d9488;
   }
 }
 
