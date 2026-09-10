@@ -796,6 +796,98 @@
    RESPONSIVE DESIGN
    ============================================ */
 
+/* ============================================
+   TRAVELER DETAILS (per-passenger accordion)
+   ============================================ */
+
+.traveler-details {
+  margin: 30px 0;
+}
+
+.traveler-details h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 6px;
+}
+
+.traveler-details-hint {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 18px;
+}
+
+.traveler-card {
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  margin-bottom: 14px;
+  overflow: hidden;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  background-color: white;
+}
+
+.traveler-card.expanded {
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.traveler-card-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 20px;
+  background-color: #f9fafb;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  transition: background-color 0.2s ease;
+}
+
+.traveler-card-header:hover {
+  background-color: #f3f4f6;
+}
+
+.traveler-card.expanded .traveler-card-header {
+  background-color: #eef2ff;
+}
+
+.traveler-card-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.traveler-card-status {
+  flex-shrink: 0;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.traveler-card-status.complete {
+  background-color: #d1fae5;
+  color: #059669;
+}
+
+.traveler-card-status.incomplete {
+  background-color: #fef3c7;
+  color: #b45309;
+}
+
+.traveler-card-body {
+  padding: 20px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.traveler-card-body .form-group:last-child {
+  margin-bottom: 0;
+}
+
 @media (max-width: 768px) {
   .booking-container {
     padding: 0 15px;
