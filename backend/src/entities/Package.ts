@@ -38,6 +38,10 @@ export class Package {
   @Column({ type: 'decimal', precision: 10, scale: 2 })
   base_price!: number;
 
+  // Price charged per infant traveler. Admin-controlled; defaults to 0 (free).
+  @Column({ type: 'decimal', precision: 10, scale: 2, default: 0 })
+  infant_price!: number;
+
   @Column({ type: 'varchar', length: 500 })
   short_desc!: string;
 
@@ -303,6 +307,7 @@ export class Package {
       category_id: this.category_id,
       duration_days: this.duration_days,
       base_price: this.base_price,
+      infant_price: this.infant_price,
       short_desc: this.short_desc,
       long_desc: this.long_desc,
       featured: this.featured,

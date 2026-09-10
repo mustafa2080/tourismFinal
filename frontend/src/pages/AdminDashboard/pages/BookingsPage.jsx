@@ -486,6 +486,50 @@ export function BookingsPage() {
                 </div>
               </div>
 
+              {/* Traveler Details */}
+              {(() => {
+                const travelers = selectedBooking.travelers || [];
+                if (travelers.length === 0) return null;
+                const typeLabel = (t) => {
+                  const type = t.travelerType || t.traveler_type;
+                  if (type === 'adult') return 'Adult';
+                  if (type === 'child') return 'Child';
+                  return 'Infant';
+                };
+                return (
+                  <div className="space-y-4">
+                    <h3 className="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                      <FiUser className="text-sky-500" size={24} />
+                      Traveler Details ({travelers.length})
+                    </h3>
+                    <div className="grid grid-cols-1 gap-3">
+                      {travelers.map((t, idx) => {
+                        const dob = t.dateOfBirth || t.date_of_birth;
+                        return (
+                          <div key={t.id || idx} className="p-4 bg-slate-50 dark:bg-slate-700 rounded-xl">
+                            <div className="flex items-center justify-between mb-2">
+                              <p className="font-bold text-slate-900 dark:text-white">
+                                {t.fullName || t.full_name || 'Unnamed'}
+                              </p>
+                              <span className="text-xs font-semibold uppercase tracking-wide px-3 py-1 rounded-full bg-sky-100 dark:bg-sky-900/30 text-sky-700 dark:text-sky-400">
+                                {typeLabel(t)}
+                              </span>
+                            </div>
+                            <div className="grid grid-cols-2 gap-2 text-sm text-slate-600 dark:text-slate-400">
+                              <p>Nationality: <span className="font-semibold text-slate-900 dark:text-white">{t.nationality || 'N/A'}</span></p>
+                              <p>DOB: <span className="font-semibold text-slate-900 dark:text-white">{dob ? new Date(dob).toLocaleDateString('en-US') : 'N/A'}</span></p>
+                              {(t.passportNumber || t.passport_number) && (
+                                <p className="col-span-2">Passport/ID: <span className="font-semibold text-slate-900 dark:text-white">{t.passportNumber || t.passport_number}</span></p>
+                              )}
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                );
+              })()}
+
               {/* Action Buttons */}
               <div className="flex gap-3 pt-6 border-t border-slate-200 dark:border-slate-700">
                 <button className="flex-1 px-6 py-3 bg-[#ED9A58] text-white rounded-xl transition-all font-semibold shadow-lg hover:shadow-xl">

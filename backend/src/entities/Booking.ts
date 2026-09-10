@@ -11,6 +11,7 @@ import {
 import type { User } from './User.js';
 import type { Package } from './Package.js';
 import { BookingExtra } from './BookingExtra.js';
+import { BookingTraveler } from './BookingTraveler.js';
 
 @Entity('bookings')
 export class Booking {
@@ -104,4 +105,7 @@ export class Booking {
 
   @OneToMany(() => BookingExtra, extra => extra.booking, { cascade: true })
   extras!: BookingExtra[];
+
+  @OneToMany(() => BookingTraveler, traveler => traveler.booking, { cascade: true })
+  travelers!: BookingTraveler[];
 }

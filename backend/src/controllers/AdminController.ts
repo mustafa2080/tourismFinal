@@ -136,7 +136,7 @@ export class AdminController {
       console.log('📥 [AdminController.getAllBookings] Fetching bookings:', { limit, offset });
 
       const bookings = await this.bookingRepository.repository.find({
-        relations: ['user', 'package', 'extras'],
+        relations: ['user', 'package', 'extras', 'travelers'],
         skip: offset,
         take: limit,
         order: { created_at: 'DESC' },
@@ -166,6 +166,17 @@ export class AdminController {
         packageName: booking.package?.title || 'Unknown',
         // Extras count
         extrasCount: booking.extras?.length || 0,
+        // Traveler details
+        travelers: (booking.travelers || [])
+          .sort((a, b) => a.sort_order - b.sort_order)
+          .map(t => ({
+            id: t.id,
+            travelerType: t.traveler_type,
+            fullName: t.full_name,
+            nationality: t.nationality,
+            passportNumber: t.passport_number || '',
+            dateOfBirth: t.date_of_birth,
+          })),
       }));
 
       console.log('✅ [AdminController.getAllBookings] Found', bookings.length, 'bookings');
@@ -215,7 +226,7 @@ export class AdminController {
 
       const bookings = await this.bookingRepository.repository.find({
         where: { status: status as 'confirmed' | 'completed' | 'cancelled' },
-        relations: ['user', 'package'],
+        relations: ['user', 'package', 'travelers'],
         skip: offset,
         take: limit,
         order: { created_at: 'DESC' },
@@ -456,6 +467,7 @@ export class AdminController {
         category_id,
         duration_days, 
         base_price, 
+        infant_price,
         short_desc, 
         long_desc, 
         featured, 
@@ -523,6 +535,9 @@ export class AdminController {
         category_id: category_id.trim(),
         duration_days: parseInt(duration_days),
         base_price: parseFloat(base_price),
+        infant_price: (infant_price !== undefined && infant_price !== null && !isNaN(Number(infant_price)))
+          ? parseFloat(infant_price)
+          : 0,
         short_desc: (short_desc || '').trim(),
         long_desc: (long_desc || '').trim(),
         featured: Boolean(featured),
@@ -771,7 +786,7 @@ export class AdminController {
       console.log('\n🟡 [updatePackage] Starting package update...');
       const { id: packageId } = req.params;
       const { 
-        title, destination, category_id, duration_days, base_price, short_desc, long_desc, featured, images, itineraries, inclusions, exclusions,
+        title, destination, category_id, duration_days, base_price, infant_price, short_desc, long_desc, featured, images, itineraries, inclusions, exclusions,
         // Translation fields
         en_name, en_short_description, en_detailed_description, en_whats_included, en_whats_excluded, en_daily_itinerary, en_whats_included_items, en_whats_excluded_items, en_daily_itinerary_items, en_daily_itinerary_days,
         ar_name, ar_short_description, ar_detailed_description, ar_whats_included, ar_whats_excluded, ar_daily_itinerary, ar_whats_included_items, ar_whats_excluded_items, ar_daily_itinerary_items, ar_daily_itinerary_days,
@@ -801,6 +816,7 @@ export class AdminController {
       if (category_id && typeof category_id === 'string' && category_id.trim()) pkg.category_id = category_id.trim();
       if (duration_days && !isNaN(Number(duration_days)) && Number(duration_days) >= 1) pkg.duration_days = parseInt(duration_days);
       if (base_price && !isNaN(Number(base_price)) && Number(base_price) > 0) pkg.base_price = parseFloat(base_price);
+      if (infant_price !== undefined && infant_price !== null && !isNaN(Number(infant_price)) && Number(infant_price) >= 0) pkg.infant_price = parseFloat(infant_price);
       if (short_desc !== undefined) pkg.short_desc = (short_desc || '').trim();
       if (long_desc !== undefined) pkg.long_desc = (long_desc || '').trim();
       if (featured !== undefined) pkg.featured = Boolean(featured);

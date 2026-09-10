@@ -5,6 +5,35 @@
  * Standardizes response format across all booking endpoints
  */
 
+export class BookingTravelerDTO {
+  id: string;
+  booking_id: string;
+  traveler_type: 'adult' | 'child' | 'infant';
+  full_name: string;
+  nationality: string;
+  passport_number: string | null;
+  date_of_birth: string;
+  sort_order: number;
+
+  constructor(data: any) {
+    this.id = data.id;
+    this.booking_id = data.booking_id;
+    this.traveler_type = data.traveler_type;
+    this.full_name = data.full_name;
+    this.nationality = data.nationality;
+    this.passport_number = data.passport_number || null;
+    try {
+      const dob = new Date(data.date_of_birth);
+      this.date_of_birth = !isNaN(dob.getTime())
+        ? dob.toISOString().split('T')[0]
+        : data.date_of_birth;
+    } catch (e) {
+      this.date_of_birth = data.date_of_birth;
+    }
+    this.sort_order = data.sort_order || 0;
+  }
+}
+
 export class BookingExtraDTO {
   id: string;
   booking_id: string;
@@ -43,6 +72,7 @@ export class BookingResponseDTO {
   created_at: Date;
   updated_at: Date;
   extras?: BookingExtraDTO[];
+  travelers?: BookingTravelerDTO[];
 
   constructor(data: any) {
     this.id = data.id;
@@ -86,6 +116,12 @@ export class BookingResponseDTO {
     if (data.extras && Array.isArray(data.extras)) {
       this.extras = data.extras.map((e: any) => new BookingExtraDTO(e));
     }
+
+    if (data.travelers && Array.isArray(data.travelers)) {
+      this.travelers = [...data.travelers]
+        .sort((a: any, b: any) => (a.sort_order || 0) - (b.sort_order || 0))
+        .map((t: any) => new BookingTravelerDTO(t));
+    }
   }
 }
 
@@ -102,6 +138,7 @@ export class BookingDetailedDTO extends BookingResponseDTO {
     destination: string;
     duration_days: number;
     base_price: string;
+    infant_price: string;
   };
 
   constructor(data: any) {
@@ -123,6 +160,7 @@ export class BookingDetailedDTO extends BookingResponseDTO {
         destination: data.package.destination,
         duration_days: data.package.duration_days,
         base_price: String(data.package.base_price),
+        infant_price: String(data.package.infant_price || 0),
       };
 
       // Calculate date_end from date_start + duration_days
@@ -229,6 +267,7 @@ export class BookingCancellationDTO {
 export class PriceBreakdownDTO {
   basePrice: string;
   baseSubtotal: string;
+  infantSubtotal: string;
   extrasSubtotal: string;
   subtotal: string;
   tax: string;
@@ -244,6 +283,7 @@ export class PriceBreakdownDTO {
   constructor(priceData: any) {
     this.basePrice = String(priceData.basePrice);
     this.baseSubtotal = String(priceData.baseSubtotal);
+    this.infantSubtotal = String(priceData.infantSubtotal || 0);
     this.extrasSubtotal = String(priceData.extrasSubtotal);
     this.subtotal = String(priceData.subtotal);
     this.tax = String(priceData.tax);

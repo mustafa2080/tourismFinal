@@ -2,6 +2,7 @@ import { Request, Response, NextFunction } from 'express';
 import { AppDataSource } from '../config/connection.js';
 import { Booking } from '../entities/Booking.js';
 import { BookingExtra } from '../entities/BookingExtra.js';
+import { BookingTraveler } from '../entities/BookingTraveler.js';
 import { Package } from '../entities/Package.js';
 import { User } from '../entities/User.js';
 import { BookingService } from '../services/BookingService.js';
@@ -24,6 +25,7 @@ export class BookingController {
   private bookingService: BookingService;
   private bookingRepository = AppDataSource.getRepository(Booking);
   private bookingExtraRepository = AppDataSource.getRepository(BookingExtra);
+  private bookingTravelerRepository = AppDataSource.getRepository(BookingTraveler);
   private packageRepository = AppDataSource.getRepository(Package);
   private userRepository = AppDataSource.getRepository(User);
 
@@ -32,7 +34,8 @@ export class BookingController {
       this.bookingRepository,
       this.bookingExtraRepository,
       this.packageRepository,
-      this.userRepository
+      this.userRepository,
+      this.bookingTravelerRepository
     );
   }
 
@@ -81,6 +84,7 @@ export class BookingController {
         validatedData.packageId,
         validatedData.tripStartDate,
         validatedData.personBreakdown,
+        validatedData.travelers,
         validatedData.extras,
         validatedData.totalPrice,
         validatedData.paymentType,
@@ -94,14 +98,16 @@ export class BookingController {
       console.log('Step 3: Fetching complete booking...');
       const completeBooking = await this.bookingRepository.findOne({
         where: { id: booking.id },
-        relations: ['user', 'package', 'extras'],
+        relations: ['user', 'package', 'extras', 'travelers'],
       });
 
       // Step 4: Calculate price breakdown for response
       console.log('Step 4: Calculating price breakdown for response...');
       const priceBreakdown = PriceCalculator.calculateTotalPrice({
-        persons: validatedData.totalPersons,
+        persons: validatedData.personBreakdown.adults + validatedData.personBreakdown.children,
         basePrice: Number((completeBooking?.package?.base_price || 0)),
+        infantCount: validatedData.personBreakdown.infants,
+        infantPrice: Number((completeBooking?.package?.infant_price || 0)),
         extras: validatedData.extras,
       });
 
@@ -141,7 +147,7 @@ export class BookingController {
           { id },
           { booking_number: id }
         ],
-        relations: ['user', 'package', 'extras'],
+        relations: ['user', 'package', 'extras', 'travelers'],
       });
 
       if (!booking) {
@@ -175,7 +181,7 @@ export class BookingController {
 
       const bookings = await this.bookingRepository.find({
         where: { user_id: req.user.userId },
-        relations: ['package', 'extras'],
+        relations: ['package', 'extras', 'travelers'],
         order: { created_at: 'DESC' },
       });
 
@@ -500,8 +506,10 @@ export class BookingController {
       }
 
       const priceBreakdown = PriceCalculator.calculateTotalPrice({
-        persons: persons.adults + (persons.children || 0) + (persons.seniors || 0),
+        persons: persons.adults + (persons.children || 0),
         basePrice: Number(pkg.base_price),
+        infantCount: persons.infants || 0,
+        infantPrice: Number(pkg.infant_price) || 0,
         extras: extras || [],
       });
 

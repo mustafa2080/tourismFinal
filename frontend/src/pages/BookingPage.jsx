@@ -51,17 +51,23 @@ const BookingPage = () => {
   const [formData, setFormData] = useState({
     adults: 1,
     children: 0,
-    seniors: 0,
+    infants: 0,
     tripStartDate: '',
     notes: '',
     addons: [],
     paymentType: 'on_arrival',
   });
 
+  // Per-traveler details (name, nationality, passport, DOB) - one entry per person
+  const [travelers, setTravelers] = useState([]);
+  const [travelerErrors, setTravelerErrors] = useState({});
+  const [expandedTraveler, setExpandedTraveler] = useState(0);
+
   // Calculated data
   const [priceCalculation, setPriceCalculation] = useState({
     basePrice: 0,
     baseSubtotal: 0,
+    infantSubtotal: 0,
     extrasSubtotal: 0,
     subtotal: 0,
     tax: 0,
@@ -94,7 +100,34 @@ const BookingPage = () => {
       console.log('🔄 Triggering price calculation...');
       calculatePrice();
     }
-  }, [packageData?.id, formData.adults, formData.children, formData.seniors, selectedAddons]);
+  }, [packageData?.id, formData.adults, formData.children, formData.infants, selectedAddons]);
+
+  // Keep the travelers array in sync with the adults/children/infants counts.
+  // Preserves already-entered data when counts change; adds/removes rows as needed.
+  useEffect(() => {
+    setTravelers(prev => {
+      const buildRows = (type, count) => {
+        const existing = prev.filter(t => t.travelerType === type);
+        const rows = [];
+        for (let i = 0; i < count; i++) {
+          rows.push(existing[i] || {
+            travelerType: type,
+            fullName: '',
+            nationality: '',
+            passportNumber: '',
+            dateOfBirth: '',
+          });
+        }
+        return rows;
+      };
+
+      return [
+        ...buildRows('adult', formData.adults),
+        ...buildRows('child', formData.children),
+        ...buildRows('infant', formData.infants),
+      ];
+    });
+  }, [formData.adults, formData.children, formData.infants]);
 
   // Auto-adjust payment method based on total price
   useEffect(() => {
@@ -145,13 +178,15 @@ const BookingPage = () => {
     }
 
     try {
-      const totalPersons = formData.adults + formData.children + formData.seniors;
+      const payingPersons = formData.adults + formData.children;
+      const totalPersons = payingPersons + formData.infants;
       
       // If no persons selected, don't calculate
       if (totalPersons === 0) {
         setPriceCalculation({
           basePrice: 0,
           baseSubtotal: 0,
+          infantSubtotal: 0,
           extrasSubtotal: 0,
           subtotal: 0,
           tax: 0,
@@ -168,14 +203,16 @@ const BookingPage = () => {
         packageData.pricePerPerson ||
         0
       );
+      const infantPrice = parseFloat(packageData.infant_price || 0);
 
       console.log('📊 Price Calculation:', {
         packageId: packageData.id,
         packageName: packageData.title || packageData.name,
         basePrice,
+        infantPrice,
         adults: formData.adults,
         children: formData.children,
-        seniors: formData.seniors,
+        infants: formData.infants,
         totalPersons,
       });
 
@@ -197,7 +234,7 @@ const BookingPage = () => {
           persons: {
             adults: formData.adults,
             children: formData.children,
-            seniors: formData.seniors,
+            infants: formData.infants,
           },
           extras: extrasData,
         });
@@ -208,16 +245,18 @@ const BookingPage = () => {
         console.warn('⚠️ Backend calculation failed, calculating locally:', apiErr);
         
         // Calculate locally if API fails
-        const baseSubtotal = basePrice * totalPersons;
+        const baseSubtotal = basePrice * payingPersons;
+        const infantSubtotal = infantPrice * formData.infants;
         const addonsTotal = selectedAddons.reduce((sum, addon) => sum + (parseFloat(addon.price || 0) * (addon.quantity || 1)), 0);
-        const subtotal = baseSubtotal + addonsTotal;
+        const subtotal = baseSubtotal + infantSubtotal + addonsTotal;
         const tax = subtotal * 0.05;
         const total = subtotal + tax;
 
         console.log('📊 Local calculation:', {
           basePrice,
           baseSubtotal,
-          extrasTotal,
+          infantSubtotal,
+          addonsTotal,
           subtotal,
           tax,
           total,
@@ -226,7 +265,8 @@ const BookingPage = () => {
         setPriceCalculation({
           basePrice,
           baseSubtotal,
-          extrasSubtotal: extrasTotal,
+          infantSubtotal,
+          extrasSubtotal: addonsTotal,
           subtotal,
           tax,
           total,
@@ -241,7 +281,7 @@ const BookingPage = () => {
    * Format person count for display
    */
   const getTotalPersons = () => {
-    return formData.adults + formData.children + formData.seniors;
+    return formData.adults + formData.children + formData.infants;
   };
 
   /**
@@ -251,10 +291,14 @@ const BookingPage = () => {
     const newErrors = {};
     const totalPersons = getTotalPersons();
 
-    if (totalPersons < 1) {
-      newErrors.persons = 'At least 1 person is required';
+    if (formData.adults + formData.children < 1) {
+      newErrors.persons = 'At least 1 adult or child is required';
     } else if (totalPersons > 50) {
       newErrors.persons = 'Maximum 50 persons allowed';
+    }
+
+    if (formData.infants > formData.adults) {
+      newErrors.persons = 'Each infant must be accompanied by an adult';
     }
 
     if (!formData.tripStartDate) {
@@ -272,8 +316,24 @@ const BookingPage = () => {
       }
     }
 
+    // Validate per-traveler details
+    const newTravelerErrors = {};
+    travelers.forEach((t, idx) => {
+      const rowErrors = {};
+      if (!t.fullName || !t.fullName.trim()) rowErrors.fullName = 'Full name is required';
+      if (!t.nationality || !t.nationality.trim()) rowErrors.nationality = 'Nationality is required';
+      if (!t.dateOfBirth) rowErrors.dateOfBirth = 'Date of birth is required';
+      if (Object.keys(rowErrors).length > 0) newTravelerErrors[idx] = rowErrors;
+    });
+    setTravelerErrors(newTravelerErrors);
+    if (Object.keys(newTravelerErrors).length > 0) {
+      newErrors.travelers = 'Please complete all traveler details';
+      // Jump to the first incomplete traveler
+      setExpandedTraveler(Number(Object.keys(newTravelerErrors)[0]));
+    }
+
     setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
+    return Object.keys(newErrors).length === 0 && Object.keys(newTravelerErrors).length === 0;
   };
 
   /**
@@ -355,8 +415,15 @@ const BookingPage = () => {
         persons: {
           adults: formData.adults,
           children: formData.children,
-          seniors: formData.seniors,
+          infants: formData.infants,
         },
+        travelers: travelers.map(t => ({
+          travelerType: t.travelerType,
+          fullName: t.fullName.trim(),
+          nationality: t.nationality.trim(),
+          passportNumber: t.passportNumber ? t.passportNumber.trim() : undefined,
+          dateOfBirth: t.dateOfBirth,
+        })),
         extras: addonsData,
         totalPrice: priceCalculation.total,
         paymentType: formData.paymentType,
@@ -553,25 +620,123 @@ const BookingPage = () => {
                   </div>
 
                   <div className="form-group">
-                    <label>Seniors</label>
+                    <label>Infant</label>
                     <div className="number-input">
                       <button
-                        onClick={() => setFormData(prev => ({ ...prev, seniors: Math.max(0, prev.seniors - 1) }))}
+                        onClick={() => setFormData(prev => ({ ...prev, infants: Math.max(0, prev.infants - 1) }))}
                         className="btn-minus"
                       >
                         −
                       </button>
-                      <input type="text" value={formData.seniors} readOnly />
+                      <input type="text" value={formData.infants} readOnly />
                       <button
-                        onClick={() => setFormData(prev => ({ ...prev, seniors: prev.seniors + 1 }))}
+                        onClick={() => setFormData(prev => ({ ...prev, infants: Math.min(prev.adults, prev.infants + 1) }))}
                         className="btn-plus"
+                        disabled={formData.infants >= formData.adults}
                       >
                         +
                       </button>
                     </div>
-                    <small>Age 60 and above</small>
+                    <small>Under 2 years — must not exceed number of adults</small>
                   </div>
                 </div>
+
+                {errors.persons && <small className="error-text">{errors.persons}</small>}
+
+                {/* Traveler Details - one form per person, collapsible */}
+                {travelers.length > 0 && (
+                  <div className="traveler-details">
+                    <h3>Traveler Details</h3>
+                    <p className="traveler-details-hint">Please provide details for each traveler.</p>
+
+                    {travelers.map((traveler, idx) => {
+                      const typeLabel = traveler.travelerType === 'adult'
+                        ? 'Adult'
+                        : traveler.travelerType === 'child'
+                          ? 'Child'
+                          : 'Infant';
+                      // Count this traveler's position within its own type, for a friendly label
+                      const positionInType = travelers
+                        .slice(0, idx + 1)
+                        .filter(t => t.travelerType === traveler.travelerType).length;
+                      const isExpanded = expandedTraveler === idx;
+                      const rowErrors = travelerErrors[idx] || {};
+                      const isComplete = traveler.fullName?.trim() && traveler.nationality?.trim() && traveler.dateOfBirth;
+
+                      const updateTraveler = (field, value) => {
+                        setTravelers(prev => prev.map((t, i) => i === idx ? { ...t, [field]: value } : t));
+                      };
+
+                      return (
+                        <div key={idx} className={`traveler-card ${isExpanded ? 'expanded' : ''}`}>
+                          <button
+                            type="button"
+                            className="traveler-card-header"
+                            onClick={() => setExpandedTraveler(isExpanded ? -1 : idx)}
+                          >
+                            <span className="traveler-card-title">
+                              {typeLabel} {positionInType}
+                              {traveler.fullName ? ` — ${traveler.fullName}` : ''}
+                            </span>
+                            <span className={`traveler-card-status ${isComplete ? 'complete' : 'incomplete'}`}>
+                              {isComplete ? '✓ Complete' : 'Incomplete'}
+                            </span>
+                          </button>
+
+                          {isExpanded && (
+                            <div className="traveler-card-body">
+                              <div className="form-group">
+                                <label>Full Name *</label>
+                                <input
+                                  type="text"
+                                  value={traveler.fullName}
+                                  onChange={(e) => updateTraveler('fullName', e.target.value)}
+                                  placeholder="As shown on passport/ID"
+                                  className={rowErrors.fullName ? 'error' : ''}
+                                />
+                                {rowErrors.fullName && <small className="error-text">{rowErrors.fullName}</small>}
+                              </div>
+
+                              <div className="form-group">
+                                <label>Nationality *</label>
+                                <input
+                                  type="text"
+                                  value={traveler.nationality}
+                                  onChange={(e) => updateTraveler('nationality', e.target.value)}
+                                  placeholder="e.g. Egyptian"
+                                  className={rowErrors.nationality ? 'error' : ''}
+                                />
+                                {rowErrors.nationality && <small className="error-text">{rowErrors.nationality}</small>}
+                              </div>
+
+                              <div className="form-group">
+                                <label>Passport / ID Number (Optional)</label>
+                                <input
+                                  type="text"
+                                  value={traveler.passportNumber}
+                                  onChange={(e) => updateTraveler('passportNumber', e.target.value)}
+                                  placeholder="Passport or national ID number"
+                                />
+                              </div>
+
+                              <div className="form-group">
+                                <label>Date of Birth *</label>
+                                <input
+                                  type="date"
+                                  value={traveler.dateOfBirth}
+                                  onChange={(e) => updateTraveler('dateOfBirth', e.target.value)}
+                                  max={new Date().toISOString().split('T')[0]}
+                                  className={rowErrors.dateOfBirth ? 'error' : ''}
+                                />
+                                {rowErrors.dateOfBirth && <small className="error-text">{rowErrors.dateOfBirth}</small>}
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
 
                 <div className="form-group">
                   <label>Travel Date * (Must be 15+ days from today)</label>
@@ -800,9 +965,17 @@ const BookingPage = () => {
               <div className="package-info">
                 <h4>{packageData ? (packageData.title || packageData.name) : 'Loading...'}</h4>
                 <div className="summary-row">
-                  <span>Base Price × {getTotalPersons()} {getTotalPersons() === 1 ? 'Person' : 'Persons'}</span>
+                  <span>
+                    Base Price × {formData.adults + formData.children} {(formData.adults + formData.children) === 1 ? 'Person' : 'Persons'}
+                  </span>
                   <span>{displayCurrency(priceCalculation.baseSubtotal)}</span>
                 </div>
+                {formData.infants > 0 && (
+                  <div className="summary-row">
+                    <span>Infant × {formData.infants}</span>
+                    <span>{displayCurrency(priceCalculation.infantSubtotal)}</span>
+                  </div>
+                )}
               </div>
 
               {/* Extras */}
@@ -842,7 +1015,7 @@ const BookingPage = () => {
                   <span>
                     {formData.adults} {formData.adults === 1 ? 'Adult' : 'Adults'}
                     {formData.children > 0 && `, ${formData.children} ${formData.children === 1 ? 'Child' : 'Children'}`}
-                    {formData.seniors > 0 && `, ${formData.seniors} ${formData.seniors === 1 ? 'Senior' : 'Seniors'}`}
+                    {formData.infants > 0 && `, ${formData.infants} ${formData.infants === 1 ? 'Infant' : 'Infants'}`}
                   </span>
                 </div>
                 <div className="detail-row">

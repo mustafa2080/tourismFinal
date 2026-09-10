@@ -31,6 +31,7 @@ function PackagesPage() {
     category_id: '',
     duration_days: 1,
     base_price: 0,
+    infant_price: 0,
     short_desc: '',
     long_desc: '',
     featured: false,
@@ -178,6 +179,7 @@ function PackagesPage() {
         category_id: pkg.category_id || '',
         duration_days: pkg.duration_days || 1,
         base_price: pkg.base_price || 0,
+        infant_price: pkg.infant_price || 0,
         short_desc: pkg.short_desc || '',
         long_desc: pkg.long_desc || '',
         featured: pkg.featured || false,
@@ -272,6 +274,7 @@ function PackagesPage() {
         category_id: pkg.category_id || '',
         duration_days: pkg.duration_days || 1,
         base_price: pkg.base_price || 0,
+        infant_price: pkg.infant_price || 0,
         short_desc: pkg.short_desc || '',
         long_desc: pkg.long_desc || '',
         featured: pkg.featured || false,
@@ -365,6 +368,7 @@ function PackagesPage() {
       category_id: '',
       duration_days: 1,
       base_price: 0,
+      infant_price: 0,
       short_desc: '',
       long_desc: '',
       featured: false,
@@ -659,6 +663,9 @@ function PackagesPage() {
         category_id: formData.category_id,
         duration_days: parseInt(formData.duration_days),
         base_price: parseFloat(formData.base_price),
+        infant_price: formData.infant_price === '' || formData.infant_price === null || formData.infant_price === undefined
+          ? 0
+          : parseFloat(formData.infant_price),
         short_desc: formData.short_desc?.trim() || '',
         long_desc: formData.long_desc?.trim() || '',
         featured: Boolean(formData.featured),
@@ -1302,7 +1309,7 @@ function PackagesPage() {
               </div>
 
               {/* Price and Featured Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div>
                   <label className="block text-sm font-bold text-slate-900 dark:text-white mb-3 flex items-center gap-2">
                     <FiDollarSign size={18} className="text-green-600" />
@@ -1318,6 +1325,24 @@ function PackagesPage() {
                     step="0.01"
                     className="w-full px-4 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-xl bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-400 disabled:opacity-50 disabled:bg-slate-100 dark:disabled:bg-slate-900 focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 transition-all"
                   />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-bold text-slate-900 dark:text-white mb-3 flex items-center gap-2">
+                    <FiDollarSign size={18} className="text-sky-600" />
+                    Infant Price
+                  </label>
+                  <input
+                    type="number"
+                    value={formData.infant_price}
+                    onChange={(e) => setFormData({ ...formData, infant_price: parseFloat(e.target.value) || 0 })}
+                    disabled={modalMode === 'view'}
+                    placeholder="Price per infant (0 = free)"
+                    min="0"
+                    step="0.01"
+                    className="w-full px-4 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-xl bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-400 disabled:opacity-50 disabled:bg-slate-100 dark:disabled:bg-slate-900 focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 transition-all"
+                  />
+                  <p className="text-xs text-slate-500 dark:text-slate-400 mt-2">Set to 0 for free infant travel.</p>
                 </div>
 
                 <div className="flex items-end">

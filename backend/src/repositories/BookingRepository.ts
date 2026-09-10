@@ -7,17 +7,24 @@ export class BookingRepository extends BaseRepository<Booking> {
     super(repository);
   }
 
+  async findById(id: string): Promise<Booking | null> {
+    return await this.repository.findOne({
+      where: { id } as any,
+      relations: ['user', 'package', 'extras', 'travelers'],
+    });
+  }
+
   async findByBookingNumber(bookingNumber: string): Promise<Booking | null> {
     return await this.repository.findOne({
       where: { booking_number: bookingNumber },
-      relations: ['user', 'package', 'extras'],
+      relations: ['user', 'package', 'extras', 'travelers'],
     });
   }
 
   async findUserBookings(userId: string): Promise<Booking[]> {
     return await this.repository.find({
       where: { user_id: userId },
-      relations: ['package', 'extras'],
+      relations: ['package', 'extras', 'travelers'],
       order: { created_at: 'DESC' },
     });
   }

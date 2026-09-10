@@ -13,6 +13,7 @@
 export interface PriceBreakdown {
   basePrice: number;
   baseSubtotal: number;
+  infantSubtotal: number;
   extrasSubtotal: number;
   subtotal: number;
   tax: number;
@@ -29,6 +30,10 @@ export interface PriceBreakdown {
 export interface BookingPriceData {
   persons: number;
   basePrice: number;
+  // Infants are priced separately (admin-controlled per package, default 0/free)
+  // and are NOT included in `persons` for base-price purposes.
+  infantCount?: number;
+  infantPrice?: number;
   extras?: {
     key: string;
     name: string;
@@ -66,6 +71,11 @@ export class PriceCalculator {
     // Step 1: Calculate base cost (base price × persons)
     const baseSubtotal = this.round(data.basePrice * data.persons);
 
+    // Step 1b: Calculate infants cost (separate, admin-controlled price - default free)
+    const infantCount = data.infantCount || 0;
+    const infantPrice = data.infantPrice || 0;
+    const infantSubtotal = this.round(infantPrice * infantCount);
+
     // Step 2: Calculate extras cost
     const extrasArray = data.extras || [];
     let extrasSubtotal = 0;
@@ -78,6 +88,16 @@ export class PriceCalculator {
       unitPrice: data.basePrice,
       subtotal: baseSubtotal,
     });
+
+    // Add infants to breakdown (if any)
+    if (infantCount > 0) {
+      breakdownItems.push({
+        item: `Infant${infantCount === 1 ? '' : 's'} (${infantCount})`,
+        quantity: infantCount,
+        unitPrice: infantPrice,
+        subtotal: infantSubtotal,
+      });
+    }
 
     // Calculate each extra
     for (const extra of extrasArray) {
@@ -98,7 +118,7 @@ export class PriceCalculator {
     }
 
     // Step 3: Calculate subtotal (before tax)
-    const subtotal = this.round(baseSubtotal + extrasSubtotal);
+    const subtotal = this.round(baseSubtotal + infantSubtotal + extrasSubtotal);
 
     // Step 4: Calculate tax
     const tax = this.round(subtotal * taxRate);
@@ -117,6 +137,7 @@ export class PriceCalculator {
     return {
       basePrice: this.round(data.basePrice),
       baseSubtotal,
+      infantSubtotal,
       extrasSubtotal,
       subtotal,
       tax,

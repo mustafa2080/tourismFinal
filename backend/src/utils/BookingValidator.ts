@@ -13,14 +13,23 @@ import { ValidationError } from './errors.js';
 import { dateUtils } from './dateUtils.js';
 import { PriceCalculator } from './calculators/PriceCalculator.js';
 
+export interface TravelerInput {
+  travelerType: 'adult' | 'child' | 'infant';
+  fullName: string;
+  nationality: string;
+  passportNumber?: string;
+  dateOfBirth: string | Date;
+}
+
 export interface CreateBookingRequest {
   packageId?: string;
   tripStartDate?: string | Date;
   persons?: {
     adults?: number;
     children?: number;
-    seniors?: number;
+    infants?: number;
   };
+  travelers?: TravelerInput[];
   extras?: {
     key: string;
     name: string;
@@ -37,6 +46,14 @@ export interface CreateBookingRequest {
   guestPhone?: string;
 }
 
+export interface ValidatedTraveler {
+  travelerType: 'adult' | 'child' | 'infant';
+  fullName: string;
+  nationality: string;
+  passportNumber: string;
+  dateOfBirth: Date;
+}
+
 export interface ValidatedBookingData {
   packageId: string;
   tripStartDate: Date;
@@ -44,8 +61,9 @@ export interface ValidatedBookingData {
   personBreakdown: {
     adults: number;
     children: number;
-    seniors: number;
+    infants: number;
   };
+  travelers: ValidatedTraveler[];
   extras: {
     key: string;
     name: string;
@@ -76,7 +94,10 @@ export class BookingValidator {
 
     // 4. Validate persons
     const personBreakdown = this.validatePersons(data.persons);
-    const totalPersons = personBreakdown.adults + personBreakdown.children + personBreakdown.seniors;
+    const totalPersons = personBreakdown.adults + personBreakdown.children + personBreakdown.infants;
+
+    // 4b. Validate travelers (per-person details)
+    const travelers = this.validateTravelers(data.travelers, personBreakdown);
 
     // 5. Validate extras
     const extras = this.validateExtras(data.extras || []);
@@ -103,6 +124,7 @@ export class BookingValidator {
       tripStartDate,
       totalPersons,
       personBreakdown,
+      travelers,
       extras,
       totalPrice,
       paymentType,
@@ -192,30 +214,116 @@ export class BookingValidator {
    * Validate persons breakdown
    */
   private static validatePersons(
-    persons?: { adults?: number; children?: number; seniors?: number }
-  ): { adults: number; children: number; seniors: number } {
+    persons?: { adults?: number; children?: number; infants?: number }
+  ): { adults: number; children: number; infants: number } {
     if (!persons) {
       throw new ValidationError('Person information is required');
     }
 
     const adults = Number(persons.adults) || 0;
     const children = Number(persons.children) || 0;
-    const seniors = Number(persons.seniors) || 0;
+    const infants = Number(persons.infants) || 0;
 
-    if (adults < 0 || children < 0 || seniors < 0) {
+    if (adults < 0 || children < 0 || infants < 0) {
       throw new ValidationError('Person counts cannot be negative');
     }
 
-    const total = adults + children + seniors;
+    // Infants don't count toward the "at least 1 / max 50" paying-persons rule,
+    // but must not exceed the number of adults (each infant needs a guardian).
+    const total = adults + children;
     if (total < 1) {
       throw new ValidationError('At least 1 person is required for booking');
     }
 
-    if (total > 50) {
+    if (total + infants > 50) {
       throw new ValidationError('Group size cannot exceed 50 persons');
     }
 
-    return { adults, children, seniors };
+    if (infants > adults) {
+      throw new ValidationError('Each infant must be accompanied by an adult');
+    }
+
+    return { adults, children, infants };
+  }
+
+  /**
+   * Validate per-traveler details (name, nationality, passport, DOB)
+   * Count of travelers by type must match the persons breakdown.
+   */
+  private static validateTravelers(
+    travelers: TravelerInput[] | undefined,
+    personBreakdown: { adults: number; children: number; infants: number }
+  ): ValidatedTraveler[] {
+    if (!travelers || !Array.isArray(travelers)) {
+      throw new ValidationError('Traveler details are required');
+    }
+
+    const expectedTotal = personBreakdown.adults + personBreakdown.children + personBreakdown.infants;
+    if (travelers.length !== expectedTotal) {
+      throw new ValidationError(
+        `Traveler details count (${travelers.length}) does not match total persons (${expectedTotal})`
+      );
+    }
+
+    const counts = { adult: 0, child: 0, infant: 0 };
+
+    const validated = travelers.map((traveler, index) => {
+      if (!traveler || typeof traveler !== 'object') {
+        throw new ValidationError(`Traveler ${index + 1}: invalid data`);
+      }
+
+      const travelerType = traveler.travelerType;
+      if (!['adult', 'child', 'infant'].includes(travelerType)) {
+        throw new ValidationError(`Traveler ${index + 1}: invalid traveler type`);
+      }
+      counts[travelerType]++;
+
+      if (!traveler.fullName || typeof traveler.fullName !== 'string' || !traveler.fullName.trim()) {
+        throw new ValidationError(`Traveler ${index + 1}: full name is required`);
+      }
+      const fullName = traveler.fullName.trim();
+      if (fullName.length < 2 || fullName.length > 150) {
+        throw new ValidationError(`Traveler ${index + 1}: full name must be 2-150 characters`);
+      }
+
+      if (!traveler.nationality || typeof traveler.nationality !== 'string' || !traveler.nationality.trim()) {
+        throw new ValidationError(`Traveler ${index + 1}: nationality is required`);
+      }
+      const nationality = traveler.nationality.trim();
+
+      const passportNumber = traveler.passportNumber && typeof traveler.passportNumber === 'string'
+        ? traveler.passportNumber.trim().substring(0, 50)
+        : '';
+
+      if (!traveler.dateOfBirth) {
+        throw new ValidationError(`Traveler ${index + 1}: date of birth is required`);
+      }
+      const dob = new Date(traveler.dateOfBirth);
+      if (isNaN(dob.getTime())) {
+        throw new ValidationError(`Traveler ${index + 1}: invalid date of birth`);
+      }
+      if (dob > new Date()) {
+        throw new ValidationError(`Traveler ${index + 1}: date of birth cannot be in the future`);
+      }
+
+      return {
+        travelerType,
+        fullName,
+        nationality,
+        passportNumber,
+        dateOfBirth: dob,
+      };
+    });
+
+    if (
+      counts.adult !== personBreakdown.adults ||
+      counts.child !== personBreakdown.children ||
+      counts.infant !== personBreakdown.infants
+    ) {
+      throw new ValidationError('Traveler type counts do not match the selected persons breakdown');
+    }
+
+    return validated;
   }
 
   /**

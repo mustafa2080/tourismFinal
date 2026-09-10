@@ -1,13 +1,14 @@
 import { Repository } from 'typeorm';
 import { Booking } from '../entities/Booking.js';
 import { BookingExtra } from '../entities/BookingExtra.js';
+import { BookingTraveler } from '../entities/BookingTraveler.js';
 import { Package } from '../entities/Package.js';
 import { User } from '../entities/User.js';
 import { BookingRepository } from '../repositories/BookingRepository.js';
 import { NotFoundError, ValidationError, BookingError } from '../utils/errors.js';
 import { dateUtils } from '../utils/dateUtils.js';
 import { PriceCalculator } from '../utils/calculators/PriceCalculator.js';
-import { BookingValidator } from '../utils/BookingValidator.js';
+import { BookingValidator, ValidatedTraveler } from '../utils/BookingValidator.js';
 import { EmailService } from './EmailService.js';
 import { InvoiceService } from './InvoiceService.js';
 import { NotificationService } from './NotificationService.js';
@@ -16,6 +17,7 @@ import { getWebSocketService } from '../websocket/index.js';
 export class BookingService {
   private bookingRepository: BookingRepository;
   private bookingExtraRepository: Repository<BookingExtra>;
+  private bookingTravelerRepository: Repository<BookingTraveler>;
   private emailService: EmailService;
   private invoiceService: InvoiceService;
   private packageRepository: Repository<Package>;
@@ -25,7 +27,8 @@ export class BookingService {
     bookingRepo: Repository<Booking>,
     bookingExtraRepo?: Repository<BookingExtra>,
     packageRepo?: Repository<Package>,
-    userRepo?: Repository<User>
+    userRepo?: Repository<User>,
+    bookingTravelerRepo?: Repository<BookingTraveler>
   ) {
     this.bookingRepository = new BookingRepository(bookingRepo);
     this.bookingExtraRepository = bookingExtraRepo as Repository<BookingExtra>;
@@ -33,6 +36,7 @@ export class BookingService {
     this.invoiceService = new InvoiceService();
     this.packageRepository = packageRepo as Repository<Package>;
     this.userRepository = userRepo as Repository<User>;
+    this.bookingTravelerRepository = bookingTravelerRepo as Repository<BookingTraveler>;
   }
 
   /**
@@ -66,7 +70,8 @@ export class BookingService {
     userId: string,
     packageId: string,
     tripStartDate: Date,
-    personBreakdown: { adults: number; children: number; seniors: number },
+    personBreakdown: { adults: number; children: number; infants: number },
+    travelers: ValidatedTraveler[],
     extras: { key: string; name: string; price: number; quantity?: number }[],
     submittedTotalPrice: number,
     paymentType: string = 'on_arrival',
@@ -81,7 +86,7 @@ export class BookingService {
       throw new ValidationError('User ID and Package ID are required');
     }
 
-    const totalPersons = personBreakdown.adults + personBreakdown.children + personBreakdown.seniors;
+    const totalPersons = personBreakdown.adults + personBreakdown.children;
     if (totalPersons < 1) {
       throw new ValidationError('At least 1 person is required');
     }
@@ -101,9 +106,12 @@ export class BookingService {
     // Step 4: Calculate price on backend (security!)
     console.log('   Step 4: Calculating price on backend...');
     const basePrice = Number(pkg.base_price);
+    const infantPrice = Number(pkg.infant_price) || 0;
     const priceBreakdown = PriceCalculator.calculateTotalPrice({
       persons: totalPersons,
       basePrice,
+      infantCount: personBreakdown.infants,
+      infantPrice,
       extras: extras || [],
       taxRate: 0.05, // 5% tax
     });
@@ -111,6 +119,7 @@ export class BookingService {
     console.log(`   Price calculation:`, {
       basePrice,
       baseSubtotal: priceBreakdown.baseSubtotal,
+      infantSubtotal: priceBreakdown.infantSubtotal,
       extrasSubtotal: priceBreakdown.extrasSubtotal,
       subtotal: priceBreakdown.subtotal,
       tax: priceBreakdown.tax,
@@ -149,7 +158,7 @@ export class BookingService {
       package_id: packageId,
       booking_number: bookingNumber,
       status: 'confirmed',
-      persons: totalPersons,
+      persons: totalPersons + personBreakdown.infants,
       date_start: tripStartDate,
       total_price: priceBreakdown.total,
       display_currency: safeCurrency,
@@ -177,6 +186,29 @@ export class BookingService {
           console.error(`   ❌ Error saving extra ${extra.key}:`, err);
           throw new BookingError(`Failed to save extra: ${extra.name}`);
         }
+      }
+    }
+
+    // Step 8b: Save per-traveler details
+    console.log('   Step 8b: Saving traveler details...');
+    if (travelers && travelers.length > 0 && this.bookingTravelerRepository) {
+      try {
+        const travelerRows = travelers.map((traveler, index) =>
+          this.bookingTravelerRepository.create({
+            booking_id: booking.id,
+            traveler_type: traveler.travelerType,
+            full_name: traveler.fullName,
+            nationality: traveler.nationality,
+            passport_number: traveler.passportNumber || undefined,
+            date_of_birth: traveler.dateOfBirth,
+            sort_order: index,
+          })
+        );
+        await this.bookingTravelerRepository.save(travelerRows);
+        console.log(`   ✅ Saved ${travelerRows.length} traveler record(s)`);
+      } catch (err) {
+        console.error('   ❌ Error saving traveler details:', err);
+        throw new BookingError('Failed to save traveler details');
       }
     }
 
