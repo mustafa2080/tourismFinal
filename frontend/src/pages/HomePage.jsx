@@ -35,7 +35,7 @@ const HomePage = () => {
   const { t, i18n } = useInstantTranslation();
   const { languageChangeCounter } = useLanguage(); // Track language changes
 
-  // Hero slides - ط§ط³طھط®ط¯ط§ظ… state ط¨ط¯ظ„ط§ظ‹ ظ…ظ† useMemo
+  // Hero slides - استخدام state بدلاً من useMemo
   const [heroSlides, setHeroSlides] = useState([]);
 
   // States
@@ -59,12 +59,12 @@ const HomePage = () => {
 
   // Force re-render when language changes via context
   useEffect(() => {
-    console.log(`ًںŒچ [HomePage] Language change detected via context, counter: ${languageChangeCounter}`);
+    console.log(`🌍 [HomePage] Language change detected via context, counter: ${languageChangeCounter}`);
     // This hook triggers whenever languageChangeCounter changes
     // which will cause the component to re-render all dependent state
   }, [languageChangeCounter]);
 
-  // طھط­ط¯ظٹط« Hero Slides ط¹ظ†ط¯ طھط؛ظٹظٹط± ط§ظ„ظ„ط؛ط© - ط§ط³طھط®ط¯ط§ظ… i18n.language ظƒظ€ dependency
+  // تحديث Hero Slides عند تغيير اللغة - استخدام i18n.language كـ dependency
   useEffect(() => {
     setHeroSlides([
       {
@@ -96,9 +96,9 @@ const HomePage = () => {
     const fetchData = async () => {
       try {
         setLoading(true);
-        console.log('ًں”„ [HomePage] Fetching featured packages...');
+        console.log('🔄 [HomePage] Fetching featured packages...');
         const response = await packagesService.getFeaturedPackages(8);
-        console.log('ًں“¦ [HomePage] Featured packages response:', response);
+        console.log('📦 [HomePage] Featured packages response:', response);
         
         // Handle both direct array and response object with data property
         let packages = [];
@@ -110,26 +110,26 @@ const HomePage = () => {
           packages = Array.isArray(response.packages) ? response.packages : [response.packages];
         }
 
-        console.log('âœ… HomePage - Processed packages:', packages.length);
+        console.log('✅ HomePage - Processed packages:', packages.length);
         
         // Debug: Log first package structure with translation fields
         if (packages.length > 0) {
           const firstPkg = packages[0];
-          console.log('ًں”چ First package keys:', Object.keys(firstPkg).sort());
-          console.log('ًں“¦ First package base:', {
+          console.log('🔍 First package keys:', Object.keys(firstPkg).sort());
+          console.log('📦 First package base:', {
             id: firstPkg.id,
             title: firstPkg.title,
             destination: firstPkg.destination,
             duration_days: firstPkg.duration_days,
             base_price: firstPkg.base_price,
           });
-          console.log('ًںŒچ Translation fields check:');
-          console.log('   en_name:', firstPkg.en_name ? `âœ… "${firstPkg.en_name}"` : 'â‌Œ empty/null');
-          console.log('   es_name:', firstPkg.es_name ? `âœ… "${firstPkg.es_name}"` : 'â‌Œ empty/null');
-          console.log('   ar_name:', firstPkg.ar_name ? `âœ… "${firstPkg.ar_name}"` : 'â‌Œ empty/null');
-          console.log('   de_name:', firstPkg.de_name ? `âœ… "${firstPkg.de_name}"` : 'â‌Œ empty/null');
-          console.log('   ru_name:', firstPkg.ru_name ? `âœ… "${firstPkg.ru_name}"` : 'â‌Œ empty/null');
-          console.log('ًں“ڑ Translations array:', firstPkg.translations?.length ? `${firstPkg.translations.length} items` : 'empty/null');
+          console.log('🌍 Translation fields check:');
+          console.log('   en_name:', firstPkg.en_name ? `✅ "${firstPkg.en_name}"` : '❌ empty/null');
+          console.log('   es_name:', firstPkg.es_name ? `✅ "${firstPkg.es_name}"` : '❌ empty/null');
+          console.log('   ar_name:', firstPkg.ar_name ? `✅ "${firstPkg.ar_name}"` : '❌ empty/null');
+          console.log('   de_name:', firstPkg.de_name ? `✅ "${firstPkg.de_name}"` : '❌ empty/null');
+          console.log('   ru_name:', firstPkg.ru_name ? `✅ "${firstPkg.ru_name}"` : '❌ empty/null');
+          console.log('📚 Translations array:', firstPkg.translations?.length ? `${firstPkg.translations.length} items` : 'empty/null');
         }
         
         setFeaturedPackages(packages);
@@ -149,7 +149,7 @@ const HomePage = () => {
   // Re-render when language changes to update translations
   // This effect triggers when i18n.language changes and will cause useMemo to recalculate
   useEffect(() => {
-    console.log(`âœ… HomePage Language changed to: ${i18n.language}`);
+    console.log(`✅ HomePage Language changed to: ${i18n.language}`);
     // The translatedFeaturedPackages useMemo will automatically recalculate 
     // because i18n.language is in its dependency array
   }, [i18n.language]);
@@ -227,7 +227,7 @@ const HomePage = () => {
         try {
           const suggestions = await packagesService.getDestinationSuggestions(searchQuery);
           
-          // suggestions ظ‡ظˆ ظ…طµظپظˆظپط© ظ…ط¨ط§ط´ط±ط© ظ…ظ† ط§ظ„ظ€ service
+          // suggestions هو مصفوفة مباشرة من الـ service
           if (Array.isArray(suggestions)) {
             setDestinationSuggestions(suggestions.slice(0, 8));
           } else {
@@ -262,11 +262,11 @@ const HomePage = () => {
   }, []);
 
   const tourTypes = [
-    { id: 'all', label: t('navbar.allTrips'), icon: 'ًںŒچ' },
-    { id: 'adventure', label: t('navbar.adventure'), icon: 'â›°ï¸ڈ' },
-    { id: 'beach', label: t('navbar.beach'), icon: 'ًںڈ–ï¸ڈ' },
-    { id: 'cultural', label: t('navbar.cultural'), icon: 'ًںڈ›ï¸ڈ' },
-    { id: 'luxury', label: t('navbar.luxury'), icon: 'ًں‘‘' },
+    { id: 'all', label: t('navbar.allTrips'), icon: '🌍' },
+    { id: 'adventure', label: t('navbar.adventure'), icon: '⛰️' },
+    { id: 'beach', label: t('navbar.beach'), icon: '🏖️' },
+    { id: 'cultural', label: t('navbar.cultural'), icon: '🏛️' },
+    { id: 'luxury', label: t('navbar.luxury'), icon: '👑' },
   ];
 
   const stats = useMemo(() => [
@@ -318,7 +318,7 @@ const HomePage = () => {
   // CRITICAL FIX: Use only i18n.language (not i18n object) and languageChangeCounter for dependencies
   // This ensures the useMemo recalculates when language actually changes
   const translatedFeaturedPackages = useMemo(() => {
-    console.log(`ًں”„ [useMemo] Retranslating packages for language: ${i18n.language}`);
+    console.log(`🔄 [useMemo] Retranslating packages for language: ${i18n.language}`);
     
     return featuredPackages.map(pkg => {
       if (!pkg) return pkg;
@@ -449,7 +449,7 @@ const HomePage = () => {
                 decoding={idx === 0 ? 'sync' : 'async'}
               />
               {/* Gradient Overlay */}
-              <div className="absolute inset-0 bg-[#14b8a6] "></div>
+              <div className="absolute inset-0 bg-[#ED9A58] "></div>
             </div>
           ))}
         </motion.div>
@@ -543,7 +543,7 @@ const HomePage = () => {
                       <div className="absolute top-full left-0 right-0 mt-2 bg-white dark:bg-slate-800 border-2 border-slate-300 dark:border-slate-600 rounded-lg shadow-xl z-50 max-h-64 overflow-y-auto">
                         {suggestionsLoading ? (
                           <div className="px-4 py-3 text-center text-slate-500 dark:text-slate-400">
-                            <span className="inline-block animate-spin">â†»</span> {t('navbar.searching')}
+                            <span className="inline-block animate-spin">↻</span> {t('navbar.searching')}
                           </div>
                         ) : destinationSuggestions.length > 0 ? (
                           <>
@@ -635,7 +635,7 @@ const HomePage = () => {
                 <div className="md:col-span-3 flex items-end">
                   <button
                     type="submit"
-                    className="w-full px-4 xs:px-6 py-2.5 xs:py-3 bg-[#14b8a6] text-white font-bold rounded-full flex items-center justify-center gap-2 transition-all hover:shadow-xl hover:scale-105 group shadow-lg text-sm xs:text-base"
+                    className="w-full px-4 xs:px-6 py-2.5 xs:py-3 bg-[#ED9A58] text-white font-bold rounded-full flex items-center justify-center gap-2 transition-all hover:shadow-xl hover:scale-105 group shadow-lg text-sm xs:text-base"
                   >
                     <FiSearch size={16} className="group-hover:scale-110 transition-transform" />
                     <span className="hidden sm:inline">{t('navbar.search')}</span>
@@ -786,7 +786,7 @@ const HomePage = () => {
  onClick={() => navigate(`/package/${pkg.id}`)}
  >
  {/* Image */}
- <div className="relative h-36 xs:h-44 sm:h-52 md:h-56 bg-[#14b8a6] overflow-hidden group">
+ <div className="relative h-36 xs:h-44 sm:h-52 md:h-56 bg-[#ED9A58] overflow-hidden group">
  {pkg.images && pkg.images.length > 0 && (pkg.images[0]?.image_data || pkg.images[0]?.url) ? (
  <>
  {pkg.images[0]?.image_data && (
@@ -828,7 +828,7 @@ const HomePage = () => {
  )}
  
  {/* Bottom gradient for legibility */}
- <div className="absolute inset-x-0 bottom-0 h-16 bg-[#14b8a6] pointer-events-none" />
+ <div className="absolute inset-x-0 bottom-0 h-16 bg-[#ED9A58] pointer-events-none" />
  {/* Top gradient so badges stay legible on light images */}
  <div className="absolute inset-x-0 top-0 h-16 pointer-events-none" />
 
@@ -947,7 +947,7 @@ const HomePage = () => {
  </Reveal>
 
  {/* ==================== STATISTICS ==================== */}
- <section className="py-6 sm:py-8 md:py-12 lg:py-20 bg-[#14b8a6] " style={{ display: 'block', visibility: 'visible', minHeight: '150px' }}>
+ <section className="py-6 sm:py-8 md:py-12 lg:py-20 bg-[#ED9A58] " style={{ display: 'block', visibility: 'visible', minHeight: '150px' }}>
         <div ref={statsRef} className="w-full max-w-7xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8">
           <StaggerGroup className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 md:gap-6 lg:gap-8" staggerDelay={0.15}>
             {stats.map((stat, idx) => {
@@ -1002,7 +1002,7 @@ const HomePage = () => {
  return (
  <StaggerItem key={review.id || idx}>
  <Card
- className="group relative overflow-hidden bg-[#14b8a6] border border-slate-200 dark:border-slate-700 hover:border-teal-300 dark:hover:border-teal-500 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
+ className="group relative overflow-hidden bg-[#ED9A58] border border-slate-200 dark:border-slate-700 hover:border-teal-300 dark:hover:border-teal-500 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
  >
  <div className="p-5 md:p-6 space-y-4 h-full flex flex-col">
  {/* Rating Stars */}
@@ -1026,7 +1026,7 @@ const HomePage = () => {
  </p>
 
  {/* Divider */}
- <div className="h-px bg-[#14b8a6] "></div>
+ <div className="h-px bg-[#ED9A58] "></div>
 
  {/* Author */}
  <div className="flex items-center gap-3 pt-2">
@@ -1075,7 +1075,7 @@ const HomePage = () => {
  </section>
 
  {/* ==================== TESTIMONIALS - MODERN DESIGN ==================== */}
- <section className="py-6 sm:py-8 md:py-16 lg:py-32 bg-[#14b8a6] relative" style={{ display: 'block', visibility: 'visible', minHeight: '200px' }}>
+ <section className="py-6 sm:py-8 md:py-16 lg:py-32 bg-[#ED9A58] relative" style={{ display: 'block', visibility: 'visible', minHeight: '200px' }}>
  <div className="absolute top-0 right-0 w-48 sm:w-96 h-48 sm:h-96 bg-teal-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 -z-10 dark:opacity-10"></div>
  <div className="absolute bottom-0 left-0 w-48 sm:w-96 h-48 sm:h-96 bg-orange-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 -z-10 dark:opacity-10"></div>
 
@@ -1084,8 +1084,8 @@ const HomePage = () => {
  <Reveal>
  <div className="text-center mb-12 md:mb-20 space-y-3 md:space-y-4">
  <div className="inline-block">
- <Badge className="bg-[#14b8a6] text-orange-700 dark:text-orange-300 mb-4 px-4 py-2 rounded-full text-xs md:text-sm font-bold border border-orange-300/30 dark:border-orange-700/30">
- â­گ CLIENT TESTIMONIALS
+ <Badge className="bg-[#ED9A58] text-orange-700 dark:text-orange-300 mb-4 px-4 py-2 rounded-full text-xs md:text-sm font-bold border border-orange-300/30 dark:border-orange-700/30">
+ ⭐ CLIENT TESTIMONIALS
  </Badge>
  </div>
  <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black bg-clip-text text-transparent leading-tight">
@@ -1115,7 +1115,7 @@ const HomePage = () => {
                     className="group relative overflow-hidden bg-white dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 hover:border-orange-300 dark:hover:border-orange-500 shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-4 backdrop-blur-sm"
                   >
                     {/* Gradient overlay on hover */}
-                    <div className="absolute inset-0 bg-[#14b8a6] transition-all duration-500 -z-0"></div>
+                    <div className="absolute inset-0 bg-[#ED9A58] transition-all duration-500 -z-0"></div>
 
                     <div className="relative z-10 p-4 md:p-6 lg:p-8 h-full flex flex-col">
                       {/* Top Section - Rating */}
@@ -1133,13 +1133,13 @@ const HomePage = () => {
                             />
                           ))}
                         </div>
-                        <div className="w-8 h-8 rounded-full bg-[#14b8a6] flex items-center justify-center text-white text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                          âœ“
+                        <div className="w-8 h-8 rounded-full bg-[#ED9A58] flex items-center justify-center text-white text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                          ✓
                         </div>
                       </div>
 
                       {/* Quote Icon */}
-                      <div className="inline-flex w-8 md:w-10 h-8 md:h-10 rounded-lg bg-[#14b8a6] items-center justify-center mb-3 md:mb-4 text-orange-600 dark:text-orange-300 text-lg md:text-xl group-hover:scale-110 transition-transform duration-300">
+                      <div className="inline-flex w-8 md:w-10 h-8 md:h-10 rounded-lg bg-[#ED9A58] items-center justify-center mb-3 md:mb-4 text-orange-600 dark:text-orange-300 text-lg md:text-xl group-hover:scale-110 transition-transform duration-300">
                         "
                       </div>
 
@@ -1197,7 +1197,7 @@ const HomePage = () => {
                         ))}
                       </div>
                       <div className="w-8 h-8 rounded-full bg-gradient-to-br from-orange-400 to-teal-400 flex items-center justify-center text-white text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        âœ“
+                        ✓
                       </div>
                     </div>
 
@@ -1212,11 +1212,11 @@ const HomePage = () => {
                     </p>
 
                     {/* Divider */}
-                    <div className="my-4 md:my-6 h-1 bg-[#14b8a6] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="my-4 md:my-6 h-1 bg-[#ED9A58] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
                     {/* Author Info */}
                     <div className="flex items-center gap-3 md:gap-4 pt-2">
-                      <div className="w-10 md:w-12 h-10 md:h-12 rounded-full bg-[#14b8a6] flex items-center justify-center text-white text-xs md:text-sm font-bold shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110 flex-shrink-0">
+                      <div className="w-10 md:w-12 h-10 md:h-12 rounded-full bg-[#ED9A58] flex items-center justify-center text-white text-xs md:text-sm font-bold shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110 flex-shrink-0">
                         {testimonial.avatar}
                       </div>
                       <div className="flex-1 min-w-0">
@@ -1239,19 +1239,19 @@ const HomePage = () => {
           <Reveal>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 md:gap-5 lg:gap-6 mt-8 md:mt-12 lg:mt-16">
             <div className="text-center p-3 xs:p-4 sm:p-6 md:p-8 bg-white dark:bg-slate-800/50 rounded-xl sm:rounded-2xl border border-slate-200 dark:border-slate-700 hover:border-orange-300 dark:hover:border-orange-500 transition-all hover:shadow-lg group">
-              <div className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-black bg-clip-text text-transparent bg-[#14b8a6] mb-1 md:mb-2 group-hover:scale-110 transition-transform duration-300">
+              <div className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-black bg-clip-text text-transparent bg-[#ED9A58] mb-1 md:mb-2 group-hover:scale-110 transition-transform duration-300">
                 4.9
               </div>
               <p className="text-xs xs:text-sm md:text-base text-slate-600 dark:text-slate-300 font-semibold">Average Rating</p>
             </div>
             <div className="text-center p-3 xs:p-4 sm:p-6 md:p-8 bg-white dark:bg-slate-800/50 rounded-xl sm:rounded-2xl border border-slate-200 dark:border-slate-700 hover:border-orange-300 dark:hover:border-orange-500 transition-all hover:shadow-lg group">
-              <div className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-black bg-clip-text text-transparent bg-[#14b8a6] mb-1 md:mb-2 group-hover:scale-110 transition-transform duration-300">
+              <div className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-black bg-clip-text text-transparent bg-[#ED9A58] mb-1 md:mb-2 group-hover:scale-110 transition-transform duration-300">
                 5K+
               </div>
               <p className="text-xs xs:text-sm md:text-base text-slate-600 dark:text-slate-300 font-semibold">Reviews</p>
             </div>
             <div className="text-center p-3 xs:p-4 sm:p-6 md:p-8 bg-white dark:bg-slate-800/50 rounded-xl sm:rounded-2xl border border-slate-200 dark:border-slate-700 hover:border-orange-300 dark:hover:border-orange-500 transition-all hover:shadow-lg group">
-              <div className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-black bg-clip-text text-transparent bg-[#14b8a6] mb-1 md:mb-2 group-hover:scale-110 transition-transform duration-300">
+              <div className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-black bg-clip-text text-transparent bg-[#ED9A58] mb-1 md:mb-2 group-hover:scale-110 transition-transform duration-300">
                 98%
               </div>
               <p className="text-xs xs:text-sm md:text-base text-slate-600 dark:text-slate-300 font-semibold">Satisfaction</p>
@@ -1262,7 +1262,7 @@ const HomePage = () => {
       </section>
 
       {/* ==================== FINAL CTA ==================== */}
-      <section className="py-8 sm:py-12 md:py-16 lg:py-24 bg-[#14b8a6] relative overflow-hidden" style={{ display: 'block', visibility: 'visible', minHeight: '150px' }}>
+      <section className="py-8 sm:py-12 md:py-16 lg:py-24 bg-[#ED9A58] relative overflow-hidden" style={{ display: 'block', visibility: 'visible', minHeight: '150px' }}>
         <motion.div
           className="absolute inset-0 -z-0 opacity-20"
           style={{
@@ -1283,7 +1283,7 @@ const HomePage = () => {
           <div className="flex flex-col xs:flex-row gap-3 xs:gap-4 justify-center">
             <Button
               onClick={() => navigate('/search')}
-              className="bg-[#14b8a6] text-white font-bold px-6 xs:px-8 md:px-10 py-2.5 xs:py-3 rounded-full flex items-center justify-center gap-2 group transition-all shadow-lg text-sm xs:text-base"
+              className="bg-[#ED9A58] text-white font-bold px-6 xs:px-8 md:px-10 py-2.5 xs:py-3 rounded-full flex items-center justify-center gap-2 group transition-all shadow-lg text-sm xs:text-base"
             >
               <FiSearch size={16} />
               <span>Explore Now</span>

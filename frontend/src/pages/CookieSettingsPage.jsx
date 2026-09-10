@@ -69,9 +69,9 @@ const CookieSettingsPage = () => {
 
   return (
     <MainLayout>
-      <div className="min-h-screen bg-white dark:bg-[#14b8a6] ">
+      <div className="min-h-screen bg-white dark:bg-[#ED9A58] ">
         {/* Progress Bar */}
-      <div className="fixed top-0 left-0 h-1 bg-[#14b8a6] z-50 transition-all duration-300" style={{ width: `${scrollProgress * 100}%` }}></div>
+      <div className="fixed top-0 left-0 h-1 bg-[#ED9A58] z-50 transition-all duration-300" style={{ width: `${scrollProgress * 100}%` }}></div>
 
       {/* Animated Background */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
@@ -82,7 +82,7 @@ const CookieSettingsPage = () => {
       {/* Header */}
       <div className="relative pt-20 pb-32 px-4 sm:px-6 lg:px-8">
         <div className="relative max-w-4xl mx-auto text-center">
-          <div className="inline-flex items-center justify-center w-20 h-20 bg-[#14b8a6] rounded-2xl mb-8 mx-auto shadow-2xl">
+          <div className="inline-flex items-center justify-center w-20 h-20 bg-[#ED9A58] rounded-2xl mb-8 mx-auto shadow-2xl">
             <Cookie size={40} className="text-white" />
           </div>
 
@@ -99,7 +99,7 @@ const CookieSettingsPage = () => {
       {/* Main Content */}
       <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
         {/* Cookie Control Panel */}
-        <div className="bg-[#14b8a6] backdrop-blur-xl rounded-2xl p-8 border border-white/20 shadow-2xl mb-8">
+        <div className="bg-[#ED9A58] backdrop-blur-xl rounded-2xl p-8 border border-white/20 shadow-2xl mb-8">
           <h2 className="text-4xl font-bold text-white mb-8 flex items-center gap-3">
             <Settings size={32} className="text-rose-400" />
             Your Cookie Preferences
@@ -154,7 +154,7 @@ const CookieSettingsPage = () => {
             </button>
             <button
               onClick={() => setCookies({ necessary: true, analytics: true, marketing: true, preferences: true })}
-              className="flex-1 px-4 py-3 bg-[#14b8a6] text-white rounded-lg font-bold hover:shadow-lg hover:shadow-rose-500/30 transition-all"
+              className="flex-1 px-4 py-3 bg-[#ED9A58] text-white rounded-lg font-bold hover:shadow-lg hover:shadow-rose-500/30 transition-all"
             >
               Accept All
             </button>
@@ -169,7 +169,7 @@ const CookieSettingsPage = () => {
         </div>
 
         {/* What Are Cookies */}
-        <div className="bg-[#14b8a6] backdrop-blur-xl rounded-2xl p-8 border border-white/20 shadow-2xl mb-8">
+        <div className="bg-[#ED9A58] backdrop-blur-xl rounded-2xl p-8 border border-white/20 shadow-2xl mb-8">
           <h2 className="text-3xl font-bold text-white mb-4">What Are Cookies?</h2>
           <p className="text-rose-100 mb-4">
             Cookies are small text files stored on your device when you visit websites. They're used to remember your login, preferences, and improve your experience.
@@ -180,7 +180,7 @@ const CookieSettingsPage = () => {
  </div>
 
  {/* Cookie Table */}
- <div className="bg-[#14b8a6] backdrop-blur-xl rounded-2xl p-8 border border-white/20 shadow-2xl mb-8">
+ <div className="bg-[#ED9A58] backdrop-blur-xl rounded-2xl p-8 border border-white/20 shadow-2xl mb-8">
  <h2 className="text-3xl font-bold text-white mb-6">Cookies We Use</h2>
  
  <div className="overflow-x-auto">
@@ -214,7 +214,7 @@ const CookieSettingsPage = () => {
  </div>
 
  {/* Browser Controls */}
- <div className="bg-[#14b8a6] backdrop-blur-xl rounded-2xl p-8 border border-white/20 shadow-2xl mb-8">
+ <div className="bg-[#ED9A58] backdrop-blur-xl rounded-2xl p-8 border border-white/20 shadow-2xl mb-8">
  <h2 className="text-3xl font-bold text-white mb-6">Manage Cookies in Your Browser</h2>
 
  <div className="grid md:grid-cols-2 gap-4">
@@ -239,7 +239,7 @@ const CookieSettingsPage = () => {
         </div>
 
         {/* Third-Party Services */}
-        <div className="bg-[#14b8a6] backdrop-blur-xl rounded-2xl p-8 border border-white/20 shadow-2xl mb-8">
+        <div className="bg-[#ED9A58] backdrop-blur-xl rounded-2xl p-8 border border-white/20 shadow-2xl mb-8">
           <h2 className="text-3xl font-bold text-white mb-6">Third-Party Cookie Providers</h2>
 
           <div className="space-y-4">
@@ -262,7 +262,7 @@ const CookieSettingsPage = () => {
         </div>
 
         {/* FAQs */}
-        <div className="bg-[#14b8a6] backdrop-blur-xl rounded-2xl p-8 border border-white/20 shadow-2xl mb-8">
+        <div className="bg-[#ED9A58] backdrop-blur-xl rounded-2xl p-8 border border-white/20 shadow-2xl mb-8">
           <h2 className="text-3xl font-bold text-white mb-6">Frequently Asked Questions</h2>
 
           <div className="space-y-4">
@@ -282,7 +282,7 @@ const CookieSettingsPage = () => {
         </div>
 
         {/* Contact */}
-        <div className="bg-[#14b8a6] backdrop-blur-xl rounded-2xl p-8 border border-white/20 shadow-2xl">
+        <div className="bg-[#ED9A58] backdrop-blur-xl rounded-2xl p-8 border border-white/20 shadow-2xl">
           <h2 className="text-3xl font-bold text-white mb-4">📧 Questions About Cookies?</h2>
           <div className="space-y-2">
             <p className="text-rose-100"><strong>Email:</strong> cookies@tourhub.com</p>

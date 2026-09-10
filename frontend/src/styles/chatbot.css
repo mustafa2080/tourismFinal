@@ -30,7 +30,7 @@
   width: 65px;
   height: 65px;
   border-radius: 50%;
-  background: #14b8a6;
+  background: #ED9A58;
   color: white;
   border: none;
   cursor: pointer;
@@ -66,7 +66,7 @@
   width: 65px;
   height: 65px;
   border-radius: 50%;
-  background: #14b8a6;
+  background: #ED9A58;
   color: white;
   border: none;
   cursor: pointer;
@@ -214,7 +214,7 @@
 
 /* Header */
 .chatbot-header {
-  background: #14b8a6;
+  background: #ED9A58;
   color: white;
   padding: 20px;
   border-radius: 16px 16px 0 0;
@@ -271,7 +271,7 @@
   display: flex;
   flex-direction: column;
   gap: 14px;
-  background: #14b8a6;
+  background: #ED9A58;
   scroll-behavior: smooth;
 }
 
@@ -331,7 +331,7 @@
 }
 
 .user-message .message-bubble {
-  background: #14b8a6;
+  background: #ED9A58;
   color: white;
   border-bottom-right-radius: 4px;
   box-shadow: 0 2px 8px rgba(37, 99, 235, 0.15);
@@ -425,7 +425,7 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: #14b8a6;
+  background: #ED9A58;
   color: white;
   border: none;
   cursor: pointer;

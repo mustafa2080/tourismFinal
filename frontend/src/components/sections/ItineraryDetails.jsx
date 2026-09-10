@@ -254,7 +254,7 @@ const ItineraryDayItem = ({ day, isExpanded, onToggle }) => {
  <div className="flex items-center justify-between">
  <div className="text-left">
  <div className="flex items-center gap-3">
- <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[#14b8a6] flex items-center justify-center text-white font-bold text-sm">
+ <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[#ED9A58] flex items-center justify-center text-white font-bold text-sm">
  {day.day_number || day.day}
  </div>
  <div>
@@ -430,7 +430,7 @@ const ItineraryTimeline = ({ days }) => {
  {days.map((day, index) => (
  <div key={day.id || index} className="flex flex-col items-center">
  {/* Day Marker */}
- <div className="w-8 h-8 rounded-full bg-[#14b8a6] flex items-center justify-center text-white text-xs font-bold mb-2">
+ <div className="w-8 h-8 rounded-full bg-[#ED9A58] flex items-center justify-center text-white text-xs font-bold mb-2">
  {day.day_number || day.day}
  </div>
 

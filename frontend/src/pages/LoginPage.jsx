@@ -138,8 +138,8 @@ const LoginPage = () => {
       <div className="relative min-h-screen w-full overflow-hidden pt-20 pb-12">
         {/* Animated Background */}
         <div className="absolute inset-0 -z-10">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-[#14b8a6] rounded-full blur-3xl animate-pulse" />
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#14b8a6] rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+          <div className="absolute top-0 right-0 w-96 h-96 bg-[#ED9A58] rounded-full blur-3xl animate-pulse" />
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#ED9A58] rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
         </div>
 
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -152,7 +152,7 @@ const LoginPage = () => {
                   <span className="text-sm font-bold text-teal-600 dark:text-teal-400">Welcome Back</span>
                 </div>
 
-                <h1 className="text-5xl lg:text-6xl font-bold bg-[#14b8a6] bg-clip-text text-transparent">
+                <h1 className="text-5xl lg:text-6xl font-bold bg-[#ED9A58] bg-clip-text text-transparent">
                   Welcome to Your Travel Journey
                 </h1>
 
@@ -187,14 +187,14 @@ const LoginPage = () => {
               {/* Card Container */}
               <div className="relative">
                 {/* Gradient Border Effect */}
-                <div className="absolute -inset-0.5 bg-[#14b8a6] rounded-2xl blur opacity-0 group-hover:opacity-100 transition duration-1000 group-hover:duration-200" />
+                <div className="absolute -inset-0.5 bg-[#ED9A58] rounded-2xl blur opacity-0 group-hover:opacity-100 transition duration-1000 group-hover:duration-200" />
 
                 {/* Form Card */}
                 <div className="relative bg-white dark:bg-slate-800 rounded-2xl p-8 md:p-10 shadow-2xl border border-slate-100 dark:border-slate-700">
                   {/* Header */}
                   <div className="text-center mb-8 space-y-3">
                     <div className="flex justify-center">
-                      <div className="relative w-16 h-16 bg-[#14b8a6] rounded-xl flex items-center justify-center shadow-lg shadow-teal-500/30 group">
+                      <div className="relative w-16 h-16 bg-[#ED9A58] rounded-xl flex items-center justify-center shadow-lg shadow-teal-500/30 group">
                         <BiWorld className="text-3xl text-white group-hover:scale-110 group-hover:rotate-12 transition-all duration-300" />
                       </div>
                     </div>
@@ -353,7 +353,7 @@ const LoginPage = () => {
                     <button
                       type="submit"
                       disabled={loading || errors.email || errors.password || !formData.email || !formData.password}
-                      className="w-full py-3.5 md:py-4 px-4 rounded-xl font-bold text-white bg-[#14b8a6] transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl hover:shadow-teal-500/40 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none disabled:shadow-none flex items-center justify-center gap-2 group"
+                      className="w-full py-3.5 md:py-4 px-4 rounded-xl font-bold text-white bg-[#ED9A58] transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl hover:shadow-teal-500/40 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none disabled:shadow-none flex items-center justify-center gap-2 group"
                     >
                       {loading ? (
                         <>
@@ -384,7 +384,7 @@ const LoginPage = () => {
                   {/* Sign Up Link */}
                   <button
                     onClick={() => navigate('/signup')}
-                    className="w-full py-3.5 md:py-4 px-4 rounded-xl font-bold text-slate-900 dark:text-white bg-[#14b8a6] transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg"
+                    className="w-full py-3.5 md:py-4 px-4 rounded-xl font-bold text-slate-900 dark:text-white bg-[#ED9A58] transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg"
                   >
                     Create Account
                   </button>

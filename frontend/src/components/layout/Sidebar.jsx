@@ -145,7 +145,7 @@ const Sidebar = ({ isAdmin = false }) => {
       {/* Mobile Sidebar Toggle Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 z-50 lg:hidden p-3 rounded-full bg-[#14b8a6] text-white shadow-lg hover:shadow-xl transition-all"
+        className="fixed bottom-6 right-6 z-50 lg:hidden p-3 rounded-full bg-[#ED9A58] text-white shadow-lg hover:shadow-xl transition-all"
         aria-label="Toggle sidebar"
       >
         {isOpen ? <FiX size={24} /> : <FiMenu size={24} />}
@@ -173,7 +173,7 @@ const Sidebar = ({ isAdmin = false }) => {
                 onClick={() => handleMenuClick(item)}
                 className={`w-full flex items-center justify-between px-4 py-3 rounded-lg font-medium transition-all duration-200 ${
  isActive(item.path, item.exact)
- ? 'bg-[#14b8a6] text-teal-600 dark:text-teal-400 border-l-2 border-teal-600'
+ ? 'bg-[#ED9A58] text-teal-600 dark:text-teal-400 border-l-2 border-teal-600'
  : 'text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800'
  }`}
               >

@@ -117,25 +117,25 @@ function PackagesPage() {
   const fetchPackages = async () => {
     try {
       setLoading(true);
-      console.log('ًں“¦ [PackagesPage] Fetching all packages from database...');
+      console.log('📦 [PackagesPage] Fetching all packages from database...');
       
       const response = await adminService.getAllPackages(100, 0);
       
-      console.log('ًں“¦ [PackagesPage] Raw response:', response);
-      console.log('ًں“¦ [PackagesPage] Response type:', typeof response);
-      console.log('ًں“¦ [PackagesPage] Response.success:', response?.success);
-      console.log('ًں“¦ [PackagesPage] Response.data type:', Array.isArray(response?.data) ? 'array' : typeof response?.data);
+      console.log('📦 [PackagesPage] Raw response:', response);
+      console.log('📦 [PackagesPage] Response type:', typeof response);
+      console.log('📦 [PackagesPage] Response.success:', response?.success);
+      console.log('📦 [PackagesPage] Response.data type:', Array.isArray(response?.data) ? 'array' : typeof response?.data);
       
       if (response && response.success && Array.isArray(response.data)) {
-        console.log(`âœ… [PackagesPage] Loaded ${response.data.length} packages`);
+        console.log(`✅ [PackagesPage] Loaded ${response.data.length} packages`);
         setPackages(response.data);
       } else {
-        console.error('â‌Œ [PackagesPage] Unexpected response structure:', response);
+        console.error('❌ [PackagesPage] Unexpected response structure:', response);
         toast.error('Failed to load packages - unexpected response format');
       }
     } catch (error) {
-      console.error('â‌Œ [PackagesPage] Error fetching packages:', error);
-      console.error('â‌Œ [PackagesPage] Error details:', {
+      console.error('❌ [PackagesPage] Error fetching packages:', error);
+      console.error('❌ [PackagesPage] Error details:', {
         message: error.message,
         status: error.response?.status,
         statusText: error.response?.statusText,
@@ -438,7 +438,7 @@ function PackagesPage() {
 
     try {
       setUploadingImages(true);
-      console.log(`ًں“¸ Processing ${files.length} image(s)...`);
+      console.log(`📸 Processing ${files.length} image(s)...`);
 
       // Validate files
       for (const file of files) {
@@ -453,7 +453,7 @@ function PackagesPage() {
         }
       }
 
-      console.log('âœ… All files validated');
+      console.log('✅ All files validated');
 
       // Convert to base64
       const base64Images = await uploadService.filesToBase64(files);
@@ -473,17 +473,17 @@ function PackagesPage() {
         };
       });
 
-      console.log(`âœ… Converted ${newImages.length} image(s) to base64`);
+      console.log(`✅ Converted ${newImages.length} image(s) to base64`);
 
       setFormData(prev => ({
         ...prev,
         images: [...prev.images, ...newImages]
       }));
 
-      toast.success(`âœ… ${newImages.length} image(s) added successfully`);
+      toast.success(`✅ ${newImages.length} image(s) added successfully`);
     } catch (error) {
-      console.error('â‌Œ Error processing images:', error);
-      toast.error(`â‌Œ ${error.message || 'Failed to process images'}`);
+      console.error('❌ Error processing images:', error);
+      toast.error(`❌ ${error.message || 'Failed to process images'}`);
     } finally {
       setUploadingImages(false);
       setImageUploadProgress({});
@@ -653,7 +653,7 @@ function PackagesPage() {
 
       // Double check we have images
       if (imagesForRequest.length === 0 && modalMode !== 'view') {
-        toast.error('â‌Œ No valid images found. Please upload at least one image.');
+        toast.error('❌ No valid images found. Please upload at least one image.');
         return;
       }
 
@@ -738,7 +738,7 @@ function PackagesPage() {
         ru_daily_itinerary_items: (formData.ru_daily_itinerary_items || []).filter(item => item && item.trim()),
       };
 
-      console.log('ًں“¤ Sending package:', {
+      console.log('📤 Sending package:', {
         title: packageData.title,
         destination: packageData.destination,
         duration: packageData.duration_days,
@@ -753,14 +753,14 @@ function PackagesPage() {
       if (modalMode === 'create') {
         const response = await adminService.createPackage(packageData);
         if (response.success) {
-          // âœ… Optimistic Update: Add to list immediately
+          // ✅ Optimistic Update: Add to list immediately
           setPackages(prev => [response.data, ...prev]);
           
-          toast.success('âœ… Package created successfully!');
+          toast.success('✅ Package created successfully!');
           
           setShowModal(false);
           
-          // âœ… Sync with server after short delay
+          // ✅ Sync with server after short delay
           setTimeout(() => {
             fetchPackages();
           }, 800);
@@ -771,22 +771,22 @@ function PackagesPage() {
       } else if (modalMode === 'edit') {
         const response = await adminService.updatePackage(selectedPackage.id, packageData);
         if (response.success) {
-          console.log('âœ… Response data received:', {
+          console.log('✅ Response data received:', {
             title: response.data.title,
             inclusions: response.data.inclusions,
             exclusions: response.data.exclusions,
           });
           
-          // âœ… Update the specific package in list
+          // ✅ Update the specific package in list
           setPackages(prev => 
             prev.map(p => p.id === selectedPackage.id ? response.data : p)
           );
           
-          toast.success('âœ… Package updated successfully!');
+          toast.success('✅ Package updated successfully!');
           
           setShowModal(false);
           
-          // âœ… Sync with server after short delay
+          // ✅ Sync with server after short delay
           setTimeout(() => {
             fetchPackages();
           }, 800);
@@ -798,7 +798,7 @@ function PackagesPage() {
     } catch (error) {
       console.error('Error saving package:', error);
       const errorMessage = error.response?.data?.message || error.message || 'Failed to save package';
-      toast.error(`â‌Œ ${errorMessage}`);
+      toast.error(`❌ ${errorMessage}`);
     } finally {
       setSubmitting(false);
     }
@@ -815,7 +815,7 @@ function PackagesPage() {
       const response = await adminService.deletePackage(pkgId);
       
       if (response.success) {
-        toast.success('âœ… Package deleted successfully', { id: `delete-${pkgId}` });
+        toast.success('✅ Package deleted successfully', { id: `delete-${pkgId}` });
         fetchPackages();
       } else {
         toast.error(response.message || 'Failed to delete package', { id: `delete-${pkgId}` });
@@ -823,7 +823,7 @@ function PackagesPage() {
     } catch (error) {
       console.error('Error deleting package:', error);
       const errorMessage = error.response?.data?.message || error.message || 'Failed to delete package';
- toast.error(`â‌Œ ${errorMessage}`, { id: `delete-${pkgId}` });
+ toast.error(`❌ ${errorMessage}`, { id: `delete-${pkgId}` });
  }
  };
 
@@ -844,7 +844,7 @@ function PackagesPage() {
  <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
  <div>
  <h1 className="text-2xl sm:text-3xl lg:text-5xl font-bold text-slate-900 dark:text-white flex items-center gap-3">
- <div className="p-2 sm:p-3 bg-[#14b8a6] rounded-xl shadow-lg flex-shrink-0">
+ <div className="p-2 sm:p-3 bg-[#ED9A58] rounded-xl shadow-lg flex-shrink-0">
  <MdTour className="text-white" size={24} />
  </div>
  Manage Packages
@@ -855,7 +855,7 @@ function PackagesPage() {
  </div>
  <button
  onClick={handleCreatePackage}
- className="flex items-center justify-center gap-2 px-6 py-3 bg-[#14b8a6] text-white rounded-xl hover:shadow-lg transition-all font-semibold shadow-lg transform hover:scale-105 "
+ className="flex items-center justify-center gap-2 px-6 py-3 bg-[#ED9A58] text-white rounded-xl hover:shadow-lg transition-all font-semibold shadow-lg transform hover:scale-105 "
  >
  <FiPlus size={22} />
  <span>Add New Package</span>
@@ -988,7 +988,7 @@ function PackagesPage() {
  key={pkg.id}
  className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-700 overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 group"
  >
- <div className="relative h-48 bg-[#14b8a6] overflow-hidden">
+ <div className="relative h-48 bg-[#ED9A58] overflow-hidden">
  {pkg.images && pkg.images.length > 0 ? (
  <img 
  src={(() => {
@@ -1109,7 +1109,7 @@ function PackagesPage() {
  <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl max-w-2xl w-full border border-slate-200 dark:border-slate-700 overflow-hidden max-h-[90vh] overflow-y-auto">
  
  {/* Modal Header */}
- <div className="flex items-center justify-between p-4 sm:p-6 lg:p-8 bg-[#14b8a6] text-white sticky top-0 z-10">
+ <div className="flex items-center justify-between p-4 sm:p-6 lg:p-8 bg-[#ED9A58] text-white sticky top-0 z-10">
  <div className="flex items-center gap-3 min-w-0">
  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-white/20 flex items-center justify-center backdrop-blur-sm flex-shrink-0">
  <MdTour size={22} />
@@ -1346,7 +1346,7 @@ function PackagesPage() {
                 </div>
 
                 <div className="flex items-end">
-                  <label className="flex items-center gap-3 cursor-pointer p-3 rounded ذ؛ذ¾ذ¶ذ¸-xl border-2 border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 hover:bg-slate-50 dark:hover:bg-slate-600 transition-all w-full" style={{opacity: modalMode === 'view' ? 0.5 : 1, pointerEvents: modalMode === 'view' ? 'none' : 'auto'}}>
+                  <label className="flex items-center gap-3 cursor-pointer p-3 rounded кожи-xl border-2 border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 hover:bg-slate-50 dark:hover:bg-slate-600 transition-all w-full" style={{opacity: modalMode === 'view' ? 0.5 : 1, pointerEvents: modalMode === 'view' ? 'none' : 'auto'}}>
                     <input
                       type="checkbox"
                       checked={formData.featured}
@@ -1596,7 +1596,7 @@ function PackagesPage() {
                 <button
                   onClick={handleSavePackage}
                   disabled={submitting}
-                  className="flex-1 px-6 py-3 rounded-xl bg-[#14b8a6] text-white transition-all font-bold shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                  className="flex-1 px-6 py-3 rounded-xl bg-[#ED9A58] text-white transition-all font-bold shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 >
                   {submitting ? (
                     <>

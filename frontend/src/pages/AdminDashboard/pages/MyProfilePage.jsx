@@ -178,11 +178,11 @@ export function MyProfilePage() {
 
       {/* Main Profile Card */}
       <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
-        <div className="bg-[#14b8a6] px-6 md:px-8 py-8">
+        <div className="bg-[#ED9A58] px-6 md:px-8 py-8">
           <div className="flex flex-col md:flex-row items-center gap-6">
             {/* Avatar */}
             <div className="relative group">
-              <div className="w-24 h-24 rounded-full bg-[#14b8a6] flex items-center justify-center text-white text-4xl font-bold shadow-lg flex-shrink-0 overflow-hidden">
+              <div className="w-24 h-24 rounded-full bg-[#ED9A58] flex items-center justify-center text-white text-4xl font-bold shadow-lg flex-shrink-0 overflow-hidden">
                 {avatarPreview ? (
                   <img 
                     src={avatarPreview} 
@@ -330,7 +330,7 @@ export function MyProfilePage() {
               <button
                 onClick={handleSaveProfile}
                 disabled={loading}
-                className="flex-1 flex items-center justify-center gap-3 px-6 py-4 bg-[#14b8a6] text-white rounded-xl disabled:opacity-50 disabled:cursor-not-allowed transition-all font-bold shadow-lg"
+                className="flex-1 flex items-center justify-center gap-3 px-6 py-4 bg-[#ED9A58] text-white rounded-xl disabled:opacity-50 disabled:cursor-not-allowed transition-all font-bold shadow-lg"
               >
                 <FiSave size={22} />
                 {loading ? t('dashboard.profile.saving') : t('dashboard.profile.saveChanges')}
@@ -349,7 +349,7 @@ export function MyProfilePage() {
 
       {/* Additional Info Card */}
       <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
-        <div className="bg-[#14b8a6] px-6 md:px-8 py-5 border-b border-slate-200 dark:border-slate-700">
+        <div className="bg-[#ED9A58] px-6 md:px-8 py-5 border-b border-slate-200 dark:border-slate-700">
           <h3 className="text-xl font-bold text-slate-900 dark:text-white">{t('dashboard.profile.accountStatus')}</h3>
         </div>
         <div className="p-6 md:p-8 space-y-4">

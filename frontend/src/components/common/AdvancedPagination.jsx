@@ -175,7 +175,7 @@ const AdvancedPagination = ({
     <div className={`space-y-6 ${className}`}>
       {/* Info Row */}
       {showItemsInfo && totalItems > 0 && (
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 px-4 py-3 bg-[#14b8a6] rounded-lg border border-teal-200 dark:border-slate-600">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 px-4 py-3 bg-[#ED9A58] rounded-lg border border-teal-200 dark:border-slate-600">
           <div className="text-sm text-gray-700 dark:text-slate-300">
             Showing <span className="font-bold text-teal-600 dark:text-teal-400">{startItem}</span> to{' '}
             <span className="font-bold text-teal-600 dark:text-teal-400">{endItem}</span> of{' '}
@@ -222,7 +222,7 @@ const AdvancedPagination = ({
               disabled={page === '...' || disabled}
               className={`w-10 h-10 rounded-lg font-semibold transition-all transform ${
  page === currentPage
- ? 'bg-[#14b8a6] text-white shadow-lg shadow-teal-400/50 scale-110'
+ ? 'bg-[#ED9A58] text-white shadow-lg shadow-teal-400/50 scale-110'
  : page === '...'
  ? 'cursor-default text-gray-400 dark:text-slate-500'
  : 'bg-white dark:bg-slate-800 border border-gray-300 dark:border-slate-600 text-gray-900 dark:text-white hover:border-teal-500 dark:hover:border-teal-400 hover:text-teal-600 dark:hover:text-teal-400 hover:shadow-md'

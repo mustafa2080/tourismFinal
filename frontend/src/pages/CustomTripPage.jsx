@@ -305,7 +305,7 @@ const CustomTripPage = () => {
             <div className="flex flex-col sm:flex-row gap-3">
               <button
                 onClick={() => navigate(isAuthenticated ? '/dashboard' : '/')}
-                className="flex-1 px-5 py-2.5 bg-[#14b8a6] text-white font-semibold rounded-xl transition-all"
+                className="flex-1 px-5 py-2.5 bg-[#ED9A58] text-white font-semibold rounded-xl transition-all"
               >
                 {isAuthenticated ? 'Go to Dashboard' : 'Back to Home'}
               </button>
@@ -328,7 +328,7 @@ const CustomTripPage = () => {
       <Header />
 
       {/* Hero */}
-      <section className="relative pt-10 pb-8 px-4 sm:px-6 lg:px-8 bg-[#14b8a6] ">
+      <section className="relative pt-10 pb-8 px-4 sm:px-6 lg:px-8 bg-[#ED9A58] ">
         <div className="max-w-3xl mx-auto text-center text-white">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/15 text-sm font-semibold mb-3">
             <FiCompass size={14} />
@@ -354,7 +354,7 @@ const CustomTripPage = () => {
                   <div
                     className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold transition-all ${
  step === s.id
- ? 'bg-[#14b8a6] text-white shadow-md'
+ ? 'bg-[#ED9A58] text-white shadow-md'
  : step > s.id
  ? 'bg-emerald-500 text-white'
  : 'bg-slate-100 dark:bg-slate-700 text-slate-400 dark:text-slate-500'
@@ -389,7 +389,7 @@ const CustomTripPage = () => {
         {step === 1 && (
           <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 p-6 sm:p-8">
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 rounded-lg bg-[#14b8a6] flex items-center justify-center">
+              <div className="w-10 h-10 rounded-lg bg-[#ED9A58] flex items-center justify-center">
                 <FiMapPin size={18} className="text-white" />
               </div>
               <div>
@@ -459,7 +459,7 @@ const CustomTripPage = () => {
           <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 p-6 sm:p-8 space-y-8">
             <div>
               <div className="flex items-center gap-3 mb-5">
-                <div className="w-10 h-10 rounded-lg bg-[#14b8a6] flex items-center justify-center">
+                <div className="w-10 h-10 rounded-lg bg-[#ED9A58] flex items-center justify-center">
                   <FiCalendar size={18} className="text-white" />
                 </div>
                 <h2 className="text-lg font-bold text-slate-900 dark:text-white">When are you traveling?</h2>
@@ -499,7 +499,7 @@ const CustomTripPage = () => {
 
             <div>
               <div className="flex items-center gap-3 mb-5">
-                <div className="w-10 h-10 rounded-lg bg-[#14b8a6] flex items-center justify-center">
+                <div className="w-10 h-10 rounded-lg bg-[#ED9A58] flex items-center justify-center">
                   <FiUsers size={18} className="text-white" />
                 </div>
                 <h2 className="text-lg font-bold text-slate-900 dark:text-white">Who's traveling?</h2>
@@ -608,7 +608,7 @@ const CustomTripPage = () => {
  <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
  <div className="lg:col-span-2 bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 p-6 sm:p-8">
  <div className="flex items-center gap-3 mb-5">
- <div className="w-10 h-10 rounded-lg bg-[#14b8a6] flex items-center justify-center">
+ <div className="w-10 h-10 rounded-lg bg-[#ED9A58] flex items-center justify-center">
  <FiEdit3 size={18} className="text-white" />
  </div>
  <div>
@@ -764,7 +764,7 @@ const CustomTripPage = () => {
  <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
  <div className="lg:col-span-2 bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 p-6 sm:p-8">
  <div className="flex items-center gap-3 mb-6">
- <div className="w-10 h-10 rounded-lg bg-[#14b8a6] flex items-center justify-center">
+ <div className="w-10 h-10 rounded-lg bg-[#ED9A58] flex items-center justify-center">
  <FiSend size={18} className="text-white" />
  </div>
  <h2 className="text-lg font-bold text-slate-900 dark:text-white">Almost there</h2>
@@ -862,7 +862,7 @@ const CustomTripPage = () => {
                   type="button"
                   onClick={handleSubmit}
                   disabled={submitting}
-                  className="w-full flex items-center justify-center gap-2 px-5 py-3 bg-[#14b8a6] disabled:opacity-60 text-white font-bold rounded-xl transition-all shadow-md"
+                  className="w-full flex items-center justify-center gap-2 px-5 py-3 bg-[#ED9A58] disabled:opacity-60 text-white font-bold rounded-xl transition-all shadow-md"
                 >
                   {submitting ? (
                     <>
@@ -897,7 +897,7 @@ const CustomTripPage = () => {
             <button
               type="button"
               onClick={goNext}
-              className="flex items-center gap-1.5 px-6 py-2.5 rounded-xl font-bold text-sm text-white bg-[#14b8a6] shadow-md hover:shadow-lg transition-all"
+              className="flex items-center gap-1.5 px-6 py-2.5 rounded-xl font-bold text-sm text-white bg-[#ED9A58] shadow-md hover:shadow-lg transition-all"
             >
               Continue
               <FiArrowRight size={16} />

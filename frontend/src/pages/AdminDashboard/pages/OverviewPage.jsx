@@ -84,7 +84,7 @@ export default function OverviewPage() {
           )}
         </div>
         <div
-          className={`p-4 rounded-xl bg-[#14b8a6] ${
+          className={`p-4 rounded-xl bg-[#ED9A58] ${
  title.includes('Revenue') ? ' ' :
  title.includes('Bookings') ? ' ' :
  title.includes('Users') ? ' ' :
@@ -270,7 +270,7 @@ export default function OverviewPage() {
  <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-lg border border-slate-200 dark:border-slate-700">
  <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-4">Key Metrics</h2>
  <div className="space-y-3">
- <div className="p-3 bg-[#14b8a6] rounded-lg border border-teal-200 dark:border-teal-700">
+ <div className="p-3 bg-[#ED9A58] rounded-lg border border-teal-200 dark:border-teal-700">
  <div className="flex items-center justify-between">
  <span className="text-sm text-slate-700 dark:text-slate-300">Avg Order Value</span>
  <span className="font-bold text-slate-900 dark:text-white">${statsData.avgOrderValue?.toFixed(2)}</span>
@@ -290,7 +290,7 @@ export default function OverviewPage() {
  </span>
  </div>
  </div>
- <div className="p-3 bg-[#14b8a6] rounded-lg border border-orange-200 dark:border-orange-700">
+ <div className="p-3 bg-[#ED9A58] rounded-lg border border-orange-200 dark:border-orange-700">
  <div className="flex items-center justify-between">
  <span className="text-sm text-slate-700 dark:text-slate-300">User Growth</span>
  <span className={`font-bold ${statsData.userGrowth >= 0 ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>

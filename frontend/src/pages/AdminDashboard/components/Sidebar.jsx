@@ -159,14 +159,14 @@ export function Sidebar() {
 
       {/* Sidebar */}
       <aside
-        className={`fixed left-0 top-0 h-screen w-64 bg-[#14b8a6] text-white shadow-2xl transition-all duration-300 z-40 ${
+        className={`fixed left-0 top-0 h-screen w-64 bg-[#ED9A58] text-white shadow-2xl transition-all duration-300 z-40 ${
  sidebarOpen ? 'translate-x-0' : '-translate-x-full'
  } lg:translate-x-0 lg:relative overflow-y-auto overscroll-contain flex flex-col`}
       >
         {/* Logo Section */}
         <div className="sticky top-0 p-6 border-b border-slate-700 bg-slate-900/80 backdrop-blur-md">
-          <h1 className="text-2xl font-bold bg-[#14b8a6] bg-clip-text text-transparent flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-[#14b8a6] flex items-center justify-center">
+          <h1 className="text-2xl font-bold bg-[#ED9A58] bg-clip-text text-transparent flex items-center gap-2">
+            <div className="w-8 h-8 rounded-lg bg-[#ED9A58] flex items-center justify-center">
               <span className="text-white font-bold">A</span>
             </div>
             Admin
@@ -190,7 +190,7 @@ export function Sidebar() {
                     onClick={() => setActiveSubmenu(submenuOpen ? null : item.id)}
                     className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 group ${
  submenuActive
- ? 'bg-[#14b8a6] shadow-lg shadow-teal-600/20'
+ ? 'bg-[#ED9A58] shadow-lg shadow-teal-600/20'
  : 'hover:bg-slate-700/50 text-slate-300 hover:text-white'
  }`}
                   >
@@ -252,7 +252,7 @@ export function Sidebar() {
                 }}
                 className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 group ${
  item.id === 'home'
- ? 'bg-[#14b8a6] shadow-lg shadow-green-600/20 text-white font-semibold'
+ ? 'bg-[#ED9A58] shadow-lg shadow-green-600/20 text-white font-semibold'
  : active
  ? ' shadow-lg shadow-teal-600/20'
  : 'hover:bg-slate-700/50 text-slate-300 hover:text-white'
@@ -272,7 +272,7 @@ export function Sidebar() {
         </nav>
 
         {/* User Info */}
-        <div className="sticky bottom-0 left-0 right-0 p-4 border-t border-slate-700 bg-[#14b8a6] space-y-3">
+        <div className="sticky bottom-0 left-0 right-0 p-4 border-t border-slate-700 bg-[#ED9A58] space-y-3">
           {/* User Card */}
           <div className="p-3 bg-slate-700/50 rounded-lg border border-slate-600">
             <p className="text-xs text-slate-400">Logged in as</p>
@@ -283,7 +283,7 @@ export function Sidebar() {
           {/* Logout Button */}
           <button
             onClick={logOut}
-            className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-[#14b8a6] transition-all duration-200 text-white font-medium text-sm shadow-lg hover:shadow-xl"
+            className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-[#ED9A58] transition-all duration-200 text-white font-medium text-sm shadow-lg hover:shadow-xl"
           >
             <FiLogOut size={18} />
             <span>Logout</span>
