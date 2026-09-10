@@ -227,7 +227,7 @@ const PopularTripCategoriesSection = () => {
 
   return (
     <section
-      className="w-full py-12 md:py-20 bg-[#ED9A58] "
+      className="w-full py-12 md:py-20 bg-white dark:bg-slate-900"
       style={{ display: 'block', visibility: 'visible', minHeight: '200px' }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -301,12 +301,12 @@ const PopularTripCategoriesSection = () => {
                           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                         />
                       ) : (
-                        <div className="w-full h-full bg-[#ED9A58] transition-all flex items-center justify-center">
+                        <div className="w-full h-full bg-teal-600 transition-all flex items-center justify-center">
                           <BiWorld size={80} className="text-white/50" />
                         </div>
                       )}
                       {/* Overlay */}
-                      <div className="absolute inset-0 bg-[#ED9A58] "></div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
                     </div>
 
                     {/* Category Details */}
@@ -334,7 +334,7 @@ const PopularTripCategoriesSection = () => {
 
                   {/* Right: Trips Count Info */}
                   <div className="flex flex-col justify-center">
-                    <div className="bg-[#ED9A58] rounded-xl p-6 md:p-8 border border-teal-200 dark:border-teal-800">
+                    <div className="bg-teal-50 dark:bg-teal-900/20 rounded-xl p-6 md:p-8 border border-teal-200 dark:border-teal-800">
                       <div className="text-center mb-6">
                         <div className="text-4xl md:text-5xl font-bold text-teal-600 dark:text-teal-400 mb-2">
                           {categoriesWithCounts[selectedCategory?.id] ?? 0}
@@ -399,7 +399,7 @@ const PopularTripCategoriesSection = () => {
                   <Spinner size="lg" />
                 </div>
               ) : displayedPackages.length === 0 ? (
-                <div className="text-center py-20 bg-[#ED9A58] rounded-xl border-2 border-red-200 dark:border-red-800">
+                <div className="text-center py-20 bg-red-50 dark:bg-red-900/10 rounded-xl border-2 border-red-200 dark:border-red-800">
                   <div className="mb-4 flex justify-center">
                     <div className="p-4 bg-red-100 dark:bg-red-900/30 rounded-full">
                       <BiWorld size={64} className="text-red-500" />

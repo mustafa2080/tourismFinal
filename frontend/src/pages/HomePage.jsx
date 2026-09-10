@@ -449,7 +449,7 @@ const HomePage = () => {
                 decoding={idx === 0 ? 'sync' : 'async'}
               />
               {/* Gradient Overlay */}
-              <div className="absolute inset-0 bg-[#ED9A58] "></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
             </div>
           ))}
         </motion.div>
@@ -947,7 +947,7 @@ const HomePage = () => {
  </Reveal>
 
  {/* ==================== STATISTICS ==================== */}
- <section className="py-6 sm:py-8 md:py-12 lg:py-20 bg-[#ED9A58] " style={{ display: 'block', visibility: 'visible', minHeight: '150px' }}>
+ <section className="py-6 sm:py-8 md:py-12 lg:py-20 bg-white dark:bg-slate-900" style={{ display: 'block', visibility: 'visible', minHeight: '150px' }}>
         <div ref={statsRef} className="w-full max-w-7xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8">
           <StaggerGroup className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 md:gap-6 lg:gap-8" staggerDelay={0.15}>
             {stats.map((stat, idx) => {
@@ -955,13 +955,13 @@ const HomePage = () => {
               return (
                 <StaggerItem key={idx} className="text-center">
                   <div className="mb-2 sm:mb-3 md:mb-4 flex justify-center">
-                    <Icon size={24} className="xs:w-8 xs:h-8 sm:w-9 sm:h-9 text-white" />
+                    <Icon size={24} className="xs:w-8 xs:h-8 sm:w-9 sm:h-9 text-teal-600 dark:text-teal-400" />
                   </div>
-                  <p className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-black text-white mb-1 md:mb-2">
+                  <p className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 dark:text-white mb-1 md:mb-2">
                     {stat.value.toLocaleString()}
                     {stat.suffix}
                   </p>
-                  <p className="text-xs xs:text-sm md:text-base lg:text-lg text-white/90 font-semibold">{stat.label}</p>
+                  <p className="text-xs xs:text-sm md:text-base lg:text-lg text-slate-600 dark:text-slate-300 font-semibold">{stat.label}</p>
                 </StaggerItem>
               );
             })}
@@ -1075,7 +1075,7 @@ const HomePage = () => {
  </section>
 
  {/* ==================== TESTIMONIALS - MODERN DESIGN ==================== */}
- <section className="py-6 sm:py-8 md:py-16 lg:py-32 bg-[#ED9A58] relative" style={{ display: 'block', visibility: 'visible', minHeight: '200px' }}>
+ <section className="py-6 sm:py-8 md:py-16 lg:py-32 bg-white dark:bg-slate-900 relative overflow-hidden" style={{ display: 'block', visibility: 'visible', minHeight: '200px' }}>
  <div className="absolute top-0 right-0 w-48 sm:w-96 h-48 sm:h-96 bg-teal-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 -z-10 dark:opacity-10"></div>
  <div className="absolute bottom-0 left-0 w-48 sm:w-96 h-48 sm:h-96 bg-orange-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 -z-10 dark:opacity-10"></div>
 
@@ -1084,7 +1084,7 @@ const HomePage = () => {
  <Reveal>
  <div className="text-center mb-12 md:mb-20 space-y-3 md:space-y-4">
  <div className="inline-block">
- <Badge className="bg-[#ED9A58] text-orange-700 dark:text-orange-300 mb-4 px-4 py-2 rounded-full text-xs md:text-sm font-bold border border-orange-300/30 dark:border-orange-700/30">
+ <Badge className="bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-300 mb-4 px-4 py-2 rounded-full text-xs md:text-sm font-bold border border-orange-300/30 dark:border-orange-700/30">
  ⭐ CLIENT TESTIMONIALS
  </Badge>
  </div>
@@ -1139,7 +1139,7 @@ const HomePage = () => {
                       </div>
 
                       {/* Quote Icon */}
-                      <div className="inline-flex w-8 md:w-10 h-8 md:h-10 rounded-lg bg-[#ED9A58] items-center justify-center mb-3 md:mb-4 text-orange-600 dark:text-orange-300 text-lg md:text-xl group-hover:scale-110 transition-transform duration-300">
+                      <div className="inline-flex w-8 md:w-10 h-8 md:h-10 rounded-lg bg-orange-100 dark:bg-orange-900/30 items-center justify-center mb-3 md:mb-4 text-orange-600 dark:text-orange-300 text-lg md:text-xl group-hover:scale-110 transition-transform duration-300">
                         "
                       </div>
 
@@ -1262,7 +1262,7 @@ const HomePage = () => {
       </section>
 
       {/* ==================== FINAL CTA ==================== */}
-      <section className="py-8 sm:py-12 md:py-16 lg:py-24 bg-[#ED9A58] relative overflow-hidden" style={{ display: 'block', visibility: 'visible', minHeight: '150px' }}>
+      <section className="py-8 sm:py-12 md:py-16 lg:py-24 bg-white dark:bg-slate-900 relative overflow-hidden" style={{ display: 'block', visibility: 'visible', minHeight: '150px' }}>
         <motion.div
           className="absolute inset-0 -z-0 opacity-20"
           style={{
@@ -1273,10 +1273,10 @@ const HomePage = () => {
         />
         <Reveal>
         <div className="w-full max-w-7xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-2 md:mb-4 lg:mb-6">
+          <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-2 md:mb-4 lg:mb-6">
             Ready for Your Next Adventure?
           </h2>
-          <p className="text-xs xs:text-sm sm:text-base md:text-lg lg:text-xl text-white/80 mb-6 md:mb-8 lg:mb-10 max-w-2xl mx-auto">
+          <p className="text-xs xs:text-sm sm:text-base md:text-lg lg:text-xl text-slate-600 dark:text-slate-300 mb-6 md:mb-8 lg:mb-10 max-w-2xl mx-auto">
             Join thousands of travelers exploring the world with us. Start your journey today!
           </p>
 
