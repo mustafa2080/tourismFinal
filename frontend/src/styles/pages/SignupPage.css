@@ -6,7 +6,7 @@
 
 .signup-page {
   min-height: 100vh;
-  background: #ED9A58;
+  background: #14b8a6;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -30,7 +30,7 @@
 
 /* Left Section - Benefits */
 .signup-benefits {
-  background: #ED9A58;
+  background: #14b8a6;
   color: white;
   padding: 60px 40px;
   display: flex;
@@ -47,7 +47,7 @@
   right: -50%;
   width: 500px;
   height: 500px;
-  background: #ED9A58;
+  background: #14b8a6;
   border-radius: 50%;
   animation: float 20s ease-in-out infinite;
 }
@@ -407,7 +407,7 @@
 }
 
 .signup-submit-btn {
-  background: #ED9A58;
+  background: #14b8a6;
   border: none;
   color: white;
   font-weight: 600;

@@ -90,8 +90,8 @@ const SignupPage = () => {
       <div className="relative min-h-screen w-full overflow-hidden pt-20 pb-12">
         {/* Animated Background */}
         <div className="absolute inset-0 -z-10">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-[#ED9A58] rounded-full blur-3xl animate-pulse" />
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#ED9A58] rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+          <div className="absolute top-0 right-0 w-96 h-96 bg-[#14b8a6] rounded-full blur-3xl animate-pulse" />
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#14b8a6] rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
         </div>
 
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -104,7 +104,7 @@ const SignupPage = () => {
                   <span className="text-sm font-bold text-green-600 dark:text-green-400">Join Us Today</span>
                 </div>
 
-                <h1 className="text-5xl lg:text-6xl font-bold bg-[#ED9A58] bg-clip-text text-transparent">
+                <h1 className="text-5xl lg:text-6xl font-bold bg-[#14b8a6] bg-clip-text text-transparent">
                   Start Your Adventure
                 </h1>
 
@@ -155,7 +155,7 @@ const SignupPage = () => {
                 {/* Header */}
                 <div className="text-center mb-8 space-y-3">
                   <div className="flex justify-center">
-                    <div className="relative w-16 h-16 bg-[#ED9A58] rounded-xl flex items-center justify-center shadow-lg shadow-green-500/30 group">
+                    <div className="relative w-16 h-16 bg-[#14b8a6] rounded-xl flex items-center justify-center shadow-lg shadow-green-500/30 group">
                       <FiUser className="text-3xl text-white group-hover:scale-110 group-hover:rotate-12 transition-all duration-300" />
                     </div>
                   </div>
@@ -271,7 +271,7 @@ const SignupPage = () => {
                   <button
                     type="submit"
                     disabled={loading || !isFormValid}
-                    className="w-full py-3.5 md:py-4 px-4 rounded-xl font-bold text-white bg-[#ED9A58] transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl hover:shadow-green-500/40 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none disabled:shadow-none flex items-center justify-center gap-2 group"
+                    className="w-full py-3.5 md:py-4 px-4 rounded-xl font-bold text-white bg-[#14b8a6] transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl hover:shadow-green-500/40 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none disabled:shadow-none flex items-center justify-center gap-2 group"
                   >
                     {loading ? (
                       <>
@@ -302,7 +302,7 @@ const SignupPage = () => {
                 {/* Login Link */}
                 <button
                   onClick={() => navigate('/login')}
-                  className="w-full py-3.5 md:py-4 px-4 rounded-xl font-bold text-slate-900 dark:text-white bg-[#ED9A58] transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg"
+                  className="w-full py-3.5 md:py-4 px-4 rounded-xl font-bold text-slate-900 dark:text-white bg-[#14b8a6] transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg"
                 >
                   Sign In Instead
                 </button>

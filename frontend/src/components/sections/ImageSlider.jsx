@@ -115,7 +115,7 @@ const ImageSlider = () => {
                 className="w-full h-full object-cover"
               />
               {/* Gradient Overlay */}
-              <div className="absolute inset-0 bg-[#ED9A58] "></div>
+              <div className="absolute inset-0 bg-[#14b8a6] "></div>
             </div>
           </div>
         ))}
@@ -130,7 +130,7 @@ const ImageSlider = () => {
         <div className="max-w-2xl">
           {/* Category Badge */}
           <div className="inline-flex items-center gap-2 mb-4 px-4 py-2 bg-white/20 backdrop-blur-sm border border-white/30 rounded-full">
-            <div className={`w-2 h-2 rounded-full bg-[#ED9A58] ${slide.color}`}></div>
+            <div className={`w-2 h-2 rounded-full bg-[#14b8a6] ${slide.color}`}></div>
             <span className="text-sm font-bold text-white uppercase tracking-widest">
               {slide.category}
             </span>
@@ -148,7 +148,7 @@ const ImageSlider = () => {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-delayed-2">
-            <button className="px-8 py-3 bg-[#ED9A58] text-white font-bold rounded-lg transition-all duration-300 hover:shadow-lg hover:scale-105">
+            <button className="px-8 py-3 bg-[#14b8a6] text-white font-bold rounded-lg transition-all duration-300 hover:shadow-lg hover:scale-105">
               Explore Now
             </button>
             <button className="px-8 py-3 bg-white/20 hover:bg-white/30 backdrop-blur-sm border-2 border-white/40 text-white font-bold rounded-lg transition-all duration-300 hover:border-white/60">
@@ -205,7 +205,7 @@ const ImageSlider = () => {
       {/* Progress Bar */}
       <div className="absolute bottom-0 left-0 h-1 bg-white/20 w-full">
         <div
-          className={`h-full bg-[#ED9A58] transition-all duration-300`}
+          className={`h-full bg-[#14b8a6] transition-all duration-300`}
           style={{
             width: `${((currentSlide + 1) / slides.length) * 100}%`,
           }}
@@ -213,7 +213,7 @@ const ImageSlider = () => {
       </div>
 
       {/* Thumbnail Strip */}
-      <div className="absolute left-0 right-0 bottom-0 z-10 bg-[#ED9A58] p-6 hidden lg:flex gap-3 justify-center overflow-x-auto">
+      <div className="absolute left-0 right-0 bottom-0 z-10 bg-[#14b8a6] p-6 hidden lg:flex gap-3 justify-center overflow-x-auto">
         {slides.map((s, index) => (
           <button
             key={s.id}

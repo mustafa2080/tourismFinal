@@ -55,7 +55,7 @@ const InlineReviewSection = ({
     <div className="space-y-6">
       {/* Review Form - Only show if user hasn't reviewed yet */}
       {isAuthenticated && !userReview && (
-        <Card className="p-6 bg-[#ED9A58] shadow-sm hover:shadow-md transition-shadow border border-teal-200 dark:border-teal-800">
+        <Card className="p-6 bg-[#14b8a6] shadow-sm hover:shadow-md transition-shadow border border-teal-200 dark:border-teal-800">
           <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Share Your Review</h3>
           
           {/* Rating */}
@@ -107,7 +107,7 @@ const InlineReviewSection = ({
           <Button
             onClick={handleSubmit}
             disabled={isSubmitting || !rating || comment.trim().length < 10}
-            className="w-full flex items-center justify-center gap-2 bg-[#ED9A58] text-white font-semibold"
+            className="w-full flex items-center justify-center gap-2 bg-[#14b8a6] text-white font-semibold"
           >
             <FiSend size={18} />
             {isSubmitting ? 'Submitting...' : 'Submit Review'}
@@ -117,7 +117,7 @@ const InlineReviewSection = ({
 
       {/* Already Reviewed Badge */}
       {isAuthenticated && userReview && (
-        <Card className="p-4 bg-[#ED9A58] border-2 border-green-300 dark:border-green-700 rounded-xl">
+        <Card className="p-4 bg-[#14b8a6] border-2 border-green-300 dark:border-green-700 rounded-xl">
           <div className="flex items-center gap-3">
             <div className="flex-shrink-0 w-10 h-10 rounded-full bg-green-500 flex items-center justify-center">
               <FiCheck size={20} className="text-white" />

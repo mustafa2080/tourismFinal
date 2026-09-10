@@ -56,8 +56,8 @@ body {
   /* Dark Mode CSS Variables */
   .dark {
     color-scheme: dark;
-    --bg-gradient-light: #ED9A58;
-    --bg-gradient-dark: #ED9A58;
+    --bg-gradient-light: #14b8a6;
+    --bg-gradient-dark: #14b8a6;
   }
 
   html.dark {

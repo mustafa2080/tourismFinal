@@ -385,7 +385,7 @@ const DashboardPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#ED9A58] flex flex-col">
+    <div className="min-h-screen bg-[#14b8a6] flex flex-col">
       <Header />
 
       {/* Main Content */}
@@ -425,7 +425,7 @@ const DashboardPage = () => {
             {activeTab === 'overview' && (
               <div className="space-y-8">
                 {/* Welcome Header */}
-                <div className="bg-[#ED9A58] rounded-2xl p-6 md:p-8 text-white shadow-lg overflow-hidden relative group">
+                <div className="bg-[#14b8a6] rounded-2xl p-6 md:p-8 text-white shadow-lg overflow-hidden relative group">
                   <div className="absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity duration-500">
                     <div className="absolute top-0 right-0 w-96 h-96 bg-white rounded-full mix-blend-multiply filter blur-3xl animate-pulse"></div>
                     <div className="absolute bottom-0 left-0 w-96 h-96 bg-white rounded-full mix-blend-multiply filter blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
@@ -447,7 +447,7 @@ const DashboardPage = () => {
                           <p className="text-xs text-slate-500 dark:text-slate-500 mt-2">{t('dashboardPage.allTimeBookings')}</p>
                         </div>
                       </div>
-                      <div className="p-2 md:p-4 bg-[#ED9A58] rounded-xl shadow-lg group-hover:shadow-xl transition-all duration-300 transform group-hover:scale-110 flex-shrink-0">
+                      <div className="p-2 md:p-4 bg-[#14b8a6] rounded-xl shadow-lg group-hover:shadow-xl transition-all duration-300 transform group-hover:scale-110 flex-shrink-0">
                         <FiUsers size={20} className="md:w-7 md:h-7 text-white" />
                       </div>
                     </div>
@@ -462,7 +462,7 @@ const DashboardPage = () => {
                           <p className="text-xs text-slate-500 dark:text-slate-500 mt-2">{t('dashboardPage.acrossAllBookings')}</p>
                         </div>
                       </div>
-                      <div className="p-2 md:p-4 bg-[#ED9A58] rounded-xl shadow-lg group-hover:shadow-xl transition-all duration-300 transform group-hover:scale-110 flex-shrink-0">
+                      <div className="p-2 md:p-4 bg-[#14b8a6] rounded-xl shadow-lg group-hover:shadow-xl transition-all duration-300 transform group-hover:scale-110 flex-shrink-0">
                         <FiDollarSign size={20} className="md:w-7 md:h-7 text-white" />
                       </div>
                     </div>
@@ -477,7 +477,7 @@ const DashboardPage = () => {
                           <p className="text-xs text-slate-500 dark:text-slate-500 mt-2">{t('dashboardPage.nextAdventures')}</p>
                         </div>
                       </div>
-                      <div className="p-2 md:p-4 bg-[#ED9A58] rounded-xl shadow-lg group-hover:shadow-xl transition-all duration-300 transform group-hover:scale-110 flex-shrink-0">
+                      <div className="p-2 md:p-4 bg-[#14b8a6] rounded-xl shadow-lg group-hover:shadow-xl transition-all duration-300 transform group-hover:scale-110 flex-shrink-0">
                         <FiCalendar size={20} className="md:w-7 md:h-7 text-white" />
                       </div>
                     </div>
@@ -492,7 +492,7 @@ const DashboardPage = () => {
                           <p className="text-xs text-slate-500 dark:text-slate-500 mt-2">{t('dashboardPage.wonderfulMemories')}</p>
                         </div>
                       </div>
-                      <div className="p-2 md:p-4 bg-[#ED9A58] rounded-xl shadow-lg group-hover:shadow-xl transition-all duration-300 transform group-hover:scale-110 flex-shrink-0">
+                      <div className="p-2 md:p-4 bg-[#14b8a6] rounded-xl shadow-lg group-hover:shadow-xl transition-all duration-300 transform group-hover:scale-110 flex-shrink-0">
                         <FiCheck size={20} className="md:w-7 md:h-7 text-white" />
                       </div>
                     </div>
@@ -517,7 +517,7 @@ const DashboardPage = () => {
                   <div className="space-y-3">
                     {(Array.isArray(bookings) ? bookings : []).slice(0, 5).map((booking) => (
                       booking && (
-                      <div key={booking.id} className="flex items-center justify-between p-3 md:p-4 hover:bg-[#ED9A58] rounded-xl transition-all border border-slate-200 dark:border-slate-700/50 group cursor-pointer flex-col md:flex-row gap-3 md:gap-4">
+                      <div key={booking.id} className="flex items-center justify-between p-3 md:p-4 hover:bg-[#14b8a6] rounded-xl transition-all border border-slate-200 dark:border-slate-700/50 group cursor-pointer flex-col md:flex-row gap-3 md:gap-4">
                         <div className="flex items-center gap-3 md:gap-4 flex-1 min-w-0">
                           <div className={`p-2 md:p-3 rounded-xl transition-all group-hover:scale-110 flex-shrink-0 ${
                             booking.status === 'completed' ? 'bg-teal-100 dark:bg-teal-900/30' :
@@ -564,7 +564,7 @@ const DashboardPage = () => {
                 {/* Quick Actions */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                   {/* Saved Trips */}
-                  <div className="bg-[#ED9A58] rounded-2xl p-6 md:p-8 border border-orange-200 dark:border-orange-700/50 hover:shadow-lg hover:border-orange-300 dark:hover:border-orange-600 transition-all duration-300 group">
+                  <div className="bg-[#14b8a6] rounded-2xl p-6 md:p-8 border border-orange-200 dark:border-orange-700/50 hover:shadow-lg hover:border-orange-300 dark:hover:border-orange-600 transition-all duration-300 group">
                     <div className="flex items-start justify-between mb-6">
                       <div>
                         <h3 className="text-lg md:text-xl font-bold text-slate-900 dark:text-white">{t('dashboardPage.savedTripsTitle')}</h3>
@@ -582,7 +582,7 @@ const DashboardPage = () => {
                   </div>
 
                   {/* Explore More */}
-                  <div className="bg-[#ED9A58] rounded-2xl p-6 md:p-8 border border-teal-200 dark:border-teal-700/50 hover:shadow-lg hover:border-teal-300 dark:hover:border-teal-600 transition-all duration-300 group">
+                  <div className="bg-[#14b8a6] rounded-2xl p-6 md:p-8 border border-teal-200 dark:border-teal-700/50 hover:shadow-lg hover:border-teal-300 dark:hover:border-teal-600 transition-all duration-300 group">
                     <div className="flex items-start justify-between mb-6">
                       <div>
                         <h3 className="text-lg md:text-xl font-bold text-slate-900 dark:text-white">{t('dashboardPage.exploreMore')}</h3>
@@ -606,7 +606,7 @@ const DashboardPage = () => {
             {activeTab === 'bookings' && (
               <div className="space-y-6">
                 {/* Header with summary */}
-                <div className="bg-[#ED9A58] text-white rounded-xl p-4 md:p-6 mb-6">
+                <div className="bg-[#14b8a6] text-white rounded-xl p-4 md:p-6 mb-6">
                   <div className="flex flex-col gap-4">
                     <div>
                       <h2 className="text-xl md:text-2xl font-bold mb-1 md:mb-2">{t('dashboardPage.myBookings')}</h2>
@@ -662,7 +662,7 @@ const DashboardPage = () => {
                     {(Array.isArray(bookings) ? bookings : []).length === 0 && (
                       <button
                         onClick={() => navigate('/search')}
-                        className="inline-flex items-center gap-2 px-6 py-3 bg-[#ED9A58] text-white font-bold rounded-lg hover:shadow-lg transition-all"
+                        className="inline-flex items-center gap-2 px-6 py-3 bg-[#14b8a6] text-white font-bold rounded-lg hover:shadow-lg transition-all"
                       >
                         <FiSearch size={18} />
                         Explore Packages
@@ -818,7 +818,7 @@ const DashboardPage = () => {
                 ) : (
                   <>
                     {/* Stats Header */}
-                    <div className="bg-[#ED9A58] rounded-xl p-4 md:p-6 text-white">
+                    <div className="bg-[#14b8a6] rounded-xl p-4 md:p-6 text-white">
                       <div className="flex justify-between items-start flex-col md:flex-row gap-4">
                         <div>
                           <h2 className="text-xl md:text-2xl font-bold mb-1 md:mb-2">Your Statistics</h2>
@@ -844,7 +844,7 @@ const DashboardPage = () => {
                               {advancedStats?.stats?.totalBookings || 0}
                             </p>
                           </div>
-                          <div className="p-2 md:p-4 bg-[#ED9A58] rounded-xl group-hover:scale-110 transition-transform flex-shrink-0 ml-2">
+                          <div className="p-2 md:p-4 bg-[#14b8a6] rounded-xl group-hover:scale-110 transition-transform flex-shrink-0 ml-2">
                             <FiUsers size={18} className="md:w-7 md:h-7 text-white" />
                           </div>
                         </div>
@@ -859,7 +859,7 @@ const DashboardPage = () => {
                               ${(advancedStats?.stats?.totalSpent || 0).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                             </p>
                           </div>
-                          <div className="p-2 md:p-4 bg-[#ED9A58] rounded-xl group-hover:scale-110 transition-transform flex-shrink-0 ml-2">
+                          <div className="p-2 md:p-4 bg-[#14b8a6] rounded-xl group-hover:scale-110 transition-transform flex-shrink-0 ml-2">
                             <FiDollarSign size={18} className="md:w-7 md:h-7 text-white" />
                           </div>
                         </div>
@@ -874,7 +874,7 @@ const DashboardPage = () => {
                               {advancedStats?.stats?.upcomingTrips || 0}
                             </p>
                           </div>
-                          <div className="p-2 md:p-4 bg-[#ED9A58] rounded-xl group-hover:scale-110 transition-transform flex-shrink-0 ml-2">
+                          <div className="p-2 md:p-4 bg-[#14b8a6] rounded-xl group-hover:scale-110 transition-transform flex-shrink-0 ml-2">
                             <FiCalendar size={18} className="md:w-7 md:h-7 text-white" />
                           </div>
                         </div>
@@ -889,7 +889,7 @@ const DashboardPage = () => {
                               {advancedStats?.stats?.completedTrips || 0}
                             </p>
                           </div>
-                          <div className="p-2 md:p-4 bg-[#ED9A58] rounded-xl group-hover:scale-110 transition-transform flex-shrink-0 ml-2">
+                          <div className="p-2 md:p-4 bg-[#14b8a6] rounded-xl group-hover:scale-110 transition-transform flex-shrink-0 ml-2">
                             <FiCheck size={18} className="md:w-7 md:h-7 text-white" />
                           </div>
                         </div>
@@ -1025,7 +1025,7 @@ const DashboardPage = () => {
                     </p>
                     <button
                       onClick={() => navigate('/search')}
-                      className="inline-flex items-center gap-2 px-6 py-3 bg-[#ED9A58] text-white font-bold rounded-lg hover:shadow-lg transition-all"
+                      className="inline-flex items-center gap-2 px-6 py-3 bg-[#14b8a6] text-white font-bold rounded-lg hover:shadow-lg transition-all"
                     >
                       <FiSearch size={18} />
                       Explore Packages
@@ -1101,7 +1101,7 @@ const DashboardPage = () => {
                         className="bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm border border-slate-200 dark:border-slate-700 hover:shadow-lg transition-all group"
                       >
                         {/* Image */}
-                        <div className="relative h-40 md:h-48 bg-[#ED9A58] overflow-hidden">
+                        <div className="relative h-40 md:h-48 bg-[#14b8a6] overflow-hidden">
                           {imageUrl ? (
                             <img
                               src={imageUrl}
@@ -1156,7 +1156,7 @@ const DashboardPage = () => {
                           {/* Action Button */}
                           <button
                             onClick={() => navigate(`/package/${item.id}`)}
-                            className="w-full flex items-center justify-center gap-1.5 md:gap-2 px-3 md:px-4 py-2 md:py-3 bg-[#ED9A58] text-white font-bold rounded-lg transition-all hover:shadow-lg text-sm md:text-base"
+                            className="w-full flex items-center justify-center gap-1.5 md:gap-2 px-3 md:px-4 py-2 md:py-3 bg-[#14b8a6] text-white font-bold rounded-lg transition-all hover:shadow-lg text-sm md:text-base"
                           >
                             <span>View Details</span>
                             <FiExternalLink size={14} className="md:w-4 md:h-4" />
@@ -1174,7 +1174,7 @@ const DashboardPage = () => {
             {activeTab === 'profile' && (
               <div className="max-w-5xl space-y-4 md:space-y-6">
                 {/* Premium Profile Header */}
-                <div className="relative overflow-hidden rounded-2xl bg-[#ED9A58] shadow-xl">
+                <div className="relative overflow-hidden rounded-2xl bg-[#14b8a6] shadow-xl">
                   {/* Decorative background elements */}
                   <div className="absolute inset-0 opacity-10">
                     <div className="absolute top-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl transform translate-x-1/3 -translate-y-1/3"></div>
@@ -1186,13 +1186,13 @@ const DashboardPage = () => {
                       {/* Avatar Section with Badge */}
                       <div className="relative flex-shrink-0 group">
                         <div className="relative w-28 md:w-32 lg:w-40 h-28 md:h-32 lg:h-40 rounded-3xl overflow-hidden">
-                          <div className="absolute inset-0 bg-[#ED9A58] rounded-3xl border-2 md:border-4 border-white/40 backdrop-blur-sm"></div>
+                          <div className="absolute inset-0 bg-[#14b8a6] rounded-3xl border-2 md:border-4 border-white/40 backdrop-blur-sm"></div>
                           {avatarPreview ? (
                             <img src={avatarPreview} alt="Avatar" className="w-full h-full object-cover" />
                           ) : user?.avatar ? (
                             <img src={user.avatar} alt="Avatar" className="w-full h-full object-cover" />
                           ) : (
-                            <div className="w-full h-full bg-[#ED9A58] flex items-center justify-center">
+                            <div className="w-full h-full bg-[#14b8a6] flex items-center justify-center">
                               <FiUser size={56} className="md:w-16 md:h-16 lg:w-20 lg:h-20 text-white/80" />
                             </div>
                           )}
@@ -1282,7 +1282,7 @@ const DashboardPage = () => {
                     {!isEditingProfile && (
                       <button
                         onClick={() => setIsEditingProfile(true)}
-                        className="hidden sm:flex items-center gap-2 px-4 md:px-6 py-2 md:py-3 bg-[#ED9A58] text-white font-bold rounded-lg transition-all hover:shadow-lg hover:scale-105 text-sm md:text-base flex-shrink-0"
+                        className="hidden sm:flex items-center gap-2 px-4 md:px-6 py-2 md:py-3 bg-[#14b8a6] text-white font-bold rounded-lg transition-all hover:shadow-lg hover:scale-105 text-sm md:text-base flex-shrink-0"
                       >
                         <FiEdit2 size={16} className="md:w-4.5 md:h-4.5" />
                         <span>{t('myProfilePage.editProfile')}</span>
@@ -1355,7 +1355,7 @@ const DashboardPage = () => {
 
                     {/* Account Info Grid */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-6 pt-4 md:pt-8 border-t border-slate-200 dark:border-slate-700">
-                      <div className="bg-[#ED9A58] rounded-xl p-4 md:p-5 border border-green-200 dark:border-green-800/50">
+                      <div className="bg-[#14b8a6] rounded-xl p-4 md:p-5 border border-green-200 dark:border-green-800/50">
                         <div className="flex items-center gap-2 md:gap-3 mb-1.5 md:mb-2">
                           <div className="w-8 md:w-10 h-8 md:h-10 rounded-full bg-green-500/20 flex items-center justify-center flex-shrink-0">
                             <span className="text-lg">✓</span>
@@ -1367,7 +1367,7 @@ const DashboardPage = () => {
                         </p>
                       </div>
 
-                      <div className="bg-[#ED9A58] rounded-xl p-4 md:p-5 border border-teal-200 dark:border-teal-800/50">
+                      <div className="bg-[#14b8a6] rounded-xl p-4 md:p-5 border border-teal-200 dark:border-teal-800/50">
                         <div className="flex items-center gap-2 md:gap-3 mb-1.5 md:mb-2">
                           <div className="w-8 md:w-10 h-8 md:h-10 rounded-full bg-teal-500/20 flex items-center justify-center flex-shrink-0">
                             <span className="text-lg">📅</span>
@@ -1394,7 +1394,7 @@ const DashboardPage = () => {
                           <button
                             onClick={handleSaveProfile}
                             disabled={isSavingProfile}
-                            className="flex-1 flex items-center justify-center gap-2 px-4 md:px-6 py-2.5 md:py-3.5 bg-[#ED9A58] text-white font-bold rounded-xl transition-all hover:shadow-lg hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed active:scale-95 group text-sm md:text-base"
+                            className="flex-1 flex items-center justify-center gap-2 px-4 md:px-6 py-2.5 md:py-3.5 bg-[#14b8a6] text-white font-bold rounded-xl transition-all hover:shadow-lg hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed active:scale-95 group text-sm md:text-base"
                           >
                             {isSavingProfile ? (
                               <>
@@ -1426,7 +1426,7 @@ const DashboardPage = () => {
                         <>
                           <button
                             onClick={() => setIsEditingProfile(true)}
-                            className="sm:hidden flex-1 flex items-center justify-center gap-2 px-4 py-2.5 md:py-3 bg-[#ED9A58] text-white font-bold rounded-xl transition-all hover:shadow-lg active:scale-95 group text-sm md:text-base"
+                            className="sm:hidden flex-1 flex items-center justify-center gap-2 px-4 py-2.5 md:py-3 bg-[#14b8a6] text-white font-bold rounded-xl transition-all hover:shadow-lg active:scale-95 group text-sm md:text-base"
                           >
                             <FiEdit2 size={16} className="md:w-4.5 md:h-4.5 group-hover:scale-110 transition-transform" />
                             <span>Edit Profile</span>
@@ -1436,7 +1436,7 @@ const DashboardPage = () => {
                               logout();
                               navigate('/login');
                             }}
-                            className="flex-1 flex items-center justify-center gap-2 px-4 md:px-6 py-2.5 md:py-3.5 bg-[#ED9A58] text-white font-bold rounded-xl transition-all hover:shadow-lg hover:scale-105 active:scale-95 group text-sm md:text-base"
+                            className="flex-1 flex items-center justify-center gap-2 px-4 md:px-6 py-2.5 md:py-3.5 bg-[#14b8a6] text-white font-bold rounded-xl transition-all hover:shadow-lg hover:scale-105 active:scale-95 group text-sm md:text-base"
                           >
                             <FiLogOut size={16} className="md:w-5 md:h-5 group-hover:scale-110 transition-transform" />
                             <span>Logout</span>
@@ -1477,7 +1477,7 @@ const DashboardPage = () => {
                 </div>
 
                 {/* Danger Zone */}
-                <div className="bg-[#ED9A58] border-2 border-red-200 dark:border-red-800/50 rounded-2xl p-4 md:p-6 shadow-lg">
+                <div className="bg-[#14b8a6] border-2 border-red-200 dark:border-red-800/50 rounded-2xl p-4 md:p-6 shadow-lg">
                   <div className="flex items-start gap-3 md:gap-4">
                     <div className="w-10 md:w-12 h-10 md:h-12 rounded-lg bg-red-100 dark:bg-red-900/30 flex items-center justify-center flex-shrink-0">
                       <span className="text-lg md:text-2xl">⚠️</span>

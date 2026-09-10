@@ -399,7 +399,7 @@ export function BlogPage() {
                   <tr key={post.id} className="hover:bg-slate-50 dark:hover:bg-slate-700/30 transition-colors">
                     <td className="px-5 py-3">
                       <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-lg bg-[#ED9A58] flex-shrink-0 overflow-hidden flex items-center justify-center text-white font-bold">
+                        <div className="w-10 h-10 rounded-lg bg-[#14b8a6] flex-shrink-0 overflow-hidden flex items-center justify-center text-white font-bold">
                           {post.featured_image ? (
                             <img src={post.featured_image} alt="" className="w-full h-full object-cover" />
                           ) : (
