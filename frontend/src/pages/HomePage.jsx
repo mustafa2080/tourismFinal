@@ -70,19 +70,37 @@ const HomePage = () => {
       {
         title: t('home.title'),
         subtitle: t('home.subtitle'),
-        image: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=1200&h=700&fit=crop&q=75&auto=format',
+        image: '/slider/1.jpg',
         color: ' ',
       },
       {
         title: t('home.title'),
         subtitle: t('home.subtitle'),
-        image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&h=700&fit=crop&q=75&auto=format',
+        image: '/slider/2.jpg',
+        color: ' ',
+      },
+      {
+        title: t('home.title'),
+        subtitle: t('home.subtitle'),
+        image: '/slider/3.jpg',
+        color: ' ',
+      },
+      {
+        title: t('home.title'),
+        subtitle: t('home.subtitle'),
+        image: '/slider/4.jpg',
+        color: ' ',
+      },
+      {
+        title: t('home.title'),
+        subtitle: t('home.subtitle'),
+        image: '/slider/5.jpg',
         color: ' ',
       },
       {
         title: t('home.becomeGuide'),
         subtitle: t('home.becomeGuideDesc'),
-        image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&h=700&fit=crop&q=75&auto=format',
+        image: '/slider/6.jpg',
         color: ' ',
       },
     ]);
