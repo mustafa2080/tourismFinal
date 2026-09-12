@@ -1,14 +1,14 @@
 /* POLICY PAGE STYLES */
 
 .policy-page {
-  background: #ED9A58;
+  background: #0d9488;
   min-height: 100vh;
   padding: 40px 20px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .policy-header {
-  background: #ED9A58;
+  background: #0d9488;
   color: white;
   padding: 60px 40px;
   border-radius: 12px;
@@ -59,7 +59,7 @@
 }
 
 .quick-nav {
-  background: #ED9A58;
+  background: #0d9488;
   padding: 25px;
   border-radius: 8px;
   margin-bottom: 30px;
@@ -404,7 +404,7 @@
 .image-placeholder {
   width: 100%;
   height: 200px;
-  background: #ED9A58;
+  background: #0d9488;
   border-radius: 6px;
   display: flex;
   align-items: center;
@@ -473,7 +473,7 @@
 
 .mention-badge {
   padding: 12px 20px;
-  background: #ED9A58;
+  background: #0d9488;
   color: white;
   border-radius: 6px;
   font-weight: 600;
@@ -496,7 +496,7 @@
 
 .stat-box {
   padding: 30px;
-  background: #ED9A58;
+  background: #0d9488;
   border-radius: 8px;
   border: 2px solid rgba(102, 126, 234, 0.3);
   text-align: center;
@@ -576,7 +576,7 @@
 
 /* NEWSLETTER */
 .newsletter {
-  background: #ED9A58;
+  background: #0d9488;
   border: 2px solid rgba(102, 126, 234, 0.3);
   text-align: center;
 }

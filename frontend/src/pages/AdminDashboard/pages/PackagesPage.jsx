@@ -844,7 +844,7 @@ function PackagesPage() {
  <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
  <div>
  <h1 className="text-2xl sm:text-3xl lg:text-5xl font-bold text-slate-900 dark:text-white flex items-center gap-3">
- <div className="p-2 sm:p-3 bg-[#ED9A58] rounded-xl shadow-lg flex-shrink-0">
+ <div className="p-2 sm:p-3 bg-[#0d9488] rounded-xl shadow-lg flex-shrink-0">
  <MdTour className="text-white" size={24} />
  </div>
  Manage Packages
@@ -855,7 +855,7 @@ function PackagesPage() {
  </div>
  <button
  onClick={handleCreatePackage}
- className="flex items-center justify-center gap-2 px-6 py-3 bg-[#ED9A58] text-white rounded-xl hover:shadow-lg transition-all font-semibold shadow-lg transform hover:scale-105 "
+ className="flex items-center justify-center gap-2 px-6 py-3 bg-[#0d9488] text-white rounded-xl hover:shadow-lg transition-all font-semibold shadow-lg transform hover:scale-105 "
  >
  <FiPlus size={22} />
  <span>Add New Package</span>
@@ -891,13 +891,13 @@ function PackagesPage() {
  <p className="text-xs text-green-600 dark:text-green-400 mt-2">Average price</p>
  </div>
 
- <div className=" rounded-2xl p-6 border border-orange-200 dark:border-orange-700/50 shadow-lg hover:shadow-xl transition-all">
+ <div className=" rounded-2xl p-6 border border-amber-200 dark:border-teal-700/50 shadow-lg hover:shadow-xl transition-all">
  <div className="flex items-center justify-between mb-2">
- <p className="text-orange-600 dark:text-orange-400 text-sm font-bold uppercase tracking-wide">Average Rating</p>
- <FiStar className="text-orange-600 dark:text-orange-400" size={24} />
+ <p className="text-teal-600 dark:text-teal-500 text-sm font-bold uppercase tracking-wide">Average Rating</p>
+ <FiStar className="text-teal-600 dark:text-teal-500" size={24} />
  </div>
- <p className="text-3xl font-bold text-orange-900 dark:text-orange-100">{stats.avgRating} stars</p>
- <p className="text-xs text-orange-600 dark:text-orange-400 mt-2">Overall rating</p>
+ <p className="text-3xl font-bold text-teal-900 dark:text-amber-100">{stats.avgRating} stars</p>
+ <p className="text-xs text-teal-600 dark:text-teal-500 mt-2">Overall rating</p>
  </div>
  </div>
 
@@ -988,7 +988,7 @@ function PackagesPage() {
  key={pkg.id}
  className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-700 overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 group"
  >
- <div className="relative h-48 bg-[#ED9A58] overflow-hidden">
+ <div className="relative h-48 bg-[#0d9488] overflow-hidden">
  {pkg.images && pkg.images.length > 0 ? (
  <img 
  src={(() => {
@@ -1074,7 +1074,7 @@ function PackagesPage() {
  </button>
  <button
  onClick={() => handleEditPackage(pkg)}
- className="flex-1 flex items-center justify-center gap-2 px-3 py-2.5 rounded-xl bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400 hover:bg-orange-200 dark:hover:bg-orange-900/50 transition-all text-sm font-semibold hover:shadow-lg"
+ className="flex-1 flex items-center justify-center gap-2 px-3 py-2.5 rounded-xl bg-amber-100 dark:bg-teal-900/30 text-teal-700 dark:text-teal-500 hover:bg-amber-200 dark:hover:bg-teal-900/50 transition-all text-sm font-semibold hover:shadow-lg"
  >
  <FiEdit2 size={16} />
  Edit
@@ -1109,7 +1109,7 @@ function PackagesPage() {
  <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl max-w-2xl w-full border border-slate-200 dark:border-slate-700 overflow-hidden max-h-[90vh] overflow-y-auto">
  
  {/* Modal Header */}
- <div className="flex items-center justify-between p-4 sm:p-6 lg:p-8 bg-[#ED9A58] text-white sticky top-0 z-10">
+ <div className="flex items-center justify-between p-4 sm:p-6 lg:p-8 bg-[#0d9488] text-white sticky top-0 z-10">
  <div className="flex items-center gap-3 min-w-0">
  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-white/20 flex items-center justify-center backdrop-blur-sm flex-shrink-0">
  <MdTour size={22} />
@@ -1256,7 +1256,7 @@ function PackagesPage() {
               {/* Category */}
               <div>
                 <label className="block text-sm font-bold text-slate-900 dark:text-white mb-3 flex items-center gap-2">
-                  <FiTag size={18} className="text-orange-600" />
+                  <FiTag size={18} className="text-teal-600" />
                   Category *
                 </label>
                 <select
@@ -1365,7 +1365,7 @@ function PackagesPage() {
               {/* Short Description */}
               <div>
                 <label className="block text-sm font-bold text-slate-900 dark:text-white mb-3 flex items-center gap-2">
-                  <FiAlertCircle size={18} className="text-orange-600" />
+                  <FiAlertCircle size={18} className="text-teal-600" />
                   Short Description
                 </label>
                 <textarea
@@ -1383,7 +1383,7 @@ function PackagesPage() {
               {/* Long Description */}
               <div>
                 <label className="block text-sm font-bold text-slate-900 dark:text-white mb-3 flex items-center gap-2">
-                  <FiAlertCircle size={18} className="text-orange-600" />
+                  <FiAlertCircle size={18} className="text-teal-600" />
                   Detailed Description
                 </label>
                 <textarea
@@ -1596,7 +1596,7 @@ function PackagesPage() {
                 <button
                   onClick={handleSavePackage}
                   disabled={submitting}
-                  className="flex-1 px-6 py-3 rounded-xl bg-[#ED9A58] text-white transition-all font-bold shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                  className="flex-1 px-6 py-3 rounded-xl bg-[#0d9488] text-white transition-all font-bold shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 >
                   {submitting ? (
                     <>

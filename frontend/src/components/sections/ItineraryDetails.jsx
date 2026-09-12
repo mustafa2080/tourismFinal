@@ -254,7 +254,7 @@ const ItineraryDayItem = ({ day, isExpanded, onToggle }) => {
  <div className="flex items-center justify-between">
  <div className="text-left">
  <div className="flex items-center gap-3">
- <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[#ED9A58] flex items-center justify-center text-white font-bold text-sm">
+ <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[#0d9488] flex items-center justify-center text-white font-bold text-sm">
  {day.day_number || day.day}
  </div>
  <div>
@@ -334,7 +334,7 @@ const ItineraryDayItem = ({ day, isExpanded, onToggle }) => {
               {(day.display_meals || day.meals) && (
                 <div>
                   <h4 className="font-semibold text-slate-900 dark:text-white mb-2 flex items-center gap-2">
-                    <FiCheck size={16} className="text-orange-500" />
+                    <FiCheck size={16} className="text-teal-500" />
                     {t('itinerary.meals', 'Meals')}
                   </h4>
                   <div className="flex flex-wrap gap-2">
@@ -355,7 +355,7 @@ const ItineraryDayItem = ({ day, isExpanded, onToggle }) => {
               {day.image_url && (
                 <div>
                   <h4 className="font-semibold text-slate-900 dark:text-white mb-2 flex items-center gap-2">
-                    <FiImage size={16} className="text-orange-500" />
+                    <FiImage size={16} className="text-teal-500" />
                     {t('itinerary.image', 'Image')}
                   </h4>
                   <div className="rounded-lg overflow-hidden bg-slate-200 dark:bg-slate-800">
@@ -404,7 +404,7 @@ const MealBadge = ({ meal }) => {
     const lower = mealType.toLowerCase();
     if (lower.includes('breakfast')) return 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-200';
     if (lower.includes('lunch')) return 'bg-teal-100 dark:bg-teal-900/30 text-teal-800 dark:text-teal-200';
-    if (lower.includes('dinner')) return 'bg-orange-100 dark:bg-orange-900/30 text-orange-800 dark:text-orange-200';
+    if (lower.includes('dinner')) return 'bg-amber-100 dark:bg-teal-900/30 text-teal-800 dark:text-amber-200';
     return 'bg-slate-100 dark:bg-slate-700 text-slate-800 dark:text-slate-200';
   };
 
@@ -430,7 +430,7 @@ const ItineraryTimeline = ({ days }) => {
  {days.map((day, index) => (
  <div key={day.id || index} className="flex flex-col items-center">
  {/* Day Marker */}
- <div className="w-8 h-8 rounded-full bg-[#ED9A58] flex items-center justify-center text-white text-xs font-bold mb-2">
+ <div className="w-8 h-8 rounded-full bg-[#0d9488] flex items-center justify-center text-white text-xs font-bold mb-2">
  {day.day_number || day.day}
  </div>
 

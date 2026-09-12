@@ -178,7 +178,7 @@ export function ReviewsPage() {
   };
 
   const StatCard = ({ icon: Icon, label, value, color }) => (
-    <div className={`bg-[#ED9A58] ${color} rounded-xl shadow-lg p-6 text-white border border-opacity-20 group hover:shadow-xl transition-all duration-300 transform hover:scale-105`}>
+    <div className={`bg-[#0d9488] ${color} rounded-xl shadow-lg p-6 text-white border border-opacity-20 group hover:shadow-xl transition-all duration-300 transform hover:scale-105`}>
       <div className="flex items-start justify-between">
         <div>
           <p className="text-white/80 text-sm font-medium mb-2">{label}</p>
@@ -197,7 +197,7 @@ export function ReviewsPage() {
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <div>
           <h1 className="text-2xl sm:text-3xl lg:text-5xl font-bold text-slate-900 dark:text-white flex items-center gap-3">
-            <div className="p-2 sm:p-3 bg-[#ED9A58] rounded-xl shadow-lg flex-shrink-0">
+            <div className="p-2 sm:p-3 bg-[#0d9488] rounded-xl shadow-lg flex-shrink-0">
               <MdOutlineReviews className="text-white" size={24} />
             </div>
             Reviews Management
@@ -237,7 +237,7 @@ export function ReviewsPage() {
       </div>
 
       {/* Search & Filter Section */}
-      <div className="bg-[#ED9A58] rounded-xl shadow-lg p-6 border border-slate-200 dark:border-slate-700">
+      <div className="bg-[#0d9488] rounded-xl shadow-lg p-6 border border-slate-200 dark:border-slate-700">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* Search */}
           <div className="relative">
@@ -293,7 +293,7 @@ export function ReviewsPage() {
                 <div className="flex-1">
                   {/* User Info & Rating */}
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="w-12 h-12 rounded-full bg-[#ED9A58] flex items-center justify-center text-white font-bold shadow-lg">
+                    <div className="w-12 h-12 rounded-full bg-[#0d9488] flex items-center justify-center text-white font-bold shadow-lg">
                       {(review.user?.name || review.user?.fullName || 'U')?.charAt(0).toUpperCase()}
                     </div>
                     <div className="flex-1">
@@ -334,7 +334,7 @@ export function ReviewsPage() {
                 <div className="flex flex-col items-end gap-3">
                   <button
                     onClick={() => handleRejectReview(review.id)}
-                    className="px-4 py-2 bg-[#ED9A58] text-white rounded-lg text-sm font-bold transition-all shadow-md hover:shadow-lg flex items-center gap-2"
+                    className="px-4 py-2 bg-[#0d9488] text-white rounded-lg text-sm font-bold transition-all shadow-md hover:shadow-lg flex items-center gap-2"
                   >
                     <FiX size={16} />
                     Delete
@@ -346,7 +346,7 @@ export function ReviewsPage() {
               <div className="flex justify-end pt-4 border-t border-slate-200 dark:border-slate-700">
                 <button
                   onClick={() => handleViewReview(review)}
-                  className="px-6 py-2.5 rounded-lg bg-[#ED9A58] text-white font-semibold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+                  className="px-6 py-2.5 rounded-lg bg-[#0d9488] text-white font-semibold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
                 >
                   Review Details
                 </button>
@@ -394,7 +394,7 @@ export function ReviewsPage() {
         <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
           <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl max-w-3xl w-full border border-slate-200 dark:border-slate-700 overflow-hidden animate-in fade-in scale-95 duration-200">
             {/* Modal Header */}
-            <div className="flex items-center justify-between p-4 sm:p-6 lg:p-8 bg-[#ED9A58] text-white">
+            <div className="flex items-center justify-between p-4 sm:p-6 lg:p-8 bg-[#0d9488] text-white">
               <div className="flex items-center gap-3 min-w-0">
                 <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
                   <MdOutlineReviews size={22} />
@@ -430,7 +430,7 @@ export function ReviewsPage() {
               </div>
 
               {/* Tour Information */}
-              <div className="bg-orange-50 dark:bg-orange-900/20 rounded-xl p-4 sm:p-6 border border-orange-200 dark:border-orange-800">
+              <div className="bg-amber-50 dark:bg-teal-900/20 rounded-xl p-4 sm:p-6 border border-amber-200 dark:border-teal-800">
                 <h3 className="font-bold text-slate-900 dark:text-white mb-4">Tour Information</h3>
                 <p className="text-lg font-semibold text-slate-900 dark:text-white">{selectedReview.package?.title || '-'}</p>
               </div>
@@ -469,14 +469,14 @@ export function ReviewsPage() {
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 p-4 sm:p-6 lg:p-8 bg-slate-50 dark:bg-slate-700/50 border-t border-slate-200 dark:border-slate-700">
               <button
                 onClick={() => handleApproveReview(selectedReview.id)}
-                className="flex-1 px-6 py-3 rounded-lg bg-[#ED9A58] text-white transition-all font-bold flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform hover:scale-105"
+                className="flex-1 px-6 py-3 rounded-lg bg-[#0d9488] text-white transition-all font-bold flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform hover:scale-105"
               >
                 <FiCheckCircle size={20} />
                 Approve
               </button>
               <button
                 onClick={() => handleRejectReview(selectedReview.id)}
-                className="flex-1 px-6 py-3 rounded-lg bg-[#ED9A58] text-white transition-all font-bold flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform hover:scale-105"
+                className="flex-1 px-6 py-3 rounded-lg bg-[#0d9488] text-white transition-all font-bold flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform hover:scale-105"
               >
                 <FiX size={20} />
                 Reject

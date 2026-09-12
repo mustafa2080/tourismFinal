@@ -30,23 +30,23 @@ const PrivacyPolicyPage = () => {
 
   return (
     <MainLayout>
-      <div className="min-h-screen bg-[#ED9A58] dark:bg-[#ED9A58] ">
+      <div className="min-h-screen bg-white dark:bg-slate-900 ">
         {/* Progress Bar */}
       <div 
-        className="fixed top-0 left-0 h-1 bg-[#ED9A58] z-50 transition-all duration-300 shadow-lg shadow-orange-500/50" 
+        className="fixed top-0 left-0 h-1 bg-[#0d9488] z-50 transition-all duration-300 shadow-lg shadow-teal-500/50" 
         style={{ width: `${scrollProgress * 100}%` }}
       ></div>
 
       {/* Animated Background */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 right-0 -translate-y-1/2 translate-x-1/4 w-80 h-80 bg-[#ED9A58] rounded-full mix-blend-screen filter blur-3xl opacity-20 animate-pulse"></div>
-        <div className="absolute bottom-0 -left-40 w-80 h-80 bg-[#ED9A58] rounded-full mix-blend-screen filter blur-3xl opacity-20 animate-pulse" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-20 right-0 -translate-y-1/2 translate-x-1/4 w-80 h-80 bg-[#0d9488] rounded-full mix-blend-screen filter blur-3xl opacity-20 animate-pulse"></div>
+        <div className="absolute bottom-0 -left-40 w-80 h-80 bg-[#0d9488] rounded-full mix-blend-screen filter blur-3xl opacity-20 animate-pulse" style={{ animationDelay: '2s' }}></div>
       </div>
 
       {/* Header */}
-      <div className="relative pt-20 pb-32 px-4 sm:px-6 lg:px-8 bg-[#ED9A58] ">
+      <div className="relative pt-20 pb-32 px-4 sm:px-6 lg:px-8 bg-[#0d9488] ">
         <div className="relative max-w-4xl mx-auto text-center">
-          <div className="inline-flex items-center justify-center w-20 h-20 bg-[#ED9A58] rounded-2xl mb-8 mx-auto shadow-2xl shadow-orange-500/40 ring-4 ring-orange-300/30 dark:ring-orange-400/30">
+          <div className="inline-flex items-center justify-center w-20 h-20 bg-[#0d9488] rounded-2xl mb-8 mx-auto shadow-2xl shadow-teal-500/40 ring-4 ring-amber-300/30 dark:ring-teal-500/30">
             <Lock size={40} className="text-white" />
           </div>
 
@@ -54,11 +54,11 @@ const PrivacyPolicyPage = () => {
             Privacy Policy
           </h1>
 
-          <p className="text-lg sm:text-xl text-slate-700 dark:text-orange-100 mb-8 max-w-2xl mx-auto leading-relaxed font-medium">
+          <p className="text-lg sm:text-xl text-slate-700 dark:text-amber-100 mb-8 max-w-2xl mx-auto leading-relaxed font-medium">
             Your privacy is our priority. We're transparent about how we collect, use, and protect your data.
           </p>
 
-          <div className="flex items-center justify-center gap-2 text-slate-600 dark:text-orange-200 text-sm font-semibold">
+          <div className="flex items-center justify-center gap-2 text-slate-600 dark:text-amber-200 text-sm font-semibold">
             <Clock size={16} />
             <span>Last updated: November 2024</span>
           </div>
@@ -71,8 +71,8 @@ const PrivacyPolicyPage = () => {
           {/* Sidebar Navigation */}
           <div className="lg:col-span-1">
             <div className="sticky top-24">
-              <div className="bg-white dark:bg-slate-800/50 backdrop-blur-xl rounded-2xl p-5 border-2 border-orange-200 dark:border-orange-500/30 shadow-xl dark:shadow-orange-900/30">
-                <p className="text-xs uppercase tracking-widest text-orange-700 dark:text-orange-300 font-bold mb-4">
+              <div className="bg-white dark:bg-slate-800/50 backdrop-blur-xl rounded-2xl p-5 border-2 border-amber-200 dark:border-teal-500/30 shadow-xl dark:shadow-teal-900/30">
+                <p className="text-xs uppercase tracking-widest text-teal-700 dark:text-amber-300 font-bold mb-4">
                   Quick Links
                 </p>
                 <div className="space-y-2">
@@ -86,8 +86,8 @@ const PrivacyPolicyPage = () => {
                         onClick={() => setActiveSection(section.id)}
                         className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-300 text-sm font-semibold group ${
                           isActive
-                            ? 'bg-gradient-to-r from-teal-500 to-orange-600 text-white shadow-lg shadow-orange-500/30'
-                            : 'text-slate-700 dark:text-orange-200 hover:bg-orange-100 dark:hover:bg-orange-900/40 hover:text-orange-800 dark:hover:text-white'
+                            ? 'bg-gradient-to-r from-teal-500 to-teal-600 text-white shadow-lg shadow-teal-500/30'
+                            : 'text-slate-700 dark:text-amber-200 hover:bg-amber-100 dark:hover:bg-teal-900/40 hover:text-teal-800 dark:hover:text-white'
                         }`}
                       >
                         <Icon size={18} className="flex-shrink-0" />
@@ -109,10 +109,10 @@ const PrivacyPolicyPage = () => {
                   <FileText size={32} className="text-teal-600" />
                   Introduction
                 </h2>
-                <p className="text-slate-700 dark:text-orange-100 leading-relaxed mb-4 text-lg font-medium">
+                <p className="text-slate-700 dark:text-amber-100 leading-relaxed mb-4 text-lg font-medium">
                   At TourHub, we are committed to protecting your privacy and ensuring you have a positive experience on our platform. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website and use our services.
                 </p>
-                <p className="text-slate-600 dark:text-orange-200 leading-relaxed text-lg">
+                <p className="text-slate-600 dark:text-amber-200 leading-relaxed text-lg">
                   Please read this privacy policy carefully. If you do not agree with our policies and practices, please do not use our services.
                 </p>
               </div>
@@ -149,18 +149,18 @@ const PrivacyPolicyPage = () => {
                     </ul>
                   </div>
 
-                  <div className="bg-orange-50 dark:bg-orange-900/20 rounded-xl p-6 border-2 border-orange-300 dark:border-orange-600/50">
-                    <h3 className="text-xl font-bold text-orange-900 dark:text-orange-100 mb-4">⚙️ Information Collected Automatically</h3>
+                  <div className="bg-amber-50 dark:bg-teal-900/20 rounded-xl p-6 border-2 border-amber-300 dark:border-teal-600/50">
+                    <h3 className="text-xl font-bold text-teal-900 dark:text-amber-100 mb-4">⚙️ Information Collected Automatically</h3>
                     <ul className="space-y-3">
-                      <li className="flex gap-3 text-orange-800 dark:text-orange-100 font-medium">
+                      <li className="flex gap-3 text-teal-800 dark:text-amber-100 font-medium">
                         <CheckCircle2 size={20} className="text-green-600 dark:text-green-400 flex-shrink-0 mt-1" />
                         <span><strong>Device Information:</strong> Browser type, IP address, device type</span>
                       </li>
-                      <li className="flex gap-3 text-orange-800 dark:text-orange-100 font-medium">
+                      <li className="flex gap-3 text-teal-800 dark:text-amber-100 font-medium">
                         <CheckCircle2 size={20} className="text-green-600 dark:text-green-400 flex-shrink-0 mt-1" />
                         <span><strong>Usage Data:</strong> Pages visited, time spent, clicks, scrolling behavior</span>
                       </li>
-                      <li className="flex gap-3 text-orange-800 dark:text-orange-100 font-medium">
+                      <li className="flex gap-3 text-teal-800 dark:text-amber-100 font-medium">
                         <CheckCircle2 size={20} className="text-green-600 dark:text-green-400 flex-shrink-0 mt-1" />
                         <span><strong>Location Data:</strong> Approximate location based on IP address (with consent)</span>
                       </li>
@@ -227,8 +227,8 @@ const PrivacyPolicyPage = () => {
                   </ul>
                 </div>
 
-                <div className="bg-orange-100 dark:bg-orange-900/30 border-2 border-orange-400 dark:border-orange-600/60 rounded-xl p-6">
-                  <p className="text-orange-900 dark:text-orange-100 font-medium">
+                <div className="bg-amber-100 dark:bg-teal-900/30 border-2 border-teal-500 dark:border-teal-600/60 rounded-xl p-6">
+                  <p className="text-teal-900 dark:text-amber-100 font-medium">
                     <strong>⚠️ Note:</strong> While we strive to protect your information, no system is 100% secure. We cannot guarantee absolute security of data transmitted over the internet.
                   </p>
                 </div>
@@ -267,7 +267,7 @@ const PrivacyPolicyPage = () => {
 
  {/* Contact Section */}
  <section className="scroll-mt-20">
- <div className="bg-[#ED9A58] backdrop-blur-xl rounded-2xl p-8 border-2 border-teal-300 dark:border-teal-600/50 shadow-2xl dark:shadow-teal-900/30">
+ <div className="bg-[#0d9488] backdrop-blur-xl rounded-2xl p-8 border-2 border-teal-300 dark:border-teal-600/50 shadow-2xl dark:shadow-teal-900/30">
  <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-6">📧 Contact Us</h2>
  <div className="grid sm:grid-cols-2 gap-4">
  {[

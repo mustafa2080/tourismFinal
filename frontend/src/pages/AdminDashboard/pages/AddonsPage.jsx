@@ -553,7 +553,7 @@ function AddonsPage() {
  </div>
  
  {/* Database Stats */}
- <div className="bg-[#ED9A58] rounded-lg p-4 border border-teal-200 dark:border-teal-700">
+ <div className="bg-[#0d9488] rounded-lg p-4 border border-teal-200 dark:border-teal-700">
  <div className="flex items-center gap-2 mb-2">
  <FiDatabase className="text-teal-600" size={18} />
  <span className="text-sm font-semibold text-slate-700 dark:text-slate-300">{t('addons.totalAddons')}</span>
@@ -561,7 +561,7 @@ function AddonsPage() {
  <p className="text-2xl font-bold text-teal-600 dark:text-teal-400">{dbStats.totalAddons}</p>
  </div>
  
- <div className="bg-[#ED9A58] rounded-lg p-4 border border-green-200 dark:border-green-700">
+ <div className="bg-[#0d9488] rounded-lg p-4 border border-green-200 dark:border-green-700">
  <div className="flex items-center gap-2 mb-2">
  <FiEye className="text-green-600" size={18} />
  <span className="text-sm font-semibold text-slate-700 dark:text-slate-300">{t('addons.available')}</span>
@@ -569,7 +569,7 @@ function AddonsPage() {
  <p className="text-2xl font-bold text-green-600 dark:text-green-400">{dbStats.availableAddons}</p>
  </div>
  
- <div className="bg-[#ED9A58] rounded-lg p-4 border border-red-200 dark:border-red-700">
+ <div className="bg-[#0d9488] rounded-lg p-4 border border-red-200 dark:border-red-700">
  <div className="flex items-center gap-2 mb-2">
  <FiX className="text-red-600" size={18} />
  <span className="text-sm font-semibold text-slate-700 dark:text-slate-300">{t('addons.unavailable')}</span>
@@ -591,7 +591,7 @@ function AddonsPage() {
         
         <button
           onClick={() => handleOpenModal('create')}
- className="flex items-center justify-center gap-2 bg-[#ED9A58] text-white px-6 py-3 rounded-xl font-semibold shadow-lg transition-all"
+ className="flex items-center justify-center gap-2 bg-[#0d9488] text-white px-6 py-3 rounded-xl font-semibold shadow-lg transition-all"
  >
  <FiPlus size={20} />
  {t('addons.addNew')}

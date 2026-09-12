@@ -66,7 +66,7 @@ const AboutPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[#ED9A58] flex flex-col">
+    <div className="min-h-screen bg-white dark:bg-slate-900 flex flex-col">
       <Header />
 
       {/* Hero Section */}
@@ -74,7 +74,7 @@ const AboutPage = () => {
         <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 dark:text-white mb-6 leading-tight">
-              {t('aboutPage.heroTitle')} <span className="bg-[#ED9A58] bg-clip-text text-transparent">Voyager Tours</span>
+              {t('aboutPage.heroTitle')} <span className="bg-[#0d9488] bg-clip-text text-transparent">Voyager Tours</span>
             </h1>
             <p className="text-lg sm:text-xl text-slate-600 dark:text-slate-300 leading-relaxed">
               {t('aboutPage.heroDescription')}
@@ -116,7 +116,7 @@ const AboutPage = () => {
               </p>
               <button
                 onClick={() => navigate('/contact')}
-                className="inline-flex items-center gap-2 px-6 py-3 bg-[#ED9A58] text-white font-semibold rounded-lg transition-all hover:shadow-lg group"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-[#0d9488] text-white font-semibold rounded-lg transition-all hover:shadow-lg group"
               >
                 {t('aboutPage.getInTouch')}
                 <FiArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
@@ -124,7 +124,7 @@ const AboutPage = () => {
             </div>
 
             <div className="relative">
-              <div className="w-full bg-[#ED9A58] rounded-2xl p-8 text-center text-white">
+              <div className="w-full bg-[#0d9488] rounded-2xl p-8 text-center text-white">
                 <BiWorld size={100} className="mx-auto mb-4 opacity-80" />
                 <h3 className="text-3xl font-bold mb-2">Travel the World</h3>
                 <p className="text-teal-100">With Confidence & Comfort</p>
@@ -149,7 +149,7 @@ const AboutPage = () => {
                   key={index}
                   className="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-sm border border-slate-200 dark:border-slate-700 hover:shadow-lg hover:scale-105 transition-all group"
                 >
-                  <div className={`w-14 h-14 rounded-lg bg-[#ED9A58] ${value.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
+                  <div className={`w-14 h-14 rounded-lg bg-[#0d9488] ${value.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
                     <Icon size={28} className="text-white" />
                   </div>
                   <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-3">
@@ -176,7 +176,7 @@ const AboutPage = () => {
             {team.map((member, index) => (
               <div
                 key={index}
-                className="bg-[#ED9A58] rounded-xl p-6 text-center hover:shadow-lg transition-all"
+                className="bg-[#0d9488] rounded-xl p-6 text-center hover:shadow-lg transition-all"
               >
                 <div className="text-6xl mb-4 flex justify-center">{member.image}</div>
                 <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2">
@@ -212,7 +212,7 @@ const AboutPage = () => {
                   t('aboutPage.moneyBackGuarantee'),
                 ].map((reason, index) => (
                   <li key={index} className="flex items-start gap-3">
-                    <div className="w-6 h-6 rounded-full bg-[#ED9A58] flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <div className="w-6 h-6 rounded-full bg-[#0d9488] flex items-center justify-center flex-shrink-0 mt-0.5">
                       <FiCheck size={16} className="text-white" />
                     </div>
                     <span className="text-slate-700 dark:text-slate-300 leading-relaxed">
@@ -223,7 +223,7 @@ const AboutPage = () => {
               </ul>
             </div>
 
-            <div className="bg-[#ED9A58] rounded-2xl p-8 text-white">
+            <div className="bg-[#0d9488] rounded-2xl p-8 text-white">
               <div className="space-y-6">
                 <div>
                   <p className="text-5xl font-bold mb-2">98%</p>
@@ -244,7 +244,7 @@ const AboutPage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-[#ED9A58] ">
+      <section className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-[#0d9488] ">
         <div className="max-w-4xl mx-auto text-center text-white">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             {t('aboutPage.readyToStart')}

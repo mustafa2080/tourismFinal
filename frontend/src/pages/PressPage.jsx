@@ -31,20 +31,20 @@ const PressPage = () => {
 
   return (
     <MainLayout>
-      <div className="min-h-screen bg-[#ED9A58] ">
+      <div className="min-h-screen bg-white dark:bg-slate-900 ">
         {/* Progress Bar */}
-      <div className="fixed top-0 left-0 h-1 bg-[#ED9A58] z-50 transition-all duration-300" style={{ width: `${scrollProgress * 100}%` }}></div>
+      <div className="fixed top-0 left-0 h-1 bg-[#0d9488] z-50 transition-all duration-300" style={{ width: `${scrollProgress * 100}%` }}></div>
 
       {/* Animated Background */}
       <div className="hidden">
         <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-96 h-96 bg-amber-500 rounded-full mix-blend-multiply filter blur-3xl opacity-15 animate-pulse"></div>
-        <div className="absolute -bottom-40 left-0 w-96 h-96 bg-orange-500 rounded-full mix-blend-multiply filter blur-3xl opacity-15 animate-pulse" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute -bottom-40 left-0 w-96 h-96 bg-teal-500 rounded-full mix-blend-multiply filter blur-3xl opacity-15 animate-pulse" style={{ animationDelay: '2s' }}></div>
       </div>
 
       {/* Header */}
-      <div className="relative pt-20 pb-32 px-4 sm:px-6 lg:px-8 bg-[#ED9A58] ">
+      <div className="relative pt-20 pb-32 px-4 sm:px-6 lg:px-8 bg-[#0d9488] ">
         <div className="relative max-w-4xl mx-auto text-center">
-          <div className="inline-flex items-center justify-center w-20 h-20 bg-[#ED9A58] rounded-2xl mb-8 mx-auto shadow-2xl">
+          <div className="inline-flex items-center justify-center w-20 h-20 bg-[#0d9488] rounded-2xl mb-8 mx-auto shadow-2xl">
             <TrendingUp size={40} className="text-white" />
           </div>
 
@@ -85,7 +85,7 @@ const PressPage = () => {
                 onClick={() => setSelectedCategory(cat)}
                 className={`px-4 py-2 rounded-lg font-medium transition-all ${
  selectedCategory === cat
- ? 'bg-[#ED9A58] text-white shadow-lg'
+ ? 'bg-[#0d9488] text-white shadow-lg'
  : 'bg-gray-100 text-gray-700 hover:bg-gray-200 border border-gray-300'
  }`}
               >

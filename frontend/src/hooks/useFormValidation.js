@@ -132,7 +132,7 @@ export const checkPasswordStrength = (password) => {
     score < 2
       ? { label: 'Weak', color: 'bg-red-500' }
       : score < 3
-        ? { label: 'Fair', color: 'bg-orange-500' }
+        ? { label: 'Fair', color: 'bg-teal-500' }
         : score < 4
           ? { label: 'Good', color: 'bg-yellow-500' }
           : score <= 5

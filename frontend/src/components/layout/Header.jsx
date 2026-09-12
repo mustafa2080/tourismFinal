@@ -304,7 +304,7 @@ const Header = () => {
                     isActive(link.path)
                       ? 'text-teal-700 dark:text-teal-400 bg-teal-50/80 dark:bg-teal-900/20 border border-teal-200/60 dark:border-teal-800/60 shadow-sm'
                       : link.highlight
-                      ? 'text-white bg-gradient-to-r from-teal-600 to-orange-600 hover:from-teal-700 hover:to-orange-700 shadow-md hover:shadow-lg hover:shadow-orange-500/20'
+                      ? 'text-white bg-gradient-to-r from-teal-600 to-teal-600 hover:from-teal-700 hover:to-teal-700 shadow-md hover:shadow-lg hover:shadow-teal-500/20'
                       : 'text-slate-600 dark:text-slate-200 hover:text-slate-950 dark:hover:text-white hover:bg-slate-100/80 dark:hover:bg-slate-800/50'
                   }`}
                 >
@@ -365,7 +365,7 @@ const Header = () => {
  className="fixed w-80 bg-white dark:bg-slate-800 rounded-xl shadow-2xl shadow-slate-900/10 dark:shadow-black/40 border border-slate-200/80 dark:border-slate-700/80 overflow-hidden z-[9999] animate-in fade-in slide-in-from-top-2 duration-200"
  style={{ top: notifMenuPosition.top, right: notifMenuPosition.right }}
  >
- <div className="px-4 py-3 border-b border-slate-200 dark:border-slate-700 bg-[#ED9A58] ">
+ <div className="px-4 py-3 border-b border-slate-200 dark:border-slate-700 bg-[#0d9488] ">
  <div className="flex items-center justify-between">
  <h3 className="font-semibold text-slate-900 dark:text-white text-sm">Notifications</h3>
  {unreadCount > 0 && (
@@ -473,7 +473,7 @@ const Header = () => {
  className="w-8 lg:w-9 h-8 lg:h-9 rounded-full object-cover group-hover:shadow-lg transition-all duration-300"
  />
  ) : (
- <div className="w-8 lg:w-9 h-8 lg:h-9 bg-[#ED9A58] rounded-full flex items-center justify-center text-white text-xs font-bold">
+ <div className="w-8 lg:w-9 h-8 lg:h-9 bg-[#0d9488] rounded-full flex items-center justify-center text-white text-xs font-bold">
  {user.name?.[0]?.toUpperCase() || 'U'}
                     </div>
                   )}
@@ -497,7 +497,7 @@ const Header = () => {
  className="fixed w-64 bg-white dark:bg-slate-800 rounded-xl shadow-2xl shadow-slate-900/10 dark:shadow-black/40 border border-slate-200/80 dark:border-slate-700/80 overflow-hidden z-[9999] animate-in fade-in slide-in-from-top-2 duration-200"
  style={{ top: userMenuPosition.top, right: userMenuPosition.right }}
  >
- <div className="px-4 py-3 border-b border-slate-200 dark:border-slate-700 bg-[#ED9A58] ">
+ <div className="px-4 py-3 border-b border-slate-200 dark:border-slate-700 bg-[#0d9488] ">
  <div className="flex items-center gap-3">
  {profileImageUrl ? (
  <img 
@@ -594,7 +594,7 @@ const Header = () => {
  className="w-7 h-7 rounded-full object-cover border-2 border-slate-300 dark:border-slate-600"
  />
  ) : (
- <div className="w-7 h-7 bg-[#ED9A58] rounded-full flex items-center justify-center text-white text-xs font-bold">
+ <div className="w-7 h-7 bg-[#0d9488] rounded-full flex items-center justify-center text-white text-xs font-bold">
  {user.name?.[0]?.toUpperCase() || 'U'}
                     </div>
                   )}
@@ -612,13 +612,13 @@ const Header = () => {
  <span className="hidden lg:inline">Login</span>
  </Button>
 
- <div className="hidden lg:block h-6 w-px bg-[#ED9A58] " />
+ <div className="hidden lg:block h-6 w-px bg-[#0d9488] " />
 
  <Button
  variant="primary"
  size="sm"
  onClick={() => navigate('/signup')}
- className="flex items-center gap-1.5 text-xs lg:text-sm font-bold bg-[#ED9A58] text-white shadow-md hover:shadow-lg hover:shadow-orange-500/25 transition-all duration-300 px-3.5 lg:px-4.5 py-2 rounded-full"
+ className="flex items-center gap-1.5 text-xs lg:text-sm font-bold bg-[#0d9488] text-white shadow-md hover:shadow-lg hover:shadow-teal-500/25 transition-all duration-300 px-3.5 lg:px-4.5 py-2 rounded-full"
  >
  <MdOutlinePersonAdd size={16} className="flex-shrink-0" />
  <span>Sign Up</span>
@@ -656,7 +656,7 @@ const Header = () => {
  {/* Drawer panel */}
  <div className="lg:hidden fixed top-0 right-0 h-screen w-[86%] xs:w-[82%] max-w-[340px] bg-white dark:bg-slate-900 z-[9999] shadow-2xl flex flex-col animate-in slide-in-from-right duration-300">
  {/* Drawer header */}
- <div className="flex items-center justify-between px-5 py-4 bg-[#ED9A58] flex-shrink-0">
+ <div className="flex items-center justify-between px-5 py-4 bg-[#0d9488] flex-shrink-0">
  <div className="flex items-center gap-2.5">
  <img src={logoImg} alt="Travluyo" className="h-11 w-auto object-contain drop-shadow-md" />
  <span className="text-white font-extrabold text-lg tracking-tight">Travluyo</span>
@@ -685,7 +685,7 @@ const Header = () => {
  }}
  className={`flex items-center gap-3 px-4 py-3 rounded-xl font-semibold text-sm transition-all duration-200 active:scale-[0.98] ${
  isActive(link.path)
- ? 'bg-gradient-to-r from-teal-50 to-orange-50 dark:from-teal-900/20 dark:to-orange-900/20 text-teal-600 dark:text-teal-400 shadow-sm'
+ ? 'bg-gradient-to-r from-teal-50 to-amber-50 dark:from-teal-900/20 dark:to-teal-900/20 text-teal-600 dark:text-teal-400 shadow-sm'
                           : 'text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-teal-600'
                       }`}
                     >
@@ -756,7 +756,7 @@ const Header = () => {
                     navigate('/signup');
                     setMobileMenuOpen(false);
                   }}
-                  className="w-full justify-center bg-[#ED9A58] text-white py-2.5 rounded-xl font-bold text-sm shadow-md shadow-teal-600/30"
+                  className="w-full justify-center bg-[#0d9488] text-white py-2.5 rounded-xl font-bold text-sm shadow-md shadow-teal-600/30"
                 >
                   <MdOutlinePersonAdd size={18} className="mr-2" />
                   Sign Up

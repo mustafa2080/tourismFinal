@@ -140,14 +140,14 @@ const ContactPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#ED9A58] flex flex-col">
+    <div className="min-h-screen bg-white dark:bg-slate-900 flex flex-col">
       <Header />
 
       {/* Hero Section */}
       <section className="relative pt-12 md:pt-20 pb-16 md:pb-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center">
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 dark:text-white mb-6">
-            {t('contactPage.heroTitle')} <span className="bg-[#ED9A58] bg-clip-text text-transparent">Voyager Tours</span>
+            {t('contactPage.heroTitle')} <span className="bg-[#0d9488] bg-clip-text text-transparent">Voyager Tours</span>
           </h1>
           <p className="text-lg sm:text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
             {t('contactPage.heroDescription')}
@@ -166,7 +166,7 @@ const ContactPage = () => {
                   key={index}
                   className="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-sm border border-slate-200 dark:border-slate-700 hover:shadow-lg transition-all"
                 >
-                  <div className={`w-14 h-14 rounded-lg bg-[#ED9A58] ${info.color} flex items-center justify-center mb-4`}>
+                  <div className={`w-14 h-14 rounded-lg bg-[#0d9488] ${info.color} flex items-center justify-center mb-4`}>
                     <Icon size={24} className="text-white" />
                   </div>
                   <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2">
@@ -296,7 +296,7 @@ const ContactPage = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full px-6 py-3 bg-[#ED9A58] text-white font-semibold rounded-lg transition-all hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 group"
+                  className="w-full px-6 py-3 bg-[#0d9488] text-white font-semibold rounded-lg transition-all hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 group"
                 >
                   {isSubmitting ? (
                     <>
@@ -316,7 +316,7 @@ const ContactPage = () => {
             {/* Side Info */}
             <div className="space-y-4 sm:space-y-6">
               {/* Business Hours */}
-              <div className="bg-[#ED9A58] rounded-xl p-6 border border-teal-200 dark:border-slate-700">
+              <div className="bg-[#0d9488] rounded-xl p-6 border border-teal-200 dark:border-slate-700">
                 <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-4">{t('contactPage.businessHours')}</h3>
                 <div className="space-y-3 text-slate-700 dark:text-slate-300">
                   <div className="flex justify-between">
@@ -335,7 +335,7 @@ const ContactPage = () => {
               </div>
 
               {/* Response Time */}
-              <div className="bg-[#ED9A58] rounded-xl p-6 border border-green-200 dark:border-slate-700">
+              <div className="bg-[#0d9488] rounded-xl p-6 border border-green-200 dark:border-slate-700">
                 <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-4">{t('contactPage.responseTime')}</h3>
                 <p className="text-slate-700 dark:text-slate-300 mb-4">
                   We usually respond to inquiries within:
@@ -353,12 +353,12 @@ const ContactPage = () => {
               </div>
 
               {/* Newsletter */}
-              <div className="bg-[#ED9A58] rounded-xl p-6 border border-orange-200 dark:border-slate-700">
+              <div className="bg-[#0d9488] rounded-xl p-6 border border-amber-200 dark:border-slate-700">
                 <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-4">{t('contactPage.newsletter')}</h3>
                 <p className="text-slate-700 dark:text-slate-300 mb-4 text-sm">
                   {t('contactPage.newsletterDesc')}
                 </p>
-                <button className="w-full px-4 py-2 bg-[#ED9A58] text-white font-semibold rounded-lg transition-all">
+                <button className="w-full px-4 py-2 bg-[#0d9488] text-white font-semibold rounded-lg transition-all">
                   {t('contactPage.subscribeNow')}
                 </button>
               </div>
@@ -394,7 +394,7 @@ const ContactPage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-[#ED9A58] ">
+      <section className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-[#0d9488] ">
         <div className="max-w-4xl mx-auto text-center text-white">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">{t('contactPage.stillHaveQuestions')}</h2>
           <p className="text-lg text-teal-100 mb-8">

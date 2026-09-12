@@ -22,23 +22,23 @@ const TermsOfServicePage = () => {
 
   return (
     <MainLayout>
-      <div className="min-h-screen bg-[#ED9A58] dark:bg-[#ED9A58] ">
+      <div className="min-h-screen bg-white dark:bg-slate-900 ">
         {/* Progress Bar */}
       <div 
-        className="fixed top-0 left-0 h-1 bg-[#ED9A58] z-50 transition-all duration-300 shadow-lg shadow-teal-500/50" 
+        className="fixed top-0 left-0 h-1 bg-[#0d9488] z-50 transition-all duration-300 shadow-lg shadow-teal-500/50" 
         style={{ width: `${scrollProgress * 100}%` }}
       ></div>
 
       {/* Animated Background */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 right-0 -translate-y-1/2 translate-x-1/4 w-80 h-80 bg-[#ED9A58] rounded-full mix-blend-screen filter blur-3xl opacity-20 animate-pulse"></div>
-        <div className="absolute bottom-0 -left-40 w-80 h-80 bg-[#ED9A58] rounded-full mix-blend-screen filter blur-3xl opacity-20 animate-pulse" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-20 right-0 -translate-y-1/2 translate-x-1/4 w-80 h-80 bg-[#0d9488] rounded-full mix-blend-screen filter blur-3xl opacity-20 animate-pulse"></div>
+        <div className="absolute bottom-0 -left-40 w-80 h-80 bg-[#0d9488] rounded-full mix-blend-screen filter blur-3xl opacity-20 animate-pulse" style={{ animationDelay: '2s' }}></div>
       </div>
 
       {/* Header */}
-      <div className="relative pt-20 pb-32 px-4 sm:px-6 lg:px-8 bg-[#ED9A58] ">
+      <div className="relative pt-20 pb-32 px-4 sm:px-6 lg:px-8 bg-[#0d9488] ">
         <div className="relative max-w-4xl mx-auto text-center">
-          <div className="inline-flex items-center justify-center w-20 h-20 bg-[#ED9A58] rounded-2xl mb-8 mx-auto shadow-2xl shadow-teal-500/40 ring-4 ring-teal-300/30 dark:ring-teal-400/30">
+          <div className="inline-flex items-center justify-center w-20 h-20 bg-[#0d9488] rounded-2xl mb-8 mx-auto shadow-2xl shadow-teal-500/40 ring-4 ring-teal-300/30 dark:ring-teal-400/30">
             <Scale size={40} className="text-white" />
           </div>
 
@@ -82,7 +82,7 @@ const TermsOfServicePage = () => {
                       onClick={() => setActiveSection(section.id)}
                       className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-300 text-sm font-semibold group ${
  activeSection === section.id
- ? 'bg-[#ED9A58] text-white shadow-lg shadow-teal-500/30'
+ ? 'bg-[#0d9488] text-white shadow-lg shadow-teal-500/30'
  : 'text-slate-700 dark:text-teal-200 hover:bg-teal-100 dark:hover:bg-teal-900/40 hover:text-teal-800 dark:hover:text-white'
  }`}
                     >
@@ -124,7 +124,7 @@ const TermsOfServicePage = () => {
                   TourHub is a platform that connects travelers with tour operators and travel experiences. We facilitate bookings and provide communication tools between users and service providers.
                 </p>
                 
-                <div className="bg-[#ED9A58] border-2 border-amber-300 dark:border-amber-600/50 rounded-xl p-6">
+                <div className="bg-[#0d9488] border-2 border-amber-300 dark:border-amber-600/50 rounded-xl p-6">
                   <p className="text-amber-900 dark:text-amber-100 font-medium text-lg">
                     <span className="text-2xl mr-2">✈️</span>
                     <strong>Important:</strong> TourHub acts as a marketplace. Tour operators are independent contractors responsible for their services.
@@ -219,7 +219,7 @@ const TermsOfServicePage = () => {
 
             {/* Bookings & Cancellations */}
             <section className="scroll-mt-20">
-              <div className="bg-white dark:bg-slate-800/50 backdrop-blur-xl rounded-2xl p-8 border-2 border-orange-200 dark:border-orange-500/30 hover:border-orange-400 dark:hover:border-orange-400/50 transition-all duration-300 shadow-xl dark:shadow-orange-900/30">
+              <div className="bg-white dark:bg-slate-800/50 backdrop-blur-xl rounded-2xl p-8 border-2 border-amber-200 dark:border-teal-500/30 hover:border-teal-500 dark:hover:border-teal-500/50 transition-all duration-300 shadow-xl dark:shadow-teal-900/30">
                 <h2 className="text-4xl font-bold text-slate-900 dark:text-white mb-8">📅 Bookings & Cancellations</h2>
                 
                 <div className="space-y-4">
@@ -228,9 +228,9 @@ const TermsOfServicePage = () => {
                     { title: 'Cancellation Policy', desc: 'Varies by tour operator. Review specific policies before booking. 24-hour cancellations are non-refundable.' },
                     { title: 'Changes to Tours', desc: 'Operators may modify details due to emergencies. Full refund available if changes are unacceptable.' },
                   ].map((item, idx) => (
-                    <div key={idx} className="bg-orange-50 dark:bg-orange-900/20 rounded-lg p-4 border-2 border-orange-300 dark:border-orange-600/50">
-                      <h4 className="font-bold text-orange-900 dark:text-orange-100 mb-2">{item.title}</h4>
-                      <p className="text-orange-800 dark:text-orange-200 text-sm font-medium">{item.desc}</p>
+                    <div key={idx} className="bg-amber-50 dark:bg-teal-900/20 rounded-lg p-4 border-2 border-amber-300 dark:border-teal-600/50">
+                      <h4 className="font-bold text-teal-900 dark:text-amber-100 mb-2">{item.title}</h4>
+                      <p className="text-teal-800 dark:text-amber-200 text-sm font-medium">{item.desc}</p>
                     </div>
                   ))}
                 </div>
@@ -269,16 +269,16 @@ const TermsOfServicePage = () => {
 
             {/* Liability */}
             <section id="liability" className="scroll-mt-20">
-              <div className="bg-white dark:bg-slate-800/50 backdrop-blur-xl rounded-2xl p-8 border-2 border-orange-300 dark:border-orange-600/50 hover:border-orange-400 dark:hover:border-orange-400/70 transition-all duration-300 shadow-xl dark:shadow-orange-900/30">
+              <div className="bg-white dark:bg-slate-800/50 backdrop-blur-xl rounded-2xl p-8 border-2 border-amber-300 dark:border-teal-600/50 hover:border-teal-500 dark:hover:border-teal-500/70 transition-all duration-300 shadow-xl dark:shadow-teal-900/30">
                 <h2 className="text-4xl font-bold text-slate-900 dark:text-white mb-6">⚖️ Liability & Disclaimers</h2>
                 
                 <div className="space-y-6">
-                  <div className="bg-orange-100 dark:bg-orange-900/30 rounded-xl p-6 border-2 border-orange-400 dark:border-orange-600/60">
-                    <h3 className="text-xl font-bold text-orange-900 dark:text-orange-100 mb-4">Disclaimer of Warranties</h3>
-                    <p className="text-orange-900 dark:text-orange-100 mb-4 font-bold text-lg">
+                  <div className="bg-amber-100 dark:bg-teal-900/30 rounded-xl p-6 border-2 border-teal-500 dark:border-teal-600/60">
+                    <h3 className="text-xl font-bold text-teal-900 dark:text-amber-100 mb-4">Disclaimer of Warranties</h3>
+                    <p className="text-teal-900 dark:text-amber-100 mb-4 font-bold text-lg">
                       THE SERVICE IS PROVIDED "AS IS" WITHOUT WARRANTIES OF ANY KIND
                     </p>
-                    <p className="text-orange-800 dark:text-orange-200 font-medium">
+                    <p className="text-teal-800 dark:text-amber-200 font-medium">
                       We disclaim all warranties, express or implied, including merchantability, fitness for purpose, non-infringement, and accuracy.
                     </p>
                   </div>
@@ -298,7 +298,7 @@ const TermsOfServicePage = () => {
 
             {/* Contact */}
             <section className="scroll-mt-20">
-              <div className="bg-[#ED9A58] backdrop-blur-xl rounded-2xl p-8 border-2 border-teal-300 dark:border-teal-600/50 shadow-2xl dark:shadow-teal-900/30">
+              <div className="bg-[#0d9488] backdrop-blur-xl rounded-2xl p-8 border-2 border-teal-300 dark:border-teal-600/50 shadow-2xl dark:shadow-teal-900/30">
                 <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-6">📧 Questions?</h2>
                 <div className="grid sm:grid-cols-2 gap-4">
                   {[

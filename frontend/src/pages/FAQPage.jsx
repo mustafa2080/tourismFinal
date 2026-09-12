@@ -113,7 +113,7 @@ const FAQPage = () => {
 
  return (
  <MainLayout>
- <div className="min-h-screen bg-[#ED9A58] ">
+ <div className="min-h-screen bg-white dark:bg-slate-900 ">
  {/* Progress Bar */}
  <div className="fixed top-0 left-0 h-1.5 z-50 transition-all duration-300" style={{ width: `${scrollProgress * 100}%` }}></div>
 
@@ -132,7 +132,7 @@ const FAQPage = () => {
  {/* Header */}
  <div className="relative pt-20 pb-32 px-4 sm:px-6 lg:px-8">
  <div className="relative max-w-4xl mx-auto text-center">
- <div className="inline-flex items-center justify-center w-20 h-20 bg-[#ED9A58] rounded-2xl mb-8 mx-auto shadow-lg">
+ <div className="inline-flex items-center justify-center w-20 h-20 bg-[#0d9488] rounded-2xl mb-8 mx-auto shadow-lg">
  <HelpCircle size={40} className="text-white" />
  </div>
 
@@ -216,7 +216,7 @@ const FAQPage = () => {
           )}
 
           {/* Still Have Questions */}
-          <div className="bg-[#ED9A58] rounded-2xl p-8 border-2 border-teal-200 dark:border-teal-800 shadow-sm hover:shadow-md transition-all mt-12 text-center">
+          <div className="bg-[#0d9488] rounded-2xl p-8 border-2 border-teal-200 dark:border-teal-800 shadow-sm hover:shadow-md transition-all mt-12 text-center">
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Still have questions?</h2>
             <p className="text-gray-700 dark:text-gray-300 mb-8 text-lg">Our support team is here to help 24/7!</p>
 

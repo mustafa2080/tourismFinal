@@ -76,7 +76,7 @@ export function RatingCommentModal({ isOpen, onClose, onSubmit, packageName, loa
       <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl max-w-2xl w-full border border-slate-200 dark:border-slate-700 overflow-hidden animate-modal-in">
         
         {/* Header */}
-        <div className="flex items-center justify-between p-8 bg-[#ED9A58] text-white">
+        <div className="flex items-center justify-between p-8 bg-[#0d9488] text-white">
           <div className="flex items-center gap-3">
             <div className="p-3 bg-white/20 rounded-lg backdrop-blur">
               <MdOutlineRateReview size={28} />
@@ -203,7 +203,7 @@ export function RatingCommentModal({ isOpen, onClose, onSubmit, packageName, loa
           </div>
 
           {/* Summary Card */}
-          <div className="bg-[#ED9A58] rounded-xl p-6 border border-teal-200 dark:border-teal-800">
+          <div className="bg-[#0d9488] rounded-xl p-6 border border-teal-200 dark:border-teal-800">
             <p className="text-sm font-semibold text-slate-900 dark:text-white mb-3">Summary</p>
             <div className="flex items-center justify-between">
               <div>
@@ -244,7 +244,7 @@ export function RatingCommentModal({ isOpen, onClose, onSubmit, packageName, loa
             disabled={submitting || !isCommentValid || rating < 1}
             className={`flex-1 px-6 py-3 rounded-lg font-bold text-white flex items-center justify-center gap-2 transition-all transform disabled:scale-100 disabled:opacity-50 disabled:cursor-not-allowed ${
               submitting
-                ? 'bg-[#ED9A58] '
+                ? 'bg-[#0d9488] '
                 : ' shadow-lg hover:shadow-xl hover:scale-105 active:scale-95'
             }`}
           >

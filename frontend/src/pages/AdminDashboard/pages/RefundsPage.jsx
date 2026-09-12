@@ -85,7 +85,7 @@ export function RefundsPage() {
 
   const getStatusColor = (status) => {
     const colors = {
-      'pending': 'bg-orange-100 dark:bg-orange-900/30 text-orange-800 dark:text-orange-400 border-orange-300 dark:border-orange-700',
+      'pending': 'bg-amber-100 dark:bg-teal-900/30 text-teal-800 dark:text-teal-500 border-amber-300 dark:border-teal-700',
       'approved': 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-400 border-green-300 dark:border-green-700',
       'rejected': 'bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-400 border-red-300 dark:border-red-700',
       'processed': 'bg-teal-100 dark:bg-teal-900/30 text-teal-800 dark:text-teal-400 border-teal-300 dark:border-teal-700',
@@ -113,7 +113,7 @@ export function RefundsPage() {
   };
 
   const StatCard = ({ icon: Icon, label, value, color, subtext }) => (
-    <div className={`bg-[#ED9A58] ${color} rounded-xl shadow-lg p-6 text-white border border-opacity-20 group hover:shadow-xl transition-all duration-300 transform hover:scale-105`}>
+    <div className={`bg-[#0d9488] ${color} rounded-xl shadow-lg p-6 text-white border border-opacity-20 group hover:shadow-xl transition-all duration-300 transform hover:scale-105`}>
       <div className="flex items-start justify-between">
         <div className="flex-1">
           <p className="text-white/80 text-sm font-medium mb-2">{label}</p>
@@ -133,7 +133,7 @@ export function RefundsPage() {
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <div>
           <h1 className="text-2xl sm:text-3xl lg:text-5xl font-bold text-slate-900 dark:text-white flex items-center gap-3">
-            <div className="p-2 sm:p-3 bg-[#ED9A58] rounded-xl shadow-lg flex-shrink-0">
+            <div className="p-2 sm:p-3 bg-[#0d9488] rounded-xl shadow-lg flex-shrink-0">
               <MdOutlineSettingsBackupRestore className="text-white" size={24} />
             </div>
             Refunds Management
@@ -175,7 +175,7 @@ export function RefundsPage() {
       )}
 
       {/* Search & Filter Section */}
-      <div className="bg-[#ED9A58] rounded-xl shadow-lg p-6 border border-slate-200 dark:border-slate-700">
+      <div className="bg-[#0d9488] rounded-xl shadow-lg p-6 border border-slate-200 dark:border-slate-700">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* Search */}
           <div className="relative">
@@ -284,7 +284,7 @@ export function RefundsPage() {
             <div className="hidden lg:block overflow-x-auto">
               <table className="w-full">
                 <thead>
-                  <tr className="bg-[#ED9A58] border-b-2 border-slate-300 dark:border-slate-600">
+                  <tr className="bg-[#0d9488] border-b-2 border-slate-300 dark:border-slate-600">
                     <th className="px-6 py-4 text-left text-sm font-bold text-slate-900 dark:text-white">Booking #</th>
                     <th className="px-6 py-4 text-left text-sm font-bold text-slate-900 dark:text-white">User</th>
                     <th className="px-6 py-4 text-left text-sm font-bold text-slate-900 dark:text-white">Amount</th>
@@ -368,7 +368,7 @@ export function RefundsPage() {
         <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
           <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl max-w-3xl w-full max-h-[90vh] flex flex-col border border-slate-200 dark:border-slate-700 overflow-hidden animate-in fade-in scale-95 duration-200">
             {/* Modal Header */}
-            <div className="flex items-center justify-between p-4 sm:p-6 lg:p-8 bg-[#ED9A58] text-white flex-shrink-0">
+            <div className="flex items-center justify-between p-4 sm:p-6 lg:p-8 bg-[#0d9488] text-white flex-shrink-0">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
                   <MdOutlineSettingsBackupRestore size={22} />
@@ -434,8 +434,8 @@ export function RefundsPage() {
                       <span className="font-semibold">Payment Type:</span> {getPaymentTypeIcon(selectedRefund.booking?.payment_type)}
                     </p>
                     {selectedRefund.booking?.payment_type === 'on_arrival' && (
-                      <div className="mt-3 p-3 bg-orange-100 dark:bg-orange-900/30 rounded border border-orange-300 dark:border-orange-700">
-                        <p className="text-orange-800 dark:text-orange-300 text-sm">
+                      <div className="mt-3 p-3 bg-amber-100 dark:bg-teal-900/30 rounded border border-amber-300 dark:border-teal-700">
+                        <p className="text-teal-800 dark:text-amber-300 text-sm">
                           ⚠️ Pay on Arrival - No payment received yet. Canceling will prevent payment collection.
                         </p>
                       </div>
@@ -448,8 +448,8 @@ export function RefundsPage() {
                       </div>
                     )}
                     {selectedRefund.booking?.payment_type === 'full_payment' && (
-                      <div className="mt-3 p-3 bg-orange-100 dark:bg-orange-900/30 rounded border border-orange-300 dark:border-orange-700">
-                        <p className="text-orange-800 dark:text-orange-300 text-sm">
+                      <div className="mt-3 p-3 bg-amber-100 dark:bg-teal-900/30 rounded border border-amber-300 dark:border-teal-700">
+                        <p className="text-teal-800 dark:text-amber-300 text-sm">
                           ℹ️ Full payment received. Refund will be processed to original payment method after fees.
                         </p>
                       </div>
@@ -462,7 +462,7 @@ export function RefundsPage() {
               {selectedRefund.reason && (
                 <div>
                   <h3 className="font-bold text-slate-900 dark:text-white mb-4">Refund Reason</h3>
-                  <div className="bg-orange-50 dark:bg-orange-900/20 rounded-lg p-4 border-l-4 border-orange-600">
+                  <div className="bg-amber-50 dark:bg-teal-900/20 rounded-lg p-4 border-l-4 border-teal-600">
                     <p className="text-slate-700 dark:text-slate-300 leading-relaxed">
                       "{selectedRefund.reason}"
                     </p>
@@ -515,14 +515,14 @@ export function RefundsPage() {
                 <>
                   <button
                     onClick={handleApproveRefund}
-                    className="flex-1 px-6 py-3 rounded-lg bg-[#ED9A58] text-white transition-all font-bold flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform hover:scale-105"
+                    className="flex-1 px-6 py-3 rounded-lg bg-[#0d9488] text-white transition-all font-bold flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform hover:scale-105"
                   >
                     <FiCheckCircle size={20} />
                     Approve Refund
                   </button>
                   <button
                     onClick={handleRejectRefund}
-                    className="flex-1 px-6 py-3 rounded-lg bg-[#ED9A58] text-white transition-all font-bold flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform hover:scale-105"
+                    className="flex-1 px-6 py-3 rounded-lg bg-[#0d9488] text-white transition-all font-bold flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform hover:scale-105"
                   >
                     <FiXCircle size={20} />
                     Reject Refund

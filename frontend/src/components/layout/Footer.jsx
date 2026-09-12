@@ -119,7 +119,7 @@ const Footer = () => {
       {/* Newsletter Section - Premium Gradient */}
       <div className="relative overflow-hidden">
         {/* Animated Background */}
-        <div className="absolute inset-0 bg-[#ED9A58] opacity-90"></div>
+        <div className="absolute inset-0 bg-[#0d9488] opacity-90"></div>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(59,130,246,0.3),transparent_40%),radial-gradient(circle_at_70%_50%,rgba(168,85,247,0.3),transparent_40%)]"></div>
         <div className="absolute inset-0 backdrop-blur-3xl opacity-40"></div>
         
@@ -212,7 +212,7 @@ const Footer = () => {
  href="tel:+201000000000"
  className="flex items-center gap-3 text-slate-400 hover:text-teal-400 transition-all duration-200 text-sm group"
  >
- <div className="w-9 h-9 bg-[#ED9A58] rounded-lg flex items-center justify-center group-hover:shadow-md transition-all group-hover:scale-110 border border-teal-500/20">
+ <div className="w-9 h-9 bg-[#0d9488] rounded-lg flex items-center justify-center group-hover:shadow-md transition-all group-hover:scale-110 border border-teal-500/20">
  <FiPhone size={16} />
  </div>
  <span className="group-hover:translate-x-1 transition-transform">+20 1000 000 000</span>
@@ -306,7 +306,7 @@ const Footer = () => {
  {paymentMethods.map((method) => (
  <div
  key={method.name}
- className="px-3 py-2 bg-slate-800 hover:bg-[#ED9A58] rounded-lg text-xs text-slate-300 font-semibold hover:text-white transition-all hover:scale-110 border border-slate-700 hover:border-teal-500/50 flex items-center gap-1.5 cursor-default"
+ className="px-3 py-2 bg-slate-800 hover:bg-[#0d9488] rounded-lg text-xs text-slate-300 font-semibold hover:text-white transition-all hover:scale-110 border border-slate-700 hover:border-teal-500/50 flex items-center gap-1.5 cursor-default"
  title={method.name}
  >
  <span>{method.icon}</span>

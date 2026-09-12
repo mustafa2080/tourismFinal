@@ -653,7 +653,7 @@ const HomePage = () => {
                 <div className="md:col-span-3 flex items-end">
                   <button
                     type="submit"
-                    className="w-full px-4 xs:px-6 py-2.5 xs:py-3 bg-[#ED9A58] text-white font-bold rounded-full flex items-center justify-center gap-2 transition-all hover:shadow-xl hover:scale-105 group shadow-lg text-sm xs:text-base"
+                    className="w-full px-4 xs:px-6 py-2.5 xs:py-3 bg-[#0d9488] text-white font-bold rounded-full flex items-center justify-center gap-2 transition-all hover:shadow-xl hover:scale-105 group shadow-lg text-sm xs:text-base"
                   >
                     <FiSearch size={16} className="group-hover:scale-110 transition-transform" />
                     <span className="hidden sm:inline">{t('navbar.search')}</span>
@@ -804,7 +804,7 @@ const HomePage = () => {
  onClick={() => navigate(`/package/${pkg.id}`)}
  >
  {/* Image */}
- <div className="relative h-36 xs:h-44 sm:h-52 md:h-56 bg-[#ED9A58] overflow-hidden group">
+ <div className="relative h-36 xs:h-44 sm:h-52 md:h-56 bg-[#0d9488] overflow-hidden group">
  {pkg.images && pkg.images.length > 0 && (pkg.images[0]?.image_data || pkg.images[0]?.url) ? (
  <>
  {pkg.images[0]?.image_data && (
@@ -846,7 +846,7 @@ const HomePage = () => {
  )}
  
  {/* Bottom gradient for legibility */}
- <div className="absolute inset-x-0 bottom-0 h-16 bg-[#ED9A58] pointer-events-none" />
+ <div className="absolute inset-x-0 bottom-0 h-16 bg-[#0d9488] pointer-events-none" />
  {/* Top gradient so badges stay legible on light images */}
  <div className="absolute inset-x-0 top-0 h-16 pointer-events-none" />
 
@@ -924,7 +924,7 @@ const HomePage = () => {
                             <p className="text-lg xs:text-xl md:text-2xl font-bold text-teal-600 dark:text-teal-400 truncate">
                               {pkg.base_price && pkg.base_price > 0
                                 ? `$${(parseFloat(pkg.base_price) || 0).toFixed(2)}`
-                                : <span className="text-orange-500 text-sm">Price Not Set</span>
+                                : <span className="text-teal-500 text-sm">Price Not Set</span>
                               }
                             </p>
                           </div>
@@ -1020,7 +1020,7 @@ const HomePage = () => {
  return (
  <StaggerItem key={review.id || idx}>
  <Card
- className="group relative overflow-hidden bg-[#ED9A58] border border-slate-200 dark:border-slate-700 hover:border-teal-300 dark:hover:border-teal-500 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
+ className="group relative overflow-hidden bg-[#0d9488] border border-slate-200 dark:border-slate-700 hover:border-teal-300 dark:hover:border-teal-500 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
  >
  <div className="p-5 md:p-6 space-y-4 h-full flex flex-col">
  {/* Rating Stars */}
@@ -1044,7 +1044,7 @@ const HomePage = () => {
  </p>
 
  {/* Divider */}
- <div className="h-px bg-[#ED9A58] "></div>
+ <div className="h-px bg-[#0d9488] "></div>
 
  {/* Author */}
  <div className="flex items-center gap-3 pt-2">
@@ -1095,14 +1095,14 @@ const HomePage = () => {
  {/* ==================== TESTIMONIALS - MODERN DESIGN ==================== */}
  <section className="py-6 sm:py-8 md:py-16 lg:py-32 bg-white dark:bg-slate-900 relative overflow-hidden" style={{ display: 'block', visibility: 'visible', minHeight: '200px' }}>
  <div className="absolute top-0 right-0 w-48 sm:w-96 h-48 sm:h-96 bg-teal-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 -z-10 dark:opacity-10"></div>
- <div className="absolute bottom-0 left-0 w-48 sm:w-96 h-48 sm:h-96 bg-orange-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 -z-10 dark:opacity-10"></div>
+ <div className="absolute bottom-0 left-0 w-48 sm:w-96 h-48 sm:h-96 bg-amber-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 -z-10 dark:opacity-10"></div>
 
  <div className="w-full max-w-7xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8 relative">
  {/* Header */}
  <Reveal>
  <div className="text-center mb-12 md:mb-20 space-y-3 md:space-y-4">
  <div className="inline-block">
- <Badge className="bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-300 mb-4 px-4 py-2 rounded-full text-xs md:text-sm font-bold border border-orange-300/30 dark:border-orange-700/30">
+ <Badge className="bg-amber-100 text-teal-700 dark:bg-teal-900/30 dark:text-amber-300 mb-4 px-4 py-2 rounded-full text-xs md:text-sm font-bold border border-amber-300/30 dark:border-teal-700/30">
  ⭐ CLIENT TESTIMONIALS
  </Badge>
  </div>
@@ -1130,10 +1130,10 @@ const HomePage = () => {
                 return (
                   <StaggerItem key={review.id || idx}>
                   <Card
-                    className="group relative overflow-hidden bg-white dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 hover:border-orange-300 dark:hover:border-orange-500 shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-4 backdrop-blur-sm"
+                    className="group relative overflow-hidden bg-white dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 hover:border-amber-300 dark:hover:border-teal-500 shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-4 backdrop-blur-sm"
                   >
                     {/* Gradient overlay on hover */}
-                    <div className="absolute inset-0 bg-[#ED9A58] transition-all duration-500 -z-0"></div>
+                    <div className="absolute inset-0 bg-[#0d9488] transition-all duration-500 -z-0"></div>
 
                     <div className="relative z-10 p-4 md:p-6 lg:p-8 h-full flex flex-col">
                       {/* Top Section - Rating */}
@@ -1151,13 +1151,13 @@ const HomePage = () => {
                             />
                           ))}
                         </div>
-                        <div className="w-8 h-8 rounded-full bg-[#ED9A58] flex items-center justify-center text-white text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div className="w-8 h-8 rounded-full bg-[#0d9488] flex items-center justify-center text-white text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                           ✓
                         </div>
                       </div>
 
                       {/* Quote Icon */}
-                      <div className="inline-flex w-8 md:w-10 h-8 md:h-10 rounded-lg bg-orange-100 dark:bg-orange-900/30 items-center justify-center mb-3 md:mb-4 text-orange-600 dark:text-orange-300 text-lg md:text-xl group-hover:scale-110 transition-transform duration-300">
+                      <div className="inline-flex w-8 md:w-10 h-8 md:h-10 rounded-lg bg-amber-100 dark:bg-teal-900/30 items-center justify-center mb-3 md:mb-4 text-teal-600 dark:text-amber-300 text-lg md:text-xl group-hover:scale-110 transition-transform duration-300">
                         "
                       </div>
 
@@ -1167,15 +1167,15 @@ const HomePage = () => {
                       </p>
 
                       {/* Divider */}
-                      <div className="my-4 md:my-6 h-1 bg-gradient-to-r from-orange-200 via-teal-200 to-transparent dark:from-orange-700/50 dark:via-teal-700/50 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      <div className="my-4 md:my-6 h-1 bg-gradient-to-r from-amber-200 via-teal-200 to-transparent dark:from-teal-700/50 dark:via-teal-700/50 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
                       {/* Author Info */}
                       <div className="flex items-center gap-3 md:gap-4 pt-2">
-                        <div className="w-10 md:w-12 h-10 md:h-12 rounded-full bg-gradient-to-br from-teal-500 via-orange-500 to-pink-500 flex items-center justify-center text-white text-xs md:text-sm font-bold shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110 flex-shrink-0">
+                        <div className="w-10 md:w-12 h-10 md:h-12 rounded-full bg-gradient-to-br from-teal-500 via-teal-500 to-pink-500 flex items-center justify-center text-white text-xs md:text-sm font-bold shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110 flex-shrink-0">
                           {initials}
                         </div>
                         <div className="flex-1 min-w-0">
-                          <p className="font-bold text-slate-900 dark:text-white text-sm md:text-base group-hover:text-orange-600 dark:group-hover:text-orange-300 transition-colors duration-300 truncate">
+                          <p className="font-bold text-slate-900 dark:text-white text-sm md:text-base group-hover:text-teal-600 dark:group-hover:text-amber-300 transition-colors duration-300 truncate">
                             {review.user?.full_name || review.user?.username || 'Traveler'}
                           </p>
                           <p className="text-xs md:text-sm text-slate-500 dark:text-slate-400 font-medium truncate">
@@ -1193,10 +1193,10 @@ const HomePage = () => {
               testimonials.map((testimonial, idx) => (
                 <StaggerItem key={idx}>
                 <Card
-                  className="group relative overflow-hidden bg-white dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 hover:border-orange-300 dark:hover:border-orange-500 shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-4 backdrop-blur-sm"
+                  className="group relative overflow-hidden bg-white dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 hover:border-amber-300 dark:hover:border-teal-500 shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-4 backdrop-blur-sm"
                 >
                   {/* Gradient overlay on hover */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-orange-50/0 to-teal-50/0 dark:from-orange-900/0 dark:to-teal-900/0 group-hover:from-orange-50 group-hover:to-teal-50 dark:group-hover:from-orange-900/10 dark:group-hover:to-teal-900/10 transition-all duration-500 -z-0"></div>
+                  <div className="absolute inset-0 bg-gradient-to-br from-amber-50/0 to-teal-50/0 dark:from-teal-900/0 dark:to-teal-900/0 group-hover:from-amber-50 group-hover:to-teal-50 dark:group-hover:from-teal-900/10 dark:group-hover:to-teal-900/10 transition-all duration-500 -z-0"></div>
 
                   <div className="relative z-10 p-4 md:p-6 lg:p-8 h-full flex flex-col">
                     {/* Top Section - Rating */}
@@ -1214,13 +1214,13 @@ const HomePage = () => {
                           />
                         ))}
                       </div>
-                      <div className="w-8 h-8 rounded-full bg-gradient-to-br from-orange-400 to-teal-400 flex items-center justify-center text-white text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="w-8 h-8 rounded-full bg-gradient-to-br from-teal-500 to-teal-400 flex items-center justify-center text-white text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         ✓
                       </div>
                     </div>
 
                     {/* Quote Icon */}
-                    <div className="inline-flex w-8 md:w-10 h-8 md:h-10 rounded-lg bg-gradient-to-br from-orange-100 to-teal-100 dark:from-orange-900/30 dark:to-teal-900/30 items-center justify-center mb-3 md:mb-4 text-orange-600 dark:text-orange-300 text-lg md:text-xl group-hover:scale-110 transition-transform duration-300">
+                    <div className="inline-flex w-8 md:w-10 h-8 md:h-10 rounded-lg bg-gradient-to-br from-amber-100 to-teal-100 dark:from-teal-900/30 dark:to-teal-900/30 items-center justify-center mb-3 md:mb-4 text-teal-600 dark:text-amber-300 text-lg md:text-xl group-hover:scale-110 transition-transform duration-300">
                       "
                     </div>
 
@@ -1230,15 +1230,15 @@ const HomePage = () => {
                     </p>
 
                     {/* Divider */}
-                    <div className="my-4 md:my-6 h-1 bg-[#ED9A58] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="my-4 md:my-6 h-1 bg-[#0d9488] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
                     {/* Author Info */}
                     <div className="flex items-center gap-3 md:gap-4 pt-2">
-                      <div className="w-10 md:w-12 h-10 md:h-12 rounded-full bg-[#ED9A58] flex items-center justify-center text-white text-xs md:text-sm font-bold shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110 flex-shrink-0">
+                      <div className="w-10 md:w-12 h-10 md:h-12 rounded-full bg-[#0d9488] flex items-center justify-center text-white text-xs md:text-sm font-bold shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110 flex-shrink-0">
                         {testimonial.avatar}
                       </div>
                       <div className="flex-1 min-w-0">
-                        <p className="font-bold text-slate-900 dark:text-white text-sm md:text-base group-hover:text-orange-600 dark:group-hover:text-orange-300 transition-colors duration-300 truncate">
+                        <p className="font-bold text-slate-900 dark:text-white text-sm md:text-base group-hover:text-teal-600 dark:group-hover:text-amber-300 transition-colors duration-300 truncate">
                           {testimonial.name}
                         </p>
                         <p className="text-xs md:text-sm text-slate-500 dark:text-slate-400 font-medium truncate">
@@ -1256,20 +1256,20 @@ const HomePage = () => {
           {/* Stats Row */}
           <Reveal>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 md:gap-5 lg:gap-6 mt-8 md:mt-12 lg:mt-16">
-            <div className="text-center p-3 xs:p-4 sm:p-6 md:p-8 bg-white dark:bg-slate-800/50 rounded-xl sm:rounded-2xl border border-slate-200 dark:border-slate-700 hover:border-orange-300 dark:hover:border-orange-500 transition-all hover:shadow-lg group">
-              <div className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-black bg-clip-text text-transparent bg-[#ED9A58] mb-1 md:mb-2 group-hover:scale-110 transition-transform duration-300">
+            <div className="text-center p-3 xs:p-4 sm:p-6 md:p-8 bg-white dark:bg-slate-800/50 rounded-xl sm:rounded-2xl border border-slate-200 dark:border-slate-700 hover:border-amber-300 dark:hover:border-teal-500 transition-all hover:shadow-lg group">
+              <div className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-black bg-clip-text text-transparent bg-[#0d9488] mb-1 md:mb-2 group-hover:scale-110 transition-transform duration-300">
                 4.9
               </div>
               <p className="text-xs xs:text-sm md:text-base text-slate-600 dark:text-slate-300 font-semibold">Average Rating</p>
             </div>
-            <div className="text-center p-3 xs:p-4 sm:p-6 md:p-8 bg-white dark:bg-slate-800/50 rounded-xl sm:rounded-2xl border border-slate-200 dark:border-slate-700 hover:border-orange-300 dark:hover:border-orange-500 transition-all hover:shadow-lg group">
-              <div className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-black bg-clip-text text-transparent bg-[#ED9A58] mb-1 md:mb-2 group-hover:scale-110 transition-transform duration-300">
+            <div className="text-center p-3 xs:p-4 sm:p-6 md:p-8 bg-white dark:bg-slate-800/50 rounded-xl sm:rounded-2xl border border-slate-200 dark:border-slate-700 hover:border-amber-300 dark:hover:border-teal-500 transition-all hover:shadow-lg group">
+              <div className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-black bg-clip-text text-transparent bg-[#0d9488] mb-1 md:mb-2 group-hover:scale-110 transition-transform duration-300">
                 5K+
               </div>
               <p className="text-xs xs:text-sm md:text-base text-slate-600 dark:text-slate-300 font-semibold">Reviews</p>
             </div>
-            <div className="text-center p-3 xs:p-4 sm:p-6 md:p-8 bg-white dark:bg-slate-800/50 rounded-xl sm:rounded-2xl border border-slate-200 dark:border-slate-700 hover:border-orange-300 dark:hover:border-orange-500 transition-all hover:shadow-lg group">
-              <div className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-black bg-clip-text text-transparent bg-[#ED9A58] mb-1 md:mb-2 group-hover:scale-110 transition-transform duration-300">
+            <div className="text-center p-3 xs:p-4 sm:p-6 md:p-8 bg-white dark:bg-slate-800/50 rounded-xl sm:rounded-2xl border border-slate-200 dark:border-slate-700 hover:border-amber-300 dark:hover:border-teal-500 transition-all hover:shadow-lg group">
+              <div className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-black bg-clip-text text-transparent bg-[#0d9488] mb-1 md:mb-2 group-hover:scale-110 transition-transform duration-300">
                 98%
               </div>
               <p className="text-xs xs:text-sm md:text-base text-slate-600 dark:text-slate-300 font-semibold">Satisfaction</p>
@@ -1301,7 +1301,7 @@ const HomePage = () => {
           <div className="flex flex-col xs:flex-row gap-3 xs:gap-4 justify-center">
             <Button
               onClick={() => navigate('/search')}
-              className="bg-[#ED9A58] text-white font-bold px-6 xs:px-8 md:px-10 py-2.5 xs:py-3 rounded-full flex items-center justify-center gap-2 group transition-all shadow-lg text-sm xs:text-base"
+              className="bg-[#0d9488] text-white font-bold px-6 xs:px-8 md:px-10 py-2.5 xs:py-3 rounded-full flex items-center justify-center gap-2 group transition-all shadow-lg text-sm xs:text-base"
             >
               <FiSearch size={16} />
               <span>Explore Now</span>

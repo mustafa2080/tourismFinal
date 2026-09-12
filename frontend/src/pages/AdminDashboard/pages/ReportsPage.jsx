@@ -188,7 +188,7 @@ export function ReportsPage() {
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <div>
           <h1 className="text-2xl sm:text-3xl lg:text-5xl font-bold text-slate-900 dark:text-white flex items-center gap-3">
-            <div className="p-2 sm:p-3 bg-[#ED9A58] rounded-xl shadow-lg flex-shrink-0">
+            <div className="p-2 sm:p-3 bg-[#0d9488] rounded-xl shadow-lg flex-shrink-0">
               <MdOutlineAssessment className="text-white" size={24} />
             </div>
             Reports & Analytics
@@ -201,14 +201,14 @@ export function ReportsPage() {
           <button
             onClick={handleRefresh}
             disabled={refreshing}
-            className="flex-1 sm:flex-initial flex items-center justify-center gap-2 px-4 sm:px-6 py-3 bg-[#ED9A58] text-white rounded-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed font-medium shadow-lg hover:shadow-xl"
+            className="flex-1 sm:flex-initial flex items-center justify-center gap-2 px-4 sm:px-6 py-3 bg-[#0d9488] text-white rounded-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed font-medium shadow-lg hover:shadow-xl"
           >
             <FiRefreshCw className={`${refreshing ? 'animate-spin' : ''}`} size={18} />
             {refreshing ? 'Refreshing' : 'Refresh'}
           </button>
           <button
             onClick={handleExport}
-            className="flex-1 sm:flex-initial flex items-center justify-center gap-2 px-4 sm:px-6 py-3 bg-[#ED9A58] text-slate-900 dark:text-white rounded-lg hover:shadow-lg transition-all font-medium"
+            className="flex-1 sm:flex-initial flex items-center justify-center gap-2 px-4 sm:px-6 py-3 bg-[#0d9488] text-slate-900 dark:text-white rounded-lg hover:shadow-lg transition-all font-medium"
           >
             <FiDownload size={18} />
             Export
@@ -217,7 +217,7 @@ export function ReportsPage() {
       </div>
 
       {/* Date Range Filter */}
-      <div className="bg-[#ED9A58] rounded-xl shadow-lg p-6 border border-teal-200 dark:border-slate-700">
+      <div className="bg-[#0d9488] rounded-xl shadow-lg p-6 border border-teal-200 dark:border-slate-700">
         <div className="flex flex-col sm:flex-row gap-6 items-end">
           <div className="flex-1">
             <label className="block text-sm font-bold text-slate-900 dark:text-white mb-3 flex items-center gap-2">
@@ -256,19 +256,19 @@ export function ReportsPage() {
                 label="Total Revenue"
                 value={`$${(revenueData.totalRevenue / 1000).toFixed(1)}K`}
                 change={revenueData.growthRate}
-                bgGradient="bg-[#ED9A58] "
+                bgGradient="bg-[#0d9488] "
               />
               <MetricCard
                 icon={FiShoppingCart}
                 label="Total Bookings"
                 value={revenueData.totalBookings || 0}
-                bgGradient="bg-[#ED9A58] "
+                bgGradient="bg-[#0d9488] "
               />
               <MetricCard
                 icon={FiTrendingUp}
                 label="Avg Booking Value"
                 value={`$${revenueData.averageBookingValue?.toFixed(0) || 0}`}
-                bgGradient="bg-[#ED9A58] "
+                bgGradient="bg-[#0d9488] "
               />
             </>
           ) : (
@@ -283,7 +283,7 @@ export function ReportsPage() {
             label="Total Customers"
             value={customerStats?.totalCustomers || 0}
             change={customerStats?.totalCustomers > 0 ? Math.round((customerStats?.newCustomersThisMonth || 0) / customerStats.totalCustomers * 100) : 0}
-            bgGradient="bg-[#ED9A58] "
+            bgGradient="bg-[#0d9488] "
           />
         </div>
       )}
@@ -349,8 +349,8 @@ export function ReportsPage() {
             {bookingDistribution.length > 0 && (
               <div className="bg-white dark:bg-slate-800 rounded-xl shadow-lg p-4 sm:p-6 lg:p-8 border border-slate-200 dark:border-slate-700 hover:shadow-xl transition-shadow">
                 <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-3">
-                  <div className="p-2 bg-orange-100 dark:bg-orange-900/30 rounded-lg">
-                    <FiShoppingCart className="text-orange-600 dark:text-orange-400" size={24} />
+                  <div className="p-2 bg-amber-100 dark:bg-teal-900/30 rounded-lg">
+                    <FiShoppingCart className="text-teal-600 dark:text-teal-500" size={24} />
                   </div>
                   Booking Status
                 </h2>
@@ -462,8 +462,8 @@ export function ReportsPage() {
                     <p className="text-slate-600 dark:text-slate-400 text-sm font-medium mb-2">New This Month</p>
                     <p className="text-4xl font-bold text-slate-900 dark:text-white">{customerStats.newCustomersThisMonth || 0}</p>
                   </div>
-                  <div className="p-4 bg-orange-100 dark:bg-orange-900/30 rounded-xl">
-                    <FiUsers className="text-orange-600 dark:text-orange-400" size={32} />
+                  <div className="p-4 bg-amber-100 dark:bg-teal-900/30 rounded-xl">
+                    <FiUsers className="text-teal-600 dark:text-teal-500" size={32} />
                   </div>
                 </div>
               </div>
@@ -515,8 +515,8 @@ export function ReportsPage() {
                     <p className="text-slate-600 dark:text-slate-400 text-sm font-medium mb-2">Total Bookings</p>
                     <p className="text-4xl font-bold text-slate-900 dark:text-white">{bookingStats.total || 0}</p>
                   </div>
-                  <div className="p-4 bg-orange-100 dark:bg-orange-900/30 rounded-xl">
-                    <FiShoppingCart className="text-orange-600 dark:text-orange-400" size={32} />
+                  <div className="p-4 bg-amber-100 dark:bg-teal-900/30 rounded-xl">
+                    <FiShoppingCart className="text-teal-600 dark:text-teal-500" size={32} />
                   </div>
                 </div>
               </div>

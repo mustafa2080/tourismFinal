@@ -196,11 +196,11 @@ const AdminSetupPage = () => {
   const passwordCheck = validatePassword(adminData.password);
 
   return (
-    <div className="min-h-screen bg-[#ED9A58] flex items-center justify-center p-4 sm:p-6 lg:p-8">
+    <div className="min-h-screen bg-white dark:bg-slate-900 flex items-center justify-center p-4 sm:p-6 lg:p-8">
       {/* Animated Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 left-10 w-72 h-72 bg-teal-500/20 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
-        <div className="absolute top-40 right-10 w-72 h-72 bg-orange-500/20 rounded-full mix-blend-multiply filter blur-3xl animate-blob" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-40 right-10 w-72 h-72 bg-teal-500/20 rounded-full mix-blend-multiply filter blur-3xl animate-blob" style={{ animationDelay: '2s' }}></div>
         <div className="absolute -bottom-8 left-20 w-72 h-72 bg-pink-500/20 rounded-full mix-blend-multiply filter blur-3xl animate-blob" style={{ animationDelay: '4s' }}></div>
       </div>
 
@@ -213,8 +213,8 @@ const AdminSetupPage = () => {
             {/* Icon */}
             <div className="flex justify-center">
               <div className="relative">
-                <div className="absolute inset-0 bg-[#ED9A58] rounded-full blur-lg opacity-75"></div>
-                <div className="relative w-16 h-16 bg-[#ED9A58] rounded-full flex items-center justify-center">
+                <div className="absolute inset-0 bg-[#0d9488] rounded-full blur-lg opacity-75"></div>
+                <div className="relative w-16 h-16 bg-[#0d9488] rounded-full flex items-center justify-center">
                   <BiShieldAlt className="text-white text-2xl" />
                 </div>
               </div>
@@ -236,7 +236,7 @@ const AdminSetupPage = () => {
                 <div
                   key={s}
                   className={`h-2 rounded-full transition-all duration-300 ${
- s <= step ? 'bg-[#ED9A58] w-8' : 'bg-slate-600 w-2'
+ s <= step ? 'bg-[#0d9488] w-8' : 'bg-slate-600 w-2'
  }`}
                 ></div>
               ))}
@@ -271,7 +271,7 @@ const AdminSetupPage = () => {
 
               <button
                 type="submit"
-                className="w-full py-3 bg-[#ED9A58] text-white font-bold rounded-xl transition-all duration-300 flex items-center justify-center gap-2 group"
+                className="w-full py-3 bg-[#0d9488] text-white font-bold rounded-xl transition-all duration-300 flex items-center justify-center gap-2 group"
               >
                 Verify Code
                 <FiArrowRight className="group-hover:translate-x-1 transition-transform" />
@@ -460,7 +460,7 @@ const AdminSetupPage = () => {
                 </button>
                 <button
                   type="submit"
-                  className="flex-1 py-3 bg-[#ED9A58] text-white font-bold rounded-xl transition-all duration-300 flex items-center justify-center gap-2 group"
+                  className="flex-1 py-3 bg-[#0d9488] text-white font-bold rounded-xl transition-all duration-300 flex items-center justify-center gap-2 group"
                 >
                   Continue
                   <FiArrowRight className="group-hover:translate-x-1 transition-transform" />
@@ -516,7 +516,7 @@ const AdminSetupPage = () => {
                 <button
                   onClick={handleConfirmCreateAdmin}
                   disabled={loading}
-                  className="flex-1 py-3 bg-[#ED9A58] text-white font-bold rounded-xl transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 group"
+                  className="flex-1 py-3 bg-[#0d9488] text-white font-bold rounded-xl transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 group"
                 >
                   {loading ? (
                     <>

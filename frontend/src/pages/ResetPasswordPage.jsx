@@ -154,8 +154,8 @@ const ResetPasswordPage = () => {
       <MainLayout>
         <div className="relative min-h-screen w-full overflow-hidden pt-20 pb-12">
           <div className="absolute inset-0 -z-10">
-            <div className="absolute top-0 right-0 w-96 h-96 bg-[#ED9A58] rounded-full blur-3xl animate-pulse" />
-            <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#ED9A58] rounded-full blur-3xl animate-pulse" />
+            <div className="absolute top-0 right-0 w-96 h-96 bg-[#0d9488] rounded-full blur-3xl animate-pulse" />
+            <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#0d9488] rounded-full blur-3xl animate-pulse" />
           </div>
 
           <div className="max-w-md mx-auto px-4 flex items-center justify-center min-h-[calc(100vh-200px)]">
@@ -175,8 +175,8 @@ const ResetPasswordPage = () => {
       <MainLayout>
         <div className="relative min-h-screen w-full overflow-hidden pt-20 pb-12">
           <div className="absolute inset-0 -z-10">
-            <div className="absolute top-0 right-0 w-96 h-96 bg-[#ED9A58] rounded-full blur-3xl animate-pulse" />
-            <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#ED9A58] rounded-full blur-3xl animate-pulse" />
+            <div className="absolute top-0 right-0 w-96 h-96 bg-[#0d9488] rounded-full blur-3xl animate-pulse" />
+            <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#0d9488] rounded-full blur-3xl animate-pulse" />
           </div>
 
           <div className="max-w-md mx-auto px-4 flex items-center justify-center min-h-[calc(100vh-200px)]">
@@ -190,7 +190,7 @@ const ResetPasswordPage = () => {
               </p>
               <button
                 onClick={() => navigate('/forgot-password')}
-                className="w-full py-3 px-4 rounded-xl font-bold text-white bg-[#ED9A58] transition-all"
+                className="w-full py-3 px-4 rounded-xl font-bold text-white bg-[#0d9488] transition-all"
               >
                 Request New Link
               </button>
@@ -207,13 +207,13 @@ const ResetPasswordPage = () => {
       <MainLayout>
         <div className="relative min-h-screen w-full overflow-hidden pt-20 pb-12">
           <div className="absolute inset-0 -z-10">
-            <div className="absolute top-0 right-0 w-96 h-96 bg-[#ED9A58] rounded-full blur-3xl animate-pulse" />
-            <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#ED9A58] rounded-full blur-3xl animate-pulse" />
+            <div className="absolute top-0 right-0 w-96 h-96 bg-[#0d9488] rounded-full blur-3xl animate-pulse" />
+            <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#0d9488] rounded-full blur-3xl animate-pulse" />
           </div>
 
           <div className="max-w-md mx-auto px-4 flex items-center justify-center min-h-[calc(100vh-200px)]">
             <div className="bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-2xl text-center animate-in fade-in">
-              <div className="w-20 h-20 bg-[#ED9A58] rounded-full flex items-center justify-center shadow-lg mx-auto mb-6">
+              <div className="w-20 h-20 bg-[#0d9488] rounded-full flex items-center justify-center shadow-lg mx-auto mb-6">
                 <FiCheckCircle className="text-4xl text-white" />
               </div>
               <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4">
@@ -224,7 +224,7 @@ const ResetPasswordPage = () => {
               </p>
               <button
                 onClick={() => navigate('/login')}
-                className="w-full py-3 px-4 rounded-xl font-bold text-white bg-[#ED9A58] transition-all flex items-center justify-center gap-2"
+                className="w-full py-3 px-4 rounded-xl font-bold text-white bg-[#0d9488] transition-all flex items-center justify-center gap-2"
               >
                 <span>Go to Login</span>
                 <FiArrowRight size={18} />
@@ -242,8 +242,8 @@ const ResetPasswordPage = () => {
       <div className="relative min-h-screen w-full overflow-hidden pt-20 pb-12">
         {/* Animated Background */}
         <div className="absolute inset-0 -z-10">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-[#ED9A58] rounded-full blur-3xl animate-pulse" />
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#ED9A58] rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+          <div className="absolute top-0 right-0 w-96 h-96 bg-[#0d9488] rounded-full blur-3xl animate-pulse" />
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#0d9488] rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
         </div>
 
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -256,7 +256,7 @@ const ResetPasswordPage = () => {
                   <span className="text-sm font-bold text-teal-600 dark:text-teal-400">Create New Password</span>
                 </div>
 
-                <h1 className="text-5xl lg:text-6xl font-bold bg-[#ED9A58] bg-clip-text text-transparent">
+                <h1 className="text-5xl lg:text-6xl font-bold bg-[#0d9488] bg-clip-text text-transparent">
                   Set Your New Password
                 </h1>
 
@@ -290,7 +290,7 @@ const ResetPasswordPage = () => {
                   {/* Header */}
                   <div className="text-center mb-8 space-y-3">
                     <div className="flex justify-center">
-                      <div className="relative w-16 h-16 bg-[#ED9A58] rounded-xl flex items-center justify-center shadow-lg shadow-teal-500/30">
+                      <div className="relative w-16 h-16 bg-[#0d9488] rounded-xl flex items-center justify-center shadow-lg shadow-teal-500/30">
                         <BiWorld className="text-3xl text-white" />
                       </div>
                     </div>
@@ -388,7 +388,7 @@ const ResetPasswordPage = () => {
                     <button
                       type="submit"
                       disabled={loading}
-                      className="w-full py-3.5 md:py-4 px-4 rounded-xl font-bold text-white bg-[#ED9A58] transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                      className="w-full py-3.5 md:py-4 px-4 rounded-xl font-bold text-white bg-[#0d9488] transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                     >
                       {loading ? (
                         <>

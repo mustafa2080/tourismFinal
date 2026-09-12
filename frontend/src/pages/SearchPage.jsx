@@ -328,7 +328,7 @@ const SearchPage = () => {
  return (
  <MainLayout>
  {/* Hero Search */}
- <div className="bg-[#ED9A58] text-white py-8 md:py-12">
+ <div className="bg-[#0d9488] text-white py-8 md:py-12">
  <div className="max-w-7xl mx-auto px-4 md:px-8">
  <h1 className="text-3xl md:text-4xl font-bold mb-6 flex items-center gap-3">
  {categoryId && categoryName
@@ -758,7 +758,7 @@ const SearchPage = () => {
                           <div className="text-2xl font-bold text-teal-600">
                             {pkg.base_price && pkg.base_price > 0 
                               ? `$${pkg.base_price?.toLocaleString()}`
-                              : <span className="text-orange-500">Price Not Set</span>
+                              : <span className="text-teal-500">Price Not Set</span>
                             }
                           </div>
                         </div>
@@ -839,7 +839,7 @@ const SearchPage = () => {
                             <div className="text-lg font-bold text-teal-600">
                               {pkg.base_price && pkg.base_price > 0 
                                 ? `$${pkg.base_price?.toLocaleString()}`
-                                : <span className="text-orange-500">Price Not Set</span>
+                                : <span className="text-teal-500">Price Not Set</span>
                               }
                             </div>
                           </div>

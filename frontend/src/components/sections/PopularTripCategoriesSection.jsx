@@ -355,7 +355,7 @@ const PopularTripCategoriesSection = () => {
                           </div>
                         </div>
                         <div className="flex items-start gap-3">
-                          <BiWorld size={20} className="text-orange-500 flex-shrink-0 mt-1" />
+                          <BiWorld size={20} className="text-teal-500 flex-shrink-0 mt-1" />
                           <div>
                             <p className="font-semibold text-slate-900 dark:text-white">{t('home.diverseExperiences') || 'Diverse Experiences'}</p>
                             <p className="text-sm text-slate-600 dark:text-slate-400">
@@ -370,7 +370,7 @@ const PopularTripCategoriesSection = () => {
                           console.log(`📂 [PopularCategories] Browse button clicked: ${selectedCategory.id} - ${selectedCategory.name}`);
                           navigate(`/search?category=${selectedCategory.id}&categoryName=${encodeURIComponent(selectedCategory.name)}`);
                         }}
-                        className="w-full bg-[#ED9A58] text-white font-bold py-3 rounded-lg transition-all group"
+                        className="w-full bg-[#0d9488] text-white font-bold py-3 rounded-lg transition-all group"
                       >
                         <span>{t('home.browseCategory') || 'Browse'} {selectedCategory.name}</span>
                       </Button>
@@ -433,7 +433,7 @@ const PopularTripCategoriesSection = () => {
                       </div>
                       <div className="flex justify-between">
                         <span>API Response:</span>
-                        <span className="font-bold text-orange-600 dark:text-orange-400">Empty Array []</span>
+                        <span className="font-bold text-teal-600 dark:text-teal-500">Empty Array []</span>
                       </div>
                       <div className="flex justify-between">
                         <span>Status Code:</span>
@@ -468,7 +468,7 @@ const PopularTripCategoriesSection = () => {
                       onClick={() => navigate(`/package/${pkg.id}`)}
                     >
                       {/* Image */}
-                      <div className="relative h-48 bg-[#ED9A58] overflow-hidden">
+                      <div className="relative h-48 bg-[#0d9488] overflow-hidden">
                         {pkg.images && pkg.images.length > 0 && (pkg.images[0]?.image_data || pkg.images[0]?.url) ? (
                           <>
                             {pkg.images[0]?.image_data && (
@@ -514,7 +514,7 @@ const PopularTripCategoriesSection = () => {
                           {pkg.destination}
                         </div>
                         {pkg.average_rating && (
-                          <div className="absolute top-3 left-3 flex items-center gap-1.5 px-2.5 py-1.5 bg-[#ED9A58] rounded-full backdrop-blur-sm shadow-md border border-amber-200/60 dark:border-amber-700/60">
+                          <div className="absolute top-3 left-3 flex items-center gap-1.5 px-2.5 py-1.5 bg-[#0d9488] rounded-full backdrop-blur-sm shadow-md border border-amber-200/60 dark:border-amber-700/60">
                             <FiStar size={16} className="fill-amber-500 text-amber-500 drop-shadow-md" />
                             <span className="text-xs font-bold text-amber-700 dark:text-amber-300">{parseFloat(pkg.average_rating).toFixed(1)}</span>
                           </div>
@@ -572,7 +572,7 @@ const PopularTripCategoriesSection = () => {
                             <p className="text-xl md:text-2xl font-bold text-teal-600">
                               {pkg.base_price && pkg.base_price > 0 
                                 ? `$${pkg.base_price?.toLocaleString()}`
-                                : <span className="text-orange-500">Price Not Set</span>
+                                : <span className="text-teal-500">Price Not Set</span>
                               }
                             </p>
                           </div>
