@@ -9,6 +9,7 @@ import { MainLayout } from '../components/layout';
 import { Card, Button, Badge, Spinner } from '../components/common';
 import AdvancedImageSlider from '../components/sections/AdvancedImageSlider';
 import PopularTripCategoriesSection from '../components/sections/PopularTripCategoriesSection';
+import PopularDestinationsSection from '../components/sections/PopularDestinationsSection';
 import { useWishlistContext } from '../hooks/useWishlistContext';
 import { packagesService, reviewsService } from '../services';
 import { placeholderService } from '../services/placeholderService';
@@ -962,6 +963,11 @@ const HomePage = () => {
  {/* ==================== CATEGORIES SECTION ==================== */}
  <Reveal y={32}>
  <PopularTripCategoriesSection />
+ </Reveal>
+
+ {/* ==================== POPULAR DESTINATIONS ==================== */}
+ <Reveal y={32}>
+ <PopularDestinationsSection />
  </Reveal>
 
  {/* ==================== STATISTICS ==================== */}
