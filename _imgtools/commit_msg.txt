@@ -1,0 +1,5 @@
+توحيد جميع الـ gradients في الموقع للون البراند الواحد #0d9488
+
+- استبدال كل bg-gradient-to-* و from-/via-/to- في ملفات JSX بلون البراند الموحد
+- تحويل linear-gradient/radial-gradient في ملفات CSS للون الموحد (أزرار، خلفيات، بادجز، سكرول بار، إلخ)
+- الحفاظ على تأثيرات shimmer/skeleton loading كما هي (loading-skeleton, skeleton-loading, skeleton-loader, shimmer, animate-shimmer, وتأثيرات shine على auth-card و signup-button و package-card و message-card-item)

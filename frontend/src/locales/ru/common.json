@@ -91,7 +91,8 @@
     "invoice": "Счёт",
     "notSpecified": "Не указано",
     "trips": "Trips",
-    "spending": "Spending ($)"
+    "spending": "Spending ($)",
+    "priceNotSet": "Цена не указана"
   },
   "tripNotFound": "Поездка не найдена",
   "packageNotFound": "Запрошенный пакет не существует.",
@@ -240,6 +241,13 @@
     "handpickedDescription": "Откройте нашу тщательно подобранную коллекцию лучших путешествий",
     "popularCategories": "Популярные категории поездок",
     "discoverCategories": "Откройте свой идеальный отдых через самые популярные категории",
+    "tripsAvailable": "доступных поездок",
+    "categoriesComingSoon": "Новые категории скоро появятся",
+    "checkBackSoon": "Мы готовим новые поездки — загляните позже!",
+    "tripsComingSoon": "Поездки скоро появятся",
+    "exploreOtherCategories": "Попробуйте другую категорию или посмотрите все наши поездки.",
+    "exploreAllPackages": "Смотреть все туры",
+    "viewAllInCategory": "Смотреть все поездки: {{category}}",
     "trendingTrips": "Популярные поездки",
     "travelerReviews": "Реальные отзывы от нашего сообщества",
     "reviewsDescription": "Узнайте, что думают путешественники со всего мира о наших турах",

@@ -79,7 +79,9 @@
     "to": "Bis",
     "noRatings": "Noch keine Bewertungen",
     "trips": "Trips",
-    "spending": "Spending ($)"
+    "spending": "Spending ($)",
+    "viewAll": "Alle anzeigen",
+    "priceNotSet": "Preis nicht festgelegt"
   },
   "tripNotFound": "Reise nicht gefunden",
   "packageNotFound": "Das gesuchte Paket existiert nicht.",
@@ -228,6 +230,12 @@
     "handpickedDescription": "Entdecken Sie unsere kuratierte Auswahl der besten Reiseerlebnisse",
     "popularCategories": "Beliebte Reisekategorien",
     "discoverCategories": "Entdecken Sie Ihren perfekten Urlaub durch unsere beliebtesten Reisekategorien",
+    "tripsAvailable": "verfügbare Reisen",
+    "categoriesComingSoon": "Neue Kategorien in Kürze",
+    "tripsComingSoon": "Reisen in Kürze verfügbar",
+    "exploreOtherCategories": "Probieren Sie eine andere Kategorie oder entdecken Sie alle unsere Reisen.",
+    "exploreAllPackages": "Alle Pakete entdecken",
+    "viewAllInCategory": "Alle {{category}}-Reisen anzeigen",
     "trendingTrips": "Derzeit angesagte Reisen",
     "travelerReviews": "Echtes Feedback von unserer Community",
     "reviewsDescription": "Lesen Sie, was Reisende aus aller Welt über unsere Touren sagen",
