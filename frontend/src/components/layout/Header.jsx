@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import { createPortal } from 'react-dom';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAuth, useTheme } from '../../hooks';
 import { useWishlistContext } from '../../hooks/useWishlistContext';
@@ -14,7 +14,8 @@ import {
   HiOutlineMoon, HiOutlineSun, HiOutlineBell, HiOutlineInformationCircle,
   HiOutlineEnvelope, HiOutlineCog6Tooth, HiOutlineSparkles,
   HiOutlineArrowRightOnRectangle, HiOutlineUserPlus, HiOutlineArrowLeftOnRectangle,
-  HiOutlineNewspaper,
+  HiOutlineNewspaper, HiOutlinePhone, HiOutlineGlobeAlt, HiOutlineTag,
+  HiOutlineMapPin, HiOutlineShieldCheck,
 } from 'react-icons/hi2';
 import logoImg from '../../assets/logo4.webp';
 import { notificationsService } from '../../services';
@@ -42,6 +43,35 @@ const FiNewspaper = HiOutlineNewspaper;
 const MdOutlineLogin = HiOutlineArrowLeftOnRectangle;
 const MdOutlinePersonAdd = HiOutlineUserPlus;
 const MdLogout = HiOutlineArrowRightOnRectangle;
+const FiPhone = HiOutlinePhone;
+const FiGlobe = HiOutlineGlobeAlt;
+const FiTag = HiOutlineTag;
+const FiPin = HiOutlineMapPin;
+const FiShield = HiOutlineShieldCheck;
+
+// Region/destination data for the "Destinations" megamenu - kept in sync
+// with the homepage's PopularDestinationsSection region list so the two
+// stay consistent for the user.
+const DESTINATION_REGIONS = [
+  { id: 'europe', name: 'Europe', countries: ['France', 'Italy', 'Spain', 'Greece', 'Portugal'] },
+  { id: 'africa', name: 'Africa', countries: ['Egypt', 'Morocco', 'Kenya', 'Tanzania', 'South Africa'] },
+  { id: 'asia', name: 'Asia', countries: ['Japan', 'Thailand', 'Vietnam', 'Indonesia', 'Jordan'] },
+  { id: 'latin-america', name: 'Latin America', countries: ['Peru', 'Brazil', 'Argentina', 'Chile', 'Mexico'] },
+  { id: 'north-america', name: 'North America', countries: ['USA', 'Canada', 'Alaska', 'Grand Canyon'] },
+  { id: 'oceania', name: 'Australia & Oceania', countries: ['Australia', 'New Zealand', 'Great Barrier Reef'] },
+];
+
+// Quick trip-type filters shown in the strip under the main navbar - mirrors
+// the "Top deals / Adventure / Beach ..." quick-select tags on the homepage
+// hero search, kept accessible from anywhere in the site.
+const QUICK_FILTERS = [
+  { id: 'deals', label: 'Top Deals', icon: '🔥' },
+  { id: 'adventure', label: 'Adventure', icon: '⛰️' },
+  { id: 'beach', label: 'Beach', icon: '🏖️' },
+  { id: 'cultural', label: 'Cultural', icon: '🏛️' },
+  { id: 'luxury', label: 'Luxury', icon: '👑' },
+  { id: 'family', label: 'Family', icon: '👨‍👩‍👧' },
+];
 
 const Header = () => {
   const navigate = useNavigate();
@@ -54,6 +84,8 @@ const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [userDropdownOpen, setUserDropdownOpen] = useState(false);
   const [notificationsOpen, setNotificationsOpen] = useState(false);
+  const [destinationsMenuOpen, setDestinationsMenuOpen] = useState(false);
+  const [mobileDestinationsOpen, setMobileDestinationsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [notifications, setNotifications] = useState([]);
   const [loadingNotifications, setLoadingNotifications] = useState(false);
@@ -87,6 +119,8 @@ const Header = () => {
     setMobileMenuOpen(false);
     setUserDropdownOpen(false);
     setNotificationsOpen(false);
+    setDestinationsMenuOpen(false);
+    setMobileDestinationsOpen(false);
   }, [location.pathname]);
 
   // Keep the portal-rendered user dropdown anchored under its trigger button,
@@ -254,6 +288,18 @@ const Header = () => {
     { label: t('common.savedTrips') || 'Saved Trips', path: '/dashboard/wishlist', icon: FiBookmark, requiresAuth: true },
   ], [t, i18n.language, languageChangeCounter]);
 
+  // Navigate to the search page filtered by a free-text query (destination
+  // name, region name, or quick-filter type). Used by the Destinations
+  // megamenu and the quick-filter strip below the navbar.
+  const goToSearch = useCallback((query, type) => {
+    const params = new URLSearchParams();
+    if (query) params.append('q', query);
+    if (type) params.append('type', type);
+    navigate(`/search?${params.toString()}`);
+    setDestinationsMenuOpen(false);
+    setMobileMenuOpen(false);
+  }, [navigate]);
+
   const isActive = useCallback((path) => location.pathname === path, [location.pathname]);
   
   const handleLogout = useCallback(() => {
@@ -275,6 +321,43 @@ const Header = () => {
           : 'bg-white/40 backdrop-blur-sm dark:bg-slate-900/40 border-b border-transparent'
       }`}
     >
+      {/* ==================== TOP UTILITY BAR ==================== */}
+      {/* Collapses smoothly once the page is scrolled, like TourRadar's
+          thin trust-signal strip above the main navbar. */}
+      <div
+        className={`hidden md:block w-full bg-slate-900 dark:bg-black text-slate-300 overflow-hidden transition-all duration-300 ease-out ${
+          scrolled ? 'max-h-0 opacity-0' : 'max-h-10 opacity-100'
+        }`}
+      >
+        <div className="w-full max-w-[1600px] mx-auto px-3 xs:px-4 sm:px-6 lg:px-8 h-9 flex items-center justify-between text-xs">
+          <div className="flex items-center gap-4 lg:gap-6">
+            <span className="flex items-center gap-1.5">
+              <FiShield size={13} className="text-teal-400" />
+              {t('header.trustedOperators') || '500+ trusted tour operators'}
+            </span>
+            <span className="hidden lg:flex items-center gap-1.5">
+              <FiPin size={13} className="text-teal-400" />
+              {t('header.destinationsCount') || '850+ destinations worldwide'}
+            </span>
+          </div>
+          <div className="flex items-center gap-4 lg:gap-6">
+            <button
+              onClick={() => navigate('/contact')}
+              className="flex items-center gap-1.5 hover:text-white transition-colors"
+            >
+              <FiPhone size={13} className="text-teal-400" />
+              {t('header.support247') || '24/7 Customer Support'}
+            </button>
+            <button
+              onClick={() => navigate('/custom-trip')}
+              className="hidden lg:flex items-center gap-1.5 hover:text-white transition-colors font-medium"
+            >
+              {t('header.becomeGuide') || 'Become a Guide'}
+            </button>
+          </div>
+        </div>
+      </div>
+
       <div className="w-full max-w-[1600px] mx-auto px-3 xs:px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20 lg:h-24 gap-2 lg:gap-4">
           {/* Logo */}
@@ -293,6 +376,58 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-1 xl:gap-1.5 flex-shrink min-w-0 overflow-x-auto no-scrollbar pl-2">
+            {/* Destinations Megamenu Trigger */}
+            <div
+              className="relative"
+              onMouseEnter={() => setDestinationsMenuOpen(true)}
+              onMouseLeave={() => setDestinationsMenuOpen(false)}
+            >
+              <button
+                onClick={() => setDestinationsMenuOpen((prev) => !prev)}
+                className={`flex items-center gap-1.5 xl:gap-2 px-3 xl:px-4 py-2 rounded-full font-semibold text-[13px] xl:text-sm whitespace-nowrap transition-all duration-300 ease-out group relative ${
+                  destinationsMenuOpen
+                    ? 'text-teal-700 dark:text-teal-400 bg-teal-50/80 dark:bg-teal-900/20 border border-teal-200/60 dark:border-teal-800/60 shadow-sm'
+                    : 'text-slate-600 dark:text-slate-200 hover:text-slate-950 dark:hover:text-white hover:bg-slate-100/80 dark:hover:bg-slate-800/50'
+                }`}
+                aria-haspopup="true"
+                aria-expanded={destinationsMenuOpen}
+              >
+                <FiGlobe size={15} className={`transition-transform duration-300 group-hover:scale-110 flex-shrink-0 ${destinationsMenuOpen ? '' : 'text-slate-400'}`} />
+                <span>{t('common.destinations') || 'Destinations'}</span>
+                <FiChevronDown size={14} className={`transition-transform duration-300 ${destinationsMenuOpen ? 'rotate-180' : ''}`} />
+              </button>
+
+              {/* Megamenu Panel */}
+              {destinationsMenuOpen && (
+                <div className="absolute top-full left-0 pt-2 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
+                  <div className="w-[640px] max-w-[80vw] bg-white dark:bg-slate-800 rounded-2xl shadow-2xl shadow-slate-900/15 dark:shadow-black/40 border border-slate-200/80 dark:border-slate-700/80 p-5 grid grid-cols-3 gap-x-6 gap-y-4">
+                    {DESTINATION_REGIONS.map((region) => (
+                      <div key={region.id}>
+                        <button
+                          onClick={() => goToSearch(region.name)}
+                          className="flex items-center gap-1.5 text-sm font-bold text-slate-900 dark:text-white hover:text-teal-600 dark:hover:text-teal-400 transition-colors mb-2"
+                        >
+                          {region.name}
+                        </button>
+                        <ul className="space-y-1.5">
+                          {region.countries.map((country) => (
+                            <li key={country}>
+                              <button
+                                onClick={() => goToSearch(country)}
+                                className="text-xs text-slate-500 dark:text-slate-400 hover:text-teal-600 dark:hover:text-teal-400 transition-colors text-left"
+                              >
+                                {country}
+                              </button>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+
             {navLinks.map((link) => {
               const Icon = link.icon;
               if (link.requiresAuth && !isAuthenticated) return null;
@@ -643,6 +778,32 @@ const Header = () => {
  </div>
  </div>
 
+      {/* ==================== QUICK FILTER STRIP ==================== */}
+      {/* TourRadar-style row of trip-type shortcuts under the main navbar,
+          hidden once scrolled to keep the sticky header compact. */}
+      <div
+        className={`hidden md:block w-full border-t border-slate-200/60 dark:border-slate-700/60 bg-slate-50/80 dark:bg-slate-900/60 backdrop-blur-sm overflow-hidden transition-all duration-300 ease-out ${
+          scrolled ? 'max-h-0 opacity-0 border-t-0' : 'max-h-12 opacity-100'
+        }`}
+      >
+        <div className="w-full max-w-[1600px] mx-auto px-3 xs:px-4 sm:px-6 lg:px-8 h-10 flex items-center gap-2 overflow-x-auto no-scrollbar">
+          <span className="flex items-center gap-1 text-xs font-bold text-teal-600 dark:text-teal-400 flex-shrink-0 pr-1">
+            <FiTag size={13} />
+            {t('header.quickFilters') || 'Quick picks:'}
+          </span>
+          {QUICK_FILTERS.map((filter) => (
+            <button
+              key={filter.id}
+              onClick={() => goToSearch('', filter.id)}
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:border-teal-400 hover:text-teal-600 dark:hover:text-teal-400 transition-all flex-shrink-0"
+            >
+              <span>{filter.icon}</span>
+              <span>{filter.label}</span>
+            </button>
+          ))}
+        </div>
+      </div>
+
  {/* Mobile Side Drawer - rendered via portal so it always covers the full viewport,
  regardless of any backdrop-blur/transform on ancestor elements like <header> */}
  {mobileMenuOpen && createPortal(
@@ -672,6 +833,45 @@ const Header = () => {
 
  {/* Drawer body (scrollable) */}
  <div className="flex-1 overflow-y-auto px-4 py-5">
+              {/* Destinations accordion (mobile) */}
+              <div className="mb-3 border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+                <button
+                  onClick={() => setMobileDestinationsOpen((prev) => !prev)}
+                  className="w-full flex items-center justify-between px-4 py-3 bg-slate-50 dark:bg-slate-800/60 font-semibold text-sm text-slate-700 dark:text-slate-200"
+                >
+                  <span className="flex items-center gap-2">
+                    <FiGlobe size={16} className="text-teal-500" />
+                    {t('common.destinations') || 'Destinations'}
+                  </span>
+                  <FiChevronDown size={16} className={`transition-transform duration-300 ${mobileDestinationsOpen ? 'rotate-180' : ''}`} />
+                </button>
+                {mobileDestinationsOpen && (
+                  <div className="px-4 py-3 space-y-3 bg-white dark:bg-slate-900">
+                    {DESTINATION_REGIONS.map((region) => (
+                      <div key={region.id}>
+                        <button
+                          onClick={() => goToSearch(region.name)}
+                          className="text-xs font-bold text-slate-800 dark:text-white mb-1.5 block"
+                        >
+                          {region.name}
+                        </button>
+                        <div className="flex flex-wrap gap-1.5">
+                          {region.countries.map((country) => (
+                            <button
+                              key={country}
+                              onClick={() => goToSearch(country)}
+                              className="px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-[11px] text-slate-600 dark:text-slate-300 hover:bg-teal-50 dark:hover:bg-teal-900/30 hover:text-teal-600 dark:hover:text-teal-400 transition-colors"
+                            >
+                              {country}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+
  <nav className="flex flex-col gap-1">
  {navLinks.map((link) => {
  const Icon = link.icon;
