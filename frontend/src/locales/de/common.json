@@ -8,6 +8,7 @@
     "about": "Über uns",
     "contact": "Kontakt",
     "savedTrips": "Gespeicherte Reisen",
+    "destinations": "Reiseziele",
     "search": "Suche",
     "login": "Anmelden",
     "signup": "Registrieren",
@@ -137,7 +138,12 @@
     "rating": "Bewertung",
     "destination": "Reiseziel",
     "days": "Tage",
-    "blog": "Blog"
+    "blog": "Blog",
+    "quickFilters": "Schnellauswahl:",
+    "trustedOperators": "Über 500 vertrauenswürdige Reiseveranstalter",
+    "destinationsCount": "Über 850 Reiseziele weltweit",
+    "support247": "24/7 Kundensupport",
+    "becomeGuide": "Werden Sie Reiseleiter"
   },
   "itinerary": {
     "dailyItinerary": "Tagesprogramm",

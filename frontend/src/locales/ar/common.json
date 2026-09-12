@@ -8,6 +8,7 @@
     "about": "من نحن",
     "contact": "تواصل معنا",
     "savedTrips": "الرحلات المحفوظة",
+    "destinations": "الوجهات",
     "search": "بحث",
     "login": "تسجيل الدخول",
     "signup": "إنشاء حساب",
@@ -273,7 +274,12 @@
     "profile": "الملف الشخصي",
     "dashboard": "لوحة التحكم",
     "logout": "تسجيل الخروج",
-    "blog": "المدونة"
+    "blog": "المدونة",
+    "becomeGuide": "كن مرشدًا",
+    "quickFilters": "اختيارات سريعة:",
+    "trustedOperators": "أكثر من 500 منظم رحلات موثوق",
+    "destinationsCount": "أكثر من 850 وجهة حول العالم",
+    "support247": "دعم العملاء على مدار الساعة"
   },
   "footer": {
     "readyForNextAdventure": "مستعد لمغامرتك القادمة؟",

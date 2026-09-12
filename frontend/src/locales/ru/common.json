@@ -8,6 +8,7 @@
     "about": "О нас",
     "contact": "Контакты",
     "savedTrips": "Сохранённые поездки",
+    "destinations": "Направления",
     "search": "Поиск",
     "login": "Вход",
     "signup": "Регистрация",
@@ -148,7 +149,12 @@
     "rating": "Рейтинг",
     "destination": "Направление",
     "days": "Дни",
-    "blog": "Блог"
+    "blog": "Блог",
+    "quickFilters": "Быстрый выбор:",
+    "trustedOperators": "Более 500 надёжных туроператоров",
+    "destinationsCount": "Более 850 направлений по всему миру",
+    "support247": "Поддержка клиентов 24/7",
+    "becomeGuide": "Стать гидом"
   },
   "itinerary": {
     "dailyItinerary": "Ежедневный маршрут",

@@ -8,6 +8,7 @@
     "about": "Acerca de",
     "contact": "Contacto",
     "savedTrips": "Viajes Guardados",
+    "destinations": "Destinos",
     "search": "Buscar",
     "login": "Iniciar sesión",
     "signup": "Crear cuenta",
@@ -301,6 +302,11 @@
     }
   },
   "header": {
-    "blog": "Blog"
+    "blog": "Blog",
+    "quickFilters": "Selección rápida:",
+    "trustedOperators": "Más de 500 operadores turísticos de confianza",
+    "destinationsCount": "Más de 850 destinos en todo el mundo",
+    "support247": "Atención al cliente 24/7",
+    "becomeGuide": "Conviértete en guía"
   }
 }

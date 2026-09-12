@@ -8,6 +8,7 @@
     "about": "About",
     "contact": "Contact",
     "savedTrips": "Saved Trips",
+    "destinations": "Destinations",
     "search": "Search",
     "login": "Login",
     "signup": "Sign Up",
@@ -278,7 +279,11 @@
     "blog": "Blog",
     "becomeGuide": "Become a Guide",
     "admin": "Admin",
-    "newNotifications": "You have new notifications"
+    "newNotifications": "You have new notifications",
+    "quickFilters": "Quick picks:",
+    "trustedOperators": "500+ trusted tour operators",
+    "destinationsCount": "850+ destinations worldwide",
+    "support247": "24/7 Customer Support"
   },
   "footer": {
     "readyForNextAdventure": "Ready for your next adventure?",
