@@ -50,7 +50,7 @@ export const regionService = {
 
   /**
    * Create new region (admin only)
-   * @param {Object} regionData - {name, slug, image, is_active, sort_order, destinations: string[]}
+   * @param {Object} regionData - {name, slug, image, is_active, sort_order, destinations: Array<{name: string, best_months?: number[]}>}
    */
   async createRegion(regionData) {
     try {

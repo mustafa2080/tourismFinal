@@ -9,9 +9,39 @@ import {
   FiChevronDown,
   FiEye,
   FiEyeOff,
+  FiCalendar,
 } from 'react-icons/fi';
 import toast from 'react-hot-toast';
 import { regionService } from '../../../services/regionService';
+
+const MONTH_LABELS = [
+  'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+  'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec',
+];
+
+// Formats a sorted array of month numbers (1-12) into a short human-readable
+// range summary for the region cards list, e.g. [10,11,12,1,2,3] -> "Oct-Mar".
+// Falls back to a comma list when the months aren't one contiguous run.
+function summarizeBestMonths(months) {
+  if (!months || months.length === 0) return null;
+  const sorted = [...new Set(months)].sort((a, b) => a - b);
+  if (sorted.length === 12) return 'Year-round';
+
+  // Check for a single contiguous run, allowing wraparound (e.g. Nov-Feb)
+  const isConsecutive = sorted.every((m, i) => {
+    if (i === 0) return true;
+    return m === sorted[i - 1] + 1;
+  });
+  const wrapsAround = sorted[0] === 1 && sorted[sorted.length - 1] === 12;
+
+  if (isConsecutive && !wrapsAround) {
+    return sorted.length === 1
+      ? MONTH_LABELS[sorted[0] - 1]
+      : `${MONTH_LABELS[sorted[0] - 1]}-${MONTH_LABELS[sorted[sorted.length - 1] - 1]}`;
+  }
+
+  return sorted.map((m) => MONTH_LABELS[m - 1]).join(', ');
+}
 
 export function RegionsPage() {
   const [regions, setRegions] = useState([]);
@@ -21,12 +51,13 @@ export function RegionsPage() {
   const [editingId, setEditingId] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  // destinations: Array<{ name: string, best_months: number[] }>
   const [formData, setFormData] = useState({
     name: '',
     slug: '',
     image: '',
     is_active: true,
-    destinationsText: '',
+    destinations: [],
   });
 
   useEffect(() => {
@@ -67,7 +98,7 @@ export function RegionsPage() {
   };
 
   const resetForm = () => {
-    setFormData({ name: '', slug: '', image: '', is_active: true, destinationsText: '' });
+    setFormData({ name: '', slug: '', image: '', is_active: true, destinations: [] });
     setEditingId(null);
   };
 
@@ -77,12 +108,48 @@ export function RegionsPage() {
       slug: region.slug,
       image: region.image || '',
       is_active: region.is_active,
-      destinationsText: (region.destinations || [])
-        .map((d) => d.name)
-        .join('\n'),
+      destinations: (region.destinations || []).map((d) => ({
+        name: d.name,
+        best_months: Array.isArray(d.best_months) ? [...d.best_months] : [],
+      })),
     });
     setEditingId(region.id);
     setShowModal(true);
+  };
+
+  const addDestinationRow = () => {
+    setFormData((prev) => ({
+      ...prev,
+      destinations: [...prev.destinations, { name: '', best_months: [] }],
+    }));
+  };
+
+  const removeDestinationRow = (index) => {
+    setFormData((prev) => ({
+      ...prev,
+      destinations: prev.destinations.filter((_, i) => i !== index),
+    }));
+  };
+
+  const updateDestinationName = (index, name) => {
+    setFormData((prev) => ({
+      ...prev,
+      destinations: prev.destinations.map((d, i) => (i === index ? { ...d, name } : d)),
+    }));
+  };
+
+  const toggleDestinationMonth = (index, month) => {
+    setFormData((prev) => ({
+      ...prev,
+      destinations: prev.destinations.map((d, i) => {
+        if (i !== index) return d;
+        const has = d.best_months.includes(month);
+        const best_months = has
+          ? d.best_months.filter((m) => m !== month)
+          : [...d.best_months, month].sort((a, b) => a - b);
+        return { ...d, best_months };
+      }),
+    }));
   };
 
   const handleSave = async () => {
@@ -91,10 +158,9 @@ export function RegionsPage() {
       return;
     }
 
-    const destinations = formData.destinationsText
-      .split('\n')
-      .map((line) => line.trim())
-      .filter(Boolean);
+    const destinations = formData.destinations
+      .map((d) => ({ name: (d.name || '').trim(), best_months: d.best_months || [] }))
+      .filter((d) => d.name.length > 0);
 
     const payload = {
       name: formData.name,
@@ -236,9 +302,24 @@ export function RegionsPage() {
                 </div>
 
                 {region.destinations && region.destinations.length > 0 && (
-                  <p className="text-sm text-slate-600 dark:text-slate-300 mb-4 line-clamp-2">
-                    {region.destinations.map((d) => d.name).join(', ')}
-                  </p>
+                  <div className="mb-4">
+                    <p className="text-sm text-slate-600 dark:text-slate-300 line-clamp-2">
+                      {region.destinations.map((d) => d.name).join(', ')}
+                    </p>
+                    <div className="flex flex-wrap gap-x-3 gap-y-1 mt-2">
+                      {region.destinations
+                        .filter((d) => d.best_months && d.best_months.length > 0)
+                        .map((d) => (
+                          <span
+                            key={d.id || d.name}
+                            className="inline-flex items-center gap-1 text-xs text-teal-700 dark:text-teal-400"
+                          >
+                            <FiCalendar size={11} />
+                            {d.name}: {summarizeBestMonths(d.best_months)}
+                          </span>
+                        ))}
+                    </div>
+                  </div>
                 )}
 
                 <div className="flex gap-2 pt-4 border-t border-slate-200 dark:border-slate-700">
@@ -327,18 +408,79 @@ export function RegionsPage() {
 
               {/* Destinations */}
               <div>
-                <label className="block text-sm font-semibold text-slate-900 dark:text-white mb-2">
-                  Destinations (one per line)
-                </label>
-                <textarea
-                  value={formData.destinationsText}
-                  onChange={(e) => handleInputChange('destinationsText', e.target.value)}
-                  placeholder={'France\nItaly\nSpain'}
-                  rows="5"
-                  className="w-full px-4 py-2 border-2 border-slate-200 dark:border-slate-700 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:outline-none focus:border-teal-500 resize-none"
-                />
-                <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-                  Each line becomes a destination link under this region on the homepage.
+                <div className="flex items-center justify-between mb-2">
+                  <label className="block text-sm font-semibold text-slate-900 dark:text-white">
+                    Destinations
+                  </label>
+                  <button
+                    type="button"
+                    onClick={addDestinationRow}
+                    className="flex items-center gap-1 text-xs font-semibold text-teal-600 dark:text-teal-400 hover:text-teal-700"
+                  >
+                    <FiPlus size={14} />
+                    Add destination
+                  </button>
+                </div>
+
+                {formData.destinations.length === 0 ? (
+                  <p className="text-xs text-slate-500 dark:text-slate-400 border-2 border-dashed border-slate-200 dark:border-slate-700 rounded-lg py-4 text-center">
+                    No destinations yet. Click "Add destination" to create one.
+                  </p>
+                ) : (
+                  <div className="space-y-3">
+                    {formData.destinations.map((dest, index) => (
+                      <div
+                        key={index}
+                        className="border-2 border-slate-200 dark:border-slate-700 rounded-lg p-3"
+                      >
+                        <div className="flex items-center gap-2 mb-2">
+                          <input
+                            type="text"
+                            value={dest.name}
+                            onChange={(e) => updateDestinationName(index, e.target.value)}
+                            placeholder="e.g., Egypt"
+                            className="flex-1 px-3 py-1.5 border-2 border-slate-200 dark:border-slate-700 rounded-lg bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-sm focus:outline-none focus:border-teal-500"
+                          />
+                          <button
+                            type="button"
+                            onClick={() => removeDestinationRow(index)}
+                            className="p-1.5 text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors flex-shrink-0"
+                            title="Remove destination"
+                          >
+                            <FiTrash2 size={16} />
+                          </button>
+                        </div>
+
+                        <p className="text-xs text-slate-500 dark:text-slate-400 mb-1.5 flex items-center gap-1">
+                          <FiCalendar size={12} />
+                          Best time to visit
+                        </p>
+                        <div className="flex flex-wrap gap-1.5">
+                          {MONTH_LABELS.map((label, mIndex) => {
+                            const month = mIndex + 1;
+                            const active = dest.best_months.includes(month);
+                            return (
+                              <button
+                                type="button"
+                                key={month}
+                                onClick={() => toggleDestinationMonth(index, month)}
+                                className={`px-2 py-1 rounded-md text-xs font-medium border transition-colors ${
+                                  active
+                                    ? 'bg-teal-600 border-teal-600 text-white'
+                                    : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:border-teal-400'
+                                }`}
+                              >
+                                {label}
+                              </button>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+                <p className="text-xs text-slate-500 dark:text-slate-400 mt-2">
+                  Each destination becomes a link under this region on the homepage. Select the months it's best to visit each one.
                 </p>
               </div>
 

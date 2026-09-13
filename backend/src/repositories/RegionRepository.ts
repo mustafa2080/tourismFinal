@@ -92,19 +92,29 @@ export class RegionRepository extends BaseRepository<Region> {
 
   /**
    * استبدال قائمة الوجهات بالكامل لمنطقة معينة (بدل تحديث واحدة واحدة)
+   * يقبل إما مصفوفة أسماء نصية (توافقًا مع الإصدار القديم) أو مصفوفة
+   * كائنات { name, best_months } لحفظ أفضل شهور السفر لكل وجهة.
    */
-  async replaceDestinations(regionId: string, names: string[]): Promise<RegionDestination[]> {
+  async replaceDestinations(
+    regionId: string,
+    items: Array<string | { name: string; best_months?: number[] }>
+  ): Promise<RegionDestination[]> {
     await this.destinationRepository.delete({ region_id: regionId });
 
-    if (names.length === 0) return [];
+    if (items.length === 0) return [];
 
-    const destinations = names.map((name, index) =>
-      this.destinationRepository.create({
+    const destinations = items.map((item, index) => {
+      const normalized = typeof item === 'string'
+        ? { name: item, best_months: [] as number[] }
+        : { name: item.name, best_months: item.best_months || [] };
+
+      return this.destinationRepository.create({
         region_id: regionId,
-        name,
+        name: normalized.name,
+        best_months: normalized.best_months,
         sort_order: index,
-      })
-    );
+      });
+    });
 
     return await this.destinationRepository.save(destinations);
   }

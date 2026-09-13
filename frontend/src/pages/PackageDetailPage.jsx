@@ -16,6 +16,33 @@ import {
 import toast from 'react-hot-toast';
 import { useTranslation } from 'react-i18next';
 
+const MONTH_LABELS = [
+  'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+  'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec',
+];
+
+// Formats a sorted array of month numbers (1-12) into a short human-readable
+// range summary, e.g. [10,11,12,1,2,3] -> "Oct-Mar".
+function summarizeBestMonths(months) {
+  if (!months || months.length === 0) return null;
+  const sorted = [...new Set(months)].sort((a, b) => a - b);
+  if (sorted.length === 12) return 'Year-round';
+
+  const isConsecutive = sorted.every((m, i) => {
+    if (i === 0) return true;
+    return m === sorted[i - 1] + 1;
+  });
+  const wrapsAround = sorted[0] === 1 && sorted[sorted.length - 1] === 12;
+
+  if (isConsecutive && !wrapsAround) {
+    return sorted.length === 1
+      ? MONTH_LABELS[sorted[0] - 1]
+      : `${MONTH_LABELS[sorted[0] - 1]}-${MONTH_LABELS[sorted[sorted.length - 1] - 1]}`;
+  }
+
+  return sorted.map((m) => MONTH_LABELS[m - 1]).join(', ');
+}
+
 /**
  * PackageDetailPage - Enhanced Beautiful Design
  * Premium package detail page with modern UI/UX
@@ -610,6 +637,12 @@ const PackageDetailPage = () => {
                       <FiCalendar size={20} />
                       {displayPkg.duration_days} {t('packageDetail.header.days')}
                     </div>
+                    {summarizeBestMonths(displayPkg.destinationRef?.best_months) && (
+                      <div className="flex items-center gap-2 text-amber-600 dark:text-amber-400 font-semibold">
+                        <FiCalendar size={20} />
+                        Best time to visit: {summarizeBestMonths(displayPkg.destinationRef?.best_months)}
+                      </div>
+                    )}
                   </div>
                 </div>
 

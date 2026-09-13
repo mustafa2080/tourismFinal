@@ -22,6 +22,12 @@ export class RegionDestination {
   @Column({ type: 'integer', default: 0 })
   sort_order!: number;
 
+  // Months (1 = January ... 12 = December) the admin has marked as the best
+  // time to visit this destination. Shown as "Best time to visit" on the
+  // Destinations megamenu and on package detail pages.
+  @Column({ type: 'int', array: true, default: () => "'{}'" })
+  best_months!: number[];
+
   @CreateDateColumn()
   created_at!: Date;
 
