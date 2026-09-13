@@ -91,6 +91,8 @@ const Header = () => {
   const [userMenuPosition, setUserMenuPosition] = useState({ top: 0, right: 0 });
   const notifButtonRef = useRef(null);
   const [notifMenuPosition, setNotifMenuPosition] = useState({ top: 0, right: 0 });
+  const destinationsButtonRef = useRef(null);
+  const [destinationsMenuPosition, setDestinationsMenuPosition] = useState({ top: 0, left: 0 });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -163,6 +165,33 @@ const Header = () => {
       window.removeEventListener('scroll', updatePosition, true);
     };
   }, [userDropdownOpen]);
+
+  // Same anchoring fix for the Destinations megamenu: the button's parent
+  // <nav> has overflow-x-auto (for horizontal scrolling of nav links on
+  // smaller screens), which clips any absolutely-positioned child that
+  // overflows the nav's height — including this dropdown. Rendering it via
+  // portal with fixed positioning avoids the clipping entirely.
+  useEffect(() => {
+    if (!destinationsMenuOpen) return;
+
+    const updatePosition = () => {
+      const btn = destinationsButtonRef.current;
+      if (!btn) return;
+      const rect = btn.getBoundingClientRect();
+      setDestinationsMenuPosition({
+        top: rect.bottom + 8,
+        left: rect.left,
+      });
+    };
+
+    updatePosition();
+    window.addEventListener('resize', updatePosition);
+    window.addEventListener('scroll', updatePosition, true);
+    return () => {
+      window.removeEventListener('resize', updatePosition);
+      window.removeEventListener('scroll', updatePosition, true);
+    };
+  }, [destinationsMenuOpen]);
 
   // Same anchoring fix for the notifications dropdown.
   useEffect(() => {
