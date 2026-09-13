@@ -378,6 +378,7 @@ const PopularTripCategoriesSection = () => {
               {displayedPackages.length > 0 && (
                 <div className="text-center pt-2">
                   <Button
+                    variant="outline"
                     onClick={() => navigate(`/search?category=${selectedCategory?.id}&categoryName=${encodeURIComponent(selectedCategory?.name || '')}`)}
                     className="border-2 border-teal-600 text-teal-600 hover:bg-teal-50 dark:hover:bg-teal-900/20 px-8 py-3 rounded-full group transition-all inline-flex items-center gap-2 font-bold text-sm"
                   >
