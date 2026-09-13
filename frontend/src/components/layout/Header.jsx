@@ -8,6 +8,7 @@ import { useLanguage } from '../../context/LanguageContext';
 import { useInstantTranslation } from '../../hooks/useInstantTranslation';
 import { LanguageSwitcher } from '../common/LanguageSwitcher';
 import Button from '../common/Button';
+import regionService from '../../services/regionService';
 import {
   HiOutlineBars3, HiOutlineXMark, HiOutlineChevronDown, HiOutlineHome,
   HiOutlineMagnifyingGlass, HiOutlineBookmark, HiOutlineUser,
@@ -49,17 +50,10 @@ const FiTag = HiOutlineTag;
 const FiPin = HiOutlineMapPin;
 const FiShield = HiOutlineShieldCheck;
 
-// Region/destination data for the "Destinations" megamenu - kept in sync
-// with the homepage's PopularDestinationsSection region list so the two
-// stay consistent for the user.
-const DESTINATION_REGIONS = [
-  { id: 'europe', name: 'Europe', countries: ['France', 'Italy', 'Spain', 'Greece', 'Portugal'] },
-  { id: 'africa', name: 'Africa', countries: ['Egypt', 'Morocco', 'Kenya', 'Tanzania', 'South Africa'] },
-  { id: 'asia', name: 'Asia', countries: ['Japan', 'Thailand', 'Vietnam', 'Indonesia', 'Jordan'] },
-  { id: 'latin-america', name: 'Latin America', countries: ['Peru', 'Brazil', 'Argentina', 'Chile', 'Mexico'] },
-  { id: 'north-america', name: 'North America', countries: ['USA', 'Canada', 'Alaska', 'Grand Canyon'] },
-  { id: 'oceania', name: 'Australia & Oceania', countries: ['Australia', 'New Zealand', 'Great Barrier Reef'] },
-];
+// Region/destination data for the "Destinations" megamenu is fetched live
+// from the admin-managed regions API (see fetchDestinationRegions below),
+// so it always mirrors the homepage's PopularDestinationsSection and
+// whatever the admin configures in the Regions dashboard page.
 
 // Quick trip-type filters shown in the strip under the main navbar - mirrors
 // the "Top deals / Adventure / Beach ..." quick-select tags on the homepage
@@ -86,6 +80,7 @@ const Header = () => {
   const [notificationsOpen, setNotificationsOpen] = useState(false);
   const [destinationsMenuOpen, setDestinationsMenuOpen] = useState(false);
   const [mobileDestinationsOpen, setMobileDestinationsOpen] = useState(false);
+  const [destinationRegions, setDestinationRegions] = useState([]);
   const [scrolled, setScrolled] = useState(false);
   const [notifications, setNotifications] = useState([]);
   const [loadingNotifications, setLoadingNotifications] = useState(false);
@@ -113,6 +108,23 @@ const Header = () => {
       window.removeEventListener('scroll', handleScroll);
       if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
     };
+  }, []);
+
+  // Load the Destinations megamenu content once on mount from the
+  // admin-managed regions API (same data source as the homepage's
+  // Popular Destinations section and the admin Regions page).
+  useEffect(() => {
+    let cancelled = false;
+    regionService.getAllRegions()
+      .then((regions) => {
+        if (cancelled) return;
+        const list = Array.isArray(regions) ? regions : (regions?.data || []);
+        setDestinationRegions(list);
+      })
+      .catch((error) => {
+        console.error('Failed to load destinations for navbar menu:', error);
+      });
+    return () => { cancelled = true; };
   }, []);
 
   useEffect(() => {
@@ -400,27 +412,42 @@ const Header = () => {
               {/* Megamenu Panel */}
               {destinationsMenuOpen && (
                 <div className="absolute top-full left-0 pt-2 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
-                  <div className="w-[640px] max-w-[80vw] bg-white dark:bg-slate-800 rounded-2xl shadow-2xl shadow-slate-900/15 dark:shadow-black/40 border border-slate-200/80 dark:border-slate-700/80 p-5 grid grid-cols-3 gap-x-6 gap-y-4">
-                    {DESTINATION_REGIONS.map((region) => (
+                  <div className="w-[880px] max-w-[85vw] bg-white dark:bg-slate-800 rounded-2xl shadow-2xl shadow-slate-900/15 dark:shadow-black/40 border border-slate-200/80 dark:border-slate-700/80 p-6 grid grid-cols-4 gap-x-6 gap-y-5 max-h-[70vh] overflow-y-auto">
+                    {destinationRegions.map((region) => (
                       <div key={region.id}>
                         <button
                           onClick={() => goToSearch(region.name)}
-                          className="flex items-center gap-1.5 text-sm font-bold text-slate-900 dark:text-white hover:text-teal-600 dark:hover:text-teal-400 transition-colors mb-2"
+                          className="flex items-center gap-1.5 text-sm font-bold text-slate-900 dark:text-white hover:text-teal-600 dark:hover:text-teal-400 transition-colors mb-2.5"
                         >
                           {region.name}
                         </button>
-                        <ul className="space-y-1.5">
-                          {region.countries.map((country) => (
-                            <li key={country}>
+                        <ul className="space-y-2">
+                          {(region.destinations || []).map((dest) => (
+                            <li key={dest.id}>
                               <button
-                                onClick={() => goToSearch(country)}
-                                className="text-xs text-slate-500 dark:text-slate-400 hover:text-teal-600 dark:hover:text-teal-400 transition-colors text-left"
+                                onClick={() => goToSearch(dest.name)}
+                                className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400 hover:text-teal-600 dark:hover:text-teal-400 transition-colors text-left"
                               >
-                                {country}
+                                <span>{dest.name}</span>
+                                {dest.badge && (
+                                  <span className={`px-1.5 py-0.5 rounded-full text-[10px] font-semibold whitespace-nowrap ${
+                                    dest.badge === 'trending'
+                                      ? 'bg-purple-50 text-purple-600 dark:bg-purple-900/30 dark:text-purple-300'
+                                      : 'bg-teal-50 text-teal-600 dark:bg-teal-900/30 dark:text-teal-300'
+                                  }`}>
+                                    {dest.badge === 'trending' ? 'Trending' : 'Top seller'}
+                                  </span>
+                                )}
                               </button>
                             </li>
                           ))}
                         </ul>
+                        <button
+                          onClick={() => goToSearch(region.name)}
+                          className="text-xs font-semibold text-teal-600 dark:text-teal-400 hover:text-teal-700 dark:hover:text-teal-300 transition-colors mt-2.5"
+                        >
+                          {t('common.seeAll') || 'See all'}
+                        </button>
                       </div>
                     ))}
                   </div>
@@ -847,7 +874,7 @@ const Header = () => {
                 </button>
                 {mobileDestinationsOpen && (
                   <div className="px-4 py-3 space-y-3 bg-white dark:bg-slate-900">
-                    {DESTINATION_REGIONS.map((region) => (
+                    {destinationRegions.map((region) => (
                       <div key={region.id}>
                         <button
                           onClick={() => goToSearch(region.name)}
@@ -856,13 +883,13 @@ const Header = () => {
                           {region.name}
                         </button>
                         <div className="flex flex-wrap gap-1.5">
-                          {region.countries.map((country) => (
+                          {(region.destinations || []).map((dest) => (
                             <button
-                              key={country}
-                              onClick={() => goToSearch(country)}
+                              key={dest.id}
+                              onClick={() => goToSearch(dest.name)}
                               className="px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-[11px] text-slate-600 dark:text-slate-300 hover:bg-teal-50 dark:hover:bg-teal-900/30 hover:text-teal-600 dark:hover:text-teal-400 transition-colors"
                             >
-                              {country}
+                              {dest.name}
                             </button>
                           ))}
                         </div>
