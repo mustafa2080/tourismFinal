@@ -177,6 +177,7 @@ export class PackageController {
       const {
         title,
         destination,
+        destination_id,
         duration_days,
         base_price,
         short_desc,
@@ -240,7 +241,8 @@ export class PackageController {
         itineraries,
         inclusions,
         exclusions,
-        translations
+        translations,
+        destination_id
       );
 
       res.status(201).json({

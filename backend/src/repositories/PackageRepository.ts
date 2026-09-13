@@ -191,7 +191,7 @@ export class PackageRepository extends BaseRepository<Package> {
     
     const pkg = await this.repository.findOne({
       where: { id },
-      relations: ['images', 'itineraries', 'categories', 'reviews', 'addons', 'translations'],
+      relations: ['images', 'itineraries', 'categories', 'reviews', 'addons', 'translations', 'destinationRef', 'destinationRef.region'],
     });
     
     if (pkg) {
@@ -565,7 +565,7 @@ export class PackageRepository extends BaseRepository<Package> {
       console.log(`🔍 [PackageRepository.findAll] Fetching ${limit} packages from offset ${offset}`);
       
       const packages = await this.repository.find({
-        relations: ['images', 'itineraries', 'categories', 'reviews', 'translations'],
+        relations: ['images', 'itineraries', 'categories', 'reviews', 'translations', 'destinationRef', 'destinationRef.region'],
         take: limit,
         skip: offset,
         order: { created_at: 'DESC' },

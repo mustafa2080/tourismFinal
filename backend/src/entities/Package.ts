@@ -17,6 +17,7 @@ import { Review } from './Review.js';
 import { Category } from './Category.js';
 import { PackageAddon } from './PackageAddon.js';
 import { PackageTranslation } from './PackageTranslation.js';
+import { RegionDestination } from './RegionDestination.js';
 
 @Entity('packages')
 export class Package {
@@ -28,6 +29,11 @@ export class Package {
 
   @Column({ type: 'varchar', length: 255 })
   destination!: string;
+
+  // New FK-based destination. `destination` (text) above is kept temporarily
+  // as a fallback during the transition — new code should use this instead.
+  @Column({ type: 'uuid', nullable: true })
+  destination_id?: string;
 
   @Column({ type: 'uuid', nullable: true })
   category_id?: string;
@@ -268,6 +274,10 @@ export class Package {
   @JoinColumn({ name: 'category_id' })
   category?: Category;
 
+  @ManyToOne(() => RegionDestination, { nullable: true, onDelete: 'SET NULL' })
+  @JoinColumn({ name: 'destination_id' })
+  destinationRef?: RegionDestination;
+
   @OneToMany(() => PackageImage, image => image.package, { cascade: true })
   images!: PackageImage[];
 
@@ -304,6 +314,8 @@ export class Package {
       id: this.id,
       title: this.title,
       destination: this.destination,
+      destination_id: this.destination_id,
+      destinationRef: this.destinationRef,
       category_id: this.category_id,
       duration_days: this.duration_days,
       base_price: this.base_price,

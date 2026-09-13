@@ -8,12 +8,14 @@ import { MdTour, MdCheckCircle } from 'react-icons/md';
 import adminService from '../../../services/adminService';
 import { categoryService } from '../../../services/categoryService';
 import { uploadService } from '../../../services/uploadService';
+import regionService from '../../../services/regionService';
 import TranslationFields from '../../../components/TranslationFields';
 import toast from 'react-hot-toast';
 
 function PackagesPage() {
   const [packages, setPackages] = useState([]);
   const [categories, setCategories] = useState([]);
+  const [destinationOptions, setDestinationOptions] = useState([]); // flat list: [{ id, name, regionName }]
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
   const [filterFeatured, setFilterFeatured] = useState('all');
@@ -28,6 +30,7 @@ function PackagesPage() {
   const [formData, setFormData] = useState({
     title: '',
     destination: '',
+    destination_id: '',
     category_id: '',
     duration_days: 1,
     base_price: 0,
@@ -98,8 +101,28 @@ function PackagesPage() {
 
   useEffect(() => {
     fetchCategories();
+    fetchDestinations();
     fetchPackages();
   }, []);
+
+  const fetchDestinations = async () => {
+    try {
+      const regions = await regionService.getAllRegionsAdmin();
+      const regionList = Array.isArray(regions) ? regions : (regions?.data || []);
+      const flat = regionList.flatMap((region) =>
+        (region.destinations || []).map((d) => ({
+          id: d.id,
+          name: d.name,
+          regionName: region.name,
+        }))
+      );
+      setDestinationOptions(flat);
+    } catch (error) {
+      console.error('Error fetching destinations:', error);
+      toast.error('Failed to load destinations');
+      setDestinationOptions([]);
+    }
+  };
 
   const fetchCategories = async () => {
     try {
@@ -176,6 +199,7 @@ function PackagesPage() {
       const newFormData = {
         title: pkg.title || '',
         destination: pkg.destination || '',
+        destination_id: pkg.destination_id || pkg.destinationRef?.id || '',
         category_id: pkg.category_id || '',
         duration_days: pkg.duration_days || 1,
         base_price: pkg.base_price || 0,
@@ -271,6 +295,7 @@ function PackagesPage() {
       const newFormData = {
         title: pkg.title || '',
         destination: pkg.destination || '',
+        destination_id: pkg.destination_id || pkg.destinationRef?.id || '',
         category_id: pkg.category_id || '',
         duration_days: pkg.duration_days || 1,
         base_price: pkg.base_price || 0,
@@ -365,6 +390,7 @@ function PackagesPage() {
     setFormData({
       title: '',
       destination: '',
+      destination_id: '',
       category_id: '',
       duration_days: 1,
       base_price: 0,
@@ -604,8 +630,8 @@ function PackagesPage() {
       return;
     }
 
-    if (!formData.destination || !formData.destination.trim()) {
-      toast.error('Destination is required');
+    if (!formData.destination_id) {
+      toast.error('Please select a destination');
       return;
     }
 
@@ -660,6 +686,7 @@ function PackagesPage() {
       const packageData = {
         title: formData.title.trim(),
         destination: formData.destination.trim(),
+        destination_id: formData.destination_id,
         category_id: formData.category_id,
         duration_days: parseInt(formData.duration_days),
         base_price: parseFloat(formData.base_price),
@@ -1281,14 +1308,35 @@ function PackagesPage() {
                     <FiMapPin size={18} className="text-red-600" />
                     Destination *
                   </label>
-                  <input
-                    type="text"
-                    value={formData.destination}
-                    onChange={(e) => setFormData({ ...formData, destination: e.target.value })}
+                  <select
+                    value={formData.destination_id}
+                    onChange={(e) => {
+                      const selectedId = e.target.value;
+                      const selected = destinationOptions.find((d) => d.id === selectedId);
+                      setFormData({
+                        ...formData,
+                        destination_id: selectedId,
+                        destination: selected ? selected.name : formData.destination,
+                      });
+                    }}
                     disabled={modalMode === 'view'}
-                    placeholder="e.g. Cairo, Giza"
-                    className="w-full px-4 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-xl bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-400 disabled:opacity-50 disabled:bg-slate-100 dark:disabled:bg-slate-900 focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 transition-all"
-                  />
+                    className="w-full px-4 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-xl bg-white dark:bg-slate-700 text-slate-900 dark:text-white disabled:opacity-50 disabled:bg-slate-100 dark:disabled:bg-slate-900 focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 transition-all appearance-none font-medium"
+                  >
+                    <option value="">-- Select Destination --</option>
+                    {Object.entries(
+                      destinationOptions.reduce((acc, d) => {
+                        if (!acc[d.regionName]) acc[d.regionName] = [];
+                        acc[d.regionName].push(d);
+                        return acc;
+                      }, {})
+                    ).map(([regionName, dests]) => (
+                      <optgroup key={regionName} label={regionName}>
+                        {dests.map((d) => (
+                          <option key={d.id} value={d.id}>{d.name}</option>
+                        ))}
+                      </optgroup>
+                    ))}
+                  </select>
                 </div>
 
                 <div>

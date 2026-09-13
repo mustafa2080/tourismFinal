@@ -117,7 +117,8 @@ export class PackageService {
     itineraries?: any[],
     inclusions?: string[],
     exclusions?: string[],
-    translations?: Record<string, any>
+    translations?: Record<string, any>,
+    destinationId?: string
   ): Promise<Package> {
     if (!title || !destination || durationDays <= 0 || basePrice <= 0) {
       throw new ValidationError('Invalid package data');
@@ -141,6 +142,7 @@ export class PackageService {
     const pkg = await this.packageRepository.create({
       title,
       destination,
+      destination_id: destinationId,
       duration_days: durationDays,
       base_price: basePrice,
       short_desc: shortDesc,
