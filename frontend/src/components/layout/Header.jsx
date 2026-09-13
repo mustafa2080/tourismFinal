@@ -326,7 +326,6 @@ const Header = () => {
     { label: t('common.blog') || 'Blog', path: '/blog', icon: FiNewspaper },
     { label: t('common.about') || 'About', path: '/about', icon: FiInfo },
     { label: t('common.contact') || 'Contact', path: '/contact', icon: FiMail },
-    { label: t('common.savedTrips') || 'Saved Trips', path: '/dashboard/wishlist', icon: FiBookmark, requiresAuth: true },
   ], [t, i18n.language, languageChangeCounter]);
 
   // Navigate to the search page filtered by a free-text query (destination
@@ -748,6 +747,22 @@ const Header = () => {
                         <FiSettings size={14} className="group-hover:scale-110 transition-transform duration-200 flex-shrink-0" />
                         <span>Dashboard</span>
                       </button>
+
+                      <button
+                        onClick={() => {
+                          navigate('/dashboard/wishlist');
+                          setUserDropdownOpen(false);
+                        }}
+                        className="w-full px-4 py-2 text-left text-xs sm:text-sm hover:bg-slate-100 dark:hover:bg-slate-700 flex items-center gap-3 text-slate-700 dark:text-slate-200 transition-colors duration-200 group"
+                      >
+                        <FiBookmark size={14} className="group-hover:scale-110 transition-transform duration-200 flex-shrink-0" />
+                        <span className="flex-1">{t('common.savedTrips') || 'Saved Trips'}</span>
+                        {wishlistCount > 0 && (
+                          <span className="px-1.5 py-0.5 text-[10px] font-bold text-white bg-red-500 rounded-full">
+                            {wishlistCount}
+                          </span>
+                        )}
+                      </button>
                       
                       {user?.role === 'admin' && (
                         <>
@@ -988,6 +1003,24 @@ const Header = () => {
                       <FiUser size={16} />
                     </span>
                     Dashboard
+                  </button>
+
+                  <button
+                    onClick={() => {
+                      navigate('/dashboard/wishlist');
+                      setMobileMenuOpen(false);
+                    }}
+                    className="w-full px-4 py-3 text-left text-sm font-semibold hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl flex items-center gap-3 text-slate-700 dark:text-slate-200 transition-all duration-200 active:scale-[0.98]"
+                  >
+                    <span className="flex items-center justify-center w-9 h-9 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 flex-shrink-0">
+                      <FiBookmark size={16} />
+                    </span>
+                    <span className="flex-1">{t('common.savedTrips') || 'Saved Trips'}</span>
+                    {wishlistCount > 0 && (
+                      <span className="px-2 py-0.5 text-xs font-bold text-white bg-red-500 rounded-full">
+                        {wishlistCount}
+                      </span>
+                    )}
                   </button>
 
                   <button
