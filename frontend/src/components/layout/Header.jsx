@@ -55,18 +55,6 @@ const FiShield = HiOutlineShieldCheck;
 // so it always mirrors the homepage's PopularDestinationsSection and
 // whatever the admin configures in the Regions dashboard page.
 
-// Quick trip-type filters shown in the strip under the main navbar - mirrors
-// the "Top deals / Adventure / Beach ..." quick-select tags on the homepage
-// hero search, kept accessible from anywhere in the site.
-const QUICK_FILTERS = [
-  { id: 'deals', label: 'Top Deals', icon: '🔥' },
-  { id: 'adventure', label: 'Adventure', icon: '⛰️' },
-  { id: 'beach', label: 'Beach', icon: '🏖️' },
-  { id: 'cultural', label: 'Cultural', icon: '🏛️' },
-  { id: 'luxury', label: 'Luxury', icon: '👑' },
-  { id: 'family', label: 'Family', icon: '👨‍👩‍👧' },
-];
-
 const Header = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -861,34 +849,8 @@ const Header = () => {
  </div>
  </div>
 
-      {/* ==================== QUICK FILTER STRIP ==================== */}
-      {/* TourRadar-style row of trip-type shortcuts under the main navbar,
-          hidden once scrolled to keep the sticky header compact. */}
-      <div
-        className={`hidden md:block w-full border-t border-slate-200/60 dark:border-slate-700/60 bg-slate-50/80 dark:bg-slate-900/60 backdrop-blur-sm overflow-hidden transition-all duration-300 ease-out ${
-          scrolled ? 'max-h-0 opacity-0 border-t-0' : 'max-h-12 opacity-100'
-        }`}
-      >
-        <div className="w-full max-w-[1600px] mx-auto px-3 xs:px-4 sm:px-6 lg:px-8 h-10 flex items-center gap-2 overflow-x-auto no-scrollbar">
-          <span className="flex items-center gap-1 text-xs font-bold text-teal-600 dark:text-teal-400 flex-shrink-0 pr-1">
-            <FiTag size={13} />
-            {t('header.quickFilters') || 'Quick picks:'}
-          </span>
-          {QUICK_FILTERS.map((filter) => (
-            <button
-              key={filter.id}
-              onClick={() => goToSearch('', filter.id)}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:border-teal-400 hover:text-teal-600 dark:hover:text-teal-400 transition-all flex-shrink-0"
-            >
-              <span>{filter.icon}</span>
-              <span>{filter.label}</span>
-            </button>
-          ))}
-        </div>
-      </div>
-
- {/* Mobile Side Drawer - rendered via portal so it always covers the full viewport,
- regardless of any backdrop-blur/transform on ancestor elements like <header> */}
+      {/* Mobile Side Drawer - rendered via portal so it always covers the full viewport,
+          regardless of any backdrop-blur/transform on ancestor elements like <header> */}
  {mobileMenuOpen && createPortal(
  <>
  {/* Overlay */}
