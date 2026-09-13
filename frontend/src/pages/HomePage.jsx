@@ -847,7 +847,7 @@ const HomePage = () => {
  )}
  
  {/* Bottom gradient for legibility */}
- <div className="absolute inset-x-0 bottom-0 h-16 bg-[#0d9488] pointer-events-none" />
+ <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/60 via-black/10 to-transparent pointer-events-none" />
  {/* Top gradient so badges stay legible on light images */}
  <div className="absolute inset-x-0 top-0 h-16 pointer-events-none" />
 
