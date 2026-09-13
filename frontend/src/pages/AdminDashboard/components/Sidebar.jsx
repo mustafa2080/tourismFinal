@@ -15,6 +15,7 @@ import {
   FiChevronDown,
   FiPackage,
   FiTag,
+  FiGlobe,
   FiSettings,
   FiGift,
   FiMail,
@@ -124,6 +125,12 @@ export function Sidebar() {
       label: 'Categories', 
       icon: FiTag, 
       path: '/admin/categories' 
+    },
+    { 
+      id: 'regions', 
+      label: 'Popular Destinations', 
+      icon: FiGlobe, 
+      path: '/admin/regions' 
     },
     { 
       id: 'blog', 

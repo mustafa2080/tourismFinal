@@ -75,6 +75,7 @@ const AuditLogsPage = lazy(() => import('./pages/AdminDashboard/pages/AuditLogsP
 const PackagesPage = lazy(() => import('./pages/AdminDashboard/pages/PackagesPage'));
 const AddonsPage = lazy(() => import('./pages/AdminDashboard/pages/AddonsPage'));
 const CategoriesPage = lazy(() => import('./pages/AdminDashboard/pages/CategoriesPage'));
+const RegionsPage = lazy(() => import('./pages/AdminDashboard/pages/RegionsPage'));
 const AdminBlogPage = lazy(() => import('./pages/AdminDashboard/pages/BlogPage'));
 const SettingsPage = lazy(() => import('./pages/AdminDashboard/pages/SettingsPage'));
 const MyProfilePage = lazy(() => import('./pages/AdminDashboard/pages/MyProfilePage'));
@@ -154,6 +155,7 @@ const AppRoutes = () => {
             <Route path="packages" element={<PackagesPage />} />
             <Route path="addons" element={<AddonsPage />} />
             <Route path="categories" element={<CategoriesPage />} />
+            <Route path="regions" element={<RegionsPage />} />
             <Route path="blog" element={<AdminBlogPage />} />
             <Route path="settings" element={<SettingsPage />} />
             <Route path="profile" element={<MyProfilePage />} />

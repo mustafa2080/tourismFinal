@@ -29,6 +29,7 @@ import wishlistRoutes from './routes/wishlist.routes.js';
 import contactRoutes from './routes/contact.routes.js';
 import dashboardRoutes from './routes/dashboard.routes.js';
 import categoryRoutes from './routes/category.routes.js';
+import regionRoutes from './routes/region.routes.js';
 import settingsRoutes from './routes/settings.routes.js';
 import itineraryRoutes from './routes/itinerary.routes.js';
 import customTripRoutes from './routes/customTrip.routes.js';
@@ -201,6 +202,7 @@ export const createApp = (): Express => {
   app.use('/api/contact', contactRoutes);
   app.use('/api/dashboard', dashboardRoutes);
   app.use('/api/categories', categoryRoutes);
+  app.use('/api/regions', regionRoutes);
   app.use('/api/settings', settingsRoutes);
   app.use('/api/itineraries', itineraryRoutes);
   app.use('/api/custom-trips', customTripRoutes);
