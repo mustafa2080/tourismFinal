@@ -202,11 +202,12 @@
   bottom: 0;
   background: #0d9488;
   opacity: 0;
+  z-index: 0;
   transition: opacity 0.2s ease;
   pointer-events: none;
 
   .language-option:hover & {
-    opacity: 1;
+    opacity: 0.12;
   }
 
   [dir="rtl"] & {
@@ -216,6 +217,8 @@
 
 /* ==================== Flag Icon ==================== */
 .lang-flag {
+  position: relative;
+  z-index: 1;
   font-size: 1.5rem;
   line-height: 1;
   min-width: 1.75rem;
@@ -224,6 +227,8 @@
 
 /* ==================== Language Info ==================== */
 .lang-info {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -250,6 +255,8 @@
 
 /* ==================== Check Icon ==================== */
 .check-wrapper {
+  position: relative;
+  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: center;
