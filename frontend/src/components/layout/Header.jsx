@@ -424,6 +424,7 @@ const Header = () => {
               onMouseLeave={() => setDestinationsMenuOpen(false)}
             >
               <button
+                ref={destinationsButtonRef}
                 onClick={() => setDestinationsMenuOpen((prev) => !prev)}
                 className={`flex items-center gap-1.5 xl:gap-2 px-3 xl:px-4 py-2 rounded-full font-semibold text-[13px] xl:text-sm whitespace-nowrap transition-all duration-300 ease-out group relative ${
                   destinationsMenuOpen
@@ -438,9 +439,19 @@ const Header = () => {
                 <FiChevronDown size={14} className={`transition-transform duration-300 ${destinationsMenuOpen ? 'rotate-180' : ''}`} />
               </button>
 
-              {/* Megamenu Panel */}
-              {destinationsMenuOpen && (
-                <div className="absolute top-full left-0 pt-2 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
+              {/* Megamenu Panel - rendered via portal with fixed positioning so the
+                  <nav>'s overflow-x-auto (needed for horizontal scrolling of nav
+                  links on smaller screens) doesn't clip it, same fix already
+                  applied to the notifications/user dropdowns below. The panel
+                  keeps its own onMouseEnter/onMouseLeave so moving the mouse
+                  from the button into the panel doesn't close it. */}
+              {destinationsMenuOpen && createPortal(
+                <div
+                  className="fixed z-50 animate-in fade-in slide-in-from-top-2 duration-200"
+                  style={{ top: destinationsMenuPosition.top, left: destinationsMenuPosition.left }}
+                  onMouseEnter={() => setDestinationsMenuOpen(true)}
+                  onMouseLeave={() => setDestinationsMenuOpen(false)}
+                >
                   <div className="w-[880px] max-w-[85vw] bg-white dark:bg-slate-800 rounded-2xl shadow-2xl shadow-slate-900/15 dark:shadow-black/40 border border-slate-200/80 dark:border-slate-700/80 p-6 grid grid-cols-4 gap-x-6 gap-y-5 max-h-[70vh] overflow-y-auto">
                     {destinationRegions.map((region) => (
                       <div key={region.id}>
@@ -480,7 +491,8 @@ const Header = () => {
                       </div>
                     ))}
                   </div>
-                </div>
+                </div>,
+                document.body
               )}
             </div>
 
