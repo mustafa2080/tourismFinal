@@ -21,6 +21,31 @@ const ITEM_TYPE_META = {
   meal: { label: 'Meals', icon: FiCoffee },
 };
 
+// Activity categories offered in Step 2 (matches the "shows / nature / safari" sketch)
+const ACTIVITY_TAG_OPTIONS = [
+  'Shows', 'Nature', 'Safari', 'Culture & History', 'Adventure',
+  'Beaches', 'Food & Dining', 'Nightlife', 'Shopping', 'Relaxation & Wellness',
+];
+
+const CURRENCY_OPTIONS = ['USD', 'EGP', 'EUR', 'GBP', 'SAR'];
+
+/**
+ * Splits a flat "City, Country" destination string into its parts.
+ * The last comma-separated segment is treated as the country; everything
+ * before it is the city. Falls back to using the whole string as the
+ * country if there's no comma.
+ */
+const splitDestinationString = (raw) => {
+  const parts = String(raw || '').split(',').map(p => p.trim()).filter(Boolean);
+  if (parts.length === 0) return null;
+  if (parts.length === 1) return { country: parts[0], city: parts[0] };
+  const country = parts[parts.length - 1];
+  const city = parts.slice(0, -1).join(', ');
+  return { country, city };
+};
+
+const emptyDestinationBlock = () => ({ country: '', cities: [] });
+
 const STEPS = [
   { id: 1, label: 'Destination' },
   { id: 2, label: 'Dates & Travelers' },
@@ -45,10 +70,10 @@ const CustomTripPage = () => {
   const [submitted, setSubmitted] = useState(null);
   const [errors, setErrors] = useState({});
 
-  // Step 1 — destination
+  // Step 1 — destination (country + city blocks, "+" adds another block)
   const [destinations, setDestinations] = useState([]);
   const [destinationsLoading, setDestinationsLoading] = useState(true);
-  const [destination, setDestination] = useState('');
+  const [destinationBlocks, setDestinationBlocks] = useState([emptyDestinationBlock()]);
   const [customDestination, setCustomDestination] = useState('');
   const [useCustomDestination, setUseCustomDestination] = useState(false);
 
@@ -58,8 +83,14 @@ const CustomTripPage = () => {
   const [adults, setAdults] = useState(2);
   const [children, setChildren] = useState(0);
   const [budgetTier, setBudgetTier] = useState('mid_range');
+  const [budgetMin, setBudgetMin] = useState('');
+  const [budgetMax, setBudgetMax] = useState('');
+  const [budgetCurrency, setBudgetCurrency] = useState('USD');
   const [pace, setPace] = useState('standard');
   const [interests, setInterests] = useState([]);
+
+  // Step 2b — activities (multi-select tags, "+" adds another selection group)
+  const [activityGroups, setActivityGroups] = useState([[]]); // array of arrays of tags
 
   // Step 3 — items catalog + selection
   const [options, setOptions] = useState([]);
@@ -73,7 +104,73 @@ const CustomTripPage = () => {
   const [contactPhone, setContactPhone] = useState('');
   const [specialRequests, setSpecialRequests] = useState('');
 
-  const effectiveDestination = useCustomDestination ? customDestination.trim() : destination;
+  // Group raw "City, Country" destination strings by country → list of cities
+  const destinationsByCountry = useMemo(() => {
+    const map = new Map();
+    destinations.forEach((d) => {
+      const raw = typeof d === 'string' ? d : d.destination || d.name;
+      const split = splitDestinationString(raw);
+      if (!split) return;
+      if (!map.has(split.country)) map.set(split.country, new Set());
+      map.get(split.country).add(split.city);
+    });
+    return Array.from(map.entries()).map(([country, cities]) => ({
+      country,
+      cities: Array.from(cities),
+    }));
+  }, [destinations]);
+
+  // Human-readable summary used for catalog lookups + as the flat `destination` fallback
+  const structuredDestinationSummary = useMemo(() => {
+    return destinationBlocks
+      .filter(b => b.country && b.cities.length > 0)
+      .map(b => `${b.cities.join(', ')}, ${b.country}`)
+      .join(' + ');
+  }, [destinationBlocks]);
+
+  const effectiveDestination = useCustomDestination
+    ? customDestination.trim()
+    : structuredDestinationSummary;
+
+  const addDestinationBlock = () => {
+    setDestinationBlocks(prev => [...prev, emptyDestinationBlock()]);
+  };
+
+  const removeDestinationBlock = (index) => {
+    setDestinationBlocks(prev => prev.length <= 1 ? prev : prev.filter((_, i) => i !== index));
+  };
+
+  const setDestinationBlockCountry = (index, country) => {
+    setDestinationBlocks(prev => prev.map((b, i) => i === index ? { country, cities: [] } : b));
+  };
+
+  const toggleDestinationBlockCity = (index, city) => {
+    setDestinationBlocks(prev => prev.map((b, i) => {
+      if (i !== index) return b;
+      const has = b.cities.includes(city);
+      return { ...b, cities: has ? b.cities.filter(c => c !== city) : [...b.cities, city] };
+    }));
+  };
+
+  const addActivityGroup = () => {
+    setActivityGroups(prev => [...prev, []]);
+  };
+
+  const removeActivityGroup = (index) => {
+    setActivityGroups(prev => prev.length <= 1 ? prev : prev.filter((_, i) => i !== index));
+  };
+
+  const toggleActivityTag = (groupIndex, tag) => {
+    setActivityGroups(prev => prev.map((tags, i) => {
+      if (i !== groupIndex) return tags;
+      return tags.includes(tag) ? tags.filter(t => t !== tag) : [...tags, tag];
+    }));
+  };
+
+  const allActivityTags = useMemo(
+    () => Array.from(new Set(activityGroups.flat())),
+    [activityGroups]
+  );
 
   // Prefill contact info for logged-in users
   useEffect(() => {
@@ -175,7 +272,11 @@ const CustomTripPage = () => {
 
   const validateStep1 = () => {
     const newErrors = {};
-    if (!effectiveDestination) newErrors.destination = 'Please choose or enter a destination';
+    if (!effectiveDestination) {
+      newErrors.destination = useCustomDestination
+        ? 'Please enter a destination'
+        : 'Please choose at least one country and city';
+    }
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -191,6 +292,9 @@ const CustomTripPage = () => {
       newErrors.dateStart = 'Start date cannot be in the past';
     }
     if (!adults || adults < 1) newErrors.adults = 'At least one adult is required';
+    if (budgetMin !== '' && budgetMax !== '' && Number(budgetMin) > Number(budgetMax)) {
+      newErrors.budget = 'Minimum budget cannot be greater than the maximum';
+    }
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -237,13 +341,20 @@ const CustomTripPage = () => {
         contact_email: contactEmail.trim(),
         contact_phone: contactPhone.trim() || undefined,
         destination: effectiveDestination,
+        destinations_detail: useCustomDestination
+          ? []
+          : destinationBlocks.filter(b => b.country && b.cities.length > 0),
         date_start: dateStart,
         date_end: dateEnd,
         adults,
         children,
         budget_tier: budgetTier,
+        budget_min: budgetMin !== '' ? Number(budgetMin) : undefined,
+        budget_max: budgetMax !== '' ? Number(budgetMax) : undefined,
+        budget_currency: budgetCurrency,
         pace,
         interests,
+        activity_tags: allActivityTags,
         special_requests: specialRequests.trim() || undefined,
         items: selectedItems.map(i => ({
           item_type: i.item_type,
@@ -404,26 +515,77 @@ const CustomTripPage = () => {
               </div>
             ) : (
               <>
-                {destinations.length > 0 && (
-                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-5">
-                    {destinations.map((d) => {
-                      const name = typeof d === 'string' ? d : d.destination || d.name;
-                      const active = !useCustomDestination && destination === name;
+                {!useCustomDestination && (
+                  <div className="space-y-5 mb-5">
+                    {destinationBlocks.map((block, index) => {
+                      const cityOptions = destinationsByCountry.find(g => g.country === block.country)?.cities || [];
                       return (
-                        <button
-                          key={name}
-                          type="button"
-                          onClick={() => { setDestination(name); setUseCustomDestination(false); }}
-                          className={`px-4 py-3 rounded-xl text-sm font-semibold border-2 transition-all text-left ${
-                            active
-                              ? 'border-teal-600 bg-teal-50 dark:bg-teal-900/20 text-teal-700 dark:text-teal-300'
-                              : 'border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-teal-300 dark:hover:border-teal-700'
-                          }`}
+                        <div
+                          key={index}
+                          className="p-4 rounded-xl border-2 border-slate-200 dark:border-slate-700 space-y-3 relative"
                         >
-                          {name}
-                        </button>
+                          {destinationBlocks.length > 1 && (
+                            <button
+                              type="button"
+                              onClick={() => removeDestinationBlock(index)}
+                              className="absolute top-3 left-3 text-slate-400 hover:text-red-500"
+                              aria-label="Remove destination"
+                            >
+                              <FiTrash2 size={16} />
+                            </button>
+                          )}
+
+                          <div>
+                            <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1.5">Country</label>
+                            <select
+                              value={block.country}
+                              onChange={(e) => setDestinationBlockCountry(index, e.target.value)}
+                              className="w-full px-4 py-2.5 rounded-xl border-2 bg-white dark:bg-slate-900 text-slate-900 dark:text-white focus:outline-none border-slate-200 dark:border-slate-700 focus:border-teal-500"
+                            >
+                              <option value="">Select a country</option>
+                              {destinationsByCountry.map(g => (
+                                <option key={g.country} value={g.country}>{g.country}</option>
+                              ))}
+                            </select>
+                          </div>
+
+                          {block.country && (
+                            <div>
+                              <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+                                City <span className="font-normal text-slate-400">(you can select more than one)</span>
+                              </label>
+                              <div className="flex flex-wrap gap-2">
+                                {cityOptions.map(city => {
+                                  const active = block.cities.includes(city);
+                                  return (
+                                    <button
+                                      key={city}
+                                      type="button"
+                                      onClick={() => toggleDestinationBlockCity(index, city)}
+                                      className={`px-3 py-1.5 rounded-full text-sm font-medium border-2 transition-all ${
+                                        active
+                                          ? 'border-teal-600 bg-teal-50 dark:bg-teal-900/20 text-teal-700 dark:text-teal-300'
+                                          : 'border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-teal-300 dark:hover:border-teal-700'
+                                      }`}
+                                    >
+                                      {city}
+                                    </button>
+                                  );
+                                })}
+                              </div>
+                            </div>
+                          )}
+                        </div>
                       );
                     })}
+
+                    <button
+                      type="button"
+                      onClick={addDestinationBlock}
+                      className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border-2 border-dashed border-slate-300 dark:border-slate-600 text-sm font-semibold text-slate-500 dark:text-slate-400 hover:border-teal-400 hover:text-teal-600 transition-all"
+                    >
+                      <FiPlus size={16} /> Add another destination
+                    </button>
                   </div>
                 )}
 
@@ -446,6 +608,15 @@ const CustomTripPage = () => {
                     errors.destination ? 'border-red-400' : 'border-slate-200 dark:border-slate-700 focus:border-teal-500'
                   }`}
                 />
+                {useCustomDestination && (
+                  <button
+                    type="button"
+                    onClick={() => { setUseCustomDestination(false); setCustomDestination(''); }}
+                    className="text-xs text-teal-600 dark:text-teal-400 font-medium mt-2 hover:underline"
+                  >
+                    Back to picking country/city
+                  </button>
+                )}
                 {errors.destination && (
                   <p className="text-sm text-red-500 mt-2">{errors.destination}</p>
                 )}
@@ -558,6 +729,48 @@ const CustomTripPage = () => {
                   </button>
                 ))}
               </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-4">
+                <div>
+                  <label className="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1.5">From</label>
+                  <input
+                    type="number"
+                    min="0"
+                    value={budgetMin}
+                    onChange={(e) => setBudgetMin(e.target.value)}
+                    placeholder="0"
+                    className={`w-full px-3 py-2.5 rounded-xl border-2 bg-white dark:bg-slate-900 text-slate-900 dark:text-white focus:outline-none ${
+                      errors.budget ? 'border-red-400' : 'border-slate-200 dark:border-slate-700 focus:border-teal-500'
+                    }`}
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1.5">To</label>
+                  <input
+                    type="number"
+                    min="0"
+                    value={budgetMax}
+                    onChange={(e) => setBudgetMax(e.target.value)}
+                    placeholder="1000"
+                    className={`w-full px-3 py-2.5 rounded-xl border-2 bg-white dark:bg-slate-900 text-slate-900 dark:text-white focus:outline-none ${
+                      errors.budget ? 'border-red-400' : 'border-slate-200 dark:border-slate-700 focus:border-teal-500'
+                    }`}
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1.5">Currency</label>
+                  <select
+                    value={budgetCurrency}
+                    onChange={(e) => setBudgetCurrency(e.target.value)}
+                    className="w-full px-3 py-2.5 rounded-xl border-2 bg-white dark:bg-slate-900 text-slate-900 dark:text-white focus:outline-none border-slate-200 dark:border-slate-700 focus:border-teal-500"
+                  >
+                    {CURRENCY_OPTIONS.map(c => (
+                      <option key={c} value={c}>{c}</option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+              {errors.budget && <p className="text-sm text-red-500 mt-2">{errors.budget}</p>}
             </div>
 
             <div>
@@ -578,6 +791,52 @@ const CustomTripPage = () => {
                     <div className="text-xs font-bold text-slate-900 dark:text-white">{p.label}</div>
                   </button>
                 ))}
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-sm font-bold text-slate-900 dark:text-white mb-3">Activities</h3>
+              <div className="space-y-4">
+                {activityGroups.map((tags, groupIndex) => (
+                  <div key={groupIndex} className="p-4 rounded-xl border-2 border-slate-200 dark:border-slate-700 relative">
+                    {activityGroups.length > 1 && (
+                      <button
+                        type="button"
+                        onClick={() => removeActivityGroup(groupIndex)}
+                        className="absolute top-3 left-3 text-slate-400 hover:text-red-500"
+                        aria-label="Remove activity group"
+                      >
+                        <FiTrash2 size={16} />
+                      </button>
+                    )}
+                    <div className="flex flex-wrap gap-2">
+                      {ACTIVITY_TAG_OPTIONS.map((tag) => {
+                        const active = tags.includes(tag);
+                        return (
+                          <button
+                            key={tag}
+                            type="button"
+                            onClick={() => toggleActivityTag(groupIndex, tag)}
+                            className={`px-3.5 py-2 rounded-full text-sm font-medium border-2 transition-all ${
+                              active
+                                ? 'border-teal-600 bg-teal-600 text-white'
+                                : 'border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:border-teal-300'
+                            }`}
+                          >
+                            {tag}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+                ))}
+                <button
+                  type="button"
+                  onClick={addActivityGroup}
+                  className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border-2 border-dashed border-slate-300 dark:border-slate-600 text-sm font-semibold text-slate-500 dark:text-slate-400 hover:border-teal-400 hover:text-teal-600 transition-all"
+                >
+                  <FiPlus size={16} /> Add another activity
+                </button>
               </div>
             </div>
 

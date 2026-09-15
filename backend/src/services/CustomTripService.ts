@@ -18,23 +18,44 @@ interface SubmitItemInput {
   day_number?: number;
 }
 
+interface DestinationDetailInput {
+  country: string;
+  cities: string[];
+}
+
 interface SubmitRequestInput {
   user_id?: string;
   contact_name: string;
   contact_email: string;
   contact_phone?: string;
-  destination: string;
+  destination?: string;
+  destinations_detail?: DestinationDetailInput[];
   date_start: string;
   date_end: string;
   adults: number;
   children?: number;
   budget_tier?: 'budget' | 'mid_range' | 'luxury';
+  budget_min?: number;
+  budget_max?: number;
+  budget_currency?: string;
   pace?: 'relaxed' | 'standard' | 'packed';
   interests?: string[];
+  activity_tags?: string[];
   special_requests?: string;
   items: SubmitItemInput[];
   display_currency?: 'USD' | 'EGP';
   display_total?: number;
+}
+
+/** Builds the human-readable destination summary from structured picks. */
+function summarizeDestinations(details: DestinationDetailInput[]): string {
+  return details
+    .filter(d => d.country || (d.cities && d.cities.length))
+    .map(d => {
+      const cities = (d.cities || []).filter(Boolean).join(', ');
+      return cities ? `${cities}, ${d.country}` : d.country;
+    })
+    .join(' + ');
 }
 
 export class CustomTripService {
@@ -72,8 +93,16 @@ export class CustomTripService {
     if (!data.contact_name || !data.contact_email) {
       throw new ValidationError('Contact name and email are required');
     }
-    if (!data.destination) {
-      throw new ValidationError('Destination is required');
+
+    const destinationsDetail = (data.destinations_detail || []).filter(
+      d => d && d.country && d.cities && d.cities.length > 0
+    );
+    const destinationSummary = destinationsDetail.length > 0
+      ? summarizeDestinations(destinationsDetail)
+      : (data.destination || '').trim();
+
+    if (!destinationSummary) {
+      throw new ValidationError('Please choose at least one destination (country and city)');
     }
     if (!data.date_start || !data.date_end) {
       throw new ValidationError('Trip start and end dates are required');
@@ -91,6 +120,13 @@ export class CustomTripService {
     if (!data.items || data.items.length === 0) {
       throw new ValidationError('Please add at least one item to your trip');
     }
+    if (
+      data.budget_min !== undefined && data.budget_max !== undefined &&
+      data.budget_min !== null && data.budget_max !== null &&
+      Number(data.budget_min) > Number(data.budget_max)
+    ) {
+      throw new ValidationError('Budget minimum cannot be greater than the maximum');
+    }
 
     const nights = this.calculateNights(data.date_start, data.date_end);
     const estimatedTotal = this.calculateEstimatedTotal(data.items, data.adults, nights);
@@ -104,14 +140,19 @@ export class CustomTripService {
       contact_name: data.contact_name,
       contact_email: data.contact_email,
       contact_phone: data.contact_phone,
-      destination: data.destination,
+      destination: destinationSummary,
+      destinations_detail: destinationsDetail,
       date_start: new Date(data.date_start) as any,
       date_end: new Date(data.date_end) as any,
       adults: data.adults,
       children: data.children || 0,
       budget_tier: data.budget_tier || 'mid_range',
+      budget_min: data.budget_min ?? undefined,
+      budget_max: data.budget_max ?? undefined,
+      budget_currency: data.budget_currency || 'USD',
       pace: data.pace || 'standard',
       interests: data.interests || [],
+      activity_tags: data.activity_tags || [],
       special_requests: data.special_requests,
       estimated_total: estimatedTotal,
       display_currency: data.display_currency || 'USD',
@@ -141,7 +182,7 @@ export class CustomTripService {
       for (const admin of adminUsers) {
         await this.notificationService.notifyAdmin(admin.id, {
           type: 'New Custom Trip Request',
-          message: `${data.contact_name} requested a custom trip to ${data.destination} (${saved.request_number})`,
+          message: `${data.contact_name} requested a custom trip to ${destinationSummary} (${saved.request_number})`,
           actionUrl: `/admin/custom-trips/${saved.id}`,
           data: { requestId: saved.id, requestNumber: saved.request_number },
         });
@@ -154,7 +195,7 @@ export class CustomTripService {
       await this.emailService.sendGenericNotification(
         data.contact_email,
         'Your Custom Trip Request Was Received',
-        `Hi ${data.contact_name}, we received your custom trip request (${saved.request_number}) to ${data.destination}. Our team will review it and get back to you with a tailored quote soon.`
+        `Hi ${data.contact_name}, we received your custom trip request (${saved.request_number}) to ${destinationSummary}. Our team will review it and get back to you with a tailored quote soon.`
       );
     } catch (error) {
       console.error('Failed to send custom trip confirmation email:', error);

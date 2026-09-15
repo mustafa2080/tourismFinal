@@ -42,6 +42,11 @@ export class CustomTripRequest {
   @Column({ type: 'varchar', length: 150 })
   destination!: string;
 
+  // Structured destination picks: [{ country, cities: [] }]
+  // Supports multiple country/city blocks from the "+" add-another flow.
+  @Column({ type: 'jsonb', default: () => "'[]'" })
+  destinations_detail!: { country: string; cities: string[] }[];
+
   @Column({ type: 'date' })
   date_start!: Date;
 
@@ -57,11 +62,27 @@ export class CustomTripRequest {
   @Column({ type: 'varchar', length: 20, default: 'mid_range' })
   budget_tier!: 'budget' | 'mid_range' | 'luxury';
 
+  // Budget as a From→To range with its own currency (replaces the
+  // fixed-tier picker in the "Date & Travelers" step). budget_tier is
+  // kept for backward compatibility with older clients/reports.
+  @Column({ type: 'decimal', precision: 12, scale: 2, nullable: true })
+  budget_min?: number;
+
+  @Column({ type: 'decimal', precision: 12, scale: 2, nullable: true })
+  budget_max?: number;
+
+  @Column({ type: 'varchar', length: 3, default: 'USD' })
+  budget_currency!: string;
+
   @Column({ type: 'varchar', length: 20, default: 'standard' })
   pace!: 'relaxed' | 'standard' | 'packed';
 
   @Column({ type: 'text', array: true, default: () => "'{}'" })
   interests!: string[];
+
+  // Multi-select activity categories (Step 2), e.g. ['Shows', 'Nature', 'Safari']
+  @Column({ type: 'text', array: true, default: () => "'{}'" })
+  activity_tags!: string[];
 
   @Column({ type: 'text', nullable: true })
   special_requests?: string;
