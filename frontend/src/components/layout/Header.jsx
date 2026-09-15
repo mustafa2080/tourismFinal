@@ -310,7 +310,7 @@ const Header = () => {
   const navLinks = useMemo(() => [
     { label: t('common.home') || 'Home', path: '/', icon: FiHome },
     { label: t('common.explore') || 'Explore', path: '/search', icon: FiSearch},
-    { label: t('common.customTrip') || 'Custom Trip', path: '/custom-trip', icon: FiCompass },
+    { label: t('common.customTrip') || 'Build Your Trip', path: '/custom-trip', icon: FiCompass },
     { label: t('common.blog') || 'Blog', path: '/blog', icon: FiNewspaper },
     { label: t('common.about') || 'About', path: '/about', icon: FiInfo },
     { label: t('common.contact') || 'Contact', path: '/contact', icon: FiMail },
