@@ -74,6 +74,7 @@ const RefundsPage = lazy(() => import('./pages/AdminDashboard/pages/RefundsPage'
 const AuditLogsPage = lazy(() => import('./pages/AdminDashboard/pages/AuditLogsPage'));
 const PackagesPage = lazy(() => import('./pages/AdminDashboard/pages/PackagesPage'));
 const AddonsPage = lazy(() => import('./pages/AdminDashboard/pages/AddonsPage'));
+const TripBuilderOptionsPage = lazy(() => import('./pages/AdminDashboard/pages/TripBuilderOptionsPage'));
 const CategoriesPage = lazy(() => import('./pages/AdminDashboard/pages/CategoriesPage'));
 const RegionsPage = lazy(() => import('./pages/AdminDashboard/pages/RegionsPage'));
 const AdminBlogPage = lazy(() => import('./pages/AdminDashboard/pages/BlogPage'));
@@ -154,6 +155,7 @@ const AppRoutes = () => {
             <Route path="logs" element={<AuditLogsPage />} />
             <Route path="packages" element={<PackagesPage />} />
             <Route path="addons" element={<AddonsPage />} />
+            <Route path="trip-builder-options" element={<TripBuilderOptionsPage />} />
             <Route path="categories" element={<CategoriesPage />} />
             <Route path="regions" element={<RegionsPage />} />
             <Route path="blog" element={<AdminBlogPage />} />

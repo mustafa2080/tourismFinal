@@ -20,6 +20,7 @@ import {
   FiGift,
   FiMail,
   FiEdit3,
+  FiCompass,
 } from 'react-icons/fi';
 import { useAdmin } from '../context/AdminContext';
 import { useAuth } from '../../../hooks/useAuth';
@@ -117,6 +118,12 @@ export function Sidebar() {
           label: 'Add-ons',
           icon: FiGift,
           path: '/admin/addons'
+        },
+        {
+          id: 'trip-builder-options',
+          label: 'Trip Builder Options',
+          icon: FiCompass,
+          path: '/admin/trip-builder-options'
         }
       ]
     },
