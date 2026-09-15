@@ -84,6 +84,17 @@ export class CustomTripRequest {
   @Column({ type: 'text', array: true, default: () => "'{}'" })
   activity_tags!: string[];
 
+  // Hotel meal/board plan for the trip (none / bed & breakfast / half board / full board)
+  @Column({ type: 'varchar', length: 20, default: 'none' })
+  meal_plan!: 'none' | 'bb' | 'half_board' | 'full_board';
+
+  // Whether the customer wants a tour guide included, and in which language
+  @Column({ type: 'boolean', default: false })
+  wants_guide!: boolean;
+
+  @Column({ type: 'varchar', length: 30, nullable: true })
+  guide_language?: string;
+
   @Column({ type: 'text', nullable: true })
   special_requests?: string;
 

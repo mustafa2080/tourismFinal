@@ -29,6 +29,19 @@ const ACTIVITY_TAG_OPTIONS = [
 
 const CURRENCY_OPTIONS = ['USD', 'EGP', 'EUR', 'GBP', 'SAR'];
 
+// Meal plan options offered in Step 2 (hotel board basis)
+const MEAL_PLAN_OPTIONS = [
+  { id: 'none', label: 'No meal plan', emoji: '🚫' },
+  { id: 'bb', label: 'Bed & Breakfast', emoji: '🥐' },
+  { id: 'half_board', label: 'Half Board', emoji: '🍽️' },
+  { id: 'full_board', label: 'Full Board', emoji: '🍱' },
+];
+
+// Languages offered for the optional tour guide
+const GUIDE_LANGUAGE_OPTIONS = [
+  'English', 'Arabic', 'French', 'German', 'Spanish', 'Russian', 'Italian', 'Chinese',
+];
+
 /**
  * Splits a flat "City, Country" destination string into its parts.
  * The last comma-separated segment is treated as the country; everything
@@ -88,6 +101,9 @@ const CustomTripPage = () => {
   const [budgetCurrency, setBudgetCurrency] = useState('USD');
   const [pace, setPace] = useState('standard');
   const [interests, setInterests] = useState([]);
+  const [mealPlan, setMealPlan] = useState('none');
+  const [wantsGuide, setWantsGuide] = useState(false);
+  const [guideLanguage, setGuideLanguage] = useState('English');
 
   // Step 2b — activities (multi-select tags, "+" adds another selection group)
   const [activityGroups, setActivityGroups] = useState([[]]); // array of arrays of tags
@@ -355,6 +371,9 @@ const CustomTripPage = () => {
         pace,
         interests,
         activity_tags: allActivityTags,
+        meal_plan: mealPlan,
+        wants_guide: wantsGuide,
+        guide_language: wantsGuide ? guideLanguage : undefined,
         special_requests: specialRequests.trim() || undefined,
         items: selectedItems.map(i => ({
           item_type: i.item_type,
@@ -774,6 +793,57 @@ const CustomTripPage = () => {
             </div>
 
             <div>
+              <h3 className="text-sm font-bold text-slate-900 dark:text-white mb-3">Meal Plan</h3>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                {MEAL_PLAN_OPTIONS.map((plan) => (
+                  <button
+                    key={plan.id}
+                    type="button"
+                    onClick={() => setMealPlan(plan.id)}
+                    className={`px-3 py-3 rounded-xl border-2 text-center transition-all ${
+                      mealPlan === plan.id
+                        ? 'border-teal-600 bg-teal-50 dark:bg-teal-900/20'
+                        : 'border-slate-200 dark:border-slate-700 hover:border-teal-300'
+                    }`}
+                  >
+                    <div className="text-xl mb-1">{plan.emoji}</div>
+                    <div className="text-xs font-bold text-slate-900 dark:text-white">{plan.label}</div>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-sm font-bold text-slate-900 dark:text-white mb-3">Tour Guide</h3>
+              <label className="flex items-center justify-between px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 cursor-pointer">
+                <div>
+                  <p className="font-semibold text-slate-900 dark:text-white text-sm">I'd like a tour guide</p>
+                  <p className="text-xs text-slate-400">Optional — choose your preferred language</p>
+                </div>
+                <input
+                  type="checkbox"
+                  checked={wantsGuide}
+                  onChange={(e) => setWantsGuide(e.target.checked)}
+                  className="w-5 h-5 rounded accent-teal-600"
+                />
+              </label>
+              {wantsGuide && (
+                <div className="mt-3">
+                  <label className="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1.5">Guide language</label>
+                  <select
+                    value={guideLanguage}
+                    onChange={(e) => setGuideLanguage(e.target.value)}
+                    className="w-full sm:w-64 px-3 py-2.5 rounded-xl border-2 bg-white dark:bg-slate-900 text-slate-900 dark:text-white focus:outline-none border-slate-200 dark:border-slate-700 focus:border-teal-500"
+                  >
+                    {GUIDE_LANGUAGE_OPTIONS.map(lang => (
+                      <option key={lang} value={lang}>{lang}</option>
+                    ))}
+                  </select>
+                </div>
+              )}
+            </div>
+
+            <div>
               <h3 className="text-sm font-bold text-slate-900 dark:text-white mb-3">Pace</h3>
               <div className="grid grid-cols-3 gap-3">
                 {customTripService.paceOptions.map((p) => (
@@ -1106,6 +1176,18 @@ const CustomTripPage = () => {
                     <span className="text-slate-500 dark:text-slate-400">Travelers</span>
                     <span className="font-semibold text-slate-900 dark:text-white">
                       {adults} adult{adults !== 1 ? 's' : ''}{children > 0 ? `, ${children} child${children !== 1 ? 'ren' : ''}` : ''}
+                    </span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-slate-500 dark:text-slate-400">Meal plan</span>
+                    <span className="font-semibold text-slate-900 dark:text-white text-right">
+                      {MEAL_PLAN_OPTIONS.find(p => p.id === mealPlan)?.label || 'No meal plan'}
+                    </span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-slate-500 dark:text-slate-400">Tour guide</span>
+                    <span className="font-semibold text-slate-900 dark:text-white text-right">
+                      {wantsGuide ? `Yes — ${guideLanguage}` : 'No'}
                     </span>
                   </div>
                   <div className="flex justify-between">

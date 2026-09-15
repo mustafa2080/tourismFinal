@@ -41,6 +41,9 @@ interface SubmitRequestInput {
   pace?: 'relaxed' | 'standard' | 'packed';
   interests?: string[];
   activity_tags?: string[];
+  meal_plan?: 'none' | 'bb' | 'half_board' | 'full_board';
+  wants_guide?: boolean;
+  guide_language?: string;
   special_requests?: string;
   items: SubmitItemInput[];
   display_currency?: 'USD' | 'EGP';
@@ -153,6 +156,9 @@ export class CustomTripService {
       pace: data.pace || 'standard',
       interests: data.interests || [],
       activity_tags: data.activity_tags || [],
+      meal_plan: data.meal_plan || 'none',
+      wants_guide: data.wants_guide || false,
+      guide_language: data.wants_guide ? data.guide_language : undefined,
       special_requests: data.special_requests,
       estimated_total: estimatedTotal,
       display_currency: data.display_currency || 'USD',
